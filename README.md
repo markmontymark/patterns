@@ -3,6 +3,6 @@ scripts
 
 Various scripts (mostly Perl)
 
-* _c-find-include-file.sh_ - Bash script to search for the path of a C header file on your machine
+* __c-find-include-file.sh__ - Bash script to search for the path of a C header file on your machine
 
-* _create-c-project.pl_ - Perl script to help set up a simple C executable or library project
+* __create-c-project.pl__ - Perl script to help set up a simple C executable or library project
