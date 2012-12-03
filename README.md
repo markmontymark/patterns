@@ -1,7 +1,7 @@
 scripts
 =======
 
-Various scripts (mostly Perl)
+Various scripts
 
 * __c-find-include-file.sh__ - Bash script to search for the path of a C header file on your machine
 
