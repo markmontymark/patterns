@@ -17,24 +17,20 @@ class GitCloneAll extends nodeio.JobClass
 	run: (url) ->
 		@getHtml(url + tab, (err, $) ->
 			repos = []
-			console.log "match on #{url}"
 			githost = ("" + url).match("^(.*[^/])/")
 			githost = githost[0].replace(/\/$/,'') if githost? and Object::toString.call(githost) is '[object Array]'
-			console.error "githost is #{githost}"
 			$('h3 a').each((node)->
 				repo_url = node?.attribs?.href
-				console.log repo_url
 				repos.push(githost + repo_url) if repo_url
 				return true
 			)
-			#console.log results
 			@emit repos
 		)
 
 	output: (repos) ->
 		for repo in repos
 			console.error "git clone #{repo + gitsuffix}"
-			child = spawn('git',['clone',"#{repo + gitsuffix}"],{env:process.env})
+			#child = spawn('git',['clone',"#{repo + gitsuffix}"],{env:process.env})
 		return null
 
 class UsageDetails extends nodeio.JobClass
