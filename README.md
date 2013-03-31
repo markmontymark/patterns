@@ -7,6 +7,6 @@ Various scripts
 
 * __create-c-project.pl__ - Perl script to help set up a simple C executable or library project
 
-* __pulldown.pl__ - Perl script to use SFTP to pull down all files from a web-site you manage
+* __git-clone-call.coffee__ - Node.io-based Node.js script for pulling down all your Git repos.  Helpful for recovering your code after hardware fail.
 
-	- Requires CPAN modules Net::SFTP, IO::Prompt
+	- Requires [Node.js|http://nodejs.org/download/] and [Node.io|https://github.com/chriso/node.io]
