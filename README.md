@@ -9,4 +9,4 @@ Various scripts
 
 * __git-clone-call.coffee__ - Node.io-based Node.js script for pulling down all your Git repos.  Helpful for recovering your code after hardware fail.
 
-	- Requires [Node.js|http://nodejs.org/download/] and [Node.io|https://github.com/chriso/node.io]
+	- Requires [Node.js](http://nodejs.org/download/) and [Node.io](https://github.com/chriso/node.io)
