@@ -5,17 +5,19 @@ $ node.io git-clone-all.coffee < urls.txt
 '''
 
 nodeio = require 'node.io'
-exec   = require('child_process').exec
 spawn  = require('child_process').spawn
 
 options = max: 10, take:10
 
-tab = '?tab=repositories'
-gitsuffix = '.git'
 
 class GitCloneAll extends nodeio.JobClass
+
+	@tab = '?tab=repositories'
+	@gitsuffix = '.git'
+
 	run: (url) ->
-		@getHtml(url + tab, (err, $) ->
+		console.error "run on url #{url}"
+		@getHtml(url + GitCloneAll.tab, (err, $) ->
 			repos = []
 			githost = ("" + url).match("^(.*[^/])/")
 			githost = githost[0].replace(/\/$/,'') if githost? and Object::toString.call(githost) is '[object Array]'
@@ -29,9 +31,10 @@ class GitCloneAll extends nodeio.JobClass
 
 	output: (repos) ->
 		for repo in repos
-			console.error "git clone #{repo + gitsuffix}"
+			console.error "git clone #{repo + GitCloneAll.gitsuffix}"
 			#child = spawn('git',['clone',"#{repo + gitsuffix}"],{env:process.env})
 		return null
+
 
 class UsageDetails extends nodeio.JobClass
 	input: ->
