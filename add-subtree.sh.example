@@ -1,0 +1,24 @@
+#!/bin/sh
+
+#
+# sample commands to include markmontymark/scripts.git into your project
+# inspired by https://www.kernel.org/pub/software/scm/git/docs/howto/using-merge-subtree.html
+#
+cd path/to/your/project
+git remote add -f scripts git@github.com:markmontymark/scripts.git
+# Updating scripts
+# warning: no common commits
+# remote: Counting objects: 50, done.
+# remote: Compressing objects: 100% (44/44), done.
+# remote: Total 50 (delta 18), reused 33 (delta 4)
+# Unpacking objects: 100% (50/50), done.
+# From github.com:markmontymark/scripts
+#  * [new branch]      master     -> scripts/master
+git merge -s ours --no-commit scripts/master
+#Automatic merge went well; stopped before committing as requested
+git read-tree --prefix=scripts/ -u scripts/master
+git commit -m "Merge scripts/ as our subdirectory"
+#[master 3337f90] Merge scripts/ as our subdirectory
+git pull -s subtree scripts master
+ls scripts
+# scripts/
