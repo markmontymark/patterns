@@ -1,0 +1,10 @@
+{
+   "TestClassA" : {
+      "expected" : "in classA test main\n",
+      "name" : "Class A test"
+   },
+   "TestClassB" : {
+      "expected" : "in classB test main\n",
+      "name" : "Class B test"
+   }
+}
