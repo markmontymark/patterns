@@ -11,7 +11,7 @@ use v5.16;
 
 my $src_dir = 'src';
 my $tst_dir = 'test';
-my $tst_cfg_file = 'scripts/test.json';
+my $tst_cfg_file = 'test/test.json';
 my $src_files = {}; ## used for File::Find::find in make_makefile
 
 &add_class($_,$src_dir,$tst_dir) for @ARGV;
