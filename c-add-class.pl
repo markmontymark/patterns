@@ -11,7 +11,7 @@ use v5.16;
 
 my $src_dir = 'src';
 my $tst_dir = 'test';
-my $tst_cfg_file = 'test/test.json';
+my $tst_cfg_file = 'test/ctest.json';
 my $src_files = {}; ## used for File::Find::find in make_makefile
 
 &add_class($_,$src_dir,$tst_dir) for @ARGV;
@@ -36,14 +36,18 @@ sub add_class
 sub add_src
 {
 	my($src_dir,$klasspath,$klass) = @_;
-	&create_file("$src_dir/$klasspath.hpp",qq#
+	my $define = uc $klass;
+	&create_file("$src_dir/$klasspath.hpp",qq~
+#ifndef $define~.qq~_HPP 
+#define $define~.qq~_HPP 
 
 class $klass
 {
-	void todo();
+	public:
+	void run();
 };
 
-#);
+~);
 
 	&create_file("$src_dir/$klasspath.cpp",qq#
 
@@ -53,9 +57,9 @@ class $klass
 
 \#include "$klasspath.hpp"
 
-void $klass\::todo()
+void $klass\::run()
 {
-   std::cout << "Todo\\n";
+   std::cout << "In $klass run()\\n";
 }
 
 #);
@@ -80,6 +84,8 @@ class Test$klass : public MrkTest
 	public:
 	void test()
 	{
+		$klass * obj = new $klass();
+		obj->run();
 	}
 };
 

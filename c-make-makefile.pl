@@ -108,7 +108,7 @@ L = lib
 all: init lib_objects test_objects libso
 cleanall: clean all
 test: clean all
-	perl ./scripts/test.pl test/test.json \$T
+	perl ./scripts/ctest.pl test/ctest.json \$T
 
 lib_objects: \\
 $lib_objects
