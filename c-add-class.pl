@@ -83,6 +83,7 @@ sub add_test
 class Test$klass : public MrkTest
 {
 	public:
+	Test$klass(int argc,char **argv) : MrkTest(argc,argv){};
 	void test()
 	{
 		$klass * obj = new $klass();
@@ -93,7 +94,7 @@ class Test$klass : public MrkTest
 int main(int argc,  char ** argv)
 {
 	std::cout << "in $klass test main\\n";	
-	Test$klass * t = new Test$klass();
+	Test$klass * t = new Test$klass(argc,argv);
 	t->test();
 	return 0;
 }
