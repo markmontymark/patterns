@@ -47,6 +47,7 @@ class $klass
 	void run();
 };
 
+#endif
 ~);
 
 	&create_file("$src_dir/$klasspath.cpp",qq#
