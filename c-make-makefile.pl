@@ -14,6 +14,7 @@ my $tst_dir = 'test';
 my $src_files = {}; ## used for File::Find::find in make_makefile
 
 &make_makefile($src_dir,$tst_dir);
+&make_silly_test_base_class();
 exit;
 
 sub make_makefile
@@ -30,7 +31,7 @@ sub make_makefile
 		&make_test_objects('bin-test'),
 		&make_compile_test_objects('bin-test','obj-test','obj')
 	);
-	`mv Makefile Makefile.orig`;
+	`mv Makefile Makefile.orig` if -e 'Makefile';
 	File::Slurp::write_file('Makefile',{atomic=>1},$makefile);
 }
 
@@ -67,6 +68,25 @@ qq#$obj_dir/$klass.o: src/$klasspath
 #
 	}sort keys %$src_files) 
 }
+
+sub make_silly_test_base_class
+{
+	return unless -e 'test/MrkTest.hpp';
+
+	File::Slurp::write_file('test/MrkTest.hpp', q#
+class MrkTest
+{
+   private:
+      inline void initopt(int ac,char ** av) { argc = ac; argv = av ; }
+   public:
+      int argc;
+      char ** argv;
+      MrkTest(int ac,char ** av) { initopt(ac,av);}
+      virtual void test() = 0;
+};
+#);
+}
+
 
 sub make_test_objects
 {
