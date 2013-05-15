@@ -10,15 +10,11 @@ for(grep !/^\./,`ls`)
 	my @lines = `git status --porcelain`;
 	if( scalar @lines == 0 )
 	{
-		print color 'bold green';
-		say $_;
-		print color 'reset';
+		say colored $_, 'bold green';
 	}
 	else
 	{
-		print color 'bold red';
-		say $_;
-		print color 'reset';
+		say colored $_, 'bold red';
 		print @lines;
 	}
 
