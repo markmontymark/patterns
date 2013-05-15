@@ -11,12 +11,14 @@ use File::Slurp;
 
 my $test_cfg_file = shift;
 my $test_dir = shift;
+my $do_save = 0;
 
 my $valgrind = File::Which::which('valgrind');
 my $cfg = JSON::XS::decode_json( File::Slurp::read_file($test_cfg_file));
 
 walk( $test_dir, \&run_tests );
 done_testing();
+#&save_cfg($cfg,$test_cfg_file) if $do_save;
 exit;
 
 
@@ -29,7 +31,28 @@ sub run_tests
 		print "Found test, $path, but $name doesn't exist in test config...Skipping\n";
 		return;
 	}
+	
 	my $test_cfg = $cfg->{$name};
+	if($test_cfg && ref $test_cfg eq 'ARRAY')
+	{
+		&run_tests_on_cfg($_,$path) for @$test_cfg;
+	}
+	else
+	{
+		&run_tests_on_cfg($test_cfg,$path);
+	}
+}
+
+sub run_tests_on_cfg
+{
+	my($test_cfg,$path) = @_;
+	my $name = $test_cfg->{name};
+	if(exists $test_cfg->{expected_file})
+	{
+		$test_cfg->{expected} = File::Slurp::read_file($test_cfg->{expected_file});
+		#$do_save = 1;
+	}
+
 	my $test_args = exists $test_cfg->{args} ? $test_cfg->{args} : undef;
 	unless(exists $test_cfg->{expected} or exists $test_cfg->{regex_expected})
 	{
@@ -106,3 +129,11 @@ sub walk
 	$callback->($_) for sort @bins;
 	&walk($callback,$_) for sort @dirs;
 }
+
+sub save_cfg
+{
+   my($cfg,$path) = @_;
+   my $coder = JSON::XS->new->ascii->pretty->allow_nonref;
+   File::Slurp::write_file($path,$coder->encode($cfg));
+}
+
