@@ -1,5 +1,20 @@
 #!/usr/bin/env perl
 
+=head1 Usage
+
+perl scripts/c-type-tmpl.pl path/to/tmpl_file type [typeclean]
+
+	path/to/tmpl_file - create 3 files, a .h, .c and .t file.  
+		The .h and .c tmpl files will be used to create files in ./src.
+		The .t tmpl files will be used to create a file in ./test.
+
+	type - the actual c type to be substituted in tmpl files with the token, %type%.
+
+	typeclean - Optional - A cleaned up version of type for use in macros, typdefs, etc.
+		Used in replacements for token %typeclean%
+
+=cut
+
 use strict;
 use warnings;
 
@@ -29,9 +44,6 @@ for my $pair ( ['type',$type],['typeclean',$typeClean] )
 
 (my $path = $tmpl) =~ s/^.*?\//src\//;
 $path =~ s/typeclean/$typeClean/i;
-
-die "Error: Header $path.h already exists\n" if -e "$path.h";
-die "Error: Implementation file $path.c already exists\n" if -e "$path.c";
 
 File::Slurp::write_file("$path.h",$h_tmpl);
 File::Slurp::write_file("$path.c",$c_tmpl);
