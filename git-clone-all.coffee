@@ -13,7 +13,6 @@ options = max: 10, take:10
 class GitCloneAll extends nodeio.JobClass
 
 	@tab = '?tab=repositories'
-	@gitsuffix = '.git'
 
 	run: (url) ->
 		console.error "run on url #{url}"
@@ -30,9 +29,11 @@ class GitCloneAll extends nodeio.JobClass
 		)
 
 	output: (repos) ->
-		for repo in repos
-			console.error "git clone #{repo + GitCloneAll.gitsuffix}"
-			#child = spawn('git',['clone',"#{repo + gitsuffix}"],{env:process.env})
+		for repo in repos 
+			if repo.indexOf('cdnjs')> -1 or repo.indexOf('brackets') > -1
+				continue
+			console.error "git clone #{repo + '.git'}"
+			child = spawn('git',['clone',"#{repo + '.git'}" ],{env:process.env})
 		return null
 
 
