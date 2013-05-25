@@ -72,6 +72,7 @@ sub basic_test
 	my $got = &trim(join '',`$cmdline`);
 	if(exists $test_cfg->{regex_expected})
 	{
+		&complain_about_unescaped_regex_modifiers($test_name,$test_cfg->{regex_expected});
 		like($got, $test_cfg->{regex_expected} , $test_name);
 	}
 	else
@@ -95,6 +96,34 @@ sub valgrind_test
 	{
 		is($got, &trim($test_cfg->{expected}) , $test_name);
 	}
+}
+
+sub complain_about_unescaped_regex_modifiers
+{
+   my($testname,$str) = @_;
+   my($unwrapped_str) = $str;
+   $unwrapped_str =~ s/^\///;
+   $unwrapped_str =~ s/\/$//s;
+   my @chars = split '',$unwrapped_str;
+   my $i = -1;
+   for(@chars)
+   {
+      $i++;
+      next unless /[?\/*()+.]/;
+      if( /[*+]/)
+      {
+         next if $i > 2 && ($chars[$i - 1] eq '\\' or $chars[$i-2] eq '\\' or $chars[$i-1] eq ']');
+      }
+      elsif( /[()]/)
+      {
+         next if $i > 2 && ($chars[$i - 1] eq '\\' or $chars[$i-2] eq '\\' or $chars[$i+1] eq '{');
+      }
+      else
+      {
+         next if $i > 1 && $chars[$i - 1] eq '\\';
+      }
+      print STDERR "xxxxx   test $testname has regex modifier $_ at pos $i\n";
+   }
 }
 
 
@@ -136,4 +165,5 @@ sub save_cfg
    my $coder = JSON::XS->new->ascii->pretty->allow_nonref;
    File::Slurp::write_file($path,$coder->encode($cfg));
 }
+
 

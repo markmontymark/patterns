@@ -5,7 +5,11 @@ use Term::ANSIColor;
 for(grep !/^\./,`ls`)
 {
 	chomp;
-	next unless -d  && -d "$_/.git";
+	unless( -d  && -d "$_/.git")
+	{
+		say colored $_, 'bold blue';
+		next;
+	}
 	chdir $_;
 	my @lines = `git status --porcelain`;
 	if( scalar @lines == 0 )
