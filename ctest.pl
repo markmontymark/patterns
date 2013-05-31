@@ -77,7 +77,16 @@ sub basic_test
 	}
 	else
 	{
-		is($got, &trim($test_cfg->{expected}) , $test_name);
+		my $r;
+      ## handle JSON not allowing multiline string literals by using array ref and joining with \n
+      if( ($r = ref $test_cfg->{expected}) && $r eq 'ARRAY')
+      {
+         is($got, &trim(join "\n",@{$test_cfg->{expected}}) , $test_name);
+      }
+      else
+      {
+         is($got, &trim($test_cfg->{expected}) , $test_name);
+      }
 	}
 }
 
