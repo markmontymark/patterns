@@ -1,0 +1,4772 @@
+
+*******************************************************************
+
+
+
+
+Abstract Factory
+// Original copy of this content taken from http://www.fluffycat.com/Java-Design-Patterns/ in 2010
+// Original Author: Larry Truett
+// Privacy Policy at http://www.fluffycat.com/Privacy-Policy/
+An abstract factory has sets of methods to make families of various objects.
+
+In this example the AbstractSoupFactory defines the method names and return types to make various kinds of soup.
+
+The BostonConcreteSoupFactory and the HonoluluConcreteSoupFactory both extend the AbstractSoupFactory.
+
+An object can be defined as an AbstractSoupFactory, and instantiated as either a BostonConcreteSoupFactory (BCSF) or a HonoluluConcreteSoupFactory (HCSF). Both BCSF or HCSF have the makeFishChowder method, and both return a FishChowder type class. However, the BCSF returns a FishChowder subclass of BostonFishChowder, while the HCSF returns a FishChowder subclass of HonoluluFishChowder.
+Still reading? Save your time, watch the video lessons!
+Video tutorial on design patterns
+AbstractSoupFactory.java - An Abstract Factory
+
+abstract class AbstractSoupFactory {
+    String factoryLocation;
+    public String getFactoryLocation() {
+        return factoryLocation;
+    }
+    
+    public ChickenSoup makeChickenSoup() {
+        return new ChickenSoup();
+    }
+    public ClamChowder makeClamChowder() {
+        return new ClamChowder();
+    }
+    public FishChowder makeFishChowder() {
+        return new FishChowder();
+    }     
+    public Minnestrone makeMinnestrone() {
+        return new Minnestrone();
+    }
+    public PastaFazul makePastaFazul() {
+        return new PastaFazul();
+    }
+    public TofuSoup makeTofuSoup() {
+        return new TofuSoup();
+    }
+    public VegetableSoup makeVegetableSoup() {
+        return new VegetableSoup();
+    }
+}
+
+Soup.java - A helper class
+
+import java.util.ArrayList;
+import java.util.ListIterator;
+
+abstract class Soup 
+{
+   ArrayList soupIngredients = new ArrayList();    
+   String soupName;
+   
+   public String getSoupName()
+   {
+       return soupName;
+   }
+   
+   public String toString()
+   {
+        StringBuffer stringOfIngredients = new StringBuffer(soupName);
+        stringOfIngredients.append(" Ingredients: ");
+        ListIterator soupIterator = soupIngredients.listIterator();
+        while (soupIterator.hasNext())
+        {
+            stringOfIngredients.append((String)soupIterator.next());
+        }
+        return stringOfIngredients.toString();
+   }
+}        
+
+class ChickenSoup extends Soup
+{
+    public ChickenSoup() 
+    {
+        soupName = "ChickenSoup";
+        soupIngredients.add("1 Pound diced chicken");
+        soupIngredients.add("1/2 cup rice");    
+        soupIngredients.add("1 cup bullion");      
+        soupIngredients.add("1/16 cup butter");    
+        soupIngredients.add("1/4 cup diced carrots");          
+    }
+}   
+
+class ClamChowder extends Soup
+{
+    public ClamChowder() 
+    {
+        soupName = "ClamChowder";
+        soupIngredients.add("1 Pound Fresh Clams");
+        soupIngredients.add("1 cup fruit or vegetables");    
+        soupIngredients.add("1/2 cup milk");      
+        soupIngredients.add("1/4 cup butter");    
+        soupIngredients.add("1/4 cup chips");          
+    }
+}
+
+class FishChowder extends Soup
+{
+    public FishChowder() 
+    {
+        soupName = "FishChowder";
+        soupIngredients.add("1 Pound Fresh fish");
+        soupIngredients.add("1 cup fruit or vegetables");    
+        soupIngredients.add("1/2 cup milk");      
+        soupIngredients.add("1/4 cup butter");    
+        soupIngredients.add("1/4 cup chips");          
+    }
+}
+
+class Minnestrone extends Soup
+{
+    public Minnestrone() 
+    {
+        soupName = "Minestrone";
+        soupIngredients.add("1 Pound tomatos");
+        soupIngredients.add("1/2 cup pasta");    
+        soupIngredients.add("1 cup tomato juice");             
+    }
+}
+
+class PastaFazul extends Soup
+{
+    public PastaFazul() 
+    {
+        soupName = "Pasta Fazul";
+        soupIngredients.add("1 Pound tomatos");
+        soupIngredients.add("1/2 cup pasta");    
+        soupIngredients.add("1/2 cup diced carrots");          
+        soupIngredients.add("1 cup tomato juice");             
+    }
+}
+
+class TofuSoup extends Soup
+{
+    public TofuSoup() 
+    {
+        soupName = "Tofu Soup";
+        soupIngredients.add("1 Pound tofu");
+        soupIngredients.add("1 cup carrot juice");    
+        soupIngredients.add("1/4 cup spirolena");         
+    }
+}
+
+class VegetableSoup extends Soup
+{
+    public VegetableSoup() 
+    {
+        soupName = "Vegetable Soup";
+        soupIngredients.add("1 cup bullion");    
+        soupIngredients.add("1/4 cup carrots");         
+        soupIngredients.add("1/4 cup potatoes");         
+    }
+}
+
+
+BostonConcreteSoupFactory.java - One of Two concrete factories extending the abstract factory
+
+class BostonConcreteSoupFactory extends AbstractSoupFactory {
+    public BostonConcreteSoupFactory() {
+        factoryLocation = "Boston";
+    }
+    public ClamChowder makeClamChowder() {
+        return new BostonClamChowder();
+    }
+    public FishChowder makeFishChowder() {
+        return new BostonFishChowder();
+    }
+}
+
+class BostonClamChowder extends ClamChowder {
+    public BostonClamChowder() {
+        soupName = "QuahogChowder";
+        soupIngredients.clear();        
+        soupIngredients.add("1 Pound Fresh Quahogs");
+        soupIngredients.add("1 cup corn");    
+        soupIngredients.add("1/2 cup heavy cream");
+        soupIngredients.add("1/4 cup butter");    
+        soupIngredients.add("1/4 cup potato chips");
+    }
+}
+
+class BostonFishChowder extends FishChowder {
+    public BostonFishChowder() {
+        soupName = "ScrodFishChowder";
+        soupIngredients.clear();        
+        soupIngredients.add("1 Pound Fresh Scrod");
+        soupIngredients.add("1 cup corn");    
+        soupIngredients.add("1/2 cup heavy cream");
+        soupIngredients.add("1/4 cup butter");    
+        soupIngredients.add("1/4 cup potato chips");
+    }
+}
+
+HonoluluConcreteSoupFactory.java - Two of Two concrete factories extending the abstract factory
+
+class HonoluluConcreteSoupFactory extends AbstractSoupFactory {
+    public HonoluluConcreteSoupFactory() {
+        factoryLocation = "Honolulu";
+    }
+    public ClamChowder makeClamChowder() {
+       return new HonoluluClamChowder();
+    }
+    public FishChowder makeFishChowder() {
+       return new HonoluluFishChowder();
+    }
+}
+
+class HonoluluClamChowder extends ClamChowder {
+    public HonoluluClamChowder() {
+        soupName = "PacificClamChowder";
+        soupIngredients.clear();        
+        soupIngredients.add("1 Pound Fresh Pacific Clams");
+        soupIngredients.add("1 cup pineapple chunks");
+        soupIngredients.add("1/2 cup coconut milk");
+        soupIngredients.add("1/4 cup SPAM");
+        soupIngredients.add("1/4 cup taro chips");
+    }
+}
+
+class HonoluluFishChowder extends FishChowder {
+    public HonoluluFishChowder() {
+        soupName = "OpakapakaFishChowder";
+        soupIngredients.clear();
+        soupIngredients.add("1 Pound Fresh Opakapaka Fish");
+        soupIngredients.add("1 cup pineapple chunks");
+        soupIngredients.add("1/2 cup coconut milk");
+        soupIngredients.add("1/4 cup SPAM");
+        soupIngredients.add("1/4 cup taro chips");
+    }
+}
+
+TestAbstractSoupFactory.java - Testing the abstract factory
+
+import java.util.Calendar;
+
+class TestAbstractSoupFactory { 
+   public static Soup MakeSoupOfTheDay(AbstractSoupFactory 
+                                       concreteSoupFactory)
+   { 
+       Calendar todayCalendar = Calendar.getInstance();
+       //int dayOfWeek = todayCalendar.get(Calendar.DAY_OF_WEEK);
+       
+       int dayOfWeek = Calendar.TUESDAY;
+       
+       if (dayOfWeek == Calendar.MONDAY) {
+           return concreteSoupFactory.makeChickenSoup();
+       } else if (dayOfWeek == Calendar.TUESDAY) {
+           return concreteSoupFactory.makeClamChowder();
+       } else if (dayOfWeek == Calendar.WEDNESDAY) {
+           return concreteSoupFactory.makeFishChowder();
+       } else if (dayOfWeek == Calendar.THURSDAY) {
+           return concreteSoupFactory.makeMinnestrone();
+       } else if (dayOfWeek == Calendar.TUESDAY) {
+           return concreteSoupFactory.makePastaFazul();
+       } else if (dayOfWeek == Calendar.WEDNESDAY) {
+           return concreteSoupFactory.makeTofuSoup();
+       } else {
+           return concreteSoupFactory.makeVegetableSoup();
+       }
+   }        
+
+   public static void main(String[] args) 
+   {
+       AbstractSoupFactory concreteSoupFactory = 
+         new BostonConcreteSoupFactory();
+       Soup soupOfTheDay = 
+         MakeSoupOfTheDay(concreteSoupFactory);
+       System.out.println("The Soup of the day " + 
+                          concreteSoupFactory.getFactoryLocation() + 
+                          " is " + 
+                          soupOfTheDay.getSoupName());
+ 
+       concreteSoupFactory = 
+         new HonoluluConcreteSoupFactory();
+       soupOfTheDay = 
+         MakeSoupOfTheDay(concreteSoupFactory);
+       System.out.println("The Soup of the day " + 
+                          concreteSoupFactory.getFactoryLocation() + 
+                          " is " + 
+                          soupOfTheDay.getSoupName());
+   }
+}      
+
+Test Results (if run on a Tuesday)
+
+The Soup of the day in Boston is QuahogChowder
+The Soup of the day in Honolulu is PacificClamChowder
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+************************************************************************
+
+
+
+Java Design Patterns Builder
+// Original copy of this content taken from http://www.fluffycat.com/Java-Design-Patterns/ in 2010
+// Original Author: Larry Truett
+// Privacy Policy at http://www.fluffycat.com/Privacy-Policy/
+Builder Overview
+Make and return one object various ways.
+
+In this example the abstract SoupBuffetBuilder defines the methods necessary to create a SoupBuffet.
+
+BostonSoupBuffetBuilder and the HonoluluSoupBuffetBuilder both extend the SoupBuffetBuilder.
+
+An object can be defined as an SoupBuffetBuilder, and instantiated as either a BostonSoupBuffetBuilder (BSBB) or a HonoluluSoupBuffetBuilder (HSBB). Both BSBB or HSBB have a buildFishChowder method, and both return a FishChowder type class. However, the BSBB returns a FishChowder subclass of BostonFishChowder, while the HSBB returns a FishChowder subclass of HonoluluFishChowder.
+Still reading? Save your time, watch the video lessons!
+Video tutorial on design patterns
+SoupBuffetBuilder.java - a Builder
+
+abstract class SoupBuffetBuilder {
+    SoupBuffet soupBuffet;
+        
+    public SoupBuffet getSoupBuffet() {
+        return soupBuffet;
+    }
+    
+    public void buildSoupBuffet() {
+        soupBuffet = new SoupBuffet();
+    }
+    
+    public abstract void setSoupBuffetName();
+        
+    public void buildChickenSoup() {
+        soupBuffet.chickenSoup = new ChickenSoup();
+    }
+    public void buildClamChowder() {
+        soupBuffet.clamChowder = new ClamChowder();
+    }
+    public void buildFishChowder() {
+        soupBuffet.fishChowder = new FishChowder();
+    }
+    public void buildMinnestrone() {
+        soupBuffet.minnestrone = new Minnestrone();
+    }
+    public void buildPastaFazul() {
+        soupBuffet.pastaFazul = new PastaFazul();
+    }
+    public void buildTofuSoup() {
+        soupBuffet.tofuSoup = new TofuSoup();
+    }
+    public void buildVegetableSoup() {
+        soupBuffet.vegetableSoup = new VegetableSoup();
+    }
+}
+
+BostonSoupBuffetBuilder.java - One of Two Builder Subclasses
+
+class BostonSoupBuffetBuilder extends SoupBuffetBuilder {
+    public void buildClamChowder() {
+       soupBuffet.clamChowder = new BostonClamChowder();
+    }
+    public void buildFishChowder() {
+       soupBuffet.fishChowder = new BostonFishChowder();
+    }    
+    
+    public void setSoupBuffetName() {
+       soupBuffet.soupBuffetName = "Boston Soup Buffet";
+    }
+}
+
+class BostonClamChowder extends ClamChowder {
+    public BostonClamChowder() {
+        soupName = "QuahogChowder";
+        soupIngredients.clear();        
+        soupIngredients.add("1 Pound Fresh Quahogs");
+        soupIngredients.add("1 cup corn");    
+        soupIngredients.add("1/2 cup heavy cream");
+        soupIngredients.add("1/4 cup butter");    
+        soupIngredients.add("1/4 cup potato chips");
+    }
+}
+
+class BostonFishChowder extends FishChowder {
+    public BostonFishChowder() {
+        soupName = "ScrodFishChowder";
+        soupIngredients.clear();        
+        soupIngredients.add("1 Pound Fresh Scrod");
+        soupIngredients.add("1 cup corn");    
+        soupIngredients.add("1/2 cup heavy cream");
+        soupIngredients.add("1/4 cup butter");    
+        soupIngredients.add("1/4 cup potato chips");
+    }
+}
+
+HonoluluSoupBuffetBuilder.java - Two of Two Builder Subclasses
+
+class HonoluluSoupBuffetBuilder extends SoupBuffetBuilder {
+    public void buildClamChowder() {
+        soupBuffet.clamChowder = new HonoluluClamChowder();
+    }
+    public void buildFishChowder() {
+        soupBuffet.fishChowder = new HonoluluFishChowder();
+    }
+    
+    public void setSoupBuffetName() {
+        soupBuffet.soupBuffetName = "Honolulu Soup Buffet";
+    }
+}
+
+class HonoluluClamChowder extends ClamChowder {
+    public HonoluluClamChowder() {
+        soupName = "PacificClamChowder";
+        soupIngredients.clear();        
+        soupIngredients.add("1 Pound Fresh Pacific Clams");
+        soupIngredients.add("1 cup pineapple chunks");
+        soupIngredients.add("1/2 cup coconut milk");
+        soupIngredients.add("1/4 cup SPAM");    
+        soupIngredients.add("1/4 cup taro chips");
+    }
+}
+
+class HonoluluFishChowder extends FishChowder {
+    public HonoluluFishChowder() {
+        soupName = "OpakapakaFishChowder";
+        soupIngredients.clear();        
+        soupIngredients.add("1 Pound Fresh Opakapaka Fish");
+        soupIngredients.add("1 cup pineapple chunks");
+        soupIngredients.add("1/2 cup coconut milk");
+        soupIngredients.add("1/4 cup SPAM");    
+        soupIngredients.add("1/4 cup taro chips");
+    }
+}
+
+
+Soup.java - A helper class
+
+import java.util.ArrayList;
+import java.util.ListIterator;
+
+abstract class Soup 
+{
+   ArrayList soupIngredients = new ArrayList();    
+   String soupName;
+   
+   public String getSoupName()
+   {
+       return soupName;
+   }
+   
+   public String toString()
+   {
+        StringBuffer stringOfIngredients = new StringBuffer(soupName);
+        stringOfIngredients.append(" Ingredients: ");
+        ListIterator soupIterator = soupIngredients.listIterator();
+        while (soupIterator.hasNext())
+        {
+            stringOfIngredients.append((String)soupIterator.next());
+        }
+        return stringOfIngredients.toString();
+   }
+}        
+
+class ChickenSoup extends Soup
+{
+    public ChickenSoup() 
+    {
+        soupName = "ChickenSoup";
+        soupIngredients.add("1 Pound diced chicken");
+        soupIngredients.add("1/2 cup rice");    
+        soupIngredients.add("1 cup bullion");      
+        soupIngredients.add("1/16 cup butter");    
+        soupIngredients.add("1/4 cup diced carrots");          
+    }
+}   
+
+class ClamChowder extends Soup
+{
+    public ClamChowder() 
+    {
+        soupName = "ClamChowder";
+        soupIngredients.add("1 Pound Fresh Clams");
+        soupIngredients.add("1 cup fruit or vegetables");    
+        soupIngredients.add("1/2 cup milk");      
+        soupIngredients.add("1/4 cup butter");    
+        soupIngredients.add("1/4 cup chips");          
+    }
+}
+
+class FishChowder extends Soup
+{
+    public FishChowder() 
+    {
+        soupName = "FishChowder";
+        soupIngredients.add("1 Pound Fresh fish");
+        soupIngredients.add("1 cup fruit or vegetables");    
+        soupIngredients.add("1/2 cup milk");      
+        soupIngredients.add("1/4 cup butter");    
+        soupIngredients.add("1/4 cup chips");          
+    }
+}
+
+class Minnestrone extends Soup
+{
+    public Minnestrone() 
+    {
+        soupName = "Minestrone";
+        soupIngredients.add("1 Pound tomatos");
+        soupIngredients.add("1/2 cup pasta");    
+        soupIngredients.add("1 cup tomato juice");             
+    }
+}
+
+class PastaFazul extends Soup
+{
+    public PastaFazul() 
+    {
+        soupName = "Pasta Fazul";
+        soupIngredients.add("1 Pound tomatos");
+        soupIngredients.add("1/2 cup pasta");    
+        soupIngredients.add("1/2 cup diced carrots");          
+        soupIngredients.add("1 cup tomato juice");             
+    }
+}
+
+class TofuSoup extends Soup
+{
+    public TofuSoup() 
+    {
+        soupName = "Tofu Soup";
+        soupIngredients.add("1 Pound tofu");
+        soupIngredients.add("1 cup carrot juice");    
+        soupIngredients.add("1/4 cup spirolena");         
+    }
+}
+
+class VegetableSoup extends Soup
+{
+    public VegetableSoup() 
+    {
+        soupName = "Vegetable Soup";
+        soupIngredients.add("1 cup bullion");    
+        soupIngredients.add("1/4 cup carrots");         
+        soupIngredients.add("1/4 cup potatoes");         
+    }
+}
+
+SoupBuffet.java - A helper class
+
+class SoupBuffet {
+   String soupBuffetName;
+   
+   ChickenSoup chickenSoup;
+   ClamChowder clamChowder;
+   FishChowder fishChowder;
+   Minnestrone minnestrone;
+   PastaFazul pastaFazul;
+   TofuSoup tofuSoup;
+   VegetableSoup vegetableSoup;
+
+   public String getSoupBuffetName() {
+       return soupBuffetName;
+   }
+   public void setSoupBuffetName(String soupBuffetNameIn) {
+      soupBuffetName = soupBuffetNameIn;
+   }
+   
+   public void setChickenSoup(ChickenSoup chickenSoupIn) {
+       chickenSoup = chickenSoupIn;
+   }
+   public void setClamChowder(ClamChowder clamChowderIn) {
+       clamChowder = clamChowderIn;
+   }
+   public void setFishChowder(FishChowder fishChowderIn) {
+      fishChowder = fishChowderIn;
+   }
+   public void setMinnestrone(Minnestrone minnestroneIn) {
+      minnestrone = minnestroneIn;
+   }
+   public void setPastaFazul(PastaFazul pastaFazulIn) {
+       pastaFazul = pastaFazulIn;
+   }
+   public void setTofuSoup(TofuSoup tofuSoupIn) {
+       tofuSoup = tofuSoupIn;
+   }
+   public void setVegetableSoup(VegetableSoup vegetableSoupIn) {
+       vegetableSoup = vegetableSoupIn;
+   }
+   
+   public String getTodaysSoups() {
+        StringBuffer stringOfSoups = new StringBuffer();
+        stringOfSoups.append(" Today's Soups!  ");
+        stringOfSoups.append(" Chicken Soup: ");        
+        stringOfSoups.append(this.chickenSoup.getSoupName()); 
+        stringOfSoups.append(" Clam Chowder: ");        
+        stringOfSoups.append(this.clamChowder.getSoupName()); 
+        stringOfSoups.append(" Fish Chowder: ");        
+        stringOfSoups.append(this.fishChowder.getSoupName()); 
+        stringOfSoups.append(" Minnestrone: ");        
+        stringOfSoups.append(this.minnestrone.getSoupName());
+        stringOfSoups.append(" Pasta Fazul: ");        
+        stringOfSoups.append(this.pastaFazul.getSoupName());
+        stringOfSoups.append(" Tofu Soup: ");        
+        stringOfSoups.append(this.tofuSoup.getSoupName());
+        stringOfSoups.append(" Vegetable Soup: ");        
+        stringOfSoups.append(this.vegetableSoup.getSoupName());
+        return stringOfSoups.toString();          
+   }
+}        
+
+TestSoupBuffetBuilder.java - Testing the builder
+
+class TestSoupBuffetBuilder {
+
+   public static SoupBuffet CreateSoupBuffet(
+     SoupBuffetBuilder soupBuffetBuilder) { 
+        soupBuffetBuilder.buildSoupBuffet();
+        
+        soupBuffetBuilder.setSoupBuffetName();
+        
+        soupBuffetBuilder.buildChickenSoup();
+        soupBuffetBuilder.buildClamChowder();
+        soupBuffetBuilder.buildFishChowder();    
+        soupBuffetBuilder.buildMinnestrone();
+        soupBuffetBuilder.buildPastaFazul();
+        soupBuffetBuilder.buildTofuSoup();
+        soupBuffetBuilder.buildVegetableSoup();
+        
+        return soupBuffetBuilder.getSoupBuffet();
+   }     
+    
+   public static void main(String[] args) {
+       
+       SoupBuffet bostonSoupBuffet = 
+         CreateSoupBuffet(new BostonSoupBuffetBuilder());
+       System.out.println("At the " + 
+                           bostonSoupBuffet.getSoupBuffetName() + 
+                           bostonSoupBuffet.getTodaysSoups());
+
+       SoupBuffet honoluluSoupBuffet = 
+         CreateSoupBuffet(new HonoluluSoupBuffetBuilder());
+       System.out.println("At the " + 
+                           honoluluSoupBuffet.getSoupBuffetName() + 
+                           honoluluSoupBuffet.getTodaysSoups());
+   }
+}      
+
+Test Results
+
+At the Boston Soup Buffet Today's Soups!
+
+Chicken Soup: ChickenSoup
+
+Clam Chowder: QuahogChowder
+
+Fish Chowder: Scrod FishChowder
+
+Minnestrone: Minestrone
+
+Pasta Fazul: Pasta Fazul
+
+Tofu Soup: Tofu Soup
+
+Vegetable Soup: Vegetable Soup
+
+
+At the Honolulu Soup Buffet Today's Soups!
+
+Chicken Soup: ChickenSoup
+
+Clam Chowder: PacificClamChowder
+
+Fish Chowder: OpakapakaFishChowder
+
+Minnestrone: Minestrone
+
+Pasta Fazul: Pasta Fazul
+
+Tofu Soup: Tofu Soup
+
+Vegetable Soup: Vegetable Soup
+
+
+
+
+**********************************************************
+
+
+
+Factory Method
+// Original copy of this content taken from http://www.fluffycat.com/Java-Design-Patterns/ in 2010
+// Original Author: Larry Truett
+// Privacy Policy at http://www.fluffycat.com/Privacy-Policy/
+Methods to make and return components of one object various ways.
+
+In this example the SoupFactoryMethod defines the makeSoupBuffet method which returns a SoupBuffet object. The SoupFactoryMethod also defines the methods needed in creating the SoupBuffet.
+
+The BostonSoupFactoryMethodSubclass and the HonoluluSoupFactoryMethodSubclass both extend the SoupFactoryMethod. An object can be defined as an SoupFactoryMethod, and instantiated as either a BostonSoupFactoryMethodSubclass (BSFMS) or a HonoluluSoupFactoryMethodSubclass (HSFMS).
+
+Both BSFMS and HSFMS override SoupFactoryMethod's makeFishChowder method. The BSFMS returns a SoupBuffet with a FishChowder subclass of BostonFishChowder, while the HSFMS returns a SoupBuffet with a FishChowder subclass of HonoluluFishChowder.
+Still reading? Save your time, watch the video lessons!
+Video tutorial on design patterns
+SoupFactoryMethod.java - a Factory Method
+
+class SoupFactoryMethod {
+    public SoupFactoryMethod() {}
+        
+    public SoupBuffet makeSoupBuffet() {
+        return new SoupBuffet();
+    }
+
+    public ChickenSoup makeChickenSoup() {
+        return new ChickenSoup();
+    }
+    public ClamChowder makeClamChowder() {
+        return new ClamChowder();
+    }
+    public FishChowder makeFishChowder() {
+        return new FishChowder();
+    }
+    public Minnestrone makeMinnestrone() {
+        return new Minnestrone();
+    }
+    public PastaFazul makePastaFazul() {
+        return new PastaFazul();
+    }
+    public TofuSoup makeTofuSoup() {
+        return new TofuSoup();
+    }
+    public VegetableSoup makeVegetableSoup() {
+        return new VegetableSoup();
+    }
+
+    public String makeBuffetName() {
+        return "Soup Buffet";
+    }
+}
+
+BostonSoupFactoryMethodSubclass.java - One of Two Subclass Factory Methods
+
+class BostonSoupFactoryMethodSubclass extends SoupFactoryMethod {
+    public String makeBuffetName() {
+        return "Boston Soup Buffet";
+    }
+    public ClamChowder makeClamChowder() {
+        return new BostonClamChowder();
+    }
+    public FishChowder makeFishChowder() {
+        return new BostonFishChowder();
+    }
+}
+
+class BostonClamChowder extends ClamChowder {
+    public BostonClamChowder() {
+        soupName = "QuahogChowder";
+        soupIngredients.clear();        
+        soupIngredients.add("1 Pound Fresh Quahogs");
+        soupIngredients.add("1 cup corn");    
+        soupIngredients.add("1/2 cup heavy cream");
+        soupIngredients.add("1/4 cup butter");    
+        soupIngredients.add("1/4 cup potato chips");
+    }
+}
+
+class BostonFishChowder extends FishChowder {
+    public BostonFishChowder() {
+        soupName = "ScrodFishChowder";
+        soupIngredients.clear();        
+        soupIngredients.add("1 Pound Fresh Scrod");
+        soupIngredients.add("1 cup corn");
+        soupIngredients.add("1/2 cup heavy cream");
+        soupIngredients.add("1/4 cup butter");
+        soupIngredients.add("1/4 cup potato chips");
+    }
+}
+
+HonoluluSoupFactoryMethodSubclass.java - Two of Two Subclass Factory Methods
+
+class HonoluluSoupFactoryMethodSubclass extends SoupFactoryMethod {
+    public String makeBuffetName() {
+        return "Honolulu Soup Buffet";
+    }
+    public ClamChowder makeClamChowder() {
+        return new HonoluluClamChowder();
+    }
+    public FishChowder makeFishChowder() {
+        return new HonoluluFishChowder();
+    }
+}
+
+class HonoluluClamChowder extends ClamChowder {
+    public HonoluluClamChowder() {
+        soupName = "PacificClamChowder";
+        soupIngredients.clear();        
+        soupIngredients.add("1 Pound Fresh Pacific Clams");
+        soupIngredients.add("1 cup pineapple chunks");    
+        soupIngredients.add("1/2 cup coconut milk");      
+        soupIngredients.add("1/4 cup SPAM");    
+        soupIngredients.add("1/4 cup taro chips");          
+    }
+}
+
+class HonoluluFishChowder extends FishChowder {
+    public HonoluluFishChowder() {
+        soupName = "OpakapakaFishChowder";
+        soupIngredients.clear();        
+        soupIngredients.add("1 Pound Fresh Opakapaka Fish");
+        soupIngredients.add("1 cup pineapple chunks");    
+        soupIngredients.add("1/2 cup coconut milk");      
+        soupIngredients.add("1/4 cup SPAM");    
+        soupIngredients.add("1/4 cup taro chips");          
+    }
+}
+
+Soup.java - A helper class
+
+import java.util.ArrayList;
+import java.util.ListIterator;
+
+abstract class Soup 
+{
+   ArrayList soupIngredients = new ArrayList();    
+   String soupName;
+   
+   public String getSoupName()
+   {
+       return soupName;
+   }
+   
+   public String toString()
+   {
+        StringBuffer stringOfIngredients = new StringBuffer(soupName);
+        stringOfIngredients.append(" Ingredients: ");
+        ListIterator soupIterator = soupIngredients.listIterator();
+        while (soupIterator.hasNext())
+        {
+            stringOfIngredients.append((String)soupIterator.next());
+        }
+        return stringOfIngredients.toString();
+   }
+}        
+
+class ChickenSoup extends Soup
+{
+    public ChickenSoup() 
+    {
+        soupName = "ChickenSoup";
+        soupIngredients.add("1 Pound diced chicken");
+        soupIngredients.add("1/2 cup rice");    
+        soupIngredients.add("1 cup bullion");      
+        soupIngredients.add("1/16 cup butter");    
+        soupIngredients.add("1/4 cup diced carrots");          
+    }
+}   
+
+class ClamChowder extends Soup
+{
+    public ClamChowder() 
+    {
+        soupName = "ClamChowder";
+        soupIngredients.add("1 Pound Fresh Clams");
+        soupIngredients.add("1 cup fruit or vegetables");    
+        soupIngredients.add("1/2 cup milk");      
+        soupIngredients.add("1/4 cup butter");    
+        soupIngredients.add("1/4 cup chips");          
+    }
+}
+
+class FishChowder extends Soup
+{
+    public FishChowder() 
+    {
+        soupName = "FishChowder";
+        soupIngredients.add("1 Pound Fresh fish");
+        soupIngredients.add("1 cup fruit or vegetables");    
+        soupIngredients.add("1/2 cup milk");      
+        soupIngredients.add("1/4 cup butter");    
+        soupIngredients.add("1/4 cup chips");          
+    }
+}
+
+class Minnestrone extends Soup
+{
+    public Minnestrone() 
+    {
+        soupName = "Minestrone";
+        soupIngredients.add("1 Pound tomatos");
+        soupIngredients.add("1/2 cup pasta");    
+        soupIngredients.add("1 cup tomato juice");             
+    }
+}
+
+class PastaFazul extends Soup
+{
+    public PastaFazul() 
+    {
+        soupName = "Pasta Fazul";
+        soupIngredients.add("1 Pound tomatos");
+        soupIngredients.add("1/2 cup pasta");    
+        soupIngredients.add("1/2 cup diced carrots");          
+        soupIngredients.add("1 cup tomato juice");             
+    }
+}
+
+class TofuSoup extends Soup
+{
+    public TofuSoup() 
+    {
+        soupName = "Tofu Soup";
+        soupIngredients.add("1 Pound tofu");
+        soupIngredients.add("1 cup carrot juice");    
+        soupIngredients.add("1/4 cup spirolena");         
+    }
+}
+
+class VegetableSoup extends Soup
+{
+    public VegetableSoup() 
+    {
+        soupName = "Vegetable Soup";
+        soupIngredients.add("1 cup bullion");    
+        soupIngredients.add("1/4 cup carrots");         
+        soupIngredients.add("1/4 cup potatoes");         
+    }
+}
+
+SoupBuffet.java - A helper class
+
+class SoupBuffet {
+   String soupBuffetName;
+   
+   ChickenSoup chickenSoup;
+   ClamChowder clamChowder;
+   FishChowder fishChowder;
+   Minnestrone minnestrone;
+   PastaFazul pastaFazul;
+   TofuSoup tofuSoup;
+   VegetableSoup vegetableSoup;
+
+   public String getSoupBuffetName() {
+       return soupBuffetName;
+   }
+   public void setSoupBuffetName(String soupBuffetNameIn) {
+      soupBuffetName = soupBuffetNameIn;
+   }
+   
+   public void setChickenSoup(ChickenSoup chickenSoupIn) {
+       chickenSoup = chickenSoupIn;
+   }
+   public void setClamChowder(ClamChowder clamChowderIn) {
+       clamChowder = clamChowderIn;
+   }
+   public void setFishChowder(FishChowder fishChowderIn) {
+      fishChowder = fishChowderIn;
+   }
+   public void setMinnestrone(Minnestrone minnestroneIn) {
+      minnestrone = minnestroneIn;
+   }
+   public void setPastaFazul(PastaFazul pastaFazulIn) {
+       pastaFazul = pastaFazulIn;
+   }
+   public void setTofuSoup(TofuSoup tofuSoupIn) {
+       tofuSoup = tofuSoupIn;
+   }
+   public void setVegetableSoup(VegetableSoup vegetableSoupIn) {
+       vegetableSoup = vegetableSoupIn;
+   }
+   
+   public String getTodaysSoups() {
+        StringBuffer stringOfSoups = new StringBuffer();
+        stringOfSoups.append(" Today's Soups!  ");
+        stringOfSoups.append(" Chicken Soup: ");        
+        stringOfSoups.append(this.chickenSoup.getSoupName()); 
+        stringOfSoups.append(" Clam Chowder: ");        
+        stringOfSoups.append(this.clamChowder.getSoupName()); 
+        stringOfSoups.append(" Fish Chowder: ");        
+        stringOfSoups.append(this.fishChowder.getSoupName()); 
+        stringOfSoups.append(" Minnestrone: ");        
+        stringOfSoups.append(this.minnestrone.getSoupName());
+        stringOfSoups.append(" Pasta Fazul: ");        
+        stringOfSoups.append(this.pastaFazul.getSoupName());
+        stringOfSoups.append(" Tofu Soup: ");        
+        stringOfSoups.append(this.tofuSoup.getSoupName());
+        stringOfSoups.append(" Vegetable Soup: ");        
+        stringOfSoups.append(this.vegetableSoup.getSoupName());
+        return stringOfSoups.toString();          
+   }
+}        
+
+TestSoupFactoryMethod.java - testing the factory method
+
+class TestSoupFactoryMethod {         
+
+   public static void main(String[] args) {
+       
+       SoupFactoryMethod soupFactoryMethod = 
+         new SoupFactoryMethod();
+       SoupBuffet soupBuffet = 
+         soupFactoryMethod.makeSoupBuffet();
+       soupBuffet.setSoupBuffetName(
+         soupFactoryMethod.makeBuffetName());
+       soupBuffet.setChickenSoup(
+         soupFactoryMethod.makeChickenSoup());
+       soupBuffet.setClamChowder(
+         soupFactoryMethod.makeClamChowder()); 
+       soupBuffet.setFishChowder(
+         soupFactoryMethod.makeFishChowder());
+       soupBuffet.setMinnestrone(
+         soupFactoryMethod.makeMinnestrone());
+       soupBuffet.setPastaFazul(
+         soupFactoryMethod.makePastaFazul()); 
+       soupBuffet.setTofuSoup(
+         soupFactoryMethod.makeTofuSoup());
+       soupBuffet.setVegetableSoup(
+          soupFactoryMethod.makeVegetableSoup()); 
+       System.out.println("At the  " + 
+                           soupBuffet.getSoupBuffetName() + 
+                           soupBuffet.getTodaysSoups());
+       
+       
+       SoupFactoryMethod bostonSoupFactoryMethod = 
+         new BostonSoupFactoryMethodSubclass();
+       SoupBuffet bostonSoupBuffet = 
+         bostonSoupFactoryMethod.makeSoupBuffet();
+       bostonSoupBuffet.setSoupBuffetName(
+         bostonSoupFactoryMethod.makeBuffetName());
+       bostonSoupBuffet.setChickenSoup(
+         bostonSoupFactoryMethod.makeChickenSoup());
+       bostonSoupBuffet.setClamChowder(
+         bostonSoupFactoryMethod.makeClamChowder());
+       bostonSoupBuffet.setFishChowder(
+         bostonSoupFactoryMethod.makeFishChowder());
+       bostonSoupBuffet.setMinnestrone(
+         bostonSoupFactoryMethod.makeMinnestrone());
+       bostonSoupBuffet.setPastaFazul(
+         bostonSoupFactoryMethod.makePastaFazul());
+       bostonSoupBuffet.setTofuSoup(
+         bostonSoupFactoryMethod.makeTofuSoup());
+       bostonSoupBuffet.setVegetableSoup(
+         bostonSoupFactoryMethod.makeVegetableSoup()); 
+       System.out.println("At the  " + 
+                           bostonSoupBuffet.getSoupBuffetName() + 
+                           bostonSoupBuffet.getTodaysSoups());
+       
+       SoupFactoryMethod honoluluSoupFactoryMethod = 
+         new HonoluluSoupFactoryMethodSubclass();
+       SoupBuffet honoluluSoupBuffet = 
+         honoluluSoupFactoryMethod.makeSoupBuffet();
+       honoluluSoupBuffet.setSoupBuffetName(
+         honoluluSoupFactoryMethod.makeBuffetName());
+       honoluluSoupBuffet.setChickenSoup(
+         honoluluSoupFactoryMethod.makeChickenSoup());
+       honoluluSoupBuffet.setClamChowder(
+         honoluluSoupFactoryMethod.makeClamChowder()); 
+       honoluluSoupBuffet.setFishChowder(
+         honoluluSoupFactoryMethod.makeFishChowder());
+       honoluluSoupBuffet.setMinnestrone(
+         honoluluSoupFactoryMethod.makeMinnestrone());
+       honoluluSoupBuffet.setPastaFazul(
+         honoluluSoupFactoryMethod.makePastaFazul()); 
+       honoluluSoupBuffet.setTofuSoup(
+         honoluluSoupFactoryMethod.makeTofuSoup());
+       honoluluSoupBuffet.setVegetableSoup(
+         honoluluSoupFactoryMethod.makeVegetableSoup()); 
+       System.out.println("At the  " + 
+                           honoluluSoupBuffet.getSoupBuffetName() + 
+                           honoluluSoupBuffet.getTodaysSoups());
+     }
+}      
+
+Test Results
+
+At the  Soup Buffet Today's Soups!
+
+
+Chicken Soup: ChickenSoup 
+
+
+Clam Chowder: ClamChowder 
+
+
+Fish Chowder: FishChowder 
+
+
+Minnestrone: Minestrone 
+
+
+Pasta fazul: Pasta fazul 
+
+
+Tofu Soup: Tofu Soup
+
+Vegetable Soup: Vegetable Soup
+
+
+At the  Boston Soup Buffet Today's Soups!
+
+Chicken Soup: ChickenSoup
+
+Clam Chowder: QuahogChowder
+
+
+Fish Chowder: ScrodFishChowder
+
+
+Minnestrone: Minestrone
+
+
+Pasta fazul: Pasta fazul
+
+
+Tofu Soup: Tofu Soup
+
+
+Vegetable Soup: Vegetable Soup
+
+
+At the  Honolulu Soup Buffet Today's Soups!
+
+
+Chicken Soup: ChickenSoup
+
+Clam Chowder: PacificClamChowder 
+
+Fish Chowder: OpakapakaFishChowder
+
+Minnestrone: Minestrone
+
+Pasta fazul: Pasta fazul
+
+Tofu Soup: Tofu Soup
+
+Vegetable Soup: Vegetable Soup
+
+
+*************************************************************
+
+
+
+
+ . Java Design Patterns . Java Design Patterns Prototype
+// Original copy of this content taken from http://www.fluffycat.com/Java-Design-Patterns/ in 2010
+// Original Author: Larry Truett
+// Privacy Policy at http://www.fluffycat.com/Privacy-Policy/
+Java Design Patterns Prototype
+Prototype Overview
+Make new objects by cloning the objects which you set as prototypes
+Still reading? Save your time, watch the video lessons!
+Video tutorial on design patterns
+PrototypeFactory.java - a Factory for Prototypes
+
+public class PrototypeFactory {  
+    AbstractSpoon prototypeSpoon;
+    AbstractFork prototypeFork;
+    
+    public PrototypeFactory(AbstractSpoon spoon, AbstractFork fork) {
+       prototypeSpoon = spoon;
+       prototypeFork = fork;
+   }
+    
+   public AbstractSpoon makeSpoon() {
+       return (AbstractSpoon)prototypeSpoon.clone();
+   }
+   public AbstractFork makeFork() {
+       return (AbstractFork)prototypeFork.clone();
+   }
+}
+
+AbstractSpoon.java - One of Two Prototypes
+
+public abstract class AbstractSpoon implements Cloneable {  
+   String spoonName; 
+    
+   public void setSpoonName(String spoonName) {
+       this.spoonName = spoonName;
+   }
+   public String getSpoonName() {
+       return this.spoonName;
+   }
+   
+   public Object clone() {
+       Object object = null;
+       try {
+           object = super.clone();
+       } catch (CloneNotSupportedException exception) {
+           System.err.println("AbstractSpoon is not Cloneable");
+       }
+       return object;
+   }
+}
+
+AbstractFork.java - Two of Two Prototypes
+
+public abstract class AbstractFork implements Cloneable
+{  
+   String forkName; 
+    
+   public void setForkName(String forkName) {
+       this.forkName = forkName;
+   }
+   public String getForkName() {
+       return this.forkName;
+   }
+   
+   public Object clone() 
+   {
+       Object object = null;
+       try {
+           object = super.clone();
+       } catch (CloneNotSupportedException exception) {
+           System.err.println("AbstractFork is not Cloneable");
+       }
+       return object;
+   }   
+}
+
+SoupSpoon.java - One of Two Concrete Prototypes extending the AbstractSpoon Prototype
+
+public class SoupSpoon extends AbstractSpoon {  
+   public SoupSpoon() {
+       setSpoonName("Soup Spoon");
+   }
+}
+
+SaladSpoon.java - Two of Two Concrete Prototypes extending the AbstractSpoon Prototype
+
+public class SaladSpoon extends AbstractSpoon {  
+   public SaladSpoon() {
+       setSpoonName("Salad Spoon");     
+   }
+}
+
+SaladFork.java - The Concrete Prototype extending the AbstractFork Prototype
+
+public class SaladFork extends AbstractFork {  
+   public SaladFork() {
+       setForkName("Salad Fork");
+   }
+}
+
+TestPrototype.java - testing the Prototype
+
+class TestPrototype { 
+   public static void main(String[] args) {
+       System.out.println(
+         "Creating a Prototype Factory with " + 
+         " a SoupSpoon and a SaladFork");
+       PrototypeFactory prototypeFactory = 
+         new PrototypeFactory(new SoupSpoon(), new SaladFork());
+       AbstractSpoon spoon = 
+         prototypeFactory.makeSpoon();
+       AbstractFork fork = 
+         prototypeFactory.makeFork();
+       System.out.println("Getting the Spoon and Fork name:");
+       System.out.println("Spoon: " + spoon.getSpoonName() + 
+                          ", Fork: " + fork.getForkName());
+       System.out.println(" ");       
+       System.out.println("Creating a Prototype Factory " + 
+                          "with a SaladSpoon and a SaladFork");
+       prototypeFactory = 
+         new PrototypeFactory(new SaladSpoon(), new SaladFork());
+       spoon = prototypeFactory.makeSpoon();
+       fork = prototypeFactory.makeFork();
+       System.out.println("Getting the Spoon and Fork name:");
+       System.out.println("Spoon: " + spoon.getSpoonName() + 
+                          ", Fork: " + fork.getForkName());
+    }
+}      
+
+Test Results
+
+Creating a Prototype Factory with a SoupSpoon and a SaladFork
+
+
+Getting the Spoon and Fork name:
+
+
+Spoon: Soup Spoon, Fork: Salad Fork
+
+
+
+
+
+Creating a Prototype Factory with a SaladSpoon and a SaladFork
+
+
+Getting the Spoon and Fork name:
+
+
+Spoon: Salad Spoon, Fork: Salad Fork
+
+
+
+********************************************************
+
+
+ . Java Design Patterns . Java Design Patterns Singleton
+// Original copy of this content taken from http://www.fluffycat.com/Java-Design-Patterns/ in 2010
+// Original Author: Larry Truett
+// Privacy Policy at http://www.fluffycat.com/Privacy-Policy/
+Java Design Patterns Singleton
+Singleton Overview
+A class distributes the only instance of itself.
+
+In this example SingleSpoon class holds one instance of SingleSpoon in "private static SingleSpoon theSpoon;". The SingleSpoon class determines the spoons availability using "private static boolean theSpoonIsAvailable = true;" The first time SingleSpoon.getTheSpoon() is called it creates an instance of a SingleSpoon. The SingleSpoon can not be distributed again until it is returned with SingleSpoon.returnTheSpoon().
+
+If you were to create a spoon "pool" you would have the same basic logic as shown, however multiple spoons would be distributed. The variable theSpoon would hold an array or collection of spoons. The variable theSpoonIsAvaialable would become a counter of the number of available spoons.
+
+Please also note that this example is not thread safe. I think that to make it thread safe all you would need is to make the getTheSpoon() method synchronized. Many thanks to Brian K. for pointing this out.
+Still reading? Save your time, watch the video lessons!
+Video tutorial on design patterns
+SingleSpoon.java - a Singleton
+
+public class SingleSpoon 
+{  
+   private Soup soupLastUsedWith;
+   
+   private static SingleSpoon theSpoon;
+   private static boolean theSpoonIsAvailable = true;
+   
+   private SingleSpoon() {}
+     
+   public static SingleSpoon getTheSpoon() {
+       if (theSpoonIsAvailable) {
+           if (theSpoon == null) {
+               theSpoon = new SingleSpoon();
+           }
+           theSpoonIsAvailable = false;
+           return theSpoon;
+       } else {
+           return null;
+           //spoon not available, 
+           //  could throw error or return null (as shown)
+       }
+   }
+    
+   public String toString() {
+       return "Behold the glorious single spoon!";
+   }
+    
+   public static void returnTheSpoon() {
+       theSpoon.cleanSpoon();
+       theSpoonIsAvailable = true;
+   }     
+   
+   public Soup getSoupLastUsedWith() {
+       return this.soupLastUsedWith;
+   }
+   public void setSoupLastUsedWith(Soup soup) {
+       this.soupLastUsedWith = soup;
+   }
+
+   public void cleanSpoon() {
+       this.setSoupLastUsedWith(null);
+   }   
+}
+
+
+Soup.java - A helper class
+
+import java.util.ArrayList;
+import java.util.ListIterator;
+
+abstract class Soup 
+{
+   ArrayList soupIngredients = new ArrayList();    
+   String soupName;
+   
+   public String getSoupName()
+   {
+       return soupName;
+   }
+   
+   public String toString()
+   {
+        StringBuffer stringOfIngredients = new StringBuffer(soupName);
+        stringOfIngredients.append(" Ingredients: ");
+        ListIterator soupIterator = soupIngredients.listIterator();
+        while (soupIterator.hasNext())
+        {
+            stringOfIngredients.append((String)soupIterator.next());
+        }
+        return stringOfIngredients.toString();
+   }
+}        
+
+class ChickenSoup extends Soup
+{
+    public ChickenSoup() 
+    {
+        soupName = "ChickenSoup";
+        soupIngredients.add("1 Pound diced chicken");
+        soupIngredients.add("1/2 cup rice");    
+        soupIngredients.add("1 cup bullion");      
+        soupIngredients.add("1/16 cup butter");    
+        soupIngredients.add("1/4 cup diced carrots");          
+    }
+}   
+
+class ClamChowder extends Soup
+{
+    public ClamChowder() 
+    {
+        soupName = "ClamChowder";
+        soupIngredients.add("1 Pound Fresh Clams");
+        soupIngredients.add("1 cup fruit or vegetables");    
+        soupIngredients.add("1/2 cup milk");      
+        soupIngredients.add("1/4 cup butter");    
+        soupIngredients.add("1/4 cup chips");          
+    }
+}
+
+class FishChowder extends Soup
+{
+    public FishChowder() 
+    {
+        soupName = "FishChowder";
+        soupIngredients.add("1 Pound Fresh fish");
+        soupIngredients.add("1 cup fruit or vegetables");    
+        soupIngredients.add("1/2 cup milk");      
+        soupIngredients.add("1/4 cup butter");    
+        soupIngredients.add("1/4 cup chips");          
+    }
+}
+
+class Minnestrone extends Soup
+{
+    public Minnestrone() 
+    {
+        soupName = "Minestrone";
+        soupIngredients.add("1 Pound tomatos");
+        soupIngredients.add("1/2 cup pasta");    
+        soupIngredients.add("1 cup tomato juice");             
+    }
+}
+
+class PastaFazul extends Soup
+{
+    public PastaFazul() 
+    {
+        soupName = "Pasta Fazul";
+        soupIngredients.add("1 Pound tomatos");
+        soupIngredients.add("1/2 cup pasta");    
+        soupIngredients.add("1/2 cup diced carrots");          
+        soupIngredients.add("1 cup tomato juice");             
+    }
+}
+
+class TofuSoup extends Soup
+{
+    public TofuSoup() 
+    {
+        soupName = "Tofu Soup";
+        soupIngredients.add("1 Pound tofu");
+        soupIngredients.add("1 cup carrot juice");    
+        soupIngredients.add("1/4 cup spirolena");         
+    }
+}
+
+class VegetableSoup extends Soup
+{
+    public VegetableSoup() 
+    {
+        soupName = "Vegetable Soup";
+        soupIngredients.add("1 cup bullion");    
+        soupIngredients.add("1/4 cup carrots");         
+        soupIngredients.add("1/4 cup potatoes");         
+    }
+}
+
+TestSingleSpoon.java - testing the singleton
+
+class TestSingleSpoon {
+    
+   public static void main(String[] args) {
+       System.out.println("First person getting the spoon");
+       SingleSpoon spoonForFirstPerson = 
+         SingleSpoon.getTheSpoon();
+       if (spoonForFirstPerson != null)
+           System.out.println(spoonForFirstPerson);
+       else
+           System.out.println("No spoon was available");
+       
+       System.out.println("");
+       
+       System.out.println("Second person getting a spoon");
+       SingleSpoon spoonForSecondPerson = SingleSpoon.getTheSpoon();
+       if (spoonForSecondPerson != null)
+           System.out.println(spoonForSecondPerson);
+       else
+           System.out.println("No spoon was available");
+       
+       System.out.println("");
+       
+       System.out.println("First person returning the spoon");
+       spoonForFirstPerson.returnTheSpoon();       
+       spoonForFirstPerson = null;
+       System.out.println("The spoon was returned");
+       
+       System.out.println("");
+       
+       System.out.println("Second person getting a spoon");
+       spoonForSecondPerson = SingleSpoon.getTheSpoon();
+       if (spoonForSecondPerson != null)
+           System.out.println(spoonForSecondPerson);
+       else
+           System.out.println("No spoon was available");
+   }
+}      
+
+Test Results
+
+First person getting the spoon
+Behold the glorious single spoon!
+
+
+
+Second person getting a spoon
+No spoon was available
+
+
+
+First person returning the spoon
+The spoon was returned
+
+
+
+Second person getting a spoon
+Behold the glorious single spoon!
+
+
+
+
+
+******************************************
+
+
+
+Java Design Patterns Adapter
+// Original copy of this content taken from http://www.fluffycat.com/Java-Design-Patterns/ in 2010
+// Original Author: Larry Truett
+// Privacy Policy at http://www.fluffycat.com/Privacy-Policy/
+Adapter (aka Wrapper) Overview
+In the Adapter Design Pattern, a class converts the interface of one class to be what another class expects.
+
+The adapter does this by taking an instance of the class to be converted (the adaptee) and uses the methods the adaptee has available to create the methods which are expected.
+
+In this example we have a TeaBall class which takes in an instance of LooseLeafTea. The TeaBall class uses the steepTea method from LooseLeafTea and adapts it to provide the steepTeaInCup method which the TeaCup class requires.
+Still reading? Save your time, watch the video lessons!
+Video tutorial on design patterns
+TeaBag.java - the class which the adapter will make the adaptee adapt to
+
+public class TeaBag {  
+   boolean teaBagIsSteeped; 
+    
+   public TeaBag() {
+       teaBagIsSteeped = false;
+   }
+   
+   public void steepTeaInCup() {
+       teaBagIsSteeped = true;
+       System.out.println("tea bag is steeping in cup");
+   }
+}
+
+TeaBall.java - the adapter
+
+public class TeaBall extends TeaBag {  
+   LooseLeafTea looseLeafTea;
+   
+   public TeaBall(LooseLeafTea looseLeafTeaIn) {
+       looseLeafTea = looseLeafTeaIn;
+       teaBagIsSteeped = looseLeafTea.teaIsSteeped;
+   }
+    
+   public void steepTeaInCup() {
+       looseLeafTea.steepTea();
+       teaBagIsSteeped = true;
+   }
+}
+
+LooseLeafTea.java - the adaptee
+
+public class LooseLeafTea {  
+   boolean teaIsSteeped; 
+    
+   public LooseLeafTea() {
+       teaIsSteeped = false;
+   }
+   
+   public void steepTea() {
+       teaIsSteeped = true;
+       System.out.println("tea is steeping");
+   }
+}
+
+TeaCup.java - the class that accepts class TeaBag in it's steepTeaBag() method, and so is being adapted for.
+
+public class TeaCup {  
+   public void steepTeaBag(TeaBag teaBag) {
+       teaBag.steepTeaInCup();
+   }
+}
+
+TestTeaBagAdaptation.java - testing the adapter
+
+class TestTeaBagAdaptation {
+
+   public static void main(String[] args) {
+       TeaCup teaCup = new TeaCup();
+
+       System.out.println("Steeping tea bag");
+       TeaBag teaBag = new TeaBag();       
+       teaCup.steepTeaBag(teaBag);
+
+       System.out.println("Steeping loose leaf tea");
+       LooseLeafTea looseLeafTea = new LooseLeafTea();
+       TeaBall teaBall = new TeaBall(looseLeafTea);
+       teaCup.steepTeaBag(teaBall);
+   }
+}      
+
+Test Results
+
+Steeping tea bag
+tea bag is steeping in cup
+Steeping loose leaf tea
+tea is steeping
+
+Notes
+The basic premise of the adapter is that you either can not or do not want to change the adaptee. This might be because you purchased the adaptee, and do not have the source code.
+
+There are two GoF versions of the adapter.
+
+The First is the inheriting version, in which the adapter inherits from both "the adaptee" and "the class that adapter will make the adaptee adapt to".
+
+The Second is the object version, which is shown here.
+
+Reference Design Patterns pages 139-141. 
+
+
+
+***********************************************************
+
+
+ . Java Design Patterns . Java Design Patterns Bridge
+// Original copy of this content taken from http://www.fluffycat.com/Java-Design-Patterns/ in 2010
+// Original Author: Larry Truett
+// Privacy Policy at http://www.fluffycat.com/Privacy-Policy/
+Java Design Patterns Bridge
+Bridge Overview
+An abstraction and implementation are in different class hierarchies.
+Soda.java - the Abstract Base Class
+
+public abstract class Soda {  
+   SodaImp sodaImp; 
+   
+   public void setSodaImp() {
+       this.sodaImp = SodaImpSingleton.getTheSodaImp();
+   }
+   public SodaImp getSodaImp() {
+       return this.sodaImp;
+   }
+   
+   public abstract void pourSoda();
+}
+
+MediumSoda.java - one of two classes extending the Abstract
+
+public class MediumSoda extends Soda {  
+   public MediumSoda() {
+       setSodaImp();
+   }
+   
+   public void pourSoda() {
+       SodaImp sodaImp = this.getSodaImp();
+       for (int i = 0; i < 2; i++) {
+           System.out.print("...glug...");
+           sodaImp.pourSodaImp();
+       }
+       System.out.println(" ");
+   }
+}
+
+SuperSizeSoda.java - two of two classes extending the Abstract
+
+public class SuperSizeSoda extends Soda {  
+   public SuperSizeSoda() {
+       setSodaImp();
+   }
+   
+   public void pourSoda() {
+       SodaImp sodaImp = this.getSodaImp();
+       for (int i = 0; i < 5; i++) {
+           System.out.print("...glug...");
+           sodaImp.pourSodaImp();
+       }
+       System.out.println(" ");       
+   }
+}
+
+SodaImp.java - the Implementation Base Class
+
+public abstract class SodaImp {  
+   public abstract void pourSodaImp();
+}
+
+CherrySodaImp.java - one of three classes extending the Implementation Base Class
+
+public class CherrySodaImp extends SodaImp {
+   CherrySodaImp() {}
+    
+   public void pourSodaImp() {
+       System.out.println("Yummy Cherry Soda!");
+   }
+}
+
+GrapeSodaImp.java - two of three classes extending the Implementation Base Class
+
+public class GrapeSodaImp extends SodaImp {
+   GrapeSodaImp() {}
+    
+   public void pourSodaImp() {
+       System.out.println("Delicious Grape Soda!");
+   }
+}
+
+OrangeSodaImp.java - three of three classes extending the Implementation Base Class
+
+public class OrangeSodaImp extends SodaImp {  
+   OrangeSodaImp() {}
+    
+   public void pourSodaImp() {
+       System.out.println("Citrusy Orange Soda!");
+   }
+}
+
+SodaImpSingleton.java - a Singleton to hold the current SodaImp
+
+public class SodaImpSingleton {  
+    private static SodaImp sodaImp;
+   
+    public SodaImpSingleton(SodaImp sodaImpIn) {
+        this.sodaImp = sodaImpIn;
+    }
+    
+    public static SodaImp getTheSodaImp() {
+        return sodaImp;
+    }
+}
+
+TestBridge.java - testing the Bridge
+
+class TestBridge {
+   public static void testCherryPlatform() {
+       SodaImpSingleton sodaImpSingleton = 
+         new SodaImpSingleton(new CherrySodaImp());
+       System.out.println(
+         "testing medium soda on the cherry platform");
+       MediumSoda mediumSoda = new MediumSoda();
+       mediumSoda.pourSoda();
+       System.out.println(
+         "testing super size soda on the cherry platform");
+       SuperSizeSoda superSizeSoda = new SuperSizeSoda();
+       superSizeSoda.pourSoda();       
+   }
+   
+   public static void testGrapePlatform() {
+       SodaImpSingleton sodaImpSingleton = 
+         new SodaImpSingleton(new GrapeSodaImp());
+       System.out.println(
+         "testing medium soda on the grape platform");
+       MediumSoda mediumSoda = new MediumSoda();
+       mediumSoda.pourSoda();
+       System.out.println(
+         "testing super size soda on the grape platform");
+       SuperSizeSoda superSizeSoda = new SuperSizeSoda();
+       superSizeSoda.pourSoda();       
+   }   
+   
+   public static void testOrangePlatform() {
+       SodaImpSingleton sodaImpSingleton = 
+         new SodaImpSingleton(new OrangeSodaImp());
+       System.out.println(
+         "testing medium soda on the orange platform");
+       MediumSoda mediumSoda = new MediumSoda();
+       mediumSoda.pourSoda();
+       System.out.println(
+         "testing super size soda on the orange platform");
+       SuperSizeSoda superSizeSoda = new SuperSizeSoda();
+       superSizeSoda.pourSoda();       
+   }
+    
+   public static void main(String[] args) {
+        testCherryPlatform();
+        testGrapePlatform();
+        testOrangePlatform();
+   }
+}      
+
+Test Results
+
+testing medium soda on the cherry platform
+...glug...Yummy Cherry Soda!
+...glug...Yummy Cherry Soda!
+ 
+testing super size soda on the cherry platform
+...glug...Yummy Cherry Soda!
+...glug...Yummy Cherry Soda!
+...glug...Yummy Cherry Soda!
+...glug...Yummy Cherry Soda!
+...glug...Yummy Cherry Soda!
+ 
+testing medium soda on the grape platform
+...glug...Delicious Grape Soda!
+...glug...Delicious Grape Soda!
+ 
+testing super size soda on the grape platform
+...glug...Delicious Grape Soda!
+...glug...Delicious Grape Soda!
+...glug...Delicious Grape Soda!
+...glug...Delicious Grape Soda!
+...glug...Delicious Grape Soda!
+ 
+testing medium soda on the orange platform
+...glug...Citrusy Orange Soda!
+...glug...Citrusy Orange Soda!
+ 
+testing super size soda on the orange platform
+...glug...Citrusy Orange Soda!
+...glug...Citrusy Orange Soda!
+...glug...Citrusy Orange Soda!
+...glug...Citrusy Orange Soda!
+...glug...Citrusy Orange Soda!
+
+
+
+
+***********************************************
+
+
+
+Java Design Patterns Composite
+// Original copy of this content taken from http://www.fluffycat.com/Java-Design-Patterns/ in 2010
+// Original Author: Larry Truett
+// Privacy Policy at http://www.fluffycat.com/Privacy-Policy/
+Composite Overview
+Assemble groups of objects with the same signature.
+TeaBags.java - the abstract base class for the composite
+
+import java.util.LinkedList;
+import java.util.ListIterator;
+
+public abstract class TeaBags {  
+   LinkedList teaBagList; 
+   TeaBags parent;
+   String name;
+    
+   public abstract int countTeaBags();
+   
+   public abstract boolean add(TeaBags teaBagsToAdd);
+   public abstract boolean remove(TeaBags teaBagsToRemove);
+   public abstract ListIterator createListIterator();
+   
+   public void setParent(TeaBags parentIn) {
+       parent = parentIn;
+   }
+   public TeaBags getParent() {
+      return parent;
+   }
+   
+   public void setName(String nameIn) {
+       name = nameIn;
+   }
+   public String getName() {
+       return name;
+   }
+}
+
+OneTeaBag.java - one composite extension - the "leaf"
+
+import java.util.ListIterator;
+
+public class OneTeaBag extends TeaBags { 
+    public OneTeaBag(String nameIn) {
+        this.setName(nameIn);
+    }
+    
+    public int countTeaBags() {
+        return 1;
+    }
+   
+    public boolean add(TeaBags teaBagsToAdd) {
+        return false;
+    }
+    public boolean remove(TeaBags teaBagsToRemove) {
+        return false;
+    }
+    public ListIterator createListIterator() {
+        return null;
+    }
+}
+
+TinOfTeaBags.java - one composite extension - the "node"
+
+import java.util.LinkedList;
+import java.util.ListIterator;
+
+public class TinOfTeaBags extends TeaBags {  
+   public TinOfTeaBags(String nameIn) {
+       teaBagList = new LinkedList();
+       this.setName(nameIn);
+   }
+   
+   public int countTeaBags() {
+       int totalTeaBags = 0;
+       ListIterator listIterator = this.createListIterator();
+       TeaBags tempTeaBags;
+       while (listIterator.hasNext()) {
+           tempTeaBags = (TeaBags)listIterator.next();
+           totalTeaBags += tempTeaBags.countTeaBags();
+       }
+       return totalTeaBags;
+   }
+   
+   public boolean add(TeaBags teaBagsToAdd) {
+       teaBagsToAdd.setParent(this);
+       return teaBagList.add(teaBagsToAdd);
+   }
+   
+   public boolean remove(TeaBags teaBagsToRemove) {
+       ListIterator listIterator = 
+           this.createListIterator();
+       TeaBags tempTeaBags;
+       while (listIterator.hasNext()) {
+           tempTeaBags = (TeaBags)listIterator.next();
+           if (tempTeaBags == teaBagsToRemove) {
+               listIterator.remove();
+               return true;
+           }
+       }
+       return false;
+   }
+   
+   public ListIterator createListIterator() {
+       ListIterator listIterator = teaBagList.listIterator();
+       return listIterator;
+   }
+}
+
+TestTeaBagsComposite.java - testing the composite
+
+class TestTeaBagsComposite {
+
+   public static void main(String[] args) {
+       System.out.println("Creating tinOfTeaBags");
+       TeaBags tinOfTeaBags = 
+           new TinOfTeaBags("tin of tea bags");
+       System.out.println("The tinOfTeaBags has " + 
+                           tinOfTeaBags.countTeaBags() + 
+                           " tea bags in it.");
+
+       System.out.println(" ");       
+
+       System.out.println("Creating teaBag1");
+       TeaBags teaBag1 = new OneTeaBag("tea bag 1");
+       System.out.println("The teaBag1 has " + 
+                           teaBag1.countTeaBags() + 
+                           " tea bags in it.");
+
+       System.out.println(" ");       
+
+       System.out.println("Creating teaBag2");
+       TeaBags teaBag2 = new OneTeaBag("tea bag 2");
+       System.out.println("The teaBag2 has " + 
+                           teaBag2.countTeaBags() + 
+                           " tea bags in it."); 
+
+       System.out.println(" ");
+
+       System.out.println(
+         "Putting teaBag1 and teaBag2 in tinOfTeaBags");
+       if (tinOfTeaBags.add(teaBag1)) {
+          System.out.println(
+            "teaBag1 added successfully to tinOfTeaBags");
+       } else {
+          System.out.println(
+             "teaBag1 not added successfully tinOfTeaBags");
+       } 
+       if (tinOfTeaBags.add(teaBag2)) {
+          System.out.println(
+            "teaBag2 added successfully to tinOfTeaBags");
+       } else {
+          System.out.println(
+            "teaBag2 not added successfully tinOfTeaBags");
+       }
+       System.out.println("The tinOfTeaBags now has " + 
+                           tinOfTeaBags.countTeaBags() + 
+                           " tea bags in it.");
+       
+       System.out.println(" ");
+       
+       System.out.println("Creating smallTinOfTeaBags");
+       TeaBags smallTinOfTeaBags = 
+         new TinOfTeaBags("small tin of tea bags");
+       System.out.println("The smallTinOfTeaBags has " + 
+                           smallTinOfTeaBags.countTeaBags() + 
+                           " tea bags in it.");
+       System.out.println("Creating teaBag3");
+       TeaBags teaBag3 = 
+         new OneTeaBag("tea bag 3");
+       System.out.println("The teaBag3 has " + 
+                           teaBag3.countTeaBags() + 
+                           " tea bags in it.");
+       System.out.println("Putting teaBag3 in smallTinOfTeaBags");
+       if (smallTinOfTeaBags.add(teaBag3)) {
+           System.out.println(
+             "teaBag3 added successfully to smallTinOfTeaBags");
+       } else {
+           System.out.println(
+             "teaBag3 not added successfully to smallTinOfTeaBags");
+       }
+       System.out.println("The smallTinOfTeaBags now has " + 
+                           smallTinOfTeaBags.countTeaBags() + 
+                           " tea bags in it.");
+       
+       System.out.println(" "); 
+       
+       System.out.println(
+         "Putting smallTinOfTeaBags in tinOfTeaBags");
+       if (tinOfTeaBags.add(smallTinOfTeaBags)) {
+           System.out.println(
+             "smallTinOfTeaBags added successfully to tinOfTeaBags");
+       } else {
+           System.out.println(
+             "smallTinOfTeaBags not added successfully to tinOfTeaBags");
+       }
+       System.out.println("The tinOfTeaBags now has " + 
+                           tinOfTeaBags.countTeaBags() + 
+                           " tea bags in it.");
+       
+       System.out.println(" ");
+       
+       System.out.println("Removing teaBag2 from tinOfTeaBags");
+       if (tinOfTeaBags.remove(teaBag2)) {
+           System.out.println(
+             "teaBag2 successfully removed from tinOfTeaBags");
+       } else {
+           System.out.println(
+             "teaBag2 not successfully removed from tinOfTeaBags");
+       }
+       System.out.println("The tinOfTeaBags now has " + 
+                           tinOfTeaBags.countTeaBags() + 
+                           " tea bags in it.");
+   }
+}      
+
+Test Results
+
+Creating teaBag1
+The teaBag1 has 1 tea bags in it.
+ 
+Creating teaBag2
+The teaBag2 has 1 tea bags in it.
+ 
+Putting teaBag1 and teaBag2 in tinOfTeaBags
+teaBag1 added successfully to tinOfTeaBags
+teaBag2 added successfully to tinOfTeaBags
+The tinOfTeaBags now has 2 tea bags in it.
+ 
+Creating smallTinOfTeaBags
+The smallTinOfTeaBags has 0 tea bags in it.
+Creating teaBag3
+The teaBag3 has 1 tea bags in it.
+Putting teaBag3 in smallTinOfTeaBags
+teaBag3 added successfully to smallTinOfTeaBags
+The smallTinOfTeaBags now has 1 tea bags in it.
+ 
+Putting smallTinOfTeaBags in tinOfTeaBags
+smallTinOfTeaBags added successfully to tinOfTeaBags
+The tinOfTeaBags now has 3 tea bags in it.
+ 
+Removing teaBag2 from tinOfTeaBags
+teaBag2 successfully removed from tinOfTeaBags
+The tinOfTeaBags now has 2 tea bags in it.
+
+
+********************************************************************
+
+
+
+Java Design Patterns Decorator
+// Original copy of this content taken from http://www.fluffycat.com/Java-Design-Patterns/ in 2010
+// Original Author: Larry Truett
+// Privacy Policy at http://www.fluffycat.com/Privacy-Policy/
+Decorator (aka Wrapper) Overview
+One class takes in another class, both of which extend the same abstract class, and adds functionality.
+Still reading? Save your time, watch the video lessons!
+Video tutorial on design patterns
+Tea.java - the abstract base class
+
+public abstract class Tea {  
+   boolean teaIsSteeped; 
+   
+   public abstract void steepTea();
+}
+
+TeaLeaves.java - the decoratee
+
+public class TeaLeaves extends Tea {  
+   public TeaLeaves() {
+       teaIsSteeped = false;
+   }
+   
+   public void steepTea() {
+       teaIsSteeped = true;
+       System.out.println("tea leaves are steeping");
+   }
+}
+
+ChaiDecorator.java - the decorator
+
+import java.util.ArrayList;
+import java.util.ListIterator;
+
+public class ChaiDecorator extends Tea {
+    private Tea teaToMakeChai;
+    private ArrayList chaiIngredients = new ArrayList();
+    
+    public ChaiDecorator(Tea teaToMakeChai) {
+        this.addTea(teaToMakeChai);
+        chaiIngredients.add("bay leaf");
+        chaiIngredients.add("cinnamon stick");
+        chaiIngredients.add("ginger");
+        chaiIngredients.add("honey");
+        chaiIngredients.add("soy milk");
+        chaiIngredients.add("vanilla bean");
+    }
+
+    private void addTea(Tea teaToMakeChaiIn) {
+        this.teaToMakeChai = teaToMakeChaiIn;
+    }
+    
+    public void steepTea() {
+        this.steepChai();
+    }
+
+    public void steepChai() {
+        teaToMakeChai.steepTea();
+        this.steepChaiIngredients();
+        System.out.println("tea is steeping with chai");
+    }    
+    
+    public void steepChaiIngredients() {
+        ListIterator listIterator = chaiIngredients.listIterator();
+        while (listIterator.hasNext()) {
+            System.out.println(((String)(listIterator.next())) + 
+                                         " is steeping");
+        }
+        System.out.println("chai ingredients are steeping");
+    }      
+}
+
+TestChaiDecorator.java - testing the decorator
+
+class TestChaiDecorator {            
+    
+   public static void main(String[] args) {
+       Tea teaLeaves = new TeaLeaves();
+       Tea chaiDecorator = new ChaiDecorator(teaLeaves);
+       chaiDecorator.steepTea();
+   }
+}
+
+Test Results
+
+tea leaves are steeping
+bay leaf is steeping
+cinnamon stick is steeping
+ginger is steeping
+honey is steeping
+soy milk is steeping
+vanilla bean is steeping
+chai ingredients are steeping
+tea is steeping with chai
+
+
+
+**********************************************************
+
+
+
+
+Java Design Patterns Facade
+// Original copy of this content taken from http://www.fluffycat.com/Java-Design-Patterns/ in 2010
+// Original Author: Larry Truett
+// Privacy Policy at http://www.fluffycat.com/Privacy-Policy/
+Facade Overview
+One class has a method that performs a complex process calling several other classes.
+Still reading? Save your time, watch the video lessons!
+Video tutorial on design patterns
+FacadeCuppaMaker.java - the Facade
+
+public class FacadeCuppaMaker {  
+   boolean teaBagIsSteeped; 
+    
+   public FacadeCuppaMaker() {
+       System.out.println(
+         "FacadeCuppaMaker ready to make you a cuppa!");
+   }
+   
+   public FacadeTeaCup makeACuppa() {
+       FacadeTeaCup cup = new FacadeTeaCup();
+       FacadeTeaBag teaBag = new FacadeTeaBag();
+       FacadeWater water = new FacadeWater();
+       cup.addFacadeTeaBag(teaBag);
+       water.boilFacadeWater();
+       cup.addFacadeWater(water);
+       cup.steepTeaBag();
+       return cup;
+   }
+}
+
+FacadeTeaCup.java - one of three classes the facade calls
+
+public class FacadeTeaCup {  
+   boolean teaBagIsSteeped; 
+   FacadeWater facadeWater;
+   FacadeTeaBag facadeTeaBag;
+    
+   public FacadeTeaCup() {
+       setTeaBagIsSteeped(false);
+       System.out.println("behold the beautiful new tea cup");
+   }    
+   
+   public void setTeaBagIsSteeped(boolean isTeaBagSteeped) {
+       teaBagIsSteeped = isTeaBagSteeped;
+   }
+   public boolean getTeaBagIsSteeped() {
+       return teaBagIsSteeped;
+   }
+    
+   public void addFacadeTeaBag(FacadeTeaBag facadeTeaBagIn) {
+       facadeTeaBag = facadeTeaBagIn;
+       System.out.println("the tea bag is in the tea cup");
+   }
+   
+   public void addFacadeWater(FacadeWater facadeWaterIn) {
+       facadeWater = facadeWaterIn;
+       System.out.println("the water is in the tea cup");  
+   }   
+   
+   public void steepTeaBag() {
+       if ( (facadeTeaBag != null) && 
+             ( (facadeWater != null) && 
+               (facadeWater.getWaterIsBoiling()) )
+          ) {
+          System.out.println("the tea is steeping in the cup");
+          setTeaBagIsSteeped(true);
+       } else {
+          System.out.println("the tea is not steeping in the cup");
+          setTeaBagIsSteeped(false);
+       }           
+   }
+   
+   public String toString() {
+       if (this.getTeaBagIsSteeped()) {
+           return ("A nice cuppa tea!");
+       } else {
+           String tempString = new String("A cup with ");
+           if (facadeWater != null) {
+                if (facadeWater.getWaterIsBoiling()) {
+                    tempString = (tempString + "boiling water ");
+                } else {
+                    tempString = (tempString + "cold water ");
+                }
+           } else {
+                tempString = (tempString + "no water ");
+           }
+ 
+           if (facadeTeaBag != null) {
+                tempString = (tempString + "and a tea bag");
+           } else {
+                tempString = (tempString + "and no tea bag");
+           } 
+           return tempString;
+       }
+                        
+   }
+}
+
+FacadeWater.java - two of three classes the facade calls
+
+public class FacadeWater {  
+   boolean waterIsBoiling; 
+    
+   public FacadeWater() {
+       setWaterIsBoiling(false);
+       System.out.println("behold the wonderous water");       
+   }
+   
+   public void boilFacadeWater() {
+       setWaterIsBoiling(true);
+       System.out.println("water is boiling");
+   }
+   
+   public void setWaterIsBoiling(boolean isWaterBoiling) {
+       waterIsBoiling = isWaterBoiling;
+   }
+   public boolean getWaterIsBoiling() {
+       return waterIsBoiling;
+   }
+}
+
+FacadeTeaBag.java - three of three classes the facade calls
+
+public class FacadeTeaBag {  
+   public FacadeTeaBag() {
+       System.out.println("behold the lovely tea bag");
+   }
+}
+
+TestFacade.java - testing the Facade
+
+class TestFacade {
+   public static void main(String[] args) {
+       FacadeCuppaMaker cuppaMaker = new FacadeCuppaMaker();
+       FacadeTeaCup teaCup = cuppaMaker.makeACuppa();
+       System.out.println(teaCup);
+   }
+}
+
+Test Results
+
+FacadeCuppaMaker ready to make you a cuppa!
+behold the beautiful new tea cup
+behold the lovely tea bag
+behold the wonderous water
+the tea bag is in the tea cup
+water is boiling
+the water is in the tea cup
+the tea is steeping in the cup
+A nice cuppa tea!
+
+
+
+********************************************************
+
+
+Java Design Patterns Flyweight
+// Original copy of this content taken from http://www.fluffycat.com/Java-Design-Patterns/ in 2010
+// Original Author: Larry Truett
+// Privacy Policy at http://www.fluffycat.com/Privacy-Policy/
+Flyweight Overview
+The reusable and variable parts of a class are broken into two classes to save resources.
+TeaOrder.java - the Flyweight
+
+public abstract class TeaOrder {  
+    public abstract void serveTea(TeaOrderContext teaOrderContext);
+}
+
+TeaFlavor.java - the Concrete Flyweight
+
+public class TeaFlavor extends TeaOrder {  
+    String teaFlavor; 
+   
+    TeaFlavor(String teaFlavor) {
+        this.teaFlavor = teaFlavor;
+    }
+   
+    public String getFlavor() {
+        return this.teaFlavor;
+    }
+   
+    public void serveTea(TeaOrderContext teaOrderContext) {
+        System.out.println("Serving tea flavor " + 
+                             teaFlavor + 
+                           " to table number " + 
+                             teaOrderContext.getTable());
+    }
+}
+
+TeaOrderContext.java - the Context
+
+public class TeaOrderContext {  
+   int tableNumber; 
+   
+   TeaOrderContext(int tableNumber) {
+       this.tableNumber = tableNumber;
+   }
+   
+   public int getTable() {
+       return this.tableNumber;
+   }
+}
+
+TeaFlavorFactory.java - the Factory
+
+public class TeaFlavorFactory {  
+   TeaFlavor[] flavors = new TeaFlavor[10];
+     //no more than 10 flavors can be made
+   int teasMade = 0;
+   
+   public TeaFlavor getTeaFlavor(String flavorToGet) {
+       if (teasMade > 0) {
+           for (int i = 0; i < teasMade; i++) {
+               if (flavorToGet.equals((flavors[i]).getFlavor())) {
+                   return flavors[i];
+               }
+           }
+       }
+       flavors[teasMade] = new TeaFlavor(flavorToGet);
+       return flavors[teasMade++];
+   }
+   
+   public int getTotalTeaFlavorsMade() {return teasMade;}
+}
+
+TestFlyweight.java - the Client, tests the Flyweight
+
+class TestFlyweight {  
+   static TeaFlavor[] flavors = 
+     new TeaFlavor[100];
+     //the flavors ordered
+   static TeaOrderContext[] tables = 
+     new TeaOrderContext[100];
+     //the tables for the orders
+   static int ordersMade = 0;    
+   static TeaFlavorFactory teaFlavorFactory;
+    
+   static void takeOrders(String flavorIn, int table) {
+       flavors[ordersMade] = 
+         teaFlavorFactory.getTeaFlavor(flavorIn);
+       tables[ordersMade++] = 
+         new TeaOrderContext(table);
+   }
+    
+   public static void main(String[] args) {
+       teaFlavorFactory = new TeaFlavorFactory();
+       
+       takeOrders("chai", 2);    
+       takeOrders("chai", 2);
+       takeOrders("camomile", 1);
+       takeOrders("camomile", 1);
+       takeOrders("earl grey", 1);
+       takeOrders("camomile", 897);
+       takeOrders("chai", 97);
+       takeOrders("chai", 97);
+       takeOrders("camomile", 3);
+       takeOrders("earl grey", 3);
+       takeOrders("chai", 3);
+       takeOrders("earl grey", 96);
+       takeOrders("camomile", 552);
+       takeOrders("chai", 121);
+       takeOrders("earl grey", 121);
+      
+       for (int i = 0; i < ordersMade; i++) {
+           flavors[i].serveTea(tables[i]);
+       }  
+       System.out.println(" ");       
+       System.out.println("total teaFlavor objects made: " + 
+                           teaFlavorFactory.getTotalTeaFlavorsMade());
+   }
+}    
+
+Test Results
+
+Serving tea flavor chai to table number 2
+Serving tea flavor chai to table number 2
+Serving tea flavor camomile to table number 1
+Serving tea flavor camomile to table number 1
+Serving tea flavor earl grey to table number 1
+Serving tea flavor camomile to table number 897
+Serving tea flavor chai to table number 97
+Serving tea flavor chai to table number 97
+Serving tea flavor camomile to table number 3
+Serving tea flavor earl grey to table number 3
+Serving tea flavor chai to table number 3
+Serving tea flavor earl grey to table number 96
+Serving tea flavor camomile to table number 552
+Serving tea flavor chai to table number 121
+Serving tea flavor earl grey to table number 121
+ 
+total teaFlavor objects made: 3
+
+Notes
+In this example a single class could have held both the tea flavor and table number.
+However, we will have a limited number of instances of tea flavors, and so that is broken into a it's own flyweight class.
+Table number is less limited, so it goes into the context.
+The factory is responsible for only making one instance of each flyweight.
+The client is responsible for keeping both halves matched up, and passing the context into the flyweight. 
+
+
+
+**************************************************************
+
+Java Design Patterns Proxy
+// Original copy of this content taken from http://www.fluffycat.com/Java-Design-Patterns/ in 2010
+// Original Author: Larry Truett
+// Privacy Policy at http://www.fluffycat.com/Privacy-Policy/
+Proxy (aka Surrogate) Overview - An example of a "Virtual Proxy"
+One class controls the creation of and access to objects in another class.
+PotOfTeaInterface.java - the Subject Interface
+
+//PotOfTeaInterface will insure that the proxy 
+//  has the same methods as it's real subject
+public interface PotOfTeaInterface {   
+   public void pourTea();
+}
+
+PotOfTeaProxy.java - the Proxy
+
+public class PotOfTeaProxy implements PotOfTeaInterface {  
+   PotOfTea potOfTea;
+    
+   public PotOfTeaProxy() {}
+   
+   public void pourTea() {
+       potOfTea = new PotOfTea();
+       potOfTea.pourTea();
+   }
+}
+
+PotOfTea.java - the Real Subject
+
+public class PotOfTea implements PotOfTeaInterface {  
+   public PotOfTea() {
+       System.out.println("Making a pot of tea");
+   }
+   
+   public void pourTea() {
+       System.out.println("Pouring tea");
+   }   
+}
+
+TestProxy.java - testing the Proxy
+
+class TestProxy {
+   public static void main(String[] args) {
+       System.out.println("TestProxy: instantiating PotOfTeaProxy");
+       PotOfTeaInterface potOfTea = new PotOfTeaProxy();
+       System.out.println(" ");
+       System.out.println("TestProxy: pouring tea");
+       potOfTea.pourTea();
+   }
+}
+
+Test Results
+
+TestProxy: instantiating PotOfTeaProxy
+
+
+TestProxy: pouring tea
+Making a pot of tea
+Pouring tea
+
+Notes
+There are four types of proxies, all taking the same basic format:
+1. Virtual Proxy - The proxy won't create an "expensive" subject object until it is actually needed.
+2. Remote Proxy - A local proxy object controls access to a remote subject object.
+3. Protection proxy - The proxy insures that the object creating/calling the subject has authorization to do so.
+4. Smart reference - The proxy will perform "additional actions" when the subject is called.
+Reference Desgin Patterns pages 208-209. 
+
+
+
+*****************************************
+
+
+
+
+
+Java Design Patterns Chain Of Responsibility
+// Original copy of this content taken from http://www.fluffycat.com/Java-Design-Patterns/ in 2010
+// Original Author: Larry Truett
+// Privacy Policy at http://www.fluffycat.com/Privacy-Policy/
+Chain of Responsibility Overview
+A method called in one class will move up a class hierarchy until a method is found that can properly handle the call.
+TopTitle.java - the Interface to be implemented by all Classes in the Chain
+
+public interface TopTitle {  
+   public String getTopTitle();
+   
+   public String getAllCategories();
+}
+
+DvdCategory.java - the Highest Class in the Chain
+
+public class DvdCategory implements TopTitle {  
+   private String category; 
+   private String topCategoryTitle;
+    
+   public DvdCategory(String category) {
+        this.setCategory(category);
+   }    
+   
+   public void setCategory(String categoryIn) {
+       this.category = categoryIn;
+   }
+   public String getCategory() {
+       return this.category;
+   } 
+   public String getAllCategories() {
+       return getCategory();
+   }
+   
+   public void setTopCategoryTitle(String topCategoryTitleIn) {
+       this.topCategoryTitle = topCategoryTitleIn;
+   }
+   public String getTopCategoryTitle() {
+       return this.topCategoryTitle;
+   }
+   
+   public String getTopTitle() {
+       return this.topCategoryTitle;
+   }
+}
+
+DvdSubCategory.java - the Middle Class in the Chain
+
+public class DvdSubCategory implements TopTitle {  
+   private String subCategory; 
+   private String topSubCategoryTitle;
+   private DvdCategory parent;
+   
+   public DvdSubCategory(DvdCategory dvdCategory, String subCategory) {
+        this.setSubCategory(subCategory); 
+        this.parent = dvdCategory;
+   }    
+   
+   public void setSubCategory(String subCategoryIn) {
+       this.subCategory = subCategoryIn;
+   }
+   public String getSubCategory() {
+       return this.subCategory;
+   }
+   public void setCategory(String categoryIn) {
+       parent.setCategory(categoryIn);
+   }
+   public String getCategory() {
+       return parent.getCategory();
+   }
+   public String getAllCategories() {
+       return (getCategory() + "/" + getSubCategory());
+   }
+   
+   public void setTopSubCategoryTitle(String topSubCategoryTitleIn) {
+       this.topSubCategoryTitle = topSubCategoryTitleIn;
+   }
+   public String getTopSubCategoryTitle() {
+       return this.topSubCategoryTitle;
+   }
+   public void setTopCategoryTitle(String topCategoryTitleIn) {
+       parent.setTopCategoryTitle(topCategoryTitleIn);
+   }
+   public String getTopCategoryTitle() {
+       return parent.getTopCategoryTitle();
+   }
+   
+   public String getTopTitle() {
+       if (null != getTopSubCategoryTitle()) {
+           return this.getTopSubCategoryTitle();
+       } else {
+           System.out.println("no top title in Category/SubCategory " + 
+                               getAllCategories());
+           return parent.getTopTitle();
+       }
+   }
+}
+
+DvdSubSubCategory.java - the Lowest Class in the Chain
+
+public class DvdSubSubCategory implements TopTitle {  
+   private String subSubCategory; 
+   private String topSubSubCategoryTitle;
+   private DvdSubCategory parent;
+   
+   public DvdSubSubCategory(DvdSubCategory dvdSubCategory, 
+                            String subCategory) {
+        this.setSubSubCategory(subCategory); 
+        this.parent = dvdSubCategory;
+   }    
+   
+   public void setSubSubCategory(String subSubCategoryIn) {
+       this.subSubCategory = subSubCategoryIn;
+   }
+   public String getSubSubCategory() {
+       return this.subSubCategory;
+   } 
+   public void setSubCategory(String subCategoryIn) {
+       parent.setSubCategory(subCategoryIn);
+   }
+   public String getSubCategory() {
+       return parent.getSubCategory();
+   }
+   public void setCategory(String categoryIn) {
+       parent.setCategory(categoryIn);
+   }
+   public String getCategory() {
+       return parent.getCategory();
+   }
+   public String getAllCategories() {
+       return (getCategory() + "/" + 
+               getSubCategory() + "/" + 
+               getSubSubCategory());}   
+   
+   public void setTopSubSubCategoryTitle(
+     String topSubSubCategoryTitleIn) {
+      this.topSubSubCategoryTitle = topSubSubCategoryTitleIn;
+   }
+   public String getTopSubSubCategoryTitle() {
+       return this.topSubSubCategoryTitle;
+   }
+   public void setTopSubCategoryTitle(
+     String topSubCategoryTitleIn) {
+       parent.setTopSubCategoryTitle(topSubCategoryTitleIn);
+   }
+   public String getTopSubCategoryTitle() {
+       return parent.getTopSubCategoryTitle();
+   }
+   public void setTopCategoryTitle(String topCategoryTitleIn) {
+       parent.setTopCategoryTitle(topCategoryTitleIn);
+   }
+   public String getTopCategoryTitle() {
+       return parent.getTopCategoryTitle();
+   }
+
+   public String getTopTitle() {
+       if (null != getTopSubSubCategoryTitle()) {
+           return this.getTopSubSubCategoryTitle();
+       } else {
+           System.out.println(
+             "no top title in Category/SubCategory/SubSubCategory " + 
+              getAllCategories());
+           return parent.getTopTitle();
+       }
+   }
+}
+
+TestChainOfResponsibility.java - testing the Chain of Responsibility
+
+class TestChainOfResponsibility {
+   public static void main(String[] args) {
+        String topTitle;
+        DvdCategory comedy = new DvdCategory("Comedy");
+        comedy.setTopCategoryTitle("Ghost World");
+        
+        DvdSubCategory comedyChildrens = 
+          new DvdSubCategory(comedy, "Childrens");
+        
+        DvdSubSubCategory comedyChildrensAquatic = 
+          new DvdSubSubCategory(comedyChildrens, "Aquatic");
+        comedyChildrensAquatic.setTopSubSubCategoryTitle(
+          "Sponge Bob Squarepants");
+
+        System.out.println("");
+        System.out.println("Getting top comedy title:");
+        topTitle = comedy.getTopTitle();
+        System.out.println("The top title for " + 
+                            comedy.getAllCategories() + 
+                            " is " + topTitle);
+
+        System.out.println("");
+        System.out.println("Getting top comedy/childrens title:");
+        topTitle = comedyChildrens.getTopTitle();
+        System.out.println("The top title for " + 
+                            comedyChildrens.getAllCategories() + 
+                            " is " + topTitle);
+
+        System.out.println("");
+        System.out.println(
+          "Getting top comedy/childrens/aquatic title:");
+        topTitle = comedyChildrensAquatic.getTopTitle();
+        System.out.println("The top title for " + 
+                            comedyChildrensAquatic.getAllCategories() + 
+                            " is " + topTitle);
+   }
+}
+
+Test Results
+
+Getting top comedy title:
+The top title for Comedy is Ghost World
+
+
+Getting top comedy/childrens title:
+no top title in Category/SubCategory Comedy/Childrens
+The top title for Comedy/Childrens is Ghost World
+
+
+Getting top comedy/childrens/aquatic title:
+The top title for Comedy/Childrens/Aquatic is Sponge Bob Squarepants
+
+
+
+*****************************************************
+
+
+
+Java Design Patterns Command
+// Original copy of this content taken from http://www.fluffycat.com/Java-Design-Patterns/ in 2010
+// Original Author: Larry Truett
+// Privacy Policy at http://www.fluffycat.com/Privacy-Policy/
+Command (aka Action or Transaction) Overview
+An object encapsulates everything needed to execute a method in another object.
+DvdName.java - the Receiver
+
+public class DvdName {  
+   private String titleName;  
+    
+   public DvdName(String titleName) {
+       this.setTitleName(titleName);
+   }    
+  
+   public final void setTitleName(String titleNameIn) {
+       this.titleName = titleNameIn;
+   }
+   public final String getTitleName() {
+       return this.titleName;
+   }
+   
+   public void setNameStarsOn() {
+       this.setTitleName(this.getTitleName().replace(' ','*'));
+   }
+   public void setNameStarsOff() {
+       this.setTitleName(this.getTitleName().replace('*',' '));
+   }   
+   
+   public String toString() {
+       return ("DVD: " + this.getTitleName());
+   }
+}
+
+CommandAbstract.java - the Command
+
+public abstract class CommandAbstract {
+   public abstract void execute();
+}
+
+DvdCommandNameStarsOn.java - one of two Concrete Commands
+
+public class DvdCommandNameStarsOn extends CommandAbstract {
+   private DvdName dvdName;  
+    
+   public DvdCommandNameStarsOn(DvdName dvdNameIn) {
+       this.dvdName = dvdNameIn;
+   }    
+   public void execute() {
+       this.dvdName.setNameStarsOn();
+   } 
+}
+
+DvdCommandNameStarsOff.java - two of two Concrete Commands
+
+public class DvdCommandNameStarsOff extends CommandAbstract {  
+   private DvdName dvdName;  
+    
+   public DvdCommandNameStarsOff(DvdName dvdNameIn) {
+       this.dvdName = dvdNameIn;
+   }    
+   public void execute() {
+       this.dvdName.setNameStarsOff();
+   } 
+}
+
+TestCommand.java - testing the Command
+
+class TestCommand {            
+   public static void main(String[] args) {
+       DvdName jayAndBob = 
+         new DvdName("Jay and Silent Bob Strike Back");
+       DvdName spongeBob = 
+         new DvdName("Sponge Bob Squarepants - " +
+                     "Nautical Nonsense and Sponge Buddies");
+       System.out.println("as first instantiated");
+       System.out.println(jayAndBob.toString());  
+       System.out.println(spongeBob.toString()); 
+       
+       CommandAbstract bobStarsOn = 
+         new DvdCommandNameStarsOn(jayAndBob);
+       CommandAbstract bobStarsOff = 
+         new DvdCommandNameStarsOff(jayAndBob);
+       CommandAbstract spongeStarsOn = 
+         new DvdCommandNameStarsOn(spongeBob);
+       CommandAbstract spongeStarsOff = 
+         new DvdCommandNameStarsOff(spongeBob);
+
+       bobStarsOn.execute();
+       spongeStarsOn.execute();
+       System.out.println(" ");
+       System.out.println("stars on");
+       System.out.println(jayAndBob.toString());
+       System.out.println(spongeBob.toString());
+
+       spongeStarsOff.execute();
+       System.out.println(" ");
+       System.out.println("sponge stars off");
+       System.out.println(jayAndBob.toString());
+       System.out.println(spongeBob.toString());
+   }
+}      
+
+Test Results
+
+
+
+
+as first instantiated
+DVD: Jay and Silent Bob Strike Back
+DVD: Sponge Bob Squarepants - Nautical Nonsense and Sponge Buddies
+ 
+stars on
+DVD: Jay*and*Silent*Bob*Strike*Back
+DVD: Sponge*Bob*Squarepants*-*Nautical*Nonsense*and*Sponge*Buddies
+ 
+sponge stars off
+DVD: Jay*and*Silent*Bob*Strike*Back
+DVD: Sponge Bob Squarepants - Nautical Nonsense and Sponge Buddies
+
+
+
+**************************************************
+
+
+
+
+Java Design Patterns Interpreter
+// Original copy of this content taken from http://www.fluffycat.com/Java-Design-Patterns/ in 2010
+// Original Author: Larry Truett
+// Privacy Policy at http://www.fluffycat.com/Privacy-Policy/
+Interpreter Overview
+Define a macro language and syntax, parsing input into objects which perform the correct opertaions.
+DvdInterpreterClient.java - the Client
+
+import java.util.StringTokenizer;
+
+public class DvdInterpreterClient {  
+   DvdInterpreterContext dvdInterpreterContext; 
+   
+   public DvdInterpreterClient(
+     DvdInterpreterContext dvdInterpreterContext) {
+       this.dvdInterpreterContext = dvdInterpreterContext;
+   }
+    
+   // expression syntax:
+   // show title | actor [for actor | title ]
+   public String interpret(String expression) {
+       StringBuffer result = new StringBuffer("Query Result: ");
+       
+       String currentToken;
+       StringTokenizer expressionTokens = 
+         new StringTokenizer(expression);
+       
+       char mainQuery = ' ';
+       char subQuery = ' ';
+       boolean forUsed = false;
+       String searchString = null;
+       boolean searchStarted = false;
+       boolean searchEnded = false;
+       
+       while (expressionTokens.hasMoreTokens())
+       {
+           currentToken = expressionTokens.nextToken();
+           if (currentToken.equals("show")) {
+               continue;
+               //show in all queries, not really used
+           } else if (currentToken.equals("title")) {
+               if (mainQuery == ' ') {
+                   mainQuery = 'T';
+               } else {
+                   if ((subQuery == ' ') && (forUsed)) {
+                       subQuery = 'T';
+                   } 
+               }
+           } else if (currentToken.equals("actor")) {
+               if (mainQuery == ' ') {
+                   mainQuery = 'A';
+               } else {
+                   if ((subQuery == ' ') && (forUsed)) {
+                       subQuery = 'A';
+                   }
+               } 
+           } else if (currentToken.equals("for")) {
+               forUsed = true;
+           } else if ((searchString == null) && 
+                      (subQuery != ' ') && 
+                      (currentToken.startsWith("<"))) {
+                 searchString = currentToken;
+                 searchStarted = true;
+                 if (currentToken.endsWith(">")) {
+                     searchEnded = true;
+                 }
+           } else if ((searchStarted) && (!searchEnded)) {
+               searchString = searchString + " " + currentToken;
+               if (currentToken.endsWith(">")) {
+                   searchEnded = true;
+               }
+           }
+       }
+
+       if (searchString != null) {
+           searchString = 
+             searchString.substring(1,(searchString.length() - 1));
+             //remove <>
+       }
+       
+       DvdAbstractExpression abstractExpression;
+       
+       switch (mainQuery) {
+           case 'A' :  {
+               switch (subQuery) {
+                   case 'T' : {
+                       abstractExpression = 
+                         new DvdActorTitleExpression(searchString);
+                       break;
+                   }
+                   default : {
+                       abstractExpression = 
+                         new DvdActorExpression();
+                       break;
+                   }
+               }
+               break;
+           }      
+           case 'T' : {
+               switch (subQuery) {
+                   case 'A' : {
+                       abstractExpression = 
+                         new DvdTitleActorExpression(searchString);
+                       break;
+                   }
+                   default : {
+                       abstractExpression = new DvdTitleExpression();
+                       break;
+                   }
+               }
+               break;
+           }            
+           
+           default : return result.toString();
+       } 
+       
+       
+       result.append(
+         abstractExpression.interpret(dvdInterpreterContext));
+       
+       return result.toString();
+   }
+}
+
+DvdInterpreterContext.java - The Context
+
+import java.util.ArrayList;
+import java.util.ListIterator;
+
+public class DvdInterpreterContext {
+   private ArrayList titles = new ArrayList(); 
+   private ArrayList actors = new ArrayList();
+   private ArrayList titlesAndActors = new ArrayList();
+   
+   public void addTitle(String title) {
+       titles.add(title);
+   }
+   public void addActor(String actor) {
+       actors.add(actor);
+   }
+   public void addTitleAndActor(TitleAndActor titleAndActor) {
+       titlesAndActors.add(titleAndActor);
+   }
+   
+   public ArrayList getAllTitles() {
+       return titles;
+   }
+   public ArrayList getAllActors() {
+       return actors;
+   }
+   public ArrayList getActorsForTitle(String titleIn) {
+       ArrayList actorsForTitle = new ArrayList();
+       TitleAndActor tempTitleAndActor;
+       ListIterator titlesAndActorsIterator = 
+         titlesAndActors.listIterator();
+       while (titlesAndActorsIterator.hasNext()) {
+           tempTitleAndActor = 
+             (TitleAndActor)titlesAndActorsIterator.next();
+           if (titleIn.equals(tempTitleAndActor.getTitle())) {
+               actorsForTitle.add(tempTitleAndActor.getActor());
+           }
+       }
+       return actorsForTitle;
+   }
+   public ArrayList getTitlesForActor(String actorIn) {
+       ArrayList titlesForActor = new ArrayList();
+       TitleAndActor tempTitleAndActor;
+       ListIterator actorsAndTitlesIterator = 
+         titlesAndActors.listIterator();
+       while (actorsAndTitlesIterator.hasNext()) {
+           tempTitleAndActor = 
+             (TitleAndActor)actorsAndTitlesIterator.next();
+           if (actorIn.equals(tempTitleAndActor.getActor())) {
+               titlesForActor.add(tempTitleAndActor.getTitle());
+           }
+       }
+       return titlesForActor;
+   }   
+}
+
+DvdAbstractExpression.java - The Abstract Expression
+
+public abstract class DvdAbstractExpression {
+   public abstract String interpret(
+     DvdInterpreterContext dvdInterpreterContext);
+}
+
+DvdActorExpression.java - One Of Four Terminal Expressions
+
+import java.util.ArrayList;
+import java.util.ListIterator;
+
+public class DvdActorExpression extends DvdAbstractExpression {  
+   public String interpret(DvdInterpreterContext dvdInterpreterContext) {
+       ArrayList actors = dvdInterpreterContext.getAllActors();
+       ListIterator actorsIterator = actors.listIterator();
+       StringBuffer titleBuffer = new StringBuffer("");
+       boolean first = true;
+       while (actorsIterator.hasNext()) {
+           if (!first) {
+               titleBuffer.append(", ");
+           } else {
+               first = false;
+           }
+           titleBuffer.append((String)actorsIterator.next());
+       }
+       return titleBuffer.toString();
+   }
+}
+
+DvdActorTitleExpression.java - Two Of Four Terminal Expressions
+
+import java.util.ArrayList;
+import java.util.ListIterator;
+
+public class DvdActorTitleExpression extends DvdAbstractExpression {
+   String title;
+   
+   public DvdActorTitleExpression(String title) {
+       this.title = title;
+   }
+    
+   public String interpret(DvdInterpreterContext dvdInterpreterContext) {
+       ArrayList actorsAndTitles = 
+           dvdInterpreterContext.getActorsForTitle(title);
+       ListIterator actorsAndTitlesIterator = 
+           actorsAndTitles.listIterator();
+       StringBuffer actorBuffer = new StringBuffer("");
+       boolean first = true;
+       while (actorsAndTitlesIterator.hasNext()) {
+           if (!first) {
+               actorBuffer.append(", "); 
+           } else {
+               first = false;
+           }
+           actorBuffer.append((String)actorsAndTitlesIterator.next());
+       }
+       return actorBuffer.toString();
+   }
+}
+
+DvdTitleExpression.java - Three Of Four Terminal Expressions
+
+import java.util.ArrayList;
+import java.util.ListIterator;
+
+public class DvdTitleExpression extends DvdAbstractExpression {  
+   public String interpret(DvdInterpreterContext 
+                           dvdInterpreterContext) {
+       ArrayList titles = dvdInterpreterContext.getAllTitles();
+       ListIterator titlesIterator = titles.listIterator();
+       StringBuffer titleBuffer = new StringBuffer("");
+       boolean first = true;
+       while (titlesIterator.hasNext()) {
+           if (!first) {
+               titleBuffer.append(", ");
+           } else {
+               first = false;
+           }    
+           titleBuffer.append((String)titlesIterator.next());
+       }
+       return titleBuffer.toString();
+   }
+}
+
+DvdTitleActorExpression.java - Four Of Four Terminal Expressions
+
+import java.util.ArrayList;
+import java.util.ListIterator;
+
+public class DvdTitleActorExpression extends DvdAbstractExpression {  
+   String title;
+   
+   public DvdTitleActorExpression(String title) {
+       this.title = title;
+   }
+    
+   public String interpret(DvdInterpreterContext dvdInterpreterContext) {
+       ArrayList titlesAndActors = 
+           dvdInterpreterContext.getTitlesForActor(title);
+       ListIterator titlesAndActorsIterator = 
+           titlesAndActors.listIterator();
+       StringBuffer titleBuffer = new StringBuffer("");
+       boolean first = true;
+       while (titlesAndActorsIterator.hasNext()) {
+           if (!first) {
+               titleBuffer.append(", ");
+           } else {
+               first = false;
+           }
+           titleBuffer.append((String)titlesAndActorsIterator.next());
+       }
+       return titleBuffer.toString();
+   }
+}
+
+TitleAndActor.java - A Helper Class
+
+public class TitleAndActor {
+    private String title;
+    private String actor;
+    public TitleAndActor(String title, String actor) {
+        this.title = title;
+        this.actor = actor;
+    }
+    public String getTitle() {return this.title;}
+    public String getActor() {return this.actor;}
+}     
+
+TestDvdInterpreter.java - testing the Interpreter
+
+class TestDvdInterpreter {
+    
+   public static void main(String[] args) {
+       DvdInterpreterContext dvdInterpreterContext = 
+         new DvdInterpreterContext();
+       dvdInterpreterContext.addTitle("Caddy Shack");
+       dvdInterpreterContext.addTitle("Training Day");
+       dvdInterpreterContext.addTitle("Hamlet");
+
+       dvdInterpreterContext.addActor("Ethan Hawke");
+       dvdInterpreterContext.addActor("Denzel Washington");
+       
+       dvdInterpreterContext.addTitleAndActor(
+         new TitleAndActor("Hamlet", "Ethan Hawke"));
+       dvdInterpreterContext.addTitleAndActor(
+         new TitleAndActor("Training Day", "Ethan Hawke"));
+       dvdInterpreterContext.addTitleAndActor(
+         new TitleAndActor("Caddy Shack", "Ethan Hawke"));
+       dvdInterpreterContext.addTitleAndActor(
+         new TitleAndActor("Training Day", "Denzel Washington"));
+       
+       DvdInterpreterClient dvdInterpreterClient = 
+         new DvdInterpreterClient(dvdInterpreterContext);
+       
+       System.out.println(
+         "interpreting show actor: " + 
+          dvdInterpreterClient.interpret(
+            "show actor"));
+       System.out.println(
+          "interpreting show actor for title : " + 
+           dvdInterpreterClient.interpret(
+             "show actor for title "));
+       System.out.println(
+          "interpreting show title: " + 
+           dvdInterpreterClient.interpret(
+             "show title")); 
+       System.out.println(
+          "interpreting show title for actor : " + 
+           dvdInterpreterClient.interpret(
+             "show title for actor "));
+   }
+}      
+
+Test Results
+
+interpreting show actor: 
+  Query Result: Ethan Hawke, Denzel Washington
+interpreting show actor for title : 
+  Query Result: Ethan Hawke, Denzel Washington
+interpreting show title: 
+  Query Result: Caddy Shack, Training Day, Hamlet
+interpreting show title for actor : 
+  Query Result: Hamlet, Training Day, Caddy Shack
+
+
+
+******************************************************
+
+
+Java Design Patterns Iterator
+// Original copy of this content taken from http://www.fluffycat.com/Java-Design-Patterns/ in 2010
+// Original Author: Larry Truett
+// Privacy Policy at http://www.fluffycat.com/Privacy-Policy/
+Iterator (aka Cursor) Overview
+One object can traverse all of the elements of another object.
+DvdListIterator.java - the Iterator Interface
+
+public interface DvdListIterator {
+   public void first();
+   public void next();  
+   public boolean isDone();
+   public String currentItem();
+}
+
+DvdList.java - the Concrete Aggregate (with a Concrete Iterator inner class)
+
+public class DvdList {  
+   private String[] titles;  
+   //Yes, it would be easier to do this whole example with ArrayList
+   // and ListIterator, but it certainly wouldn't be as much fun!   
+   private int titleCount;
+   //title count is always a real count of titles, but one ahead of
+   //itself as a subscript
+   private int arraySize;
+    
+   public DvdList() {
+        titles = new String[3];
+        //using 3 to demonstrate array expansion more easily,
+        //  not for efficency        
+        titleCount = 0;
+        arraySize = 3;
+   }    
+   
+   public int count() {
+       return titleCount;
+   }
+   
+   public void append(String titleIn) {
+       if (titleCount >= arraySize) {
+           String[] tempArray = new String[arraySize];
+           for (int i = 0; i < arraySize; i++)
+           {tempArray[i] = titles[i];}
+           titles = null;
+           arraySize = arraySize + 3;           
+           titles = new String[arraySize];
+           for (int i = 0; i < (arraySize - 3); i++) {
+               titles[i] = tempArray[i];
+           }
+       }
+       titles[titleCount++] = titleIn; 
+   }
+   
+   public void delete(String titleIn) {
+       boolean found = false;
+       for (int i = 0; i < (titleCount -1); i++) {
+           if (found == false) {
+               if (titles[i].equals(titleIn)) {
+                   found = true;
+                   titles[i] = titles[i + 1];
+               }
+           } else {
+               if (i < (titleCount -1)) {
+                   titles[i] = titles[i + 1];
+               } else {
+                   titles[i] = null;
+               }
+           }
+       }
+       
+       if (found == true) {
+           --titleCount;
+       }
+   }
+   
+   
+   public DvdListIterator createIterator() {
+       return new InnerIterator();
+   }
+   
+   
+   //note: 
+   //  This example shows the Concrete Iterator as an inner class.
+   //  The Iterator Pattern in GoF does allow for multiple types of 
+   //  iterators for a given list or "Aggregate".  This could be 
+   //  accomplished with multiple Iterators in multiple inner classes.
+   //  The createIterator class would then have multiple variations.
+   //  This, however, assumes that you will have a limited number of
+   //  iterator variants - which is normally the case.  If you do want
+   //  more flexibility in iterator creation, the iterators should not
+   //  be in inner classes, and perhaps some sort factory should be 
+   //  employed to create them.
+   //
+   private class InnerIterator implements DvdListIterator {
+       private int currentPosition = 0;
+       
+       private InnerIterator() {}
+       
+       public void first() {
+           currentPosition = 0;
+       }
+       
+       public void next() {
+           if (currentPosition < (titleCount)) {
+               ++currentPosition;
+           }
+       }
+       
+       public boolean isDone() {
+           if (currentPosition >= (titleCount)) {
+               return true;
+           } else {
+               return false;
+           }
+       }
+       
+       public String currentItem() {
+           return titles[currentPosition];
+       }
+   }
+}
+
+TestDvdIterator.java - testing the iterator
+
+class TestDvdIterator {            
+    
+   public static void main(String[] args) {
+       DvdList fiveShakespeareMovies = new DvdList();
+       fiveShakespeareMovies.append("10 Things I Hate About You");
+       fiveShakespeareMovies.append("Shakespeare In Love");
+       fiveShakespeareMovies.append("O (2001)");
+       fiveShakespeareMovies.append("American Pie 2");
+       fiveShakespeareMovies.append("Scotland, PA.");
+       fiveShakespeareMovies.append("Hamlet (2000)");
+
+       DvdListIterator fiveShakespeareIterator = 
+         fiveShakespeareMovies.createIterator();
+       while (!fiveShakespeareIterator.isDone()) {
+           System.out.println(fiveShakespeareIterator.currentItem());
+           fiveShakespeareIterator.next();  
+       }
+       
+       fiveShakespeareMovies.delete("American Pie 2");
+       
+       System.out.println(" ");   
+       fiveShakespeareIterator.first();       
+       while (!fiveShakespeareIterator.isDone()) {
+           System.out.println(fiveShakespeareIterator.currentItem());
+           fiveShakespeareIterator.next();  
+       }       
+   }
+}      
+
+Test Results
+
+10 Things I Hate About You
+Shakespeare In Love
+O (2001)
+American Pie 2
+Scotland, PA.
+Hamlet (2000)
+ 
+10 Things I Hate About You
+Shakespeare In Love
+O (2001)
+Scotland, PA.
+Hamlet (2000)
+
+
+
+
+**********************************************************
+
+
+ . Java Design Patterns . Java Design Patterns Mediator
+// Original copy of this content taken from http://www.fluffycat.com/Java-Design-Patterns/ in 2010
+// Original Author: Larry Truett
+// Privacy Policy at http://www.fluffycat.com/Privacy-Policy/
+Java Design Patterns Mediator
+Mediator Overview
+Passes communication between two or more objects.
+DvdTitle.java - the Abstract Colleague or Mediatee
+
+public abstract class DvdTitle {  
+   private String title; 
+   
+   public void setTitle(String titleIn) {
+       this.title = titleIn;
+   }
+   public String getTitle() {
+       return this.title;
+   }
+}
+
+DvdLowercaseTitle.java - One of Two Concrete Colleagues or Mediatees
+
+public class DvdLowercaseTitle extends DvdTitle {
+   private String LowercaseTitle;
+   private DvdMediator dvdMediator;
+    
+   public DvdLowercaseTitle(String title, DvdMediator dvdMediator) {
+       this.setTitle(title);
+       resetTitle();
+       this.dvdMediator = dvdMediator;
+       this.dvdMediator.setLowercase(this);
+   }    
+   
+   public DvdLowercaseTitle(DvdTitle dvdTitle, 
+                            DvdMediator dvdMediator) {
+       this(dvdTitle.getTitle(), dvdMediator);
+   }     
+   
+   public void resetTitle() {
+       this.setLowercaseTitle(this.getTitle().toLowerCase());
+   }
+   public void resetTitle(String title) {
+       this.setTitle(title);
+       this.resetTitle();
+   }
+   
+   public void setSuperTitleLowercase() {
+       this.setTitle(this.getLowercaseTitle());
+       dvdMediator.changeTitle(this);
+   }
+   
+   public String getLowercaseTitle() {
+       return LowercaseTitle;
+   }
+   private void setLowercaseTitle(String LowercaseTitle) {
+       this.LowercaseTitle = LowercaseTitle;
+   }
+}
+
+DvdUpcaseTitle.java - Two of Two Concrete Colleagues or Mediatees
+
+public class DvdUpcaseTitle extends DvdTitle {  
+   private String upcaseTitle;
+   private DvdMediator dvdMediator;
+    
+   public DvdUpcaseTitle(String title, 
+                         DvdMediator dvdMediator) {
+       this.setTitle(title);
+       resetTitle();
+       this.dvdMediator = dvdMediator;
+       this.dvdMediator.setUpcase(this);
+   }    
+   
+   public DvdUpcaseTitle(DvdTitle dvdTitle, 
+                         DvdMediator dvdMediator) {
+       this(dvdTitle.getTitle(), dvdMediator);
+   }       
+   
+   public void resetTitle() {
+       this.setUpcaseTitle(this.getTitle().toUpperCase());
+   }
+   public void resetTitle(String title) {
+       this.setTitle(title);
+       this.resetTitle();
+   }    
+   
+   public void setSuperTitleUpcase() {
+       this.setTitle(this.getUpcaseTitle());
+       dvdMediator.changeTitle(this);       
+   }
+   
+   public String getUpcaseTitle() {
+      return upcaseTitle;
+   }
+   private void setUpcaseTitle(String upcaseTitle) {
+       this.upcaseTitle = upcaseTitle;
+   }
+}
+
+DvdMediator.java - The Mediator
+
+public class DvdMediator {
+   private DvdUpcaseTitle dvdUpcaseTitle; 
+   private DvdLowercaseTitle dvdLowercaseTitle;    
+   
+   public void setUpcase(DvdUpcaseTitle dvdUpcaseTitle) {
+       this.dvdUpcaseTitle = dvdUpcaseTitle;
+   } 
+   
+   public void setLowercase(DvdLowercaseTitle dvdLowercaseTitle) {
+       this.dvdLowercaseTitle = dvdLowercaseTitle;
+   }   
+   
+   public void changeTitle(DvdUpcaseTitle dvdUpcaseTitle) {
+       this.dvdLowercaseTitle.resetTitle(dvdUpcaseTitle.getTitle());
+   }
+   
+   public void changeTitle(DvdLowercaseTitle dvdLowercaseTitle) {
+       this.dvdUpcaseTitle.resetTitle(dvdLowercaseTitle.getTitle());
+   }   
+}
+
+TestDvdMediator.java - testing the Mediator
+
+class TestDvdMediator {            
+    
+   public static void main(String[] args) {
+       DvdMediator dvdMediator = new DvdMediator();
+       DvdLowercaseTitle dvdLower = 
+         new DvdLowercaseTitle("Mulholland Dr.", dvdMediator);
+       DvdUpcaseTitle dvdUp = 
+         new DvdUpcaseTitle(dvdLower, dvdMediator);
+       
+       System.out.println("Lowercase LC title :" + 
+                           dvdLower.getLowercaseTitle());
+       System.out.println("Lowercase super title :" + 
+                           dvdLower.getTitle());   
+       System.out.println("Upcase UC title :" + 
+                           dvdUp.getUpcaseTitle());
+       System.out.println("Upcase super title :" + 
+                           dvdUp.getTitle());   
+       
+       dvdLower.setSuperTitleLowercase();
+       
+       System.out.println(" ");
+       System.out.println("After Super set to LC");
+       System.out.println("Lowercase LC title :" + 
+                           dvdLower.getLowercaseTitle());
+       System.out.println("Lowercase super title :" + 
+                           dvdLower.getTitle());
+       System.out.println("Upcase UC title :" + 
+                           dvdUp.getUpcaseTitle());
+       System.out.println("Upcase super title :" + 
+                           dvdUp.getTitle());
+   }
+}      
+
+Test Results
+
+Lowercase LC title :mulholland dr.
+Lowercase super title :Mulholland Dr.
+Upcase UC title :MULHOLLAND DR.
+Upcase super title :Mulholland Dr.
+ 
+After Super set to LC
+Lowercase LC title :mulholland dr.
+Lowercase super title :mulholland dr.
+Upcase UC title :MULHOLLAND DR.
+Upcase super title :mulholland dr.
+
+
+
+
+
+**************************************************************
+
+
+
+ . Java Design Patterns . Java Design Patterns Memento
+// Original copy of this content taken from http://www.fluffycat.com/Java-Design-Patterns/ in 2010
+// Original Author: Larry Truett
+// Privacy Policy at http://www.fluffycat.com/Privacy-Policy/
+Java Design Patterns Memento
+Memento (aka Token) Overview
+One object stores another objects state.
+DvdDetails.java - the Originator
+(the class to be backed up)
+Contains the inner class DvdMemento - the Memento
+
+import java.util.ArrayList;
+import java.util.ListIterator;
+
+//the originator
+public class DvdDetails {  
+   private String titleName;  
+   private ArrayList stars;
+   private char encodingRegion;
+    
+   public DvdDetails(String titleName, 
+                     ArrayList stars, 
+                     char encodingRegion) {
+       this.setTitleName(titleName);
+       this.setStars(stars);
+       this.setEncodingRegion(encodingRegion);
+   }    
+  
+   private void setTitleName(String titleNameIn) {
+       this.titleName = titleNameIn;
+   }
+   private String getTitleName() {
+       return this.titleName;
+   }
+   
+   private void setStars(ArrayList starsIn) {
+       this.stars = starsIn;
+   }
+   public void addStar(String starIn) {
+       stars.add(starIn);
+   }
+   private ArrayList getStars() {
+       return this.stars;
+   }
+   private static String getStarsString(ArrayList starsIn) {
+       int count = 0;
+       StringBuffer sb = new StringBuffer();
+       ListIterator starsIterator = starsIn.listIterator();
+       while (starsIterator.hasNext()) {
+           if (count++ > 0) {sb.append(", ");} 
+           sb.append((String) starsIterator.next());
+       }
+       return sb.toString();
+   } 
+   
+   private void setEncodingRegion(char encodingRegionIn) {
+      this.encodingRegion = encodingRegionIn;
+   }
+   private char getEncodingRegion() {
+       return this.encodingRegion;
+   }  
+   
+   public String formatDvdDetails() {
+       return ("DVD: " + this.getTitleName() + 
+               ", starring: " + getStarsString(getStars()) + 
+               ", encoding region: " + this.getEncodingRegion()); 
+   }   
+   
+   //sets current state to what DvdMemento has
+   public void setDvdMemento(DvdMemento dvdMementoIn) {
+       dvdMementoIn.getState();
+   }
+   //save current state of DvdDetails in a DvdMemento
+   public DvdMemento createDvdMemento() {
+       DvdMemento mementoToReturn = new DvdMemento();
+       mementoToReturn.setState();
+       return mementoToReturn;
+   }
+   
+   //an inner class for the memento
+   class DvdMemento {
+       private String mementoTitleName;  
+       private ArrayList mementoStars;
+       private char mementoEncodingRegion;       
+       
+       //sets DvdMementoData to DvdDetails
+       public void setState() {
+            //Because String are immutable we can just set 
+            //  the DvdMemento Strings to = the DvdDetail Strings.
+            mementoTitleName = getTitleName();
+            mementoEncodingRegion = getEncodingRegion();
+            //However, ArrayLists are not immutable,
+            //  so we need to instantiate a new ArrayList. 
+            mementoStars = new ArrayList(getStars());
+       } 
+       //resets DvdDetails to DvdMementoData
+       public void getState() {
+            setTitleName(mementoTitleName);
+            setStars(mementoStars);
+            setEncodingRegion(mementoEncodingRegion);  
+       }    
+       
+       //only useful for testing
+       public String showMemento() {
+            return ("DVD: " + mementoTitleName + 
+                    ", starring: " + getStarsString(mementoStars) + 
+                    ", encoding region: " + mementoEncodingRegion); 
+       }      
+   }
+}
+
+TestDvdMemento.java - testing the Memento - contains a Caretaker object
+
+import java.util.ArrayList;
+
+public class TestDvdMemento {
+   public static void main(String[] args) {
+       DvdDetails.DvdMemento dvdMementoCaretaker;  
+       //the Caretaker
+       
+       ArrayList stars = new ArrayList();
+       stars.add(new String("Guy Pearce"));
+       DvdDetails dvdDetails = 
+         new DvdDetails("Memento", stars, '1'); 
+       dvdMementoCaretaker = dvdDetails.createDvdMemento();
+       System.out.println("as first instantiated");
+       System.out.println(dvdDetails.formatDvdDetails());
+       
+       System.out.println("");       
+       dvdDetails.addStar("edskdzkvdfb");  
+       //oops - Cappuccino on the keyboard!
+       System.out.println("after star added incorrectly");
+       System.out.println(dvdDetails.formatDvdDetails());
+       
+       System.out.println("");
+       System.out.println("the memento");
+       System.out.println(dvdMementoCaretaker.showMemento());
+       //show the memento
+       
+       System.out.println("");
+       dvdDetails.setDvdMemento(dvdMementoCaretaker);
+       //back off changes
+       System.out.println(
+         "after DvdMemento state is restored to DvdDetails");
+       System.out.println(dvdDetails.formatDvdDetails());
+   }
+}      
+
+Test Results
+
+as first instantiated
+DVD: Memento, starring: Guy Pearce, encoding region: 1
+
+
+after title set incorrectly
+DVD: Memento, starring: Guy Pearce, edskdzkvdfb, encoding region: 1
+
+
+the memento
+DVD: Memento, starring: Guy Pearce, encoding region: 1
+
+
+after DvdMemento state is restored to DvdDetails
+DVD: Memento, starring: Guy Pearce, encoding region: 1
+
+
+
+**************************
+
+
+
+Java Design Patterns Observer
+// Original copy of this content taken from http://www.fluffycat.com/Java-Design-Patterns/ in 2010
+// Original Author: Larry Truett
+// Privacy Policy at http://www.fluffycat.com/Privacy-Policy/
+Observer (aka Dependents & Publish-Subscribe) Overview
+An object notifies other object(s) if it changes.
+DvdReleaseByCategory.java - the subject
+(the class which is observed)
+
+import java.util.ArrayList;
+import java.util.ListIterator;
+
+public class DvdReleaseByCategory {  
+   String categoryName; 
+   ArrayList subscriberList = new ArrayList();
+   ArrayList dvdReleaseList = new ArrayList();   
+   
+   public DvdReleaseByCategory(String categoryNameIn) {
+       categoryName = categoryNameIn;
+   }
+   
+   public String getCategoryName() {
+       return this.categoryName;
+   }
+   
+   public boolean addSubscriber(DvdSubscriber dvdSubscriber) {
+       return subscriberList.add(dvdSubscriber);
+   }
+   
+   public boolean removeSubscriber(DvdSubscriber dvdSubscriber) {
+       ListIterator listIterator = subscriberList.listIterator();
+       while (listIterator.hasNext()) {
+           if (dvdSubscriber == (DvdSubscriber)(listIterator.next())) {
+               listIterator.remove();
+               return true;
+           }
+       }
+       return false;
+   }
+   
+   public void newDvdRelease(DvdRelease dvdRelease) {
+       dvdReleaseList.add(dvdRelease);
+       notifySubscribersOfNewDvd(dvdRelease);
+   }
+   
+   public void updateDvd(DvdRelease dvdRelease) {
+       boolean dvdUpdated = false;
+       DvdRelease tempDvdRelease;
+       ListIterator listIterator = dvdReleaseList.listIterator();
+       while (listIterator.hasNext()) {
+           tempDvdRelease = (DvdRelease)listIterator.next();
+           if (dvdRelease.getSerialNumber().
+                 equals(tempDvdRelease.getSerialNumber())) {
+               listIterator.remove();
+               listIterator.add(dvdRelease);
+               dvdUpdated = true;
+               break;
+           }
+       }
+       if (dvdUpdated == true) {
+           notifySubscribersOfUpdate(dvdRelease);
+       } else { 
+           this.newDvdRelease(dvdRelease);
+       }
+   }
+   
+   private void notifySubscribersOfNewDvd(DvdRelease dvdRelease) {
+       ListIterator listIterator = subscriberList.listIterator();
+       while (listIterator.hasNext()) {
+           ((DvdSubscriber)(listIterator.next())).
+               newDvdRelease(dvdRelease, this.getCategoryName());
+       }
+   }
+
+   private void notifySubscribersOfUpdate(DvdRelease dvdRelease) {
+       ListIterator listIterator = subscriberList.listIterator();
+       while (listIterator.hasNext()) {
+           ((DvdSubscriber)(listIterator.next())).
+               updateDvdRelease(dvdRelease, this.getCategoryName() );
+       }       
+   }
+}
+
+DvdSubscriber.java - the observer
+
+public class DvdSubscriber {  
+   private String subscriberName; 
+   
+   public DvdSubscriber(String subscriberNameIn) {
+       this.subscriberName = subscriberNameIn;
+   }
+   
+   public String getSubscriberName() {
+       return this.subscriberName;
+   }
+   
+   public void newDvdRelease(DvdRelease newDvdRelease, 
+                             String subscriptionListName) {
+       System.out.println("");
+       System.out.println("Hello " + this.getSubscriberName() + 
+                          ", subscriber to the " + 
+                             subscriptionListName + 
+                          " DVD release list.");
+       System.out.println("The new Dvd " + 
+                            newDvdRelease.getDvdName() + 
+                          " will be released on " + 
+                            newDvdRelease.getDvdReleaseMonth() + "/" + 
+                            newDvdRelease.getDvdReleaseDay() + "/" + 
+                            newDvdRelease.getDvdReleaseYear() + ".");
+   }
+   
+   public void updateDvdRelease(DvdRelease newDvdRelease, 
+                                String subscriptionListName) {
+       System.out.println("");
+       System.out.println("Hello " + this.getSubscriberName() + 
+                          ", subscriber to the " + 
+                            subscriptionListName +
+                          " DVD release list.");
+       System.out.println(
+         "The following DVDs release has been revised: " + 
+         newDvdRelease.getDvdName() + " will be released on " + 
+         newDvdRelease.getDvdReleaseMonth() + "/" + 
+         newDvdRelease.getDvdReleaseDay() + "/" + 
+         newDvdRelease.getDvdReleaseYear() + ".");
+   }   
+}
+
+DvdRelease.java - a helper class
+
+public class DvdRelease {  
+   private String serialNumber;
+   private String dvdName; 
+   private int dvdReleaseYear;
+   private int dvdReleaseMonth;
+   private int dvdReleaseDay;
+
+   
+   public DvdRelease(String serialNumber, 
+                     String dvdName, 
+                     int dvdReleaseYear, 
+                     int dvdReleaseMonth, 
+                     int dvdReleaseDay) {
+       setSerialNumber(serialNumber);
+       setDvdName(dvdName);
+       setDvdReleaseYear(dvdReleaseYear);
+       setDvdReleaseMonth(dvdReleaseMonth);
+       setDvdReleaseDay(dvdReleaseDay);       
+   }
+   
+   public void updateDvdRelease(String serialNumber, 
+                                String dvdName, 
+                                int dvdReleaseYear, 
+                                int dvdReleaseMonth, 
+                                int dvdReleaseDay) {
+       setSerialNumber(serialNumber);
+       setDvdName(dvdName);
+       setDvdReleaseYear(dvdReleaseYear);
+       setDvdReleaseMonth(dvdReleaseMonth);
+       setDvdReleaseDay(dvdReleaseDay);        
+   }   
+   
+   public void updateDvdReleaseDate(int dvdReleaseYear, 
+                                    int dvdReleaseMonth, 
+                                    int dvdReleaseDay) {
+       setDvdReleaseYear(dvdReleaseYear);
+       setDvdReleaseMonth(dvdReleaseMonth);
+       setDvdReleaseDay(dvdReleaseDay);        
+   }   
+   
+   public void setSerialNumber(String serialNumberIn) {
+       this.serialNumber = serialNumberIn;
+   }
+   public String getSerialNumber() {
+       return this.serialNumber;
+   }
+   
+   public void setDvdName(String dvdNameIn) {
+       this.dvdName = dvdNameIn;
+   }
+   public String getDvdName() {
+       return this.dvdName;
+   }
+   
+   public void setDvdReleaseYear(int dvdReleaseYearIn) {
+       this.dvdReleaseYear = dvdReleaseYearIn;
+   }
+   public int getDvdReleaseYear() {
+       return this.dvdReleaseYear;
+   }
+   
+   public void setDvdReleaseMonth(int dvdReleaseMonthIn) {
+       this.dvdReleaseMonth = dvdReleaseMonthIn;
+   }
+   public int getDvdReleaseMonth() {
+       return this.dvdReleaseMonth;
+   }
+   
+   public void setDvdReleaseDay(int dvdReleaseDayIn) {
+       this.dvdReleaseDay = dvdReleaseDayIn;
+   }
+   public int getDvdReleaseDay() {
+       return this.dvdReleaseDay;
+   }
+}
+
+TestDvdObserver.java - testing the observer
+
+class TestDvdObserver {
+    
+   public static void main(String[] args) {
+       DvdReleaseByCategory btvs = 
+           new DvdReleaseByCategory("Buffy the Vampire Slayer");
+       DvdReleaseByCategory simpsons = 
+           new DvdReleaseByCategory("The Simpsons");  
+       DvdReleaseByCategory sopranos = 
+           new DvdReleaseByCategory("The Sopranos");
+       DvdReleaseByCategory xfiles = 
+           new DvdReleaseByCategory("The X-Files");
+       
+       DvdSubscriber jsopra = new DvdSubscriber("Junior Soprano");
+       DvdSubscriber msimps = new DvdSubscriber("Maggie Simpson");
+       DvdSubscriber rgiles = new DvdSubscriber("Rupert Giles");
+       DvdSubscriber smulde = new DvdSubscriber("Samantha Mulder");
+       DvdSubscriber wrosen = new DvdSubscriber("Willow Rosenberg");
+
+       btvs.addSubscriber(rgiles);
+       btvs.addSubscriber(wrosen);  
+       simpsons.addSubscriber(msimps);
+       sopranos.addSubscriber(jsopra);
+       xfiles.addSubscriber(smulde);
+       xfiles.addSubscriber(wrosen);
+       
+       DvdRelease btvsS2 = 
+         new DvdRelease("DVDFOXBTVSS20", 
+                        "Buffy The Vampire Slayer Season 2",
+                         2002, 06, 11);
+       DvdRelease simpS2 = 
+         new DvdRelease("DVDFOXSIMPSO2", 
+                        "The Simpsons Season 2",
+                         2002, 07,  9);
+       DvdRelease soprS2 = 
+         new DvdRelease("DVDHBOSOPRAS2", 
+                        "The Sopranos Season 2",
+                         2001, 11,  6);
+       DvdRelease xfilS5 = 
+         new DvdRelease("DVDFOXXFILES5", 
+                        "The X-Files Season 5",
+                         2002, 04,  1);
+       
+       btvs.newDvdRelease(btvsS2);
+       simpsons.newDvdRelease(simpS2);
+       sopranos.newDvdRelease(soprS2);
+       xfiles.newDvdRelease(xfilS5);
+       
+       xfiles.removeSubscriber(wrosen);
+       
+       xfilS5.updateDvdReleaseDate(2002, 5, 14);
+       xfiles.updateDvd(xfilS5);
+   }
+}      
+
+Test Results
+
+Hello Rupert Giles, 
+  subscriber to the Buffy the Vampire Slayer DVD release list.
+The new Dvd Buffy The Vampire Slayer Season 2 
+  will be released on 6/11/2002.
+
+
+Hello Willow Rosenberg, 
+  subscriber to the Buffy the Vampire Slayer DVD release list.
+The new Dvd Buffy The Vampire Slayer Season 2 
+  will be released on 6/11/2002.
+
+
+Hello Maggie Simpson, 
+  subscriber to the The Simpsons DVD release list.
+The new Dvd The Simpsons Season 2 
+  will be released on 7/9/2002.
+
+
+Hello Junior Soprano, 
+  subscriber to the The Sopranos DVD release list.
+The new Dvd The Sopranos Season 2 
+  will be released on 11/6/2001.
+
+
+Hello Samantha Mulder, 
+  subscriber to the The X-Files DVD release list.
+The new Dvd The X-Files Season 5 
+  will be released on 4/1/2002.
+
+
+Hello Willow Rosenberg, 
+  subscriber to the The X-Files DVD release list.
+The new Dvd The X-Files Season 5 
+  will be released on 4/1/2002.
+
+
+Hello Samantha Mulder, 
+  subscriber to the The X-Files DVD release list.
+The following DVDs release has been revised: 
+The X-Files Season 5 will be released on 5/14/2002.
+
+
+
+***********************************************
+
+
+State
+// Original copy of this content taken from http://www.fluffycat.com/Java-Design-Patterns/ in 2010
+// Original Author: Larry Truett
+// Privacy Policy at http://www.fluffycat.com/Privacy-Policy/
+An object appears to change its' class when the class it passes calls through to switches itself for a related class.
+DvdStateContext.java - the Context
+
+public class DvdStateContext {  
+   private DvdStateName dvdStateName; 
+    
+   public DvdStateContext() {
+       setDvdStateName(new DvdStateNameStars());  
+       //start with stars
+   }
+   
+   public void setDvdStateName(DvdStateName dvdStateNameIn) {
+       this.dvdStateName = dvdStateNameIn;
+   }
+   
+   public void showName(String nameIn) {
+       this.dvdStateName.showName(this, nameIn);
+   }
+}
+
+DvdStateName.java - the State interface
+
+public interface DvdStateName {  
+   public void showName(DvdStateContext dvdStateContext, 
+                        String nameIn);  
+}
+
+DvdStateNameExclaim.java - one of two Concrete States
+
+public class DvdStateNameExclaim implements DvdStateName {  
+    public DvdStateNameExclaim() {}
+    
+    public void showName(DvdStateContext dvdStateContext, 
+                         String nameIn) {
+         System.out.println(nameIn.replace(' ','!'));
+         //show exclaim only once, switch back to stars
+         dvdStateContext.setDvdStateName(new DvdStateNameStars());
+    }  
+}
+
+DvdStateNameStars.java - two of two Concrete States
+
+public class DvdStateNameStars implements DvdStateName {  
+    int starCount;
+    
+    public DvdStateNameStars() {
+        starCount = 0;
+    }
+    
+    public void showName(DvdStateContext dvdStateContext, 
+                         String nameIn) {
+         System.out.println(nameIn.replace(' ','*'));
+         // show stars twice, switch to exclamation point
+         if (++starCount > 1) {
+             dvdStateContext.setDvdStateName(
+               new DvdStateNameExclaim());
+         }       
+    }  
+}
+
+TestState.java - testing the State
+
+class TestState {
+   public static void main(String[] args) 
+   {
+       DvdStateContext stateContext = new DvdStateContext();
+       stateContext.showName(
+         "Sponge Bob Squarepants - "+
+           "Nautical Nonsense and Sponge Buddies");
+       stateContext.showName(
+         "Jay and Silent Bob Strike Back");  
+       stateContext.showName(
+         "Buffy The Vampire Slayer Season 2");
+       stateContext.showName(
+         "The Sopranos Season 2");
+   }
+}      
+
+Test Results
+
+Sponge*Bob*Squarepants*-*Nautical*Nonsense*and*Sponge*Buddies
+Jay*and*Silent*Bob*Strike*Back
+Buffy!The!Vampire!Slayer!Season!2
+The*Sopranos*Season*2
+
+
+
+********************************************************
+
+Java Design Patterns Strategy
+// Original copy of this content taken from http://www.fluffycat.com/Java-Design-Patterns/ in 2010
+// Original Author: Larry Truett
+// Privacy Policy at http://www.fluffycat.com/Privacy-Policy/
+Strategy (aka Policy) Overview
+An object controls which of a family of methods is called. Each method is in its' own class that extends a common base class.
+Still reading? Save your time, watch the video lessons!
+Video tutorial on design patterns
+DvdNameStrategy.java - the abstract strategy
+
+public abstract class DvdNameStrategy {   
+   public abstract String 
+     formatDvdName(String dvdName, char charIn);
+}
+
+DvdNameAllCapStrategy.java - one of three concrete strategies
+
+public class DvdNameAllCapStrategy extends DvdNameStrategy {
+   public String formatDvdName(String dvdName, char charIn) {
+       return dvdName.toUpperCase();
+   }
+}
+
+DvdNameTheAtEndStrategy.java - two of three concrete strategies
+
+public class DvdNameTheAtEndStrategy extends DvdNameStrategy {
+   public String formatDvdName(String dvdName, char charIn) {
+       if (dvdName.startsWith("The ")) {
+           return new String(dvdName.substring(4, 
+             (dvdName.length())) + ", The");
+       }
+       if (dvdName.startsWith("THE ")) {
+           return new String(dvdName.substring(4, 
+             (dvdName.length())) + ", THE");
+       }       
+       if (dvdName.startsWith("the ")) {
+           return new String(dvdName.substring(4, 
+             (dvdName.length())) + ", the");
+       }         
+       return dvdName;
+   }
+}
+
+DvdNameReplaceSpacesStrategy.java - three of three concrete strategies
+
+public class DvdNameReplaceSpacesStrategy extends DvdNameStrategy {
+   public String formatDvdName(String dvdName, char charIn) {
+       return dvdName.replace(' ', charIn);
+   }
+}
+
+DvdNameContext.java - the context
+
+public class DvdNameContext {
+   private DvdNameStrategy dvdNameStrategy; 
+   
+   public DvdNameContext(char strategyTypeIn) {
+       switch (strategyTypeIn) {
+           case 'C' : 
+             this.dvdNameStrategy = new DvdNameAllCapStrategy(); 
+             break;
+           case 'E' : 
+             this.dvdNameStrategy = new DvdNameTheAtEndStrategy(); 
+             break;
+           case 'S' : 
+             this.dvdNameStrategy = 
+               new DvdNameReplaceSpacesStrategy();
+             break;
+           default  : 
+             this.dvdNameStrategy = new DvdNameTheAtEndStrategy();
+       }     
+   }  
+   
+   public String[] formatDvdNames(String[] namesIn) {
+       return this.formatDvdNames(namesIn, ' ');
+   }    
+   
+   public String[] formatDvdNames(String[] namesIn, char replacementIn) {
+       String[] namesOut = new String[namesIn.length];
+       for (int i = 0; i < namesIn.length; i++) {
+           namesOut[i] = 
+             dvdNameStrategy.formatDvdName(namesIn[i], replacementIn);
+           System.out.println(
+             "Dvd name before formatting: " + namesIn[i]);
+           System.out.println(
+             "Dvd name after formatting:  " + namesOut[i]);
+           System.out.println("==========================");
+       }
+       return namesOut;
+   }
+}
+
+TestDvdStrategy.java - testing the strategy
+
+class TestDvdStrategy {            
+    
+   public static void main(String[] args) {
+       DvdNameContext allCapContext = 
+           new DvdNameContext('C');
+       DvdNameContext theEndContext = 
+           new DvdNameContext('E');
+       DvdNameContext spacesContext = 
+           new DvdNameContext('S');
+       
+       String dvdNames[] = new String[3];
+       dvdNames[0] = "Jay and Silent Bob Strike Back";
+       dvdNames[1] = "The Fast and the Furious";
+       dvdNames[2] = "The Others";
+       
+       char replaceChar = '*';       
+       
+       System.out.println("Testing formatting with all caps");
+       String[] dvdCapNames = 
+           allCapContext.formatDvdNames(dvdNames);
+       
+       System.out.println(" ");         
+       System.out.println(
+           "Testing formatting with beginning the at end");
+       String[] dvdEndNames = 
+           theEndContext.formatDvdNames(dvdNames);     
+       
+       System.out.println(" ");       
+       System.out.println(" Testing formatting with all spaces replaced with " + 
+           replaceChar);
+       String[] dvdSpcNames = 
+           spacesContext.formatDvdNames(dvdNames, replaceChar);
+   }
+}      
+
+Test Results
+
+Testing formatting with all caps
+Dvd name before formatting: Jay and Silent Bob Strike Back
+Dvd name after formatting:  JAY AND SILENT BOB STRIKE BACK
+==========================
+Dvd name before formatting: The Fast and the Furious
+Dvd name after formatting:  THE FAST AND THE FURIOUS
+==========================
+Dvd name before formatting: The Others
+Dvd name after formatting:  THE OTHERS
+==========================
+ 
+Testing formatting with beginning the at end
+Dvd name before formatting: Jay and Silent Bob Strike Back
+Dvd name after formatting:  Jay and Silent Bob Strike Back
+==========================
+Dvd name before formatting: The Fast and the Furious
+Dvd name after formatting:  Fast and the Furious, The
+==========================
+Dvd name before formatting: The Others
+Dvd name after formatting:  Others, The
+==========================
+ 
+Testing formatting with all spaces replaced with *
+Dvd name before formatting: Jay and Silent Bob Strike Back
+Dvd name after formatting:  Jay*and*Silent*Bob*Strike*Back
+==========================
+Dvd name before formatting: The Fast and the Furious
+Dvd name after formatting:  The*Fast*and*the*Furious
+==========================
+Dvd name before formatting: The Others
+Dvd name after formatting:  The*Others
+==========================
+
+
+
+*****************************************************
+
+
+Java Design Patterns Template Method
+// Original copy of this content taken from http://www.fluffycat.com/Java-Design-Patterns/ in 2010
+// Original Author: Larry Truett
+// Privacy Policy at http://www.fluffycat.com/Privacy-Policy/
+Template (aka "Don't call us, we'll call you") Overview
+An abstract class defines various methods, and has one non-overridden method which calls the various methods.
+Still reading? Save your time, watch the video lessons!
+Video tutorial on design patterns
+TitleInfo.java - the abstract Template
+
+public abstract class TitleInfo {  
+   private String titleName;
+   
+   //the "template method" - 
+   //  calls the concrete class methods, is not overridden
+   public final String ProcessTitleInfo() {
+       StringBuffer titleInfo = new StringBuffer();
+
+       titleInfo.append(this.getTitleBlurb());
+       titleInfo.append(this.getDvdEncodingRegionInfo());
+       
+       return titleInfo.toString();
+   }  
+   
+   //the following 2 methods are "concrete abstract class methods"
+   public final void setTitleName(String titleNameIn) {
+       this.titleName = titleNameIn;
+   }
+   public final String getTitleName() {
+       return this.titleName;
+   }
+   
+   //this is a "primitive operation", 
+   //  and must be overridden in the concrete templates
+   public abstract String getTitleBlurb();
+   
+   //this is a "hook operation", which may be overridden, 
+   //hook operations usually do nothing if not overridden 
+   public String getDvdEncodingRegionInfo() {
+       return " ";
+   }
+}
+
+DvdTitleInfo.java - one of three concrete templates
+
+public class DvdTitleInfo extends TitleInfo {  
+   private String star;
+   private char encodingRegion;
+    
+   public DvdTitleInfo(String titleName, 
+                       String star, 
+                       char encodingRegion) {
+       this.setTitleName(titleName);
+       this.setStar(star);
+       this.setEncodingRegion(encodingRegion);
+   }    
+   
+   public void setStar(String starIn) {
+       this.star = starIn;
+   }
+   public String getStar() {
+       return this.star;
+   }
+   public void setEncodingRegion(char encodingRegionIn) {
+       this.encodingRegion = encodingRegionIn;
+   }
+   public char getEncodingRegion() {
+       return this.encodingRegion;
+   }
+   
+   public String getTitleBlurb() {
+       return ("DVD: " + this.getTitleName() + 
+               ", starring " + this.getStar());
+   }
+   
+   public String getDvdEncodingRegionInfo() {
+       return (", encoding region: " + this.getEncodingRegion());
+   }
+}
+
+BookTitleInfo.java - two of three concrete templates
+
+public class BookTitleInfo extends TitleInfo {  
+   private String author;
+    
+   public BookTitleInfo(String titleName, String author) {
+       this.setTitleName(titleName);
+       this.setAuthor(author);
+   }    
+   
+   public void setAuthor(String authorIn) {this.author = authorIn;}
+   public String getAuthor() {return this.author;}   
+   
+   public String getTitleBlurb() {
+       return ("Book: " + this.getTitleName() + 
+               ", Author: " + this.getAuthor());
+   }
+}
+
+GameTitleInfo.java - three of three concrete templates
+
+public class GameTitleInfo extends TitleInfo {  
+   public GameTitleInfo(String titleName) {
+       this.setTitleName(titleName);
+   }     
+   
+   public String getTitleBlurb() {
+       return ("Game: " + this.getTitleName());
+   }
+}
+
+TestTitleInfoTemplate.java - testing the Template
+
+class TestTitleInfoTemplate {
+    
+   public static void main(String[] args) {
+       TitleInfo bladeRunner = 
+         new DvdTitleInfo("Blade Runner", 
+                          "Harrison Ford", '1'); 
+       TitleInfo electricSheep = 
+         new BookTitleInfo("Do Androids Dream of Electric Sheep?", 
+                           "Phillip K. Dick");        
+       TitleInfo sheepRaider = 
+         new GameTitleInfo("Sheep Raider");
+       
+       System.out.println(" ");       
+       System.out.println("Testing bladeRunner   " +   
+                           bladeRunner.ProcessTitleInfo());
+       System.out.println("Testing electricSheep " + 
+                           electricSheep.ProcessTitleInfo());
+       System.out.println("Testing sheepRaider   " +   
+                           sheepRaider.ProcessTitleInfo());
+   }
+}
+
+Test Results
+
+Testing bladeRunner DVD: 
+Blade Runner, starring Harrison Ford, encoding region: 1
+Testing electricSheep Book: 
+Do Androids Dream of Electric Sheep?, Author: Phillip K. Dick 
+Testing sheepRaider Game: 
+Sheep Raider 
+
+
+
+
+****************************************************
+
+
+
+
+
+
+
+Java Design Patterns Visitor
+// Original copy of this content taken from http://www.fluffycat.com/Java-Design-Patterns/ in 2010
+// Original Author: Larry Truett
+// Privacy Policy at http://www.fluffycat.com/Privacy-Policy/
+Visitor (uses double-dispatch) Overview
+One or more related classes have the same method, which calls a method specific for themselves in another class.
+Still reading? Save your time, watch the video lessons!
+Video tutorial on design patterns
+TitleBlurbVisitor.java - the abstract Visitor
+
+public abstract class TitleBlurbVisitor {
+   String titleBlurb;
+   public void setTitleBlurb(String blurbIn) {
+       this.titleBlurb = blurbIn;
+   }
+   public String getTitleBlurb() {
+       return this.titleBlurb;
+   }
+    
+   public abstract void visit(BookInfo bookInfo);
+   public abstract void visit(DvdInfo dvdInfo);   
+   public abstract void visit(GameInfo gameInfo);
+}   
+
+TitleLongBlurbVisitor.java - one of two concrete Visitors
+
+public class TitleLongBlurbVisitor extends TitleBlurbVisitor {
+   public void visit(BookInfo bookInfo) {
+       this.setTitleBlurb("LB-Book: " + 
+                           bookInfo.getTitleName() + 
+                           ", Author: " + 
+                           bookInfo.getAuthor());
+   }   
+   
+   public void visit(DvdInfo dvdInfo) {
+       this.setTitleBlurb("LB-DVD: " + 
+                           dvdInfo.getTitleName() + 
+                           ", starring " + 
+                           dvdInfo.getStar() + 
+                           ", encoding region: " + 
+                           dvdInfo.getEncodingRegion());
+   }   
+   
+   public void visit(GameInfo gameInfo) {
+       this.setTitleBlurb("LB-Game: " + 
+                           gameInfo.getTitleName());
+   }   
+}   
+
+TitleShortBlurbVisitor.java - two of two concrete Visitors
+
+public class TitleShortBlurbVisitor extends TitleBlurbVisitor {
+   public void visit(BookInfo bookInfo) {
+       this.setTitleBlurb("SB-Book: " + bookInfo.getTitleName());
+   }   
+   
+   public void visit(DvdInfo dvdInfo) {
+       this.setTitleBlurb("SB-DVD: " + dvdInfo.getTitleName());
+   }
+   
+   public void visit(GameInfo gameInfo) {
+       this.setTitleBlurb("SB-Game: " + gameInfo.getTitleName());
+   }
+}
+
+AbstractTitleInfo.java - the abstract Visitee
+
+public abstract class AbstractTitleInfo {  
+   private String titleName;    
+   public final void setTitleName(String titleNameIn) {
+       this.titleName = titleNameIn;
+   }
+   public final String getTitleName() {
+       return this.titleName;
+   }
+    
+   public abstract void accept(TitleBlurbVisitor titleBlurbVisitor);
+}
+
+BookInfo.java - one of three concrete Visitees
+
+public class BookInfo extends AbstractTitleInfo {  
+   private String author;
+    
+   public BookInfo(String titleName, String author) {
+       this.setTitleName(titleName);
+       this.setAuthor(author);
+   }    
+   
+   public void setAuthor(String authorIn) {
+       this.author = authorIn;
+   }
+   public String getAuthor() {
+       return this.author;
+   }
+   
+   public void accept(TitleBlurbVisitor titleBlurbVisitor) {
+       titleBlurbVisitor.visit(this);
+   }
+}
+
+DvdInfo.java - two of three concrete Visitees
+
+public class DvdInfo extends AbstractTitleInfo {  
+   private String star;
+   private char encodingRegion;
+    
+   public DvdInfo(String titleName, 
+                  String star, 
+                  char encodingRegion) {
+       this.setTitleName(titleName);
+       this.setStar(star);
+       this.setEncodingRegion(encodingRegion);
+   }    
+   
+   public void setStar(String starIn) {
+       this.star = starIn;
+   }
+   public String getStar() {
+       return this.star;
+   }
+   public void setEncodingRegion(char encodingRegionIn) {
+       this.encodingRegion = encodingRegionIn;
+   }
+   public char getEncodingRegion() {
+       return this.encodingRegion;
+   }
+   
+   public void accept(TitleBlurbVisitor titleBlurbVisitor) {
+       titleBlurbVisitor.visit(this);
+   } 
+}
+
+GameInfo.java - three of three concrete Visitees
+
+public class GameInfo extends AbstractTitleInfo {  
+   public GameInfo(String titleName) {
+       this.setTitleName(titleName);
+   }    
+   
+   public void accept(TitleBlurbVisitor titleBlurbVisitor) {
+       titleBlurbVisitor.visit(this);
+   }
+}
+
+TestTitleVisitor.java - testing the Visitor
+
+class TestTitleVisitor {
+   public static void main(String[] args) {
+       AbstractTitleInfo bladeRunner = 
+         new DvdInfo("Blade Runner", "Harrison Ford", '1');
+       AbstractTitleInfo electricSheep = 
+         new BookInfo("Do Androids Dream of Electric Sheep?", 
+                      "Phillip K. Dick");
+       AbstractTitleInfo sheepRaider = 
+         new GameInfo("Sheep Raider");
+       
+       TitleBlurbVisitor titleLongBlurbVisitor = 
+         new TitleLongBlurbVisitor();
+       
+       System.out.println("Long Blurbs:");     
+       bladeRunner.accept(titleLongBlurbVisitor);
+       System.out.println("Testing bladeRunner   " + 
+                           titleLongBlurbVisitor.getTitleBlurb());
+       electricSheep.accept(titleLongBlurbVisitor);
+       System.out.println("Testing electricSheep " + 
+                           titleLongBlurbVisitor.getTitleBlurb());
+       sheepRaider.accept(titleLongBlurbVisitor);
+       System.out.println("Testing sheepRaider   " + 
+                           titleLongBlurbVisitor.getTitleBlurb());
+       
+       TitleBlurbVisitor titleShortBlurbVisitor = 
+         new TitleShortBlurbVisitor();
+       
+       System.out.println("Short Blurbs:");     
+       bladeRunner.accept(titleShortBlurbVisitor);
+       System.out.println("Testing bladeRunner   " + 
+         titleShortBlurbVisitor.getTitleBlurb());
+       electricSheep.accept(titleShortBlurbVisitor);
+       System.out.println("Testing electricSheep " + 
+         titleShortBlurbVisitor.getTitleBlurb());
+       sheepRaider.accept(titleShortBlurbVisitor);
+       System.out.println("Testing sheepRaider   " + 
+         titleShortBlurbVisitor.getTitleBlurb());
+   }
+}      
+
+Test Results
+
+Long Blurbs:
+
+
+Testing bladeRunner   LB-DVD: 
+  Blade Runner, starring Harrison Ford, encoding region: 1
+Testing electricSheep LB-Book: 
+  Do Androids Dream of Electric Sheep?, Author: Phillip K. Dick
+Testing sheepRaider   LB-Game: 
+  Sheep Raider
+
+
+Short Blurbs:
+Testing bladeRunner   SB-DVD: 
+  Blade Runner
+Testing electricSheep SB-Book: 
+  Do Androids Dream of Electric Sheep?
+Testing sheepRaider   SB-Game: 
+  Sheep Raider 
+
+
+
+
+
+
