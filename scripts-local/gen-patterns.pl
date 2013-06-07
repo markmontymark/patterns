@@ -10,46 +10,55 @@ my $doc_dir = 'doc';
 
 my $lang_cfg = 
 {
-	'c' => 
-	{
-		'suffix_prog' => '.c',
-		'suffix_class' => '.c',
-		'comment' => '//',
-	},
-	'cxx' => 
-	{
-		'suffix_prog' => '.cpp',
-		'suffix_class' => '.cpp',
-		'comment' => '//',
-	},
-	'coffeescript' => 
-	{
-		'suffix_prog' => '.coffee',
-		'suffix_class' => '.coffee',
-		'comment' => '#',
-	},
-	'javascript' => 
-	{
-		'suffix_prog' => '.js',
-		'suffix_class' => '.js',
-		'comment' => '//',
-	},
+
+#
+#
+	#'c' => 
+	#{
+		#'suffix_prog' => '.c',
+		#'suffix_class' => '.c',
+		#'comment' => '//',
+	#},
+	#'cxx' => 
+	#{
+		#'suffix_prog' => '.cpp',
+		#'suffix_class' => '.cpp',
+		#'comment' => '//',
+	#},
+	#'coffeescript' => 
+	#{
+		#'suffix_prog' => '.coffee',
+		#'suffix_class' => '.coffee',
+		#'comment' => '#',
+	#},
+	#'javascript' => 
+	#{
+		#'suffix_prog' => '.js',
+		#'suffix_class' => '.js',
+		#'comment' => '//',
+	#},
+
 	'perl' => 
 	{
+		'all_files_in_one' => 1,
 		'suffix_prog' => '.pl',
 		'suffix_class' => '.pm',
 		'comment' => '#',
 		'package_tmpl' => 'package --pkg--;',
 		'package_delim' => '::',
 	},
-	'java' => 
-	{
-		'suffix_prog' => '.java',
-		'suffix_class' => '.java',
-		'comment' => '//',
-		'package_tmpl' => 'package --pkg--;',
-		'package_delim' => '.',
-	}
+
+#
+	#'java' => 
+	#{
+		#'suffix_prog' => '.java',
+		#'suffix_class' => '.java',
+		#'comment' => '//',
+		#'package_tmpl' => 'package --pkg--;',
+		#'package_delim' => '.',
+	#}
+#
+
 };
 
 
@@ -144,18 +153,33 @@ sub make_lang_files
 				File::Slurp::write_file("$lang_src_dir/$pattern_dir/$pattern/README.md",$sample_files->{README});
 				my $klasses = $sample_files->{klasses};
 				my($klass_name,$klass_body);
-				while( ($klass_name,$klass_body) = each %$klasses)
+				if( (exists $per_lang_cfg->{all_files_in_one}) && $per_lang_cfg->{all_files_in_one} )
 				{
-					if( $add_pkg)
+					my $all_klasses = '';
+					while( ($klass_name,$klass_body) = each %$klasses)
 					{
 						my $tmp  = $pkg_tmpl;
-						$tmp =~ s/--pkg--/join($pkg_delim,($pattern_dir,$pattern))/e;
-						$klass_body = "$tmp\n\n$klass_body";
-					}
+						$tmp =~ s/--pkg--/join($pkg_delim,($pattern_dir,$pattern,$klass_name))/e;
+						$all_klasses .= "\n\n$tmp\n\n$klass_body\n\n";
+					}	
 					File::Slurp::write_file(
-						"$lang_src_dir/$pattern_dir/$pattern/$klass_name" .
-							(($klass_body =~ /void\s+main/s) ? $per_lang_cfg->{suffix_prog} : $per_lang_cfg->{suffix_class}) ,
-							$klass_body);
+						"$lang_src_dir/$pattern_dir/$pattern.pm", $all_klasses);
+				}
+				else
+				{
+					while( ($klass_name,$klass_body) = each %$klasses)
+					{
+						if( $add_pkg)
+						{
+							my $tmp  = $pkg_tmpl;
+							$tmp =~ s/--pkg--/join($pkg_delim,($pattern_dir,$pattern))/e;
+							$klass_body = "$tmp\n\n$klass_body";
+						}
+						File::Slurp::write_file(
+							"$lang_src_dir/$pattern_dir/$pattern/$klass_name" .
+								(($klass_body =~ /void\s+main/s) ? $per_lang_cfg->{suffix_prog} : $per_lang_cfg->{suffix_class}) ,
+								$klass_body);
+					}
 				}
 			}
 		}
