@@ -29,3 +29,12 @@ So, how to create something like a Java interface?  Here's what I'm doing for no
        # do other stuff
     }
 
+## Abstract Classes
+
+For abstract class support, I'll be using Class::Virtually::Abstract.   You can see use of this in the Behavorial Command pattern's CommandAbstract module - it looks like this:
+
+	package Patterns::Behavioral::Command::CommandAbstract;
+	use base qw(Class::Virtually::Abstract);
+	__PACKAGE__->virtual_methods(qw(
+		execute
+	));

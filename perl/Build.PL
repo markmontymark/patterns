@@ -10,6 +10,8 @@ my $builder = Module::Build->new(
     dist_version_from   => 'lib/Patterns.pm',
     build_requires => {
         'Test::More' => 0,
+        'Moo' => 0,
+        'Class::Virtually::Abstract' => 0,
     },
     requires => {
         'perl' => 5.006,
