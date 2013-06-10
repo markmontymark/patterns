@@ -4,7 +4,7 @@ package Patterns::Behavioral::Interpreter::DvdTitleActorExpression;
 
 use Moo;
 extends 'Patterns::Behavioral::Interpreter::DvdAbstractExpression';
-has title => (is=>'rw');
+has actor => (is=>'rw');
 sub BUILDARGS
 {
 	my($class,$actor) = @_;

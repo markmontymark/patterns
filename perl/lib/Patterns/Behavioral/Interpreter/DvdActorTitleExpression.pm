@@ -7,6 +7,7 @@ has title => (is => 'rw');
 sub BUILDARGS
 {
 	my($class,$title) = @_;
+	print "In __PACKAGE__ ctor args ",@_,"\n";
 	{
 		title => $title,
 	}
@@ -16,7 +17,8 @@ sub BUILDARGS
 sub interpret
 {
 	my($self,$ctx) = @_;
-   my $actorsForTitle = $ctx->getActorsForTitle( $self->title);
+	print "In __PACKAGE__, title ",$self->title,"\n";
+   my $actorsForTitle = $ctx->getActorsForTitle($self->title);
 	join ', ',@$actorsForTitle ## maybe need to map{$_->toString}?
 }
 

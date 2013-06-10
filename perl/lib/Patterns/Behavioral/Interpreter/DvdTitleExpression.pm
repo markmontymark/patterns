@@ -3,13 +3,7 @@
 package Patterns::Behavioral::Interpreter::DvdTitleExpression;
 use Moo;
 extends 'Patterns::Behavioral::Interpreter::DvdAbstractExpression';
-has title => ( is => 'ro' );
-sub BUILDARGS
-{
-   my($class,$title) = @_;
-   {title  => $title }
-}
-
+has kludge => ( is => 'ro' );
 
 sub interpret
 {

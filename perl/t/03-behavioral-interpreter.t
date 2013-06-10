@@ -1,7 +1,7 @@
 use v5.016;
 use strict;
 use warnings;
-use Test::More tests => 6;
+use Test::More tests => 4;
 
 
 use Patterns::Behavioral::Interpreter;
@@ -25,19 +25,9 @@ $ctx->addTitleAndActor( new Patterns::Behavioral::Interpreter::TitleAndActor("Tr
 
 my $client = new Patterns::Behavioral::Interpreter::DvdInterpreterClient( $ctx );
 
-say(
-	"interpreting show actor: " . 
-	$client->interpret( "show actor"));
-say(
-	"interpreting show actor for title : " . 
-	$client->interpret( "show actor for title "));
-say(
-	"interpreting show title: " . 
-	$client->interpret( "show title")); 
-say(
-	"interpreting show title for actor : " . 
-	$client->interpret( "show title for actor "));
-
-
+is($client->interpret( "show actor"),'Query Result: Ethan Hawke, Denzel Washington','Show actors test');
+is($client->interpret( "show actor for title"), 'Query Result: Ethan Hawke, Denzel Washington', "interpreting show actor for title "); 
+is($client->interpret( "show title"), 'Query Result: Caddy Shack, Training Day, Hamlet', "interpreting show title: ");
+is($client->interpret( "show title for actor") , 'Query Result: Caddy Shack, Training Day, Hamlet', "interpreting show title for actor : " );
 
 done_testing();

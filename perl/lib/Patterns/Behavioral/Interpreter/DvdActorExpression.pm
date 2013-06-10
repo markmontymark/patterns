@@ -4,13 +4,7 @@
 package Patterns::Behavioral::Interpreter::DvdActorExpression;
 use Moo;
 extends 'Patterns::Behavioral::Interpreter::DvdAbstractExpression';
-has actor => ( is => 'ro' );
-
-sub BUILDARGS
-{
-	my($class,$actor) = @_;
-	{ actor => $actor }
-}
+has kludge => ( is => 'ro' );
 
 sub interpret 
 {

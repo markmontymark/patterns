@@ -34,6 +34,8 @@ sub interpret
        
 	for my $currentToken (split /\s+/,$expression) 
 	{
+		next unless $currentToken;
+
 		if($currentToken eq "show") 
 		{
 			next; #//show in all queries, not really used
@@ -64,7 +66,7 @@ sub interpret
 		{
 			$forUsed = 1;
 		} 
-		elsif (($searchString == undef) && 
+		elsif ((not defined $searchString) && 
 			($subQuery ne ' ') && 
 			($currentToken =~ /^[<]/)) 
 		{
@@ -72,9 +74,10 @@ sub interpret
 			$searchStarted = 1;
 			$searchEnded = 1 if $currentToken =~ /[>]$/;
 		} 
-		elsif (($searchStarted) && (!$searchEnded)) 
+		elsif($searchStarted && 
+			!$searchEnded) 
 		{
-			$searchString = $searchString . " " . $currentToken;
+			$searchString .= ' ' . $currentToken;
 			$searchEnded = 1 if $currentToken =~ /[>]$/;
 		}
 	}
@@ -86,13 +89,13 @@ sub interpret
        
    if( $mainQuery eq 'A' )
 	{
-      $abstractExpression = ( $subQuery eq 'T' ) ?  
+      $abstractExpression = ( $subQuery eq 'T' && defined $searchString) ?  
 			new Patterns::Behavioral::Interpreter::DvdActorTitleExpression($searchString) :
 			new Patterns::Behavioral::Interpreter::DvdActorExpression();
 	}      
 	elsif( $mainQuery eq 'T')
 	{	
-		$abstractExpression = ($subQuery eq 'A' ) ?
+		$abstractExpression = ($subQuery eq 'A' && defined $searchString) ?
 			new Patterns::Behavioral::Interpreter::DvdTitleActorExpression($searchString) :
 			new Patterns::Behavioral::Interpreter::DvdTitleExpression();
 	}
