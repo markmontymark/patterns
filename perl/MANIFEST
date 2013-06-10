@@ -38,6 +38,10 @@ lib/Patterns/Behavioral/Observer/DvdRelease.pm
 lib/Patterns/Behavioral/Observer/DvdReleaseByCategory.pm
 lib/Patterns/Behavioral/Observer/DvdSubscriber.pm
 lib/Patterns/Behavioral/State.pm
+lib/Patterns/Behavioral/State/DvdStateContext.pm
+lib/Patterns/Behavioral/State/DvdStateName.pm
+lib/Patterns/Behavioral/State/DvdStateNameExclaim.pm
+lib/Patterns/Behavioral/State/DvdStateNameStars.pm
 lib/Patterns/Behavioral/Strategy.pm
 lib/Patterns/Behavioral/Template_Method.pm
 lib/Patterns/Behavioral/Visitor.pm
@@ -180,6 +184,7 @@ t/04-behavioral-iterator.t
 t/05-behavioral-mediator.t
 t/06-behavioral-memento.t
 t/07-behavioral-observer.t
+t/08-behavioral-state.t
 t/boilerplate.t
 t/manifest.t
 t/pod-coverage.t
