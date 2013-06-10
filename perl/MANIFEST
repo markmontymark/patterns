@@ -34,6 +34,9 @@ lib/Patterns/Behavioral/Memento.pm
 lib/Patterns/Behavioral/Memento/DvdDetails.pm
 lib/Patterns/Behavioral/Memento/DvdMemento.pm
 lib/Patterns/Behavioral/Observer.pm
+lib/Patterns/Behavioral/Observer/DvdRelease.pm
+lib/Patterns/Behavioral/Observer/DvdReleaseByCategory.pm
+lib/Patterns/Behavioral/Observer/DvdSubscriber.pm
 lib/Patterns/Behavioral/State.pm
 lib/Patterns/Behavioral/Strategy.pm
 lib/Patterns/Behavioral/Template_Method.pm
@@ -176,6 +179,7 @@ t/03-behavioral-interpreter.t
 t/04-behavioral-iterator.t
 t/05-behavioral-mediator.t
 t/06-behavioral-memento.t
+t/07-behavioral-observer.t
 t/boilerplate.t
 t/manifest.t
 t/pod-coverage.t
