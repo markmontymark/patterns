@@ -22,6 +22,9 @@ lib/Patterns/Behavioral/Interpreter/DvdTitleActorExpression.pm
 lib/Patterns/Behavioral/Interpreter/DvdTitleExpression.pm
 lib/Patterns/Behavioral/Interpreter/TitleAndActor.pm
 lib/Patterns/Behavioral/Iterator.pm
+lib/Patterns/Behavioral/Iterator/DvdList.pm
+lib/Patterns/Behavioral/Iterator/DvdListIterator.pm
+lib/Patterns/Behavioral/Iterator/IteratorInterface.pm
 lib/Patterns/Behavioral/Mediator.pm
 lib/Patterns/Behavioral/Memento.pm
 lib/Patterns/Behavioral/Observer.pm
@@ -164,6 +167,7 @@ t/00-load.t
 t/01-chain_of_responsibility.t
 t/02-behavioral-command.t
 t/03-behavioral-interpreter.t
+t/04-behavioral-iterator.t
 t/boilerplate.t
 t/manifest.t
 t/pod-coverage.t
