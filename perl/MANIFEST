@@ -43,6 +43,11 @@ lib/Patterns/Behavioral/State/DvdStateName.pm
 lib/Patterns/Behavioral/State/DvdStateNameExclaim.pm
 lib/Patterns/Behavioral/State/DvdStateNameStars.pm
 lib/Patterns/Behavioral/Strategy.pm
+lib/Patterns/Behavioral/Strategy/DvdNameAllCapStrategy.pm
+lib/Patterns/Behavioral/Strategy/DvdNameContext.pm
+lib/Patterns/Behavioral/Strategy/DvdNameReplaceSpacesStrategy.pm
+lib/Patterns/Behavioral/Strategy/DvdNameStrategy.pm
+lib/Patterns/Behavioral/Strategy/DvdNameTheAtEndStrategy.pm
 lib/Patterns/Behavioral/Template_Method.pm
 lib/Patterns/Behavioral/Visitor.pm
 lib/Patterns/Creational/Abstract_Factory.pm
@@ -185,6 +190,7 @@ t/05-behavioral-mediator.t
 t/06-behavioral-memento.t
 t/07-behavioral-observer.t
 t/08-behavioral-state.t
+t/09-behavioral-strategy.t
 t/boilerplate.t
 t/manifest.t
 t/pod-coverage.t
