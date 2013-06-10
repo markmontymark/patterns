@@ -13,6 +13,14 @@ lib/Patterns/Behavioral/Command/DvdCommandNameStarsOff.pm
 lib/Patterns/Behavioral/Command/DvdCommandNameStarsOn.pm
 lib/Patterns/Behavioral/Command/DvdName.pm
 lib/Patterns/Behavioral/Interpreter.pm
+lib/Patterns/Behavioral/Interpreter/DvdAbstractExpression.pm
+lib/Patterns/Behavioral/Interpreter/DvdActorExpression.pm
+lib/Patterns/Behavioral/Interpreter/DvdActorTitleExpression.pm
+lib/Patterns/Behavioral/Interpreter/DvdInterpreterClient.pm
+lib/Patterns/Behavioral/Interpreter/DvdInterpreterContext.pm
+lib/Patterns/Behavioral/Interpreter/DvdTitleActorExpression.pm
+lib/Patterns/Behavioral/Interpreter/DvdTitleExpression.pm
+lib/Patterns/Behavioral/Interpreter/TitleAndActor.pm
 lib/Patterns/Behavioral/Iterator.pm
 lib/Patterns/Behavioral/Mediator.pm
 lib/Patterns/Behavioral/Memento.pm
@@ -155,6 +163,7 @@ README.md
 t/00-load.t
 t/01-chain_of_responsibility.t
 t/02-behavioral-command.t
+t/03-behavioral-interpreter.t
 t/boilerplate.t
 t/manifest.t
 t/pod-coverage.t
