@@ -31,6 +31,8 @@ lib/Patterns/Behavioral/Mediator/DvdMediator.pm
 lib/Patterns/Behavioral/Mediator/DvdTitle.pm
 lib/Patterns/Behavioral/Mediator/DvdUppercaseTitle.pm
 lib/Patterns/Behavioral/Memento.pm
+lib/Patterns/Behavioral/Memento/DvdDetails.pm
+lib/Patterns/Behavioral/Memento/DvdMemento.pm
 lib/Patterns/Behavioral/Observer.pm
 lib/Patterns/Behavioral/State.pm
 lib/Patterns/Behavioral/Strategy.pm
@@ -173,6 +175,7 @@ t/02-behavioral-command.t
 t/03-behavioral-interpreter.t
 t/04-behavioral-iterator.t
 t/05-behavioral-mediator.t
+t/06-behavioral-memento.t
 t/boilerplate.t
 t/manifest.t
 t/pod-coverage.t
