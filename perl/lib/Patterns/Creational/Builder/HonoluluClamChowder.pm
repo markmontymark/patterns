@@ -1,14 +1,20 @@
-package Patterns::Creational::Builder;
+package Patterns::Creational::Builder::HonoluluClamChowder;
 
+use Moo;
+extends 'Patterns::Creational::Builder::ClamChowder';
 
-class HonoluluClamChowder extends ClamChowder {
-    public HonoluluClamChowder() {
-        soupName = "PacificClamChowder";
-        soupIngredients.clear();        
-        soupIngredients.add("1 Pound Fresh Pacific Clams");
-        soupIngredients.add("1 cup pineapple chunks");
-        soupIngredients.add("1/2 cup coconut milk");
-        soupIngredients.add("1/4 cup SPAM");    
-        soupIngredients.add("1/4 cup taro chips");
+sub BUILDARGS
+{
+   {
+      soupName => "PacificClamChowder",
+      soupIngredients => [
+        "1 Pound Fresh Pacific Clams",
+        "1 cup pineapple chunks",
+        "1/2 cup coconut milk",
+        "1/4 cup SPAM",
+        "1/4 cup taro chips",
+      ]
     }
 }
+
+1;

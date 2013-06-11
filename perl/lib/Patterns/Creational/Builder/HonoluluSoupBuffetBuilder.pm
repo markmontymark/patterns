@@ -1,17 +1,22 @@
-package Patterns::Creational::Builder;
+package Patterns::Creational::Builder::HonoluluSoupBuffetBuilder;
 
+# Two of Two Builder Subclasses
 
-//HonoluluSoupBuffetBuilder.java - Two of Two Builder Subclasses
+use Moo;
+extends 'Patterns::Creational::Builder::SoupBuffetBuilder';
 
-class HonoluluSoupBuffetBuilder extends SoupBuffetBuilder {
-    public void buildClamChowder() {
-        soupBuffet.clamChowder = new HonoluluClamChowder();
-    }
-    public void buildFishChowder() {
-        soupBuffet.fishChowder = new HonoluluFishChowder();
-    }
-    
-    public void setSoupBuffetName() {
-        soupBuffet.soupBuffetName = "Honolulu Soup Buffet";
-    }
+sub buildClamChowder {
+	my $self = shift;
+	$self->soupBuffet->clamChowder ( new Patterns::Creational::Builder::HonoluluClamChowder() );
 }
+sub buildFishChowder {
+	my $self = shift;
+	$self->soupBuffet->fishChowder ( new Patterns::Creational::Builder::HonoluluFishChowder() );
+}
+
+sub setSoupBuffetName {
+	my $self = shift;
+	$self->soupBuffet->soupBuffetName( "Honolulu Soup Buffet");
+}
+
+1;

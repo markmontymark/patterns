@@ -1,52 +1,47 @@
-package Patterns::Creational::Builder;
+package Patterns::Creational::Builder::SoupBuffetBuilder;
 
-//// Original copy of this content taken from http://www.fluffycat.com/Java-Design-Patterns/ in 2010
-//// Original Author: Larry Truett
-//// Privacy Policy at http://www.fluffycat.com/Privacy-Policy/
-//Builder Overview
-//Make and return one object various ways.
-
-//In this example the abstract SoupBuffetBuilder defines the methods necessary to create a SoupBuffet.
-
-//BostonSoupBuffetBuilder and the HonoluluSoupBuffetBuilder both extend the SoupBuffetBuilder.
-
-//An object can be defined as an SoupBuffetBuilder, and instantiated as either a BostonSoupBuffetBuilder (BSBB) or a HonoluluSoupBuffetBuilder (HSBB). Both BSBB or HSBB have a buildFishChowder method, and both return a FishChowder type class. However, the BSBB returns a FishChowder subclass of BostonFishChowder, while the HSBB returns a FishChowder subclass of HonoluluFishChowder.
-//Still reading? Save your time, watch the video lessons!
-//Video tutorial on design patterns
-//SoupBuffetBuilder.java - a Builder
-
-abstract class SoupBuffetBuilder {
-    SoupBuffet soupBuffet;
+use base 'Class::Virtually::Abstract';
+__PACKAGE__->virtual_methods(qw/setSoupBuffetName/);
+use Moo;
+has soupBuffet => (is=>'rw');
         
-    public SoupBuffet getSoupBuffet() {
-        return soupBuffet;
-    }
-    
-    public void buildSoupBuffet() {
-        soupBuffet = new SoupBuffet();
-    }
-    
-    public abstract void setSoupBuffetName();
-        
-    public void buildChickenSoup() {
-        soupBuffet.chickenSoup = new ChickenSoup();
-    }
-    public void buildClamChowder() {
-        soupBuffet.clamChowder = new ClamChowder();
-    }
-    public void buildFishChowder() {
-        soupBuffet.fishChowder = new FishChowder();
-    }
-    public void buildMinnestrone() {
-        soupBuffet.minnestrone = new Minnestrone();
-    }
-    public void buildPastaFazul() {
-        soupBuffet.pastaFazul = new PastaFazul();
-    }
-    public void buildTofuSoup() {
-        soupBuffet.tofuSoup = new TofuSoup();
-    }
-    public void buildVegetableSoup() {
-        soupBuffet.vegetableSoup = new VegetableSoup();
-    }
+sub getSoupBuffet {
+	my $self = shift;
+	return $self->soupBuffet;
 }
+
+sub buildSoupBuffet {
+	my $self = shift;
+	$self->soupBuffet ( new Patterns::Creational::Builder::SoupBuffet() );
+}
+
+sub buildChickenSoup {
+	my $self = shift;
+	$self->soupBuffet->chickenSoup ( new Patterns::Creational::Builder::ChickenSoup());
+}
+sub buildClamChowder {
+	my $self = shift;
+	$self->soupBuffet->clamChowder ( new Patterns::Creational::Builder::ClamChowder());
+}
+sub buildFishChowder {
+	my $self = shift;
+	$self->soupBuffet->fishChowder ( new Patterns::Creational::Builder::FishChowder());
+}
+sub buildMinnestrone {
+	my $self = shift;
+	$self->soupBuffet->minnestrone ( new Patterns::Creational::Builder::Minnestrone());
+}
+sub buildPastaFazul {
+	my $self = shift;
+	$self->soupBuffet->pastaFazul ( new Patterns::Creational::Builder::PastaFazul());
+}
+sub buildTofuSoup {
+	my $self = shift;
+	$self->soupBuffet->tofuSoup ( new Patterns::Creational::Builder::TofuSoup());
+}
+sub buildVegetableSoup {
+	my $self = shift;
+	$self->soupBuffet->vegetableSoup( new Patterns::Creational::Builder::VegetableSoup() );
+}
+
+1;

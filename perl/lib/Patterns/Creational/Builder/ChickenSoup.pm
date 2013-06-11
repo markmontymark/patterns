@@ -1,15 +1,19 @@
-package Patterns::Creational::Builder;
+package Patterns::Creational::Builder::ChickenSoup;
+use Moo;
+extends 'Patterns::Creational::Builder::Soup';
 
-
-class ChickenSoup extends Soup
+sub BUILDARGS
 {
-    public ChickenSoup() 
-    {
-        soupName = "ChickenSoup";
-        soupIngredients.add("1 Pound diced chicken");
-        soupIngredients.add("1/2 cup rice");    
-        soupIngredients.add("1 cup bullion");      
-        soupIngredients.add("1/16 cup butter");    
-        soupIngredients.add("1/4 cup diced carrots");          
+   {
+      soupName => "ChickenSoup",
+      soupIngredients => [
+        "1 Pound diced chicken",
+        "1/2 cup rice",
+        "1 cup bullion",
+        "1/16 cup butter",
+        "1/4 cup diced carrots",
+      ]
     }
-}   
+}
+
+1;

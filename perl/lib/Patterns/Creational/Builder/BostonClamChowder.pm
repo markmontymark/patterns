@@ -1,14 +1,20 @@
-package Patterns::Creational::Builder;
+package Patterns::Creational::Builder::BostonClamChowder;
 
+use Moo;
+extends 'Patterns::Creational::Builder::ClamChowder';
 
-class BostonClamChowder extends ClamChowder {
-    public BostonClamChowder() {
-        soupName = "QuahogChowder";
-        soupIngredients.clear();        
-        soupIngredients.add("1 Pound Fresh Quahogs");
-        soupIngredients.add("1 cup corn");    
-        soupIngredients.add("1/2 cup heavy cream");
-        soupIngredients.add("1/4 cup butter");    
-        soupIngredients.add("1/4 cup potato chips");
+sub BUILDARGS
+{
+	{
+		soupName => "QuahogChowder",
+		soupIngredients => [
+        "1 Pound Fresh Quahogs",
+        "1 cup corn",
+        "1/2 cup heavy cream",
+        "1/4 cup butter",
+        "1/4 cup potato chips",
+		]
     }
 }
+
+1;

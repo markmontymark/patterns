@@ -208,6 +208,7 @@ t/11-behavioral-template_method.t
 t/12-creational-singleton.t
 t/13-creational-prototype.t
 t/14-creational-factory_method.t
+t/15-creational-builder.t
 t/boilerplate.t
 t/manifest.t
 t/pod-coverage.t
