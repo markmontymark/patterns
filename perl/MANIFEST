@@ -76,6 +76,7 @@ lib/Patterns/Creational/Abstract_Factory/Minnestrone.pm
 lib/Patterns/Creational/Abstract_Factory/PastaFazul.pm
 lib/Patterns/Creational/Abstract_Factory/README.md
 lib/Patterns/Creational/Abstract_Factory/Soup.pm
+lib/Patterns/Creational/Abstract_Factory/SoupBuffet.pm
 lib/Patterns/Creational/Abstract_Factory/TestAbstractSoupFactory.pl
 lib/Patterns/Creational/Abstract_Factory/TofuSoup.pm
 lib/Patterns/Creational/Abstract_Factory/VegetableSoup.pm
@@ -209,6 +210,7 @@ t/12-creational-singleton.t
 t/13-creational-prototype.t
 t/14-creational-factory_method.t
 t/15-creational-builder.t
+t/16-creational-abstract_factory.t
 t/boilerplate.t
 t/manifest.t
 t/pod-coverage.t

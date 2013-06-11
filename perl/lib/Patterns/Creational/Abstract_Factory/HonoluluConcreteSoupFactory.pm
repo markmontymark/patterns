@@ -1,16 +1,22 @@
-package Patterns::Creational::Abstract_Factory;
+package Patterns::Creational::Abstract_Factory::HonoluluConcreteSoupFactory; ##Concrete?  gross
 
+#//HonoluluConcreteSoupFactory.java - One of Two concrete factories extending the abstract factory
+use Moo;
+extends 'Patterns::Creational::Abstract_Factory::AbstractSoupFactory';
 
-//HonoluluConcreteSoupFactory.java - Two of Two concrete factories extending the abstract factory
-
-class HonoluluConcreteSoupFactory extends AbstractSoupFactory {
-    public HonoluluConcreteSoupFactory() {
-        factoryLocation = "Honolulu";
-    }
-    public ClamChowder makeClamChowder() {
-       return new HonoluluClamChowder();
-    }
-    public FishChowder makeFishChowder() {
-       return new HonoluluFishChowder();
-    }
+sub BUILDARGS
+{
+	{
+		factoryLocation =>"Honolulu"
+	}
 }
+
+sub makeClamChowder {
+	new Patterns::Creational::Abstract_Factory::HonoluluClamChowder
+}
+sub makeFishChowder {
+	new Patterns::Creational::Abstract_Factory::HonoluluFishChowder
+}
+
+1;
+

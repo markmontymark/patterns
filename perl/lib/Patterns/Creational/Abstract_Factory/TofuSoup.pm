@@ -1,13 +1,18 @@
-package Patterns::Creational::Abstract_Factory;
+package Patterns::Creational::Abstract_Factory::TofuSoup;
 
+use Moo;
+extends 'Patterns::Creational::Abstract_Factory::Soup';
 
-class TofuSoup extends Soup
+sub BUILDARGS
 {
-    public TofuSoup() 
-    {
-        soupName = "Tofu Soup";
-        soupIngredients.add("1 Pound tofu");
-        soupIngredients.add("1 cup carrot juice");    
-        soupIngredients.add("1/4 cup spirolena");         
+   {
+      soupName => "Tofu Soup",
+      soupIngredients => [
+        "1 Pound tofu",
+        "1 cup carrot juice",
+        "1/4 cup spirolena",
+      ]
     }
 }
+
+1;

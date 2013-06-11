@@ -1,15 +1,20 @@
-package Patterns::Creational::Abstract_Factory;
+package Patterns::Creational::Abstract_Factory::FishChowder;
 
+use Moo;
+extends 'Patterns::Creational::Abstract_Factory::Soup';
 
-class FishChowder extends Soup
+sub BUILDARGS
 {
-    public FishChowder() 
-    {
-        soupName = "FishChowder";
-        soupIngredients.add("1 Pound Fresh fish");
-        soupIngredients.add("1 cup fruit or vegetables");    
-        soupIngredients.add("1/2 cup milk");      
-        soupIngredients.add("1/4 cup butter");    
-        soupIngredients.add("1/4 cup chips");          
+   {
+      soupName => "FishChowder",
+      soupIngredients => [
+        "1 Pound Fresh fish",
+        "1 cup fruit or vegetables",
+        "1/2 cup milk",
+        "1/4 cup butter",
+        "1/4 cup chips",
+      ]
     }
 }
+
+1;

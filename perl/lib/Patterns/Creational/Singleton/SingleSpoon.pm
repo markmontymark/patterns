@@ -37,7 +37,7 @@ sub useSpoon
 		$self->isAvailable(0);
 		return;
 	}
-	warn "Spoon in use";
+	#warn "Spoon in use";
 }
 
 sub toString 

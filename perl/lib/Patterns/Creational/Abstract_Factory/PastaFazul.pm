@@ -1,14 +1,19 @@
-package Patterns::Creational::Abstract_Factory;
+package Patterns::Creational::Abstract_Factory::PastaFazul;
 
+use Moo;
+extends 'Patterns::Creational::Abstract_Factory::Soup';
 
-class PastaFazul extends Soup
+sub BUILDARGS
 {
-    public PastaFazul() 
-    {
-        soupName = "Pasta Fazul";
-        soupIngredients.add("1 Pound tomatos");
-        soupIngredients.add("1/2 cup pasta");    
-        soupIngredients.add("1/2 cup diced carrots");          
-        soupIngredients.add("1 cup tomato juice");             
+   {
+      soupName => "Pasta Fazul",
+      soupIngredients => [
+        "1 Pound tomatos",
+        "1/2 cup pasta",
+        "1/2 cup diced carrots",
+        "1 cup tomato juice",
+      ]
     }
 }
+
+1;
