@@ -1,65 +1,36 @@
-package Patterns::Creational::Factory_Method;
+package Patterns::Creational::Factory_Method::SoupBuffet;
 
 
-//SoupBuffet.java - A helper class
+#//SoupBuffet.java - A helper class
+use Moo;
 
-class SoupBuffet {
-   String soupBuffetName;
-   
-   ChickenSoup chickenSoup;
-   ClamChowder clamChowder;
-   FishChowder fishChowder;
-   Minnestrone minnestrone;
-   PastaFazul pastaFazul;
-   TofuSoup tofuSoup;
-   VegetableSoup vegetableSoup;
+has soupBuffetName => (is => 'rw');
+has chickenSoup => (is => 'rw');
+has clamChowder => (is => 'rw');
+has fishChowder => (is => 'rw');
+has minnestrone => (is => 'rw');
+has pastaFazul => (is => 'rw');
+has tofuSoup => (is => 'rw');
+has vegetableSoup => (is => 'rw');
 
-   public String getSoupBuffetName() {
-       return soupBuffetName;
-   }
-   public void setSoupBuffetName(String soupBuffetNameIn) {
-      soupBuffetName = soupBuffetNameIn;
-   }
-   
-   public void setChickenSoup(ChickenSoup chickenSoupIn) {
-       chickenSoup = chickenSoupIn;
-   }
-   public void setClamChowder(ClamChowder clamChowderIn) {
-       clamChowder = clamChowderIn;
-   }
-   public void setFishChowder(FishChowder fishChowderIn) {
-      fishChowder = fishChowderIn;
-   }
-   public void setMinnestrone(Minnestrone minnestroneIn) {
-      minnestrone = minnestroneIn;
-   }
-   public void setPastaFazul(PastaFazul pastaFazulIn) {
-       pastaFazul = pastaFazulIn;
-   }
-   public void setTofuSoup(TofuSoup tofuSoupIn) {
-       tofuSoup = tofuSoupIn;
-   }
-   public void setVegetableSoup(VegetableSoup vegetableSoupIn) {
-       vegetableSoup = vegetableSoupIn;
-   }
-   
-   public String getTodaysSoups() {
-        StringBuffer stringOfSoups = new StringBuffer();
-        stringOfSoups.append(" Today's Soups!  ");
-        stringOfSoups.append(" Chicken Soup: ");        
-        stringOfSoups.append(this.chickenSoup.getSoupName()); 
-        stringOfSoups.append(" Clam Chowder: ");        
-        stringOfSoups.append(this.clamChowder.getSoupName()); 
-        stringOfSoups.append(" Fish Chowder: ");        
-        stringOfSoups.append(this.fishChowder.getSoupName()); 
-        stringOfSoups.append(" Minnestrone: ");        
-        stringOfSoups.append(this.minnestrone.getSoupName());
-        stringOfSoups.append(" Pasta Fazul: ");        
-        stringOfSoups.append(this.pastaFazul.getSoupName());
-        stringOfSoups.append(" Tofu Soup: ");        
-        stringOfSoups.append(this.tofuSoup.getSoupName());
-        stringOfSoups.append(" Vegetable Soup: ");        
-        stringOfSoups.append(this.vegetableSoup.getSoupName());
-        return stringOfSoups.toString();          
-   }
-}        
+sub getTodaysSoups 
+{
+	my $self = shift;
+  " Today's Soups!  ".
+	  " Chicken Soup: " .
+	  $self->chickenSoup->soupName() .
+	  " Clam Chowder: " .
+	  $self->clamChowder->soupName() .
+	  " Fish Chowder: " .
+	  $self->fishChowder->soupName() .
+	  " Minnestrone: " .
+	  $self->minnestrone->soupName() .
+	  " Pasta Fazul: " .
+	  $self->pastaFazul->soupName() .
+	  " Tofu Soup: " .
+	  $self->tofuSoup->soupName() .
+	  " Vegetable Soup: " .
+	  $self->vegetableSoup->soupName()
+}
+
+1;

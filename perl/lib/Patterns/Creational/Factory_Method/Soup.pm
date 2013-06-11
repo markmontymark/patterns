@@ -1,30 +1,16 @@
-package Patterns::Creational::Factory_Method;
+package Patterns::Creational::Factory_Method::Soup;
 
 
-//Soup.java - A helper class
+#//Soup.java - A helper class
 
-import java.util.ArrayList;
-import java.util.ListIterator;
+use Moo;
+has soupName => (is => 'ro');
+has soupIngredients => (is => 'ro');
 
-abstract class Soup 
+sub toString
 {
-   ArrayList soupIngredients = new ArrayList();    
-   String soupName;
-   
-   public String getSoupName()
-   {
-       return soupName;
-   }
-   
-   public String toString()
-   {
-        StringBuffer stringOfIngredients = new StringBuffer(soupName);
-        stringOfIngredients.append(" Ingredients: ");
-        ListIterator soupIterator = soupIngredients.listIterator();
-        while (soupIterator.hasNext())
-        {
-            stringOfIngredients.append((String)soupIterator.next());
-        }
-        return stringOfIngredients.toString();
-   }
+	my $self = shift;
+	join ' ',($self->soupName,'Ingredients: ',@{$self->soupIngredients})
 }        
+
+1;

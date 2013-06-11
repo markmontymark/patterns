@@ -1,16 +1,23 @@
-package Patterns::Creational::Factory_Method;
+package Patterns::Creational::Factory_Method::HonoluluSoupFactoryMethodSubclass;
 
 
-//HonoluluSoupFactoryMethodSubclass.java - Two of Two Subclass Factory Methods
+#//HonoluluSoupFactoryMethodSubclass.java - Two of Two Subclass Factory Methods
+use Moo;
+extends 'Patterns::Creational::Factory_Method::SoupFactoryMethod';
 
-class HonoluluSoupFactoryMethodSubclass extends SoupFactoryMethod {
-    public String makeBuffetName() {
-        return "Honolulu Soup Buffet";
-    }
-    public ClamChowder makeClamChowder() {
-        return new HonoluluClamChowder();
-    }
-    public FishChowder makeFishChowder() {
-        return new HonoluluFishChowder();
-    }
+sub makeBuffetName
+{ 
+	"Honolulu Soup Buffet"
 }
+
+sub makeClamChowder
+{
+	new Patterns::Creational::Factory_Method::HonoluluClamChowder();
+}
+
+sub makeFishChowder
+{
+	new Patterns::Creational::Factory_Method::HonoluluFishChowder();
+}
+
+1;

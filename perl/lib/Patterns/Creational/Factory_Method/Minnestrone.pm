@@ -1,13 +1,18 @@
-package Patterns::Creational::Factory_Method;
+package Patterns::Creational::Factory_Method::Minnestrone;
 
+use Moo;
+extends 'Patterns::Creational::Factory_Method::Soup';
 
-class Minnestrone extends Soup
+sub BUILDARGS
 {
-    public Minnestrone() 
-    {
-        soupName = "Minestrone";
-        soupIngredients.add("1 Pound tomatos");
-        soupIngredients.add("1/2 cup pasta");    
-        soupIngredients.add("1 cup tomato juice");             
+   {
+      soupName => "Minnestrone",
+      soupIngredients => [
+        "1 Pound tomatos",
+        "1/2 cup pasta",
+        "1 cup tomato juice",
+      ]
     }
 }
+
+1;

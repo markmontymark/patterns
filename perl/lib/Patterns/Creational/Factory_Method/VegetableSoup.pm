@@ -1,13 +1,19 @@
-package Patterns::Creational::Factory_Method;
+package Patterns::Creational::Factory_Method::VegetableSoup;
 
+use Moo;
+extends 'Patterns::Creational::Factory_Method::Soup';
 
-class VegetableSoup extends Soup
+sub BUILDARGS
 {
-    public VegetableSoup() 
-    {
-        soupName = "Vegetable Soup";
-        soupIngredients.add("1 cup bullion");    
-        soupIngredients.add("1/4 cup carrots");         
-        soupIngredients.add("1/4 cup potatoes");         
+   {
+      soupName => "Vegetable Sou",
+      soupIngredients => [
+        "1 cup bullion",
+        "1/4 cup carrots",
+        "1/4 cup potatoes",
+      ]
     }
 }
+
+
+1;
