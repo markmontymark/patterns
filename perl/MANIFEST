@@ -120,6 +120,7 @@ lib/Patterns/Creational/Factory_Method/VegetableSoup.pm
 lib/Patterns/Creational/Prototype.pm
 lib/Patterns/Creational/Prototype/AbstractFork.pm
 lib/Patterns/Creational/Prototype/AbstractSpoon.pm
+lib/Patterns/Creational/Prototype/Cloneable.pm
 lib/Patterns/Creational/Prototype/PrototypeFactory.pm
 lib/Patterns/Creational/Prototype/README.md
 lib/Patterns/Creational/Prototype/SaladFork.pm
@@ -205,6 +206,7 @@ t/09-behavioral-strategy.t
 t/10-behavioral-visitor.t
 t/11-behavioral-template_method.t
 t/12-creational-singleton.t
+t/13-creational-prototype.t
 t/boilerplate.t
 t/manifest.t
 t/pod-coverage.t

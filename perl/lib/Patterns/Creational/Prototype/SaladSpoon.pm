@@ -1,10 +1,16 @@
-package Patterns::Creational::Prototype;
+package Patterns::Creational::Prototype::SaladSpoon;
 
 
-//SaladSpoon.java - Two of Two Concrete Prototypes extending the AbstractSpoon Prototype
+#//SaladSpoon.java - The Concrete Prototype extending the AbstractSpoon Prototype
 
-public class SaladSpoon extends AbstractSpoon {  
-   public SaladSpoon() {
-       setSpoonName("Salad Spoon");     
-   }
+use Moo;
+extends 'Patterns::Creational::Prototype::AbstractSpoon';
+
+sub BUILD
+{
+	my $self = shift;
+	$self->spoonName('Salad Spoon');
 }
+
+1;
+

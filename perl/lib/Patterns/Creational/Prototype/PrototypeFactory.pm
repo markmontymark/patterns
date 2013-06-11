@@ -1,28 +1,28 @@
-package Patterns::Creational::Prototype;
+package Patterns::Creational::Prototype::PrototypeFactory;
 
-//// Original copy of this content taken from http://www.fluffycat.com/Java-Design-Patterns/ in 2010
-//// Original Author: Larry Truett
-//// Privacy Policy at http://www.fluffycat.com/Privacy-Policy/
-//Java Design Patterns Prototype
-//Prototype Overview
-//Make new objects by cloning the objects which you set as prototypes
-//Still reading? Save your time, watch the video lessons!
-//Video tutorial on design patterns
-//PrototypeFactory.java - a Factory for Prototypes
+use Moo;
+has prototypeSpoon 	=> (is => 'ro' );#, isa=>sub{ref $_[0]'Patterns::Creational::Prototype::AbstractSpoon');
+has prototypeFork 	=> (is => 'ro' );#, isa=>'Patterns::Creational::Prototype::AbstractFork');
 
-public class PrototypeFactory {  
-    AbstractSpoon prototypeSpoon;
-    AbstractFork prototypeFork;
-    
-    public PrototypeFactory(AbstractSpoon spoon, AbstractFork fork) {
-       prototypeSpoon = spoon;
-       prototypeFork = fork;
-   }
-    
-   public AbstractSpoon makeSpoon() {
-       return (AbstractSpoon)prototypeSpoon.clone();
-   }
-   public AbstractFork makeFork() {
-       return (AbstractFork)prototypeFork.clone();
-   }
+sub BUILDARGS
+{
+	my($class, $spoon, $fork ) = @_;
+	{
+		prototypeSpoon => $spoon,
+		prototypeFork	=> $fork,
+	}
 }
+
+sub makeSpoon
+{
+	my $self = shift;
+	bless $self->prototypeSpoon->clone, ref $self->prototypeSpoon
+}
+
+sub makeFork
+{
+	my $self = shift;
+	bless $self->prototypeFork->clone, ref $self->prototypeFork
+}
+
+1;

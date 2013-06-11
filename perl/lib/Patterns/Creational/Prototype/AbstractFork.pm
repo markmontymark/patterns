@@ -1,27 +1,11 @@
-package Patterns::Creational::Prototype;
+package Patterns::Creational::Prototype::AbstractFork;
 
+#//AbstractFork.java - Two of Two Prototypes
 
-//AbstractFork.java - Two of Two Prototypes
+use base 'Class::Virtually::Abstract';
+use Moo;
+with 'Patterns::Creational::Prototype::Cloneable';
 
-public abstract class AbstractFork implements Cloneable
-{  
-   String forkName; 
-    
-   public void setForkName(String forkName) {
-       this.forkName = forkName;
-   }
-   public String getForkName() {
-       return this.forkName;
-   }
-   
-   public Object clone() 
-   {
-       Object object = null;
-       try {
-           object = super.clone();
-       } catch (CloneNotSupportedException exception) {
-           System.err.println("AbstractFork is not Cloneable");
-       }
-       return object;
-   }   
-}
+has forkName => (is => 'rw' );
+
+1;

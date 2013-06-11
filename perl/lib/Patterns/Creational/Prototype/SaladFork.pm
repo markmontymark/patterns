@@ -1,10 +1,16 @@
-package Patterns::Creational::Prototype;
+package Patterns::Creational::Prototype::SaladFork;
 
 
-//SaladFork.java - The Concrete Prototype extending the AbstractFork Prototype
+#//SaladFork.java - The Concrete Prototype extending the AbstractFork Prototype
 
-public class SaladFork extends AbstractFork {  
-   public SaladFork() {
-       setForkName("Salad Fork");
-   }
+use Moo;
+extends 'Patterns::Creational::Prototype::AbstractFork';
+
+sub BUILD
+{
+	my $self = shift;
+	$self->forkName('Salad Fork');
 }
+
+1;
+
