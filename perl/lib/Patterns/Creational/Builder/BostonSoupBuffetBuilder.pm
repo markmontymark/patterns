@@ -1,4 +1,4 @@
-package Creational::Builder;
+package Patterns::Creational::Builder;
 
 
 //BostonSoupBuffetBuilder.java - One of Two Builder Subclasses

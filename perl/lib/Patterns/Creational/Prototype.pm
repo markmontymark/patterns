@@ -1,6 +1,6 @@
 
 
-package Creational::Prototype::SoupSpoon;
+package Patterns::Creational::Prototype::SoupSpoon;
 
 
 //SoupSpoon.java - One of Two Concrete Prototypes extending the AbstractSpoon Prototype
@@ -13,7 +13,7 @@ public class SoupSpoon extends AbstractSpoon {
 
 
 
-package Creational::Prototype::AbstractFork;
+package Patterns::Creational::Prototype::AbstractFork;
 
 
 //AbstractFork.java - Two of Two Prototypes
@@ -43,7 +43,7 @@ public abstract class AbstractFork implements Cloneable
 
 
 
-package Creational::Prototype::AbstractSpoon;
+package Patterns::Creational::Prototype::AbstractSpoon;
 
 
 //AbstractSpoon.java - One of Two Prototypes
@@ -71,7 +71,7 @@ public abstract class AbstractSpoon implements Cloneable {
 
 
 
-package Creational::Prototype::SaladFork;
+package Patterns::Creational::Prototype::SaladFork;
 
 
 //SaladFork.java - The Concrete Prototype extending the AbstractFork Prototype
@@ -84,7 +84,7 @@ public class SaladFork extends AbstractFork {
 
 
 
-package Creational::Prototype::SaladSpoon;
+package Patterns::Creational::Prototype::SaladSpoon;
 
 
 //SaladSpoon.java - Two of Two Concrete Prototypes extending the AbstractSpoon Prototype
@@ -97,7 +97,7 @@ public class SaladSpoon extends AbstractSpoon {
 
 
 
-package Creational::Prototype::TestPrototype;
+package Patterns::Creational::Prototype::TestPrototype;
 
 
 //TestPrototype.java - testing the Prototype
@@ -131,7 +131,7 @@ class TestPrototype {
 
 
 
-package Creational::Prototype::PrototypeFactory;
+package Patterns::Creational::Prototype::PrototypeFactory;
 
 //// Original copy of this content taken from http://www.fluffycat.com/Java-Design-Patterns/ in 2010
 //// Original Author: Larry Truett

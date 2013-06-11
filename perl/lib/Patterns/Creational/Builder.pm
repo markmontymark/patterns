@@ -1,6 +1,6 @@
 
 
-package Creational::Builder::SoupBuffet;
+package Patterns::Creational::Builder::SoupBuffet;
 
 
 //SoupBuffet.java - A helper class
@@ -68,7 +68,7 @@ class SoupBuffet {
 
 
 
-package Creational::Builder::Soup;
+package Patterns::Creational::Builder::Soup;
 
 
 
@@ -102,7 +102,7 @@ abstract class Soup
 
 
 
-package Creational::Builder::TestSoupBuffetBuilder;
+package Patterns::Creational::Builder::TestSoupBuffetBuilder;
 
 
 //TestSoupBuffetBuilder.java - Testing the builder
@@ -144,7 +144,7 @@ class TestSoupBuffetBuilder {
 
 
 
-package Creational::Builder::BostonSoupBuffetBuilder;
+package Patterns::Creational::Builder::BostonSoupBuffetBuilder;
 
 
 //BostonSoupBuffetBuilder.java - One of Two Builder Subclasses
@@ -164,7 +164,7 @@ class BostonSoupBuffetBuilder extends SoupBuffetBuilder {
 
 
 
-package Creational::Builder::HonoluluFishChowder;
+package Patterns::Creational::Builder::HonoluluFishChowder;
 
 
 class HonoluluFishChowder extends FishChowder {
@@ -181,7 +181,7 @@ class HonoluluFishChowder extends FishChowder {
 
 
 
-package Creational::Builder::FishChowder;
+package Patterns::Creational::Builder::FishChowder;
 
 
 class FishChowder extends Soup
@@ -199,7 +199,7 @@ class FishChowder extends Soup
 
 
 
-package Creational::Builder::SoupBuffetBuilder;
+package Patterns::Creational::Builder::SoupBuffetBuilder;
 
 //// Original copy of this content taken from http://www.fluffycat.com/Java-Design-Patterns/ in 2010
 //// Original Author: Larry Truett
@@ -254,7 +254,7 @@ abstract class SoupBuffetBuilder {
 
 
 
-package Creational::Builder::PastaFazul;
+package Patterns::Creational::Builder::PastaFazul;
 
 
 class PastaFazul extends Soup
@@ -271,7 +271,7 @@ class PastaFazul extends Soup
 
 
 
-package Creational::Builder::HonoluluClamChowder;
+package Patterns::Creational::Builder::HonoluluClamChowder;
 
 
 class HonoluluClamChowder extends ClamChowder {
@@ -288,7 +288,7 @@ class HonoluluClamChowder extends ClamChowder {
 
 
 
-package Creational::Builder::BostonFishChowder;
+package Patterns::Creational::Builder::BostonFishChowder;
 
 
 class BostonFishChowder extends FishChowder {
@@ -305,7 +305,7 @@ class BostonFishChowder extends FishChowder {
 
 
 
-package Creational::Builder::TofuSoup;
+package Patterns::Creational::Builder::TofuSoup;
 
 
 class TofuSoup extends Soup
@@ -321,7 +321,7 @@ class TofuSoup extends Soup
 
 
 
-package Creational::Builder::ClamChowder;
+package Patterns::Creational::Builder::ClamChowder;
 
 
 class ClamChowder extends Soup
@@ -339,7 +339,7 @@ class ClamChowder extends Soup
 
 
 
-package Creational::Builder::HonoluluSoupBuffetBuilder;
+package Patterns::Creational::Builder::HonoluluSoupBuffetBuilder;
 
 
 //HonoluluSoupBuffetBuilder.java - Two of Two Builder Subclasses
@@ -359,7 +359,7 @@ class HonoluluSoupBuffetBuilder extends SoupBuffetBuilder {
 
 
 
-package Creational::Builder::VegetableSoup;
+package Patterns::Creational::Builder::VegetableSoup;
 
 
 class VegetableSoup extends Soup
@@ -375,7 +375,7 @@ class VegetableSoup extends Soup
 
 
 
-package Creational::Builder::ChickenSoup;
+package Patterns::Creational::Builder::ChickenSoup;
 
 
 class ChickenSoup extends Soup
@@ -393,7 +393,7 @@ class ChickenSoup extends Soup
 
 
 
-package Creational::Builder::Minnestrone;
+package Patterns::Creational::Builder::Minnestrone;
 
 
 class Minnestrone extends Soup
@@ -409,7 +409,7 @@ class Minnestrone extends Soup
 
 
 
-package Creational::Builder::BostonClamChowder;
+package Patterns::Creational::Builder::BostonClamChowder;
 
 
 class BostonClamChowder extends ClamChowder {

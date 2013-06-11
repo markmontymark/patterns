@@ -1,4 +1,4 @@
-package Creational::Prototype;
+package Patterns::Creational::Prototype;
 
 
 //SaladFork.java - The Concrete Prototype extending the AbstractFork Prototype

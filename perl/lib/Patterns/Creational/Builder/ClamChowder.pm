@@ -1,4 +1,4 @@
-package Creational::Builder;
+package Patterns::Creational::Builder;
 
 
 class ClamChowder extends Soup

@@ -1,4 +1,4 @@
-package Creational::Prototype;
+package Patterns::Creational::Prototype;
 
 
 //AbstractSpoon.java - One of Two Prototypes

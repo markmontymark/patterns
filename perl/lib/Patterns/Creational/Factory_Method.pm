@@ -1,6 +1,6 @@
 
 
-package Creational::Factory_Method::SoupFactoryMethod;
+package Patterns::Creational::Factory_Method::SoupFactoryMethod;
 
 //// Original copy of this content taken from http://www.fluffycat.com/Java-Design-Patterns/ in 2010
 //// Original Author: Larry Truett
@@ -52,7 +52,7 @@ class SoupFactoryMethod {
 
 
 
-package Creational::Factory_Method::SoupBuffet;
+package Patterns::Creational::Factory_Method::SoupBuffet;
 
 
 //SoupBuffet.java - A helper class
@@ -120,7 +120,7 @@ class SoupBuffet {
 
 
 
-package Creational::Factory_Method::Soup;
+package Patterns::Creational::Factory_Method::Soup;
 
 
 //Soup.java - A helper class
@@ -153,7 +153,7 @@ abstract class Soup
 
 
 
-package Creational::Factory_Method::HonoluluFishChowder;
+package Patterns::Creational::Factory_Method::HonoluluFishChowder;
 
 
 class HonoluluFishChowder extends FishChowder {
@@ -170,7 +170,7 @@ class HonoluluFishChowder extends FishChowder {
 
 
 
-package Creational::Factory_Method::FishChowder;
+package Patterns::Creational::Factory_Method::FishChowder;
 
 
 class FishChowder extends Soup
@@ -188,7 +188,7 @@ class FishChowder extends Soup
 
 
 
-package Creational::Factory_Method::PastaFazul;
+package Patterns::Creational::Factory_Method::PastaFazul;
 
 
 class PastaFazul extends Soup
@@ -205,7 +205,7 @@ class PastaFazul extends Soup
 
 
 
-package Creational::Factory_Method::HonoluluClamChowder;
+package Patterns::Creational::Factory_Method::HonoluluClamChowder;
 
 
 class HonoluluClamChowder extends ClamChowder {
@@ -222,7 +222,7 @@ class HonoluluClamChowder extends ClamChowder {
 
 
 
-package Creational::Factory_Method::BostonFishChowder;
+package Patterns::Creational::Factory_Method::BostonFishChowder;
 
 
 class BostonFishChowder extends FishChowder {
@@ -239,7 +239,7 @@ class BostonFishChowder extends FishChowder {
 
 
 
-package Creational::Factory_Method::TofuSoup;
+package Patterns::Creational::Factory_Method::TofuSoup;
 
 
 class TofuSoup extends Soup
@@ -255,7 +255,7 @@ class TofuSoup extends Soup
 
 
 
-package Creational::Factory_Method::ClamChowder;
+package Patterns::Creational::Factory_Method::ClamChowder;
 
 
 class ClamChowder extends Soup
@@ -273,7 +273,7 @@ class ClamChowder extends Soup
 
 
 
-package Creational::Factory_Method::HonoluluSoupFactoryMethodSubclass;
+package Patterns::Creational::Factory_Method::HonoluluSoupFactoryMethodSubclass;
 
 
 //HonoluluSoupFactoryMethodSubclass.java - Two of Two Subclass Factory Methods
@@ -292,7 +292,7 @@ class HonoluluSoupFactoryMethodSubclass extends SoupFactoryMethod {
 
 
 
-package Creational::Factory_Method::VegetableSoup;
+package Patterns::Creational::Factory_Method::VegetableSoup;
 
 
 class VegetableSoup extends Soup
@@ -308,7 +308,7 @@ class VegetableSoup extends Soup
 
 
 
-package Creational::Factory_Method::ChickenSoup;
+package Patterns::Creational::Factory_Method::ChickenSoup;
 
 
 class ChickenSoup extends Soup
@@ -326,7 +326,7 @@ class ChickenSoup extends Soup
 
 
 
-package Creational::Factory_Method::TestSoupFactoryMethod;
+package Patterns::Creational::Factory_Method::TestSoupFactoryMethod;
 
 
 //TestSoupFactoryMethod.java - testing the factory method
@@ -412,7 +412,7 @@ class TestSoupFactoryMethod {
 
 
 
-package Creational::Factory_Method::Minnestrone;
+package Patterns::Creational::Factory_Method::Minnestrone;
 
 
 class Minnestrone extends Soup
@@ -428,7 +428,7 @@ class Minnestrone extends Soup
 
 
 
-package Creational::Factory_Method::BostonClamChowder;
+package Patterns::Creational::Factory_Method::BostonClamChowder;
 
 
 class BostonClamChowder extends ClamChowder {
@@ -445,7 +445,7 @@ class BostonClamChowder extends ClamChowder {
 
 
 
-package Creational::Factory_Method::BostonSoupFactoryMethodSubclass;
+package Patterns::Creational::Factory_Method::BostonSoupFactoryMethodSubclass;
 
 
 //BostonSoupFactoryMethodSubclass.java - One of Two Subclass Factory Methods

@@ -1,4 +1,4 @@
-package Creational::Builder;
+package Patterns::Creational::Builder;
 
 
 //SoupBuffet.java - A helper class

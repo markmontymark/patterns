@@ -1,4 +1,4 @@
-package Creational::Abstract_Factory;
+package Patterns::Creational::Abstract_Factory;
 
 
 class Minnestrone extends Soup

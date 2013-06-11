@@ -1,4 +1,4 @@
-package Creational::Factory_Method;
+package Patterns::Creational::Factory_Method;
 
 //// Original copy of this content taken from http://www.fluffycat.com/Java-Design-Patterns/ in 2010
 //// Original Author: Larry Truett

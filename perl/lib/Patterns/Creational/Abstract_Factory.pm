@@ -1,6 +1,6 @@
 
 
-package Creational::Abstract_Factory::BostonConcreteSoupFactory;
+package Patterns::Creational::Abstract_Factory::BostonConcreteSoupFactory;
 
 
 
@@ -20,7 +20,7 @@ class BostonConcreteSoupFactory extends AbstractSoupFactory {
 
 
 
-package Creational::Abstract_Factory::Soup;
+package Patterns::Creational::Abstract_Factory::Soup;
 
 
 //Soup.java - A helper class
@@ -53,7 +53,7 @@ abstract class Soup
 
 
 
-package Creational::Abstract_Factory::HonoluluConcreteSoupFactory;
+package Patterns::Creational::Abstract_Factory::HonoluluConcreteSoupFactory;
 
 
 //HonoluluConcreteSoupFactory.java - Two of Two concrete factories extending the abstract factory
@@ -72,7 +72,7 @@ class HonoluluConcreteSoupFactory extends AbstractSoupFactory {
 
 
 
-package Creational::Abstract_Factory::HonoluluFishChowder;
+package Patterns::Creational::Abstract_Factory::HonoluluFishChowder;
 
 
 class HonoluluFishChowder extends FishChowder {
@@ -89,7 +89,7 @@ class HonoluluFishChowder extends FishChowder {
 
 
 
-package Creational::Abstract_Factory::FishChowder;
+package Patterns::Creational::Abstract_Factory::FishChowder;
 
 
 class FishChowder extends Soup
@@ -107,7 +107,7 @@ class FishChowder extends Soup
 
 
 
-package Creational::Abstract_Factory::AbstractSoupFactory;
+package Patterns::Creational::Abstract_Factory::AbstractSoupFactory;
 
 //// Original copy of this content taken from http://www.fluffycat.com/Java-Design-Patterns/ in 2010
 //// Original Author: Larry Truett
@@ -154,7 +154,7 @@ abstract class AbstractSoupFactory {
 
 
 
-package Creational::Abstract_Factory::HonoluluClamChowder;
+package Patterns::Creational::Abstract_Factory::HonoluluClamChowder;
 
 
 class HonoluluClamChowder extends ClamChowder {
@@ -171,7 +171,7 @@ class HonoluluClamChowder extends ClamChowder {
 
 
 
-package Creational::Abstract_Factory::PastaFazul;
+package Patterns::Creational::Abstract_Factory::PastaFazul;
 
 
 class PastaFazul extends Soup
@@ -188,7 +188,7 @@ class PastaFazul extends Soup
 
 
 
-package Creational::Abstract_Factory::TofuSoup;
+package Patterns::Creational::Abstract_Factory::TofuSoup;
 
 
 class TofuSoup extends Soup
@@ -204,7 +204,7 @@ class TofuSoup extends Soup
 
 
 
-package Creational::Abstract_Factory::BostonFishChowder;
+package Patterns::Creational::Abstract_Factory::BostonFishChowder;
 
 
 class BostonFishChowder extends FishChowder {
@@ -221,7 +221,7 @@ class BostonFishChowder extends FishChowder {
 
 
 
-package Creational::Abstract_Factory::ClamChowder;
+package Patterns::Creational::Abstract_Factory::ClamChowder;
 
 
 class ClamChowder extends Soup
@@ -239,7 +239,7 @@ class ClamChowder extends Soup
 
 
 
-package Creational::Abstract_Factory::TestAbstractSoupFactory;
+package Patterns::Creational::Abstract_Factory::TestAbstractSoupFactory;
 
 
 //TestAbstractSoupFactory.java - Testing the abstract factory
@@ -296,7 +296,7 @@ class TestAbstractSoupFactory {
 
 
 
-package Creational::Abstract_Factory::VegetableSoup;
+package Patterns::Creational::Abstract_Factory::VegetableSoup;
 
 
 class VegetableSoup extends Soup
@@ -312,7 +312,7 @@ class VegetableSoup extends Soup
 
 
 
-package Creational::Abstract_Factory::ChickenSoup;
+package Patterns::Creational::Abstract_Factory::ChickenSoup;
 
 
 class ChickenSoup extends Soup
@@ -330,7 +330,7 @@ class ChickenSoup extends Soup
 
 
 
-package Creational::Abstract_Factory::Minnestrone;
+package Patterns::Creational::Abstract_Factory::Minnestrone;
 
 
 class Minnestrone extends Soup
@@ -346,7 +346,7 @@ class Minnestrone extends Soup
 
 
 
-package Creational::Abstract_Factory::BostonClamChowder;
+package Patterns::Creational::Abstract_Factory::BostonClamChowder;
 
 
 class BostonClamChowder extends ClamChowder {

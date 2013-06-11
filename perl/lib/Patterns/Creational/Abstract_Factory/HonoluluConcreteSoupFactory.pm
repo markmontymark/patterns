@@ -1,4 +1,4 @@
-package Creational::Abstract_Factory;
+package Patterns::Creational::Abstract_Factory;
 
 
 //HonoluluConcreteSoupFactory.java - Two of Two concrete factories extending the abstract factory

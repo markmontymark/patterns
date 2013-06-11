@@ -1,4 +1,4 @@
-package Creational::Prototype;
+package Patterns::Creational::Prototype;
 
 
 //AbstractFork.java - Two of Two Prototypes

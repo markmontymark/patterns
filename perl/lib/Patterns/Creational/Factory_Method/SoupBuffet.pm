@@ -1,4 +1,4 @@
-package Creational::Factory_Method;
+package Patterns::Creational::Factory_Method;
 
 
 //SoupBuffet.java - A helper class

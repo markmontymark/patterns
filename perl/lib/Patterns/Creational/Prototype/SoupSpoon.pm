@@ -1,4 +1,4 @@
-package Creational::Prototype;
+package Patterns::Creational::Prototype;
 
 
 //SoupSpoon.java - One of Two Concrete Prototypes extending the AbstractSpoon Prototype

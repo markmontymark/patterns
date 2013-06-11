@@ -1,4 +1,4 @@
-package Creational::Factory_Method;
+package Patterns::Creational::Factory_Method;
 
 
 //HonoluluSoupFactoryMethodSubclass.java - Two of Two Subclass Factory Methods

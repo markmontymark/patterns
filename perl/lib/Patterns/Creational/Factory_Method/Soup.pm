@@ -1,4 +1,4 @@
-package Creational::Factory_Method;
+package Patterns::Creational::Factory_Method;
 
 
 //Soup.java - A helper class
