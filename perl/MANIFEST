@@ -49,6 +49,10 @@ lib/Patterns/Behavioral/Strategy/DvdNameReplaceSpacesStrategy.pm
 lib/Patterns/Behavioral/Strategy/DvdNameStrategy.pm
 lib/Patterns/Behavioral/Strategy/DvdNameTheAtEndStrategy.pm
 lib/Patterns/Behavioral/Template_Method.pm
+lib/Patterns/Behavioral/Template_Method/BookTitleInfo.pm
+lib/Patterns/Behavioral/Template_Method/DvdTitleInfo.pm
+lib/Patterns/Behavioral/Template_Method/GameTitleInfo.pm
+lib/Patterns/Behavioral/Template_Method/TitleInfo.pm
 lib/Patterns/Behavioral/Visitor.pm
 lib/Patterns/Behavioral/Visitor/AbstractTitleInfo.pm
 lib/Patterns/Behavioral/Visitor/BookInfo.pm
@@ -199,6 +203,7 @@ t/07-behavioral-observer.t
 t/08-behavioral-state.t
 t/09-behavioral-strategy.t
 t/10-behavioral-visitor.t
+t/11-behavioral-template_method.t
 t/boilerplate.t
 t/manifest.t
 t/pod-coverage.t
