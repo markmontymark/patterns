@@ -1,24 +1,31 @@
-package Structural::Flyweight;
+package Patterns::Structural::Flyweight::TeaFlavorFactory;
 
 
-//TeaFlavorFactory.java - the Factory
+#//TeaFlavorFactory.java - the Factory
 
-public class TeaFlavorFactory {  
-   TeaFlavor[] flavors = new TeaFlavor[10];
-     //no more than 10 flavors can be made
-   int teasMade = 0;
-   
-   public TeaFlavor getTeaFlavor(String flavorToGet) {
-       if (teasMade > 0) {
-           for (int i = 0; i < teasMade; i++) {
-               if (flavorToGet.equals((flavors[i]).getFlavor())) {
-                   return flavors[i];
-               }
-           }
-       }
-       flavors[teasMade] = new TeaFlavor(flavorToGet);
-       return flavors[teasMade++];
-   }
-   
-   public int getTotalTeaFlavorsMade() {return teasMade;}
+use Moo;
+has flavors => is => 'rw';
+has teasMade => is => 'rw';
+
+sub BUILDARGS
+{
+	{flavors => [], teasMade => 0 }
 }
+   
+sub getTeaFlavor
+{
+	my($self,$flavor) = @_;
+	if ($self->teasMade > 0) 
+	{
+		for( @{$self->flavors} )
+		{
+			return $_ if $flavor eq $_->teaFlavor;
+		}
+	}
+	push @{$self->flavors}, new Patterns::Structural::Flyweight::TeaFlavor($flavor);
+	$self->teasMade( $self->teasMade + 1 );
+	return $self->flavors->[ $self->teasMade - 1 ];
+}
+   
+
+1;

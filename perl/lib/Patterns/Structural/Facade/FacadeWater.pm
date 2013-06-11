@@ -1,25 +1,19 @@
-package Structural::Facade;
+package Patterns::Structural::Facade::FacadeWater;
 
 
-//FacadeWater.java - two of three classes the facade calls
+#//FacadeWater.java - two of three classes the facade calls
+use Moo;
+has isBoiling => is => 'rw';
 
-public class FacadeWater {  
-   boolean waterIsBoiling; 
-    
-   public FacadeWater() {
-       setWaterIsBoiling(false);
-       System.out.println("behold the wonderous water");       
-   }
-   
-   public void boilFacadeWater() {
-       setWaterIsBoiling(true);
-       System.out.println("water is boiling");
-   }
-   
-   public void setWaterIsBoiling(boolean isWaterBoiling) {
-       waterIsBoiling = isWaterBoiling;
-   }
-   public boolean getWaterIsBoiling() {
-       return waterIsBoiling;
-   }
+sub BUILDARGS
+{
+	{ isBoiling => 0 }
 }
+    
+sub boil
+{
+	my $self = shift;
+	$self->isBoiling(1);
+}
+
+1;

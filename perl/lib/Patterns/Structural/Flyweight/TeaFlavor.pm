@@ -1,23 +1,23 @@
-package Structural::Flyweight;
+package Patterns::Structural::Flyweight::TeaFlavor;
 
+#//TeaFlavor.java - the Concrete Flyweight
 
-//TeaFlavor.java - the Concrete Flyweight
+use Moo;
+extends 'Patterns::Structural::Flyweight::TeaOrder';
 
-public class TeaFlavor extends TeaOrder {  
-    String teaFlavor; 
-   
-    TeaFlavor(String teaFlavor) {
-        this.teaFlavor = teaFlavor;
-    }
-   
-    public String getFlavor() {
-        return this.teaFlavor;
-    }
-   
-    public void serveTea(TeaOrderContext teaOrderContext) {
-        System.out.println("Serving tea flavor " + 
-                             teaFlavor + 
-                           " to table number " + 
-                             teaOrderContext.getTable());
-    }
+has teaFlavor => is => 'rw';
+sub BUILDARGS
+{
+	my ($class, $flavor ) = @_;
+	{
+		teaFlavor => $flavor 
+	}
 }
+   
+sub serveTea
+{
+	my($self, $ctx ) = @_;
+	"Serving tea flavor " . $self->teaFlavor . " to table number " . $ctx->tableNumber 
+}
+
+1;

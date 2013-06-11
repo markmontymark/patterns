@@ -1,45 +1,46 @@
-package Structural::Decorator;
+package Patterns::Structural::Decorator::ChaiDecorator;
 
+#//ChaiDecorator.java - the decorator
 
-//ChaiDecorator.java - the decorator
+use Moo;
+with 'Patterns::Structural::Decorator::Tea';
 
-import java.util.ArrayList;
-import java.util.ListIterator;
+has teaToMakeChai => (is => 'rw');
+has ingredients => (is => 'rw');
 
-public class ChaiDecorator extends Tea {
-    private Tea teaToMakeChai;
-    private ArrayList chaiIngredients = new ArrayList();
-    
-    public ChaiDecorator(Tea teaToMakeChai) {
-        this.addTea(teaToMakeChai);
-        chaiIngredients.add("bay leaf");
-        chaiIngredients.add("cinnamon stick");
-        chaiIngredients.add("ginger");
-        chaiIngredients.add("honey");
-        chaiIngredients.add("soy milk");
-        chaiIngredients.add("vanilla bean");
-    }
-
-    private void addTea(Tea teaToMakeChaiIn) {
-        this.teaToMakeChai = teaToMakeChaiIn;
-    }
-    
-    public void steepTea() {
-        this.steepChai();
-    }
-
-    public void steepChai() {
-        teaToMakeChai.steepTea();
-        this.steepChaiIngredients();
-        System.out.println("tea is steeping with chai");
-    }    
-    
-    public void steepChaiIngredients() {
-        ListIterator listIterator = chaiIngredients.listIterator();
-        while (listIterator.hasNext()) {
-            System.out.println(((String)(listIterator.next())) + 
-                                         " is steeping");
-        }
-        System.out.println("chai ingredients are steeping");
-    }      
+sub BUILDARGS
+{
+	my($class,$teaToMakeChai) = @_;
+	{ 
+		teaToMakeChai => $teaToMakeChai, 
+		ingredients => [
+			"bay leaf",
+			"cinnamon stick",
+			"ginger",
+			"honey",
+			"soy milk",
+			"vanilla bean",
+		]
+	}
 }
+
+sub steepTea 
+{
+	my $self = shift;
+	$self->steepChai;
+}
+
+sub steepChai
+{
+	my $self = shift;
+	$self->teaToMakeChai->steepTea();
+   $self->steepChaiIngredients();
+}    
+   
+sub steepChaiIngredients
+{
+	my $self = shift;
+	join '',@{$self->ingredients}
+}
+
+1;

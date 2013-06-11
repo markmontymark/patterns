@@ -1,12 +1,19 @@
-package Structural::Bridge;
+package Patterns::Structural::Bridge::GrapeSodaImp;
 
 
-//GrapeSodaImp.java - two of three classes extending the Implementation Base Class
+#//GrapeSodaImp.java - one of three classes extending the Implementation Base Class
 
-public class GrapeSodaImp extends SodaImp {
-   GrapeSodaImp() {}
-    
-   public void pourSodaImp() {
-       System.out.println("Delicious Grape Soda!");
-   }
+use Moo;
+extends 'Patterns::Structural::Bridge::SodaImp';
+has msg => is => 'ro';
+sub BUILDARGS 
+{
+	{ msg => "Yummy Grape Soda!" }
 }
+    
+sub pourSodaImp {
+	my $self = shift;
+	$self->msg
+}
+
+1;

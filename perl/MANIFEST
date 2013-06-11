@@ -211,6 +211,13 @@ t/13-creational-prototype.t
 t/14-creational-factory_method.t
 t/15-creational-builder.t
 t/16-creational-abstract_factory.t
+t/17-structural-adapter.t
+t/18-structural-bridge.t
+t/19-structural-composite.t
+t/20-structural-decorator.t
+t/21-structural-facade.t
+t/22-structural-flyweight.t
+t/23-structural-proxy.t
 t/boilerplate.t
 t/manifest.t
 t/pod-coverage.t

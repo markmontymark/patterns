@@ -1,18 +1,27 @@
-package Structural::Adapter;
+package Patterns::Structural::Adapter::TeaBall;
 
 
-//TeaBall.java - the adapter
+#//TeaBall.java - the adapter
 
-public class TeaBall extends TeaBag {  
-   LooseLeafTea looseLeafTea;
-   
-   public TeaBall(LooseLeafTea looseLeafTeaIn) {
-       looseLeafTea = looseLeafTeaIn;
-       teaBagIsSteeped = looseLeafTea.teaIsSteeped;
-   }
-    
-   public void steepTeaInCup() {
-       looseLeafTea.steepTea();
-       teaBagIsSteeped = true;
-   }
+use Moo;
+extends 'Patterns::Structural::Adapter::TeaBag';
+
+has looseLeafTea => is => 'rw';
+
+sub BUILDARGS
+{
+	my($class,$looseLeafTea) = @_;
+	{
+		looseLeafTea => $looseLeafTea,
+		teaBagIsSteeped => $looseLeafTea->teaIsSteeped
+	}
 }
+   
+sub steepTeaInCup 
+{
+	my $self = shift;
+	$self->looseLeafTea->steepTea();
+	$self->teaBagIsSteeped(1);
+}
+
+1;

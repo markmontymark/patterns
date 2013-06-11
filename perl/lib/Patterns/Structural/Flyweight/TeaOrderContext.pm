@@ -1,16 +1,14 @@
-package Structural::Flyweight;
+package Patterns::Structural::Flyweight::TeaOrderContext;
 
 
-//TeaOrderContext.java - the Context
+#//TeaOrderContext.java - the Context
+use Moo;
+has tableNumber => is => 'rw';
 
-public class TeaOrderContext {  
-   int tableNumber; 
-   
-   TeaOrderContext(int tableNumber) {
-       this.tableNumber = tableNumber;
-   }
-   
-   public int getTable() {
-       return this.tableNumber;
-   }
+sub BUILDARGS
+{
+	my ($class,$tableNumber ) = @_;
+	{ tableNumber => $tableNumber }
 }
+
+1;

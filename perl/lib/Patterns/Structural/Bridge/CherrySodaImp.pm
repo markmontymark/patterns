@@ -1,12 +1,19 @@
-package Structural::Bridge;
+package Patterns::Structural::Bridge::CherrySodaImp;
 
 
-//CherrySodaImp.java - one of three classes extending the Implementation Base Class
+#//CherrySodaImp.java - one of three classes extending the Implementation Base Class
 
-public class CherrySodaImp extends SodaImp {
-   CherrySodaImp() {}
-    
-   public void pourSodaImp() {
-       System.out.println("Yummy Cherry Soda!");
-   }
+use Moo;
+extends 'Patterns::Structural::Bridge::SodaImp';
+has msg => is => 'ro';
+sub BUILDARGS 
+{
+	{ msg => "Yummy Cherry Soda!" }
 }
+    
+sub pourSodaImp {
+	my $self = shift;
+	$self->msg
+}
+
+1;

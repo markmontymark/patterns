@@ -1,17 +1,15 @@
-package Structural::Adapter;
+package Patterns::Structural::Adapter::LooseLeafTea;
 
 
-//LooseLeafTea.java - the adaptee
+#//LooseLeafTea.java - the adaptee
 
-public class LooseLeafTea {  
-   boolean teaIsSteeped; 
-    
-   public LooseLeafTea() {
-       teaIsSteeped = false;
-   }
-   
-   public void steepTea() {
-       teaIsSteeped = true;
-       System.out.println("tea is steeping");
-   }
+use Moo;
+has teaIsSteeped => is => 'rw', default => sub {0};
+
+sub steepTea 
+{
+	my $self = shift;
+	$self->teaIsSteeped(1);
 }
+
+1;

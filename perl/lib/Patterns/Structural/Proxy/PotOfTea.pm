@@ -1,14 +1,14 @@
-package Structural::Proxy;
+package Patterns::Structural::Proxy::PotOfTea;
 
 
-//PotOfTea.java - the Real Subject
+#//PotOfTea.java - the Real Subject
 
-public class PotOfTea implements PotOfTeaInterface {  
-   public PotOfTea() {
-       System.out.println("Making a pot of tea");
-   }
-   
-   public void pourTea() {
-       System.out.println("Pouring tea");
-   }   
+use Moo;
+with 'Patterns::Structural::Proxy::PotOfTeaInterface';
+
+sub pourTea
+{
+	"Pouring tea"
 }
+
+1;

@@ -1,22 +1,18 @@
-package Structural::Bridge;
+package Patterns::Structural::Bridge::Soda;
 
-//// Original copy of this content taken from http://www.fluffycat.com/Java-Design-Patterns/ in 2010
-//// Original Author: Larry Truett
-//// Privacy Policy at http://www.fluffycat.com/Privacy-Policy/
-//Java Design Patterns Bridge
-//Bridge Overview
-//An abstraction and implementation are in different class hierarchies.
-//Soda.java - the Abstract Base Class
+use base 'Class::Virtually::Abstract';
+__PACKAGE__->virtual_methods(qw/pourSoda/);
+use Moo;
+has sodaImp => is => 'rw';
 
-public abstract class Soda {  
-   SodaImp sodaImp; 
-   
-   public void setSodaImp() {
-       this.sodaImp = SodaImpSingleton.getTheSodaImp();
-   }
-   public SodaImp getSodaImp() {
-       return this.sodaImp;
-   }
-   
-   public abstract void pourSoda();
+sub setSodaImp {
+	my $self = shift;
+	$self->sodaImp( Patterns::Structural::Bridge::SodaImpSingleton::getTheSodaImp() );
 }
+
+sub getSodaImp{
+	my $self = shift;
+	$self->sodaImp
+}
+
+1;

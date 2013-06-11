@@ -1,10 +1,6 @@
-package Structural::Facade;
+package Patterns::Structural::Facade::FacadeTeaBag;
 
+use Moo;
+has flavor => is => 'rw';
 
-//FacadeTeaBag.java - three of three classes the facade calls
-
-public class FacadeTeaBag {  
-   public FacadeTeaBag() {
-       System.out.println("behold the lovely tea bag");
-   }
-}
+1;

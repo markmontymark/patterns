@@ -1,15 +1,16 @@
-package Structural::Proxy;
+package Patterns::Structural::Proxy::PotOfTeaProxy;
 
+#//PotOfTeaProxy.java - the Proxy
+use Moo;
+with 'Patterns::Structural::Proxy::PotOfTeaInterface';
 
-//PotOfTeaProxy.java - the Proxy
-
-public class PotOfTeaProxy implements PotOfTeaInterface {  
-   PotOfTea potOfTea;
-    
-   public PotOfTeaProxy() {}
-   
-   public void pourTea() {
-       potOfTea = new PotOfTea();
-       potOfTea.pourTea();
-   }
+has potOfTea => is => 'rw';
+sub pourTea
+{
+	my $self = shift;
+	$self->potOfTea( new Patterns::Structural::Proxy::PotOfTea )
+		unless defined $self->potOfTea;
+   $self->potOfTea->pourTea()
 }
+
+1;

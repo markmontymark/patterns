@@ -1,26 +1,14 @@
-package Structural::Composite;
+package Patterns::Structural::Composite::OneTeaBag;
 
 
-//OneTeaBag.java - one composite extension - the "leaf"
+#//OneTeaBag.java - one composite extension - the "leaf"
 
-import java.util.ListIterator;
+use Moo;
+extends 'Patterns::Structural::Composite::TeaBags';
 
-public class OneTeaBag extends TeaBags { 
-    public OneTeaBag(String nameIn) {
-        this.setName(nameIn);
-    }
-    
-    public int countTeaBags() {
-        return 1;
-    }
-   
-    public boolean add(TeaBags teaBagsToAdd) {
-        return false;
-    }
-    public boolean remove(TeaBags teaBagsToRemove) {
-        return false;
-    }
-    public ListIterator createListIterator() {
-        return null;
-    }
-}
+sub countTeaBags { 1 } 
+sub add { 0 }
+sub remove{ 0 }
+
+1;
+

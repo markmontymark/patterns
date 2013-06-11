@@ -1,15 +1,22 @@
-package Structural::Decorator;
+package Patterns::Structural::Decorator::TeaLeaves;
 
+#//TeaLeaves.java - the decoratee
+use Moo;
+with 'Patterns::Structural::Decorator::Tea';
+has teaIsSteeped => is => 'rw';
 
-//TeaLeaves.java - the decoratee
-
-public class TeaLeaves extends Tea {  
-   public TeaLeaves() {
-       teaIsSteeped = false;
-   }
-   
-   public void steepTea() {
-       teaIsSteeped = true;
-       System.out.println("tea leaves are steeping");
-   }
+sub BUILDARGS
+{
+	{
+		teaIsSteeped => 0,
+	}
 }
+
+   
+sub steepTea 
+{
+	my $self = shift;
+	$self->teaIsSteeped(1);
+}
+
+1;

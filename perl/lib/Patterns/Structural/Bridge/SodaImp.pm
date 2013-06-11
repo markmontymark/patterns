@@ -1,8 +1,7 @@
-package Structural::Bridge;
+package Patterns::Structural::Bridge::SodaImp;
 
+use base 'Class::Virtually::Abstract';
+__PACKAGE__->virtual_methods( qw/pourSodaImp/ );
+use Moo;
 
-//SodaImp.java - the Implementation Base Class
-
-public abstract class SodaImp {  
-   public abstract void pourSodaImp();
-}
+1;

@@ -1,12 +1,19 @@
-package Structural::Bridge;
+package Patterns::Structural::Bridge::OrangeSodaImp;
 
 
-//OrangeSodaImp.java - three of three classes extending the Implementation Base Class
+#//OrangeSodaImp.java - one of three classes extending the Implementation Base Class
 
-public class OrangeSodaImp extends SodaImp {  
-   OrangeSodaImp() {}
-    
-   public void pourSodaImp() {
-       System.out.println("Citrusy Orange Soda!");
-   }
+use Moo;
+extends 'Patterns::Structural::Bridge::SodaImp';
+has msg => is => 'ro';
+sub BUILDARGS 
+{
+	{ msg => "Yummy Orange Soda!" }
 }
+    
+sub pourSodaImp {
+	my $self = shift;
+	$self->msg
+}
+
+1;

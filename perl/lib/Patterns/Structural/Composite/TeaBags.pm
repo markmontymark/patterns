@@ -1,37 +1,17 @@
-package Structural::Composite;
+package Patterns::Structural::Composite::TeaBags;
 
-//// Original copy of this content taken from http://www.fluffycat.com/Java-Design-Patterns/ in 2010
-//// Original Author: Larry Truett
-//// Privacy Policy at http://www.fluffycat.com/Privacy-Policy/
-//Composite Overview
-//Assemble groups of objects with the same signature.
-//TeaBags.java - the abstract base class for the composite
+use base 'Class::Virtually::Abstract';
+__PACKAGE__->virtual_methods(qw/countTeaBags add remove/);
+use Moo;
 
-import java.util.LinkedList;
-import java.util.ListIterator;
+has parent => is => 'rw';
+has name => is => 'rw';
+has teaBagList => is => 'rw';
 
-public abstract class TeaBags {  
-   LinkedList teaBagList; 
-   TeaBags parent;
-   String name;
-    
-   public abstract int countTeaBags();
-   
-   public abstract boolean add(TeaBags teaBagsToAdd);
-   public abstract boolean remove(TeaBags teaBagsToRemove);
-   public abstract ListIterator createListIterator();
-   
-   public void setParent(TeaBags parentIn) {
-       parent = parentIn;
-   }
-   public TeaBags getParent() {
-      return parent;
-   }
-   
-   public void setName(String nameIn) {
-       name = nameIn;
-   }
-   public String getName() {
-       return name;
-   }
+sub BUILDARGS
+{
+	my($class,$name) = @_;
+	{ name => $name }
 }
+
+1;

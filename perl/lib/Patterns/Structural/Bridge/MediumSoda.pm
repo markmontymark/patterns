@@ -1,19 +1,23 @@
-package Structural::Bridge;
+package Patterns::Structural::Bridge::MediumSoda;
 
 
-//MediumSoda.java - one of two classes extending the Abstract
+#//MediumSoda.java - one of two classes extending the Abstract
+use Moo;
+extends 'Patterns::Structural::Bridge::Soda';
 
-public class MediumSoda extends Soda {  
-   public MediumSoda() {
-       setSodaImp();
-   }
-   
-   public void pourSoda() {
-       SodaImp sodaImp = this.getSodaImp();
-       for (int i = 0; i < 2; i++) {
-           System.out.print("...glug...");
-           sodaImp.pourSodaImp();
-       }
-       System.out.println(" ");
-   }
+sub BUILD
+{
+	my($self) = @_;
+	$self->setSodaImp();
 }
+
+sub pourSoda 
+{
+	my $self = shift;
+	my $sodaImp = $self->getSodaImp;
+	my @retval;
+	push @retval,$sodaImp->pourSodaImp for 0..1;
+	join ' ',@retval
+}
+
+1;
