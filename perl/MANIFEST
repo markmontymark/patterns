@@ -50,6 +50,13 @@ lib/Patterns/Behavioral/Strategy/DvdNameStrategy.pm
 lib/Patterns/Behavioral/Strategy/DvdNameTheAtEndStrategy.pm
 lib/Patterns/Behavioral/Template_Method.pm
 lib/Patterns/Behavioral/Visitor.pm
+lib/Patterns/Behavioral/Visitor/AbstractTitleInfo.pm
+lib/Patterns/Behavioral/Visitor/BookInfo.pm
+lib/Patterns/Behavioral/Visitor/DvdInfo.pm
+lib/Patterns/Behavioral/Visitor/GameInfo.pm
+lib/Patterns/Behavioral/Visitor/TitleBlurbVisitor.pm
+lib/Patterns/Behavioral/Visitor/TitleLongBlurbVisitor.pm
+lib/Patterns/Behavioral/Visitor/TitleShortBlurbVisitor.pm
 lib/Patterns/Creational/Abstract_Factory.pm
 lib/Patterns/Creational/Abstract_Factory/AbstractSoupFactory.pm
 lib/Patterns/Creational/Abstract_Factory/BostonClamChowder.pm
@@ -191,6 +198,7 @@ t/06-behavioral-memento.t
 t/07-behavioral-observer.t
 t/08-behavioral-state.t
 t/09-behavioral-strategy.t
+t/10-behavioral-visitor.t
 t/boilerplate.t
 t/manifest.t
 t/pod-coverage.t
