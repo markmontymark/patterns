@@ -19,7 +19,7 @@ To install this module, run the following commands:
 	perl Build.PL
 	./Build
 	./Build test
-	./Build install
+	##./Build install hmm....not sure you want to install this?
 
 SUPPORT AND DOCUMENTATION
 

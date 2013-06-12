@@ -10,6 +10,7 @@ Much thanks to Larry for allowing to me to start off this project with his Java 
 # Quick start
 
 Install Java
+
 Install Ant
 
 	cd java
@@ -18,6 +19,13 @@ Install Ant
 If Java sources build successfully:
 
 	./scripts-local/run-java-tests.pl
+
+Install Perl
+
+	cd perl
+	perl Build.PL
+	./Build
+	./Build test
 
 
 # Patterns
