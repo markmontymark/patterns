@@ -27,6 +27,14 @@ Install Perl
 	./Build
 	./Build test
 
+# Languages
+
+	Java - complete (copied, see Attribution)
+	Perl - complete
+	C - incomplete
+	C++ - incomplete
+	CoffeeScript - incomplete
+	JavaScript - incomplete
 
 # Patterns
 
