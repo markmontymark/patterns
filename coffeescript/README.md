@@ -1,3 +1,16 @@
-# TODO
+# Created with  make-project-grunt.sh
+# Author mkoopman
+Project name
+===========
 
-This whole dir is not started yet, so this is a big ol' TODO for now.
+Quick start
+===========
+
+$ grunt
+
+
+Targets
+=======
+- exec:helloworld
+
+

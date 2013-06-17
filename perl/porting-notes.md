@@ -31,7 +31,9 @@ So, how to create something like a Java interface?  Here's what I'm doing for no
 
 ## Abstract Classes
 
-For abstract class support, I'll be using Class::Virtually::Abstract.   You can see use of this in the Behavorial Command pattern's CommandAbstract module - it looks like this:
+For abstract class support, I'm using Class::Virtually::Abstract.   You can see use of this in the Behavioral / Command pattern's CommandAbstract.pm module.
+
+It looks like this:
 
 	package Patterns::Behavioral::Command::CommandAbstract;
 	use base qw(Class::Virtually::Abstract);
