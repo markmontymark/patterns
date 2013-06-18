@@ -1,13 +1,7 @@
-# Created with  make-project-grunt.sh
-# Author mkoopman
 
-Project name
-============
+# CoffeeScript GoF patterns
 
-CoffeeScript GoF patterns
-
-Steps to setup and running tests from fresh git clone
-=====================================================
+# Running the tests
 
     git clone git@github.com:markmontymark/patterns.git
     cd patterns/coffeescript
