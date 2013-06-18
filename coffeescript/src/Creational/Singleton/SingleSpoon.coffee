@@ -11,39 +11,42 @@
 
 #/If you were to create a spoon "pool" you would have the same basic logic as shown, however multiple spoons would be distributed. The variable theSpoon would hold an array or collection of spoons. The variable theSpoonIsAvaialable would become a counter of the number of available spoons.
 
+define [], ->
 
-class SingleSpoon
+  'use strict'
+  class SingleSpoon
 
-   @theSpoon : null,
-   @theSpoonIsAvailable :true
-	
-  	SingleSpoon : () ->
-		if SingleSpoon.theSpoon == null
-			SingleSpoon.theSpoon = new SingleSpoon()
-		SingleSpoon.theSpoon
-		
-   @getTheSpoon : () ->
-		if SingleSpoon.theSpoonIsAvailable
-			SingleSpoon.theSpoonIsAvailable = false
-			return SingleSpoon.theSpoon
-		#//spoon not available, 
-		#//  could throw error or return null (as shown)
-		return null
-
-   toString : () ->
-		"Behold the glorious single spoon!"
+    @soupLastUsedWith : null
+    @theSpoon : null
+    @theSpoonIsAvailable : true
     
-   @returnTheSpoon : () ->
+    constructor : ->
+     if SingleSpoon.theSpoon is null
+      SingleSpoon.theSpoon = SingleSpoon.prototype
+     return SingleSpoon.theSpoon
+
+    toString : ->
+     "Behold the glorious single spoon!"
+
+    returnTheSpoon : ->
        SingleSpoon.theSpoon.cleanSpoon()
        SingleSpoon.theSpoonIsAvailable = true
-   
-	getSoupLastUsedWith : () ->
-		@soupLastUsedWith
+    
+    getTheSpoon : ->
+      #//if spoon not available  return null
+      if SingleSpoon.theSpoonIsAvailable
+        SingleSpoon.theSpoonIsAvailable = false
+        return SingleSpoon.theSpoon
+      return null
 
-   setSoupLastUsedWith : (soup) ->
-       @soupLastUsedWith = soup
+     
+    getSoupLastUsedWith : ->
+      SingleSpoon.soupLastUsedWith
 
-	cleanSpoon :
-		@setSoupLastUsedWith(null)
+    setSoupLastUsedWith : (soup) ->
+      SingleSpoon.soupLastUsedWith = soup
 
+    cleanSpoon : ->
+      @setSoupLastUsedWith(null)
 
+  return SingleSpoon
