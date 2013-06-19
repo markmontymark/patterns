@@ -1,6 +1,9 @@
 #//TestSingleSpoon.java - testing the singleton
 
-define ['build/Creational/Singleton/SingleSpoon'], (SingleSpoon) ->
+define [ 'Creational/Singleton/SingleSpoon'
+], (
+SingleSpoon
+) ->
 
   'use strict'
 

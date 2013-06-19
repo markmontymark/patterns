@@ -1,10 +1,13 @@
-0
 
+#//SaladSpoon.java - One of Two Concrete Prototypes extending the AbstractSpoon Prototype
+define ['Creational/Prototype/AbstractSpoon'
+],(
+AbstractSpoon
+) ->
 
-//SaladSpoon.java - Two of Two Concrete Prototypes extending the AbstractSpoon Prototype
+	class SaladSpoon extends AbstractSpoon
 
-public class SaladSpoon extends AbstractSpoon {  
-   public SaladSpoon() {
-       setSpoonName("Salad Spoon");     
-   }
-}
+		constructor : ->
+			@setSpoonName 'Salad Spoon'
+
+	return SaladSpoon

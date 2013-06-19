@@ -1,16 +1,18 @@
-0
 
 
-//HonoluluSoupFactoryMethodSubclass.java - Two of Two Subclass Factory Methods
+#//HonoluluSoupFactoryMethodSubclass.java - Two of Two Subclass Factory Methods
+define ['Creational/Factory_Method/SoupFactoryMethod',
+'Creational/Factory_Method/HonoluluClamChowder',
+'Creational/Factory_Method/HonoluluFishChowder'
+],(
+SoupFactoryMethod,
+HonoluluClamChowder,
+HonoluluFishChowder
+) ->
+  class HonoluluSoupFactoryMethodSubclass extends SoupFactoryMethod
 
-class HonoluluSoupFactoryMethodSubclass extends SoupFactoryMethod {
-    public String makeBuffetName() {
-        return "Honolulu Soup Buffet";
-    }
-    public ClamChowder makeClamChowder() {
-        return new HonoluluClamChowder();
-    }
-    public FishChowder makeFishChowder() {
-        return new HonoluluFishChowder();
-    }
-}
+    makeBuffetName   : -> "Honolulu Soup Buffet"
+    makeClamChowder   : -> new HonoluluClamChowder()
+    makeFishChowder   : -> new HonoluluFishChowder()
+
+  return HonoluluSoupFactoryMethodSubclass

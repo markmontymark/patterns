@@ -1,16 +1,22 @@
-0
 
+#//HonoluluConcreteSoupFactory - Two of Two concrete factories extending the abstract factory
 
-//HonoluluConcreteSoupFactory.java - Two of Two concrete factories extending the abstract factory
+define ['Creational/Abstract_Factory/AbstractSoupFactory',
+'Creational/Abstract_Factory/HonoluluClamChowder',
+'Creational/Abstract_Factory/HonoluluFishChowder'
+],(
+AbstractSoupFactory,
+HonoluluClamChowder,
+HonoluluFishChowder
+) ->
+  class HonoluluConcreteSoupFactory extends AbstractSoupFactory
+    constructor : ->
+      @factoryLocation = 'Honolulu'
 
-class HonoluluConcreteSoupFactory extends AbstractSoupFactory {
-    public HonoluluConcreteSoupFactory() {
-        factoryLocation = "Honolulu";
-    }
-    public ClamChowder makeClamChowder() {
-       return new HonoluluClamChowder();
-    }
-    public FishChowder makeFishChowder() {
-       return new HonoluluFishChowder();
-    }
-}
+    makeClamChowder : ->
+      new HonoluluClamChowder()
+
+    makeFishChowder : ->
+      new HonoluluFishChowder()
+
+  return HonoluluConcreteSoupFactory

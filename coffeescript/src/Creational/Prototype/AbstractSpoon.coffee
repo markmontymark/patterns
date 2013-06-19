@@ -1,25 +1,24 @@
-0
 
 
-//AbstractSpoon.java - One of Two Prototypes
+#//AbstractSpoon.java - One of Two Prototypes
 
-public abstract class AbstractSpoon implements Cloneable {  
-   String spoonName; 
-    
-   public void setSpoonName(String spoonName) {
-       this.spoonName = spoonName;
-   }
-   public String getSpoonName() {
-       return this.spoonName;
-   }
-   
-   public Object clone() {
-       Object object = null;
-       try {
-           object = super.clone();
-       } catch (CloneNotSupportedException exception) {
-           System.err.println("AbstractSpoon is not Cloneable");
-       }
-       return object;
-   }
-}
+define [],() ->
+  class AbstractSpoon
+
+    constructor : ->
+      console.warn "in AbstractSpoon ctor"
+      throw "Can't instantiate abstract class, AbstractSpoon"
+
+    spoonName : null
+
+    setSpoonName : (spoonName) ->
+      @spoonName = spoonName
+
+    getSpoonName : ->
+      @spoonName
+
+    clone : ->
+      Object.create(@)
+      #JSON.parse(JSON.stringify(@))
+
+  return AbstractSpoon

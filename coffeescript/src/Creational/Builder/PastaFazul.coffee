@@ -1,14 +1,14 @@
-0
 
+define [ 'Creational/Builder/Soup'
+],(
+Soup
+) ->
+  class PastaFazul extends Soup
+    constructor : ->
+      @soupName = 'Pasta Fazul'
+      @soupIngredients = ['1 Pound tomatos',
+        '1/2 cup pasta',
+        '1/2 cup diced carrots',
+        '1 cup tomato juice' ]
 
-class PastaFazul extends Soup
-{
-    public PastaFazul() 
-    {
-        soupName = "Pasta Fazul";
-        soupIngredients.add("1 Pound tomatos");
-        soupIngredients.add("1/2 cup pasta");    
-        soupIngredients.add("1/2 cup diced carrots");          
-        soupIngredients.add("1 cup tomato juice");             
-    }
-}
+  return PastaFazul

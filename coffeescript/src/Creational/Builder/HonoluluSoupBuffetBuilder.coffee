@@ -1,17 +1,21 @@
-0
 
+#/HonoluluSoupBuffetBuilder.java - Two of Two Builder Subclasses
 
-//HonoluluSoupBuffetBuilder.java - Two of Two Builder Subclasses
+define ['Creational/Builder/SoupBuffetBuilder',
+'Creational/Builder/HonoluluClamChowder',
+'Creational/Builder/HonoluluFishChowder'
+] , (
+SoupBuffetBuilder,
+HonoluluClamChowder,
+HonoluluFishChowder
+) ->
 
-class HonoluluSoupBuffetBuilder extends SoupBuffetBuilder {
-    public void buildClamChowder() {
-        soupBuffet.clamChowder = new HonoluluClamChowder();
-    }
-    public void buildFishChowder() {
-        soupBuffet.fishChowder = new HonoluluFishChowder();
-    }
-    
-    public void setSoupBuffetName() {
-        soupBuffet.soupBuffetName = "Honolulu Soup Buffet";
-    }
-}
+  class HonoluluSoupBuffetBuilder extends SoupBuffetBuilder
+
+    constructor : ->
+
+    buildClamChowder   : -> @soupBuffet.clamChowder = new HonoluluClamChowder()
+    buildFishChowder   : -> @soupBuffet.fishChowder = new HonoluluFishChowder()
+    setSoupBuffetName : -> @soupBuffet.soupBuffetName = "Honolulu Soup Buffet"
+
+  return HonoluluSoupBuffetBuilder

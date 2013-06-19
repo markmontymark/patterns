@@ -11,7 +11,7 @@
 
 #/If you were to create a spoon "pool" you would have the same basic logic as shown, however multiple spoons would be distributed. The variable theSpoon would hold an array or collection of spoons. The variable theSpoonIsAvaialable would become a counter of the number of available spoons.
 
-define [], ->
+define [], () ->
 
   'use strict'
   class SingleSpoon

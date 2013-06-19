@@ -1,13 +1,16 @@
-0
 
+define ['Creational/Builder/Soup',
+],(
+Soup
+) ->
 
-class Minnestrone extends Soup
-{
-    public Minnestrone() 
-    {
-        soupName = "Minestrone";
-        soupIngredients.add("1 Pound tomatos");
-        soupIngredients.add("1/2 cup pasta");    
-        soupIngredients.add("1 cup tomato juice");             
-    }
-}
+	class Minnestrone extends Soup
+		constructor : ->
+			@soupName = 'Minnestrone'
+			@soupIngredients = [
+				'1 Pound tomatos',
+				'1/2 cup pasta',
+				'1 cup tomato juice',
+			]
+
+	return Minnestrone

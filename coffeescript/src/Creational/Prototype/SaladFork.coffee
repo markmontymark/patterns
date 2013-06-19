@@ -1,10 +1,13 @@
-0
 
+#//SaladFork.java - One of Two Concrete Prototypes extending the AbstractFork Prototype
+define ['Creational/Prototype/AbstractFork'
+],(
+AbstractFork
+) ->
 
-//SaladFork.java - The Concrete Prototype extending the AbstractFork Prototype
+  class SaladFork extends AbstractFork
 
-public class SaladFork extends AbstractFork {  
-   public SaladFork() {
-       setForkName("Salad Fork");
-   }
-}
+    constructor : ->
+      @setForkName 'Salad Fork'
+
+  return SaladFork

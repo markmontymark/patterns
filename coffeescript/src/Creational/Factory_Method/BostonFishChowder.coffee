@@ -1,14 +1,18 @@
-0
 
 
-class BostonFishChowder extends FishChowder {
-    public BostonFishChowder() {
-        soupName = "ScrodFishChowder";
-        soupIngredients.clear();        
-        soupIngredients.add("1 Pound Fresh Scrod");
-        soupIngredients.add("1 cup corn");
-        soupIngredients.add("1/2 cup heavy cream");
-        soupIngredients.add("1/4 cup butter");
-        soupIngredients.add("1/4 cup potato chips");
-    }
-}
+define ['Creational/Factory_Method/FishChowder'
+],(
+FishChowder
+) ->
+
+	class BostonFishChowder extends FishChowder
+		constructor : ->
+			@soupName = 'ScrodFishChowder'
+			@soupIngredients = [
+				'1 Pound Fresh Scrod',
+				'1 cup corn',
+				'1/2 cup heavy cream',
+				'1/4 cup butter',
+				'1/4 cup potato chips' ]
+
+	return BostonFishChowder

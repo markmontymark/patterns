@@ -13,7 +13,7 @@ var path = require('path');
 			flatten: false,
 			cwd: 'src',
 			// uncomment when all files compile src: ['**/*.coffee'],
-			src: ['Creational/Singleton/*.coffee'],
+			src: ['Creational/**/*.coffee'],
 			dest: 'build',
 			ext: '.js'
 	  },
@@ -43,28 +43,8 @@ var path = require('path');
 					junit: { path: 'testresults' },
 					template: require('grunt-template-jasmine-requirejs'),
 					templateOptions: {
-						//requireConfigFile: 'src/main.js',
 						requireConfig: {
-							baseUrl: './',
-							//paths: { "jquery": "path/to/jquery" },
-							shim: {
-								/*
-								'foo': {
-									deps: ['bar'],
-									exports: 'Foo',
-									init: function (bar) {
-										return this.Foo.noConflict();
-									}
-								}
-								*/
-							},
-							//deps: ['jquery']
-						  // do initialization stuff
-							  /*
-							callback: function($) {
-
-							}
-							  */
+							baseUrl: 'build/',
 						}
 					}
 				}
@@ -72,7 +52,7 @@ var path = require('path');
 	}
   });
 
-  grunt.registerTask('default', 'jasminetest');
+  grunt.registerTask('default', 'test');
   grunt.registerTask('build', 'coffee:src_compile');
   grunt.registerTask('buildtest', 'coffee:test_compile');
   grunt.registerTask('test', ['build','buildtest','jasmine:src']);

@@ -1,16 +1,18 @@
-0
 
 
-//BostonSoupFactoryMethodSubclass.java - One of Two Subclass Factory Methods
+#//BostonSoupFactoryMethodSubclass.java - Two of Two Subclass Factory Methods
+define ['Creational/Factory_Method/SoupFactoryMethod',
+'Creational/Factory_Method/BostonClamChowder',
+'Creational/Factory_Method/BostonFishChowder'
+],(
+SoupFactoryMethod,
+BostonClamChowder,
+BostonFishChowder
+) ->
+  class BostonSoupFactoryMethodSubclass extends SoupFactoryMethod
 
-class BostonSoupFactoryMethodSubclass extends SoupFactoryMethod {
-    public String makeBuffetName() {
-        return "Boston Soup Buffet";
-    }
-    public ClamChowder makeClamChowder() {
-        return new BostonClamChowder();
-    }
-    public FishChowder makeFishChowder() {
-        return new BostonFishChowder();
-    }
-}
+    makeBuffetName   : -> "Boston Soup Buffet"
+    makeClamChowder   : -> new BostonClamChowder()
+    makeFishChowder   : -> new BostonFishChowder()
+
+  return BostonSoupFactoryMethodSubclass

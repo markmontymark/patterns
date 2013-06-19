@@ -1,13 +1,16 @@
-0
 
+define ['Creational/Abstract_Factory/Soup',
+],(
+Soup
+) ->
 
-class TofuSoup extends Soup
-{
-    public TofuSoup() 
-    {
-        soupName = "Tofu Soup";
-        soupIngredients.add("1 Pound tofu");
-        soupIngredients.add("1 cup carrot juice");    
-        soupIngredients.add("1/4 cup spirolena");         
-    }
-}
+  class TofuSoup extends Soup
+    constructor : ->
+      @soupName = 'Tofu Soup'
+      @soupIngredients = [
+        '1 Pound tofu',
+        '1 cup carrot juice',
+        '1/4 cup spirolena',
+      ]
+
+  return TofuSoup
