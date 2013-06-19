@@ -13,7 +13,7 @@ var path = require('path');
 			flatten: false,
 			cwd: 'src',
 			// uncomment when all files compile src: ['**/*.coffee'],
-			src: ['Creational/**/*.coffee'],
+			src: ['**/*.coffee'],
 			dest: 'build',
 			ext: '.js'
 	  },
