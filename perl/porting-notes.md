@@ -40,3 +40,6 @@ It looks like this:
 	__PACKAGE__->virtual_methods(qw(
 		execute
 	));
+
+So, any module extending CommandAbstract is expected to implement an execute method.
+
