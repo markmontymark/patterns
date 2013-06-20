@@ -44,10 +44,11 @@ Install Perl
 
 Install Node.js
 
-	sudo npm install -g coffee-script
-	sudo npm install -g grunt-cli
+	sudo npm install -g coffee-script  # need this only once per system
+	sudo npm install -g grunt-cli  # need this only once per system
 	git clone git@github.com:markmontymark/patterns.git
 	cd patterns/coffeescript
+	npm install # need this only once per git clone
 	grunt
 
 
