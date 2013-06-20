@@ -7,7 +7,18 @@ Multiple language ports of GoF patterns
 The base of all these (someday complete) ports of GoF patterns originally come from Larry Truett's Java Design Patterns at http://www.fluffycat.com/Java-Design-Patterns/
 Much thanks to Larry for allowing to me to start off this project with his Java code base.
 
+# Languages / Status
+
+	Java - complete (copied, see Attribution)
+	Perl - complete
+	CoffeeScript - complete
+	JavaScript - complete-ish (CoffeeScript is done, which all gets compiled to JS)
+	C - incomplete
+	C++ - incomplete
+
 # Quick start
+
+## Java
 
 Install Java
 
@@ -20,6 +31,8 @@ If Java sources build successfully:
 
 	./scripts-local/run-java-tests.pl
 
+## Perl
+
 Install Perl
 
 	cd perl
@@ -27,14 +40,16 @@ Install Perl
 	./Build
 	./Build test
 
-# Languages
+## CoffeeScript
 
-	Java - complete (copied, see Attribution)
-	Perl - complete
-	C - incomplete
-	C++ - incomplete
-	CoffeeScript - incomplete
-	JavaScript - incomplete
+Install Node.js
+
+	sudo npm install -g coffee-script
+	sudo npm install -g grunt-cli
+	git clone git@github.com:markmontymark/patterns.git
+	cd patterns/coffeescript
+	grunt
+
 
 # Patterns
 
