@@ -19,7 +19,7 @@ It looks like this:
 
 	 "My string ".replace(new RegExp(' ', 'gm'),'*') ## yields "My*string*"
 
-Original Java source uses java.lang.String.replace, but apparently, according to [this JSPerf URL|http://jsperf.com/replace-vs-split-join-vs-replaceall/34] when comparing:
+Original Java source uses java.lang.String.replace, but apparently, according to JSPerf http://jsperf.com/replace-vs-split-join-vs-replaceall/34 when comparing:
 
 	- replace(//g) 
 	- split().join() 
@@ -30,6 +30,6 @@ the third, using new RegExp, wins out.
 
 ## RequireJS circular dependency idiom
 
-According to [this Stack Overflow answer|http://stackoverflow.com/a/14326040/766921], here's an idiom for getting around circular dependency problems with RequireJS
+According to the Stack Overflow answer http://stackoverflow.com/a/14326040/766921, here's an idiom for getting around circular dependency problems with RequireJS
 
 
