@@ -32,4 +32,23 @@ the third, using new RegExp, wins out.
 
 According to the Stack Overflow answer http://stackoverflow.com/a/14326040/766921, here's an idiom for getting around circular dependency problems with RequireJS
 
+	
+	define ['B'],(B) ->
+		class A
+			constructor : (@blah = 0) ->
+			showName : (ctx, name) ->
+				## Circular dependency pattern
+				unless B
+					B = require "B"
 
+
+	define ['A'],(A) ->
+		class B
+			constructor : (@blah = 0) ->
+			showName : (ctx, name) ->
+				## Circular dependency pattern
+				unless A
+					A = require "A"
+
+
+So, class A and class B both want to instantiate and object of the each other's class, but by default (unless I missed it somewhere) with RequireJS, this is an unresolved circular dependency.  So far, I've only had to do this with the Behavioral / State classes.
