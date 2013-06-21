@@ -38,4 +38,6 @@ int main ( int argc, char ** argv )
 		printf("%p\n",spoonForSecondPerson);
 	else
 		printf("No spoon was available\n");
+
+	spoon_free();	
 }

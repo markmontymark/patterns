@@ -1,8 +1,7 @@
 
-#include "soup.h"
-#include "tofu_soup.h"
+#include "tofusoup.h"
 
-soup_t * tofu_soup_new()
+soup_t * tofusoup_new()
 {
 	soup_t * soup = soup_new();
 	soup->name = "Tofu Soup";  // this is FAIL

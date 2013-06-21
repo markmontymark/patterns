@@ -7629,6 +7629,10 @@ _lt_linker_boilerplate=`cat conftest.err`
 $RM -r conftest*
 
 
+## CAVEAT EMPTOR:
+## There is no encapsulation within the following macros, do not change
+## the running order or otherwise move them around unless you know exactly
+## what you are doing...
 if test -n "$compiler"; then
 
 lt_prog_compiler_no_builtin_flag=
@@ -11186,7 +11190,7 @@ CC="$lt_save_CC"
 
 ac_config_headers="$ac_config_headers config.h"
 
-ac_config_files="$ac_config_files Makefile src/Makefile src/common/Makefile src/Creational/Makefile src/Creational/Singleton/Makefile"
+ac_config_files="$ac_config_files Makefile src/Makefile src/common/Makefile src/Creational/Makefile src/Creational/Singleton/Makefile src/Creational/Abstract_Factory/Makefile"
 
 
 cat >confcache <<\_ACEOF
@@ -12191,6 +12195,7 @@ do
     "src/common/Makefile") CONFIG_FILES="$CONFIG_FILES src/common/Makefile" ;;
     "src/Creational/Makefile") CONFIG_FILES="$CONFIG_FILES src/Creational/Makefile" ;;
     "src/Creational/Singleton/Makefile") CONFIG_FILES="$CONFIG_FILES src/Creational/Singleton/Makefile" ;;
+    "src/Creational/Abstract_Factory/Makefile") CONFIG_FILES="$CONFIG_FILES src/Creational/Abstract_Factory/Makefile" ;;
 
   *) as_fn_error $? "invalid argument: \`$ac_config_target'" "$LINENO" 5;;
   esac

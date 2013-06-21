@@ -20,5 +20,6 @@ void spoon_return_the_spoon(spoon_t *);
 soup_t * spoon_get_soupLastUsedWith(spoon_t *);
 void 		spoon_set_soupLastUsedWith(spoon_t *, soup_t *);
 void 		spoon_clean_spoon(spoon_t *);
+void 		spoon_free();
 
 #endif

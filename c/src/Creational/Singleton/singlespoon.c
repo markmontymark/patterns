@@ -67,3 +67,9 @@ void spoon_clean_spoon(spoon_t * spoon)
 	 spoon_set_soupLastUsedWith(spoon,NULL);
 }   
 
+void spoon_free()
+{
+	if( theSpoon != NULL )
+		free( theSpoon );
+}
+
