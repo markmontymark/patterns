@@ -5,5 +5,4 @@ Makefile
 *.status
 .deps
 autom4te.cache
-build-aux
 stamp-h1
