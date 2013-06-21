@@ -1,0 +1,7 @@
+{
+   "Creational/Singleton/test" : {
+      "regex_expected" : "/First person getting the spoon\n0x[0-9A-Za-z]+\nSecond person getting a spoon\nNo spoon was available\nFirst person returning the spoon\nThe spoon was returned\nSecond person getting a spoon\n0x[0-9A-Za-z]+/",
+      "bin" : "src/Creational/Singleton/test",
+      "name" : "Creational Singleton"
+   }
+}
