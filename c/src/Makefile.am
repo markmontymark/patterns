@@ -1,1 +1,1 @@
-SUBDIRS=Creational
+SUBDIRS=common Creational

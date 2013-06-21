@@ -3,7 +3,7 @@
 #ifndef C_PATTERNS_SINGLETON
 #define C_PATTERNS_SINGLETON
 
-#include "soup.h"
+#include "../../common/soup.h"
 
 typedef struct spoon spoon_t;
 struct spoon

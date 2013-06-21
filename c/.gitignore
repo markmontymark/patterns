@@ -4,5 +4,6 @@ Makefile
 *.log
 *.status
 .deps
+*~
 autom4te.cache
 stamp-h1

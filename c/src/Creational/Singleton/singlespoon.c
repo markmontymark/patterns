@@ -1,7 +1,7 @@
 
 //SingleSpoon- a Singleton
 
-#include "soup.h"
+#include "../../common/soup.h"
 #include "singlespoon.h"
 
 #include "stdlib.h"
