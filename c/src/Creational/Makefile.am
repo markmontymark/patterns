@@ -1,1 +1,1 @@
-SUBDIRS=Singleton Abstract_Factory
+SUBDIRS=Singleton Abstract_Factory Prototype

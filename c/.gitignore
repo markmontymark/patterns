@@ -1,5 +1,7 @@
 Makefile
 *.o
+*.lo
+*.la
 *.in
 *.log
 *.status

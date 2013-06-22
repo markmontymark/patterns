@@ -8,7 +8,13 @@
       "expected" : "The Soup of the day in Boston is ScrodFishChowder\nThe Soup of the day in Honolulu is OpakapakaFishChowder\n",
       "bin" : "src/Creational/Abstract_Factory/test",
       "name" : "Creational - Abstract_Factory"
-   }
+   },
+
+   "Creational/Prototype/test" : {
+      "expected" : "Creating a Prototype Factory with a SoupSpoon and a SaladFork\nGetting the Spoon and Fork name:\nSpoon: Soup Spoon, Fork: Salad Fork\nCreating a Prototype Factory with a SaladSpoon and a SaladFork\nGetting the Spoon and Fork name:\nSpoon: Salad Spoon, Fork: Salad Fork\n",
+      "bin" : "src/Creational/Prototype/test",
+      "name" : "Creational - Prototype"
+	}
 
 
 }
