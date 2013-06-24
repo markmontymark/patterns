@@ -14,6 +14,11 @@
       "expected" : "Creating a Prototype Factory with a SoupSpoon and a SaladFork\nGetting the Spoon and Fork name:\nSpoon: Soup Spoon, Fork: Salad Fork\nCreating a Prototype Factory with a SaladSpoon and a SaladFork\nGetting the Spoon and Fork name:\nSpoon: Salad Spoon, Fork: Salad Fork\n",
       "bin" : "src/Creational/Prototype/test",
       "name" : "Creational - Prototype"
+	},
+   "Creational/Builder/test" : {
+      "expected" : "At the Boston Soup Buffet, today's soups are  Today's Soups!  , Chicken Soup: ,ChickenSoup, Clam Chowder: ,QuahogChowder, Fish Chowder: ,ScrodFishChowder, Minnestrone: ,Minestrone, Pasta Fazul: ,Pasta Fazul, Tofu Soup: ,Tofu Soup, Vegetable Soup: ,Vegetable Soup\nAt the Honolulu Soup Buffet, today's soups are  Today's Soups!  , Chicken Soup: ,ChickenSoup, Clam Chowder: ,PacificClamChowder, Fish Chowder: ,OpakapakaFishChowder, Minnestrone: ,Minestrone, Pasta Fazul: ,Pasta Fazul, Tofu Soup: ,Tofu Soup, Vegetable Soup: ,Vegetable Soup\n",
+      "bin" : "src/Creational/Builde/test",
+      "name" : "Creational - Builder"
 	}
 
 
