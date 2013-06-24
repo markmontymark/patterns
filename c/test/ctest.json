@@ -17,9 +17,18 @@
 	},
    "Creational/Builder/test" : {
       "expected" : "At the Boston Soup Buffet, today's soups are  Today's Soups!  , Chicken Soup: ,ChickenSoup, Clam Chowder: ,QuahogChowder, Fish Chowder: ,ScrodFishChowder, Minnestrone: ,Minestrone, Pasta Fazul: ,Pasta Fazul, Tofu Soup: ,Tofu Soup, Vegetable Soup: ,Vegetable Soup\nAt the Honolulu Soup Buffet, today's soups are  Today's Soups!  , Chicken Soup: ,ChickenSoup, Clam Chowder: ,PacificClamChowder, Fish Chowder: ,OpakapakaFishChowder, Minnestrone: ,Minestrone, Pasta Fazul: ,Pasta Fazul, Tofu Soup: ,Tofu Soup, Vegetable Soup: ,Vegetable Soup\n",
-      "bin" : "src/Creational/Builde/test",
+      "bin" : "src/Creational/Builder/test",
       "name" : "Creational - Builder"
+	},
+
+   "Creational/Factory_Method/test" : {
+      "expected" : "At the Soup Buffet, today's soups are:  Today's Soups!  , Chicken Soup: ,ChickenSoup, Clam Chowder: ,ClamChowder, Fish Chowder: ,FishChowder, Minnestrone: ,Minestrone, Pasta Fazul: ,Pasta Fazul, Tofu Soup: ,Tofu Soup, Vegetable Soup: ,Vegetable Soup\nAt the Boston Soup Buffet, today's soups are:  Today's Soups!  , Chicken Soup: ,ChickenSoup, Clam Chowder: ,QuahogChowder, Fish Chowder: ,ScrodFishChowder, Minnestrone: ,Minestrone, Pasta Fazul: ,Pasta Fazul, Tofu Soup: ,Tofu Soup, Vegetable Soup: ,Vegetable Soup\nAt the Honolulu Soup Buffet, today's soups are:  Today's Soups!  , Chicken Soup: ,ChickenSoup, Clam Chowder: ,PacificClamChowder, Fish Chowder: ,OpakapakaFishChowder, Minnestrone: ,Minestrone, Pasta Fazul: ,Pasta Fazul, Tofu Soup: ,Tofu Soup, Vegetable Soup: ,Vegetable Soup\n",
+      "bin" : "src/Creational/Factory_Method/test",
+      "name" : "Creational - Factory_Method"
 	}
+
+
+
 
 
 }

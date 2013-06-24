@@ -1,1 +1,1 @@
-SUBDIRS=Singleton Abstract_Factory Prototype Builder
+SUBDIRS=Singleton Abstract_Factory Prototype Builder Factory_Method
