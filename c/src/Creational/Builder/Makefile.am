@@ -7,8 +7,6 @@ honolulu_soupbuffet_builder.h \
 Makefile.am \
 soupbuffet_builder.c \
 soupbuffet_builder.h \
-soupbuffet.c \
-soupbuffet.h \
 test.c
 test_LDADD = ../../common/libcommon.la
 

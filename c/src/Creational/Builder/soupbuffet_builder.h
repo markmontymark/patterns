@@ -10,8 +10,7 @@
 #include "../../common/pastafazul.h"
 #include "../../common/tofusoup.h"
 #include "../../common/vegetablesoup.h"
-
-#include "soupbuffet.h"
+#include "../../common/soupbuffet.h"
 
 #include "stdlib.h"
 

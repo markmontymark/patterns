@@ -2,7 +2,7 @@
 
 //Testing the builder
 
-#include "soupbuffet.h"
+#include "../../common/soupbuffet.h"
 #include "soupbuffet_builder.h"
 #include "boston_soupbuffet_builder.h"
 #include "honolulu_soupbuffet_builder.h"

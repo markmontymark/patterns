@@ -8,8 +8,8 @@
 #include "../../common/pastafazul.h"
 #include "../../common/tofusoup.h"
 #include "../../common/vegetablesoup.h"
+#include "../../common/soupbuffet.h"
 
-#include "soupbuffet.h"
 #include "soupbuffet_builder.h"
 
 #include "stdlib.h"

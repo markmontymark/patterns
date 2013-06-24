@@ -1,7 +1,6 @@
 
-#include "../../common/arraylist_string.h"
-#include "../../common/soup.h"
-
+#include "arraylist_string.h"
+#include "soup.h"
 #include "soupbuffet.h"
 
 #include "stdlib.h"

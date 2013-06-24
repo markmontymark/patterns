@@ -3,7 +3,7 @@
 #define C_PATTERNS_BUILDER_SOUPBUFFET_H_
 
 
-#include "../../common/soup.h"
+#include "soup.h"
 
 //SoupBuffet - A helper class
 
