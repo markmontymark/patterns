@@ -1,1 +1,1 @@
-SUBDIRS=Decorator Proxy
+SUBDIRS=Adapter Decorator Proxy

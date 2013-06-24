@@ -11190,7 +11190,7 @@ CC="$lt_save_CC"
 
 ac_config_headers="$ac_config_headers config.h"
 
-ac_config_files="$ac_config_files Makefile src/Makefile src/common/Makefile src/Creational/Makefile src/Structural/Makefile src/Creational/Singleton/Makefile src/Creational/Abstract_Factory/Makefile src/Creational/Prototype/Makefile src/Creational/Builder/Makefile src/Creational/Factory_Method/Makefile src/Structural/Proxy/Makefile src/Structural/Decorator/Makefile"
+ac_config_files="$ac_config_files Makefile src/Makefile src/common/Makefile src/Creational/Makefile src/Structural/Makefile src/Creational/Singleton/Makefile src/Creational/Abstract_Factory/Makefile src/Creational/Prototype/Makefile src/Creational/Builder/Makefile src/Creational/Factory_Method/Makefile src/Structural/Proxy/Makefile src/Structural/Decorator/Makefile src/Structural/Adapter/Makefile"
 
 
 cat >confcache <<\_ACEOF
@@ -12202,6 +12202,7 @@ do
     "src/Creational/Factory_Method/Makefile") CONFIG_FILES="$CONFIG_FILES src/Creational/Factory_Method/Makefile" ;;
     "src/Structural/Proxy/Makefile") CONFIG_FILES="$CONFIG_FILES src/Structural/Proxy/Makefile" ;;
     "src/Structural/Decorator/Makefile") CONFIG_FILES="$CONFIG_FILES src/Structural/Decorator/Makefile" ;;
+    "src/Structural/Adapter/Makefile") CONFIG_FILES="$CONFIG_FILES src/Structural/Adapter/Makefile" ;;
 
   *) as_fn_error $? "invalid argument: \`$ac_config_target'" "$LINENO" 5;;
   esac

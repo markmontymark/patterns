@@ -43,6 +43,12 @@
       "expected" : "tea leaves are steeping\nbay leaf is steeping\ncinnamon stick is steeping\nginger is steeping\nhoney is steeping\nsoy milk is steeping\nvanilla bean is steeping\nchai ingredients are steeping\ntea is steeping with chain\n",
       "bin" : "src/Structural/Decorator/test",
       "name" : "Structural - Decorator"
+	},
+
+   "Structural/Adapter/test" : {
+      "expected" : "Steeping tea bag\ntea bag is steeping in cup\nSteeping loose leaf tea\ntea bag is steeping in cup\n",
+      "bin" : "src/Structural/Adapter/test",
+      "name" : "Structural - Adapter"
 	}
 
 

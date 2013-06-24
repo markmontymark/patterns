@@ -18,6 +18,7 @@ src/Creational/Builder/Makefile \
 src/Creational/Factory_Method/Makefile \
 src/Structural/Proxy/Makefile \
 src/Structural/Decorator/Makefile \
+src/Structural/Adapter/Makefile \
 ])
 AC_CONFIG_SRCDIR([src/Creational/Singleton/singlespoon.c])
 AC_OUTPUT
