@@ -1,5 +1,7 @@
-{
-   "Creational/Singleton/test" : {
+{ 
+
+
+	"Creational/Singleton/test" : {
       "regex_expected" : "/First person getting the spoon\n0x[0-9A-Za-z]+\nSecond person getting a spoon\nNo spoon was available\nFirst person returning the spoon\nThe spoon was returned\nSecond person getting a spoon\n0x[0-9A-Za-z]+/",
       "bin" : "src/Creational/Singleton/test",
       "name" : "Creational - Singleton"
@@ -25,9 +27,23 @@
       "expected" : "At the Soup Buffet, today's soups are:  Today's Soups!  , Chicken Soup: ,ChickenSoup, Clam Chowder: ,ClamChowder, Fish Chowder: ,FishChowder, Minnestrone: ,Minestrone, Pasta Fazul: ,Pasta Fazul, Tofu Soup: ,Tofu Soup, Vegetable Soup: ,Vegetable Soup\nAt the Boston Soup Buffet, today's soups are:  Today's Soups!  , Chicken Soup: ,ChickenSoup, Clam Chowder: ,QuahogChowder, Fish Chowder: ,ScrodFishChowder, Minnestrone: ,Minestrone, Pasta Fazul: ,Pasta Fazul, Tofu Soup: ,Tofu Soup, Vegetable Soup: ,Vegetable Soup\nAt the Honolulu Soup Buffet, today's soups are:  Today's Soups!  , Chicken Soup: ,ChickenSoup, Clam Chowder: ,PacificClamChowder, Fish Chowder: ,OpakapakaFishChowder, Minnestrone: ,Minestrone, Pasta Fazul: ,Pasta Fazul, Tofu Soup: ,Tofu Soup, Vegetable Soup: ,Vegetable Soup\n",
       "bin" : "src/Creational/Factory_Method/test",
       "name" : "Creational - Factory_Method"
+	},
+
+
+
+
+
+   "Structural/Proxy/test" : {
+      "expected" : "instantiating pot_of_tea_proxy\nTest: pouring tea: Pouring tea",
+      "bin" : "src/Structural/Proxy/test",
+      "name" : "Structural - Proxy"
+	},
+
+   "Structural/Decorator/test" : {
+      "expected" : "tea leaves are steeping\nbay leaf is steeping\ncinnamon stick is steeping\nginger is steeping\nhoney is steeping\nsoy milk is steeping\nvanilla bean is steeping\nchai ingredients are steeping\ntea is steeping with chain\n",
+      "bin" : "src/Structural/Decorator/test",
+      "name" : "Structural - Decorator"
 	}
-
-
 
 
 
