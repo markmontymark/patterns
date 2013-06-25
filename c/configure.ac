@@ -20,6 +20,7 @@ src/Structural/Proxy/Makefile \
 src/Structural/Decorator/Makefile \
 src/Structural/Adapter/Makefile \
 src/Structural/Flyweight/Makefile \
+src/Structural/Facade/Makefile \
 ])
 AC_CONFIG_SRCDIR([src/Creational/Singleton/singlespoon.c])
 AC_OUTPUT

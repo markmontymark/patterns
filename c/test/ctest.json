@@ -55,7 +55,12 @@
       "expected" : "Serving tea flavor chai to table number 2\nServing tea flavor chai to table number 2\nServing tea flavor camomile to table number 1\nServing tea flavor camomile to table number 1\nServing tea flavor earl grey to table number 1\nServing tea flavor camomile to table number 897\nServing tea flavor chai to table number 97\nServing tea flavor chai to table number 97\nServing tea flavor camomile to table number 3\nServing tea flavor earl grey to table number 3\nServing tea flavor chai to table number 3\nServing tea flavor earl grey to table number 96\nServing tea flavor camomile to table number 552\nServing tea flavor chai to table number 121\nServing tea flavor earl grey to table number 121\ntotal teaFlavor objects made: 3\n",
       "bin" : "src/Structural/Flyweight/test",
       "name" : "Structural - Flyweight"
-	}
+	},
 
+   "Structural/Facade/test" : {
+      "expected" : "behold the beautiful new tea cup\nbehold the lovely tea bag\nbehold the wonderous water\nthe tea bag is in the tea cup\nwater is boiling\nthe water is in the tea cup\nthe tea is steeping in the cup\nA nice cuppa tea!\n",
+      "bin" : "src/Structural/Facade/test",
+      "name" : "Structural - Facade"
+	}
 
 }
