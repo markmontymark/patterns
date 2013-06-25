@@ -49,8 +49,13 @@
       "expected" : "Steeping tea bag\ntea bag is steeping in cup\nSteeping loose leaf tea\ntea bag is steeping in cup\n",
       "bin" : "src/Structural/Adapter/test",
       "name" : "Structural - Adapter"
-	}
+	},
 
+   "Structural/Flyweight/test" : {
+      "expected" : "Serving tea flavor chai to table number 2\nServing tea flavor chai to table number 2\nServing tea flavor camomile to table number 1\nServing tea flavor camomile to table number 1\nServing tea flavor earl grey to table number 1\nServing tea flavor camomile to table number 897\nServing tea flavor chai to table number 97\nServing tea flavor chai to table number 97\nServing tea flavor camomile to table number 3\nServing tea flavor earl grey to table number 3\nServing tea flavor chai to table number 3\nServing tea flavor earl grey to table number 96\nServing tea flavor camomile to table number 552\nServing tea flavor chai to table number 121\nServing tea flavor earl grey to table number 121\ntotal teaFlavor objects made: 3\n",
+      "bin" : "src/Structural/Flyweight/test",
+      "name" : "Structural - Flyweight"
+	}
 
 
 }

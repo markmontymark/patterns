@@ -1,1 +1,1 @@
-SUBDIRS=Adapter Decorator Proxy
+SUBDIRS=Adapter Decorator Proxy Flyweight
