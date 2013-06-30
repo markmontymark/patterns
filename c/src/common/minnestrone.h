@@ -1,7 +1,8 @@
-#ifndef C_PATTERNS_COMMON_MINNESTRONE
-#define C_PATTERNS_COMMON_MINNESTRONE
+#ifndef MINNESTRONE_INCLUDED
+#define MINNESTRONE_INCLUDED
 
 #include "soup.h"
+
 
 soup_t * minnestrone_new();
 

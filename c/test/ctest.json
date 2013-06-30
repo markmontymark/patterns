@@ -61,6 +61,13 @@
       "expected" : "behold the beautiful new tea cup\nbehold the lovely tea bag\nbehold the wonderous water\nthe tea bag is in the tea cup\nwater is boiling\nthe water is in the tea cup\nthe tea is steeping in the cup\nA nice cuppa tea!\n",
       "bin" : "src/Structural/Facade/test",
       "name" : "Structural - Facade"
+	},
+
+   "Structural/Bridge/test" : {
+      "expected" : "testing medium soda on the cherry platform\n...glug...\nYummy Cherry Soda!\n...glug...\nYummy Cherry Soda!\ntesting super size soda on the cherry platform\n...glug...\nYummy Cherry Soda!\n...glug...\nYummy Cherry Soda!\n...glug...\nYummy Cherry Soda!\n...glug...\nYummy Cherry Soda!\n...glug...\nYummy Cherry Soda!\ntesting medium soda on the grape platform\n...glug...\nDelicious Grape Soda!\n...glug...\nDelicious Grape Soda!\ntesting super size soda on the grape platform\n...glug...\nDelicious Grape Soda!\n...glug...\nDelicious Grape Soda!\n...glug...\nDelicious Grape Soda!\n...glug...\nDelicious Grape Soda!\n...glug...\nDelicious Grape Soda!\ntesting medium soda on the orange platform\n...glug...\nCitrusy Orange Soda!\n...glug...\nCitrusy Orange Soda!\ntesting super size soda on the orange platform\n...glug...\nCitrusy Orange Soda!\n...glug...\nCitrusy Orange Soda!\n...glug...\nCitrusy Orange Soda!\n...glug...\nCitrusy Orange Soda!\n...glug...\nCitrusy Orange Soda! ", 
+		"bin" : "src/Structural/Bridge/test",
+      "name" : "Structural - Bridge"
 	}
 
 }
+ 

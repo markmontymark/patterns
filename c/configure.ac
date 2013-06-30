@@ -5,8 +5,12 @@ AM_INIT_AUTOMAKE([foreign -Wall -Werror])
 AC_PROG_CC
 AC_CONFIG_MACRO_DIR([m4])
 LT_INIT
+AM_PROG_AS
 AC_CONFIG_HEADERS([config.h])
 AC_CONFIG_FILES([Makefile \
+vendor/Makefile \
+vendor/cii20/Makefile \
+vendor/cii20/src/Makefile \
 src/Makefile \
 src/common/Makefile \
 src/Creational/Makefile \
@@ -21,6 +25,7 @@ src/Structural/Decorator/Makefile \
 src/Structural/Adapter/Makefile \
 src/Structural/Flyweight/Makefile \
 src/Structural/Facade/Makefile \
+src/Structural/Bridge/Makefile \
 ])
 AC_CONFIG_SRCDIR([src/Creational/Singleton/singlespoon.c])
 AC_OUTPUT
