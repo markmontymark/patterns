@@ -10,6 +10,8 @@
 
 void DvdStateContext_setDvdStateName(DvdStateContext_t * ctx, DvdStateName_t * dvdStateNameIn) 
 {
+	if( ctx->dvdStateName != NULL )
+		free( ctx->dvdStateName );
 	ctx->dvdStateName = dvdStateNameIn;
 }
 
@@ -24,8 +26,8 @@ void DvdStateContext_free( DvdStateContext_t *  ctx)
 {	
 	if( ctx == NULL )
 		return;
-	//if( ctx->dvdStateName != NULL )
-		//DvdStateName_free( ctx->dvdStateName );
+	if( ctx->dvdStateName != NULL )
+		free( ctx->dvdStateName );
 	free( ctx );
 }
 

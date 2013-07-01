@@ -15,6 +15,8 @@ void DvdNameContext_free( DvdNameContext_t * ctx)
 {
 	if(ctx == NULL)
 		return;
+	if( ctx->dvdNameStrategy != NULL )
+		DvdNameStrategy_free( ctx->dvdNameStrategy );
 	free(ctx);
 }
 

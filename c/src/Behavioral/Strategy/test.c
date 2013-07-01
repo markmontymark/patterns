@@ -46,4 +46,5 @@ int main( int argc, char ** argv )
 	DvdNameContext_free( allCapContext );
 	DvdNameContext_free( theEndContext );
 	DvdNameContext_free( spacesContext );
+	arraylist_string_free( dvdNames);
 }
