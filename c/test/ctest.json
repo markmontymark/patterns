@@ -74,7 +74,14 @@
       "expected" : "Sponge*Bob*Squarepants*-*Nautical*Nonsense*and*Sponge*Buddies\nJay*and*Silent*Bob*Strike*Back\nBuffy!The!Vampire!Slayer!Season!2\nThe*Sopranos*Season*2\n" ,
 		"bin" : "src/Behavioral/State/test",
       "name" : "Behavioral - State"
+	},
+
+   "Behavioral/Strategy/test" : {
+      "expected" : "Testing formatting with all caps\nJAY AND SILENT BOB STRIKE BACK,THE FAST AND THE FURIOUS,THE OTHERS\nTesting formatting with beginning the at end\nJay and Silent Bob Strike Back,Fast and the Furious, The,Others, The\n Testing formatting with all spaces replaced with *\nJay*and*Silent*Bob*Strike*Back,The*Fast*and*the*Furious,The*Others\n",
+		"bin" : "src/Behavioral/Strategy/test",
+      "name" : "Behavioral - Strategy"
 	}
+
 
 
 }

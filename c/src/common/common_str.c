@@ -21,3 +21,18 @@ char * common_str_replace( char * str, char  from, char to )
 	return retval;
 }
 
+
+int    common_str_startsWith( char * str, char  * test ) 
+{
+	while( *str == *test)
+	{
+		str++;
+		test++;
+		if( *str == '\0' && *test != '\0')
+			return 0;
+		if( *test == '\0')
+			return 1;
+	}
+	return *str == *test;
+}
+

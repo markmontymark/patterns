@@ -1,1 +1,1 @@
-SUBDIRS=State
+SUBDIRS=State Strategy

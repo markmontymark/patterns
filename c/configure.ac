@@ -28,6 +28,7 @@ src/Structural/Flyweight/Makefile \
 src/Structural/Facade/Makefile \
 src/Structural/Bridge/Makefile \
 src/Behavioral/State/Makefile \
+src/Behavioral/Strategy/Makefile \
 ])
 AC_CONFIG_SRCDIR([src/Creational/Singleton/singlespoon.c])
 AC_OUTPUT
