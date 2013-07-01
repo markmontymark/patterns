@@ -15,6 +15,7 @@ src/Makefile \
 src/common/Makefile \
 src/Creational/Makefile \
 src/Structural/Makefile \
+src/Behavioral/Makefile \
 src/Creational/Singleton/Makefile \
 src/Creational/Abstract_Factory/Makefile \
 src/Creational/Prototype/Makefile \
@@ -26,6 +27,7 @@ src/Structural/Adapter/Makefile \
 src/Structural/Flyweight/Makefile \
 src/Structural/Facade/Makefile \
 src/Structural/Bridge/Makefile \
+src/Behavioral/State/Makefile \
 ])
 AC_CONFIG_SRCDIR([src/Creational/Singleton/singlespoon.c])
 AC_OUTPUT

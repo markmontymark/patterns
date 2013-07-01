@@ -1,1 +1,1 @@
-SUBDIRS=common Creational Structural
+SUBDIRS=common Creational Structural Behavioral

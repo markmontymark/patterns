@@ -67,7 +67,15 @@
       "expected" : "testing medium soda on the cherry platform\n...glug...\nYummy Cherry Soda!\n...glug...\nYummy Cherry Soda!\ntesting super size soda on the cherry platform\n...glug...\nYummy Cherry Soda!\n...glug...\nYummy Cherry Soda!\n...glug...\nYummy Cherry Soda!\n...glug...\nYummy Cherry Soda!\n...glug...\nYummy Cherry Soda!\ntesting medium soda on the grape platform\n...glug...\nDelicious Grape Soda!\n...glug...\nDelicious Grape Soda!\ntesting super size soda on the grape platform\n...glug...\nDelicious Grape Soda!\n...glug...\nDelicious Grape Soda!\n...glug...\nDelicious Grape Soda!\n...glug...\nDelicious Grape Soda!\n...glug...\nDelicious Grape Soda!\ntesting medium soda on the orange platform\n...glug...\nCitrusy Orange Soda!\n...glug...\nCitrusy Orange Soda!\ntesting super size soda on the orange platform\n...glug...\nCitrusy Orange Soda!\n...glug...\nCitrusy Orange Soda!\n...glug...\nCitrusy Orange Soda!\n...glug...\nCitrusy Orange Soda!\n...glug...\nCitrusy Orange Soda! ", 
 		"bin" : "src/Structural/Bridge/test",
       "name" : "Structural - Bridge"
+	},
+
+
+   "Behavioral/State/test" : {
+      "expected" : "Sponge*Bob*Squarepants*-*Nautical*Nonsense*and*Sponge*Buddies\nJay*and*Silent*Bob*Strike*Back\nBuffy!The!Vampire!Slayer!Season!2\nThe*Sopranos*Season*2\n" ,
+		"bin" : "src/Behavioral/State/test",
+      "name" : "Behavioral - State"
 	}
+
 
 }
  
