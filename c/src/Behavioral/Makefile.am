@@ -1,1 +1,1 @@
-SUBDIRS=State Strategy
+SUBDIRS=State Strategy Command
