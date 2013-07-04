@@ -1,1 +1,1 @@
-SUBDIRS=State Strategy Command
+SUBDIRS=State Strategy Command Visitor Observer

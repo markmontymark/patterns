@@ -30,6 +30,8 @@ src/Structural/Bridge/Makefile \
 src/Behavioral/State/Makefile \
 src/Behavioral/Strategy/Makefile \
 src/Behavioral/Command/Makefile \
+src/Behavioral/Visitor/Makefile \
+src/Behavioral/Observer/Makefile \
 ])
 AC_CONFIG_SRCDIR([src/Creational/Singleton/singlespoon.c])
 AC_OUTPUT
