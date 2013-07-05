@@ -53,6 +53,16 @@ int DvdReleaseByCategory_removeSubscriber(DvdReleaseByCategory_t * d, DvdSubscri
 		prevtmp = tmp;
 		tmp = tmp->next;
 	}
+	if(tmp->this && dvdSubscriber == tmp->this)
+	{
+		if(tmp == d->subscriberList)
+			d->subscriberList = tmp->next;
+		else
+			prevtmp->next = tmp->next;
+		free(tmp->this);
+		free(tmp);
+		return 1;
+	}
 	return 0;
 }
    
@@ -65,6 +75,8 @@ static void notifySubscribersOfNewDvd(DvdReleaseByCategory_t * d, DvdRelease_t *
 			DvdSubscriber_newDvdRelease(tmp->this, dvdRelease, d->categoryName);
 		tmp = tmp->next;
 	}
+	if(tmp->this)
+		DvdSubscriber_newDvdRelease(tmp->this, dvdRelease, d->categoryName);
 }
 
 static void notifySubscribersOfUpdate(DvdReleaseByCategory_t * d,DvdRelease_t * dvdRelease) 
@@ -72,9 +84,12 @@ static void notifySubscribersOfUpdate(DvdReleaseByCategory_t * d,DvdRelease_t * 
 	DvdSubscriber_list_t * tmp = d->subscriberList;
 	while(tmp->next != NULL)
 	{
-		DvdSubscriber_updateDvdRelease(tmp->this,dvdRelease, d->categoryName );
+		if(tmp->this)
+			DvdSubscriber_updateDvdRelease(tmp->this,dvdRelease, d->categoryName );
 		tmp = tmp->next;
 	}
+	if(tmp->this)
+		DvdSubscriber_updateDvdRelease(tmp->this,dvdRelease, d->categoryName );
 }
 
 void DvdReleaseByCategory_newDvdRelease(DvdReleaseByCategory_t * d, DvdRelease_t * dvdRelease) 

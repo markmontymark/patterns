@@ -31,20 +31,27 @@ int main( int argc, char ** argv )
 
 	//DvdSubscriber_list_dump(btvs->subscriberList);
 
-	DvdRelease_t * btvsS2 = DvdRelease_new("DVDFOXBTVSS20", "Buffy The Vampire Slayer Season 2", 2002, 06, 11);
-	DvdRelease_t * simpS2 = DvdRelease_new("DVDFOXSIMPSO2", "The Simpsons Season 2", 2002, 07,  9);
+	DvdRelease_t * btvsS2 = DvdRelease_new("DVDFOXBTVSS20", "Buffy The Vampire Slayer Season 2", 2002, 6, 11);
+	DvdRelease_t * simpS2 = DvdRelease_new("DVDFOXSIMPSO2", "The Simpsons Season 2", 2002, 7,  9);
 	DvdRelease_t * soprS2 = DvdRelease_new("DVDHBOSOPRAS2", "The Sopranos Season 2", 2001, 11,  6);
-	DvdRelease_t * xfilS5 = DvdRelease_new("DVDFOXXFILES5", "The X-Files Season 5", 2002, 04,  1);
+	DvdRelease_t * xfilS5 = DvdRelease_new("DVDFOXXFILES5", "The X-Files Season 5", 2002, 4,  1);
 
 	DvdReleaseByCategory_newDvdRelease(btvs,btvsS2);
+	printf("\n");
 	DvdReleaseByCategory_newDvdRelease(simpsons,simpS2);
+	printf("\n");
 	DvdReleaseByCategory_newDvdRelease(sopranos,soprS2);
+	printf("\n");
 	DvdReleaseByCategory_newDvdRelease(xfiles,xfilS5);
+	printf("\n");
 
 	DvdReleaseByCategory_removeSubscriber(xfiles,wrosen);
+	printf("\n");
 
 	DvdRelease_updateDvdReleaseDate(xfilS5,2002, 5, 14);
+	printf("\n");
 	DvdReleaseByCategory_updateDvd(xfiles,xfilS5);
+	printf("\n");
 
 	DvdReleaseByCategory_free( btvs );
    DvdReleaseByCategory_free( simpsons );
