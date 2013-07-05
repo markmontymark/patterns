@@ -14,6 +14,7 @@ struct BookInfo
 #define BookInfo_s sizeof(BookInfo_t)
     
 BookInfo_t * BookInfo_new(char * titleName, char * author) ;
+void BookInfo_free(BookInfo_t *) ;
 void BookInfo_accept(void * this, TitleBlurbVisitor_t * titleBlurbVisitor) ;
 
 #endif

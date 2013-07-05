@@ -13,5 +13,6 @@ struct GameInfo
 #define GameInfo_s sizeof(GameInfo_t)
     
 GameInfo_t * GameInfo_new(char * titleName) ;
+void GameInfo_free(GameInfo_t * ) ;
 void GameInfo_accept(void * this, TitleBlurbVisitor_t * titleBlurbVisitor)  ;
 #endif

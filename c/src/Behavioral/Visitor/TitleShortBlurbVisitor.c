@@ -14,7 +14,6 @@
 
 void TitleShortBlurbVisitor_visit( TitleBlurbVisitor_t * this, void * info )
 {
-   fprintf(stderr, "in hosrt with %p %p\n", this,info);
 
    BookInfo_t * bi;
    DvdInfo_t * di;
@@ -24,21 +23,24 @@ void TitleShortBlurbVisitor_visit( TitleBlurbVisitor_t * this, void * info )
 	{
 		case BookInfoType :
 			bi = (BookInfo_t *)info;
+			if( this->titleBlurb != NULL )
+				free( this->titleBlurb);
 			this->titleBlurb = malloc(9 + strlen(bi->ati->titleName) + 1);
-			printf("what is this %s\n",bi->ati->titleName);
 			sprintf(this->titleBlurb,"SB-Book: %s" , bi->ati->titleName);
 			break;
 
 		case DvdInfoType:
 			di = (DvdInfo_t *)info;
-			printf("what is this %s\n",di->ati->titleName);
+			if( this->titleBlurb != NULL )
+				free( this->titleBlurb);
 			this->titleBlurb = malloc(8 + strlen(di->ati->titleName) + 1);
 			sprintf(this->titleBlurb,"SB-DVD: %s" , di->ati->titleName);
 			break;
 
 		case GameInfoType:
 			gi = (GameInfo_t *)info;
-			printf("what is this %s\n",gi->ati->titleName);
+			if( this->titleBlurb != NULL )
+				free( this->titleBlurb);
 			this->titleBlurb = malloc(9 + strlen(gi->ati->titleName) + 1);
 			sprintf(this->titleBlurb,"SB-Game: %s" , gi->ati->titleName );
 			break;

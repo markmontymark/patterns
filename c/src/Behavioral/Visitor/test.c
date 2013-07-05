@@ -20,25 +20,34 @@ int main(int argc, char ** argv)
 	BookInfo_t * electricSheep = BookInfo_new("Do Androids Dream of Electric Sheep?", "Phillip K. Dick");
 	GameInfo_t * sheepRaider = GameInfo_new("Sheep Raider");
 
-	TitleBlurbVisitor_t * titleLongBlurbVisitor = TitleLongBlurbVisitor_new();
+
+	TitleBlurbVisitor_t * tlbv = TitleLongBlurbVisitor_new();
 
 	printf("Long Blurbs:\n");     
-	bladeRunner->ati->accept(bladeRunner, titleLongBlurbVisitor);
-	printf("Testing bladeRunner  %s\n" , titleLongBlurbVisitor->titleBlurb);
-/*
-	electricSheep->ati->accept(electricSheep, titleLongBlurbVisitor);
-	printf("Testing electricSheep %s\n" , titleLongBlurbVisitor->titleBlurb);
-	sheepRaider->ati->accept(sheepRaider, titleLongBlurbVisitor);
-	printf("Testing sheepRaider   %s\n" , titleLongBlurbVisitor->titleBlurb);
+	bladeRunner->ati->accept(bladeRunner, tlbv);
+	printf("Testing bladeRunner  %s\n" , tlbv->titleBlurb);
+	electricSheep->ati->accept(electricSheep, tlbv);
+	printf("Testing electricSheep %s\n" , tlbv->titleBlurb);
+	sheepRaider->ati->accept(sheepRaider, tlbv);
+	printf("Testing sheepRaider   %s\n" , tlbv->titleBlurb);
 
-	TitleBlurbVisitor_t * titleShortBlurbVisitor = TitleShortBlurbVisitor_new();
+
+	TitleBlurbVisitor_t * tsbv = TitleShortBlurbVisitor_new();
 
 	printf("Short Blurbs:\n");     
-	bladeRunner->ati->accept(bladeRunner, titleShortBlurbVisitor);
-	printf("Testing bladeRunner   %s\n" , titleShortBlurbVisitor->titleBlurb);
-	electricSheep->ati->accept(electricSheep, titleShortBlurbVisitor);
-	printf("Testing electricSheep %s\n" , titleShortBlurbVisitor->titleBlurb);
-	sheepRaider->ati->accept(sheepRaider, titleShortBlurbVisitor);
-	printf("Testing sheepRaider   %s\n" , titleShortBlurbVisitor->titleBlurb);
-*/
+	bladeRunner->ati->accept(bladeRunner, tsbv);
+	printf("Testing bladeRunner   %s\n" , tsbv->titleBlurb);
+	electricSheep->ati->accept(electricSheep, tsbv);
+	printf("Testing electricSheep %s\n" , tsbv->titleBlurb);
+	sheepRaider->ati->accept(sheepRaider, tsbv);
+	printf("Testing sheepRaider   %s\n" , tsbv->titleBlurb);
+
+
+	DvdInfo_free(bladeRunner);
+	BookInfo_free(electricSheep);
+	GameInfo_free(sheepRaider);
+
+	TitleBlurbVisitor_free(tlbv);
+	TitleBlurbVisitor_free(tsbv);
+	
 }
