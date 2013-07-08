@@ -6,6 +6,7 @@
 #include "DvdSubCategory.h"
 #include "DvdSubSubCategory.h"
 
+#include "stdlib.h"
 #include "stdio.h"
 
 int main( int argc, char ** argv )
@@ -18,21 +19,24 @@ int main( int argc, char ** argv )
 	DvdSubSubCategory_setTopSubSubCategoryTitle( comedyChildrensAquatic, "Sponge Bob Squarepants");
 
 	char * allCats;
+	allCats = comedy->topTitle->getAllCategories( comedy, allCats );
 	printf("Getting top comedy title:\n");
 	printf("The top title for %s is %s\n\n" , 
-		comedy->topTitle->getAllCategories( comedy, allCats ) , 
+		allCats,
 		comedy->topTitle->getTopTitle( comedy ) );
-	free(allCats);
+	//free(allCats);
 
+	allCats = comedyChildrens->topTitle->getAllCategories( comedyChildrens, allCats );
 	printf("Getting top comedy/childrens title:\n");
 	printf("The top title for %s is %s\n\n" , 
-		comedyChildrens->topTitle->getAllCategories( comedyChildrens, allCats ) , 
+		allCats,
 		comedyChildrens->topTitle->getTopTitle( comedyChildrens));
 	free(allCats);
 
+	allCats = comedyChildrensAquatic->topTitle->getAllCategories(comedyChildrensAquatic, allCats) ;
 	printf( "Getting top comedy/childrens/aquatic title:\n");
 	printf("The top title for %s is %s\n" , 
-		comedyChildrensAquatic->topTitle->getAllCategories(comedyChildrensAquatic, allCats) , 
+		allCats,
 		comedyChildrensAquatic->topTitle->getTopTitle( comedyChildrensAquatic ));
 	free(allCats);
 

@@ -11332,7 +11332,7 @@ fi
 
 ac_config_headers="$ac_config_headers config.h"
 
-ac_config_files="$ac_config_files Makefile vendor/Makefile vendor/cii20/Makefile vendor/cii20/src/Makefile src/Makefile src/common/Makefile src/Creational/Makefile src/Structural/Makefile src/Behavioral/Makefile src/Creational/Singleton/Makefile src/Creational/Abstract_Factory/Makefile src/Creational/Prototype/Makefile src/Creational/Builder/Makefile src/Creational/Factory_Method/Makefile src/Structural/Proxy/Makefile src/Structural/Decorator/Makefile src/Structural/Adapter/Makefile src/Structural/Flyweight/Makefile src/Structural/Facade/Makefile src/Structural/Bridge/Makefile src/Behavioral/State/Makefile src/Behavioral/Strategy/Makefile src/Behavioral/Command/Makefile src/Behavioral/Visitor/Makefile src/Behavioral/Observer/Makefile src/Behavioral/Chain_Of_Responsibility/Makefile src/Behavioral/Iterator/Makefile"
+ac_config_files="$ac_config_files Makefile vendor/Makefile vendor/cii20/Makefile vendor/cii20/src/Makefile src/Makefile src/common/Makefile src/Creational/Makefile src/Structural/Makefile src/Behavioral/Makefile src/Creational/Singleton/Makefile src/Creational/Abstract_Factory/Makefile src/Creational/Prototype/Makefile src/Creational/Builder/Makefile src/Creational/Factory_Method/Makefile src/Structural/Proxy/Makefile src/Structural/Decorator/Makefile src/Structural/Adapter/Makefile src/Structural/Flyweight/Makefile src/Structural/Facade/Makefile src/Structural/Bridge/Makefile src/Behavioral/State/Makefile src/Behavioral/Strategy/Makefile src/Behavioral/Command/Makefile src/Behavioral/Visitor/Makefile src/Behavioral/Observer/Makefile src/Behavioral/Chain_Of_Responsibility/Makefile src/Behavioral/Iterator/Makefile src/Behavioral/Mediator/Makefile"
 
 
 cat >confcache <<\_ACEOF
@@ -12363,6 +12363,7 @@ do
     "src/Behavioral/Observer/Makefile") CONFIG_FILES="$CONFIG_FILES src/Behavioral/Observer/Makefile" ;;
     "src/Behavioral/Chain_Of_Responsibility/Makefile") CONFIG_FILES="$CONFIG_FILES src/Behavioral/Chain_Of_Responsibility/Makefile" ;;
     "src/Behavioral/Iterator/Makefile") CONFIG_FILES="$CONFIG_FILES src/Behavioral/Iterator/Makefile" ;;
+    "src/Behavioral/Mediator/Makefile") CONFIG_FILES="$CONFIG_FILES src/Behavioral/Mediator/Makefile" ;;
 
   *) as_fn_error $? "invalid argument: \`$ac_config_target'" "$LINENO" 5;;
   esac

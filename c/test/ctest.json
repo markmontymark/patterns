@@ -114,6 +114,12 @@
       "expected" : "10 Things I Hate About You\nShakespeare In Love\nO (2001)\nAmerican Pie 2\nScotland, PA.\nHamlet (2000)\n\n10 Things I Hate About You\nShakespeare In Love\nO (2001)\nScotland, PA.\nHamlet (2000)\n",
 		"bin" : "src/Behavioral/Iterator/test",
       "name" : "Behavioral - Iterator"
+	},
+
+   "Behavioral/Mediator/test" : {
+      "expected" : "Lowercase LC title : mulholland dr.\nLowercase super title : Mulholland Dr.\nUpcase UC title : MULHOLLAND DR.\nUpcase super title : Mulholland Dr.\n\nAfter Super set to LC\nLowercase LC title : mulholland dr.\nLowercase super title : mulholland dr.\nUpcase UC title : MULHOLLAND DR.\nUpcase super title : mulholland dr.",
+		"bin" : "src/Behavioral/Mediator/test",
+      "name" : "Behavioral - Mediator"
 	}
 
 

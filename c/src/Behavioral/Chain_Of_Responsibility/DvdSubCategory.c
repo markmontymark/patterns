@@ -10,11 +10,11 @@
 #include "string.h"
 
 
-DvdSubCategory_t * DvdSubCategory_new(DvdCategory_t * dvdCategory, char *subCategory) 
+DvdSubCategory_t * DvdSubCategory_new(DvdCategory_t * dvdCategory, char * subCategory) 
 {
 	DvdSubCategory_t * d = malloc( DvdSubCategory_s );
    d->topTitle = TopTitle_new( DvdSubCategory_getTopTitle, DvdSubCategory_getAllCategories );
-	DvdSubCategory_setSubCategory( d, subCategory); 
+	d->subCategory = subCategory; 
 	d->parent = dvdCategory;
 	return d;
 }    
@@ -64,8 +64,7 @@ char * DvdSubCategory_getAllCategories(void * d, char * dest )
 	char * c = DvdSubCategory_getCategory(d);
 	char * s = DvdSubCategory_getSubCategory(d);
 	int size = strlen(c) + 1 + strlen(s) + 1;
-	if(dest == NULL)
-		dest = malloc( size );
+	dest = malloc( size );
 	snprintf(dest,size,"%s/%s",c,s);
 	return dest;
 }
