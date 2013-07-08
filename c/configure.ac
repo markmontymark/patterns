@@ -33,6 +33,7 @@ src/Behavioral/Command/Makefile \
 src/Behavioral/Visitor/Makefile \
 src/Behavioral/Observer/Makefile \
 src/Behavioral/Chain_Of_Responsibility/Makefile \
+src/Behavioral/Iterator/Makefile \
 ])
 AC_CONFIG_SRCDIR([src/Creational/Singleton/singlespoon.c])
 AC_OUTPUT

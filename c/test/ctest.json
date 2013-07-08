@@ -107,8 +107,14 @@
       "expected" : "Getting top comedy title:\nThe top title for Comedy is Ghost World\n\nGetting top comedy/childrens title:\nno top title in Category/SubCategory (null)\nThe top title for Comedy/Childrens is Ghost World\n\nGetting top comedy/childrens/aquatic title:\nThe top title for Comedy/Childrens/Aquatic is Sponge Bob Squarepants\n",
 		"bin" : "src/Behavioral/Chain_Of_Responsibility/test",
       "name" : "Behavioral - Chain_Of_Responsibility"
-	}
+	},
 
+
+   "Behavioral/Iterator/test" : {
+      "expected" : "10 Things I Hate About You\nShakespeare In Love\nO (2001)\nAmerican Pie 2\nScotland, PA.\nHamlet (2000)\n\n10 Things I Hate About You\nShakespeare In Love\nO (2001)\nScotland, PA.\nHamlet (2000)\n",
+		"bin" : "src/Behavioral/Iterator/test",
+      "name" : "Behavioral - Iterator"
+	}
 
 
 
