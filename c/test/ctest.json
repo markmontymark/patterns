@@ -101,6 +101,12 @@
       "expected" : "Long Blurbs:\nTesting bladeRunner  LB-DVD: Blade Runner, starring Harrison Ford, encoding region: 1\nTesting electricSheep LB-Book:  Do Androids Dream of Electric Sheep?, Author: Phillip K. Dick\nTesting sheepRaider   LB-Game: Sheep Raider\nShort Blurbs:\nTesting bladeRunner   SB-DVD: Blade Runner\nTesting electricSheep SB-Book: Do Androids Dream of Electric Sheep?\nTesting sheepRaider   SB-Game: Sheep Raider ",
 		"bin" : "src/Behavioral/Visitor/test",
       "name" : "Behavioral - Visitor"
+	},
+
+   "Behavioral/Chain_Of_Responsibility/test" : {
+      "expected" : "Getting top comedy title:\nThe top title for Comedy is Ghost World\n\nGetting top comedy/childrens title:\nno top title in Category/SubCategory (null)\nThe top title for Comedy/Childrens is Ghost World\n\nGetting top comedy/childrens/aquatic title:\nThe top title for Comedy/Childrens/Aquatic is Sponge Bob Squarepants\n",
+		"bin" : "src/Behavioral/Chain_Of_Responsibility/test",
+      "name" : "Behavioral - Chain_Of_Responsibility"
 	}
 
 
