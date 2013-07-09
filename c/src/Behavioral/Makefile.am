@@ -1,1 +1,1 @@
-SUBDIRS=State Strategy Command Visitor Observer Chain_Of_Responsibility Iterator Mediator Interpreter
+SUBDIRS=State Strategy Command Visitor Observer Chain_Of_Responsibility Iterator Mediator Interpreter Memento
