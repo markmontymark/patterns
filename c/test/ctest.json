@@ -120,7 +120,15 @@
       "expected" : "Lowercase LC title : mulholland dr.\nLowercase super title : Mulholland Dr.\nUpcase UC title : MULHOLLAND DR.\nUpcase super title : Mulholland Dr.\n\nAfter Super set to LC\nLowercase LC title : mulholland dr.\nLowercase super title : mulholland dr.\nUpcase UC title : MULHOLLAND DR.\nUpcase super title : mulholland dr.",
 		"bin" : "src/Behavioral/Mediator/test",
       "name" : "Behavioral - Mediator"
+	},
+
+
+   "Behavioral/Interpreter/test" : {
+      "expected" : "interpreting show actor:Query Result: ,Ethan Hawke,Denzel Washington\ninterpreting show actor for title <Training Day>: Query Result: ,Ethan Hawke,Denzel Washington\ninterpreting show actor for title <Hamlet>: Query Result: ,Ethan Hawke\ninterpreting show title: Query Result: ,Caddy Shack,Training Day,Hamlet\ninterpreting show title for actor <Ethan Hawke>: Query Result: ,Hamlet,Training Day,Caddy Shack\ninterpreting show title for actor <Denzel Washington>: Query Result: ,Training Day",
+		"bin" : "src/Behavioral/Interpreter/test",
+      "name" : "Behavioral - Interpreter"
 	}
+
 
 
 
