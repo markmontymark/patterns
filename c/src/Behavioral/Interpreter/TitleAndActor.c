@@ -50,6 +50,8 @@ void TitleAndActor_list_free(TitleAndActor_list_t * l)
 {
 	if( l == NULL )
 		return;
+	TitleAndActor_free( l->this );
+	TitleAndActor_list_free( l->next );
 	free( l );
 }
 

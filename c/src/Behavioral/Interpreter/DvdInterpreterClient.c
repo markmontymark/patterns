@@ -48,6 +48,7 @@ char * DvdInterpreterClient_interpret(DvdInterpreterClient_t * client, char * ex
 	int searchStarted = 0;
 	int searchEnded = 0;
 	char * searchString = NULL;
+	int do_searchString_free = 0;
 	while( (token = strtok( NULL, delim )) != NULL )
 	{
 		if ( strcmp( token,"show")== 0) 
@@ -77,7 +78,8 @@ char * DvdInterpreterClient_interpret(DvdInterpreterClient_t * client, char * ex
 		} 
 		else if ( searchString == NULL  &&  subQuery != ' '  && *token == '<' )
 		{
-			searchString = token;
+			searchString = strdup(token);
+			do_searchString_free = 1;
 			searchStarted = 1;
 			if ( *(token + strlen(token)) == '>') 
 				searchEnded = 1;
@@ -88,13 +90,18 @@ char * DvdInterpreterClient_interpret(DvdInterpreterClient_t * client, char * ex
 			int tokenlen = strlen(token);
 			char * newSearchString = malloc( sslen + tokenlen + 1 + 1);
 			snprintf( newSearchString, sslen + tokenlen + 1 + 1, "%s %s",searchString,token);
+			if (do_searchString_free && searchString != NULL )
+				free(searchString ); // no -1 because we havent advanced the ptr one char 
+			
 			searchString = newSearchString;
+			do_searchString_free = 1;
 			if ( *(token + strlen(token)) == '>') 
 				searchEnded = 1;
 		}
 	}
+	free( ee );
 
-	if (searchString != NULL) 
+	if (searchString != NULL && strlen(searchString) > 1) 
 	{
 		searchString++;// = searchString.substring(1,(searchString.length() - 1));
 		*(searchString + strlen(searchString) - 1) = '\0';
@@ -102,7 +109,7 @@ char * DvdInterpreterClient_interpret(DvdInterpreterClient_t * client, char * ex
 		//remove <>
 	}
 
-	DvdExpression_t * expr;
+	DvdExpression_t * expr = NULL;
 
 	switch (mainQuery) 
 	{
@@ -139,6 +146,8 @@ char * DvdInterpreterClient_interpret(DvdInterpreterClient_t * client, char * ex
 		{
 			char * retval = arraylist_string_to_string( result );
 			arraylist_string_free( result );
+			if (do_searchString_free && searchString != NULL )
+				free(searchString - 1); // -1 because we advanced the ptr one char 
 			return retval;
 		}
 	} 
@@ -147,5 +156,8 @@ char * DvdInterpreterClient_interpret(DvdInterpreterClient_t * client, char * ex
 	arraylist_string_add( result, expr->interpret( expr, client->ctx));
 	char * retval = arraylist_string_to_string( result );
 	arraylist_string_free( result );
+	DvdExpression_free( expr ) ;
+	if (do_searchString_free && searchString != NULL )
+		free(searchString - 1); // -1 because we advanced the ptr one char 
 	return retval;
 }
