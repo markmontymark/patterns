@@ -37,6 +37,7 @@ src/Behavioral/Iterator/Makefile \
 src/Behavioral/Mediator/Makefile \
 src/Behavioral/Interpreter/Makefile \
 src/Behavioral/Memento/Makefile \
+src/Behavioral/Template_Method/Makefile \
 ])
 AC_CONFIG_SRCDIR([src/Creational/Singleton/singlespoon.c])
 AC_OUTPUT

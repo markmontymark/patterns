@@ -134,6 +134,12 @@
       "expected" : "as first instantiated\nDVD: Memento, starring: Guy Pearce, encoding region: 1\nafter star added incorrectly\nDVD: Memento, starring: Guy Pearce,edskdzkvdfb, encoding region: 1\nthe memento\nDVD: Memento, starring: Guy Pearce, encoding region: 1\nafter DvdMemento state is restored to DvdDetails\nDVD: Memento, starring: Guy Pearce, encoding region: 1",
 		"bin" : "src/Behavioral/Memento/test",
       "name" : "Behavioral - Memento"
+	},
+
+   "Behavioral/Template_Method/test" : {
+      "expected" : "Testing bladeRunner   Dvd: Blade Runner, Starring: Harrison Ford,\nTesting electricSheep Book: Do Androids Dream of Electric Sheep?, Author: Phillip K. Dick,\nTesting sheepRaider   Game: Sheep Raider,\n",
+		"bin" : "src/Behavioral/Template_Method/test",
+      "name" : "Behavioral - Template_Method"
 	}
 
 
