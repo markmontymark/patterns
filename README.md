@@ -12,7 +12,7 @@ Much thanks to Larry for allowing to me to start off this project with his Java 
 	Java - complete (copied, see Attribution)
 	Perl - complete
 	CoffeeScript - complete
-	JavaScript - complete-ish (CoffeeScript is done, which all gets compiled to JS)
+	JavaScript - complete (using CoffeeScript's compilation, plus removed Coffeescript dependency in Gruntfile.js and package.json)
 	C - complete
 	C++ - incomplete
 
