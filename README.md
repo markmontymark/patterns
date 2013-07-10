@@ -13,7 +13,7 @@ Much thanks to Larry for allowing to me to start off this project with his Java 
 	Perl - complete
 	CoffeeScript - complete
 	JavaScript - complete-ish (CoffeeScript is done, which all gets compiled to JS)
-	C - incomplete
+	C - complete
 	C++ - incomplete
 
 # Quick start
@@ -50,6 +50,18 @@ Install Node.js
 	cd patterns/coffeescript
 	npm install # need this only once per git clone
 	grunt
+
+## C
+
+Built with gcc on a Ubuntu box
+
+	$ gcc --version
+	(Ubuntu/Linaro 4.7.2-2ubuntu1) 4.7.2
+	$ uname -a
+	Linux 3.5.0-17-generic #28-Ubuntu SMP Tue Oct 9 19:31:23 UTC 2012 x86_64 x86_64 x86_64 GNU/Linux
+
+Already had gcc and autotools installed, so ping me if you need help w/ setup on Linux.
+
 
 
 # Patterns
