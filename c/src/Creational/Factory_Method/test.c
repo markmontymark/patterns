@@ -40,7 +40,7 @@ int main( int argc, char ** argv )
 	setVegetableSoup( sb, sfm->make_vegetablesoup()); 
 
 	todaysSoups = getTodaysSoups(sb);
-	printf("At the %s, today's soups are: %s\n", sb->name, getTodaysSoups(sb));
+	printf("At the %s, today's soups are: %s\n", sb->name, todaysSoups);
 	soup_factorymethod_free(sfm);
 	soupbuffet_free(sb);
 	free(todaysSoups);
@@ -57,7 +57,7 @@ int main( int argc, char ** argv )
 	setVegetableSoup( sb, sfm->make_vegetablesoup()); 
 
 	todaysSoups = getTodaysSoups(sb);
-	printf("At the %s, today's soups are: %s\n", sb->name, getTodaysSoups(sb));
+	printf("At the %s, today's soups are: %s\n", sb->name, todaysSoups);
 	soup_factorymethod_free(sfm);
 	soupbuffet_free(sb);
 	free(todaysSoups);
