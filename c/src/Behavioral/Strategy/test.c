@@ -27,21 +27,24 @@ int main( int argc, char ** argv )
 	char * str = arraylist_string_to_string(dvdCapNames);	
 	printf("%s\n",str);
 	free(str);
-	free(dvdCapNames);
+	arraylist_string_free_items(dvdCapNames);
+	arraylist_string_free(dvdCapNames);
 
 	printf( "Testing formatting with beginning the at end\n");
 	arraylist_string_t * dvdEndNames = DvdNameContext_formatDvdNames( theEndContext, dvdNames,'\0');
 	str = arraylist_string_to_string(dvdEndNames);	
 	printf("%s\n",str);
 	free(str);
-	free(dvdEndNames);
+	arraylist_string_free_items(dvdEndNames);
+	arraylist_string_free(dvdEndNames);
 
 	printf(" Testing formatting with all spaces replaced with %c\n", replaceChar);
 	arraylist_string_t *  dvdSpcNames = DvdNameContext_formatDvdNames( spacesContext, dvdNames, replaceChar);
 	str = arraylist_string_to_string(dvdSpcNames);	
 	printf("%s\n",str);
 	free(str);
-	free(dvdSpcNames);
+	arraylist_string_free_items(dvdSpcNames);
+	arraylist_string_free(dvdSpcNames);
 
 	DvdNameContext_free( allCapContext );
 	DvdNameContext_free( theEndContext );

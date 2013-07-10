@@ -1,4 +1,4 @@
 check:
-	perl scripts/c-valgrind-test.pl test/ctest.json src --valgrind
+	perl scripts/ctest.pl test/ctest.json src --valgrind
 
 

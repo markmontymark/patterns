@@ -8,10 +8,10 @@
 #include "string.h"
 
 
-char * DvdNameTheAtEndStrategy_formatDvdName(char *src, char charIn) 
+char * DvdNameTheAtEndStrategy_formatDvdName(char *src, char notused) 
 {
-	int src_len = strlen(src) + 1; //1 for \0 and 1 for the comma we add
-	int dest_len = src_len + 1; //1 for \0 and 1 for the comma we add
+	int src_len = strlen(src) + 1; 	// 1 for \0
+	int dest_len = src_len + 1; 		// 1 for the comma we add
 
 	if (common_str_startsWith( src, "The ") )
 	{
@@ -41,7 +41,7 @@ char * DvdNameTheAtEndStrategy_formatDvdName(char *src, char charIn)
 	}
 	else
 	{
-		return src;
+		return strdup(src);
 	}
 }
 

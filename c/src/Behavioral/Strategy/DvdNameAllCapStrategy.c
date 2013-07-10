@@ -8,13 +8,13 @@
 
 char * DvdNameAllCapStrategy_formatDvdName(char * src, char charIn) 
 {
-	char * dest = malloc(strlen(src)+1);
+	char * dest = strdup(src);//malloc(strlen(src)+1);
 	char * tmp = dest;
-	while( *tmp = *src )
+	while( *tmp) // = *src )
 	{
 		*tmp = toupper(*tmp);
 		tmp++;
-		src++;
+		//src++;
 	}
 	return dest;
 }

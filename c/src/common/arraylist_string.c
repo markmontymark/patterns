@@ -128,3 +128,13 @@ void arraylist_string_free(arraylist_string_t * list)
 	free(list->data);
 	free(list);
 }
+
+void arraylist_string_free_items(arraylist_string_t * list)
+{
+	if(list == NULL)
+		return;
+	int i, sz = list->size;
+	char ** data = list->data;
+	for(i = 0; i < sz; i++ ) 
+		free( data[i] );
+}

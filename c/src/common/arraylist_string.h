@@ -14,11 +14,12 @@ struct arraylist_string
 arraylist_string_t * arraylist_string_new();
 
 //public api
-int 		arraylist_string_size(		arraylist_string_t * list);
-char* 	arraylist_string_get(		arraylist_string_t * list, int index);
-char* 	arraylist_string_to_string(arraylist_string_t * list);
-void 		arraylist_string_add(		arraylist_string_t * list, char* value);
-int  		arraylist_string_indexof(	arraylist_string_t * list, char* value);
-void		arraylist_string_free(		arraylist_string_t * list);
+int 		arraylist_string_size(			arraylist_string_t * list);
+char* 	arraylist_string_get(			arraylist_string_t * list, int index);
+char* 	arraylist_string_to_string(	arraylist_string_t * list);
+void 		arraylist_string_add(			arraylist_string_t * list, char* value);
+int  		arraylist_string_indexof(		arraylist_string_t * list, char* value);
+void		arraylist_string_free(			arraylist_string_t * list);
+void		arraylist_string_free_items(	arraylist_string_t * list);
 
 #endif
