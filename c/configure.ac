@@ -27,6 +27,7 @@ src/Structural/Adapter/Makefile \
 src/Structural/Flyweight/Makefile \
 src/Structural/Facade/Makefile \
 src/Structural/Bridge/Makefile \
+src/Structural/Composite/Makefile \
 src/Behavioral/State/Makefile \
 src/Behavioral/Strategy/Makefile \
 src/Behavioral/Command/Makefile \

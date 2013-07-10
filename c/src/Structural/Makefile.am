@@ -1,1 +1,1 @@
-SUBDIRS=Adapter Decorator Proxy Flyweight Facade Bridge
+SUBDIRS=Adapter Decorator Proxy Flyweight Facade Bridge Composite

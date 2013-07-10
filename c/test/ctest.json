@@ -69,6 +69,14 @@
       "name" : "Structural - Bridge"
 	},
 
+   "Structural/Composite/test" : {
+      "expected" : "Creating tinOfTeaBags\nThe tinOfTeaBags has 0 tea bags in it.\n\nCreating teaBag1\nThe teaBag1 has 1 tea bags in it.\n\nCreating teaBag2\nThe teaBag2 has 1 tea bags in it.\n\nPutting teaBag1 and teaBag2 in tinOfTeaBags\nteaBag1 added successfully to tinOfTeaBags\nteaBag2 added successfully to tinOfTeaBags\nThe tinOfTeaBags now has 2 tea bags in it.\n\nCreating smallTinOfTeaBags\nThe smallTinOfTeaBags has 0 tea bags in it.\n\nCreating teaBag3\nThe teaBag3 has 1 tea bags in it.\n\nPutting teaBag3 in smallTinOfTeaBags\nteaBag3 added successfully to smallTinOfTeaBags\nThe smallTinOfTeaBags now has 1 tea bags in it.\n\nPutting smallTinOfTeaBags in tinOfTeaBags\nsmallTinOfTeaBags added successfully to tinOfTeaBags\nThe tinOfTeaBags now has 3 tea bags in it.\n\nRemoving teaBag2 from tinOfTeaBags\nteaBag2 successfully removed from tinOfTeaBags\nThe tinOfTeaBags now has 2 tea bags in it.",
+		"bin" : "src/Structural/Composite/test",
+      "name" : "Structural - Composite"
+	},
+
+
+
 
    "Behavioral/State/test" : {
       "expected" : "Sponge*Bob*Squarepants*-*Nautical*Nonsense*and*Sponge*Buddies\nJay*and*Silent*Bob*Strike*Back\nBuffy!The!Vampire!Slayer!Season!2\nThe*Sopranos*Season*2\n" ,
