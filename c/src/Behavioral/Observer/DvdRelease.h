@@ -30,6 +30,9 @@ void DvdRelease_list_free(DvdRelease_list_t * l);
 DvdRelease_t * DvdRelease_new(
 	char * serialNumber, char * dvdName, int dvdReleaseYear, int dvdReleaseMonth, int dvdReleaseDay
 ) ;
+
+void DvdRelease_free( DvdRelease_t * );
+
 void DvdRelease_updateDvdRelease(
 	DvdRelease_t * d,
 	char * serialNumber, 

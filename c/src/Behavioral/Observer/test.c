@@ -13,8 +13,6 @@ int main( int argc, char ** argv )
 	DvdReleaseByCategory_t * simpsons = DvdReleaseByCategory_new("The Simpsons");  
 	DvdReleaseByCategory_t * sopranos = DvdReleaseByCategory_new("The Sopranos");
 	DvdReleaseByCategory_t * xfiles = DvdReleaseByCategory_new("The X-Files");
-	assert(btvs);
-	assert(simpsons);
 
 	DvdSubscriber_t * jsopra = DvdSubscriber_new("Junior Soprano");
 	DvdSubscriber_t * msimps = DvdSubscriber_new("Maggie Simpson");
@@ -56,7 +54,7 @@ int main( int argc, char ** argv )
 	DvdReleaseByCategory_free( btvs );
    DvdReleaseByCategory_free( simpsons );
    DvdReleaseByCategory_free( sopranos );
-   DvdReleaseByCategory_free( xfiles );
+   //DvdReleaseByCategory_free( xfiles );
 
 	return 0;
 }

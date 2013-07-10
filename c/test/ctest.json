@@ -112,10 +112,11 @@
 	},
 
    "Behavioral/Chain_Of_Responsibility/test" : {
-      "expected" : "Getting top comedy title:\nThe top title for Comedy is Ghost World\n\nGetting top comedy/childrens title:\nno top title in Category/SubCategory (null)\nThe top title for Comedy/Childrens is Ghost World\n\nGetting top comedy/childrens/aquatic title:\nThe top title for Comedy/Childrens/Aquatic is Sponge Bob Squarepants\n",
+      "expected" : "Getting top comedy title:\nThe top title for Comedy is Ghost World\n\nGetting top comedy/childrens title:\nno top title in Category/SubCategory Comedy/Childrens\nThe top title for Comedy/Childrens is Ghost World\n\nGetting top comedy/childrens/aquatic title:\nThe top title for Comedy/Childrens/Aquatic is Sponge Bob Squarepants",
 		"bin" : "src/Behavioral/Chain_Of_Responsibility/test",
       "name" : "Behavioral - Chain_Of_Responsibility"
 	},
+
 
 
    "Behavioral/Iterator/test" : {

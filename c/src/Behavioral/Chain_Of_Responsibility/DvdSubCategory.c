@@ -16,6 +16,7 @@ DvdSubCategory_t * DvdSubCategory_new(DvdCategory_t * dvdCategory, char * subCat
    d->topTitle = TopTitle_new( DvdSubCategory_getTopTitle, DvdSubCategory_getAllCategories );
 	d->subCategory = subCategory; 
 	d->parent = dvdCategory;
+	d->topSubCategoryTitle = NULL;
 	return d;
 }    
 void DvdSubCategory_free( DvdSubCategory_t * d )
@@ -59,12 +60,12 @@ char * DvdSubCategory_getTopCategoryTitle(DvdSubCategory_t * d)
 	return DvdCategory_getTopCategoryTitle(d->parent);
 }
 
-char * DvdSubCategory_getAllCategories(void * d, char * dest ) 
+char * DvdSubCategory_getAllCategories(void * d, char * destt ) 
 {
 	char * c = DvdSubCategory_getCategory(d);
 	char * s = DvdSubCategory_getSubCategory(d);
 	int size = strlen(c) + 1 + strlen(s) + 1;
-	dest = malloc( size );
+	char * dest = malloc( size );
 	snprintf(dest,size,"%s/%s",c,s);
 	return dest;
 }
@@ -77,8 +78,7 @@ char * DvdSubCategory_getTopTitle( void * d )
 	if (tt != NULL)
 		return tt;
 
-	char * gac = NULL;
-	DvdSubCategory_getAllCategories(dcasted, gac);
+	char * gac = DvdSubCategory_getAllCategories(dcasted, NULL);
 	printf("no top title in Category/SubCategory %s\n", gac);
 	free(gac);
 	return DvdCategory_getTopTitle( dcasted->parent );

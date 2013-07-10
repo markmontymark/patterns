@@ -31,6 +31,13 @@ void DvdRelease_list_add(DvdRelease_list_t * l, DvdRelease_t * d)
 
 void DvdRelease_list_free(DvdRelease_list_t * l)
 {
+   if( l == NULL )
+      return;
+	if( l->this != NULL )
+		DvdRelease_free( l->this );
+	if( l->next != NULL )
+		DvdRelease_list_free( l->next );
+   free( l );
 }
 
 DvdRelease_t * DvdRelease_new(
@@ -44,6 +51,13 @@ DvdRelease_t * DvdRelease_new(
 	d->dvdReleaseMonth = dvdReleaseMonth;
 	d->dvdReleaseDay = dvdReleaseDay;       
 	return d;
+}
+
+DvdRelease_free( DvdRelease_t * d )
+{
+	if( d==NULL)
+		return;
+	free(d);
 }
 
 void DvdRelease_updateDvdRelease(

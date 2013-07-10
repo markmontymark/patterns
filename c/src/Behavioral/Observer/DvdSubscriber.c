@@ -21,20 +21,26 @@ int DvdSubscriber_list_add(DvdSubscriber_list_t * l, DvdSubscriber_t * d)
    if( l->this = NULL )
    {
       l->this = d;
-		//printf("adding sub here %p\n", l->this);
       return 1;
    }
    ll = l;
-   while( ll->next )
+   while( ll->next != NULL )
       ll = ll->next;
    ll->next = DvdSubscriber_list_new();
    ll->next->this = d;
-		//printf("adding sub there %p\n", ll->next->this);
 	return 1;
 }
 
 void DvdSubscriber_list_free(DvdSubscriber_list_t * l)
 {
+   if( l == NULL )
+      return;
+   if( l->next != NULL )
+      DvdSubscriber_list_free( l->next );
+   if( l->this != NULL )
+      DvdSubscriber_free( l->this );
+   free( l );
+
 }
 
 
@@ -45,6 +51,14 @@ void DvdSubscriber_list_dump(DvdSubscriber_list_t * l)
 	{
 		printf("sub list dump: %p\n",ll->this);//->this->subscriberName);
 	} while( (ll = ll->next));
+}
+
+
+void DvdSubscriber_free( DvdSubscriber_t * d )
+{
+	if( d == NULL )
+		return;
+	free( d );
 }
 
 

@@ -27,6 +27,7 @@ int DvdSubscriber_list_add(DvdSubscriber_list_t * l, DvdSubscriber_t * d);
 void DvdSubscriber_list_dump(DvdSubscriber_list_t * l);
 
 DvdSubscriber_t * DvdSubscriber_new(char * subscriberNameIn) ;
+void DvdSubscriber_free (DvdSubscriber_t * );
 void DvdSubscriber_newDvdRelease(
 	DvdSubscriber_t * s, 
 	DvdRelease_t * newDvdRelease, 
