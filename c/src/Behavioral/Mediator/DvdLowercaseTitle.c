@@ -42,21 +42,14 @@ void DvdLowercaseTitle_resetTitle(DvdLowercaseTitle_t * d, char * title)
 	}
 	else
 	{
-		int i = 0;
-		for( ; *title; *title++, i++)
-			d->title[i] = *title;
-		//d->title = title;
+		strcpy(d->title,title);
 		DvdLowercaseTitle_resetTitle( d, NULL );
 	}
 }
    
 void DvdLowercaseTitle_setSuperTitleLowercase(DvdLowercaseTitle_t * d) 
 {
-	int i = 0;
-	char * title = d->LowercaseTitle;
-	for( ; *title; *title++, i++)
-		d->title[i] = *title;
-	//d->title = d->LowercaseTitle;
+	strcpy(d->title,d->LowercaseTitle);
 	DvdMediator_changeTitle_w_lower( d->dvdMediator, d);
 }
    

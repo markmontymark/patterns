@@ -44,23 +44,14 @@ void DvdUpcaseTitle_resetTitle( DvdUpcaseTitle_t * d, char * title)
 	}
 	else
 	{
-		int i = 0;
-      for( ; *title; *title++, i++)
-         d->title[i] = *title;
-
-		//d->title = title;
+		strcpy(d->title , title);
 		DvdUpcaseTitle_resetTitle(d, NULL);
 	}
 }    
 
 void DvdUpcaseTitle_setSuperTitleUpcase( DvdUpcaseTitle_t * d ) 
 {
-	int i = 0;
-   char * title = d->upcaseTitle;
-   for( ; *title; *title++, i++)
-      d->title[i] = *title;
-
-	//d->title = d->upcaseTitle;
+	strcpy(d->title , d->upcaseTitle);
 	DvdMediator_changeTitle_w_up( d->dvdMediator,d);
 }
 
@@ -68,6 +59,5 @@ void DvdUpcaseTitle_setUpcaseTitle(DvdUpcaseTitle_t * d, char * upcaseTitle)
 {
 	if( d->need_free && d->upcaseTitle != NULL )
 		free( d->upcaseTitle );
-	//d->need_free = 0;
 	d->upcaseTitle = upcaseTitle;
 }
