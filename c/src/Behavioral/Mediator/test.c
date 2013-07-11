@@ -9,8 +9,9 @@
 
 int main( int argc, char ** argv )
 {
+	char title[] = "Mulholland Dr.";
 	DvdMediator_t * dvdMediator = DvdMediator_new();
-	DvdLowercaseTitle_t * dvdLower = DvdLowercaseTitle_new("Mulholland Dr.", dvdMediator);
+	DvdLowercaseTitle_t * dvdLower = DvdLowercaseTitle_new(title, dvdMediator);
 	DvdUpcaseTitle_t * dvdUp = DvdUpcaseTitle_new(dvdLower->title, dvdMediator);
 
 	printf("Lowercase LC title : %s\n" , dvdLower->LowercaseTitle );

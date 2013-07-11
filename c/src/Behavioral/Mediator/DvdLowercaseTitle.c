@@ -2,11 +2,9 @@
 #include "DvdLowercaseTitle.h"
 #include "DvdMediator.h"
 
+#include "string.h"
 #include "stdlib.h"
 #include "ctype.h"
-
-#include "stdio.h"
-#include "string.h"
 
 // One of Two Concrete Colleagues or Mediatees
 
@@ -14,7 +12,8 @@ DvdLowercaseTitle_t * DvdLowercaseTitle_new(char * title, DvdMediator_t * dvdMed
 {
 	DvdLowercaseTitle_t * d = malloc( DvdLowercaseTitle_s );
 	d->title = title;
-	d->do_free = 0;
+	d->LowercaseTitle = NULL;
+	d->need_free = 0;
 	DvdLowercaseTitle_resetTitle( d , NULL );
 	d->dvdMediator = dvdMediator;
 	DvdMediator_setLowercase( d->dvdMediator,d);
@@ -26,12 +25,7 @@ void DvdLowercaseTitle_free( DvdLowercaseTitle_t * d )
 {
 	if( d == NULL )
 		return;
-	if( d->do_free )
-	{
-		free( d->LowercaseTitle );
-		free( d->title );
-	}
-	d->do_free = 0;
+	free( d->LowercaseTitle);
 	free( d );
 }
     
@@ -39,26 +33,36 @@ void DvdLowercaseTitle_resetTitle(DvdLowercaseTitle_t * d, char * title)
 {
 	if( title == NULL )
 	{
-		char * start_t = strdup(d->title);
-		char * t = start_t;
+		char * lt = strdup(d->title);
+		char * t = lt;
 		for( ; *t; t++ )
 			*t = tolower(*t);
-		DvdLowercaseTitle_setLowercaseTitle( d, start_t );
+		d->need_free = 1;
+		DvdLowercaseTitle_setLowercaseTitle( d, lt);
 	}
 	else
 	{
-		d->title = title;
+		int i = 0;
+		for( ; *title; *title++, i++)
+			d->title[i] = *title;
+		//d->title = title;
 		DvdLowercaseTitle_resetTitle( d, NULL );
 	}
 }
    
 void DvdLowercaseTitle_setSuperTitleLowercase(DvdLowercaseTitle_t * d) 
 {
-	d->title = d->LowercaseTitle;
+	int i = 0;
+	char * title = d->LowercaseTitle;
+	for( ; *title; *title++, i++)
+		d->title[i] = *title;
+	//d->title = d->LowercaseTitle;
 	DvdMediator_changeTitle_w_lower( d->dvdMediator, d);
 }
    
 void DvdLowercaseTitle_setLowercaseTitle(DvdLowercaseTitle_t * d, char * LowercaseTitle) 
 {
+	if( d->need_free && d->LowercaseTitle != NULL )
+		free( d->LowercaseTitle );
 	d->LowercaseTitle = LowercaseTitle;
 }

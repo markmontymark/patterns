@@ -13,7 +13,7 @@ typedef struct DvdUpcaseTitle DvdUpcaseTitle_t;
 struct DvdUpcaseTitle
 {
    DvdMediator_t * dvdMediator;
-	int do_free;
+	int need_free;
 	char * title;
    char * upcaseTitle;
 };
