@@ -35,8 +35,6 @@ void DvdInterpreterClient_free ( DvdInterpreterClient_t * d)
 // show title | actor [for actor | title ]
 char * DvdInterpreterClient_interpret(DvdInterpreterClient_t * client, char * expression) 
 {
-	arraylist_string_t * result = arraylist_string_new();
-	arraylist_string_add( result, "Query Result: ");
        
 	char mainQuery = ' ';
 	char subQuery = ' ';
@@ -141,21 +139,16 @@ char * DvdInterpreterClient_interpret(DvdInterpreterClient_t * client, char * ex
 			}
 			break;
 		}            
-
-		default : 
-		{
-			char * retval = arraylist_string_to_string( result );
-			arraylist_string_free( result );
-			if (do_searchString_free && searchString != NULL )
-				free(searchString - 1); // -1 because we advanced the ptr one char 
-			return retval;
-		}
 	} 
 
 
-	arraylist_string_add( result, expr->interpret( expr, client->ctx));
+	char * rez = expr->interpret( expr, client->ctx);
+	arraylist_string_t * result = arraylist_string_new();
+	arraylist_string_add( result, "Query Result: ");
+	arraylist_string_add( result, rez );
 	char * retval = arraylist_string_to_string( result );
 	arraylist_string_free( result );
+	free(rez);
 	DvdExpression_free( expr ) ;
 	if (do_searchString_free && searchString != NULL )
 		free(searchString - 1); // -1 because we advanced the ptr one char 
