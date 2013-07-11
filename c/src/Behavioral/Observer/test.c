@@ -54,7 +54,18 @@ int main( int argc, char ** argv )
 	DvdReleaseByCategory_free( btvs );
    DvdReleaseByCategory_free( simpsons );
    DvdReleaseByCategory_free( sopranos );
-   //DvdReleaseByCategory_free( xfiles );
+   DvdReleaseByCategory_free( xfiles );
+
+	DvdSubscriber_free( jsopra );
+	DvdSubscriber_free( msimps );
+	DvdSubscriber_free( rgiles );
+	DvdSubscriber_free( smulde );
+	DvdSubscriber_free( wrosen );
+
+	DvdRelease_free( btvsS2 );
+	DvdRelease_free( simpS2 );
+	DvdRelease_free( soprS2 );
+	DvdRelease_free( xfilS5 );
 
 	return 0;
 }

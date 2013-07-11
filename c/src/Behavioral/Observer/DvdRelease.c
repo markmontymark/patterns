@@ -33,8 +33,6 @@ void DvdRelease_list_free(DvdRelease_list_t * l)
 {
    if( l == NULL )
       return;
-	if( l->this != NULL )
-		DvdRelease_free( l->this );
 	if( l->next != NULL )
 		DvdRelease_list_free( l->next );
    free( l );

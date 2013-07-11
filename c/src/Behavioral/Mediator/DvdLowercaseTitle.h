@@ -10,6 +10,7 @@ typedef struct DvdLowercaseTitle DvdLowercaseTitle_t;
 
 struct DvdLowercaseTitle
 {
+	int do_free;
 	char * title;
    char * LowercaseTitle;
    DvdMediator_t * dvdMediator;

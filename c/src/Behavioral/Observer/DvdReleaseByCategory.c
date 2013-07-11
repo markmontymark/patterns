@@ -46,7 +46,6 @@ int DvdReleaseByCategory_removeSubscriber(DvdReleaseByCategory_t * d, DvdSubscri
 				d->subscriberList = tmp->next;
 			else
 				prevtmp->next = tmp->next;
-			free(tmp->this);
 			free(tmp);
 			return 1;
 		}
@@ -59,7 +58,6 @@ int DvdReleaseByCategory_removeSubscriber(DvdReleaseByCategory_t * d, DvdSubscri
 			d->subscriberList = tmp->next;
 		else
 			prevtmp->next = tmp->next;
-		free(tmp->this);
 		free(tmp);
 		return 1;
 	}

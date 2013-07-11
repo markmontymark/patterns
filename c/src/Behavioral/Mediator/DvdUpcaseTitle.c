@@ -13,6 +13,7 @@ DvdUpcaseTitle_t * DvdUpcaseTitle_new(char * title, DvdMediator_t * dvdMediator)
 {
 	DvdUpcaseTitle_t * d = malloc( DvdUpcaseTitle_s );
 	d->title = title;
+	d->do_free = 0;
 	DvdUpcaseTitle_resetTitle(d, NULL);
 	d->dvdMediator = dvdMediator;
 	DvdMediator_setUpcase( dvdMediator, d );
@@ -23,6 +24,12 @@ void DvdUpcaseTitle_free ( DvdUpcaseTitle_t * d)
 {
 	if( d == NULL)
 		return;
+	if( d->do_free )
+	{
+		free( d->upcaseTitle );
+		free( d->title );
+	}
+	d->do_free = 0;
 	free( d );
 }
 
@@ -34,6 +41,7 @@ void DvdUpcaseTitle_resetTitle( DvdUpcaseTitle_t * d, char * title)
 		char * t = start_t;
 		for(; *t; t++ )
 			*t = toupper(*t);
+		d->do_free = 1;
 		DvdUpcaseTitle_setUpcaseTitle(d, start_t );
 	}
 	else

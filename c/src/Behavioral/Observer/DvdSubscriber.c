@@ -37,10 +37,7 @@ void DvdSubscriber_list_free(DvdSubscriber_list_t * l)
       return;
    if( l->next != NULL )
       DvdSubscriber_list_free( l->next );
-   if( l->this != NULL )
-      DvdSubscriber_free( l->this );
    free( l );
-
 }
 
 

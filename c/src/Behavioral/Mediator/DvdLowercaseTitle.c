@@ -14,6 +14,7 @@ DvdLowercaseTitle_t * DvdLowercaseTitle_new(char * title, DvdMediator_t * dvdMed
 {
 	DvdLowercaseTitle_t * d = malloc( DvdLowercaseTitle_s );
 	d->title = title;
+	d->do_free = 0;
 	DvdLowercaseTitle_resetTitle( d , NULL );
 	d->dvdMediator = dvdMediator;
 	DvdMediator_setLowercase( d->dvdMediator,d);
@@ -25,6 +26,12 @@ void DvdLowercaseTitle_free( DvdLowercaseTitle_t * d )
 {
 	if( d == NULL )
 		return;
+	if( d->do_free )
+	{
+		free( d->LowercaseTitle );
+		free( d->title );
+	}
+	d->do_free = 0;
 	free( d );
 }
     
@@ -34,12 +41,8 @@ void DvdLowercaseTitle_resetTitle(DvdLowercaseTitle_t * d, char * title)
 	{
 		char * start_t = strdup(d->title);
 		char * t = start_t;
-		//printf("start reset with %s\n", t);
 		for( ; *t; t++ )
-		{
 			*t = tolower(*t);
-		}
-		//printf("after loopstart reset with %s\n", start_t);
 		DvdLowercaseTitle_setLowercaseTitle( d, start_t );
 	}
 	else
