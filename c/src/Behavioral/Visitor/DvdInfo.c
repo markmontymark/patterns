@@ -2,7 +2,7 @@
 
 //DvdInfo - one of three concrete Visitees
 
-#include "AbstractTitleInfo.h"
+#include "TitleInfo.h"
 #include "DvdInfo.h"
 
 #include "stdlib.h"
@@ -13,24 +13,22 @@ void DvdInfo_accept( void *  this, TitleBlurbVisitor_t * tbv)
 }
 
     
-DvdInfo_t * DvdInfo_new(char * titleName, char * star, char encodingRegion) 
+TitleInfo_t * DvdInfo_new(char * titleName, char * star, char encodingRegion) 
 {
-	DvdInfo_t * bi = malloc( DvdInfo_s );
-	bi->ati = AbstractTitleInfo_new( titleName );	
-   bi->ati->titleInfoType = DvdInfoType;
-   bi->titleType = DvdInfoType;
-	bi->star = star;
-	bi->encodingRegion = encodingRegion;
-	bi->ati->accept = DvdInfo_accept;
+	TitleInfo_t * bi = TitleInfo_new( DvdInfo_accept, titleName );
+	bi->type = DvdInfoType;
+	bi->dvd = malloc( DvdInfo_s );
+	bi->dvd->star = star;
+	bi->dvd->encodingRegion = encodingRegion;
 	return bi;
 }    
 
-void DvdInfo_free(DvdInfo_t * d)
+void DvdInfo_free(TitleInfo_t * d)
 {
 	if(d == NULL)
 		return;
-   free(d->ati);
-	free(d);
+	free( d->dvd );
+	free(d);	
 }
 
    

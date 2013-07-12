@@ -8,6 +8,6 @@
 
 
 TitleBlurbVisitor_t * TitleLongBlurbVisitor_new() ;
-void TitleLongBlurbVisitor_visit( TitleBlurbVisitor_t * this, void * info ) ;
+void TitleLongBlurbVisitor_visit( TitleBlurbVisitor_t * this, TitleInfo_t * info ) ;
 
 #endif

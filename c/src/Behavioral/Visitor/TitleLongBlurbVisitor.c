@@ -1,7 +1,7 @@
 
 //TitleLongBlurbVisitor - two of two concrete Visitors
 
-#include "AbstractTitleInfo.h"
+#include "TitleInfo.h"
 #include "TitleBlurbVisitor.h"
 #include "TitleLongBlurbVisitor.h"
 
@@ -19,37 +19,29 @@ TitleBlurbVisitor_t * TitleLongBlurbVisitor_new()
 	return t;
 }
 
-void TitleLongBlurbVisitor_visit( TitleBlurbVisitor_t * this, void * info )
+void TitleLongBlurbVisitor_visit( TitleBlurbVisitor_t * this, TitleInfo_t * info )
 {
-	BookInfo_t * bi;
-	DvdInfo_t * di;
-	GameInfo_t * gi;
-
-	AbstractTitleInfoBase_t * ati = (AbstractTitleInfoBase_t *)info;
-	switch( ati->titleInfoType )
+	switch( info->type )
 	{
 		case BookInfoType:
-			bi = (BookInfo_t *)info;
 			if(this->titleBlurb != NULL)
 				free(this->titleBlurb);
-         this->titleBlurb = malloc(20 + strlen(bi->ati->titleName) + strlen(bi->author) + 1);
-			sprintf(this->titleBlurb , "LB-Book:  %s, Author: %s" , bi->ati->titleName , bi->author);
+         this->titleBlurb = malloc(20 + strlen(info->titleName) + strlen(info->book->author) + 1);
+			sprintf(this->titleBlurb , "LB-Book:  %s, Author: %s" , info->titleName , info->book->author);
 			break;
 
 		case DvdInfoType:
-			di = (DvdInfo_t *)info;
 			if(this->titleBlurb != NULL)
 				free(this->titleBlurb);
-         this->titleBlurb = malloc(38 + strlen(di->ati->titleName) + strlen(di->star) + 1 + 1);
-			sprintf(this->titleBlurb , "LB-DVD: %s, starring %s, encoding region: %c" , di->ati->titleName , di->star , di->encodingRegion);
+         this->titleBlurb = malloc(38 + strlen(info->titleName) + strlen(info->dvd->star) + 1 + 1);
+			sprintf(this->titleBlurb , "LB-DVD: %s, starring %s, encoding region: %c" , info->titleName , info->dvd->star , info->dvd->encodingRegion);
 			break;
 
 		case GameInfoType:
-			gi = (GameInfo_t *)info;
 			if(this->titleBlurb != NULL)
 				free(this->titleBlurb);
-         this->titleBlurb = malloc( 9 + strlen(gi->ati->titleName) + 1);
-			sprintf(this->titleBlurb, "LB-Game: %s" , gi->ati->titleName);
+         this->titleBlurb = malloc( 9 + strlen(info->titleName) + 1);
+			sprintf(this->titleBlurb, "LB-Game: %s" , info->titleName);
 			break;
 	}
 }

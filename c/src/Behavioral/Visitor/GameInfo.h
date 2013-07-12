@@ -7,12 +7,10 @@
 typedef struct GameInfo GameInfo_t;
 struct GameInfo 
 {
-	int titleType;
-	AbstractTitleInfo_t * ati;
 };
 #define GameInfo_s sizeof(GameInfo_t)
     
-GameInfo_t * GameInfo_new(char * titleName) ;
-void GameInfo_free(GameInfo_t * ) ;
+TitleInfo_t * GameInfo_new(char * titleName) ;
+void GameInfo_free(TitleInfo_t * ) ;
 void GameInfo_accept(void * this, TitleBlurbVisitor_t * titleBlurbVisitor)  ;
 #endif

@@ -1,7 +1,7 @@
 bin_PROGRAMS = test
 test_SOURCES =   \
-AbstractTitleInfo.c \
-AbstractTitleInfo.h \
+TitleInfo.c \
+TitleInfo.h \
 BookInfo.c \
 BookInfo.h \
 DvdInfo.c \

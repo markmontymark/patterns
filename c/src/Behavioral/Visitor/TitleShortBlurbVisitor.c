@@ -1,6 +1,6 @@
 //TitleShortBlurbVisitor - two of two concrete Visitors
 
-#include "AbstractTitleInfo.h"
+#include "TitleInfo.h"
 #include "DvdInfo.h"
 #include "BookInfo.h"
 #include "GameInfo.h"
@@ -12,41 +12,34 @@
 #include  "string.h"
 
 
-void TitleShortBlurbVisitor_visit( TitleBlurbVisitor_t * this, void * info )
+void TitleShortBlurbVisitor_visit( TitleBlurbVisitor_t * this, TitleInfo_t * info )
 {
 
-   BookInfo_t * bi;
-   DvdInfo_t * di;
-   GameInfo_t * gi;
-
-	switch( ((AbstractTitleInfo_t *)info)->titleInfoType )
+	switch( info->type )
 	{
 		case BookInfoType :
-			bi = (BookInfo_t *)info;
 			if( this->titleBlurb != NULL )
 				free( this->titleBlurb);
-			this->titleBlurb = malloc(9 + strlen(bi->ati->titleName) + 1);
-			sprintf(this->titleBlurb,"SB-Book: %s" , bi->ati->titleName);
+			this->titleBlurb = malloc(9 + strlen(info->titleName) + 1);
+			sprintf(this->titleBlurb,"SB-Book: %s" , info->titleName);
 			break;
 
 		case DvdInfoType:
-			di = (DvdInfo_t *)info;
 			if( this->titleBlurb != NULL )
 				free( this->titleBlurb);
-			this->titleBlurb = malloc(8 + strlen(di->ati->titleName) + 1);
-			sprintf(this->titleBlurb,"SB-DVD: %s" , di->ati->titleName);
+			this->titleBlurb = malloc(8 + strlen(info->titleName) + 1);
+			sprintf(this->titleBlurb,"SB-DVD: %s" , info->titleName);
 			break;
 
 		case GameInfoType:
-			gi = (GameInfo_t *)info;
 			if( this->titleBlurb != NULL )
 				free( this->titleBlurb);
-			this->titleBlurb = malloc(9 + strlen(gi->ati->titleName) + 1);
-			sprintf(this->titleBlurb,"SB-Game: %s" , gi->ati->titleName );
+			this->titleBlurb = malloc(9 + strlen(info->titleName) + 1);
+			sprintf(this->titleBlurb,"SB-Game: %s" , info->titleName );
 			break;
 	
 		default:
-			printf("titleInfoType %d\n",((AbstractTitleInfo_t *)info)->titleInfoType );
+			printf("titleInfoType %d\n",info->type );
 	}
 }
 
