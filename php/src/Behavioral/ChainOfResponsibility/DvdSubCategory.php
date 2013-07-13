@@ -69,7 +69,7 @@ class DvdSubCategory implements TopTitle
 	{
 		if($this->getTopSubCategoryTitle())
 			return $this->getTopSubCategoryTitle() ;
-		echo "no top title in Category/SubCategory " . $this->getAllCategories() . "\n"; 
+		//echo "no top title in Category/SubCategory " . $this->getAllCategories() . "\n"; 
 		return $this->parent->getTopTitle();
 	}
 
