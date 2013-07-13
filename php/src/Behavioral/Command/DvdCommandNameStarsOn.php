@@ -1,6 +1,6 @@
 <?
 
-# //DvdCommandNameStarsOn.java - one of two Concrete Commands
+# //DvdCommandNameStarsOn - one of two Concrete Commands
 
 require_once 'CommandAbstract.php';
 require_once 'DvdName.php';
