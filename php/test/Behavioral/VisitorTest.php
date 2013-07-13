@@ -1,11 +1,11 @@
 <?
 
-require_once '../src/Behavioral/Visitor/AbstractTitleInfo.php';
-require_once '../src/Behavioral/Visitor/TitleBlurbVisitor.php';
-require_once '../src/Behavioral/Visitor/TitleLongBlurbVisitor.php';
-require_once '../src/Behavioral/Visitor/TitleShortBlurbVisitor.php';
+require_once 'src/Behavioral/Visitor/AbstractTitleInfo.php';
+require_once 'src/Behavioral/Visitor/TitleBlurbVisitor.php';
+require_once 'src/Behavioral/Visitor/TitleLongBlurbVisitor.php';
+require_once 'src/Behavioral/Visitor/TitleShortBlurbVisitor.php';
 
-class Behavioral_Visitor extends PHPUnit_Framework_TestCase
+class Behavioral_VisitorTest extends PHPUnit_Framework_TestCase
 {
 	public function test()
 	{

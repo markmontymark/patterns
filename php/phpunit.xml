@@ -1,0 +1,5 @@
+<phpunit>
+  <testsuites>
+    <testsuite name="Behavioral_Visitor"><directory>test</directory></testsuite>
+  </testsuites>
+</phpunit>
