@@ -14,6 +14,7 @@ Much thanks to Larry for allowing to me to start off this project with his Java 
 	CoffeeScript - complete
 	JavaScript - complete (using CoffeeScript's compilation, plus removed Coffeescript dependency in Gruntfile.js and package.json)
 	C - complete
+	PHP - 50% complete, Behavioral (done), Structural (impl done, no tests yet), Creational (not started)
 	C++ - incomplete
 
 # Quick start
@@ -61,6 +62,21 @@ Built with gcc on a Ubuntu box
 	Linux 3.5.0-17-generic #28-Ubuntu SMP Tue Oct 9 19:31:23 UTC 2012 x86_64 x86_64 x86_64 GNU/Linux
 
 Already had gcc and autotools installed, so ping me if you need help w/ setup on Linux.
+
+## PHP
+
+Again, built on a Ubuntu box which makes this very quick and easy to setup.  I'm using PHP 5.4.26 and testing with PHPUni
+
+	$ php --version | head -1
+	PHP 5.4.6-1ubuntu1.2 (cli) (built: Mar 11 2013 14:57:54) 
+	$ phpunit --version | head -1
+	PHPUnit 3.6.10 by Sebastian Bergmann.
+
+Installed using apt-get as:
+	
+	$ sudo apt-get install php5
+	$ sudo apt-get install phpunit
+
 
 
 
