@@ -1,0 +1,6 @@
+<?
+class FacadeTeaBag {
+
+public $flavor;
+
+}

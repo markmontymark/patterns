@@ -1,0 +1,6 @@
+<?
+interface Tea {
+
+function steepTea ();
+
+}
