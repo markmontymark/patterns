@@ -6,8 +6,8 @@ public $name;
 public $teaBagList;
 
 abstract function countTeaBags();
-abstract function add ();
-abstract function remove();
+abstract function add (TeaBags $tb );
+abstract function remove(TeaBags $tb );
 
 function __construct($name)
 {

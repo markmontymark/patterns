@@ -19,7 +19,7 @@ function steepTeaBag ()
 		$this->water->isBoiling
 	) 
 	{
-		$this->teaBagIsSteeped(1);
+		$this->teaBagIsSteeped = 1;
 		return "the tea is steeping in the cup";
 	} 
 	else 

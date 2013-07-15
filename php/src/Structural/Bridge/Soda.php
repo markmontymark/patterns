@@ -11,7 +11,7 @@ abstract class Soda
 
 	function setSodaImp() 
 	{
-		$this->sodaImp( SodaImpSingleton::getTheSodaImp() );
+		$this->sodaImp = SodaImpSingleton::getTheSodaImp();
 	}
 
 	function getSodaImp()

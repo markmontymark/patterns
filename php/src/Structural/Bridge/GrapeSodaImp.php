@@ -14,7 +14,7 @@ class GrapeSodaImp extends SodaImp
 		$this->msg = "Yummy Grape Soda!" ;
 	}
 		 
-	function pourSodaImp 
+	function pourSodaImp ()
 	{
 		return $this->msg;
 	}

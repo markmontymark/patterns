@@ -14,7 +14,7 @@ class OrangeSodaImp extends SodaImp
 		$this->msg = "Yummy Orange Soda!" ;
 	}
 		 
-	function pourSodaImp 
+	function pourSodaImp ()
 	{
 		return $this->msg;
 	}

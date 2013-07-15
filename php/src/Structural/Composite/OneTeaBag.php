@@ -9,8 +9,8 @@ class OneTeaBag extends TeaBags
 {
 
 function countTeaBags() { return 1; } 
-function add() { return 0; }
-function remove(){ return 0; }
+function add(TeaBags $tb) { return 0; }
+function remove(TeaBags $tb){ return 0; }
 
 }
 

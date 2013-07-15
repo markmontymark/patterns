@@ -10,7 +10,7 @@ class TinOfTeaBags extends TeaBags
 
 	function __construct($name)
 	{
-		parent::construct($name);
+		parent::__construct($name);
 		$this->teaBagList = [];
 	}
 
@@ -27,7 +27,7 @@ class TinOfTeaBags extends TeaBags
 		return $this->teaBagList[]= $tb;
 	}
 
-	function remove($toRemove)
+	function remove(TeaBags $toRemove)
 	{
 		$newlist = [];
 		$found_at_least_one = 0;
@@ -40,6 +40,7 @@ class TinOfTeaBags extends TeaBags
 		}
 		if( $found_at_least_one)
 			$this->teaBagList = $newlist;
+		return $found_at_least_one;
 	}
 
 }
