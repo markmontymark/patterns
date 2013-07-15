@@ -4,7 +4,11 @@
 #ifndef VISITOR_BOOKINFO_H_
 #define VISITOR_BOOKINFO_H_
 
+
 typedef struct BookInfo BookInfo_t;
+
+#include "TitleInfo.h"
+
 struct BookInfo 
 {
 	char * author;

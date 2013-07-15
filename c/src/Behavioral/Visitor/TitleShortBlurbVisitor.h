@@ -3,6 +3,8 @@
 #define VISIT_TITLESHORT_H_
 //TitleShortBlurbVisitor - two of two concrete Visitors
 
+#include "TitleBlurbVisitor.h"
+
 TitleBlurbVisitor_t * TitleShortBlurbVisitor_new() ;
 void TitleShortBlurbVisitor_visit( TitleBlurbVisitor_t * this, TitleInfo_t * info ) ;
 

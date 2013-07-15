@@ -5,6 +5,7 @@
 #include "string.h"
 
 #include "stdio.h"
+#include "stdlib.h"
 
 
 char * common_str_replace( char * str, char  from, char to )
@@ -40,11 +41,11 @@ int    common_str_startsWith( char * str, char  * test )
 
 int    common_str_endsWith( char * str, char  * test ) 
 {
-	char *tmp_str = *str;
+	char *tmp_str = str;
 	size_t strl = strlen(str);
 	tmp_str = tmp_str + (strl - 1);
 
-	char *tmp_test = *test;
+	char *tmp_test = test;
 	size_t testl = strlen(test);
 	tmp_test = tmp_test + (testl - 1);
 	printf("tmp_str %s\n", tmp_str );

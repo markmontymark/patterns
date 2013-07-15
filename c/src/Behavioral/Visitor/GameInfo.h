@@ -5,6 +5,10 @@
 #define VISITOR_GMAEINFO_H_
 
 typedef struct GameInfo GameInfo_t;
+
+#include "TitleInfo.h"
+
+
 struct GameInfo 
 {
 };

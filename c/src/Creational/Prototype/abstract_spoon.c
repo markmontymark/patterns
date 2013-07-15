@@ -4,6 +4,7 @@
 #include "abstract_spoon.h"
 
 #include "string.h"
+#include "stdlib.h"
 
 spoon_t * spoon_new()
 {

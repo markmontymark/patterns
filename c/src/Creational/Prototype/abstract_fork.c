@@ -3,6 +3,7 @@
 
 #include "abstract_fork.h"
 #include "string.h"
+#include "stdlib.h"
 
 fork_t * fork_new()
 {

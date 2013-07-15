@@ -2,6 +2,9 @@
 #ifndef C_PATTERNS_teaFlavorFactory_H_
 #define C_PATTERNS_teaFlavorFactory_H_
 
+#include "teaFlavor.h"
+
+
 typedef struct teaFlavorFactory teaFlavorFactory_t;
 struct teaFlavorFactory
 {
