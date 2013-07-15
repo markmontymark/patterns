@@ -14,7 +14,7 @@ Much thanks to Larry for allowing to me to start off this project with his Java 
 	CoffeeScript - complete
 	JavaScript - complete (using CoffeeScript's compilation, plus removed Coffeescript dependency in Gruntfile.js and package.json)
 	C - complete
-	PHP - 50% complete, Behavioral (done), Structural (impl done, no tests yet), Creational (not started)
+	PHP - complete
 	C++ - incomplete
 
 # Quick start
