@@ -1,11 +1,27 @@
 # This is a comment
+import os.path
 
 env = Environment()   # Create an environmnet
 
+def filtered_glob(env, pattern, omit=[],
+  ondisk=True, source=False, strings=False):
+    return filter(
+      lambda f: os.path.basename(f.path) not in omit,
+      env.Glob(pattern))
+
+env.AddMethod(filtered_glob, "FilteredGlob");
+
+ciifiles = env.Object(env.FilteredGlob('vendor/cii20/src/*.c',
+  ['SpeciallyTreatedFile.cc', 'thread-nt.c','thread.c']))
+
 libcommon_target = "common"
 libcommon_sources = [ Glob("src/common/*.c") ]
-
 libcommon = env.StaticLibrary(target = libcommon_target, source = libcommon_sources)
+
+libcii_target = "cii"
+libcii_sources = [ Glob("vendor/cii20/src/*.c") ]
+libcii = env.StaticLibrary(target = libcii_target, source = ciifiles)
+
 
 
 singletontest = env.Program(source = [ Glob("src/Behavioral/Chain_Of_Responsibility/*.c") ], 
