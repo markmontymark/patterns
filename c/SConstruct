@@ -3,361 +3,87 @@
 env = Environment()   # Create an environmnet
 
 libcommon_target = "common"
-libcommon_sources = [
-"src/common/arraylist_string.c",
-"src/common/arraylist_string.h",
-"src/common/bostonclamchowder.c",
-"src/common/bostonclamchowder.h",
-"src/common/bostonfishchowder.c",
-"src/common/bostonfishchowder.h",
-"src/common/chickensoup.c",
-"src/common/chickensoup.h",
-"src/common/clamchowder.c",
-"src/common/clamchowder.h",
-"src/common/common_str.c",
-"src/common/common_str.h",
-"src/common/fishchowder.c",
-"src/common/fishchowder.h",
-"src/common/honoluluclamchowder.c",
-"src/common/honoluluclamchowder.h",
-"src/common/honolulufishchowder.c",
-"src/common/honolulufishchowder.h",
-"src/common/minnestrone.c",
-"src/common/minnestrone.h",
-"src/common/pastafazul.c",
-"src/common/pastafazul.h",
-"src/common/soupbuffet.c",
-"src/common/soupbuffet.h",
-"src/common/soup.c",
-"src/common/soup.h",
-"src/common/tofusoup.c",
-"src/common/tofusoup.h",
-"src/common/vegetablesoup.c",
-"src/common/vegetablesoup.h"
-	]
+libcommon_sources = [ Glob("src/common/*.c") ]
 
 libcommon = env.StaticLibrary(target = libcommon_target, source = libcommon_sources)
 
 
-singletontest = env.Program(source = [
-"src/Behavioral/Chain_Of_Responsibility/DvdCategory.c",
-"src/Behavioral/Chain_Of_Responsibility/DvdCategory.h",
-"src/Behavioral/Chain_Of_Responsibility/DvdSubCategory.c",
-"src/Behavioral/Chain_Of_Responsibility/DvdSubCategory.h",
-"src/Behavioral/Chain_Of_Responsibility/DvdSubSubCategory.c",
-"src/Behavioral/Chain_Of_Responsibility/DvdSubSubCategory.h",
-"src/Behavioral/Chain_Of_Responsibility/TopTitle.c",
-"src/Behavioral/Chain_Of_Responsibility/TopTitle.h",
-"src/Behavioral/Chain_Of_Responsibility/test.c"
-	], 
+singletontest = env.Program(source = [ Glob("src/Behavioral/Chain_Of_Responsibility/*.c") ], 
 	target = "src/Behavioral/Chain_Of_Responsibility/test")
 
-
-
-
-singletontest = env.Program(source = [
-"src/Behavioral/Command/Command.c",
-"src/Behavioral/Command/Command.h",
-"src/Behavioral/Command/DvdCommandNameStarsOff.c",
-"src/Behavioral/Command/DvdCommandNameStarsOff.h",
-"src/Behavioral/Command/DvdCommandNameStarsOn.c",
-"src/Behavioral/Command/DvdCommandNameStarsOn.h",
-"src/Behavioral/Command/DvdName.c",
-"src/Behavioral/Command/DvdName.h",
-"src/Behavioral/Command/test.c",
-"libcommon.a"
-	], 
+singletontest = env.Program(source = [ Glob("src/Behavioral/Command/*.c"), "libcommon.a"], 
 	target = "src/Behavioral/Command/test")
 
-
-singletontest = env.Program(source = [
-"src/Behavioral/Interpreter/DvdActorExpression.c",
-"src/Behavioral/Interpreter/DvdActorExpression.h",
-"src/Behavioral/Interpreter/DvdActorTitleExpression.c",
-"src/Behavioral/Interpreter/DvdActorTitleExpression.h",
-"src/Behavioral/Interpreter/DvdExpression.c",
-"src/Behavioral/Interpreter/DvdExpression.h",
-"src/Behavioral/Interpreter/DvdInterpreterClient.c",
-"src/Behavioral/Interpreter/DvdInterpreterClient.h",
-"src/Behavioral/Interpreter/DvdInterpreterContext.c",
-"src/Behavioral/Interpreter/DvdInterpreterContext.h",
-"src/Behavioral/Interpreter/DvdTitleActorExpression.c",
-"src/Behavioral/Interpreter/DvdTitleActorExpression.h",
-"src/Behavioral/Interpreter/DvdTitleExpression.c",
-"src/Behavioral/Interpreter/DvdTitleExpression.h",
-"src/Behavioral/Interpreter/TitleAndActor.c",
-"src/Behavioral/Interpreter/TitleAndActor.h",
-"src/Behavioral/Interpreter/test.c",
-"libcommon.a"
-	], 
+singletontest = env.Program(source = [ Glob("src/Behavioral/Interpreter/*.c"), "libcommon.a" ], 
 	target = "src/Behavioral/Interpreter/test")
 
-
-singletontest = env.Program(source = [
-"src/Behavioral/Iterator/DvdList.c",
-"src/Behavioral/Iterator/DvdList.h",
-"src/Behavioral/Iterator/Iterator.c",
-"src/Behavioral/Iterator/Iterator.h",
-"src/Behavioral/Iterator/test.c",
-"libcommon.a"
-	], 
+singletontest = env.Program(source = [ Glob("src/Behavioral/Iterator/*.c"), "libcommon.a"], 
 	target = "src/Behavioral/Iterator/test")
 
-
-singletontest = env.Program(source = [
-"src/Behavioral/Mediator/DvdLowercaseTitle.c",
-"src/Behavioral/Mediator/DvdLowercaseTitle.h",
-"src/Behavioral/Mediator/DvdMediator.c",
-"src/Behavioral/Mediator/DvdMediator.h",
-"src/Behavioral/Mediator/DvdUpcaseTitle.c",
-"src/Behavioral/Mediator/DvdUpcaseTitle.h",
-"src/Behavioral/Mediator/test.c"
-	], 
+singletontest = env.Program(source = [ Glob("src/Behavioral/Mediator/*.c") ], 
 	target = "src/Behavioral/Mediator/test")
 
-
-singletontest = env.Program(source = [
-"src/Behavioral/Memento/DvdDetails.c",
-"src/Behavioral/Memento/DvdDetails.h",
-"src/Behavioral/Memento/test.c",
-"libcommon.a"
-	], 
+singletontest = env.Program(source = [ Glob("src/Behavioral/Memento/*.c"), "libcommon.a" ], 
 	target = "src/Behavioral/Memento/test")
 
-
-singletontest = env.Program(source = [
-"src/Behavioral/Observer/DvdReleaseByCategory.c",
-"src/Behavioral/Observer/DvdReleaseByCategory.h",
-"src/Behavioral/Observer/DvdRelease.c",
-"src/Behavioral/Observer/DvdRelease.h",
-"src/Behavioral/Observer/DvdSubscriber.c",
-"src/Behavioral/Observer/DvdSubscriber.h",
-"src/Behavioral/Observer/test.c"
-	], 
+singletontest = env.Program(source = [ Glob("src/Behavioral/Observer/*.c") ], 
 	target = "src/Behavioral/Observer/test")
 
-
-singletontest = env.Program(source = [
-"src/Behavioral/State/DvdStateContext.c",
-"src/Behavioral/State/DvdStateContext.h",
-"src/Behavioral/State/DvdStateNameExclaim.c",
-"src/Behavioral/State/DvdStateNameExclaim.h",
-"src/Behavioral/State/DvdStateName.h",
-"src/Behavioral/State/DvdStateNameStars.c",
-"src/Behavioral/State/DvdStateNameStars.h",
-"src/Behavioral/State/test.c",
-"libcommon.a"
-	], 
+singletontest = env.Program(source = [ Glob("src/Behavioral/State/*.c"), "libcommon.a" ], 
 	target = "src/Behavioral/State/test")
 
-
-singletontest = env.Program(source = [
-"src/Behavioral/Strategy/DvdNameAllCapStrategy.c",
-"src/Behavioral/Strategy/DvdNameAllCapStrategy.h",
-"src/Behavioral/Strategy/DvdNameContext.c",
-"src/Behavioral/Strategy/DvdNameContext.h",
-"src/Behavioral/Strategy/DvdNameReplaceSpacesStrategy.c",
-"src/Behavioral/Strategy/DvdNameReplaceSpacesStrategy.h",
-"src/Behavioral/Strategy/DvdNameStrategy.c",
-"src/Behavioral/Strategy/DvdNameStrategy.h",
-"src/Behavioral/Strategy/DvdNameTheAtEndStrategy.c",
-"src/Behavioral/Strategy/DvdNameTheAtEndStrategy.h",
-"src/Behavioral/Strategy/test.c",
-"libcommon.a"
-	], 
+singletontest = env.Program(source = [ Glob("src/Behavioral/Strategy/*.c"), "libcommon.a" ], 
 	target = "src/Behavioral/Strategy/test")
 
-
-singletontest = env.Program(source = [
-"src/Behavioral/Template_Method/BookTitleInfo.c",
-"src/Behavioral/Template_Method/BookTitleInfo.h",
-"src/Behavioral/Template_Method/DvdTitleInfo.c",
-"src/Behavioral/Template_Method/DvdTitleInfo.h",
-"src/Behavioral/Template_Method/GameTitleInfo.c",
-"src/Behavioral/Template_Method/GameTitleInfo.h",
-"src/Behavioral/Template_Method/TitleInfo.c",
-"src/Behavioral/Template_Method/TitleInfo.h",
-"src/Behavioral/Template_Method/test.c",
-"libcommon.a"
-	], 
+singletontest = env.Program(source = [ Glob("src/Behavioral/Template_Method/*.c"), "libcommon.a" ], 
 	target = "src/Behavioral/Template_Method/test")
 
 
-singletontest = env.Program(source = [
-"src/Behavioral/Visitor/BookInfo.c",
-"src/Behavioral/Visitor/BookInfo.h",
-"src/Behavioral/Visitor/DvdInfo.c",
-"src/Behavioral/Visitor/DvdInfo.h",
-"src/Behavioral/Visitor/GameInfo.c",
-"src/Behavioral/Visitor/GameInfo.h",
-"src/Behavioral/Visitor/TitleBlurbVisitor.c",
-"src/Behavioral/Visitor/TitleBlurbVisitor.h",
-"src/Behavioral/Visitor/TitleInfo.c",
-"src/Behavioral/Visitor/TitleInfo.h",
-"src/Behavioral/Visitor/TitleLongBlurbVisitor.c",
-"src/Behavioral/Visitor/TitleLongBlurbVisitor.h",
-"src/Behavioral/Visitor/TitleShortBlurbVisitor.c",
-"src/Behavioral/Visitor/TitleShortBlurbVisitor.h",
-"src/Behavioral/Visitor/test.c"
-	], 
+singletontest = env.Program(source = [ Glob("src/Behavioral/Visitor/*.c") ], 
 	target = "src/Behavioral/Visitor/test")
 
 
 
 
-singletontest = env.Program(source = [
-"src/Creational/Abstract_Factory/abstract_soup_factory.c",
-"src/Creational/Abstract_Factory/abstract_soup_factory.h",
-"src/Creational/Abstract_Factory/boston_soup_factory.c",
-"src/Creational/Abstract_Factory/boston_soup_factory.h",
-"src/Creational/Abstract_Factory/honolulu_soup_factory.c",
-"src/Creational/Abstract_Factory/honolulu_soup_factory.h",
-"src/Creational/Abstract_Factory/test.c",
-"libcommon.a"
-	], 
+singletontest = env.Program(source = [ Glob("src/Creational/Abstract_Factory/*.c"), "libcommon.a" ], 
 	target = "src/Creational/Abstract_Factory/test")
 
-
-singletontest = env.Program(source = [
-"src/Creational/Builder/boston_soupbuffet_builder.c",
-"src/Creational/Builder/boston_soupbuffet_builder.h",
-"src/Creational/Builder/honolulu_soupbuffet_builder.c",
-"src/Creational/Builder/honolulu_soupbuffet_builder.h",
-"src/Creational/Builder/soupbuffet_builder.c",
-"src/Creational/Builder/soupbuffet_builder.h",
-"src/Creational/Builder/test.c",
-"libcommon.a"
-	], 
+singletontest = env.Program(source = [ Glob("src/Creational/Builder/*.c"), "libcommon.a" ], 
 	target = "src/Creational/Builder/test")
 
 
-singletontest = env.Program(source = [
-"src/Creational/Factory_Method/boston_factorymethod.c",
-"src/Creational/Factory_Method/boston_factorymethod.h",
-"src/Creational/Factory_Method/honolulu_factorymethod.c",
-"src/Creational/Factory_Method/honolulu_factorymethod.h",
-"src/Creational/Factory_Method/soup_factorymethod.c",
-"src/Creational/Factory_Method/soup_factorymethod.h",
-"src/Creational/Factory_Method/test.c",
-"libcommon.a"
-	], 
+singletontest = env.Program(source = [ Glob("src/Creational/Factory_Method/*.c"), "libcommon.a" ], 
 	target = "src/Creational/Factory_Method/test")
 
-
-singletontest = env.Program(source = [
-"src/Creational/Prototype/abstract_fork.c",
-"src/Creational/Prototype/abstract_fork.h",
-"src/Creational/Prototype/abstract_spoon.c",
-"src/Creational/Prototype/abstract_spoon.h",
-"src/Creational/Prototype/prototypefactory.c",
-"src/Creational/Prototype/prototypefactory.h",
-"src/Creational/Prototype/saladfork.c",
-"src/Creational/Prototype/saladfork.h",
-"src/Creational/Prototype/saladspoon.c",
-"src/Creational/Prototype/saladspoon.h",
-"src/Creational/Prototype/soupspoon.c",
-"src/Creational/Prototype/soupspoon.h",
-"src/Creational/Prototype/test.c"
-	], 
+singletontest = env.Program(source = [ Glob("src/Creational/Prototype/*.c") ], 
 	target = "src/Creational/Prototype/test")
 
-
-singletontest = env.Program(source = [
-"src/Creational/Singleton/singlespoon.c",
-"src/Creational/Singleton/singlespoon.h",
-"src/Creational/Singleton/test.c"
-	], 
+singletontest = env.Program(source = [ Glob("src/Creational/Singleton/*.c") ], 
 	target = "src/Creational/Singleton/test")
 
 
-singletontest = env.Program(source = [
-"src/Structural/Adapter/looseleaftea.c",
-"src/Structural/Adapter/looseleaftea.h",
-"src/Structural/Adapter/teabag.c",
-"src/Structural/Adapter/teabag.h",
-"src/Structural/Adapter/teaball.c",
-"src/Structural/Adapter/teaball.h",
-"src/Structural/Adapter/teacup.c",
-"src/Structural/Adapter/teacup.h",
-"src/Structural/Adapter/test.c"
-	], 
+
+
+singletontest = env.Program(source = [ Glob("src/Structural/Adapter/*.c") ], 
 	target = "src/Structural/Adapter/test")
 
-
-singletontest = env.Program(source = [
-"src/Structural/Bridge/CherrySodaImp.c",
-"src/Structural/Bridge/CherrySodaImp.h",
-"src/Structural/Bridge/GrapeSodaImp.c",
-"src/Structural/Bridge/GrapeSodaImp.h",
-"src/Structural/Bridge/mediumsoda.c",
-"src/Structural/Bridge/OrangeSodaImp.c",
-"src/Structural/Bridge/OrangeSodaImp.h",
-"src/Structural/Bridge/SodaImp.c",
-"src/Structural/Bridge/supersizesoda.c",
-"src/Structural/Bridge/test.c"
-	], 
+singletontest = env.Program(source = [ Glob("src/Structural/Bridge/*.c") ], 
 	target = "src/Structural/Bridge/test")
 
 
-singletontest = env.Program(source = [
-"src/Structural/Composite/OneTeaBag.c",
-"src/Structural/Composite/OneTeaBag.h",
-"src/Structural/Composite/TeaBags.c",
-"src/Structural/Composite/TeaBags.h",
-"src/Structural/Composite/TinOfTeaBags.c",
-"src/Structural/Composite/TinOfTeaBags.h",
-"src/Structural/Composite/test.c"
-	], 
+singletontest = env.Program(source = [ Glob("src/Structural/Composite/*.c") ], 
 	target = "src/Structural/Composite/test")
 
 
-singletontest = env.Program(source = [
-"src/Structural/Decorator/chai.c",
-"src/Structural/Decorator/chai.h",
-"src/Structural/Decorator/tea.c",
-"src/Structural/Decorator/tea.h",
-"src/Structural/Decorator/tealeaves.c",
-"src/Structural/Decorator/tealeaves.h",
-"src/Structural/Decorator/test.c",
-"libcommon.a"
-	], 
+singletontest = env.Program(source = [ Glob("src/Structural/Decorator/*.c") , "libcommon.a" ], 
 	target = "src/Structural/Decorator/test")
 
-
-singletontest = env.Program(source = [
-env.Glob("src/Structural/Facade/*.c"),
-#
-#"src/Structural/Facade/cuppamaker.h",
-#"src/Structural/Facade/teabag.c",
-#"src/Structural/Facade/teabag.h",
-#"src/Structural/Facade/teacup.c",
-#"src/Structural/Facade/teacup.h",
-#"src/Structural/Facade/water.c",
-#"src/Structural/Facade/water.h",
-#"src/Structural/Facade/test.c",
-"libcommon.a"
-	], 
+singletontest = env.Program(source = [ env.Glob("src/Structural/Facade/*.c"), "libcommon.a" ], 
 	target = "src/Structural/Facade/test")
 
 
-singletontest = env.Program(source = [
-"src/Structural/Flyweight/teaFlavor.c",
-"src/Structural/Flyweight/teaFlavorFactory.c",
-"src/Structural/Flyweight/teaFlavorFactory.h",
-"src/Structural/Flyweight/teaFlavor.h",
-"src/Structural/Flyweight/teaOrderContext.c",
-"src/Structural/Flyweight/teaOrderContext.h",
-"src/Structural/Flyweight/test.c"
-	], 
+singletontest = env.Program(source = [ Glob("src/Structural/Flyweight/*.c") ], 
 	target = "src/Structural/Flyweight/test")
 
-
-singletontest = env.Program(source = [
-"src/Structural/Proxy/pot_of_tea.c",
-"src/Structural/Proxy/pot_of_tea.h",
-"src/Structural/Proxy/pot_of_tea_proxy.c",
-"src/Structural/Proxy/pot_of_tea_proxy.h",
-"src/Structural/Proxy/test.c"
-
-	], 
+singletontest = env.Program(source = [ Glob("src/Structural/Proxy/*.c") ], 
 	target = "src/Structural/Proxy/test")

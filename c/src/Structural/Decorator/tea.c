@@ -1,13 +1,10 @@
 
-#ifndef C_PATTERNS_DECORATOR_TEA_H_
-#define C_PATTERNS_DECORATOR_TEA_H_
+#include "tea.h"
+#include "stdlib.h"
 
-typedef struct tea tea_t;
-struct tea
+tea_t * tea_new()
 {
-	void (* steep_tea )( tea_t *);
-	int teaIsSteeped;
-};
-#define tea_s sizeof(tea_t)
+	tea_t * t = malloc(tea_s);
+	return t;
+}
 
-#endif

@@ -2,50 +2,57 @@
 
 #include "../../common/arraylist_string.h"
 #include "tea.h"
+#include "tealeaves.h"
 #include "chai.h"
 
 #include "stdlib.h"
 
-void chai_steep_tea( chai_t * t ) 
+void chai_steep_tea( tea_t * t ) 
 {
-	t->teaToMakeChai->steep_tea( t->teaToMakeChai );
+	tealeaves_steep_tea( t->chai->teaToMakeChai );
 	steep_chai_ingredients( t );
 	printf("tea is steeping with chain\n");
 }    
 
 
-chai_t * chai_new( tea_t * teaToMakeChai )
+tea_t * chai_new( tea_t * teaToMakeChai )
 {
-	chai_t * t = malloc(chai_s);
-	t->steep_tea = chai_steep_tea;
-	t->teaToMakeChai = teaToMakeChai;
-	t->ingredients = arraylist_string_new();
-	arraylist_string_add( t->ingredients, "bay leaf");
-	arraylist_string_add( t->ingredients, "cinnamon stick");
-	arraylist_string_add( t->ingredients, "ginger");
-	arraylist_string_add( t->ingredients, "honey");
-	arraylist_string_add( t->ingredients, "soy milk");
-	arraylist_string_add( t->ingredients, "vanilla bean");
+	tea_t * t = tea_new();
+	t->type = ChaiType;
+	t->chai = malloc(chai_s);
+	chai_t * ch = t->chai;
+	ch->teaToMakeChai = teaToMakeChai;
+	arraylist_string_t * ingredients = arraylist_string_new();
+	ch->ingredients = ingredients;
+	arraylist_string_add( ingredients, "bay leaf");
+	arraylist_string_add( ingredients, "cinnamon stick");
+	arraylist_string_add( ingredients, "ginger");
+	arraylist_string_add( ingredients, "honey");
+	arraylist_string_add( ingredients, "soy milk");
+	arraylist_string_add( ingredients, "vanilla bean");
 	return t;
 }
 
-void chai_free( chai_t * t )
+void chai_free( tea_t * t )
 {
 	if( t == NULL )
 		return;
-	arraylist_string_free( t->ingredients );
-	free( t->teaToMakeChai );
+	arraylist_string_free( t->chai->ingredients );
+	free( t->chai->teaToMakeChai );
+	free( t->chai);
 	free(t);
 }
     
 
     
-void steep_chai_ingredients(chai_t * t) 
+void steep_chai_ingredients(tea_t * t) 
 {
+	arraylist_string_t * ingredients = t->chai->ingredients;
 	int i,
-		sz = arraylist_string_size( t->ingredients );
+		sz = arraylist_string_size( ingredients );
+	
 	
 	for( i = 0; i < sz; i++)
-		printf("%s is steeping\n", arraylist_string_get( t->ingredients, i) );
+		printf("%s is steeping\n", arraylist_string_get( ingredients, i) );
 	printf("chai ingredients are steeping\n");
 }
