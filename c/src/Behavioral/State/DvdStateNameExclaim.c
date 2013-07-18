@@ -7,7 +7,7 @@
 #include "DvdStateNameStars.h"
 #include "DvdStateContext.h"
 
-#include "stdlib.h"
+#include "mem.h"
 #include "stdio.h"
 
 #include "../../common/common_str.h"
@@ -25,15 +25,15 @@ void DvdStateNameExclaim_showName(DvdStateName_t * d, DvdStateContext_t * ctx, c
 
 DvdStateNameExclaim_t * DvdStateNameExclaim_new() 
 {
-	DvdStateNameExclaim_t * d = malloc( DvdStateNameExclaim_s );
+	DvdStateNameExclaim_t * d;
+	NEW(d);// = malloc( DvdStateNameExclaim_s );
 	d->showName = DvdStateNameExclaim_showName;
 	return d;
 }
 
 void DvdStateNameExclaim_free(DvdStateNameExclaim_t * d)
 {
-	assert(d != NULL);
-	free( d );
+	FREE( d );
 }
     
 

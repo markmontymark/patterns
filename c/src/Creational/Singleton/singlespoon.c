@@ -4,6 +4,8 @@
 #include "../../common/soup.h"
 #include "singlespoon.h"
 
+#include "mem.h"
+
 #include "stdlib.h"
 
 
@@ -14,7 +16,7 @@ static soup_t * soupLastUsedWith;
 
 static void spoon_new()
 {
-	theSpoon = malloc(spoon_s);
+	NEW(theSpoon);
 }
 
 spoon_t * spoon_get_the_spoon()
@@ -69,7 +71,7 @@ void spoon_clean_spoon(spoon_t * spoon)
 
 void spoon_free()
 {
-	if( theSpoon != NULL )
-		free( theSpoon );
+	FREE(theSpoon);
+	//if( theSpoon != NULL )free( theSpoon );
 }
 

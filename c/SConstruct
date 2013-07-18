@@ -1,7 +1,7 @@
 # This is a comment
 import os.path
 
-env = Environment()   # Create an environmnet
+env = Environment(CPPPATH='vendor/cii20/src')   # Create an environmnet
 
 def filtered_glob(env, pattern, omit=[],
   ondisk=True, source=False, strings=False):
@@ -15,13 +15,15 @@ ciifiles = env.Object(env.FilteredGlob('vendor/cii20/src/*.c',
   ['SpeciallyTreatedFile.cc', 'thread-nt.c','thread.c']))
 
 libcommon_target = "common"
-libcommon_sources = [ Glob("src/common/*.c") ]
+libcommon_sources = [ Glob("src/common/*.c"), "libcii.a" ]
 libcommon = env.StaticLibrary(target = libcommon_target, source = libcommon_sources)
 
 libcii_target = "cii"
 libcii_sources = [ Glob("vendor/cii20/src/*.c") ]
 libcii = env.StaticLibrary(target = libcii_target, source = ciifiles)
 
+singletontest = env.Program(source = [ Glob("src/ciitable.c"), "libcii.a" ], 
+	target = "src/ciitable")
 
 
 singletontest = env.Program(source = [ Glob("src/Behavioral/Chain_Of_Responsibility/*.c") ], 
@@ -45,7 +47,7 @@ singletontest = env.Program(source = [ Glob("src/Behavioral/Memento/*.c"), "libc
 singletontest = env.Program(source = [ Glob("src/Behavioral/Observer/*.c") ], 
 	target = "src/Behavioral/Observer/test")
 
-singletontest = env.Program(source = [ Glob("src/Behavioral/State/*.c"), "libcommon.a" ], 
+singletontest = env.Program(source = [ Glob("src/Behavioral/State/*.c"), "libcommon.a", "libcii.a" ], 
 	target = "src/Behavioral/State/test")
 
 singletontest = env.Program(source = [ Glob("src/Behavioral/Strategy/*.c"), "libcommon.a" ], 
@@ -64,7 +66,7 @@ singletontest = env.Program(source = [ Glob("src/Behavioral/Visitor/*.c") ],
 singletontest = env.Program(source = [ Glob("src/Creational/Abstract_Factory/*.c"), "libcommon.a" ], 
 	target = "src/Creational/Abstract_Factory/test")
 
-singletontest = env.Program(source = [ Glob("src/Creational/Builder/*.c"), "libcommon.a" ], 
+singletontest = env.Program(source = [ Glob("src/Creational/Builder/*.c"), "libcommon.a", "libcii.a" ], 
 	target = "src/Creational/Builder/test")
 
 
@@ -74,7 +76,7 @@ singletontest = env.Program(source = [ Glob("src/Creational/Factory_Method/*.c")
 singletontest = env.Program(source = [ Glob("src/Creational/Prototype/*.c") ], 
 	target = "src/Creational/Prototype/test")
 
-singletontest = env.Program(source = [ Glob("src/Creational/Singleton/*.c") ], 
+singletontest = env.Program(source = [ Glob("src/Creational/Singleton/*.c") , "libcii.a" ], 
 	target = "src/Creational/Singleton/test")
 
 
