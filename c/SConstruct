@@ -2,6 +2,7 @@
 import os.path
 
 env = Environment(CPPPATH='vendor/cii20/src')   # Create an environmnet
+env.Append(CCFLAGS = ['-g','-O3'])
 
 def filtered_glob(env, pattern, omit=[],
   ondisk=True, source=False, strings=False):
@@ -22,10 +23,6 @@ libcii_target = "cii"
 libcii_sources = [ Glob("vendor/cii20/src/*.c") ]
 libcii = env.StaticLibrary(target = libcii_target, source = ciifiles)
 
-singletontest = env.Program(source = [ Glob("src/ciitable.c"), "libcii.a" ], 
-	target = "src/ciitable")
-
-
 singletontest = env.Program(source = [ Glob("src/Behavioral/Chain_Of_Responsibility/*.c") ], 
 	target = "src/Behavioral/Chain_Of_Responsibility/test")
 
@@ -44,7 +41,7 @@ singletontest = env.Program(source = [ Glob("src/Behavioral/Mediator/*.c") ],
 singletontest = env.Program(source = [ Glob("src/Behavioral/Memento/*.c"), "libcommon.a" ], 
 	target = "src/Behavioral/Memento/test")
 
-singletontest = env.Program(source = [ Glob("src/Behavioral/Observer/*.c") ], 
+singletontest = env.Program(source = [ Glob("src/Behavioral/Observer/*.c"), "libcii.a" ], 
 	target = "src/Behavioral/Observer/test")
 
 singletontest = env.Program(source = [ Glob("src/Behavioral/State/*.c"), "libcommon.a", "libcii.a" ], 

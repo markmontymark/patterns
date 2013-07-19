@@ -4,6 +4,9 @@ static char rcsid[] = "$Id: list.c 6 2007-01-22 00:45:22Z drhanson $";
 #include "assert.h"
 #include "mem.h"
 #include "list.h"
+
+#include "stdio.h"
+
 #define T List_T
 T List_push(T list, void *x) {
 	T p;
@@ -12,6 +15,8 @@ T List_push(T list, void *x) {
 	p->rest  = list;
 	return p;
 }
+
+
 T List_list(void *x, ...) {
 	va_list ap;
 	T list, *p = &list;
@@ -91,3 +96,76 @@ void **List_toArray(T list, void *end) {
 	array[i] = end;
 	return array;
 }
+
+// start mrk additions
+T List_remove2(T list, void *x) {
+	T *p = &list;
+	T prevp;
+	int i = 0;
+	while (*p)
+	{
+		if( (*p)->first == x )
+		{
+			printf("found item to remove at %d iteration\n",i);
+			if( i == 0 )
+			{
+					T retval = (*p)->rest;
+					FREE(list);	
+					return retval;
+			}
+			else
+			{
+				*(prevp->rest) = *((*p)->rest);
+				FREE(*p);	
+				return list;
+			}
+		}
+		prevp = (*p);
+		p = &(*p)->rest;
+		i++;
+	}
+	return list;
+}
+T List_remove(T list, void *x) {
+	T p = list;
+	T prevp;
+	int i = 0;
+	while(p)
+	{
+		if( p->first == x )
+		{
+			if( i == 0 )
+			{
+					T retval = p->rest;
+					FREE(list);	
+					return retval;
+			}
+			else
+			{
+				prevp->rest = p->rest;
+				FREE(p);	
+				return list;
+			}
+		}
+		prevp = p;
+		p = p->rest;
+		i++;
+	}
+	return list;
+}
+T List_new()
+{
+	T list;
+	NEW(list);
+	return list;
+}
+int List_first(T list,
+	int apply(void **x, void *cl), void *cl) {
+	assert(apply);
+	int retval;
+	for ( ; list; list = list->rest)
+		if( (retval = apply(&list->first, cl)) )
+			return retval;
+	return 0;
+}
+// end mrk additions

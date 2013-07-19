@@ -4,45 +4,16 @@
 
 #include "DvdRelease.h"
 #include "stdlib.h"
+#include "mem.h"
+#include "assert.h"
 
-
-DvdRelease_list_t * DvdRelease_list_new()
-{
-	DvdRelease_list_t * l = malloc(DvdRelease_list_s);
-	l->this = NULL;
-	l->next = NULL;
-	return l;
-}
-void DvdRelease_list_add(DvdRelease_list_t * l, DvdRelease_t * d)
-{
-	DvdRelease_list_t * ll;
-	if( l->this = NULL )
-	{
-		l->this = d;
-		return;
-	}
-	ll = l;
-	while( ll->next != NULL )
-		ll = ll->next;
-	ll->next = DvdRelease_list_new();
-	ll = ll->next;
-	ll->this = d;
-}
-
-void DvdRelease_list_free(DvdRelease_list_t * l)
-{
-   if( l == NULL )
-      return;
-	if( l->next != NULL )
-		DvdRelease_list_free( l->next );
-   free( l );
-}
 
 DvdRelease_t * DvdRelease_new(
 	char * serialNumber, char * dvdName, int dvdReleaseYear, int dvdReleaseMonth, int dvdReleaseDay
 ) 
 {
-	DvdRelease_t * d = malloc(DvdRelease_s);
+	DvdRelease_t * d;
+	NEW(d);
 	d->serialNumber = serialNumber;
 	d->dvdName = dvdName;
 	d->dvdReleaseYear = dvdReleaseYear;
@@ -51,11 +22,9 @@ DvdRelease_t * DvdRelease_new(
 	return d;
 }
 
-DvdRelease_free( DvdRelease_t * d )
+void DvdRelease_free( DvdRelease_t * d )
 {
-	if( d==NULL)
-		return;
-	free(d);
+	FREE(d);
 }
 
 void DvdRelease_updateDvdRelease(

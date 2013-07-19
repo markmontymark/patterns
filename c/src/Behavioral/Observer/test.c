@@ -21,14 +21,13 @@ int main( int argc, char ** argv )
 	DvdSubscriber_t * smulde = DvdSubscriber_new("Samantha Mulder");
 	DvdSubscriber_t * wrosen = DvdSubscriber_new("Willow Rosenberg");
 
-	DvdReleaseByCategory_addSubscriber(btvs,rgiles);
 	DvdReleaseByCategory_addSubscriber(btvs,wrosen);  
+	DvdReleaseByCategory_addSubscriber(btvs,rgiles);
 	DvdReleaseByCategory_addSubscriber(simpsons,msimps);
 	DvdReleaseByCategory_addSubscriber(sopranos,jsopra);
-	DvdReleaseByCategory_addSubscriber(xfiles,smulde);
 	DvdReleaseByCategory_addSubscriber(xfiles,wrosen);
+	DvdReleaseByCategory_addSubscriber(xfiles,smulde);
 
-	//DvdSubscriber_list_dump(btvs->subscriberList);
 
 	DvdRelease_t * btvsS2 = DvdRelease_new("DVDFOXBTVSS20", "Buffy The Vampire Slayer Season 2", 2002, 6, 11);
 	DvdRelease_t * simpS2 = DvdRelease_new("DVDFOXSIMPSO2", "The Simpsons Season 2", 2002, 7,  9);

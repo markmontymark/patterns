@@ -18,5 +18,13 @@ extern void   List_free   (T *list);
 extern void   List_map    (T list,
 	void apply(void **x, void *cl), void *cl);
 extern void **List_toArray(T list, void *end);
+
+// start mrk additions
+extern T      List_new    ();
+extern T      List_remove (T list, void *x);
+extern int   List_first  (T list,
+	int apply(void **x, void *cl), void *cl);
+// end mrk additions
+
 #undef T
 #endif

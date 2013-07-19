@@ -8,118 +8,116 @@
 
 #include "stdlib.h"
 #include "stdio.h"
+#include "mem.h"
+#include "list.h"
 
 
 DvdReleaseByCategory_t * DvdReleaseByCategory_new(char * categoryNameIn) 
 {
-	DvdReleaseByCategory_t * d = malloc(DvdReleaseByCategory_s);
+	DvdReleaseByCategory_t * d;
+	NEW(d);
 	d->categoryName = categoryNameIn;
-	d->subscriberList = DvdSubscriber_list_new();
-	d->dvdReleaseList = DvdRelease_list_new();
+	d->subscriberList = List_list(NULL);
+	d->dvdReleaseList = List_list(NULL);
 	return d;
 }
 
 void  DvdReleaseByCategory_free(DvdReleaseByCategory_t * d)
 {
-	if( d == NULL )
-		return;
-	DvdSubscriber_list_free( d->subscriberList );
-	DvdRelease_list_free( d->dvdReleaseList );
-	free(d);
+	assert( d );
+	List_free( &(d->subscriberList) );
+	List_free( &(d->dvdReleaseList) );
+	FREE(d);
 }
 
    
-int DvdReleaseByCategory_addSubscriber(DvdReleaseByCategory_t * d, DvdSubscriber_t * dvdSubscriber) 
+void DvdReleaseByCategory_addSubscriber(DvdReleaseByCategory_t * d, DvdSubscriber_t * dvdSubscriber) 
 {
-	return DvdSubscriber_list_add( d->subscriberList, dvdSubscriber);
+	d->subscriberList = List_push( d->subscriberList, dvdSubscriber);
 }
    
 int DvdReleaseByCategory_removeSubscriber(DvdReleaseByCategory_t * d, DvdSubscriber_t * dvdSubscriber) 
 {
-	DvdSubscriber_list_t * tmp = d->subscriberList;
-	DvdSubscriber_list_t * prevtmp = NULL;
-	while(tmp->next)
+	d->subscriberList = List_remove( d->subscriberList, dvdSubscriber);
+	return 1;
+}
+
+
+// -------------------------
+// context struct for passing data to vendor/cii20/src/List iterators: List_map, List_first
+struct notify_ctx
+{
+	DvdRelease_t * dvdRelease;
+	char * categoryName;
+};
+
+
+// -------------------------
+static void apply_newdvd(void **subscriber, void *ctx)
+{
+	struct notify_ctx * cctx = (struct notify_ctx *)(ctx);
+	DvdSubscriber_newDvdRelease(
+		(DvdSubscriber_t*)(*subscriber), 
+		cctx->dvdRelease, 
+		cctx->categoryName);
+}
+
+static void notifySubscribersOfNewDvd(DvdReleaseByCategory_t * d, DvdRelease_t * dvdRelease) 
+{
+	struct notify_ctx ctx = { .dvdRelease = dvdRelease, .categoryName = d->categoryName };
+	List_map( d->subscriberList, apply_newdvd, &ctx );
+}
+
+// -------------------------
+
+static void apply_update(void **subscriber, void *ctx)
+{
+	struct notify_ctx * cctx = (struct notify_ctx *)(ctx);
+	DvdSubscriber_updateDvdRelease(
+		(DvdSubscriber_t*)(*subscriber), 
+		cctx->dvdRelease, 
+		cctx->categoryName);
+}
+
+static void notifySubscribersOfUpdate(DvdReleaseByCategory_t * d,DvdRelease_t * dvdRelease)//, struct notify_ctx * ctx) 
+{
+	struct notify_ctx ctx = { .dvdRelease = dvdRelease, .categoryName = d->categoryName };
+	List_map( d->subscriberList, apply_update, &ctx );
+}
+
+// -------------------------
+
+
+void DvdReleaseByCategory_newDvdRelease(DvdReleaseByCategory_t * d, DvdRelease_t * dvdRelease) 
+{
+	d->dvdReleaseList = List_push( d->dvdReleaseList, dvdRelease );
+	notifySubscribersOfNewDvd( d, dvdRelease);
+}
+
+  
+// -------------------------
+
+
+static int first_updatedvd(void **release, void *ctx)
+{
+	DvdRelease_t * rel = (DvdRelease_t *)(*release);
+	struct notify_ctx * cctx = (struct notify_ctx *)(ctx);
+	if ( strcmp(cctx->dvdRelease->serialNumber,rel->serialNumber) == 0 )
 	{
-		if(dvdSubscriber == tmp->this) 
-		{
-			if(tmp == d->subscriberList)
-				d->subscriberList = tmp->next;
-			else
-				prevtmp->next = tmp->next;
-			free(tmp);
-			return 1;
-		}
-		prevtmp = tmp;
-		tmp = tmp->next;
-	}
-	if(tmp->this && dvdSubscriber == tmp->this)
-	{
-		if(tmp == d->subscriberList)
-			d->subscriberList = tmp->next;
-		else
-			prevtmp->next = tmp->next;
-		free(tmp);
+		DvdRelease_update( rel, cctx->dvdRelease );
 		return 1;
 	}
 	return 0;
 }
-   
-static void notifySubscribersOfNewDvd(DvdReleaseByCategory_t * d, DvdRelease_t * dvdRelease) 
-{
-	DvdSubscriber_list_t * tmp = d->subscriberList;
-	while(tmp->next != NULL)
-	{
-		if(tmp->this)
-			DvdSubscriber_newDvdRelease(tmp->this, dvdRelease, d->categoryName);
-		tmp = tmp->next;
-	}
-	if(tmp->this)
-		DvdSubscriber_newDvdRelease(tmp->this, dvdRelease, d->categoryName);
-}
 
-static void notifySubscribersOfUpdate(DvdReleaseByCategory_t * d,DvdRelease_t * dvdRelease) 
-{
-	DvdSubscriber_list_t * tmp = d->subscriberList;
-	while(tmp->next != NULL)
-	{
-		if(tmp->this)
-			DvdSubscriber_updateDvdRelease(tmp->this,dvdRelease, d->categoryName );
-		tmp = tmp->next;
-	}
-	if(tmp->this)
-		DvdSubscriber_updateDvdRelease(tmp->this,dvdRelease, d->categoryName );
-}
-
-void DvdReleaseByCategory_newDvdRelease(DvdReleaseByCategory_t * d, DvdRelease_t * dvdRelease) 
-{
-	DvdRelease_list_add( d->dvdReleaseList, dvdRelease );
-	notifySubscribersOfNewDvd( d, dvdRelease);
-}
-   
 void DvdReleaseByCategory_updateDvd(DvdReleaseByCategory_t * d, DvdRelease_t * dvdRelease) 
 {
 	int dvdUpdated = 0;
-	DvdRelease_list_t * tmp = d->dvdReleaseList;
-	while(tmp->next != NULL)
-	{
-		if(tmp->this)
-		{
-			if (dvdRelease->serialNumber == tmp->this->serialNumber )
-			{
-				DvdRelease_update( tmp->this, dvdRelease );
-				dvdUpdated = 1;
-				break;
-			}
-		}
-		tmp = tmp->next;
-	}
+	struct notify_ctx ctx = { .dvdRelease = dvdRelease, .categoryName = d->categoryName };
+	dvdUpdated = List_first( d->dvdReleaseList, first_updatedvd, &ctx );
 	if (dvdUpdated) 
-	{
-		notifySubscribersOfUpdate(d, dvdRelease);
-	} 
+		notifySubscribersOfUpdate(d, dvdRelease);//, &ctx);
 	else
-	{ 
 		DvdReleaseByCategory_newDvdRelease(d,dvdRelease);
-	}
 }
 
