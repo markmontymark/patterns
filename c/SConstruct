@@ -60,17 +60,17 @@ singletontest = env.Program(source = [ Glob("src/Behavioral/Visitor/*.c"),"libci
 
 
 
-singletontest = env.Program(source = [ Glob("src/Creational/Abstract_Factory/*.c"), "libcommon.a" ], 
+singletontest = env.Program(source = [ Glob("src/Creational/Abstract_Factory/*.c"), "libcommon.a" , "libcii.a" ], 
 	target = "src/Creational/Abstract_Factory/test")
 
 singletontest = env.Program(source = [ Glob("src/Creational/Builder/*.c"), "libcommon.a", "libcii.a" ], 
 	target = "src/Creational/Builder/test")
 
 
-singletontest = env.Program(source = [ Glob("src/Creational/Factory_Method/*.c"), "libcommon.a" ], 
+singletontest = env.Program(source = [ Glob("src/Creational/Factory_Method/*.c"), "libcommon.a" , "libcii.a" ], 
 	target = "src/Creational/Factory_Method/test")
 
-singletontest = env.Program(source = [ Glob("src/Creational/Prototype/*.c") ], 
+singletontest = env.Program(source = [ Glob("src/Creational/Prototype/*.c") , "libcii.a" ], 
 	target = "src/Creational/Prototype/test")
 
 singletontest = env.Program(source = [ Glob("src/Creational/Singleton/*.c") , "libcii.a" ], 

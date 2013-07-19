@@ -3,11 +3,13 @@
 #include "abstract_spoon.h"
 #include "abstract_fork.h"
 #include "prototypefactory.h"
-#include "stdlib.h"
+#include "mem.h"
 
 prototype_factory_t * prototype_factory_new( spoon_t * s, fork_t * f)
 {
-	prototype_factory_t * pf = malloc( prototype_factory_s );
+	prototype_factory_t * pf;
+	NEW(pf);
+
 	pf->prototypeSpoon = s;
 	pf->prototypeFork  = f;
 	return pf;	
@@ -29,8 +31,8 @@ fork_t * prototype_factory_makefork(prototype_factory_t * pf)
 
 void prototype_factory_free(prototype_factory_t * pf)
 {
-	free(pf->prototypeSpoon);
-	free(pf->prototypeFork);
-	free(pf);
+	FREE(pf->prototypeSpoon);
+	FREE(pf->prototypeFork);
+	FREE(pf);
 }
     

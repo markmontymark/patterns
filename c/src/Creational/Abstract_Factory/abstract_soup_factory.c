@@ -13,7 +13,7 @@
 
 #include "abstract_soup_factory.h"
 
-#include "stdlib.h"
+#include "mem.h"
 
 soup_t * soup_factory_make_chickensoup  ()
 {
@@ -53,13 +53,14 @@ soup_t * soup_factory_make_vegetablesoup()
 
 soup_factory_t * soup_factory_new()
 {
-	soup_factory_t * sf = malloc( soup_factory_s );
+	soup_factory_t * sf;
+	NEW(sf);
 	return sf;
 }
 
 void soup_factory_free(soup_factory_t * sf)
 {
-	free(sf);
+	FREE(sf);
 }
 
 void soup_factory_init( soup_factory_t * sf )

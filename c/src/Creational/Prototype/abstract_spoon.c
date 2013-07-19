@@ -4,11 +4,12 @@
 #include "abstract_spoon.h"
 
 #include "string.h"
-#include "stdlib.h"
+#include "mem.h"
 
 spoon_t * spoon_new()
 {
-	spoon_t * s = malloc (spoon_s);
+	spoon_t * s;
+	NEW(s);
 	return s;
 }
 
@@ -29,5 +30,5 @@ void spoon_clone(spoon_t * dest, spoon_t * src)
 
 void spoon_free( spoon_t * s)
 {
-	free(s);
+	FREE(s);
 }

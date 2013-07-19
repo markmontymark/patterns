@@ -3,11 +3,12 @@
 
 #include "abstract_fork.h"
 #include "string.h"
-#include "stdlib.h"
+#include "mem.h"
 
 fork_t * fork_new()
 {
-	fork_t * s = malloc (fork_s);
+	fork_t * s;
+	NEW(s);
 	return s;
 }
 
@@ -28,5 +29,5 @@ void fork_clone(fork_t * dest, fork_t * src)
 
 void fork_free(fork_t * f)
 {
-	free(f);
+	FREE(f);
 }

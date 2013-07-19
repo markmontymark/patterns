@@ -10,7 +10,7 @@
 
 #include "soup_factorymethod.h"
 
-#include "stdlib.h"
+#include "mem.h"
 
         
 soupbuffet_t * soup_factorymethod_makeSoupBuffet() 
@@ -55,7 +55,8 @@ char * soup_factorymethod_makeBuffetName()
 
 soup_factorymethod_t * soup_factorymethod_new( void (*init)(soup_factorymethod_t *) )
 {
-	soup_factorymethod_t * sfm = malloc ( soup_factorymethod_s );
+	soup_factorymethod_t * sfm;
+	NEW( sfm );
 	sfm->make_soupbuffet = soup_factorymethod_makeSoupBuffet;
 	sfm->make_chickensoup = soup_factorymethod_makeChickenSoup;
 	sfm->make_clamchowder = soup_factorymethod_makeClamChowder;
@@ -72,8 +73,6 @@ soup_factorymethod_t * soup_factorymethod_new( void (*init)(soup_factorymethod_t
 
 void soup_factorymethod_free(soup_factorymethod_t * sfm )
 {
-	if(sfm == NULL)
-		return;
-	free(sfm);
+	FREE(sfm);
 }
 

@@ -14,6 +14,7 @@
 
 #include "stdlib.h"
 #include "assert.h"
+#include "mem.h"
 
 void soupbuffet_builder_build_chickensoup(soupbuffet_builder_t * sbb) { sbb->soupbuffet->chickenSoup = chickensoup_new(); }
 void soupbuffet_builder_build_clamchowder(soupbuffet_builder_t * sbb) { sbb->soupbuffet->clamChowder = clamchowder_new(); }
@@ -40,11 +41,10 @@ void soupbuffet_builder_init( soupbuffet_builder_t * sbb )
 
 void soupbuffet_builder_free( soupbuffet_builder_t * sbb )
 {
-	if( sbb == NULL )
-		return;
+	assert( sbb );
 	if(sbb->soupbuffet != NULL )
 		soupbuffet_free(sbb->soupbuffet);
-	free(sbb);
+	FREE(sbb);
 }
 
 
@@ -52,7 +52,9 @@ soupbuffet_builder_t * soupbuffet_builder_new(
 	void (*init)(soupbuffet_builder_t *)
 )
 {
-	soupbuffet_builder_t * sbb = malloc(soupbuffet_builder_s);
+	soupbuffet_builder_t * sbb;
+	NEW(sbb);
+
 	soupbuffet_builder_init( sbb );
 	if( init != NULL)
 		init(sbb);
@@ -72,6 +74,6 @@ void soupbuffet_builder_build_soupbuffet(soupbuffet_builder_t * sbb)
     
 void soupbuffet_builder_set_soupbuffet_name(soupbuffet_builder_t * sbb)
 {
-	assert(NULL != NULL); //abstract, should die on call
+	assert(0); //abstract, die on call
 }
         
