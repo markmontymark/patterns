@@ -86,7 +86,7 @@ singletontest = env.Program(source = [ Glob("src/Structural/Bridge/*.c") ],
 	target = "src/Structural/Bridge/test")
 
 
-singletontest = env.Program(source = [ Glob("src/Structural/Composite/*.c") ], 
+singletontest = env.Program(source = [ Glob("src/Structural/Composite/*.c"), "libcii.a" ], 
 	target = "src/Structural/Composite/test")
 
 

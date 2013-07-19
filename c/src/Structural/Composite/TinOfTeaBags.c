@@ -4,31 +4,25 @@
 #include "TeaBags.h"
 #include "TinOfTeaBags.h"
 #include "stdlib.h"
-#include "stdio.h"
+#include "mem.h"
+#include "list.h"
 
 void TinOfTeaBags_free(TeaBags_t * this)
 {
-	if( this->teaBagList != NULL )
-		TeaBags_list_free( this->teaBagList );
-	free(this);
+	List_free( &(this->teaBagList) );
+	FREE(this);
 }
 
 int TinOfTeaBags_countTeaBags( TeaBags_t * this) 
 {
 	int totalTeaBags = 0;
-	TeaBags_list_t * list = this->createListIterator( this );
-	if(list == NULL )
-		return totalTeaBags;
+	List_T list = this->createListIterator( this );
 
-	while( list && (list->this || (list->next != NULL)) )
+	while( list )
 	{
-		if( list->this )
-		{
-			totalTeaBags += list->this->countTeaBags( list->this );
-			list = list->next;
-		}
-		else
-			list = list->next;
+		if( list->first )
+			totalTeaBags += ((TeaBags_t*)(list->first))->countTeaBags( (TeaBags_t*)list->first );
+		list = list->rest;
 	}
 	return totalTeaBags;
 }
@@ -36,46 +30,28 @@ int TinOfTeaBags_countTeaBags( TeaBags_t * this)
 int TinOfTeaBags_add(TeaBags_t * this, TeaBags_t * teaBagsToAdd) 
 {
 	teaBagsToAdd->parent = this;
-	TeaBags_list_t * list = this->teaBagList;
-	if(list == NULL )
-		list = (this->teaBagList = TeaBags_list_new());
-	while( list->this != NULL )
-		list = list->next;
-	TeaBags_list_add( this->teaBagList, teaBagsToAdd);
+	//this->teaBagList = List_append( this->teaBagList, List_list(teaBagsToAdd) );
+	this->teaBagList = List_push( this->teaBagList, teaBagsToAdd );
 	return 1;
 }
 
 int TinOfTeaBags_remove(TeaBags_t * this, TeaBags_t * teaBagsToRemove) 
 {
-	TeaBags_list_t * list = this->teaBagList;
-	TeaBags_list_t * prevlist = NULL;
-	while ( list && (list->this || list->next) )
-	{
-		if (list->this && list->this == teaBagsToRemove) 
-		{
-			if(prevlist == NULL )	
-				this->teaBagList = list->next;
-			else
-				prevlist->next = list->next;
-			free(list);
-			return 1;
-		}
-		prevlist = list;
-		list = list->next;
-	}
-	return 0;
+	this->teaBagList = List_remove( this->teaBagList, teaBagsToRemove );
+	return 1;
 }
 
-TeaBags_list_t * TinOfTeaBags_createListIterator(TeaBags_t * this ) 
+List_T TinOfTeaBags_createListIterator(TeaBags_t * this ) 
 {
 	return this->teaBagList;
 }
 
 TeaBags_t * TinOfTeaBags_new( char * name )
 {
-	TeaBags_t * t = malloc( TeaBags_s );
+	TeaBags_t * t;
+	NEW( t );
 	t->name = name;
-	t->teaBagList = TeaBags_list_new();
+	t->teaBagList = List_new();
 	t->free  = TinOfTeaBags_free;
 	t->countTeaBags = TinOfTeaBags_countTeaBags;
 	t->add = TinOfTeaBags_add;

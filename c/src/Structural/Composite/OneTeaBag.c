@@ -5,13 +5,13 @@
 #include "TeaBags.h"
 #include "OneTeaBag.h"
 
+#include "list.h"
+#include "mem.h"
 #include "stdlib.h"
 
 void OneTeaBag_free( TeaBags_t * this) 
 {
-	if( this == NULL )
-		return;
-	free(this);
+	FREE(this);
 }
 
 int OneTeaBag_countTeaBags( TeaBags_t * this) 
@@ -29,14 +29,15 @@ int OneTeaBag_remove(TeaBags_t * this, TeaBags_t * teaBagsToRemove)
 	return 0;
 }
 
-TeaBags_list_t * OneTeaBag_createListIterator( TeaBags_t * this) 
+List_T OneTeaBag_createListIterator( TeaBags_t * this) 
 {
-	return NULL;
+	return List_list(NULL);
 }
 
 TeaBags_t * OneTeaBag_new( char * name )
 {
-	TeaBags_t * t = malloc(TeaBags_s);
+	TeaBags_t * t;
+	NEW(t);
 	t->name = name;
 	t->free = OneTeaBag_free;
 	t->countTeaBags = OneTeaBag_countTeaBags;
