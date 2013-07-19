@@ -1,25 +1,18 @@
 
 //PotOfTeaP.java - the Pot Of Tea
 
-#include "stdlib.h"
-
-typedef struct pot_of_tea pot_of_tea_t;
-struct pot_of_tea
-{
-	pot_of_tea_t * pot;
-};
-#define pot_of_tea_s sizeof(pot_of_tea_t)
+#include "pot_of_tea.h"
+#include "mem.h"
 
 pot_of_tea_t * pot_of_tea_new()
 {
-	pot_of_tea_t * pot = malloc(pot_of_tea_s);
+	pot_of_tea_t * pot;
+	NEW(pot);
 	return pot;
 }
 void pot_of_tea_free(pot_of_tea_t * pot)
 {
-	if(pot == NULL)
-		return;
-	free(pot);
+	FREE(pot);
 }
 
 char * pot_of_tea_pour_tea( pot_of_tea_t * pot )

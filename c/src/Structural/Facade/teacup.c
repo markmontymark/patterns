@@ -8,12 +8,16 @@
 #include "teabag.h"
 #include "teacup.h"
 
+#include "assert.h"
+#include "mem.h"
 #include "stdlib.h"
 #include "stdio.h"
 
 teacup_t * teacup_new()
 {
-	teacup_t * t = malloc(teacup_s);
+	teacup_t * t;
+	NEW(t);
+
 	t->teaBagIsSteeped = 0;
 	printf("behold the beautiful new tea cup\n");
 	return t;
@@ -21,11 +25,10 @@ teacup_t * teacup_new()
 
 void teacup_free(teacup_t * t)
 {
-	if( t == NULL )
-		return;
+	assert( t );
 	water_free( t->water );
 	teabag_free( t->teabag );
-	free(t);
+	FREE(t);
 }
 
 void teacup_add_teabag(teacup_t * t,teabag_t * b) 

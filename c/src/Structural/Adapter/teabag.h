@@ -8,7 +8,6 @@ struct teabag
 {
    int teaIsSteeped;
 };
-#define teabag_s sizeof(teabag_t)
 
 teabag_t * teabag_new() ;
 void teabag_free(teabag_t * tb) ;

@@ -4,22 +4,20 @@
 #include "teacup.h"
 #include "teabag.h"
 
-#include "stdlib.h"
+#include "mem.h"
 
 
 teacup_t * teacup_new() 
 {
-	teacup_t * t = malloc( teacup_s );
+	teacup_t * t;
+	NEW(t);
 	return t;
 }
 
 void teacup_free(teacup_t * t) 
 {
-	if( t == NULL)
-		return;
-	free(t);
+	FREE(t);
 }
-
 
 void teacup_steep_teabag( teacup_t * c, teabag_t * b) 
 {

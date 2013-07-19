@@ -3,21 +3,20 @@
 #include "looseleaftea.h"
 
 #include "stdio.h"
-#include "stdlib.h"
+#include "mem.h"
 
 
 looseleaftea_t * looseleaftea_new()
 {
-	looseleaftea_t * t = malloc( looseleaftea_s );
+	looseleaftea_t * t;
+	NEW(t);
 	t->teaIsSteeped = 0;
 	return t;
 }
 
 void looseleaftea_free(looseleaftea_t * llt)
 {
-	if ( llt == NULL )
-		return;
-	free(llt);
+	FREE(llt);
 }
 
 void looseleaftea_steep_tea( looseleaftea_t * t)

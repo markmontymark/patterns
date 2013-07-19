@@ -7,8 +7,8 @@
 typedef struct teabag teabag_t;
 struct teabag
 {
+	int isSteeped;
 };
-#define teabag_s sizeof(teabag_t)
 
 teabag_t * teabag_new() ;
 void teabag_free( teabag_t * t) ;

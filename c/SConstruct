@@ -79,10 +79,10 @@ singletontest = env.Program(source = [ Glob("src/Creational/Singleton/*.c") , "l
 
 
 
-singletontest = env.Program(source = [ Glob("src/Structural/Adapter/*.c") ], 
+singletontest = env.Program(source = [ Glob("src/Structural/Adapter/*.c") , "libcii.a" ], 
 	target = "src/Structural/Adapter/test")
 
-singletontest = env.Program(source = [ Glob("src/Structural/Bridge/*.c") ], 
+singletontest = env.Program(source = [ Glob("src/Structural/Bridge/*.c") , "libcii.a" ], 
 	target = "src/Structural/Bridge/test")
 
 
@@ -90,15 +90,15 @@ singletontest = env.Program(source = [ Glob("src/Structural/Composite/*.c"), "li
 	target = "src/Structural/Composite/test")
 
 
-singletontest = env.Program(source = [ Glob("src/Structural/Decorator/*.c") , "libcommon.a" ], 
+singletontest = env.Program(source = [ Glob("src/Structural/Decorator/*.c") , "libcommon.a" , "libcii.a" ], 
 	target = "src/Structural/Decorator/test")
 
-singletontest = env.Program(source = [ env.Glob("src/Structural/Facade/*.c"), "libcommon.a" ], 
+singletontest = env.Program(source = [ env.Glob("src/Structural/Facade/*.c"), "libcommon.a" , "libcii.a" ], 
 	target = "src/Structural/Facade/test")
 
 
-singletontest = env.Program(source = [ Glob("src/Structural/Flyweight/*.c") ], 
+singletontest = env.Program(source = [ Glob("src/Structural/Flyweight/*.c") , "libcii.a" ], 
 	target = "src/Structural/Flyweight/test")
 
-singletontest = env.Program(source = [ Glob("src/Structural/Proxy/*.c") ], 
+singletontest = env.Program(source = [ Glob("src/Structural/Proxy/*.c") , "libcii.a" ], 
 	target = "src/Structural/Proxy/test")

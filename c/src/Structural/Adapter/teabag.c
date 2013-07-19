@@ -2,21 +2,20 @@
 
 #include "teabag.h"
 
-#include "stdlib.h"
+#include "mem.h"
 #include "stdio.h"
 
 teabag_t * teabag_new() 
 {
-	teabag_t * t = malloc(teabag_s);
+	teabag_t * t;
+	NEW(t);
 	t->teaIsSteeped = 0;
 	return t;
 }
 
 void teabag_free(teabag_t * tb) 
 {
-	if( tb == NULL )
-		return;
-	free(tb);
+	FREE(tb);
 }
 
 void teabag_steepTeaInCup(teabag_t * tb) 

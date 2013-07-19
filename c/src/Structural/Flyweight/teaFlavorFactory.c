@@ -4,9 +4,13 @@
 #include "teaFlavor.h"
 #include "teaFlavorFactory.h"
 
+#include "mem.h"
+#include "assert.h"
+
 teaFlavorFactory_t * teaFlavorFactory_new() 
 {
-	teaFlavorFactory_t * obj = malloc( teaFlavorFactory_s );
+	teaFlavorFactory_t * obj;
+	NEW(obj);
 	obj->teasMade = 0;
 	return obj;
 }
@@ -14,14 +18,13 @@ teaFlavorFactory_t * teaFlavorFactory_new()
 
 void teaFlavorFactory_free(teaFlavorFactory_t * obj) 
 {
-	if( obj == NULL )
-		return;
+	assert( obj );
 
 	int teasMade = obj->teasMade;
 	int i;
 	for( i = teasMade - 1; i > -1; i-- )
 		teaFlavor_free( obj->flavors[i] );
-	free(obj);
+	FREE(obj);
 }
 
 

@@ -5,9 +5,12 @@
 #include "teaFlavor.h"
 #include "teaOrderContext.h"
 
+#include "mem.h"
+
 teaFlavor_t * teaFlavor_new( char * flavor ) 
 {
-	teaFlavor_t * obj = malloc( teaFlavor_s );
+	teaFlavor_t * obj;
+	NEW(obj);
 	obj->teaFlavor = flavor;
 	return obj;
 }
@@ -15,9 +18,7 @@ teaFlavor_t * teaFlavor_new( char * flavor )
 
 void teaFlavor_free(teaFlavor_t * obj) 
 {
-	if( obj == NULL )
-		return;
-	free(obj);
+	FREE(obj);
 }
 
 char * teaFlavor_getflavor(teaFlavor_t * obj) 

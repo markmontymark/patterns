@@ -9,6 +9,7 @@
 typedef struct teacup teacup_t;
 struct teacup
 {
+	int isSteeped;
 };
 #define teacup_s sizeof(teacup_t)
 

@@ -3,19 +3,18 @@
 
 #include "teabag.h"
 
-#include "stdlib.h"
+#include "mem.h"
 #include "stdio.h"
 
 teabag_t * teabag_new()
 {
-	teabag_t * t = malloc(teabag_s);
+	teabag_t * t;
+	NEW(t);
    printf("behold the lovely tea bag\n");
 	return t;
 }
 
 void teabag_free( teabag_t * t)
 {
-	if(t == NULL )
-		return;
-	free(t);
+	FREE(t);
 }
