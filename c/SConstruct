@@ -23,22 +23,22 @@ libcii_target = "cii"
 libcii_sources = [ Glob("vendor/cii20/src/*.c") ]
 libcii = env.StaticLibrary(target = libcii_target, source = ciifiles)
 
-singletontest = env.Program(source = [ Glob("src/Behavioral/Chain_Of_Responsibility/*.c") ], 
+singletontest = env.Program(source = [ Glob("src/Behavioral/Chain_Of_Responsibility/*.c") ,"libcii.a" ], 
 	target = "src/Behavioral/Chain_Of_Responsibility/test")
 
-singletontest = env.Program(source = [ Glob("src/Behavioral/Command/*.c"), "libcommon.a"], 
+singletontest = env.Program(source = [ Glob("src/Behavioral/Command/*.c"), "libcommon.a","libcii.a" ], 
 	target = "src/Behavioral/Command/test")
 
-singletontest = env.Program(source = [ Glob("src/Behavioral/Interpreter/*.c"), "libcommon.a" ], 
+singletontest = env.Program(source = [ Glob("src/Behavioral/Interpreter/*.c"), "libcommon.a","libcii.a"  ], 
 	target = "src/Behavioral/Interpreter/test")
 
-singletontest = env.Program(source = [ Glob("src/Behavioral/Iterator/*.c"), "libcommon.a"], 
+singletontest = env.Program(source = [ Glob("src/Behavioral/Iterator/*.c"), "libcommon.a","libcii.a" ], 
 	target = "src/Behavioral/Iterator/test")
 
-singletontest = env.Program(source = [ Glob("src/Behavioral/Mediator/*.c") ], 
+singletontest = env.Program(source = [ Glob("src/Behavioral/Mediator/*.c") ,"libcii.a" ], 
 	target = "src/Behavioral/Mediator/test")
 
-singletontest = env.Program(source = [ Glob("src/Behavioral/Memento/*.c"), "libcommon.a" ], 
+singletontest = env.Program(source = [ Glob("src/Behavioral/Memento/*.c"), "libcommon.a","libcii.a"  ], 
 	target = "src/Behavioral/Memento/test")
 
 singletontest = env.Program(source = [ Glob("src/Behavioral/Observer/*.c"), "libcii.a" ], 
@@ -47,14 +47,14 @@ singletontest = env.Program(source = [ Glob("src/Behavioral/Observer/*.c"), "lib
 singletontest = env.Program(source = [ Glob("src/Behavioral/State/*.c"), "libcommon.a", "libcii.a" ], 
 	target = "src/Behavioral/State/test")
 
-singletontest = env.Program(source = [ Glob("src/Behavioral/Strategy/*.c"), "libcommon.a" ], 
+singletontest = env.Program(source = [ Glob("src/Behavioral/Strategy/*.c"), "libcommon.a","libcii.a"  ], 
 	target = "src/Behavioral/Strategy/test")
 
-singletontest = env.Program(source = [ Glob("src/Behavioral/Template_Method/*.c"), "libcommon.a" ], 
+singletontest = env.Program(source = [ Glob("src/Behavioral/Template_Method/*.c"), "libcommon.a","libcii.a"  ], 
 	target = "src/Behavioral/Template_Method/test")
 
 
-singletontest = env.Program(source = [ Glob("src/Behavioral/Visitor/*.c") ], 
+singletontest = env.Program(source = [ Glob("src/Behavioral/Visitor/*.c"),"libcii.a"  ], 
 	target = "src/Behavioral/Visitor/test")
 
 

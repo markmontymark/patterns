@@ -7,20 +7,23 @@
 #include "TitleInfo.h"
 
 #include "stdlib.h"
+#include "mem.h"
 
 
 //this is a "hook operation", which may be overridden, 
 //hook operations usually do nothing if not overridden 
 char * TitleInfo_getDvdEncodingRegion( TitleInfo_t * this) 
 {
-	char * retval = malloc( 2 );
+	char * retval = malloc(2);
 	snprintf(retval,1," ");
 	return retval;
 }
 
 TitleInfo_t * TitleInfo_new( char * titleName, char * ( * getTitleBlurb)( TitleInfo_t * ), char * ( * getDvdEncodingRegion)( TitleInfo_t * ) )
 {
-	TitleInfo_t * d = malloc(TitleInfo_s);
+	TitleInfo_t * d;
+	NEW(d);
+
 	d->getTitleBlurb = getTitleBlurb;
 	d->getDvdEncodingRegion = (getDvdEncodingRegion != NULL ) ? getDvdEncodingRegion : TitleInfo_getDvdEncodingRegion;
 	d->titleName = titleName;

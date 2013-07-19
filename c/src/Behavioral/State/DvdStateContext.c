@@ -19,7 +19,6 @@ void DvdStateContext_setDvdStateName(DvdStateContext_t * ctx, DvdStateName_t * d
 
 DvdStateContext_t * DvdStateContext_new() 
 {
-	//DvdStateContext_t * ctx = malloc( DvdStateContext_s );
 	DvdStateContext_t * ctx;
 	NEW(ctx);
 	DvdStateContext_setDvdStateName( ctx, DvdStateNameStars_new() );  

@@ -1,20 +1,20 @@
 
 #include "DvdMediator.h"
 
-#include "stdlib.h"
+#include "mem.h"
 
 //DvdMediator - The Mediator
 
 DvdMediator_t * DvdMediator_new()
 {
-	DvdMediator_t * d = malloc( DvdMediator_s );
+	DvdMediator_t * d;
+	NEW(d);
+
 	return d;
 }
 void DvdMediator_free( DvdMediator_t * d)
 {
-	if( d == NULL )
-		return;
-	free( d );
+	FREE( d );
 }
    
 void DvdMediator_setUpcase( DvdMediator_t * d, DvdUpcaseTitle_t * dvdUpcaseTitle) 

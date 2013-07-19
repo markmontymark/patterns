@@ -3,6 +3,7 @@
 
 #include "TopTitle.h"
 
+#include "mem.h"
 #include "stdlib.h"
 
 TopTitle_t * TopTitle_new( 
@@ -10,7 +11,9 @@ TopTitle_t * TopTitle_new(
 	char * ( * getAllCategories)(void *, char *)
 )
 {
-	TopTitle_t * t = malloc(TopTitle_s);
+	TopTitle_t * t;
+	NEW(t);
+
 	t->getTopTitle = getTopTitle;
 	t->getAllCategories = getAllCategories;
 	return t;
@@ -18,8 +21,6 @@ TopTitle_t * TopTitle_new(
 
 void TopTitle_free( TopTitle_t * t)
 {
-	if( t == NULL )
-		return;
-	free(t);
+	FREE(t);
 }
 

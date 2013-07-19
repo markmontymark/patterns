@@ -9,12 +9,16 @@
 
 #include "stdlib.h"
 #include "string.h"
+#include "mem.h"
+#include "assert.h"
 
 DvdDetails_t * DvdDetails_new( 
 	char * titleName, 
 	char encodingRegion
 ) {
-	DvdDetails_t * d = malloc( DvdDetails_s );
+	DvdDetails_t * d;
+	NEW(d);
+
 	d->titleName = titleName;
 	d->stars = NULL;
 	d->encodingRegion = encodingRegion;
@@ -36,11 +40,10 @@ DvdDetails_t * DvdDetails_new_w_stars(
 
 void DvdDetails_free( DvdDetails_t * d)
 {
-	if( d == NULL )
-		return;
+	assert( d );
 	if( d->stars != NULL )
 		arraylist_string_free( d->stars );
-	free( d );
+	FREE( d );
 }
 	
 void DvdDetails_addStar(DvdDetails_t *d, char * starIn) 
@@ -55,7 +58,8 @@ char * DvdDetails_to_string( DvdDetails_t * d)
 	char * retval;
 	char * starsString = arraylist_string_to_string( d->stars );
 	int size = 5 + strlen( d->titleName ) + 12 + strlen(starsString) + 20 + 1 + 1;
-	retval = malloc( size );
+	retval = malloc(size);
+
 	snprintf( retval, size, "DVD: %s, starring: %s, encoding region: %c", d->titleName, starsString, d->encodingRegion );
 	free( starsString );
 	return retval;

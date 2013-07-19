@@ -5,11 +5,15 @@
 #include "../../common/arraylist_string.h"
 #include "DvdList.h"
 #include "stdlib.h"
+#include "mem.h"
+#include "assert.h"
 
 
 DvdList_t * DvdList_new()
 {
-	DvdList_t * d = malloc( DvdList_s );
+	DvdList_t * d;
+	NEW(d);
+
 	d->titles = NULL;
 	d->titleCount = 0;
 	return d;
@@ -17,11 +21,10 @@ DvdList_t * DvdList_new()
 
 void DvdList_free( DvdList_t * d )
 {
-	if( d == NULL )
-		return;
+	assert( d );
 	if( d->titles != NULL )
 		arraylist_string_free( d->titles );
-	free( d );
+	FREE( d );
 }
     
 void DvdList_append( DvdList_t * d, char * titleIn) 

@@ -4,11 +4,13 @@
 #include "DvdNameStrategy.h"
 
 #include "stdlib.h"
+#include "mem.h"
 
 
 DvdNameStrategy_t * DvdNameStrategy_new() 
 {
-	DvdNameStrategy_t * s = malloc ( DvdNameStrategy_s );
+	DvdNameStrategy_t * s;
+	NEW(s);
 	return s;
 }
 
@@ -16,9 +18,7 @@ DvdNameStrategy_t * DvdNameStrategy_new()
 
 void DvdNameStrategy_free( DvdNameStrategy_t * s) 
 {
-	if( s == NULL )
-		return;
-	free(s);
+	FREE(s);
 }
 
 

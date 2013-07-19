@@ -3,12 +3,15 @@
 //TitleAndActor - A Helper Class
 
 #include "TitleAndActor.h"
-
 #include "stdlib.h"
+#include "mem.h"
+#include "assert.h"
 
 TitleAndActor_t * TitleAndActor_new( char * title, char * actor)
 {
-	TitleAndActor_t * ta = malloc( TitleAndActor_s );
+	TitleAndActor_t * ta;
+	NEW(ta);
+
 	ta->title = title;
 	ta->actor = actor;
 	return ta;
@@ -16,16 +19,16 @@ TitleAndActor_t * TitleAndActor_new( char * title, char * actor)
 
 void TitleAndActor_free(  TitleAndActor_t * ta )
 {
-	if( ta == NULL )
-		return;
-	free(ta);
+	FREE(ta);
 }
 
 
 
 TitleAndActor_list_t * TitleAndActor_list_new()
 {
-   TitleAndActor_list_t * l = malloc(TitleAndActor_list_s);
+   TitleAndActor_list_t * l;
+	NEW(l);
+
    l->this = NULL;
    l->next = NULL;
    return l;

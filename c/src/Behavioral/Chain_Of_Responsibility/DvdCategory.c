@@ -5,11 +5,15 @@
 #include "TopTitle.h"
 #include "DvdCategory.h"
 
+#include "mem.h"
+#include "assert.h"
 #include "stdlib.h"
 
 DvdCategory_t * DvdCategory_new( char * category )
 {
-	DvdCategory_t * d = malloc( DvdCategory_s );
+	DvdCategory_t *d;
+	NEW(d);
+
 	d->topTitle = TopTitle_new( DvdCategory_getTopTitle, DvdCategory_getAllCategories );
 	d->category = category;
 	d->topCategoryTitle = NULL;
@@ -18,11 +22,10 @@ DvdCategory_t * DvdCategory_new( char * category )
 
 void DvdCategory_free( DvdCategory_t * d)
 {
-	if( d == NULL )
-		return;
+	assert(d);
 	if( d->topTitle != NULL)
 		TopTitle_free( d->topTitle );
-	free( d );
+	FREE( d );
 }
    
 void DvdCategory_setCategory(DvdCategory_t * d, char  * categoryIn) 

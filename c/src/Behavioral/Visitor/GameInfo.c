@@ -5,6 +5,7 @@
 #include "GameInfo.h"
 
 #include "stdlib.h"
+#include "mem.h"
 
 void GameInfo_accept(void * this, TitleBlurbVisitor_t * tbv) 
 {
@@ -20,8 +21,6 @@ TitleInfo_t * GameInfo_new(char * titleName)
    
 void GameInfo_free(TitleInfo_t * d)
 {
-   if(d == NULL)
-      return;
-   free(d);
+   FREE(d);
 }
 

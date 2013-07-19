@@ -16,19 +16,21 @@
 #include "DvdTitleActorExpression.h"
 
 #include "stdlib.h"
+#include "mem.h"
+#include "assert.h"
 
 
 DvdInterpreterClient_t * DvdInterpreterClient_new( DvdInterpreterContext_t *  ctx) 
 {
-	DvdInterpreterClient_t * d = malloc( DvdInterpreterClient_s );
+	DvdInterpreterClient_t * d;
+	NEW(d);
+
 	d->ctx = ctx;
 	return d;
 }
 void DvdInterpreterClient_free ( DvdInterpreterClient_t * d)
 {
-	if( d == NULL )
-		return;
-	free( d );
+	FREE( d );
 }
     
 // expression syntax:
@@ -86,7 +88,9 @@ char * DvdInterpreterClient_interpret(DvdInterpreterClient_t * client, char * ex
 		{
 			int sslen = strlen(searchString);
 			int tokenlen = strlen(token);
-			char * newSearchString = malloc( sslen + tokenlen + 1 + 1);
+			char * newSearchString;
+	NEW(newSearchString);
+
 			snprintf( newSearchString, sslen + tokenlen + 1 + 1, "%s %s",searchString,token);
 			if (do_searchString_free && searchString != NULL )
 				free(searchString ); // no -1 because we havent advanced the ptr one char 

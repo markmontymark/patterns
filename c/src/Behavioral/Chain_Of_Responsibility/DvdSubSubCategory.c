@@ -5,6 +5,8 @@
 #include "DvdSubCategory.h"
 #include "DvdSubSubCategory.h"
 
+#include "mem.h"
+#include "assert.h"
 #include "stdlib.h"
 #include "stdio.h"
 #include "string.h"
@@ -14,7 +16,9 @@
 
 DvdSubSubCategory_t * DvdSubSubCategory_new(DvdSubCategory_t * dvdSubCategory, char * subCategory) 
 {
-	DvdSubSubCategory_t * d = malloc( DvdSubSubCategory_s );
+	DvdSubSubCategory_t * d;
+	NEW(d);
+
 	d->topTitle = TopTitle_new( DvdSubSubCategory_getTopTitle, DvdSubSubCategory_getAllCategories );
 	DvdSubSubCategory_setSubSubCategory( d, subCategory); 
 	d->parent = dvdSubCategory;
@@ -23,10 +27,9 @@ DvdSubSubCategory_t * DvdSubSubCategory_new(DvdSubCategory_t * dvdSubCategory, c
 
 void DvdSubSubCategory_free( DvdSubSubCategory_t * d )
 {
-	if( d == NULL )
-		return;
+	assert( d );
 	TopTitle_free( d->topTitle );
-	free( d );
+	FREE( d );
 }
 
 void DvdSubSubCategory_setSubSubCategory( DvdSubSubCategory_t * d, char * subSubCategoryIn) 
@@ -59,7 +62,7 @@ char * DvdSubSubCategory_getAllCategories(  void * d, char * dest)
 	char * s = DvdSubSubCategory_getSubCategory(d);
 	char * ss = DvdSubSubCategory_getSubSubCategory(d);
 	int size = strlen(c) + 1 + strlen(s) + 1 + strlen(ss) + 1;
-	dest = malloc( size );
+	dest = malloc(size);
 	snprintf(  dest, size, "%s/%s/%s", c,s,ss);
 	return dest;
 }   

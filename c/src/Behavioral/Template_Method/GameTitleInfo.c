@@ -8,6 +8,9 @@
 #include "string.h"
 #include "stdio.h"
 
+#include "mem.h"
+#include "assert.h"
+
 char * GameTitleInfo_getTitleBlurb( TitleInfo_t * this ) 
 {
 	char * retval;
@@ -24,8 +27,7 @@ TitleInfo_t * GameTitleInfo_new( char * titleName )
 }
 void GameTitleInfo_free( TitleInfo_t * t)
 {
-	if( t == NULL )
-		return;
-	free( t );
+	assert( t );
+	FREE( t );
 }
     

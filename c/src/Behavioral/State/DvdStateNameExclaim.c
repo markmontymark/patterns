@@ -26,7 +26,7 @@ void DvdStateNameExclaim_showName(DvdStateName_t * d, DvdStateContext_t * ctx, c
 DvdStateNameExclaim_t * DvdStateNameExclaim_new() 
 {
 	DvdStateNameExclaim_t * d;
-	NEW(d);// = malloc( DvdStateNameExclaim_s );
+	NEW(d);
 	d->showName = DvdStateNameExclaim_showName;
 	return d;
 }

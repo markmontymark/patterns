@@ -9,20 +9,23 @@
 #include "DvdNameReplaceSpacesStrategy.h"
 
 #include "stdlib.h"
+#include "mem.h"
+#include "assert.h"
 
 
 void DvdNameContext_free( DvdNameContext_t * ctx) 
 {
-	if(ctx == NULL)
-		return;
+	assert(ctx);
 	if( ctx->dvdNameStrategy != NULL )
 		DvdNameStrategy_free( ctx->dvdNameStrategy );
-	free(ctx);
+	FREE(ctx);
 }
 
 DvdNameContext_t * DvdNameContext_new(char strategyTypeIn) 
 {
-	DvdNameContext_t * ctx = malloc( DvdNameContext_s );
+	DvdNameContext_t * ctx;
+	NEW(ctx);
+
 	switch (strategyTypeIn) 
 	{
 		case 'C' : 

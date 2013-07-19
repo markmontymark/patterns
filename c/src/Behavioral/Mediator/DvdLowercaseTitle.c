@@ -6,11 +6,16 @@
 #include "stdlib.h"
 #include "ctype.h"
 
+#include "mem.h"
+#include "assert.h"
+
 // One of Two Concrete Colleagues or Mediatees
 
 DvdLowercaseTitle_t * DvdLowercaseTitle_new(char * title, DvdMediator_t * dvdMediator)
 {
-	DvdLowercaseTitle_t * d = malloc( DvdLowercaseTitle_s );
+	DvdLowercaseTitle_t * d;
+	NEW(d);
+
 	d->title = title;
 	d->LowercaseTitle = NULL;
 	d->need_free = 0;
@@ -23,10 +28,9 @@ DvdLowercaseTitle_t * DvdLowercaseTitle_new(char * title, DvdMediator_t * dvdMed
 
 void DvdLowercaseTitle_free( DvdLowercaseTitle_t * d )
 {
-	if( d == NULL )
-		return;
-	free( d->LowercaseTitle);
-	free( d );
+	assert( d );
+	FREE( d->LowercaseTitle);
+	FREE( d );
 }
     
 void DvdLowercaseTitle_resetTitle(DvdLowercaseTitle_t * d, char * title) 

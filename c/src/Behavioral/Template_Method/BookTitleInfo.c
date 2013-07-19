@@ -8,10 +8,15 @@
 #include "string.h"
 #include "stdio.h"
 
+#include "mem.h"
+#include "assert.h"
+
 
 BookTitleInfo_pdata_t * BookTitleInfo_pdata_new( char * author )
 {
-	BookTitleInfo_pdata_t * p = malloc( BookTitleInfo_pdata_s );
+	BookTitleInfo_pdata_t * p;
+	NEW(p);
+
 	p->author = author;
 	return p;
 }
@@ -29,11 +34,10 @@ TitleInfo_t * BookTitleInfo_new( char * titleName, char * author )
 
 void BookTitleInfo_free( TitleInfo_t * t )
 {
-	if( t == NULL )
-		return;
+	assert( t );
 	if( t->pdata != NULL )
 		BookTitleInfo_pdata_free( (BookTitleInfo_pdata_t *)t->pdata );
-	free( t );
+	FREE( t );
 }
     
 void BookTitleInfo_setAuthor( TitleInfo_t * this, char * authorIn) 

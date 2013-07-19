@@ -6,11 +6,15 @@
 #include "DvdInterpreterContext.h"
 
 #include "stdlib.h"
+#include "mem.h"
+#include "assert.h"
 
 
 DvdInterpreterContext_t * DvdInterpreterContext_new()
 {
-	DvdInterpreterContext_t * ctx = malloc( DvdInterpreterContext_s );
+	DvdInterpreterContext_t * ctx;
+	NEW(ctx);
+
 	ctx->titles = arraylist_string_new();
 	ctx->actors = arraylist_string_new();
 	ctx->titlesAndActors = TitleAndActor_list_new();
@@ -19,12 +23,11 @@ DvdInterpreterContext_t * DvdInterpreterContext_new()
 
 void DvdInterpreterContext_free( DvdInterpreterContext_t * ctx )
 {
-	if( ctx == NULL )
-		return;
+	assert( ctx );
 	arraylist_string_free( ctx->titles );
 	arraylist_string_free( ctx->actors );
 	TitleAndActor_list_free( ctx->titlesAndActors );
-	free( ctx  );
+	FREE( ctx  );
 }
 
 

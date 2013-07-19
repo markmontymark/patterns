@@ -1,4 +1,5 @@
 
+//DvdUpcaseTitle - Two of Two Concrete Colleagues or Mediatees
 
 #include "DvdUpcaseTitle.h"
 #include "DvdMediator.h"
@@ -6,13 +7,16 @@
 #include "string.h"
 #include "stdlib.h"
 #include "ctype.h"
+#include "mem.h"
+#include "assert.h"
 
-//DvdUpcaseTitle - Two of Two Concrete Colleagues or Mediatees
 
 
 DvdUpcaseTitle_t * DvdUpcaseTitle_new(char * title, DvdMediator_t * dvdMediator) 
 {
-	DvdUpcaseTitle_t * d = malloc( DvdUpcaseTitle_s );
+	DvdUpcaseTitle_t * d;
+	NEW(d);
+
 	d->need_free = 0;
 	d->upcaseTitle = NULL;
 	d->title = title;
@@ -24,11 +28,10 @@ DvdUpcaseTitle_t * DvdUpcaseTitle_new(char * title, DvdMediator_t * dvdMediator)
 
 void DvdUpcaseTitle_free ( DvdUpcaseTitle_t * d)
 {
-	if( d == NULL)
-		return;
+	assert( d );
 	if( d->need_free && d->upcaseTitle != NULL )
 		free( d->upcaseTitle );
-	free( d );
+	FREE( d );
 }
 
 void DvdUpcaseTitle_resetTitle( DvdUpcaseTitle_t * d, char * title) 

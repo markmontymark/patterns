@@ -16,7 +16,7 @@ void DvdStateNameStars_showName(DvdStateNameStars_t * d, DvdStateContext_t * ctx
 {
 	char * nameChanged = common_str_replace( nameIn, ' ', '*' );
 	printf("%s\n", nameChanged);
-	FREE(nameChanged);
+	free(nameChanged);
 	
 	// show stars twice, switch to exclamation point
    d->starCount++;
@@ -27,7 +27,8 @@ void DvdStateNameStars_showName(DvdStateNameStars_t * d, DvdStateContext_t * ctx
 DvdStateName_t * DvdStateNameStars_new() 
 {
 	DvdStateNameStars_t * d;
-	NEW(d);// = malloc( DvdStateNameStars_s );
+	NEW(d);
+
 	d->starCount = 0;
 	d->showName = DvdStateNameStars_showName;
 	return d;
@@ -35,7 +36,6 @@ DvdStateName_t * DvdStateNameStars_new()
 
 void DvdStateNameStars_free(DvdStateNameStars_t * d)
 {
-	//assert(d != NULL);
 	FREE( d );
 }
     

@@ -5,6 +5,8 @@
 #include "BookInfo.h"
 
 #include "stdlib.h"
+#include "mem.h"
+#include "assert.h"
 
  
 void BookInfo_accept(void * this, TitleBlurbVisitor_t * tbv)
@@ -16,17 +18,16 @@ TitleInfo_t * BookInfo_new(char * titleName, char * author)
 {
 	TitleInfo_t * bi = TitleInfo_new( BookInfo_accept,titleName );
 	bi->type = BookInfoType;
-	bi->book = malloc( BookInfo_s );
+	NEW(bi->book);
 	bi->book->author = author;
 	return bi;
 }    
 
 void BookInfo_free(TitleInfo_t * d)
 {
-   if(d == NULL)
-      return;
-	free( d->book );
-   free(d);
+   assert(d );
+	FREE( d->book );
+   FREE(d);
 }
 
    

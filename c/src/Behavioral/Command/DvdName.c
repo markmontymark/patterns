@@ -1,6 +1,8 @@
 //DvdName - the Receiver
 
 
+#include "mem.h"
+#include "assert.h"
 #include "stdlib.h"
 #include "DvdName.h"
 
@@ -14,18 +16,19 @@
 
 DvdName_t * DvdName_new(char *titleName) 
 {
-	DvdName_t * d = malloc( DvdName_s );
+	DvdName_t * d;
+	NEW(d);
+
 	d->do_free = 0;
 	d->titleName = titleName;
 	return d;
 }    
 void DvdName_free( DvdName_t * d)
 {
-	if( d == NULL )
-		return;
+	assert( d );
 	if( d->titleName != NULL)
 		free( d->titleName );
-	free(d);
+	FREE(d);
 }
 
 void DvdName_setTitleName(DvdName_t * d, char * titleNameIn) 

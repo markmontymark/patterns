@@ -4,7 +4,7 @@
 //DvdListIterator - the Iterator Interface
 
 #include "Iterator.h"
-#include "stdlib.h"
+#include "mem.h"
 
 
 Iterator_t * Iterator_new(
@@ -15,7 +15,9 @@ Iterator_t * Iterator_new(
 	void * pdata
 )
 {
-	Iterator_t * iter = malloc( Iterator_s );
+	Iterator_t * iter;
+	NEW(iter);
+
 	iter->currentPosition = 0;
 	iter->first = first;
 	iter->next = next ;
@@ -27,8 +29,6 @@ Iterator_t * Iterator_new(
 
 void Iterator_free( Iterator_t * iter )
 {
-	if( iter == NULL )
-		return;
-	free( iter );
+	FREE( iter );
 }
 

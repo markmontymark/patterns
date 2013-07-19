@@ -9,19 +9,23 @@
 #include "string.h"
 #include "stdio.h"
 
+#include "mem.h"
+#include "assert.h"
+
 
 DvdTitleInfo_pdata_t * DvdTitleInfo_pdata_new( char * star, char encodingRegion )
 {
-	DvdTitleInfo_pdata_t * p = malloc( DvdTitleInfo_pdata_s );
+	DvdTitleInfo_pdata_t * p;
+	NEW(p);
+
 	p->star = star;
 	p->encodingRegion = encodingRegion;
 	return p;
 }
 void DvdTitleInfo_pdata_free( DvdTitleInfo_pdata_t * t )
 {
-	if( t == NULL)
-		return;
-	free(t);
+	assert( t );
+	FREE(t);
 }
 
 char * DvdTitleInfo_getTitleBlurb( TitleInfo_t * this ) 
@@ -37,7 +41,7 @@ char * DvdTitleInfo_getTitleBlurb( TitleInfo_t * this )
 char * DvdTitleInfo_getDvdEncodingRegion( TitleInfo_t * this ) 
 {
 	char er = DvdTitleInfo_getEncodingRegion( this);
-	char * retval = malloc( 2 );
+	char * retval = malloc(2);
 	snprintf(retval,1,"%c",er);
 	return retval;
 }
@@ -51,11 +55,10 @@ TitleInfo_t * DvdTitleInfo_new( char * titleName, char * star, char encodingRegi
 
 void DvdTitleInfo_free( TitleInfo_t * t )
 {
-   if( t == NULL )
-      return;
+   assert( t );
    if( t->pdata != NULL )
       DvdTitleInfo_pdata_free((DvdTitleInfo_pdata_t *)t->pdata );
-   free( t );
+   FREE( t );
 }
 
     
