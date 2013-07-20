@@ -13,7 +13,9 @@ Here's what you need to get going...
 	scons
 	./test.sh
 
-## Building with Autotools
+## Building with Autotools (deprecated)
+
+**I moved all the autotools files to a autotools/ dir.  You can `cp -pr autotools/* .` to place all the Makefile.am files in their proper place'
 
 Building and dev with autotools isn't so bad, though it took me literally less than 15 minutes to 
 install scons, whip up my first SConstruct file and get a build.   Autotools is well, I'm not a 
