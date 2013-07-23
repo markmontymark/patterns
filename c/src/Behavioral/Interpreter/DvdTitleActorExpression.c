@@ -12,9 +12,9 @@
 
 char * DvdTitleActorExpression_interpret(DvdExpression_t * d, DvdInterpreterContext_t * ctx) 
 {
-	arraylist_string_t * titlesAndActors = DvdInterpreterContext_getTitlesForActor(ctx, (char *)(d->pdata) );
-	char * retval = arraylist_string_to_string( titlesAndActors );
-	arraylist_string_free( titlesAndActors );
+	List_T titlesAndActors = DvdInterpreterContext_getTitlesForActor(ctx, (char *)(d->pdata) );
+	char * retval = List_csv_str( titlesAndActors );
+	List_free( &titlesAndActors );
 	return retval;
 }
 

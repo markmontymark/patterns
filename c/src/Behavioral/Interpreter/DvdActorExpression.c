@@ -2,11 +2,14 @@
 //DvdActorExpression - One Of Four Terminal Expressions
 
 #include "DvdExpression.h"
+#include "list.h"
+
+#include "stdio.h"
+
 
 char * DvdActorExpression_interpret( DvdExpression_t * d, DvdInterpreterContext_t *  ctx) 
 {
-	arraylist_string_t * actors = DvdInterpreterContext_getAllActors( ctx );
-	return arraylist_string_to_string( actors );
+	return List_csv_str( DvdInterpreterContext_getAllActors( ctx ) );
 }
 
 DvdExpression_t * DvdActorExpression_new()

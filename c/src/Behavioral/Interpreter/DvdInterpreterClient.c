@@ -28,9 +28,15 @@ DvdInterpreterClient_t * DvdInterpreterClient_new( DvdInterpreterContext_t *  ct
 	d->ctx = ctx;
 	return d;
 }
+
 void DvdInterpreterClient_free ( DvdInterpreterClient_t * d)
 {
 	FREE( d );
+}
+
+char * ret_char( void * item)
+{
+	return (char *)(item);
 }
     
 // expression syntax:
@@ -88,8 +94,7 @@ char * DvdInterpreterClient_interpret(DvdInterpreterClient_t * client, char * ex
 		{
 			int sslen = strlen(searchString);
 			int tokenlen = strlen(token);
-			char * newSearchString;
-	NEW(newSearchString);
+			char * newSearchString = malloc(sslen + tokenlen + 1 + 1);
 
 			snprintf( newSearchString, sslen + tokenlen + 1 + 1, "%s %s",searchString,token);
 			if (do_searchString_free && searchString != NULL )
@@ -147,14 +152,13 @@ char * DvdInterpreterClient_interpret(DvdInterpreterClient_t * client, char * ex
 
 
 	char * rez = expr->interpret( expr, client->ctx);
-	arraylist_string_t * result = arraylist_string_new();
-	arraylist_string_add( result, "Query Result: ");
-	arraylist_string_add( result, rez );
-	char * retval = arraylist_string_to_string( result );
-	arraylist_string_free( result );
+	List_T result = List_list( "Query result: ", rez, NULL );
+	char * retval = List_csv_str( result ); //str is in etsc.retval
+	List_free( &result );
 	free(rez);
 	DvdExpression_free( expr ) ;
 	if (do_searchString_free && searchString != NULL )
 		free(searchString - 1); // -1 because we advanced the ptr one char 
 	return retval;
 }
+

@@ -6,6 +6,8 @@ static char rcsid[] = "$Id: list.c 6 2007-01-22 00:45:22Z drhanson $";
 #include "list.h"
 
 #include "stdio.h"
+#include "stdlib.h"
+#include "string.h"
 
 #define T List_T
 T List_push(T list, void *x) {
@@ -98,33 +100,11 @@ void **List_toArray(T list, void *end) {
 }
 
 // start mrk additions
-T List_remove2(T list, void *x) {
-	T *p = &list;
-	T prevp;
-	int i = 0;
-	while (*p)
-	{
-		if( (*p)->first == x )
-		{
-			printf("found item to remove at %d iteration\n",i);
-			if( i == 0 )
-			{
-					T retval = (*p)->rest;
-					FREE(list);	
-					return retval;
-			}
-			else
-			{
-				*(prevp->rest) = *((*p)->rest);
-				FREE(*p);	
-				return list;
-			}
-		}
-		prevp = (*p);
-		p = &(*p)->rest;
-		i++;
-	}
-	return list;
+void List_join(T list,
+	void apply(void **x, void *cl, int is_last), void *cl) {
+	assert(apply);
+	for ( ; list; list = list->rest)
+		apply(&list->first, cl, (list->rest == NULL || list->rest->first == NULL));
 }
 T List_remove(T list, void *x) {
 	T p = list;
@@ -168,4 +148,83 @@ int List_first(T list,
 			return retval;
 	return 0;
 }
+
+T List_add(T list, void *x) 
+{
+	if(list == NULL )
+		return List_list(x);
+	return List_append( list, List_list(x));
+}
+
+static char * List_csv_join( char * retval, char * item, int add_delim, struct List_csv_ctx * ctx)
+{
+   int item_len = strlen(item);
+   int new_len = ctx->retval_len + (add_delim ? ctx->delim_len : 0) + item_len;
+	char *tmp = realloc(retval, (new_len + 1) * sizeof(char) ); // + 1 because strncat always adds a '\0' at end
+   if(add_delim)
+	{
+		strncpy( (tmp + ctx->retval_len           ), item, item_len );
+      strncat( (tmp + ctx->retval_len + item_len), ctx->delim, ctx->delim_len);
+	}
+   else
+	{
+		strncat( (tmp + ctx->retval_len), item, item_len);
+	}
+	
+   ctx->retval_len = new_len ;
+	return tmp;
+}
+
+char * List_csv(
+	T list,
+	char * get_item_str(void * x)
+) 
+{
+	assert(get_item_str);
+	T next = list;
+	char * item_str;	
+	char * retval = calloc(1024,1);
+	memset(retval, 0, sizeof(*(retval)));
+	
+	//NEW0(retval);
+	struct List_csv_ctx * ctx = malloc( sizeof(struct List_csv_ctx) );
+	ctx->delim_len = 2;
+	ctx->delim = ", ";
+	ctx->retval_len = 0;
+
+	for ( ; next ; next = next->rest)
+	{
+		item_str = get_item_str( next->first );
+		retval = List_csv_join( retval, item_str, (next->rest != NULL), ctx);
+		//printf("\tList_csv retval so far%s\n",retval);
+	}
+	free(ctx);
+	return retval;
+}
+
+char * List_csv_str(
+	T list
+) 
+{
+	T next = list;
+	char * retval = calloc(1024,1);
+	memset(retval, 0, sizeof(*(retval)));
+	//NEW0(retval);
+	struct List_csv_ctx * ctx = malloc(sizeof(struct List_csv_ctx));
+	ctx->delim_len 	= 2;	
+	ctx->delim		= ", "; 	
+	ctx->retval_len	= 0; 
+	for ( ; next ; next = next->rest)
+	{
+		retval = List_csv_join( retval,
+			(char*)(next->first), 
+			(next->rest != NULL) , 
+		ctx);
+		//printf("\tList_csv_str retval so far %s\n",retval);
+	}
+	//printf("final retval %s\n",retval);
+	free(ctx);
+	return retval;
+}
+
 // end mrk additions

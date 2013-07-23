@@ -5,8 +5,7 @@
 
 char * DvdTitleExpression_interpret( DvdExpression_t * d, DvdInterpreterContext_t *  ctx) 
 {
-	arraylist_string_t * titles = DvdInterpreterContext_getAllTitles( ctx );
-	return arraylist_string_to_string( titles );
+	return List_csv_str( DvdInterpreterContext_getAllTitles( ctx ) );
 }
 
 DvdExpression_t * DvdTitleExpression_new()

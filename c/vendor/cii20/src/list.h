@@ -20,10 +20,29 @@ extern void   List_map    (T list,
 extern void **List_toArray(T list, void *end);
 
 // start mrk additions
+extern T      List_add    (T list, void *x);
 extern T      List_new    ();
 extern T      List_remove (T list, void *x);
-extern int   List_first  (T list,
-	int apply(void **x, void *cl), void *cl);
+extern int   List_first   (T list,
+	int apply(void **x, void *ctx), void *ctx);
+extern void List_join   (T list,
+	void apply(void **x, void *ctx, int is_last_item), void *ctx);
+
+struct List_csv_ctx
+{
+   int delim_len;
+   int retval_len;
+   char * delim;
+   char * retval;
+};
+
+extern char * List_csv   (
+	T list,
+	char * get_item_str(void *x)
+);
+extern char * List_csv_str   (
+	T list
+);
 // end mrk additions
 
 #undef T

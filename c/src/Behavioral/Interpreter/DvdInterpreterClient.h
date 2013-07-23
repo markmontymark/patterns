@@ -13,7 +13,6 @@ struct DvdInterpreterClient
 {
    DvdInterpreterContext_t * ctx;
 };
-#define DvdInterpreterClient_s sizeof( DvdInterpreterClient_t )
    
 DvdInterpreterClient_t * DvdInterpreterClient_new( DvdInterpreterContext_t *  ctx)  ;
 void DvdInterpreterClient_free( DvdInterpreterClient_t * );
