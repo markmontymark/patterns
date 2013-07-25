@@ -10,4 +10,5 @@ int main( int argc, char ** argv )
 	tea_t * chai = chai_new(teaLeaves);
 	chai_steep_tea( chai );
 	chai_free( chai );
+	return 0;
 }

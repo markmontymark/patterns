@@ -1,3 +1,0 @@
-ACLOCAL_AMFLAGS=-I include
-SUBDIRS=src
-

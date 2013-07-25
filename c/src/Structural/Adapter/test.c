@@ -23,4 +23,6 @@ int main(int argc, char ** argv)
 	teaball_free( teaball  ); // looseLeafTea gets free'd here
 	teacup_free( teacup );
 	teabag_free( teabag );
+
+	return 0;
 }      

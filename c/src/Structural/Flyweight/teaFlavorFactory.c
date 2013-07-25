@@ -6,6 +6,7 @@
 
 #include "mem.h"
 #include "assert.h"
+#include "string.h"
 
 teaFlavorFactory_t * teaFlavorFactory_new() 
 {

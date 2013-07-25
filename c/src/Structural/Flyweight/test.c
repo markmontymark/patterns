@@ -47,4 +47,6 @@ int main( int argc, char ** argv )
 	teaFlavorFactory_free( tff );
 	for(i = ordersMade - 1; i > -1; i--) 
 		teaOrderContext_free( tables[i]);
+
+	return 0;
 }

@@ -2,7 +2,7 @@
 import os.path
 
 env = Environment(CPPPATH='vendor/cii20/src')   # Create an environmnet
-env.Append(CCFLAGS = ['-g','-O3'])
+env.Append(CCFLAGS = ['-g','-O3' ,'-Wall'])
 
 def filtered_glob(env, pattern, omit=[],
   ondisk=True, source=False, strings=False):

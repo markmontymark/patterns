@@ -13,4 +13,6 @@ int main(int argc, char ** argv )
 	char * msg = teacup_to_string(teaCup);
 	printf("%s\n",msg);
 	teacup_free(teaCup);
+
+	return 0;
 }
