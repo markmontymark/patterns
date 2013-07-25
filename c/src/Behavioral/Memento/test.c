@@ -3,18 +3,19 @@
 
 #include "DvdDetails.h"
 #include "stdlib.h"
+#include "stdio.h"
 
 
 int main( int argc, char ** argv )
 {
 	//the Caretaker
 	DvdDetails_t * memento;  
+	char * deets;
 
 	DvdDetails_t * dvdDetails = DvdDetails_new("Memento", '1'); 
 	DvdDetails_addStar( dvdDetails, "Guy Pearce" );
 
 	memento = DvdDetails_createMemento( dvdDetails);
-	char * deets;
 	deets = DvdDetails_to_string( dvdDetails);
 	printf("as first instantiated\n%s\n", deets );
 	free(deets);
@@ -38,4 +39,6 @@ int main( int argc, char ** argv )
 
 	DvdDetails_free( dvdDetails );
 	DvdDetails_free( memento );
+	
+	return 0;
 }

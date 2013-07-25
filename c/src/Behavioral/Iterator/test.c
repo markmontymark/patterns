@@ -38,5 +38,7 @@ int main( int argc, char ** argv )
 
 	Iterator_free( iter );
 	DvdList_free( fiveShakespeareMovies );
+
+	return 0;
 }
 

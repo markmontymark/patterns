@@ -8,11 +8,21 @@
 typedef struct DvdStateName DvdStateName_t;
 
 #include "DvdStateContext.h"
+#include "DvdStateNameExclaim.h"
+#include "DvdStateNameStars.h"
 
-struct DvdStateName 
-{  
+enum DvdStateNameType { DvdStateNameExclaimType, DvdStateNameStarsType };
+struct DvdStateName
+{
+   enum DvdStateNameType type;
+   union
+   {
+      DvdStateNameStars_t * stars;
+      DvdStateNameExclaim_t * exclaim;
+   };
    void ( * showName)(DvdStateName_t * , DvdStateContext_t *, char * ) ;  
 };
+
 
 #endif
 

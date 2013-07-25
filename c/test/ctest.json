@@ -133,7 +133,7 @@
 
 
    "Behavioral/Interpreter/test" : {
-      "expected" : "interpreting show actor: Query Result: ,Ethan Hawke,Denzel Washington\ninterpreting show actor for title <Training Day>: Query Result: ,Ethan Hawke,Denzel Washington\ninterpreting show actor for title <Hamlet>: Query Result: ,Ethan Hawke\ninterpreting show title: Query Result: ,Caddy Shack,Training Day,Hamlet\ninterpreting show title for actor <Ethan Hawke>: Query Result: ,Hamlet,Training Day,Caddy Shack\ninterpreting show title for actor <Denzel Washington>: Query Result: ,Training Day",
+      "expected" : "interpreting show actor: Query result: , Denzel Washington, Ethan Hawke\ninterpreting show title: Query result: , Training Day, Caddy Shack, Hamlet\ninterpreting show actor for title <Training Day>: Query result: , Ethan Hawke, Denzel Washington\ninterpreting show actor for title <Hamlet>: Query result: , Ethan Hawke\ninterpreting show title for actor <Ethan Hawke>: Query result: , Hamlet, Training Day, Caddy Shack\ninterpreting show title for actor <Denzel Washington>: Query result: , Training Day",
 		"bin" : "src/Behavioral/Interpreter/test",
       "name" : "Behavioral - Interpreter"
 	},

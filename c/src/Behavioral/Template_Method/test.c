@@ -34,4 +34,6 @@ int main( int argc, char ** argv )
 	DvdTitleInfo_free( bladeRunner );
 	BookTitleInfo_free( electricSheep );
 	GameTitleInfo_free( sheepRaider );
+
+	return 0;
 }

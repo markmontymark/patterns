@@ -7,6 +7,7 @@
 #include "DvdNameStrategy.h"
 
 #include "stdlib.h"
+#include "stdio.h"
 
 
 int main( int argc, char ** argv )
@@ -50,4 +51,6 @@ int main( int argc, char ** argv )
 	DvdNameContext_free( theEndContext );
 	DvdNameContext_free( spacesContext );
 	arraylist_string_free( dvdNames);
+
+	return 0;
 }

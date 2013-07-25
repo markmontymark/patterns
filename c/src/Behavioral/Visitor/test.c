@@ -49,5 +49,6 @@ int main(int argc, char ** argv)
 
 	TitleBlurbVisitor_free(tlbv);
 	TitleBlurbVisitor_free(tsbv);
-	
+
+	return 0;	
 }

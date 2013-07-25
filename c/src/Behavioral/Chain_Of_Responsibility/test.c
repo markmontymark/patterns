@@ -18,7 +18,7 @@ int main( int argc, char ** argv )
 	DvdCategory_setTopCategoryTitle( comedy, "Ghost World");
 	DvdSubSubCategory_setTopSubSubCategoryTitle( comedyChildrensAquatic, "Sponge Bob Squarepants");
 
-	char * allCats;
+	char * allCats = "";
 	allCats = comedy->topTitle->getAllCategories( comedy, allCats );
 	printf("Getting top comedy title:\n");
 	printf("The top title for %s is %s\n\n" , 
@@ -43,4 +43,6 @@ int main( int argc, char ** argv )
 	DvdSubSubCategory_free( comedyChildrensAquatic );
 	DvdSubCategory_free( comedyChildrens );
 	DvdCategory_free( comedy );
+
+	return 0;
 }

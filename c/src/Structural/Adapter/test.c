@@ -18,7 +18,7 @@ int main(int argc, char ** argv)
 	printf("Steeping loose leaf tea\n");
 	looseleaftea_t * looseLeafTea = looseleaftea_new();
 	teaball_t * teaball = teaball_new(looseLeafTea);
-	teacup_steep_teabag(teacup,teaball);
+	teacup_steep_teabag(teacup,(teabag_t*)teaball);
 
 	teaball_free( teaball  ); // looseLeafTea gets free'd here
 	teacup_free( teacup );

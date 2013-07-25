@@ -19,7 +19,7 @@ T Array_new(int length, int size) {
 void ArrayRep_init(T array, int length, int size,
 	void *ary) {
 	assert(array);
-	assert(ary && length>0 || length==0 && ary==NULL);
+	assert((ary && length>0) || (length==0 && ary==NULL));
 	assert(size > 0);
 	array->length = length;
 	array->size   = size;

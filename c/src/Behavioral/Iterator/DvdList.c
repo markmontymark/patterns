@@ -5,6 +5,7 @@
 #include "../../common/arraylist_string.h"
 #include "DvdList.h"
 #include "stdlib.h"
+#include "string.h"
 #include "mem.h"
 #include "assert.h"
 

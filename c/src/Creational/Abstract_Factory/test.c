@@ -3,6 +3,8 @@
 #include "boston_soup_factory.h"
 #include "honolulu_soup_factory.h"
 
+#include "stdio.h"
+
 // Testing the abstract factory
 
 soup_t * makeSoupOfTheDay(soup_factory_t * sf)
@@ -46,4 +48,6 @@ int main(int argc, char ** argv)
 
 	soup_factory_free(sf);
 	soup_free( soupOfTheDay );
+
+	return 0;
 }      

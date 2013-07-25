@@ -18,7 +18,7 @@ struct DvdLowercaseTitle
 #define DvdLowercaseTitle_s sizeof(DvdLowercaseTitle_t)
 
 DvdLowercaseTitle_t * DvdLowercaseTitle_new(char * title, DvdMediator_t * dvdMediator) ;
-void DvdLowercaseTitle( DvdLowercaseTitle_t * ) ; 
+void DvdLowercaseTitle_free( DvdLowercaseTitle_t * ) ; 
 void DvdLowercaseTitle_resetTitle(DvdLowercaseTitle_t * d, char * title)  ;
 void DvdLowercaseTitle_setSuperTitleLowercase(DvdLowercaseTitle_t * d)  ;
 void DvdLowercaseTitle_setLowercaseTitle(DvdLowercaseTitle_t * d, char * LowercaseTitle)  ;

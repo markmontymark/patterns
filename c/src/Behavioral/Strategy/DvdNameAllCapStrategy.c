@@ -3,6 +3,7 @@
 
 #include "DvdNameStrategy.h"
 
+#include "ctype.h"
 #include "string.h"
 
 

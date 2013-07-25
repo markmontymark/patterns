@@ -9,6 +9,7 @@
 #include "mem.h"
 #include "assert.h"
 #include "list.h"
+#include "string.h"
 
 
 DvdInterpreterContext_t * DvdInterpreterContext_new()

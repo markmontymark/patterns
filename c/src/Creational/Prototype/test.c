@@ -5,6 +5,7 @@
 #include "saladspoon.h"
 #include "saladfork.h"
 #include "prototypefactory.h"
+#include "stdio.h"
 
 int main( int argc, char ** argv )
 {
@@ -35,4 +36,6 @@ int main( int argc, char ** argv )
 	prototype_factory_free( pf ); 
 	spoon_free( spoon );
 	fork_free( forky );
+	
+	return 0;
 }      

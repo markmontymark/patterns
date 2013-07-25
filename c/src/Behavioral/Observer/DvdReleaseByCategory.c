@@ -10,6 +10,8 @@
 #include "stdio.h"
 #include "mem.h"
 #include "list.h"
+#include "assert.h"
+#include "string.h"
 
 
 DvdReleaseByCategory_t * DvdReleaseByCategory_new(char * categoryNameIn) 

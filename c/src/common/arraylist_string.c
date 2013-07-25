@@ -28,7 +28,6 @@ char * arraylist_string_to_string(arraylist_string_t * list)
 	int realloc_size = 1024;
 
 	char *t=NULL, *p=NULL, *cur = NULL;
-	int c; /* character buffer */
 	int len = 0; /* current number of elements read and stored */
 	int allocated = 0; /* number of allocated bytes in p */
 	int clen = 0;

@@ -15,13 +15,13 @@
 typedef struct DvdStateNameExclaim DvdStateNameExclaim_t;
 struct DvdStateNameExclaim
 {
-	void ( * showName )(DvdStateContext_t * ,  char * );
+	void ( * showName )(DvdStateName_t * d, DvdStateContext_t * ,  char * );
 };
-#define DvdStateNameExclaim_s sizeof(DvdStateNameExclaim_t)
 
-DvdStateNameExclaim_t * DvdStateNameExclaim_new() ;
-void DvdStateNameExclaim_free(DvdStateNameExclaim_t * ) ;
-void showName(DvdStateName_t * , DvdStateContext_t * , char * ) ;
+
+DvdStateName_t * DvdStateNameExclaim_new() ;
+void DvdStateNameExclaim_free(DvdStateName_t * ) ;
+void DvdStateNameExclaim_showName(DvdStateName_t * , DvdStateContext_t * , char * ) ;
 
 
 

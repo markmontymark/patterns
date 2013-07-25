@@ -55,4 +55,6 @@ int main( int argc, char ** argv )
 
 	DvdName_free( jayAndBob );
 	DvdName_free( spongeBob );
+
+	return 0;
 }      

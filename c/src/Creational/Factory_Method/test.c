@@ -61,4 +61,6 @@ int main( int argc, char ** argv )
 	soup_factorymethod_free(sfm);
 	soupbuffet_free(sb);
 	free(todaysSoups);
+
+	return 0;
 }

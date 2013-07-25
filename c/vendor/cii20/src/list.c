@@ -208,7 +208,7 @@ char * List_csv_str(
 {
 	T next = list;
 	char * retval = calloc(1024,1);
-	memset(retval, 0, sizeof(*(retval)));
+	//memset(retval, 0, sizeof(*(retval)));
 	//NEW0(retval);
 	struct List_csv_ctx * ctx = malloc(sizeof(struct List_csv_ctx));
 	ctx->delim_len 	= 2;	

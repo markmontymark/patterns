@@ -13,13 +13,13 @@
 typedef struct DvdStateNameStars DvdStateNameStars_t;
 struct DvdStateNameStars
 {
-	void ( * showName )(DvdStateContext_t * ,  char * );
+	void ( * showName )(DvdStateName_t *, DvdStateContext_t * ,  char * );
 	int starCount;
 };
-#define DvdStateNameStars_s sizeof(DvdStateNameStars_t)
+
 
 DvdStateName_t * DvdStateNameStars_new()  ;
-void DvdStateNameStars_free(DvdStateNameStars_t * ) ;
-void showName(DvdStateName_t * , DvdStateContext_t * , char * )  ;
+void DvdStateNameStars_free(DvdStateName_t * ) ;
+void DvdStateNameStars_showName(DvdStateName_t * , DvdStateContext_t * , char * )  ;
 
 #endif

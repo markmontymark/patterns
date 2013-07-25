@@ -10,7 +10,7 @@
 #include "stdio.h"
 #include "mem.h"
    
-int main( int argc, char * argv )
+int main( int argc, char ** argv )
 { 
 	DvdInterpreterContext_t * ctx = DvdInterpreterContext_new();
 
@@ -38,30 +38,30 @@ int main( int argc, char * argv )
 	printf( "interpreting %s: %s\n", expr, showActor);
 	free(showActor);
 
-	char *	expr2 = "show title";
+	char * expr2 = "show title";
 	char * showTitle = DvdInterpreterClient_interpret( client, expr2) ;
 	printf( "interpreting %s: %s\n", expr2, showTitle );
 	free( showTitle );
 
-	expr = "show actor for title <Training Day>";
-	char * showActorForTitleTrainingDay = DvdInterpreterClient_interpret( client, expr );
-	printf( "interpreting %s: %s\n", expr, showActorForTitleTrainingDay );
+	char * expr3 = "show actor for title <Training Day>";
+	char * showActorForTitleTrainingDay = DvdInterpreterClient_interpret( client, expr3 );
+	printf( "interpreting %s: %s\n", expr3, showActorForTitleTrainingDay );
 	free( showActorForTitleTrainingDay );
 
-	expr = "show actor for title <Hamlet>";
-	char * showActorForTitleHamlet = DvdInterpreterClient_interpret( client, expr );
-	printf( "interpreting %s: %s\n", expr, showActorForTitleHamlet );
+	char * expr4 = "show actor for title <Hamlet>";
+	char * showActorForTitleHamlet = DvdInterpreterClient_interpret( client, expr4 );
+	printf( "interpreting %s: %s\n", expr4, showActorForTitleHamlet );
 	free( showActorForTitleHamlet );
 
 
-	expr = "show title for actor <Ethan Hawke>";
-	char * showTitleForActorEthanHawke = DvdInterpreterClient_interpret( client, expr );
-	printf( "interpreting %s: %s\n", expr, showTitleForActorEthanHawke );
+	char * expr5 = "show title for actor <Ethan Hawke>";
+	char * showTitleForActorEthanHawke = DvdInterpreterClient_interpret( client, expr5 );
+	printf( "interpreting %s: %s\n", expr5, showTitleForActorEthanHawke );
 	free( showTitleForActorEthanHawke );
 
-	expr = "show title for actor <Denzel Washington>";
-	char * showTitleForActorDenzel =  DvdInterpreterClient_interpret( client, expr );
-	printf( "interpreting %s: %s\n", expr, showTitleForActorDenzel);
+	char * expr6 = "show title for actor <Denzel Washington>";
+	char * showTitleForActorDenzel =  DvdInterpreterClient_interpret( client, expr6 );
+	printf( "interpreting %s: %s\n", expr6, showTitleForActorDenzel);
 	free( showTitleForActorDenzel );
 
 
@@ -71,4 +71,6 @@ int main( int argc, char * argv )
 	TitleAndActor_free( TrainingDayDenzelWashington );
 	DvdInterpreterClient_free( client );
 	DvdInterpreterContext_free( ctx );
+
+	return 0;
 }

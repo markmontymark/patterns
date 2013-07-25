@@ -6,6 +6,7 @@
 #include "soupbuffet_builder.h"
 #include "boston_soupbuffet_builder.h"
 #include "honolulu_soupbuffet_builder.h"
+#include "stdio.h"
 
 
 soupbuffet_t * createSoupBuffet( soupbuffet_builder_t * builder ) 
@@ -48,4 +49,6 @@ int main( int argc, char ** argv )
 
 	//soupbuffet_free(sb);
 	soupbuffet_builder_free(hsbb);
+
+	return 0;
 }      

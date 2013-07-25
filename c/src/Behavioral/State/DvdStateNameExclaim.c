@@ -9,6 +9,7 @@
 
 #include "mem.h"
 #include "stdio.h"
+#include "stdlib.h"
 
 #include "../../common/common_str.h"
 
@@ -23,15 +24,16 @@ void DvdStateNameExclaim_showName(DvdStateName_t * d, DvdStateContext_t * ctx, c
 }
 
 
-DvdStateNameExclaim_t * DvdStateNameExclaim_new() 
+DvdStateName_t * DvdStateNameExclaim_new() 
 {
-	DvdStateNameExclaim_t * d;
+	DvdStateName_t * d;
 	NEW(d);
+	d->type = DvdStateNameExclaimType;
 	d->showName = DvdStateNameExclaim_showName;
 	return d;
 }
 
-void DvdStateNameExclaim_free(DvdStateNameExclaim_t * d)
+void DvdStateNameExclaim_free(DvdStateName_t * d)
 {
 	FREE( d );
 }

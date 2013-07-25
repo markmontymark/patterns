@@ -33,6 +33,6 @@ void DvdDetails_free( DvdDetails_t * d) ;
 void DvdDetails_addStar(DvdDetails_t *d, char * starIn)  ;
 char * DvdDetails_to_string( DvdDetails_t * d)  ;
 void DvdDetails_reset(DvdDetails_t * d, DvdDetails_t * memento)  ;
-DvdDetails_t * createMemento( DvdDetails_t * d)  ;
+DvdDetails_t * DvdDetails_createMemento( DvdDetails_t * d)  ;
 
 #endif

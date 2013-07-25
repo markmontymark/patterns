@@ -40,4 +40,6 @@ int main ( int argc, char ** argv )
 		printf("No spoon was available\n");
 
 	spoon_free();	
+
+	return 0;
 }

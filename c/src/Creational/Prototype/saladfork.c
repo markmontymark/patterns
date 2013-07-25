@@ -8,5 +8,6 @@ fork_t * saladfork_new()
 {
 	fork_t * s = fork_new();
 	s->name = "Salad Fork";
+	return s;
 }
 

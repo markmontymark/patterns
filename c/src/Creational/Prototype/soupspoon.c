@@ -8,5 +8,6 @@ spoon_t * soupspoon_new()
 {
 	spoon_t * s = spoon_new();
 	s->name = "Soup Spoon";
+	return s;
 }
 

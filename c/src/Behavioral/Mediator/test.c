@@ -31,4 +31,6 @@ int main( int argc, char ** argv )
 	DvdMediator_free( dvdMediator );	
 	DvdLowercaseTitle_free( dvdLower );	
 	DvdUpcaseTitle_free( dvdUp );	
+	
+	return 0;
 }

@@ -17,7 +17,6 @@ struct DvdList
    arraylist_string_t * titles;  
 };
 
-#define DvdList_s sizeof(DvdList_t)
 
 DvdList_t * DvdList_new();
 void DvdList_free( DvdList_t * );

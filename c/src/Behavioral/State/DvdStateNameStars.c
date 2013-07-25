@@ -11,31 +11,34 @@
 
 #include "mem.h"
 #include "stdio.h"
+#include "stdlib.h"
 
-void DvdStateNameStars_showName(DvdStateNameStars_t * d, DvdStateContext_t * ctx, char * nameIn) 
+void DvdStateNameStars_showName(DvdStateName_t * d, DvdStateContext_t * ctx, char * nameIn) 
 {
 	char * nameChanged = common_str_replace( nameIn, ' ', '*' );
 	printf("%s\n", nameChanged);
 	free(nameChanged);
 	
 	// show stars twice, switch to exclamation point
-   d->starCount++;
-   if (d->starCount > 1) 
+   d->stars->starCount++;
+   if (d->stars->starCount > 1) 
 		DvdStateContext_setDvdStateName( ctx, (DvdStateName_t *)DvdStateNameExclaim_new());
 }
 
 DvdStateName_t * DvdStateNameStars_new() 
 {
-	DvdStateNameStars_t * d;
+	DvdStateName_t * d;
 	NEW(d);
-
-	d->starCount = 0;
+	d->type = DvdStateNameStarsType;
 	d->showName = DvdStateNameStars_showName;
+	NEW(d->stars);
+	d->stars->starCount = 0;
 	return d;
 }
 
-void DvdStateNameStars_free(DvdStateNameStars_t * d)
+void DvdStateNameStars_free(DvdStateName_t * d)
 {
+	FREE( d->stars );
 	FREE( d );
 }
     

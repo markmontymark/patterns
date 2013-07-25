@@ -200,7 +200,7 @@ T AP_pow(T x, T y, T p) {
 	assert(x);
 	assert(y);
 	assert(y->sign == 1);
-	assert(!p || p->sign==1 && !iszero(p) && !isone(p));
+	assert( (!p) || (p->sign==1 && !iszero(p) && !isone(p)));
 	if (iszero(x))
 		return AP_new(0);
 	if (iszero(y))
@@ -343,9 +343,9 @@ T AP_fromstr(const char *str, int base, char **end) {
 		for ( ; *p == '0' && p[1] == '0'; p++)
 			;
 		start = p;
-		for ( ; (  '0' <= *p && *p <= '9' && *p < '0' + base
-			|| 'a' <= *p && *p <= 'z' && *p < 'a' + base - 10
-			|| 'A' <= *p && *p <= 'Z' && *p < 'A' + base - 10); p++)
+		for ( ; (  ('0' <= *p && *p <= '9' && *p < '0' + base)
+			|| ('a' <= *p && *p <= 'z' && *p < 'a' + base - 10)
+			|| ('A' <= *p && *p <= 'Z' && *p < 'A' + base - 10)); p++)
 			n++;
 		for (k = 1; (1<<k) < base; k++)
 			;

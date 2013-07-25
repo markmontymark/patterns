@@ -11,4 +11,5 @@ int main( int argc, char ** argv )
 	DvdStateContext_showName(ctx,"Buffy The Vampire Slayer Season 2");
 	DvdStateContext_showName(ctx, "The Sopranos Season 2");
 	DvdStateContext_free( ctx );
+	return 0;
 }
