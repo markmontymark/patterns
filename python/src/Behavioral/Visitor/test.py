@@ -4,6 +4,7 @@ from GameInfo import GameInfo
 from TitleLongBlurbVisitor import TitleLongBlurbVisitor
 from TitleShortBlurbVisitor import TitleShortBlurbVisitor
 
+import unittest
 
 class TestBehavioralVisitor(unittest.TestCase):
 

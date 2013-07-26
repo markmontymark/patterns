@@ -1,9 +1,18 @@
 #//AbstractTitleInfo.java - the abstract Visitee
 
-define [] ,() ->
-	class AbstractTitleInfo
-		titleName   : null
-		setTitleName : (titleNameIn) -> @titleName = titleNameIn
-		getTitleName : -> @titleName
-		accept :(titleBlurbVisitor) -> throw "Unimplemented method, AbstractTitleInfo.accept"
+class AbstractTitleInfo(object):
+
+	titleName = None
+
+	def __init__(self,titleName):
+		self.setTitleName(titleName)
+
+	def setTitleName (self,titleNameIn) :
+		self.titleName = titleNameIn
+
+	def getTitleName (self) : 
+		return self.titleName
+
+	def accept (self,titleBlurbVisitor) :
+		raise Exception("Unimplemented method, AbstractTitleInfo.accept")
 

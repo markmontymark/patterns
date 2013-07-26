@@ -1,22 +1,19 @@
 
 
+#//TitleShortBlurbVisitor - two of two concrete Visitors
 
-#//TitleShortBlurbVisitor.java - two of two concrete Visitors
+from TitleBlurbVisitor import TitleBlurbVisitor
+from BookInfo import BookInfo
+from DvdInfo import DvdInfo
+from GameInfo import GameInfo
 
-define ['Behavioral/Visitor/TitleBlurbVisitor',
-'Behavioral/Visitor/BookInfo',
-'Behavioral/Visitor/DvdInfo',
-'Behavioral/Visitor/GameInfo'
-],(
-TitleBlurbVisitor,
-BookInfo,
-DvdInfo,
-GameInfo
-) ->
+class TitleShortBlurbVisitor(TitleBlurbVisitor):
 
-	class TitleShortBlurbVisitor extends TitleBlurbVisitor
-		visit : (info) ->
-			switch
-				when info instanceof BookInfo then  @setTitleBlurb("SB-Book: " + info.titleName)
-				when info instanceof DvdInfo then  @setTitleBlurb("SB-DVD: " + info.titleName)
-				when info instanceof GameInfo then @setTitleBlurb("SB-Game: " + info.titleName)
+	def visit (self,info) :
+
+		if isinstance(info,BookInfo):
+			self.setTitleBlurb("SB-Book: " + info.titleName)
+		elif isinstance(info,DvdInfo):
+			self.setTitleBlurb("SB-DVD: " + info.titleName)
+		elif isinstance(info,GameInfo):
+			self.setTitleBlurb("SB-Game: " + info.titleName)

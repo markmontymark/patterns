@@ -1,9 +1,9 @@
 #//GameInfo.java - three of three concrete Visitees
-define ['Behavioral/Visitor/AbstractTitleInfo'
-],(
-AbstractTitleInfo
-) ->
+from AbstractTitleInfo import AbstractTitleInfo
 
-	class GameInfo extends AbstractTitleInfo
-		constructor : (@titleName) ->
-		accept : (titleBlurbVisitor) -> titleBlurbVisitor.visit(@)
+class GameInfo(AbstractTitleInfo):
+	def __init__(self,titleName) :
+		super(GameInfo,self).__init__(titleName)
+
+	def accept(self,titleBlurbVisitor) :
+		 titleBlurbVisitor.visit(self)

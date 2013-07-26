@@ -1,11 +1,14 @@
 # //BookInfo.java - one of three concrete Visitees
-define ['Behavioral/Visitor/AbstractTitleInfo'
-],(
-AbstractTitleInfo
-) ->
+from AbstractTitleInfo import AbstractTitleInfo
 
-	class BookInfo extends AbstractTitleInfo
-		author    : null
-		constructor : (@titleName, @author) ->
-		accept : (titleBlurbVisitor) -> titleBlurbVisitor.visit(@)
+class BookInfo (AbstractTitleInfo) :
+
+	author = None
+
+	def __init__(self,titleName,author) :
+		super(BookInfo,self).__init__(titleName)
+		self.author = author
+
+	def accept (self,titleBlurbVisitor) :
+		titleBlurbVisitor.visit(self)
 
