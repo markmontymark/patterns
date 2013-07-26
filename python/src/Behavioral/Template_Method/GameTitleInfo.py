@@ -1,11 +1,10 @@
 #//GameTitleInfo.java - three of three concrete templates
 
-define ['Behavioral/Template_Method/TitleInfo'
-],(
-TitleInfo
-) ->
-	class GameTitleInfo extends TitleInfo
-		constructor : (titleName) ->
-			@setTitleName titleName
+from TitleInfo import TitleInfo
 
-		getTitleBlurb : -> "Game: " + @getTitleName()
+class GameTitleInfo(TitleInfo) :
+	def __init__(self,titleName):
+		self.setTitleName(titleName)
+
+	def getTitleBlurb (self): 
+		return "Game: {0}".format( self.getTitleName() )

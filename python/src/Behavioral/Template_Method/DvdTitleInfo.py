@@ -1,15 +1,16 @@
-#//DvdTitleInfo.java - one of three concrete templates
+#DvdTitleInfo - one of three concrete templates
 
+from TitleInfo import TitleInfo
 
-#//GameTitleInfo.java - three of three concrete templates
+class DvdTitleInfo(TitleInfo) :
+	def __init__(self,titleName,star,encodingRegion) :
+		self.titleName = titleName
+		self.star = star
+		self.encodingRegion = encodingRegion
 
-define ['Behavioral/Template_Method/TitleInfo'
-],(
-TitleInfo
-) ->
+	def getTitleBlurb(self) : 
+		return "DVD: {0}, starring {1} ".format(self.titleName, self.star)
 
-	class DvdTitleInfo extends TitleInfo
-		constructor : (@titleName,@star,@encodingRegion) ->
-		getTitleBlurb : -> "DVD: #{ @titleName}, starring #{ @star} "
-		getDvdEncodingRegionInfo : -> ", encoding region: #{@encodingRegion}"
+	def getDvdEncodingRegionInfo(self):
+		return ", encoding region: {0}".format(self.encodingRegion)
 

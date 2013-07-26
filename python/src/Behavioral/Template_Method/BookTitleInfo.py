@@ -1,16 +1,21 @@
 
-#//BookTitleInfo.java - two of three concrete templates
+#//BookTitleInfo - two of three concrete templates
 
-define ['Behavioral/Template_Method/TitleInfo'
-],(
-TitleInfo
-) ->
-	class BookTitleInfo extends TitleInfo
-		author : null
-		constructor : (titleName,author) ->
-			@setTitleName titleName
-			@setAuthor author
+from TitleInfo import TitleInfo
 
-		setAuthor : (a) -> @author = a
-		getAuthor : -> @author
-		getTitleBlurb : -> "Book: " + @getTitleName() + ", Author: " + @getAuthor()
+class BookTitleInfo(TitleInfo):
+
+	author = None
+
+	def __init__(self,titleName,author) :
+		self.setTitleName(titleName)
+		self.setAuthor(author)
+
+	def setAuthor (self,a) :
+		self.author = a
+
+	def getAuthor (self) : 
+		return self.author
+
+	def getTitleBlurb (self): 
+		return "Book: {0}, Author: {1}".format( self.getTitleName() , self.getAuthor() )
