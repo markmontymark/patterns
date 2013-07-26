@@ -1,10 +1,12 @@
 #//DvdStateNameExclaim.java - one of two Concrete States
 
-import DvdStateName
-import DvdStateNameStars
+from DvdStateName import DvdStateName
 
 class DvdStateNameExclaim(DvdStateName):
-	def showName (self,ctx, name):
-		retval = name.replace(' ','!')
+	def showName (self, ctx, name):
+		retval = name.replace(' ','!',1)
+		print "made switch back to stars"
 		ctx.setDvdStateName(DvdStateNameStars())
-		retval
+		return retval
+
+from DvdStateNameStars import DvdStateNameStars

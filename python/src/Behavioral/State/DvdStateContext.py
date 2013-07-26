@@ -1,10 +1,11 @@
 # //DvdStateContext.java - the Context
 
-import DvdStateName
-import DvdStateNameStars
+from DvdStateName import DvdStateName
+from DvdStateNameStars import DvdStateNameStars
 
 class DvdStateContext:
-	dvdStateName = null
+
+	dvdStateName = None
 
 	def __init__(self): 
 		self.dvdStateName = DvdStateNameStars()  # start with stars
@@ -13,4 +14,4 @@ class DvdStateContext:
 		self.dvdStateName = dvdStateNameIn
 
 	def showName (self,nameIn):
-		self.dvdStateName.showName(nameIn)
+		return self.dvdStateName.showName(self,nameIn)
