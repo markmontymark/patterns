@@ -1,18 +1,14 @@
 
-#//TestChaiDecorator.java - testing the decorator
+# testing the decorator
 
-define ['Structural/Decorator/TeaLeaves',
-'Structural/Decorator/ChaiDecorator'
-],(
-TeaLeaves,
-ChaiDecorator
-) ->
+from TeaLeaves import TeaLeaves
+from ChaiDecorator import ChaiDecorator
 
-  'use strict'
+import unittest
 
-  describe 'Test Structural Decorator', ->
-    it 'Can we brew some chai?', ->
-      teaLeaves = new TeaLeaves()
-      chaiDecorator = new ChaiDecorator(teaLeaves)
-      self.assertEqual(chaiDecorator.steepTea(), "bay leaf is steeping ,cinnamon stick is steeping ,ginger is steeping ,honey is steeping ,soy milk is steeping ,vanilla bean is steeping , tea is steeping with chai")
+class TestStructuralDecorator( unittest.TestCase ):
+	def test(self) :
+		teaLeaves = TeaLeaves()
+		chaiDecorator = ChaiDecorator(teaLeaves)
+		self.assertEqual(chaiDecorator.steepTea(), "bay leaf is steeping ,cinnamon stick is steeping ,ginger is steeping ,honey is steeping ,soy milk is steeping ,vanilla bean is steeping , tea is steeping with chai")
 

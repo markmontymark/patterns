@@ -1,17 +1,14 @@
 
-#//TestFacade.java - testing the Facade
+# testing the Facade
 
-define ['Structural/Facade/FacadeCuppaMaker'
-],(
-FacadeCuppaMaker
-) ->
+from FacadeCuppaMaker import FacadeCuppaMaker
 
-  'use strict'
-  
-  describe 'Test Structural Facade', ->
-    it 'Make a cuppa with a FacadeCuppaMaker',->
-      cuppaMaker = new FacadeCuppaMaker()
-      self.assertEqual(cuppaMaker).toBeDefined()
-      teaCup = cuppaMaker.makeACuppa()
-      self.assertEqual(teaCup).toBeDefined()
-      self.assertEqual(teaCup.toString(), "A nice cuppa tea!")
+import unittest
+
+class TestStructuralFacade( unittest.TestCase ):
+	def test(self) :
+		cuppaMaker = FacadeCuppaMaker()
+		self.assertEqual(cuppaMaker != None, True)
+		teaCup = cuppaMaker.makeACuppa()
+		self.assertEqual(teaCup != None, True)
+		self.assertEqual( str(teaCup), "A nice cuppa tea!")

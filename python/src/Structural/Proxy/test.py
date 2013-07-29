@@ -1,13 +1,10 @@
 
-#//TestProxy.java - testing the Proxy
-define ['Structural/Proxy/PotOfTeaProxy'
-],(
-PotOfTeaProxy
-) ->
+# testing the Proxy
+from PotOfTeaProxy import PotofTeaProxy
 
-  'use strict'
+import unittest
 
-  describe 'Test Structural Proxy', ->
-    it 'Pouring tea', ->
-      potOfTea = new PotOfTeaProxy()
-      self.assertEqual( potOfTea.pourTea(), 'Pouring tea')
+class TestStructuralProxy( unittest.TestCase ):
+	def test(self) :
+		potOfTea = PotOfTeaProxy()
+		self.assertEqual( potOfTea.pourTea(), 'Pouring tea')
