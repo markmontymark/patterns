@@ -6,7 +6,7 @@ import unittest
 
 class TestStrategy(unittest.TestCase):
 
-	def test():
+	def test(self):
 		"""Test Behavioral Chain Of Responsibility"""
 
 		topTitle = None

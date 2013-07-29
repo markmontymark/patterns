@@ -1,33 +1,42 @@
 
-define ['Behavioral/Chain_Of_Responsibility/TopTitle',
-],(
-TopTitle
-) ->
+from TopTitle import TopTitle
 
-  class DvdSubCategory extends TopTitle
-    subCategory : null
-    topSubCategoryTitle : null
-    parent : null
-    constructor : (dvdCategory, subCategory) ->
-      @setSubCategory(subCategory)
-      @parent = dvdCategory
+class DvdSubCategory(TopTitle) :
 
-    setSubCategory : (subCategoryIn) -> @subCategory = subCategoryIn
-    getSubCategory : -> @subCategory
+	subCategory = None
+	topSubCategoryTitle = None
+	parent = None
 
-    setCategory : (categoryIn) -> @parent.setCategory(categoryIn)
-    getCategory : -> @parent.getCategory()
+	def __init__(self, dvdCategory, subCategory) :
+		self.setSubCategory(subCategory)
+		self.parent = dvdCategory
 
-    getAllCategories : -> "#{@getCategory()}/#{@getSubCategory()}"
+	def setSubCategory(self,subCategoryIn) :
+		self.subCategory = subCategoryIn
 
-    setTopSubCategoryTitle : (topSubCategoryTitleIn) -> @topSubCategoryTitle = topSubCategoryTitleIn
-    getTopSubCategoryTitle : -> @topSubCategoryTitle
+	def getSubCategory(self) : 
+		return self.subCategory
 
-    setTopCategoryTitle : (topCategoryTitleIn) -> @parent.setTopCategoryTitle(topCategoryTitleIn)
-    getTopCategoryTitle : -> @parent.getTopCategoryTitle()
+	def setCategory(self,categoryIn) :
+		self.parent.setCategory(categoryIn)
 
-    getTopTitle : ->
-      return @getTopSubCategoryTitle() if @getTopSubCategoryTitle()
-      @parent.getTopTitle()
+	def getCategory(self) :
+		return self.parent.getCategory()
 
-  return DvdSubCategory
+	def getAllCategories(self) : 
+		return '{0}/{1}'.format(self.getCategory(),self.getSubCategory())
+
+	def setTopSubCategoryTitle(self,topSubCategoryTitleIn) :
+		self.topSubCategoryTitle = topSubCategoryTitleIn
+
+	def getTopSubCategoryTitle(self) :
+		return self.topSubCategoryTitle
+
+	def setTopCategoryTitle(topCategoryTitleIn) : 
+		self.parent.setTopCategoryTitle(topCategoryTitleIn)
+
+	def getTopCategoryTitle(self) : 
+		return self.parent.getTopCategoryTitle()
+
+	def getTopTitle(self) :
+		return self.getTopSubCategoryTitle() if self.getTopSubCategoryTitle() else self.parent.getTopTitle()
