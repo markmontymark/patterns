@@ -1,50 +1,50 @@
 
-#//FacadeTeaCup.java - one of three classes the facade calls
+# one of three classes the facade calls
 
-define [],() ->
-	class FacadeTeaCup
-		teaBagIsSteeped : null
-		facadeWater : null
-		facadeTeaBag : null
+class FacadeTeaCup :
 
-		constructor : ->
-			@setTeaBagIsSteeped(false)
+	teaBagIsSteeped = None
+	facadeWater = None
+	facadeTeaBag = None
 
-		setTeaBagIsSteeped : (isTeaBagSteeped) ->
-			@teaBagIsSteeped = isTeaBagSteeped
+	def __init__(self) :
+		self.setTeaBagIsSteeped(False)
 
-		getTeaBagIsSteeped : -> @teaBagIsSteeped
+	def setTeaBagIsSteeped(self,isTeaBagSteeped)  :
+		self.teaBagIsSteeped = isTeaBagSteeped
 
-		addFacadeTeaBag : (facadeTeaBagIn) ->
-			@facadeTeaBag = facadeTeaBagIn
-			"the tea bag is in the tea cup"
+	def getTeaBagIsSteeped(self) : 
+		return self.teaBagIsSteeped
 
-		addFacadeWater : (facadeWaterIn) ->
-			@facadeWater = facadeWaterIn
-			"the water is in the tea cup"
+	def addFacadeTeaBag(self,facadeTeaBagIn) :
+		self.facadeTeaBag = facadeTeaBagIn
+		return "the tea bag is in the tea cup"
 
-		steepTeaBag : ->
-			if @facadeTeaBag and @facadeWater and @facadeWater.getWaterIsBoiling()
-				@setTeaBagIsSteeped(true)
-				return "the tea is steeping in the cup"
-			@setTeaBagIsSteeped(false)
-			"the tea is not steeping in the cup"
+	def addFacadeWater(self,facadeWaterIn) :
+		self.facadeWater = facadeWaterIn
+		return "the water is in the tea cup"
 
-		toString : ->
-			return "A nice cuppa tea!" if @getTeaBagIsSteeped()
-			retval = ["A cup with "]
-			if @facadeWater
-				if @facadeWater.getWaterIsBoiling()
-					retval.push "boiling water "
-				else
-					retval.push "cold water "
-			else
-				retval.push "no water "
+	def steepTeaBag(self) :
+		if self.facadeTeaBag and self.facadeWater and self.facadeWater.getWaterIsBoiling() :
+			self.setTeaBagIsSteeped(True)
+			return "the tea is steeping in the cup"
+		self.setTeaBagIsSteeped(False)
+		return "the tea is not steeping in the cup"
 
-			if @facadeTeaBag
-				retval.push "and a tea bag"
-			else
-				retval.push "and no tea bag"
-			retval.join ''
+	def __str__(self) :
+		if self.getTeaBagIsSteeped() :
+			return "A nice cuppa tea!" 
+		retval = ["A cup with "]
+		if self.facadeWater :
+			if self.facadeWater.getWaterIsBoiling() :
+				retval.append("boiling water ")
+			else :
+				retval.append("cold water ")
+		else :
+			retval.append("no water ")
 
-	return FacadeTeaCup
+		if self.facadeTeaBag :
+			retval.append("and a tea bag")
+		else :
+			retval.append("and no tea bag")
+		return ''.join(retval)

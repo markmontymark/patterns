@@ -1,18 +1,18 @@
 
-#//FacadeWater.java - two of three classes the facade calls
-define [],() ->
-	class FacadeWater
+# two of three classes the facade calls
+class FacadeWater:
 
-		waterIsBoiling : null
+	waterIsBoiling = None
 
-		constructor : ->
-			@setWaterIsBoiling false
+	def __init__(self) : 
+		self.setWaterIsBoiling(False)
 
-		boilFacadeWater : ->
-			@setWaterIsBoiling true
-			"water is boiling"
+	def boilFacadeWater(self) :
+		self.setWaterIsBoiling( True )
+		return "water is boiling"
 
-		setWaterIsBoiling : (isWaterBoiling) -> @waterIsBoiling = isWaterBoiling
-		getWaterIsBoiling : -> @waterIsBoiling
-		
-	return FacadeWater
+	def setWaterIsBoiling(self,isWaterBoiling) :
+		self. waterIsBoiling = isWaterBoiling
+
+	def getWaterIsBoiling(self) : 
+		return self.waterIsBoiling

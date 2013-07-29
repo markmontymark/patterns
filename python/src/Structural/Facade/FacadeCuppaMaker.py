@@ -1,25 +1,18 @@
+from FacadeTeaCup import FacadeTeaCup
+from FacadeTeaBag import FacadeTeaBag
+from FacadeWater import FacadeWater
 
-define ['Structural/Facade/FacadeTeaCup',
-'Structural/Facade/FacadeTeaBag',
-'Structural/Facade/FacadeWater'
-],(
-FacadeTeaCup,
-FacadeTeaBag,
-FacadeWater
-) ->
+class FacadeCuppaMaker:
 
-  class FacadeCuppaMaker
+	teaBagIsSteeped  = None
 
-    teaBagIsSteeped : null
+	def makeACuppa(self) :
+		cup = FacadeTeaCup()
+		teaBag = FacadeTeaBag()
+		water = FacadeWater()
+		cup.addFacadeTeaBag(teaBag)
+		water.boilFacadeWater()
+		cup.addFacadeWater(water)
+		cup.steepTeaBag()
+		return cup
 
-    makeACuppa : ->
-      cup = new FacadeTeaCup()
-      teaBag = new FacadeTeaBag()
-      water = new FacadeWater()
-      cup.addFacadeTeaBag teaBag
-      water.boilFacadeWater()
-      cup.addFacadeWater(water)
-      cup.steepTeaBag()
-      cup
-
-  return FacadeCuppaMaker

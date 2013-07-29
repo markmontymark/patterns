@@ -1,5 +1,5 @@
 
-#//FacadeTeaBag.java - three of three classes the facade calls
-define [],() ->
-	class FacadeTeaBag
-	return FacadeTeaBag
+# three of three classes the facade calls
+class FacadeTeaBag :
+
+	def __init__(self):pass	
