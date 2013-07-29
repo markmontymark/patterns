@@ -1,30 +1,30 @@
 
 #//DvdUpcaseTitle - Two of Two Concrete Colleagues or Mediatees
 
-define ['Behavioral/Mediator/DvdTitle'
-],(
-DvdTitle
-) ->
+from DvdTitle import DvdTitle
 
-	class DvdUpcaseTitle extends DvdTitle
+class DvdUpcaseTitle(DvdTitle) :
 
-		upcaseTitle : null
-		dvdMediator : null
+	upcaseTitle = None
+	dvdMediator = None
 
-		constructor : (title, dvdMediator) ->
-			@setTitle( if title instanceof DvdTitle then title.getTitle() else title )
-			@resetTitle()
-			@dvdMediator = dvdMediator
-			@dvdMediator.setUpcase(@)
+	def __init__(self,title, dvdMediator) :
+		self.setTitle( title.getTitle() if isinstance(title,DvdTitle) else title )
+		self.resetTitle()
+		self.dvdMediator = dvdMediator
+		self.dvdMediator.setUpcase(self)
 
-		resetTitle : (title)->
-			if title
-				@setTitle title
-			@setUpcaseTitle(@getTitle().toUpperCase())
+	def resetTitle(self,title = None ):
+		if title :
+			self.setTitle(title) 
+		self.setUpcaseTitle(self.getTitle().upper())
 
-		setSuperTitleUpcase : ->
-			@setTitle(@getUpcaseTitle())
-			@dvdMediator.changeTitle(@)
+	def setSuperTitleUpcase(self) :
+		self.setTitle(self.getUpcaseTitle())
+		self.dvdMediator.changeTitle(self)
 
-		getUpcaseTitle : -> @upcaseTitle
-		setUpcaseTitle : (upcaseTitle) -> @upcaseTitle = upcaseTitle
+	def getUpcaseTitle(self) :
+		return self.upcaseTitle
+
+	def setUpcaseTitle (self,upcaseTitle) : 
+		self.upcaseTitle = upcaseTitle

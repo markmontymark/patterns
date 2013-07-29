@@ -1,34 +1,36 @@
 
 
-#//DvdList.java - the Concrete Aggregate (with a Concrete Iterator inner class)
+#//DvdList- the Concrete Aggregate (with a Concrete Iterator inner class)
 
-define ['Behavioral/Iterator/DvdListIterator'
-],(
-DvdListIterator
-) ->
+from DvdListIterator import DvdListIterator
 
-	class DvdList
+class DvdList:
 
-		constructor : (@titles = [], @titleCount = 0, @arraySize = 0 ) ->
-			@iterator = null
+	titles = []
+	titleCount = 0
+	arraySize = 0
 
-		append : (title) ->
-			@titles.push title
-			@titleCount++
+	def __init__(self, titles = []) :
+		self.iterator = None
+		self.titles = titles
+		
+	def append(self,title) :
+		self.titles.append(title)
+		self.titleCount += 1
 
-		##
-		## doesn't handle multiple removal of same title N times, only removes first
-		##
-		remove : (title) ->
-			founds = (i for t,i in @titles when title is t)
-			if founds.length > 0
-				for i in founds by -1
-					@titleCount--
-				@titles.splice i,1
+	##
+	## doesn't handle multiple removal of same title N times, only removes first
+	##
+	def remove(self,title) :
+		founds = (i for t,i in self.titles if title == t)
+		if founds.length > 0:
+			for i in founds by -1:
+				self.titleCount--
+			self.titles.splice i,1
 
-		createIterator :  ->
-			return @iterator if @iterator
-			@iterator = new DvdListIterator(@)
-			@iterator
+	def createIterator(self)  :
+		if self.iterator:
+			return self.iterator 
+		return (self.iterator = DvdListIterator(self))
 
 

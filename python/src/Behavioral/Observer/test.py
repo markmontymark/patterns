@@ -1,7 +1,8 @@
-from DvdReleaseByCategory import 
+from DvdReleaseByCategory import DvdReleaseByCategory
 from DvdSubscriber import  DvdSubscriber
 from DvdRelease import  DvdRelease
 
+import unittest
 
 class TestBehavioralObserver(unittest.TestCase):
 	def test(self):
@@ -23,13 +24,14 @@ class TestBehavioralObserver(unittest.TestCase):
 
 
 		#it 'create a dvdreleasebycategory obj',->
-		self.assertEqual( JSON.stringify( btvs ) , '{"categoryName":"Buffy the Vampire Slayer","subscriberList":[],"dvdReleaseList":[]}')
+		self.assertEqual( str(btvs) , '"categoryName":"Buffy the Vampire Slayer","subscriberList":,"dvdReleaseList":')
 
 		#it 'create a dvdsubscriber obj',->
-		self.assertEqual( JSON.stringify( jsopra ) , '{"subscriberName":"Junior Soprano"}')
+		self.assertEqual( str(jsopra) , '"subscriberName":"Junior Soprano"')
 
 		#it 'add dvdsubscribers',->
-		self.assertEqual(btvs.addSubscriber(rgiles), 1)
+		btvs.addSubscriber(rgiles)
+		self.assertEqual( str(btvs), '"categoryName":"Buffy the Vampire Slayer","subscriberList":"subscriberName":"Rupert Giles","dvdReleaseList":');
 
 		btvs.addSubscriber(wrosen)
 		simpsons.addSubscriber(msimps)
@@ -39,10 +41,10 @@ class TestBehavioralObserver(unittest.TestCase):
 
 
 		#it 'create a dvdrelease obj',->
-		self.assertEqual(JSON.stringify(btvsS2 ), '{"serialNumber":"DVDFOXBTVSS20","dvdName":"Buffy The Vampire Slayer Season 2","dvdReleaseYear":2002,"dvdReleaseMonth":6,"dvdReleaseDay":11}')
+		self.assertEqual(str(btvsS2) , '"serialNumber":"DVDFOXBTVSS20","dvdName":"Buffy The Vampire Slayer Season 2","dvdReleaseYear":2002,"dvdReleaseMonth":6,"dvdReleaseDay":11')
 
 		#it 'observe new dvdrelease',->
-		self.assertEqual(btvs.newDvdRelease(btvsS2).toString() , """Hello Rupert Giles , subscriber to the  Buffy the Vampire Slayer DVD release list.
+		self.assertEqual('{0}'.format(str(btvs.newDvdRelease(btvsS2))) , """Hello Rupert Giles , subscriber to the  Buffy the Vampire Slayer DVD release list.
 The new Dvd Buffy The Vampire Slayer Season 2 will be released on 6/11/2002.,Hello Willow Rosenberg , subscriber to the  Buffy the Vampire Slayer DVD release list.
 The new Dvd Buffy The Vampire Slayer Season 2 will be released on 6/11/2002.""")
 		simpsons.newDvdRelease(simpS2)

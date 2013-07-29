@@ -1,23 +1,21 @@
 
-#//DvdMediator.java - The Mediator
-define ['Behavioral/Mediator/DvdLowercaseTitle',
-'Behavioral/Mediator/DvdUpcaseTitle'
-],(
-DvdLowercaseTitle,
-DvdUpcaseTitle
-) ->
+#//DvdMediator- The Mediator
+from DvdLowercaseTitle import DvdLowercaseTitle
+from DvdUpcaseTitle import DvdUpcaseTitle
 
-	class DvdMediator
+class DvdMediator:
 
-		dvdUpcaseTitle : null
-		dvdLowercaseTitle : null
+	dvdUpcaseTitle = None
+	dvdLowercaseTitle = None
 
-		setUpcase : (dvdUpcaseTitle) -> @dvdUpcaseTitle = dvdUpcaseTitle
+	def setUpcase(self,dvdUpcaseTitle) :
+		self.dvdUpcaseTitle = dvdUpcaseTitle
 
-		setLowercase : (dvdLowercaseTitle) -> @dvdLowercaseTitle = dvdLowercaseTitle
+	def setLowercase(self,dvdLowercaseTitle) :
+		self.dvdLowercaseTitle = dvdLowercaseTitle
 
-		changeTitle : (title) ->
-			if title instanceof DvdUpcaseTitle
-				@dvdLowercaseTitle.resetTitle(@dvdUpcaseTitle.getTitle())
-			else if title instanceof DvdLowercaseTitle
-				@dvdUpcaseTitle.resetTitle(@dvdLowercaseTitle.getTitle())
+	def changeTitle(self,title):
+		if isinstance(title, DvdUpcaseTitle) :
+			self.dvdLowercaseTitle.resetTitle(self.dvdUpcaseTitle.getTitle())
+		elif isinstance(title, DvdLowercaseTitle) :
+			self.dvdUpcaseTitle.resetTitle(self.dvdLowercaseTitle.getTitle())

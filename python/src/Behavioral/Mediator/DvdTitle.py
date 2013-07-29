@@ -1,7 +1,10 @@
-# //DvdTitle.java - the Abstract Colleague or Mediatee
+# //DvdTitle - the Abstract Mediatee
 
-define [],() ->
-	class DvdTitle
-		title : null
-		setTitle : (titleIn) -> @title = titleIn
-		getTitle : -> @title
+class DvdTitle :
+	title = None
+
+	def setTitle(self,titleIn) :
+		self.title = titleIn
+
+	def getTitle(self) :
+		return self.title

@@ -4,6 +4,7 @@ from DvdMediator import DvdMediator
 from DvdLowercaseTitle import DvdLowercaseTitle
 from DvdUpcaseTitle import DvdUpcaseTitle
 
+import unittest
 
 class TestBehavioralMediator( unittest.TestCase ):
    def test(self):

@@ -18,8 +18,8 @@ class TestIterator(unittest.TestCase):
 
 		#it 'first iteration',->
 		retval = []
-		while not fiveShakespeareIterator.isDone()
-			retval.push fiveShakespeareIterator.currentItem().toString()
+		while not fiveShakespeareIterator.isDone():
+			retval.append(str(fiveShakespeareIterator.currentItem()))
 			fiveShakespeareIterator.next()
 		self.assertEqual(', '.join(retval), "10 Things I Hate About You, Shakespeare In Love, O (2001), American Pie 2, Scotland, PA., Hamlet (2000)")
 
@@ -28,7 +28,7 @@ class TestIterator(unittest.TestCase):
 
 		retval = []
 		fiveShakespeareIterator.first()
-		while not fiveShakespeareIterator.isDone()
-			retval.push(fiveShakespeareIterator.currentItem().toString() )
+		while not fiveShakespeareIterator.isDone():
+			retval.append(str(fiveShakespeareIterator.currentItem()) )
 			fiveShakespeareIterator.next()
 		self.assertEqual(', '.join(retval), "10 Things I Hate About You, Shakespeare In Love, O (2001), Scotland, PA., Hamlet (2000)")

@@ -1,6 +1,7 @@
 from DvdDetails import DvdDetails
 from DvdMemento import DvdMemento
 
+import unittest
 
 class TestBehavioralMemento(unittest.TestCase):
 

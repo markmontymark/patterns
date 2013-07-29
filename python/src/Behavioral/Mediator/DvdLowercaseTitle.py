@@ -2,32 +2,29 @@
 
 #//DvdLowercaseTitle- One of Two Concrete Colleagues or Mediatees
 
-define ['Behavioral/Mediator/DvdTitle'
-],(
-DvdTitle
-) ->
+from DvdTitle import DvdTitle
 
-	class DvdLowercaseTitle extends DvdTitle
-		LowercaseTitle : null
-		dvdMediator : null
+class DvdLowercaseTitle(DvdTitle):
+	LowercaseTitle = None
+	dvdMediator = None
 
-		constructor : (title, dvdMediator) ->
-			@setTitle( if title instanceof DvdTitle then title.getTitle() else title)
-			@resetTitle()
-			@dvdMediator = dvdMediator
-			@dvdMediator.setLowercase(@)
+	def __init__(self, title, dvdMediator) :
+		self.setTitle( title.getTitle() if isinstance(title, DvdTitle)  else title)
+		self.resetTitle()
+		self.dvdMediator = dvdMediator
+		self.dvdMediator.setLowercase(self)
 
-		resetTitle : (title) ->
-			if title
-				@setTitle(title)
-			@setLowercaseTitle(@getTitle().toLowerCase())
+	def resetTitle (self,title = None) :
+		if title:
+			self.setTitle(title)
+		self.setLowercaseTitle(self.getTitle().lower())
 
-		setSuperTitleLowercase : ->
-			@setTitle(@getLowercaseTitle())
-			@dvdMediator.changeTitle(@)
+	def setSuperTitleLowercase(self) :
+		self.setTitle(self.getLowercaseTitle())
+		self.dvdMediator.changeTitle(self)
 
-		getLowercaseTitle : ->
-			@LowercaseTitle
+	def getLowercaseTitle(self) :
+		return self.LowercaseTitle
 
-		setLowercaseTitle : (aLowercaseTitle)->
-			@LowercaseTitle = aLowercaseTitle
+	def setLowercaseTitle(self,aLowercaseTitle) :
+		self.LowercaseTitle = aLowercaseTitle
