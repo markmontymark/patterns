@@ -1,4 +1,3 @@
-define [],() ->
-  class PotOfTeaInterface
-    pourTea : -> throw "Unimplemented method PotOfTeaInterface.pourTea"
-  return PotOfTeaInterface
+class PotOfTeaInterface:
+	def pourTea(self) : 
+		raise Exception("Unimplemented method PotOfTeaInterface.pourTea")

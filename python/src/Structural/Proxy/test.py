@@ -1,6 +1,6 @@
 
 # testing the Proxy
-from PotOfTeaProxy import PotofTeaProxy
+from PotOfTeaProxy import PotOfTeaProxy
 
 import unittest
 

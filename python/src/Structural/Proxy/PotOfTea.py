@@ -1,10 +1,8 @@
 
-#//PotOfTea.java - the Real Subject
+#//PotOfTea - the Real Subject
 
-define ['Structural/Proxy/PotOfTeaInterface'
-],(
-PotOfTeaInterface
-) ->
-  class PotOfTea extends PotOfTeaInterface
-    pourTea : -> 'Pouring tea'
-  return PotOfTea
+from PotOfTeaInterface import PotOfTeaInterface
+
+class PotOfTea(PotOfTeaInterface):
+	def pourTea(self) :
+		return 'Pouring tea'

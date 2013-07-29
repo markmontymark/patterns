@@ -1,19 +1,14 @@
 
-#//PotOfTeaProxy.java - the Proxy
+# the Proxy
 
-define ['Structural/Proxy/PotOfTeaInterface',
-'Structural/Proxy/PotOfTea'
-],(
-PotOfTeaInterface,
-PotOfTea
-) ->
+from PotOfTeaInterface import PotOfTeaInterface 
+from PotOfTea import PotOfTea
 
-	class PotOfTeaProxy extends PotOfTeaInterface
-		potOfTea : null
-		constructor : ->
+class PotOfTeaProxy(PotOfTeaInterface):
 
-		pourTea : ->
-			@potOfTea = new PotOfTea()
-			@potOfTea.pourTea()
+	potOfTea = None
 
-	return PotOfTeaProxy
+	def pourTea(self) :
+		self.potOfTea = PotOfTea()
+		return self.potOfTea.pourTea()
+
