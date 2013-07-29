@@ -10,9 +10,12 @@ class DvdList:
 	titleCount = 0
 	arraySize = 0
 
-	def __init__(self, titles = []) :
+	def __init__(self, titles = None) :
 		self.iterator = None
-		self.titles = titles
+		if titles == None :
+			self.titles = []
+		else :
+			self.titles = titles
 		
 	def append(self,title) :
 		self.titles.append(title)
@@ -22,15 +25,20 @@ class DvdList:
 	## doesn't handle multiple removal of same title N times, only removes first
 	##
 	def remove(self,title) :
-		founds = (i for t,i in self.titles if title == t)
-		if founds.length > 0:
-			for i in founds by -1:
-				self.titleCount--
-			self.titles.splice i,1
+		founds = []
+		for i in reversed(range((len(self.titles)-1))) :
+			if self.titles[i] == title :
+				founds.append(i)
+
+		if len(founds) > 0:
+			for i in founds :
+				self.titleCount -= 1
+				del self.titles[i]
 
 	def createIterator(self)  :
 		if self.iterator:
 			return self.iterator 
-		return (self.iterator = DvdListIterator(self))
+		self.iterator = DvdListIterator(self)
+		return self.iterator
 
 

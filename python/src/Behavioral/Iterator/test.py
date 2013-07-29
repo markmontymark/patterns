@@ -26,9 +26,9 @@ class TestIterator(unittest.TestCase):
 		#it 'second iteration',->
 		fiveShakespeareMovies.remove("American Pie 2")
 
-		retval = []
+		retval2 = []
 		fiveShakespeareIterator.first()
 		while not fiveShakespeareIterator.isDone():
-			retval.append(str(fiveShakespeareIterator.currentItem()) )
+			retval2.append(str(fiveShakespeareIterator.currentItem()) )
 			fiveShakespeareIterator.next()
-		self.assertEqual(', '.join(retval), "10 Things I Hate About You, Shakespeare In Love, O (2001), Scotland, PA., Hamlet (2000)")
+		self.assertEqual(', '.join(retval2), "10 Things I Hate About You, Shakespeare In Love, O (2001), Scotland, PA., Hamlet (2000)")
