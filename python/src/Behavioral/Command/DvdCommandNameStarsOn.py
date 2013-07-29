@@ -1,8 +1,11 @@
-#//DvdCommandNameStarsOn.java - one of two Concrete Commands
-define ['Behavioral/Command/CommandAbstract'
-],(
-CommandAbstract
-) ->
-	class DvdCommandNameStarsOn extends CommandAbstract
-		constructor : (@dvdName) ->
-		execute : -> @dvdName.setNameStarsOn()
+#//DvdCommandNameStarsOn - one of two Concrete Commands
+
+from CommandAbstract import CommandAbstract
+
+class DvdCommandNameStarsOn(CommandAbstract) :
+
+	def __init__(self,dvdName) :
+		self.dvdName = dvdName
+
+	def execute(self) : 
+		self.dvdName.setNameStarsOn()

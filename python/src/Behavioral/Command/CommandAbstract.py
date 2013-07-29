@@ -1,7 +1,8 @@
-#//CommandAbstract.java - the Command
+#//CommandAbstract - the Command
 
-define [],() ->
-	class CommandAbstract
-		constructor : -> throw "Can't instantiate an abstract class, CommandAbstract"
-		execute : -> throw "Unimplemented method, CommandAbstract.execute"
+class CommandAbstract:
+	def __new__():pass
+
+	def execute(self) : 
+		raise Exception("Unimplemented method, CommandAbstract.execute")
 	

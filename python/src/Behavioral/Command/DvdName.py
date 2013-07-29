@@ -1,12 +1,24 @@
-#//DvdName.java - the Receiver
+#//DvdName  the Receiver
 
-define [],() ->
 
-	class DvdName
-		titleName : null
-		constructor : (@titleName) ->
-		setTitleName : (titleNameIn) -> @titleName = titleNameIn
-		getTitleName : -> @titleName
-		setNameStarsOn : -> @setTitleName(@getTitleName().replace(' ','*'))
-		setNameStarsOff : -> @setTitleName(@getTitleName().replace('*',' '))
-		toString : -> "DVD: #{@getTitleName()}"
+class DvdName:
+
+	titleName = None
+
+	def __init__(self,titleName) :
+		self.setTitleName(titleName)
+
+	def setTitleName(self,titleNameIn) :
+		self.titleName = titleNameIn
+
+	def getTitleName(self) :
+		return self.titleName
+
+	def setNameStarsOn(self) : 
+		self.setTitleName(self.getTitleName().replace(' ','*'))
+
+	def setNameStarsOff(self) : 
+		self.setTitleName(self.getTitleName().replace('*',' '))
+
+	def __str__(self): 
+		return "DVD: {0}".format(self.getTitleName())
