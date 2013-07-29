@@ -1,7 +1,12 @@
 #//TitleAndActor - A Helper Class
 
-define [] , () ->
-	class TitleAndActor
-		constructor : (@title, @actor) ->
-		getTitle: () -> @title
-		getActor: () -> @actor
+class TitleAndActor:
+	def __init__(self,title,actor) :
+		self.title = title
+		self.actor = actor
+	
+	def getTitle(self) :
+		return self.title
+
+	def getActor(self) :
+		return self.actor

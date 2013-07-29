@@ -23,8 +23,16 @@ class TestBehavioralInterpreter(unittest.TestCase):
 
 			dvdInterpreterClient = DvdInterpreterClient(dvdInterpreterContext)
 
-			self.assertEqual( "interpreting show actor: " + dvdInterpreterClient.interpret( "show actor"), 'interpreting show actor: Query Result: ,Ethan Hawke, Denzel Washington')
-			self.assertEqual( "interpreting show actor for title : " + dvdInterpreterClient.interpret( "show actor for title "), 'interpreting show actor for title : Query Result: ,')
-			self.assertEqual( "interpreting show title: " + dvdInterpreterClient.interpret( "show title"), 'interpreting show title: Query Result: ,Caddy Shack, Training Day, Hamlet')
-			self.assertEqual( "interpreting show title for actor : " + dvdInterpreterClient.interpret( "show title for actor "), 'interpreting show title for actor : Query Result: ,')
+			self.assertEqual( "interpreting show actor: " + dvdInterpreterClient.interpret( "show actor"), 'interpreting show actor: [\'Query Result: \', \'Ethan Hawke, Denzel Washington\']')
+			self.assertEqual( "interpreting show actor for title : " + dvdInterpreterClient.interpret( "show actor for title "), 'interpreting show actor for title : [\'Query Result: \', \'\']')
+			self.assertEqual( "interpreting show title: " + dvdInterpreterClient.interpret( "show title"), 'interpreting show title: [\'Query Result: \', \'Caddy Shack, Training Day, Hamlet\']')
+			self.assertEqual( "interpreting show title for actor : " + dvdInterpreterClient.interpret( "show title for actor "), 'interpreting show title for actor : [\'Query Result: \', \'\']')
+
+			self.assertEqual( "interpreting show actor for title <Training Day>: " + 
+				dvdInterpreterClient.interpret( "show actor for title <Training Day>"), 
+				'interpreting show actor for title <Training Day>: [\'Query Result: \', \'Ethan Hawke, Denzel Washington\']')
+
+			self.assertEqual( "interpreting show title for actor <Ethan Hawke>: " + 
+				dvdInterpreterClient.interpret( "show title for actor <Ethan Hawke>"), 
+				'interpreting show title for actor <Ethan Hawke>: [\'Query Result: \', \'Hamlet, Training Day, Caddy Shack\']')
 

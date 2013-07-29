@@ -1,75 +1,78 @@
 #//Define a macro language and syntax, parsing input into objects which perform the correct opertaions.
 #//DvdInterpreterClient - the Client
 
-define ['Behavioral/Interpreter/DvdActorExpression',
-'Behavioral/Interpreter/DvdTitleExpression',
-'Behavioral/Interpreter/DvdTitleActorExpression',
-'Behavioral/Interpreter/DvdActorTitleExpression'
-],(
-DvdActorExpression,
-DvdTitleExpression,
-DvdTitleActorExpression,
-DvdActorTitleExpression
-) ->
-	class DvdInterpreterClient
-		constructor : (@ctx) ->
+from DvdActorExpression import DvdActorExpression
+from DvdTitleExpression import DvdTitleExpression
+from DvdTitleActorExpression import DvdTitleActorExpression
+from DvdActorTitleExpression import DvdActorTitleExpression
 
-		#// expression syntax:
-		#/ show title | actor [for actor | title ]
-		interpret : (expression) ->
-			result = ["Query Result: "]
-			mainQuery = ' '
-			subQuery = ' '
-			forUsed = false
-			searchString = null
-			searchStarted = false
-			searchEnded = false
+class DvdInterpreterClient:
+	def __init__(self,ctx) :
+		self.ctx = ctx
 
-			for currentToken in expression.split(' ')
-				if currentToken is "show"
-					continue
-				#//show in all queries, not really used
-				if currentToken is "title"
-					if mainQuery is ' '
-						mainQuery = 'T'
-					else
-						if forUsed and subQuery is ' '
-							subQuery = 'T'
-				else if currentToken is "actor"
-					if mainQuery is ' '
-						mainQuery = 'A'
-					else
-						if forUsed and subQuery is ' '
-							subQuery = 'A'
+	#// expression syntax:
+	#/ show title | actor [for actor | title ]
+	def interpret(self,expression) :
+		result = ["Query Result: "]
+		mainQuery = ' '
+		subQuery = ' '
+		forUsed = False
+		searchString = None
+		searchStarted = False
+		searchEnded = False
 
-				else if currentToken is 'for'
-					forUsed = true
+		tokens = expression.split(' ')
+		for currentToken in tokens :
+			if currentToken == "show" :
+				continue
+			#//show in all queries, not really used
+			if currentToken == "title" :
+				if mainQuery == ' ' :
+					mainQuery = 'T'
+				else :
+					if forUsed and subQuery == ' ' :
+						subQuery = 'T'
+			elif currentToken == "actor" :
+				if mainQuery == ' ' :
+					mainQuery = 'A'
+				else :
+					if forUsed and subQuery == ' ' :
+						subQuery = 'A'
 
-				else if searchString is null and subQuery isnt ' ' and  currentToken[0] is "<"
-					searchString = currentToken
-					searchStarted = true
-					searchEnded = true if currentToken.endsWith(">")
+			elif currentToken == 'for' :
+				forUsed = True
 
-				else if searchStarted and not searchEnded
-					searchString += " " + currentToken
-					searchEnded = true if currentToken.endsWith(">")
+			elif searchString == None and subQuery != ' ' and  currentToken.startswith("<") :
+				searchString = currentToken
+				searchStarted = True
+				if currentToken.endswith(">") :
+					searchEnded = True 
+
+			elif searchStarted and not searchEnded :
+				searchString += " " + currentToken
+				if currentToken.endswith(">"):
+					searchEnded = True 
 			#end for 
 
 
-			#//remove <>
-			searchString = searchString.substring(1,(searchString.length() - 1)) if searchString
+		#//remove <>
+		if searchString != None :
+			searchString = searchString.strip('<>')
+			#searchString = searchString.substring(1,(searchString.length() - 1)) 
 
-			expr = null
-			switch mainQuery
-				when 'A'
-					switch subQuery
-						when 'T' then expr = new DvdActorTitleExpression(searchString)
-						else expr = new DvdActorExpression()
-				when 'T'
-					switch subQuery
-						when 'A' then expr = new DvdTitleActorExpression(searchString)
-						else expr = new DvdTitleExpression()
-				else return result.toString()
+		expr = None
+		if mainQuery == 'A' :
+			if subQuery == 'T' :
+				expr = DvdActorTitleExpression(searchString) 
+			else :
+				expr = DvdActorExpression()
+		elif mainQuery == 'T' :
+			if subQuery == 'A' :
+				expr = DvdTitleActorExpression(searchString) 
+			else :
+				expr = DvdTitleExpression()
+		else :
+			return str(result)
 
-			result.push expr.interpret(@ctx)
-			return result.toString()
+		result.append(expr.interpret(self.ctx))
+		return str(result)

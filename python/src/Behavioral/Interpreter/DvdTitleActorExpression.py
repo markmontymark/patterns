@@ -1,11 +1,10 @@
 #//DvdTitleActorExpression - Four Of Four Terminal Expressions
 
-define ['Behavioral/Interpreter/DvdAbstractExpression'
-],(
-DvdAbstractExpression
-) ->
+from DvdAbstractExpression import DvdAbstractExpression
 
-	class DvdTitleActorExpression extends DvdAbstractExpression
-		constructor : (@title) ->
-		interpret : (ctx)  ->
-			ctx.getTitlesForActor(@title).join ', '
+class DvdTitleActorExpression(DvdAbstractExpression):
+	def __init__(self,title) :
+		self.title = title
+
+	def interpret(self,ctx) :
+		return ', '.join(ctx.getTitlesForActor(self.title))

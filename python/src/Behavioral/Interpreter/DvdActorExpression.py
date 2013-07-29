@@ -1,8 +1,6 @@
 #//DvdActorExpression - One Of Four Terminal Expressions
-define ['Behavioral/Interpreter/DvdAbstractExpression'
-],(
-DvdAbstractExpression
-) ->
-	class DvdActorExpression extends DvdAbstractExpression
-		interpret : (ctx)  ->
-			ctx.getAllActors().join ', '
+from DvdAbstractExpression import DvdAbstractExpression 
+
+class DvdActorExpression(DvdAbstractExpression) :
+	def interpret(self,ctx) :
+		return ', '.join(ctx.getAllActors())
