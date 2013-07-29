@@ -4,11 +4,21 @@
 #//(the class which is observed)
 
 class DvdReleaseByCategory :
+	
+	dvdReleaseList = None
+	subscriberList = None
 
-	def __init__(self,categoryName,subscriberList = [], dvdReleaseList = []):
+	def __init__(self,categoryName,subscriberList = None, dvdReleaseList = None ) :
 		self.categoryName = categoryName
-		self.subscriberList = subscriberList
-		self.dvdReleaseList = dvdReleaseList
+		if subscriberList == None :
+			self.subscriberList =  []
+		else :
+			self.subscriberList = subscriberList
+
+		if dvdReleaseList == None :
+			self.dvdReleaseList = []
+		else :
+			self.dvdReleaseList = dvdReleaseList
 
 	def __repr__(self):
 		return '"categoryName":"{0}","subscriberList":{1},"dvdReleaseList":{2}'.format(self.getCategoryName(), ','.join([str(x) for x in self.subscriberList]),','.join([str(x) for x in self.dvdReleaseList]))
@@ -20,11 +30,15 @@ class DvdReleaseByCategory :
 		self.subscriberList.append(dvdSubscriber)
 
 	def removeSubscriber (self,dvdSubscriber) :
-		founds = [i for subscriber,i in self.subscriberList if subscriber == dvdSubscriber]
-		if founds.length > 0:
-			self.subscriberList.splice(i,1)
-			return true
-		return false
+		founds = []
+		for i in reversed(range(len(self.subscriberList))) :
+			if self.subscriberList[i] == dvdSubscriber :
+				founds.append(i)
+		if len(founds) > 0 :
+			for i in founds :
+				del self.subscriberList[i]
+			return True
+		return False
 
 
 	def newDvdRelease (self,dvdRelease):
@@ -32,12 +46,12 @@ class DvdReleaseByCategory :
 		return self.notifySubscribersOfNewDvd(dvdRelease)
 
 	def updateDvd (self,dvdRelease):
-		dvdUpdated = false
-		for rel,i in self.dvdReleaseList :
-			if dvdRelease.serialNumber == rel.serialNumber:
-				self.dvdReleaseList.splice(i,1)
+		dvdUpdated = False
+		for i in range(len(self.dvdReleaseList)) :
+			if dvdRelease.serialNumber == self.dvdReleaseList[i].serialNumber:
+				del self.dvdReleaseList[i]
 				self.dvdReleaseList.append(dvdRelease)
-				dvdUpdated = true
+				dvdUpdated = True
 				break
 		if dvdUpdated:
 			return self.notifySubscribersOfUpdate(dvdRelease)

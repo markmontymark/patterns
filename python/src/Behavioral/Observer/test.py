@@ -44,20 +44,22 @@ class TestBehavioralObserver(unittest.TestCase):
 		self.assertEqual(str(btvsS2) , '"serialNumber":"DVDFOXBTVSS20","dvdName":"Buffy The Vampire Slayer Season 2","dvdReleaseYear":2002,"dvdReleaseMonth":6,"dvdReleaseDay":11')
 
 		#it 'observe new dvdrelease',->
-		self.assertEqual('{0}'.format(str(btvs.newDvdRelease(btvsS2))) , """Hello Rupert Giles , subscriber to the  Buffy the Vampire Slayer DVD release list.
-The new Dvd Buffy The Vampire Slayer Season 2 will be released on 6/11/2002.,Hello Willow Rosenberg , subscriber to the  Buffy the Vampire Slayer DVD release list.
-The new Dvd Buffy The Vampire Slayer Season 2 will be released on 6/11/2002.""")
+		self.assertEqual('{0}'.format(','.join(btvs.newDvdRelease(btvsS2))) , """Hello Rupert Giles , subscriber to the  Buffy the Vampire Slayer DVD release list.
+The new Dvd Buffy The Vampire Slayer Season 2 will be released on 6/11/2002.
+,Hello Willow Rosenberg , subscriber to the  Buffy the Vampire Slayer DVD release list.
+The new Dvd Buffy The Vampire Slayer Season 2 will be released on 6/11/2002.
+""")
 		simpsons.newDvdRelease(simpS2)
 		sopranos.newDvdRelease(soprS2)
 		xfiles.newDvdRelease(xfilS5)
 
 		#it 'remove a subscriber',->
-		self.assertEqual(xfiles.removeSubscriber(wrosen)).toBeTruthy()
+		self.assertEqual(xfiles.removeSubscriber(wrosen), True)
 
 		#it 'update a release',->
-		self.assertEqual(xfilS5.updateDvdReleaseDate(2002, 5, 14).toString(), '14')
+		xfilS5.updateDvdReleaseDate(2002, 5, 14)
 
 		#it 'update a dvd',->
-		self.assertEqual(xfiles.updateDvd(xfilS5).toString() , """Hello Samantha Mulder, subscriber to the The X-Files DVD release list.
-The following DVDs release has been revised: The X-Files Season 5 will be released on 5/14/2002,Hello Willow Rosenberg, subscriber to the The X-Files DVD release list.
-The following DVDs release has been revised: The X-Files Season 5 will be released on 5/14/2002""")
+		self.assertEqual( '{0}'.format(','.join(xfiles.updateDvd(xfilS5))) , """Hello Samantha Mulder subscriber to the The X-Files DVD release list.
+The following DVDs release has been revised: The X-Files Season 5 will be released on 5/14/2002
+""")
