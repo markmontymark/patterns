@@ -1,30 +1,28 @@
-#//ChaiDecorator.java - the decorator
+#- the decorator
 
-define ['Structural/Decorator/Tea'
-],(
-Tea
-) ->
-  class ChaiDecorator extends Tea
+from Tea import Tea
 
-    chaiIngredients : []
+class ChaiDecorator(Tea):
 
-    constructor : (@teaToMakeChai) ->
-      @chaiIngredients = [
-        'bay leaf',
-        'cinnamon stick',
-        'ginger',
-        'honey',
-        'soy milk',
-        'vanilla bean']
+	chaiIngredients = []
 
-    steepTea : ->
-      @steepChai()
+	def __init__(self,teaToMakeChai) :
+		self.teaToMakeChai = teaToMakeChai
+		self.chaiIngredients = [ 
+			'bay leaf', 
+			'cinnamon stick', 
+			'ginger', 
+			'honey', 
+			'soy milk', 
+			'vanilla bean' ]
 
-    steepChai : ->
-      @teaToMakeChai.steepTea()
-      @steepChaiIngredients() + ', tea is steeping with chai'
+	def steepTea(self) :
+		return self.steepChai()
 
-    steepChaiIngredients : ->
-      (ingred + ' is steeping 'for ingred in @chaiIngredients).toString()
+	def steepChai(self) :
+		self.teaToMakeChai.steepTea()
+		return self.steepChaiIngredients() + ', tea is steeping with chai'
 
-  return ChaiDecorator
+	def steepChaiIngredients(self) :
+		return ', '.join( [ (i + ' is steeping ') for i in self.chaiIngredients] )
+

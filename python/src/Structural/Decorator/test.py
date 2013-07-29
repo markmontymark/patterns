@@ -10,5 +10,5 @@ class TestStructuralDecorator( unittest.TestCase ):
 	def test(self) :
 		teaLeaves = TeaLeaves()
 		chaiDecorator = ChaiDecorator(teaLeaves)
-		self.assertEqual(chaiDecorator.steepTea(), "bay leaf is steeping ,cinnamon stick is steeping ,ginger is steeping ,honey is steeping ,soy milk is steeping ,vanilla bean is steeping , tea is steeping with chai")
+		self.assertEqual(chaiDecorator.steepTea(), "bay leaf is steeping , cinnamon stick is steeping , ginger is steeping , honey is steeping , soy milk is steeping , vanilla bean is steeping , tea is steeping with chai")
 

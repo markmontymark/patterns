@@ -1,17 +1,14 @@
 
-#//TeaLeaves.java - the decoratee
+# - the decoratee
 
-define ['Structural/Decorator/Tea'
-],(
-Tea
-) ->
-  class TeaLeaves extends Tea
+from Tea import Tea
 
-    constructor : ->
-      @teaIsSteeped = false
+class TeaLeaves(Tea):
 
-    steepTea : ->
-      @teaIsSteeped = true
-      "tea leaves are steeping"
+	def __init__(self) :
+		self.teaIsSteeped = False
 
-  return TeaLeaves
+	def steepTea(self) :
+		self.teaIsSteeped = True
+		return "tea leaves are steeping"
+

@@ -1,6 +1,4 @@
-define [],() ->
-  class Tea
-    teaIsSteeped : null
-    steepTea : ->
-      throw "Unimplemented method, Tea.steepTea"
-  return Tea
+class Tea:
+    teaIsSteeped = None
+    def steepTea(self) : 
+      raise Exception("Unimplemented method, Tea.steepTea")
