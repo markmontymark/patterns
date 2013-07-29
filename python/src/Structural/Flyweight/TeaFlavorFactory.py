@@ -1,22 +1,22 @@
 
 #//TeaFlavorFactory.java - the Factory
 
-define ['Structural/Flyweight/TeaFlavor'
-],(
-TeaFlavor
-) ->
-	class TeaFlavorFactory
+from TeaFlavor import TeaFlavor
 
-		flavors : []
-		teasMade : 0
+class TeaFlavorFactory :
 
-		getTeaFlavor : (flavorToGet) ->
-			if @teasMade > 0
-				for flavor in @flavors
-					return flavor if flavorToGet is flavor.getFlavor()
-			@flavors[@teasMade] = new TeaFlavor(flavorToGet)
-			@flavors[@teasMade++]
+	flavors = []
+	teasMade = 0
 
-		getTotalTeaFlavorsMade : -> @teasMade
+	def getTeaFlavor(self,flavorToGet) :
+			if self.teasMade > 0 :
+				for flavor in self.flavors :
+					if flavorToGet == flavor.getFlavor() :
+						return flavor 
+			retval = TeaFlavor(flavorToGet)
+			self.flavors.append( retval )
+			self.teasMade += 1
+			return retval
 
-	return TeaFlavorFactory
+	def getTotalTeaFlavorsMade(self) : 
+		return self.teasMade

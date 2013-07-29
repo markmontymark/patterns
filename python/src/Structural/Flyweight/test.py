@@ -9,16 +9,18 @@ from TeaFlavorFactory import TeaFlavorFactory
 import unittest
  
 class TestStructuralFlyweight( unittest.TestCase ):
+
+	flavors = []# //the flavors ordered
+	tables = [] # //the tables for the orders
+	ordersMade = 0
+	teaFlavorFactory = TeaFlavorFactory()
+
 	def test(self):
-		flavors = []# //the flavors ordered
-		tables = [] # //the tables for the orders
-		ordersMade = 0
-		teaFlavorFactory = TeaFlavorFactory()
 
 		def takeOrders(flavorIn, table) :
-			flavors.append(teaFlavorFactory.getTeaFlavor(flavorIn))
-			tables.append( TeaOrderContext(table))
-			ordersMade += 1
+			self.flavors.append(self.teaFlavorFactory.getTeaFlavor(flavorIn))
+			self.tables.append( TeaOrderContext(table))
+			self.ordersMade += 1
 
 		takeOrders("chai", 2)
 		takeOrders("chai", 2)
@@ -36,7 +38,7 @@ class TestStructuralFlyweight( unittest.TestCase ):
 		takeOrders("chai", 121)
 		takeOrders("earl grey", 121)
 
-		for i in range(ordersMade) :
-			flavors[i].serveTea(tables[i])
+		for i in range(self.ordersMade) :
+			self.flavors[i].serveTea( self.tables[i])
 
-		self.assertEqual("total teaFlavor objects made: {0}", teaFlavorFactory.getTotalTeaFlavorsMade())
+		self.assertEqual( 3 , self.teaFlavorFactory.getTotalTeaFlavorsMade())

@@ -1,7 +1,10 @@
-#//TeaOrderContext.java - the Context
+# the Context
 
-define [],() ->
-  class TeaOrderContext
-    constructor :(@tableNumber) ->
-    getTable : -> @tableNumber
-  return TeaOrderContext
+class TeaOrderContext:
+
+	def __init__(self,tableNumber) :
+		self.tableNumber = tableNumber
+
+	def getTable(self) : 
+		return self.tableNumber
+
