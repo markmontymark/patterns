@@ -1,14 +1,10 @@
 
-define [],() ->
-  class TeaBag
+class TeaBag:
 
-    teaBagIsSteeped : null
+	def __init__(self) :
+		self.teaBagIsSteeped = False
 
-    constructor : ->
-      @teaBagIsSteeped = false
+	def steepTeaInCup(self) :
+		self.teaBagIsSteeped = True
+		return 'tea bag is steeping in cup'
 
-    steepTeaInCup : ->
-      @teaBagIsSteeped = true
-      'tea bag is steeping in cup'
-
-  return TeaBag

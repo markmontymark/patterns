@@ -17,4 +17,5 @@ class TestStructuralAdapter(unittest.TestCase) :
 		teaCup = TeaCup()
 		looseLeafTea = LooseLeafTea()
 		teaBall = TeaBall(looseLeafTea)
-		self.assertEqual( teaCup.steepTeaBag(teaBall) , True )
+		teaCup.steepTeaBag(teaBall)
+		self.assertEqual( teaBall.teaBagIsSteeped , True )

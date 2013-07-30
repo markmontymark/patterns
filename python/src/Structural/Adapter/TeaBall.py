@@ -1,19 +1,17 @@
 
 #//TeaBall.java - the adapter
 
-define ['Structural/Adapter/TeaBag'],(
-TeaBag
-) ->
+from TeaBag import TeaBag
 
-  class TeaBall extends TeaBag
+class TeaBall(TeaBag):
 
-    looseLeafTea : null
+	looseLeafTea = None
 
-    constructor : (@looseLeafTea) ->
-      @teaBagIsSteeped = @looseLeafTea.teaIsSteeped
+	def __init__(self,looseLeafTea) :
+		self.looseLeafTea = looseLeafTea
+		self.teaBagIsSteeped = self.looseLeafTea.teaIsSteeped
 
-    steepTeaInCup : ->
-      @looseLeafTea.steepTea()
-      @teaBagIsSteeped = true
+	def steepTeaInCup(self) :
+		self.looseLeafTea.steepTea()
+		self.teaBagIsSteeped = True
 
-  return TeaBall

@@ -1,17 +1,13 @@
 
-#//LooseLeafTea.java - the adaptee
+# - the adaptee
 
-define [],() ->
 
-  class LooseLeafTea
+class LooseLeafTea:
 
-    teaIsSteeped : null
+	def __init__(self) :
+		self.teaIsSteeped = False
 
-    constructor : ->
-      @teaIsSteeped = false
+	def steepTea(self) :
+		self.teaIsSteeped = True
+		return 'tea is steeping'
 
-    steepTea : ->
-      @teaIsSteeped = true
-      'tea is steeping'
-
-  return LooseLeafTea
