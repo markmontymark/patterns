@@ -15,6 +15,7 @@ Much thanks to Larry for allowing to me to start off this project with his Java 
 	JavaScript - complete (using CoffeeScript's compilation, plus removed Coffeescript dependency in Gruntfile.js and package.json)
 	C - complete
 	PHP - complete
+	Python - complete
 	C++ - incomplete
 
 # Quick start
@@ -76,6 +77,33 @@ Installed using apt-get as:
 	
 	$ sudo apt-get install php5
 	$ sudo apt-get install phpunit
+
+
+## Python
+
+Install Python 3.x
+
+	sudo apt-get install python3
+	## then, I already had python2.7 so I munged my path in .bashrc
+	mkdir $HOME/.alternatives
+	ln -s /usr/bin/python3 $HOME/.alternatives/python
+	export PATH=$HOME/.alternatives:$PATH
+
+This way, if I want to stop using python3, I just muck with $PATH instead of changing symlinks
+
+Install nosetests
+
+	sudo apt-get install python-nose	
+
+Running the tests for Python 3
+
+	cd python
+	nosetests
+
+TODO
+	
+This is by far the most Python I have ever wrote, so probaly has tons of bad habits or bad idioms, so should fix that eventually.
+
 
 
 
