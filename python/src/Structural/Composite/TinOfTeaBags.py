@@ -1,32 +1,33 @@
 
-#//TinOfTeaBags.java - one composite extension - the "node"
+# - one composite extension - the "node"
 
-define ['Structural/Composite/TeaBags'
-],(
-TeaBags
-) ->
-  class TinOfTeaBags extends TeaBags
-    constructor : (@name) ->
-      @teaBagList = []
+from TeaBags import TeaBags
 
-    countTeaBags : ->
-      totalTeaBags = 0
-      list = @createListIterator()
-      for teaBags in list
-        totalTeaBags += teaBags.countTeaBags()
-      totalTeaBags
+class TinOfTeaBags(TeaBags):
+	def __init__(self,name) :
+		self.name = name
+		self.teaBagList = []
 
-    add : (teaBagsToAdd) ->
-      teaBagsToAdd.setParent(@)
-      @teaBagList.push(teaBagsToAdd)
+	def countTeaBags(self) :
+		totalTeaBags = 0
+		list = self.createListIterator()
+		for teaBags in list:
+			totalTeaBags += teaBags.countTeaBags()
+		return totalTeaBags
 
-    remove : (teaBagsToRemove) ->
-      list = @createListIterator()
-      list_size = list.length
-      @teaBagList = (teaBag for teaBag in list when teaBag isnt teaBagsToRemove)
-      list_size isnt @teaBagList.length
+	def add(self,teaBagsToAdd) :
+		teaBagsToAdd.setParent(self)
+		self.teaBagList.append(teaBagsToAdd)
 
-    createListIterator : ->
-      @teaBagList
+	def remove(self,teaBagsToRemove) :
+		list = self.createListIterator()
+		list_size = len(list)
+		newlist = []
+		for teaBag in list :
+			if teaBag != teaBagsToRemove:
+				newlist.append(teaBag)
+		self.teaBagList = newlist
+		return list_size != len(self.teaBagList)
 
-  return TinOfTeaBags
+	def createListIterator(self) : 
+		return self.teaBagList

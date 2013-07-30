@@ -1,14 +1,20 @@
 
-#//OneTeaBag.java - one composite extension - the "leaf"
+# - one composite extension - the "leaf"
 
-define ['Structural/Composite/TeaBags'
-],(
-TeaBags
-) ->
-  class OneTeaBag extends TeaBags
-    constructor : (@name) ->
-    countTeaBags : -> 1
-    add : -> false
-    remove : -> false
-    createListIterator : -> null
-  return OneTeaBag
+from TeaBags import TeaBags
+
+class OneTeaBag(TeaBags) :
+	def __init__(self,name): 
+		self.name = name
+
+	def countTeaBags(self) : 
+		return 1
+
+	def add(self) : 
+		return False
+
+	def remove(self) : 
+		return False
+
+	def createListIterator(self) :
+		return None
