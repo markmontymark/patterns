@@ -1,24 +1,20 @@
 
 
-#//AbstractSpoon.java - One of Two Prototypes
+# AbstractSpoon- One of Two Prototypes
 
-define [],() ->
-  class AbstractSpoon
+import copy
 
-    constructor : ->
-      console.warn "in AbstractSpoon ctor"
-      throw "Can't instantiate abstract class, AbstractSpoon"
+class AbstractSpoon:
 
-    spoonName : null
+	def __init__(self):
+		raise Exception("Can't instantiate abstract class, AbstractSpoon")
 
-    setSpoonName : (spoonName) ->
-      @spoonName = spoonName
+	def setSpoonName(self,spoonName) :
+		self.spoonName = spoonName
 
-    getSpoonName : ->
-      @spoonName
+	def getSpoonName(self) : 
+		return self.spoonName
 
-    clone : ->
-      Object.create(@)
-      #JSON.parse(JSON.stringify(@))
+	def clone(self) :
+		return copy.deepcopy(self)
 
-  return AbstractSpoon

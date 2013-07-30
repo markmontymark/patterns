@@ -1,13 +1,8 @@
 
-#//SaladFork.java - One of Two Concrete Prototypes extending the AbstractFork Prototype
-define ['Creational/Prototype/AbstractFork'
-],(
-AbstractFork
-) ->
+#//SaladForki One of Two Concrete Prototypes extending the AbstractFork Prototype
+from AbstractFork import AbstractFork
 
-  class SaladFork extends AbstractFork
+class SaladFork(AbstractFork):
+	def __init__(self) :
+		self.setForkName('Salad Fork')
 
-    constructor : ->
-      @setForkName 'Salad Fork'
-
-  return SaladFork

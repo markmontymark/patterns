@@ -8,20 +8,21 @@ class TestCreationalSingleton( unittest.TestCase ):
 
 	def test(self) :
 
-		self.assertTrue(self.SingleSpoon != None )
+		self.assertTrue(SingleSpoon != None )
 
 		aSingleSpoon = SingleSpoon()
-		self.assertEqual(aSingleSpoon, test.SingleSpoon)
+		self.assertEqual(aSingleSpoon, SingleSpoon() )
 
-		spoon = test.SingleSpoon.getTheSpoon()
+		spoon = SingleSpoon.getTheSpoon()
 		self.assertTrue(spoon != None)
 
-		spoon = test.SingleSpoon.getTheSpoon()
+		spoon = SingleSpoon.getTheSpoon()
 		self.assertEqual(spoon == None)
 
-		spoon = test.SingleSpoon.getTheSpoon()
+		spoon = SingleSpoon.getTheSpoon()
 		self.assertTrue(spoon == None)
-		test.SingleSpoon.returnTheSpoon()
-		spoon = test.SingleSpoon.getTheSpoon()
+
+		SingleSpoon.returnTheSpoon()
+		spoon = SingleSpoon.getTheSpoon()
 		self.assertEqual(spoon != None)
 

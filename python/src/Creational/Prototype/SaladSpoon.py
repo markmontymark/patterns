@@ -1,13 +1,7 @@
 
-#//SaladSpoon.java - One of Two Concrete Prototypes extending the AbstractSpoon Prototype
-define ['Creational/Prototype/AbstractSpoon'
-],(
-AbstractSpoon
-) ->
+#//SaladSpoon- One of Two Concrete Prototypes extending the AbstractSpoon Prototype
+from AbstractSpoon import AbstractSpoon
 
-	class SaladSpoon extends AbstractSpoon
-
-		constructor : ->
-			@setSpoonName 'Salad Spoon'
-
-	return SaladSpoon
+class SaladSpoon(AbstractSpoon):
+	def __init__(self) :
+		self.setSpoonName('Salad Spoon')

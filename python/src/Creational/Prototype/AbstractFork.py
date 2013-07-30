@@ -1,22 +1,20 @@
 
 
-#//AbstractFork.java - Two of Two Prototypes
-define [],() ->
-  class AbstractFork
+#//AbstractFork - Two of Two Prototypes
 
-    constructor : ->
-      throw "Can't instantiate abstract class, AbstractFork"
+import copy
 
-    forkName : null
+class AbstractFork:
 
-    setForkName : (forkName) ->
-      @forkName = forkName
+	def __init__(self):
+		raise Exception("Can't instantiate abstract class, AbstractFork")
 
-    getForkName : ->
-      @forkName
+	def setForkName(self,forkName) :
+		self.forkName = forkName
 
-    clone : ->
-      Object.create(@)
-      #JSON.parse(JSON.stringify(@))
+	def getForkName(self) : 
+		return self.forkName
 
-  return AbstractFork
+	def clone(self) :
+		return copy.deepcopy(self)
+
