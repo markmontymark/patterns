@@ -14,27 +14,27 @@ import unittest
 class TestStructuralBridge( unittest.TestCase) :
 	def test(self) :
 		def testCherryPlatform() :
-			sodaImpSingleton = SodaImpSingleton(CherrySodaImp())
+			SodaImpSingleton(CherrySodaImp())
 			mediumSoda = MediumSoda()
-			self.assertEqual(mediumSoda.pourSoda(), "...glug...,Yummy Cherry Soda!,...glug...,Yummy Cherry Soda!")
+			self.assertEqual( ','.join(mediumSoda.pourSoda()), "...glug...,Yummy Cherry Soda!,...glug...,Yummy Cherry Soda!")
 			superSizeSoda = SuperSizeSoda()
-			self.assertEqual(superSizeSoda.pourSoda(), "...glug...,Yummy Cherry Soda!, ,...glug...,Yummy Cherry Soda!, ,...glug...,Yummy Cherry Soda!, ,...glug...,Yummy Cherry Soda!, ,...glug...,Yummy Cherry Soda!, ")
+			self.assertEqual( ','.join(superSizeSoda.pourSoda()), "...glug...,Yummy Cherry Soda!,...glug...,Yummy Cherry Soda!,...glug...,Yummy Cherry Soda!,...glug...,Yummy Cherry Soda!,...glug...,Yummy Cherry Soda!")
 
 
 		def testGrapePlatform() :
-			sodaImpSingleton = SodaImpSingleton(GrapeSodaImp())
+			SodaImpSingleton(GrapeSodaImp())
 			mediumSoda = MediumSoda()
-			self.assertEqual(mediumSoda.pourSoda(), "...glug...,Delicious Grape Soda!,...glug...,Delicious Grape Soda!")
+			self.assertEqual( ','.join(mediumSoda.pourSoda()), "...glug...,Delicious Grape Soda!,...glug...,Delicious Grape Soda!")
 			superSizeSoda = SuperSizeSoda()
-			self.assertEqual(superSizeSoda.pourSoda(), "...glug...,Delicious Grape Soda!, ,...glug...,Delicious Grape Soda!, ,...glug...,Delicious Grape Soda!, ,...glug...,Delicious Grape Soda!, ,...glug...,Delicious Grape Soda!, ")
+			self.assertEqual( ','.join(superSizeSoda.pourSoda()), "...glug...,Delicious Grape Soda!,...glug...,Delicious Grape Soda!,...glug...,Delicious Grape Soda!,...glug...,Delicious Grape Soda!,...glug...,Delicious Grape Soda!")
 
 
 		def testOrangePlatform() :
-			sodaImpSingleton = SodaImpSingleton(OrangeSodaImp())
+			SodaImpSingleton(OrangeSodaImp())
 			mediumSoda = MediumSoda()
-			self.assertEqual(mediumSoda.pourSoda(), "...glug...,Citrusy Orange Soda!,...glug...,Citrusy Orange Soda!")
+			self.assertEqual(','.join(mediumSoda.pourSoda()), "...glug...,Citrusy Orange Soda!,...glug...,Citrusy Orange Soda!")
 			superSizeSoda = SuperSizeSoda()
-			self.assertEqual(superSizeSoda.pourSoda(), "...glug...,Citrusy Orange Soda!, ,...glug...,Citrusy Orange Soda!, ,...glug...,Citrusy Orange Soda!, ,...glug...,Citrusy Orange Soda!, ,...glug...,Citrusy Orange Soda!, ")
+			self.assertEqual(','.join(superSizeSoda.pourSoda()), "...glug...,Citrusy Orange Soda!,...glug...,Citrusy Orange Soda!,...glug...,Citrusy Orange Soda!,...glug...,Citrusy Orange Soda!,...glug...,Citrusy Orange Soda!")
 
 		testCherryPlatform()
 		testGrapePlatform()

@@ -1,13 +1,9 @@
-#//SodaImp.java - the Implementation Base Class
+# - the Implementation Base Class
 
-define [],() ->
 
-  class SodaImp
+class SodaImp:
 
-    constructor : ->
-      throw "Can't instantiate abstract class, SodaImp"
+	def __new__():pass
 
-    pourSodaImp : ->
-      throw "Unimplemented method, SodaImp.pourSodaImp"
-
-  return SodaImp
+	def pourSodaImp(self) :
+		raise Exception("Unimplemented method, SodaImp.pourSodaImp")

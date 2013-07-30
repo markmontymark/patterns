@@ -1,20 +1,17 @@
-#//MediumSoda.java - one of two classes extending the Abstract
+# - one of two classes extending the Abstract
 
-define ['Structural/Bridge/Soda'
-],(
-Soda
-) ->
-  class MediumSoda extends Soda
+from Soda import Soda
 
-    constructor : ->
-      @setSodaImp()
+class MediumSoda(Soda):
 
-    pourSoda : ->
-      sodaImp = @getSodaImp()
-      retval = []
-      for i in [1..2]
-        retval.push '...glug...'
-        retval.push sodaImp.pourSodaImp()
-      retval.toString()
+	def __init__(self): 
+		self.setSodaImp()
 
-  return MediumSoda
+	def pourSoda(self) :
+		sodaImp = self.getSodaImp()
+		retval = []
+		for i in range(2):
+			retval.append('...glug...')
+			retval.append(sodaImp.pourSodaImp())
+		return retval
+

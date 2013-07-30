@@ -1,23 +1,17 @@
 
-define ['Structural/Bridge/SodaImpSingleton'
-],(
-SodaImpSingleton
-) ->
+from SodaImpSingleton import SodaImpSingleton
 
-  class Soda
+class Soda:
 
-    sodaImp : null
+	def __init__(self) :
+		raise Exception("Can't instantiate abstract class, Soda")
 
-    constructor : ->
-      throw "Can't instantiate abstract class, Soda"
+	def setSodaImp(self) : 
+		self.sodaImp = SodaImpSingleton._sodaimp
 
-    setSodaImp : ->
-      @sodaImp = SodaImpSingleton.getTheSodaImp()
+	def getSodaImp(self) :
+		return self.sodaImp
 
-    getSodaImp : ->
-      @sodaImp
+	def pourSoda(self) : 
+		raise Exception("Unimplemented method Soda.pourSoda")
 
-    pourSoda : ->
-      throw "Unimplemented method Soda.pourSoda"
-
-  return Soda

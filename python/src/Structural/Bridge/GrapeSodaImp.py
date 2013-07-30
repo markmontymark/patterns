@@ -1,11 +1,8 @@
 
-#//GrapeSodaImp.java - two of three classes extending the Implementation Base Class
+# one of three classes extending the Implementation Base Class
 
-define ['Structural/Bridge/SodaImp'
-],(
-SodaImp
-) ->
-	class GrapeSodaImp extends SodaImp
-		constructor : ->
-		pourSodaImp : -> "Delicious Grape Soda!"
-	return GrapeSodaImp
+from SodaImp import SodaImp
+
+class GrapeSodaImp(SodaImp):
+	def pourSodaImp(self) : 
+		return "Delicious Grape Soda!"

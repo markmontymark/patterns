@@ -1,21 +1,17 @@
 
-#//SuperSizeSoda.java - two of two classes extending the Abstract
+# two of two classes extending the Abstract
 
-define ['Structural/Bridge/Soda'
-],(
-Soda
-) ->
-	class SuperSizeSoda extends Soda
+from Soda import Soda
 
-		constructor : -> @setSodaImp()
+class SuperSizeSoda(Soda):
 
-		pourSoda : ->
-			sodaImp = @getSodaImp()
-			retval = []
-			for i in [1..5]
-				retval.push '...glug...'
-				retval.push sodaImp.pourSodaImp()
-				retval.push ' '
-			retval.toString()
+	def __init__(self): 
+		self.setSodaImp()
 
-	return SuperSizeSoda
+	def pourSoda(self) :
+		sodaImp = self.getSodaImp()
+		retval = []
+		for i in range(5):
+			retval.append('...glug...')
+			retval.append(sodaImp.pourSodaImp())
+		return retval
