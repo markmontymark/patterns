@@ -1,16 +1,12 @@
 
-define ['Creational/Abstract_Factory/Soup',
-],(
-Soup
-) ->
 
-  class VegetableSoup extends Soup
-    constructor : ->
-      @soupName = 'Vegetable Soup'
-      @soupIngredients = [
-        '1 cup bullion',
-        '1/4 cup carrots',
-        '1/4 cup potatoes',
-      ]
+from Soup import Soup
+class VegetableSoup(Soup) :    
+	def __init__(self) :
+		self.soupName = 'Vegetable Soup'
+		self.soupIngredients = [
+			'1 cup bullion',
+			'1/4 cup carrots',
+			'1/4 cup potatoes', ]
 
-  return VegetableSoup
+

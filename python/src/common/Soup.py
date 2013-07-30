@@ -1,15 +1,14 @@
 
-#//Soup.java - A helper class
+# Soup- A helper class
 
-define [], ->
-  class Soup
-    constructor : ->
-      throw "Can't instantiate abstract class, Soup"
+class Soup:
+	def __init__(self) :
+		raise Exception("Can't instantiate abstract class, Soup")
 
-    toString : ->
-      retval = (i for i in @soupIngredients)
-      retval.unshift ' Ingredients: '
-      retval.unshift @soupName
-      retval.toString()
+	def __str__(self): 
+		retval = [self.soupName, 'Ingredients: ']
+		for i in self.soupIngredients:
+			retval.append(i)
+		return ', '.join(retval)
 
-  return Soup
+

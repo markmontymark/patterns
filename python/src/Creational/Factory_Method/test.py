@@ -6,8 +6,10 @@ from BostonSoupFactoryMethodSubclass import BostonSoupFactoryMethodSubclass
 from HonoluluSoupFactoryMethodSubclass import HonoluluSoupFactoryMethodSubclass
 
 import unittest
+import re
 
-class TestFactoryMethod:
+class TestFactoryMethod( unittest.TestCase ):
+
 	def testPlainSoupFactory(self):
 		'''Test plain soup factory'''
 		sfm = SoupFactoryMethod()
@@ -20,7 +22,7 @@ class TestFactoryMethod:
 		sb.setPastaFazul(sfm.makePastaFazul())
 		sb.setTofuSoup(sfm.makeTofuSoup())
 		sb.setVegetableSoup(sfm.makeVegetableSoup())
-		self.assertEqual("At the {0} {1}".format(sb.getSoupBuffetName(), sb.getTodaysSoups()), "At the Soup Buffet  Today's Soups!  , Chicken Soup: ,ChickenSoup, Clam Chowder: ,ClamChowder, Fish Chowder: ,FishChowder, Minnestrone: ,Minnestrone, Pasta Fazul: ,Pasta Fazul, Tofu Soup: ,Tofu Soup, Vegetable Soup: ,Vegetable Soup")
+		self.assertEqual( re.sub(r"\s","","At the {0} {1}".format(sb.getSoupBuffetName(), sb.getTodaysSoups())), re.sub(r"\s","","At the Soup Buffet  Today's Soups!  ,  Chicken Soup: ,ChickenSoup, Clam Chowder: ,ClamChowder, Fish Chowder: ,FishChowder, Minnestrone: ,Minnestrone, Pasta Fazul: ,Pasta Fazul, Tofu Soup: ,Tofu Soup, Vegetable Soup: ,Vegetable Soup"))
 
 	def testBostonSoupFactory(self):
 		'''Test boston soup factory'''
@@ -34,7 +36,7 @@ class TestFactoryMethod:
 		bsb.setPastaFazul(bsfm.makePastaFazul())
 		bsb.setTofuSoup(bsfm.makeTofuSoup())
 		bsb.setVegetableSoup(bsfm.makeVegetableSoup())
-		self.assertEqual("At the  {0} {1}".format(bsb.getSoupBuffetName(), bsb.getTodaysSoups()) , "At the  Boston Soup Buffet  Today's Soups!  , Chicken Soup: ,ChickenSoup, Clam Chowder: ,QuahogChowder, Fish Chowder: ,ScrodFishChowder, Minnestrone: ,Minnestrone, Pasta Fazul: ,Pasta Fazul, Tofu Soup: ,Tofu Soup, Vegetable Soup: ,Vegetable Soup")
+		self.assertEqual( re.sub(r"\s","","At the  {0} {1}".format(bsb.getSoupBuffetName(), bsb.getTodaysSoups()))  , re.sub(r"\s","","At the  Boston Soup Buffet  Today's Soups!  ,  Chicken Soup: ,ChickenSoup, Clam Chowder: ,QuahogChowder, Fish Chowder: ,ScrodFishChowder, Minnestrone: ,Minnestrone, Pasta Fazul: ,Pasta Fazul, Tofu Soup: ,Tofu Soup, Vegetable Soup: ,Vegetable Soup"))
 
 	def testHonoluluSoupFactory(self):
 		'''Test honolulu soup factory'''
@@ -48,4 +50,4 @@ class TestFactoryMethod:
 		hsb.setPastaFazul(hsfm.makePastaFazul())
 		hsb.setTofuSoup(hsfm.makeTofuSoup())
 		hsb.setVegetableSoup(hsfm.makeVegetableSoup())
-		self.assertEqual("At the  {0} {1}".format(hsb.getSoupBuffetName(), hsb.getTodaysSoups()), "At the  Honolulu Soup Buffet  Today's Soups!  , Chicken Soup: ,ChickenSoup, Clam Chowder: ,PacificClamChowder, Fish Chowder: ,OpakapakaFishChowder, Minnestrone: ,Minnestrone, Pasta Fazul: ,Pasta Fazul, Tofu Soup: ,Tofu Soup, Vegetable Soup: ,Vegetable Soup")
+		self.assertEqual( re.sub(r"\s","","At the  {0} {1}".format(hsb.getSoupBuffetName(), hsb.getTodaysSoups())) , re.sub(r"\s","","At the  Honolulu Soup Buffet  Today's Soups!  ,  Chicken Soup: ,ChickenSoup, Clam Chowder: ,PacificClamChowder, Fish Chowder: ,OpakapakaFishChowder, Minnestrone: ,Minnestrone, Pasta Fazul: ,Pasta Fazul, Tofu Soup: ,Tofu Soup, Vegetable Soup: ,Vegetable Soup"))

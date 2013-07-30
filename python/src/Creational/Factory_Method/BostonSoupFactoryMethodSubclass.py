@@ -1,18 +1,17 @@
 
 
-#//BostonSoupFactoryMethodSubclass.java - Two of Two Subclass Factory Methods
-define ['Creational/Factory_Method/SoupFactoryMethod',
-'Creational/Factory_Method/BostonClamChowder',
-'Creational/Factory_Method/BostonFishChowder'
-],(
-SoupFactoryMethod,
-BostonClamChowder,
-BostonFishChowder
-) ->
-  class BostonSoupFactoryMethodSubclass extends SoupFactoryMethod
+#//BostonSoupFactoryMethodSubclass - Two of Two Subclass Factory Methods
+from SoupFactoryMethod import SoupFactoryMethod
+from common.BostonClamChowder import BostonClamChowder
+from common.BostonFishChowder import BostonFishChowder
 
-    makeBuffetName   : -> "Boston Soup Buffet"
-    makeClamChowder   : -> new BostonClamChowder()
-    makeFishChowder   : -> new BostonFishChowder()
+class BostonSoupFactoryMethodSubclass(SoupFactoryMethod) :
 
-  return BostonSoupFactoryMethodSubclass
+	def makeBuffetName(self)   : 
+		return "Boston Soup Buffet"
+
+	def makeClamChowder(self)   : 
+		return BostonClamChowder()
+
+	def makeFishChowder(self)   : 
+		return BostonFishChowder()

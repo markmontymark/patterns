@@ -10,40 +10,45 @@
 #//Both BSFMS and HSFMS override SoupFactoryMethod's makeFishChowder method. The BSFMS returns a SoupBuffet with a FishChowder subclass of BostonFishChowder, while the HSFMS returns a SoupBuffet with a FishChowder subclass of HonoluluFishChowder.
 #//Still reading? Save your time, watch the video lessons!
 #//Video tutorial on design patterns
-#//SoupFactoryMethod.java - a Factory Method
+#  SoupFactoryMethod - a Factory Method
 
-define ['Creational/Factory_Method/SoupBuffet',
-'Creational/Factory_Method/ChickenSoup',
-'Creational/Factory_Method/ClamChowder',
-'Creational/Factory_Method/FishChowder',
-'Creational/Factory_Method/Minnestrone',
-'Creational/Factory_Method/PastaFazul',
-'Creational/Factory_Method/TofuSoup',
-'Creational/Factory_Method/VegetableSoup'
-],(
-SoupBuffet,
-ChickenSoup,
-ClamChowder,
-FishChowder,
-Minnestrone,
-PastaFazul,
-TofuSoup,
-VegetableSoup
-) ->
+from common.SoupBuffet import SoupBuffet
+from common.ChickenSoup import ChickenSoup
+from common.ClamChowder import ClamChowder
+from common.FishChowder import FishChowder
+from common.Minnestrone import Minnestrone
+from common.PastaFazul import PastaFazul
+from common.TofuSoup import TofuSoup
+from common.VegetableSoup import VegetableSoup
 
-	class SoupFactoryMethod
-		constructor : ->
+class SoupFactoryMethod:
+	
+	def __new__(cls,*args, **kwargs) : pass
 
-		makeSoupBuffet : -> new SoupBuffet()
+	def makeSoupBuffet(self) : 
+		return SoupBuffet()
 
-		makeChickenSoup : -> new ChickenSoup()
-		makeClamChowder : -> new ClamChowder()
-		makeFishChowder : -> new FishChowder()
-		makeMinnestrone : -> new Minnestrone()
-		makePastaFazul : -> new PastaFazul()
-		makeTofuSoup : -> new TofuSoup()
-		makeVegetableSoup : -> new VegetableSoup()
+	def makeChickenSoup(self) : 
+		return ChickenSoup()
 
-		makeBuffetName : -> "Soup Buffet"
+	def makeClamChowder(self) : 
+		return ClamChowder()
 
-	return SoupFactoryMethod
+	def makeFishChowder(self) : 
+		return FishChowder()
+
+	def makeMinnestrone(self) : 
+		return Minnestrone()
+
+	def makePastaFazul(self) : 
+		return PastaFazul()
+
+	def makeTofuSoup(self) : 
+		return TofuSoup()
+
+	def makeVegetableSoup(self) : 
+		return VegetableSoup()
+
+	def makeBuffetName(self) : 
+		return "Soup Buffet"
+
