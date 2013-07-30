@@ -2,12 +2,13 @@
 from BostonSoupBuffetBuilder import BostonSoupBuffetBuilder
 from HonoluluSoupBuffetBuilder import HonoluluSoupBuffetBuilder
 
+import re
 import unittest
 
 class TestBuilder( unittest.TestCase ):
 
 
-	def createSoupBuffet(soupBuffetBuilder):
+	def createSoupBuffet(self,soupBuffetBuilder):
 		soupBuffetBuilder.buildSoupBuffet()
 		soupBuffetBuilder.setSoupBuffetName()
 		soupBuffetBuilder.buildChickenSoup()
@@ -17,7 +18,7 @@ class TestBuilder( unittest.TestCase ):
 		soupBuffetBuilder.buildPastaFazul()
 		soupBuffetBuilder.buildTofuSoup()
 		soupBuffetBuilder.buildVegetableSoup()
-		soupBuffetBuilder.getSoupBuffet()
+		return soupBuffetBuilder.getSoupBuffet()
 
 	def testBuilderFilesShouldBeLoaded(self):
 		'''builder files should be loaded'''
@@ -26,11 +27,11 @@ class TestBuilder( unittest.TestCase ):
 
 	def testBostonSoupBuffett(self):
 		'''Testing Boston soup buffett'''
-		bostonsoupBuffet = CreateSoupBuffet( BostonSoupBuffetBuilder() )
-		self.assertEqual("At the {0} today's soup is {1}".format(bostonsoupBuffet.getSoupBuffetName(), bostonsoupBuffet.getTodaysSoups()), "At the Boston Soup Buffet today's soup is  Today's Soups!  , Chicken Soup: ,ChickenSoup, Clam Chowder: ,QuahogChowder, Fish Chowder: ,ScrodFishChowder, Minnestrone: ,Minnestrone, Pasta Fazul: ,Pasta Fazul, Tofu Soup: ,Tofu Soup, Vegetable Soup: ,Vegetable Soup")
+		bostonsoupBuffet = self.createSoupBuffet( BostonSoupBuffetBuilder() )
+		self.assertEqual(re.sub(r"\s","","At the {0} today's soup is {1}".format(bostonsoupBuffet.getSoupBuffetName(), bostonsoupBuffet.getTodaysSoups())), re.sub(r"\s","","At the Boston Soup Buffet today's soup is  Today's Soups!  , Chicken Soup: ,ChickenSoup, Clam Chowder: ,QuahogChowder, Fish Chowder: ,ScrodFishChowder, Minnestrone: ,Minnestrone, Pasta Fazul: ,Pasta Fazul, Tofu Soup: ,Tofu Soup, Vegetable Soup: ,Vegetable Soup"))
 
 	def testHonoluluSoupBuffett(self):
 		'''Testing Honolulu soup buffett'''
-		honoluluSoupBuffet = CreateSoupBuffet(HonoluluSoupBuffetBuilder())
-		self.assertEqual("At the {0} today's soup is {1}".format(honoluluSoupBuffet.getSoupBuffetName(), honoluluSoupBuffet.getTodaysSoups()), "At the Honolulu Soup Buffet today's soup is  Today's Soups!  , Chicken Soup: ,ChickenSoup, Clam Chowder: ,PacificClamChowder, Fish Chowder: ,OpakapakaFishChowder, Minnestrone: ,Minnestrone, Pasta Fazul: ,Pasta Fazul, Tofu Soup: ,Tofu Soup, Vegetable Soup: ,Vegetable Soup")
+		honoluluSoupBuffet = self.createSoupBuffet(HonoluluSoupBuffetBuilder())
+		self.assertEqual(re.sub(r"\s","","At the {0} today's soup is {1}".format(honoluluSoupBuffet.getSoupBuffetName(), honoluluSoupBuffet.getTodaysSoups())), re.sub(r"\s","","At the Honolulu Soup Buffet today's soup is  Today's Soups!  , Chicken Soup: ,ChickenSoup, Clam Chowder: ,PacificClamChowder, Fish Chowder: ,OpakapakaFishChowder, Minnestrone: ,Minnestrone, Pasta Fazul: ,Pasta Fazul, Tofu Soup: ,Tofu Soup, Vegetable Soup: ,Vegetable Soup"))
 

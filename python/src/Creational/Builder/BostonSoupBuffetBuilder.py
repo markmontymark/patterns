@@ -1,21 +1,15 @@
 
-#/BostonSoupBuffetBuilder.java - Two of Two Builder Subclasses
+#/BostonSoupBuffetBuilder - Two of Two Builder Subclasses
 
-define ['Creational/Builder/SoupBuffetBuilder',
-'Creational/Builder/BostonClamChowder',
-'Creational/Builder/BostonFishChowder'
-] , (
-SoupBuffetBuilder,
-BostonClamChowder,
-BostonFishChowder
-) ->
+from SoupBuffetBuilder import SoupBuffetBuilder
+from common.BostonClamChowder import BostonClamChowder
+from common.BostonFishChowder import BostonFishChowder
 
-  class BostonSoupBuffetBuilder extends SoupBuffetBuilder
-
-    constructor : ->
-
-    buildClamChowder   : -> @soupBuffet.clamChowder = new BostonClamChowder()
-    buildFishChowder   : -> @soupBuffet.fishChowder = new BostonFishChowder()
-    setSoupBuffetName : -> @soupBuffet.soupBuffetName = "Boston Soup Buffet"
-
-  return BostonSoupBuffetBuilder
+class BostonSoupBuffetBuilder(SoupBuffetBuilder):
+	def __init__(self) : pass
+	def buildClamChowder(self)   : 
+		self.soupBuffet.clamChowder = BostonClamChowder()
+	def buildFishChowder(self)   : 
+		self.soupBuffet.fishChowder = BostonFishChowder()
+	def setSoupBuffetName(self) : 
+		self.soupBuffet.soupBuffetName = "Boston Soup Buffet"

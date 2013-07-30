@@ -1,21 +1,16 @@
 
-#/HonoluluSoupBuffetBuilder.java - Two of Two Builder Subclasses
 
-define ['Creational/Builder/SoupBuffetBuilder',
-'Creational/Builder/HonoluluClamChowder',
-'Creational/Builder/HonoluluFishChowder'
-] , (
-SoupBuffetBuilder,
-HonoluluClamChowder,
-HonoluluFishChowder
-) ->
+#/HonoluluSoupBuffetBuilder - Two of Two Builder Subclasses
 
-  class HonoluluSoupBuffetBuilder extends SoupBuffetBuilder
+from SoupBuffetBuilder import SoupBuffetBuilder
+from common.HonoluluClamChowder import HonoluluClamChowder
+from common.HonoluluFishChowder import HonoluluFishChowder
 
-    constructor : ->
-
-    buildClamChowder   : -> @soupBuffet.clamChowder = new HonoluluClamChowder()
-    buildFishChowder   : -> @soupBuffet.fishChowder = new HonoluluFishChowder()
-    setSoupBuffetName : -> @soupBuffet.soupBuffetName = "Honolulu Soup Buffet"
-
-  return HonoluluSoupBuffetBuilder
+class HonoluluSoupBuffetBuilder(SoupBuffetBuilder):
+	def __init__(self):pass
+	def buildClamChowder(self)   : 
+		self.soupBuffet.clamChowder = HonoluluClamChowder()
+	def buildFishChowder(self)   : 
+		self.soupBuffet.fishChowder = HonoluluFishChowder()
+	def setSoupBuffetName(self) : 
+		self.soupBuffet.soupBuffetName = "Honolulu Soup Buffet"

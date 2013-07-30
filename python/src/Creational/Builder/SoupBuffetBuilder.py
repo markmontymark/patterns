@@ -16,43 +16,46 @@
 #//SoupBuffetBuilder.java - a Builder
 #
 
-define ['Creational/Builder/SoupBuffet',
-'Creational/Builder/ChickenSoup',
-'Creational/Builder/ClamChowder',
-'Creational/Builder/FishChowder',
-'Creational/Builder/Minnestrone',
-'Creational/Builder/PastaFazul',
-'Creational/Builder/TofuSoup',
-'Creational/Builder/VegetableSoup'
-],(
-SoupBuffet,
-ChickenSoup,
-ClamChowder,
-FishChowder,
-Minnestrone,
-PastaFazul,
-TofuSoup,
-VegetableSoup
-) ->
+from common.SoupBuffet import SoupBuffet
+from common.ChickenSoup import ChickenSoup
+from common.ClamChowder import ClamChowder
+from common.FishChowder import FishChowder
+from common.Minnestrone import Minnestrone
+from common.PastaFazul import PastaFazul
+from common.TofuSoup import TofuSoup
+from common.VegetableSoup import VegetableSoup
 
-  class SoupBuffetBuilder
+class SoupBuffetBuilder:
 
-    constructor : ->
-      throw "Can't instantiate abstract class, SoupBuffetBuilder"
+	def __init__(self): 
+		raise Exception("Can't instantiate abstract class, SoupBuffetBuilder")
 
-    setSoupBuffetName : ->
-      throw "Unimplemented method SoupBuffetBuilder.setSoupBuffetName"
+	def setSoupBuffetName(self) : 
+		raise Exception("Unimplemented method SoupBuffetBuilder.setSoupBuffetName")
 
-    soupBuffet : null
+	def getSoupBuffet(self)       : 
+		return self.soupBuffet
 
-    getSoupBuffet       : -> @soupBuffet
-    buildSoupBuffet     : -> @soupBuffet = new SoupBuffet()
-    buildChickenSoup     : -> @soupBuffet.chickenSoup = new ChickenSoup()
-    buildClamChowder     : -> @soupBuffet.clamChowder = new ClamChowder()
-    buildFishChowder     : -> @soupBuffet.fishChowder = new FishChowder()
-    buildMinnestrone     : -> @soupBuffet.minnestrone = new Minnestrone()
-    buildPastaFazul     : -> @soupBuffet.pastaFazul = new PastaFazul()
-    buildTofuSoup       : -> @soupBuffet.tofuSoup = new TofuSoup()
-    buildVegetableSoup   : -> @soupBuffet.vegetableSoup = new VegetableSoup()
+	def buildSoupBuffet(self)     : 
+		self.soupBuffet = SoupBuffet()
 
-  return SoupBuffetBuilder
+	def buildChickenSoup(self)    : 
+		self.soupBuffet.chickenSoup = ChickenSoup()
+
+	def buildClamChowder(self)    : 
+		self.soupBuffet.clamChowder = ClamChowder()
+
+	def buildFishChowder(self)    : 
+		self.soupBuffet.fishChowder = FishChowder()
+
+	def buildMinnestrone(self)    : 
+		self.soupBuffet.minnestrone = Minnestrone()
+
+	def buildPastaFazul(self)     : 
+		self.soupBuffet.pastaFazul = PastaFazul()
+
+	def buildTofuSoup(self)       : 
+		self.soupBuffet.tofuSoup = TofuSoup()
+
+	def buildVegetableSoup(self)  : 
+		self.soupBuffet.vegetableSoup = VegetableSoup()
