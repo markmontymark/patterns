@@ -11,27 +11,32 @@
 #//An object can be defined as an AbstractSoupFactory, and instantiated as either a BostonConcreteSoupFactory (BCSF) or a HonoluluConcreteSoupFactory (HCSF). Both BCSF or HCSF have the makeFishChowder method, and both return a FishChowder type class. However, the BCSF returns a FishChowder subclass of BostonFishChowder, while the HCSF returns a FishChowder subclass of HonoluluFishChowder.
 #//Still reading? Save your time, watch the video lessons!
 #//Video tutorial on design patterns
-#//AbstractSoupFactory.java - An Abstract Factory
+#//AbstractSoupFactory - An Abstract Factory
 
-define [], ->
-	class AbstractSoupFactory
-		constructor : (@factoryLocation) ->
-			throw "Can't instantiate an abstract class, AbstractSoupFactory"
+class AbstractSoupFactory:
+	def __init__(self,factoryLocation) :
+		raise Exception("Can't instantiate an abstract class, AbstractSoupFactory")
 
-		getFactoryLocation : -> @factoryLocation
+	def getFactoryLocation(self) :  
+		return self.factoryLocation
 
-		makeChickenSoup : -> new ChickenSoup()
+	def makeChickenSoup(self) :  
+		return ChickenSoup()
 
-		makeClamChowder : -> new ClamChowder()
+	def makeClamChowder(self) :  
+		return ClamChowder()
 
-		makeFishChowder : -> new FishChowder()
+	def makeFishChowder(self) :  
+		return FishChowder()
 
-		makeMinnestrone : -> new Minnestrone()
+	def makeMinnestrone(self) :  
+		return Minnestrone()
 
-		makePastaFazul : -> new PastaFazul()
+	def makePastaFazul(self) :  
+		return PastaFazul()
 
-		makeTofuSoup : -> new TofuSoup()
+	def makeTofuSoup(self) :  
+		return TofuSoup()
 
-		makeVegetableSoup : -> new VegetableSoup()
-
-	return AbstractSoupFactory
+	def makeVegetableSoup(self) :  
+		return VegetableSoup()

@@ -1,22 +1,16 @@
 
 #//HonoluluConcreteSoupFactory - Two of Two concrete factories extending the abstract factory
 
-define ['Creational/Abstract_Factory/AbstractSoupFactory',
-'Creational/Abstract_Factory/HonoluluClamChowder',
-'Creational/Abstract_Factory/HonoluluFishChowder'
-],(
-AbstractSoupFactory,
-HonoluluClamChowder,
-HonoluluFishChowder
-) ->
-  class HonoluluConcreteSoupFactory extends AbstractSoupFactory
-    constructor : ->
-      @factoryLocation = 'Honolulu'
+from AbstractSoupFactory import AbstractSoupFactory
+from common.HonoluluClamChowder import HonoluluClamChowder
+from common.HonoluluFishChowder import HonoluluFishChowder
 
-    makeClamChowder : ->
-      new HonoluluClamChowder()
+class HonoluluConcreteSoupFactory(AbstractSoupFactory) :
+	def __init__(self) :
+		self.factoryLocation = "Honolulu"
 
-    makeFishChowder : ->
-      new HonoluluFishChowder()
+	def makeClamChowder(self) : 
+		return HonoluluClamChowder()
 
-  return HonoluluConcreteSoupFactory
+	def makeFishChowder(self) : 
+		return HonoluluFishChowder()
