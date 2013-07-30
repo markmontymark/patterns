@@ -1,39 +1,35 @@
 
 
-#//TestAbstractSoupFactory.java - Testing the abstract factory
+# - Testing the abstract factory
 
-define [ 'Creational/Abstract_Factory/BostonConcreteSoupFactory',
-'Creational/Abstract_Factory/HonoluluConcreteSoupFactory'
-],(BostonConcreteSoupFactory,
-HonoluluConcreteSoupFactory
-) ->
+from BostonConcreteSoupFactory import BostonConcreteSoupFactory
+from HonoluluConcreteSoupFactory import HonoluluConcreteSoupFactory
 
-  MakeSoupOfTheDay = (concreteSoupFactory) ->
-    today = new Date()
-    #switch today.getDay()
-    #  when 0 then return concreteSoupFactory.makeChickenSoup()
-    #  when 1 then return concreteSoupFactory.makeClamChowder()
-    #when 2 then 
-    return concreteSoupFactory.makeFishChowder()
-    #  when 3 then return concreteSoupFactory.makeMinnestrone()
-    #  when 4 then return concreteSoupFactory.makePastaFazul()
-    #  when 5 then return concreteSoupFactory.makeTofuSoup()
-    #  when 6 then return concreteSoupFactory.makeVegetableSoup()
+import unittest
 
-  describe 'Abstract Factory Class', ->
-    it 'loaded BostonConcreteSoupFactory', ->
-      self.assertEqual( new BostonConcreteSoupFactory()).toBeDefined()
+class TestAbstractFactory( unittest.TestCase ):
 
-    it 'loaded HonoluluConcreteSoupFactory', ->
-      self.assertEqual( new HonoluluConcreteSoupFactory()).toBeDefined()
+	def MakeSoupOfTheDay(concreteSoupFactory) :
+		return concreteSoupFactory.makeFishChowder()
 
-    bSoupFactory = new BostonConcreteSoupFactory()
-    bsoupOfTheDay = MakeSoupOfTheDay(bSoupFactory)
-    it 'expecting Boston soup of the day to be ScrodFishChowder', ->
-      self.assertEqual( "The Soup of the day in #{bSoupFactory.factoryLocation} is #{bsoupOfTheDay.soupName}", "The Soup of the day in Boston is ScrodFishChowder")
+	def testLoadedBostonConcreteSoupFactory(self):
+		'''loaded BostonConcreteSoupFactory'''
+		self.assertEqual( BostonConcreteSoupFactory() != None, True)
 
-    hSoupFactory = new HonoluluConcreteSoupFactory()
-    hsoupOfTheDay = MakeSoupOfTheDay(hSoupFactory)
-    it 'expecting Boston soup of the day to be ScrodFishChowder', ->
-       self.assertEqual( "The Soup of the day in #{hSoupFactory.factoryLocation} is #{hsoupOfTheDay.soupName}", 
-         "The Soup of the day in Honolulu is OpakapakaFishChowder")
+	def testLoadedHonoluluConcreteSoupFactory(self):
+		'''loaded HonoluluConcreteSoupFactory'''
+		self.assertEqual( HonoluluConcreteSoupFactory() != None, True)
+
+	def testExpectingBostonScrodFishChowder(self):
+		'''expecting Boston soup of the day to be ScrodFishChowder'''
+		bSoupFactory = BostonConcreteSoupFactory()
+		bsoupOfTheDay = MakeSoupOfTheDay(bSoupFactory)
+		self.assertEqual( "The Soup of the day in {0} is {1}".format(bSoupFactory.factoryLocation, bsoupOfTheDay.soupName), 
+			"The Soup of the day in Boston is ScrodFishChowder")
+
+	def testExpectingHonoluluOpakapakaFishChowder(self) :
+		'''expecting Boston soup of the day to be ScrodFishChowder'''
+		hSoupFactory = HonoluluConcreteSoupFactory()
+		hsoupOfTheDay = MakeSoupOfTheDay(hSoupFactory)
+		self.assertEqual( "The Soup of the day in {0} is {1}".format(hSoupFactory.factoryLocation,hsoupOfTheDay.soupName), 
+			"The Soup of the day in Honolulu is OpakapakaFishChowder")

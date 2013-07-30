@@ -1,32 +1,28 @@
 
 
-#//TestPrototype.java - testing the Prototype
-define ['Creational/Prototype/PrototypeFactory',
-'Creational/Prototype/SoupSpoon',
-'Creational/Prototype/SaladSpoon',
-'Creational/Prototype/SaladFork'
-],(
-PrototypeFactory,
-SoupSpoon,
-SaladSpoon,
-SaladFork
-) ->
+# - testing the Prototype
+from PrototypeFactory import PrototypeFactory
+from SoupSpoon import SoupSpoon
+from SaladSpoon import SaladSpoon
+from SaladFork import SaladFork
 
-  'use strict'
+import unittest
 
-  describe "Test Creational Prototype", ->
-    it 'Creating a Prototype Factory with a SoupSpoon and a SaladFork', ->
-      prototypeFactory = new PrototypeFactory(new SoupSpoon(), new SaladFork())
-      spoon = prototypeFactory.makeSpoon()
-      fork = prototypeFactory.makeFork()
-      self.assertEqual(spoon).toBeDefined()
-      self.assertEqual(fork).toBeDefined()
-      self.assertEqual("Spoon: #{spoon.getSpoonName()} , Fork: #{fork.getForkName()}", "Spoon: Soup Spoon , Fork: Salad Fork")
+class TestCreationalPrototype( unittest.TestCase ):
 
-    it 'Creating a Prototype Factory with a SaladSpoon and a SaladFork', ->
-      prototypeFactory = new PrototypeFactory(new SaladSpoon(), new SaladFork())
-      spoon = prototypeFactory.makeSpoon()
-      fork = prototypeFactory.makeFork()
-      self.assertEqual(spoon).toBeDefined()
-      self.assertEqual(fork).toBeDefined()
-      self.assertEqual("Spoon: #{spoon.getSpoonName()} , Fork: #{fork.getForkName()}", "Spoon: Salad Spoon , Fork: Salad Fork")
+	def test(self) :
+		'''Creating a Prototype Factory with a SoupSpoon and a SaladFork'''
+		prototypeFactory = PrototypeFactory(SoupSpoon(), SaladFork())
+		spoon = prototypeFactory.makeSpoon()
+		fork = prototypeFactory.makeFork()
+		self.assertEqual(spoon != None, True)
+		self.assertEqual(fork != None, True)
+		self.assertEqual("Spoon: {0} , Fork: {1}".format(spoon.getSpoonName(),fork.getForkName()), "Spoon: Soup Spoon , Fork: Salad Fork")
+
+		#it 'Creating a Prototype Factory with a SaladSpoon and a SaladFork'
+		prototypeFactory = PrototypeFactory(SaladSpoon(), SaladFork())
+		spoon = prototypeFactory.makeSpoon()
+		fork = prototypeFactory.makeFork()
+		self.assertEqual(spoon != None, True)
+		self.assertEqual(fork != None, True)
+		self.assertEqual("Spoon: {0} , Fork: {1}".format(spoon.getSpoonName(),fork.getForkName()), "Spoon: Salad Spoon , Fork: Salad Fork")
