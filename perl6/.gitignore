@@ -1,5 +1,6 @@
+blib/
+_build/
+*.bak
 Makefile
-
-# Package Files #
 *.pir
 *.pbc
