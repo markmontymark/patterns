@@ -1,6 +1,5 @@
 blib/
 _build/
 *.bak
-Makefile
 *.pir
 *.pbc
