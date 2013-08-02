@@ -15,7 +15,7 @@ use Patterns::Behavioral::Chain_Of_Responsibility;
 
 BEGIN {*USING:: = *Patterns::Behavioral::Chain_Of_Responsibility::}
 
-#//TestChainOfResponsibility.java - testing the Chain of Responsibility
+#//TestChainOfResponsibility - testing the Chain of Responsibility
 
 my $topTitle;
 my $comedy = new USING::DvdCategory("Comedy");
@@ -42,4 +42,4 @@ say("Getting top comedy/childrens/aquatic title:");
 $topTitle = $comedyChildrensAquatic->getTopTitle();
 say("The top title for " , $comedyChildrensAquatic->getAllCategories() , " is " , $topTitle);
 
-done_testing();
+done();

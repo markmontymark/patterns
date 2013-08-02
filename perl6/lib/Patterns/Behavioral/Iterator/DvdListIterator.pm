@@ -1,48 +1,39 @@
 
 
-#//DvdList.java - the Concrete Aggregate (with a Concrete Iterator inner class)
+#//DvdList - the Concrete Aggregate (with a Concrete Iterator inner class)
 
+use Patterns::Behavioral::Iterator::IteratorInterface;
 
-   
-package Patterns::Behavioral::Iterator::DvdListIterator;
-use Moo;
-with('Patterns::Behavioral::Iterator::IteratorInterface');
+class DvdListIterator is IteratorInterface {
 
-has currentPosition => (is => 'rw');
-has list => (is => 'ro');
+	has $!currentPosition;
+	has DvdList $!list;
 
-sub BUILDARGS
-{
-	my($class,$list) = @_;
+	method BUILD
 	{
-		list => $list,
-		currentPosition => 0,
+		$!currentPosition = 0;
+		@!list = [];
 	}
-}
        
-sub first 
-{
-	my $self  = shift;
-	$self->currentPosition(0);
-}
+	method first 
+	{
+		$!currentPosition = 0;
+	}
        
-sub next
-{
-	my $self = shift;
-   $self->currentPosition( $self->currentPosition + 1) if $self->currentPosition < $self->list->titleCount;
-}
-       
-sub isDone 
-{
-	my $self = shift;
-	$self->currentPosition >= $self->list->titleCount
-}
-       
-sub currentItem
-{
-	my $self = shift;
-	$self->list->titles->[ $self->currentPosition ]
-}
+	method advance
+	{
+		$!currentPosition += 1 if $!currentPosition < @!list.titleCount;
+	}
+			 
+	method isDone 
+	{
+		$!currentPosition >= @!.list->titleCount
+	}
+			 
+	method currentItem
+	{
+		$self->list->titles->[ $self->currentPosition ]
+	}
 
-1;
+}
 

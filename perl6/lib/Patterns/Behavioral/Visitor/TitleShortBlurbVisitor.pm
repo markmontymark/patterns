@@ -1,33 +1,22 @@
+#//TitleShortBlurbVisitor - two of two concrete Visitors
 
+use Patterns::Behavioral::Visitor::GameInfo;
+use Patterns::Behavioral::Visitor::BookInfo;
+use Patterns::Behavioral::Visitor::DvdInfo;
+use Patterns::Behavioral::Visitor::TitleBlurbVisitor;
 
-package Patterns::Behavioral::Visitor::TitleShortBlurbVisitor;
+class TitleShortBlurbVisitor is TitleBlurbVisitor {
 
+	multi method visit(GameInfo $info ) {
+		$.titleBlurb = "SB-Game: " ~ $info.titleName;
+	}   
 
-#//TitleShortBlurbVisitor.java - two of two concrete Visitors
-
-use Moo;
-extends 'Patterns::Behavioral::Visitor::TitleBlurbVisitor';
-
-sub visit
-{
-	my($self,$info) = @_;
-	my $rinfo = ref $info;
-	if($rinfo =~ /BookInfo/)
-	{
-		$self->setTitleBlurb(
-			"SB-Book: " . $info->getTitleName());
-   }   
-	elsif($rinfo =~ /DvdInfo/)
-	{
-		$self->setTitleBlurb(
-			"SB-DVD: " . $info->getTitleName());
+	multi method visit(BookInfo $info ) {
+		$.titleBlurb = "SB-Book: " ~ $info.titleName;
 	}
 
-	elsif($rinfo =~ /GameInfo/)
-	{
-		$self->setTitleBlurb(
-			"SB-Game: " . $info->getTitleName());
-   }
-}
+	multi method visit(DvdInfo $info ) {
+		$.titleBlurb = "SB-DVD: " ~ $info.titleName;
+	}
 
-1;
+}

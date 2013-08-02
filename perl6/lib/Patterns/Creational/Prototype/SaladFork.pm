@@ -1,7 +1,7 @@
 package Patterns::Creational::Prototype::SaladFork;
 
 
-#//SaladFork.java - The Concrete Prototype extending the AbstractFork Prototype
+#//SaladFork - The Concrete Prototype extending the AbstractFork Prototype
 
 use Moo;
 extends 'Patterns::Creational::Prototype::AbstractFork';

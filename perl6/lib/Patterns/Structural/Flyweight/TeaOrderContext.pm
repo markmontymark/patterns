@@ -1,7 +1,7 @@
 package Patterns::Structural::Flyweight::TeaOrderContext;
 
 
-#//TeaOrderContext.java - the Context
+#//TeaOrderContext - the Context
 use Moo;
 has tableNumber => is => 'rw';
 

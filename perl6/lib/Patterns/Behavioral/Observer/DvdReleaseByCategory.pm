@@ -1,6 +1,6 @@
 package Patterns::Behavioral::Observer::DvdReleaseByCategory;
 
-## //DvdReleaseByCategory.java - the subject
+## //DvdReleaseByCategory - the subject
 #//(the class which is observed)
 
 use Moo;

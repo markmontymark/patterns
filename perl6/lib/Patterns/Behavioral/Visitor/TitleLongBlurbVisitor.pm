@@ -1,33 +1,22 @@
+# //TitleLongBlurbVisitor - one of two concrete Visitors
 
-package Patterns::Behavioral::Visitor::TitleLongBlurbVisitor;
+use Patterns::Behavioral::Visitor::GameInfo;
+use Patterns::Behavioral::Visitor::BookInfo;
+use Patterns::Behavioral::Visitor::DvdInfo;
+use Patterns::Behavioral::Visitor::TitleBlurbVisitor;
 
-# //TitleLongBlurbVisitor.java - one of two concrete Visitors
-use Moo;
-extends 'Patterns::Behavioral::Visitor::TitleBlurbVisitor';
+class TitleLongBlurbVisitor is TitleBlurbVisitor {
 
+	multi method visit(GameInfo $info ) {
+		$.titleBlurb = "LB-Game: " ~ $info.titleName;
+	}   
 
-sub visit
-{
-	my($self,$info) = @_;
-	my $rinfo = ref $info;
-	if($rinfo =~ /BookInfo/)
-	{
-		$self->setTitleBlurb(
-			"LB-Book: " . $info->titleName  .
-			", Author: " .  $info->author);
-   }   
-  	elsif( $rinfo =~ /DvdInfo/)
-	{
-		$self->setTitleBlurb(
-			"LB-DVD: " .  $info->getTitleName() . 
-			", starring " . $info->getStar() . 
-			", region: " . $info->getRegion());
-   }   
-  	elsif( $rinfo =~ /GameInfo/)
-	{
-		$self->setTitleBlurb(
-			"LB-Game: " . $info->getTitleName());
-   }
-}   
+	multi method visit(BookInfo $info ) {
+		$.titleBlurb = "LB-Book: " ~ $info.titleName ~  " , Author: " ~ $info.author;
+	}
 
-1;
+	multi method visit(DvdInfo $info ) {
+		$.titleBlurb = "LB-DVD: " ~ $info.titleName ~ " , starring " ~ $info.star ~ " , region: " ~ $info.region;
+	}
+
+}

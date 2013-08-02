@@ -1,15 +1,12 @@
-#//DvdTitleExpression.java - Three Of Four Terminal Expressions
+#//DvdTitleExpression - Three Of Four Terminal Expressions
 
-package Patterns::Behavioral::Interpreter::DvdTitleExpression;
-use Moo;
-extends 'Patterns::Behavioral::Interpreter::DvdAbstractExpression';
-has kludge => ( is => 'ro' );
+use Patterns::Behavioral::Interpreter::DvdAbstractExpression;
 
-sub interpret
-{
-	my($self,$ctx) = @_;
-   my $titles = $ctx->getAllTitles;
-	join ', ',@$titles
+class DvdTitleExpression is DvdAbstractExpression {
+
+	method interpret($ctx) {
+		my $titles = $ctx.titles;
+		$titles.join: ', '
+	}
+
 }
-
-1;

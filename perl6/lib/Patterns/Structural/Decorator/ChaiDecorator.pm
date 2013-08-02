@@ -1,6 +1,6 @@
 package Patterns::Structural::Decorator::ChaiDecorator;
 
-#//ChaiDecorator.java - the decorator
+#//ChaiDecorator - the decorator
 
 use Moo;
 with 'Patterns::Structural::Decorator::Tea';

@@ -1,6 +1,6 @@
 package Patterns::Structural::Decorator::TeaLeaves;
 
-#//TeaLeaves.java - the decoratee
+#//TeaLeaves - the decoratee
 use Moo;
 with 'Patterns::Structural::Decorator::Tea';
 has teaIsSteeped => is => 'rw';

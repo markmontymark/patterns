@@ -1,7 +1,7 @@
 package Patterns::Structural::Bridge::SuperSizeSoda;
 
 
-#//SuperSizeSoda.java - two of two classes extending the Abstract
+#//SuperSizeSoda - two of two classes extending the Abstract
 use Moo;
 extends 'Patterns::Structural::Bridge::Soda';
 sub BUILD

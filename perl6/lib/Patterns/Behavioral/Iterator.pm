@@ -5,11 +5,12 @@
 #//One object can traverse all of the elements of another object.
 
 
-package Patterns::Behavioral::Iterator;
+package Patterns::Behavioral::Iterator
+{
 
 use Patterns::Behavioral::Iterator::IteratorInterface;
 use Patterns::Behavioral::Iterator::DvdListIterator;
 use Patterns::Behavioral::Iterator::DvdList;
 
-1;
+}
 

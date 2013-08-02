@@ -1,7 +1,7 @@
 package Patterns::Structural::Bridge::CherrySodaImp;
 
 
-#//CherrySodaImp.java - one of three classes extending the Implementation Base Class
+#//CherrySodaImp - one of three classes extending the Implementation Base Class
 
 use Moo;
 extends 'Patterns::Structural::Bridge::SodaImp';

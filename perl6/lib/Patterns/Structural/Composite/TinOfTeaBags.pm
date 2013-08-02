@@ -1,6 +1,6 @@
 package Patterns::Structural::Composite::TinOfTeaBags;
 
-#//TinOfTeaBags.java - one composite extension - the "node"
+#//TinOfTeaBags - one composite extension - the "node"
 use Moo;
 extends 'Patterns::Structural::Composite::TeaBags';
 

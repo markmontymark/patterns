@@ -3,7 +3,7 @@
 package Patterns::Behavioral::Template_Method::GameTitleInfo;
 
 
-#//GameTitleInfo.java - three of three concrete templates
+#//GameTitleInfo - three of three concrete templates
 use Moo;
 extends 'Patterns::Behavioral::Template_Method::TitleInfo';
 

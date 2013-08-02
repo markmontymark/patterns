@@ -1,5 +1,5 @@
 
-# //DvdCommandNameStarsOn.java - one of two Concrete Commands
+# //DvdCommandNameStarsOn - one of two Concrete Commands
 
 package Patterns::Behavioral::Command::DvdCommandNameStarsOn;
 

@@ -44,4 +44,4 @@ sub testOrangePlatform {
 &testGrapePlatform;
 &testOrangePlatform;
 
-done_testing;
+done();

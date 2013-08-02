@@ -15,4 +15,4 @@ is( $bladeRunner->ProcessTitleInfo, 'DVD: Blade Runner, starring Harrison Ford '
 is( $electricSheep->ProcessTitleInfo,	'Book: Do Androids Dream of Electric Sheep?, Author: Phillip K. Dick ', "Testing electricSheep ");
 is( $sheepRaider->ProcessTitleInfo ,	'Game: Sheep Raider ', "Testing sheepRaider   " );
 
-done_testing();
+done();

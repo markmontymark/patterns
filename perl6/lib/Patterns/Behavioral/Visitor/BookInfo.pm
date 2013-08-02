@@ -1,25 +1,10 @@
-package Patterns::Behavioral::Visitor::BookInfo;
 
-#//BookInfo.java - one of three concrete Visitees
-use Moo;
-extends 'Patterns::Behavioral::Visitor::AbstractTitleInfo';
+#//BookInfo - one of three concrete Visitees
 
-has author => (is => 'rw');
+use Patterns::Behavioral::Visitor::AbstractTitleInfo;
 
-sub BUILDARGS
-{
-	my($class, $title,$author ) = @_;
-	{
-		titleName => $title,
-		author => $author
-	}
-}    
+class BookInfo is AbstractTitleInfo {
 
-sub accept
-{
-	my($self,$titleBlurbVisitor) = @_;
-	$titleBlurbVisitor->visit($self);
+	has $.author is rw;
+
 }
-
-
-1;

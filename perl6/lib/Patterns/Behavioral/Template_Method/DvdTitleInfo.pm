@@ -3,7 +3,7 @@
 package Patterns::Behavioral::Template_Method::DvdTitleInfo;
 
 
-#//DvdTitleInfo.java - one of three concrete templates
+#//DvdTitleInfo - one of three concrete templates
 
 use Moo;
 extends 'Patterns::Behavioral::Template_Method::TitleInfo';

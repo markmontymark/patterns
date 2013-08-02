@@ -1,16 +1,13 @@
-# //DvdActorExpression.java - One Of Four Terminal Expressions
+# //DvdActorExpression - One Of Four Terminal Expressions
 
+use Patterns::Behavioral::Interpreter::DvdAbstractExpression;
+use Patterns::Behavioral::Interpreter::DvdInterpreterContext;
 
-package Patterns::Behavioral::Interpreter::DvdActorExpression;
-use Moo;
-extends 'Patterns::Behavioral::Interpreter::DvdAbstractExpression';
-has kludge => ( is => 'ro' );
+class DvdActorExpression is DvdAbstractExpression {
 
-sub interpret 
-{
-	my($self,$ctx) = @_;
-	my $actors = $ctx->getAllActors;
-	join ', ',@$actors
+	method interpret($ctx) {
+		my $actors = $ctx.actors;
+		$actors.join: ', '
+	}
+
 }
-
-1;

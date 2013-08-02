@@ -1,68 +1,40 @@
-#//DvdInterpreterContext.java - The Context
+#//DvdInterpreterContext - The Context
 
-package Patterns::Behavioral::Interpreter::DvdInterpreterContext;
-use Moo;
-has titles => (is => 'rw');
-has actors => (is => 'rw');
-has titlesAndActors => (is => 'rw');
+use Patterns::Behavioral::Interpreter::TitleAndActor;
 
-sub BUILDARGS
-{
-	{
-		titles => [],
-		actors => [],
-		titlesAndActors => [],
+class DvdInterpreterContext {
+
+	has Str @.titles;
+	has Str @.actors;
+	has TitleAndActor @.titlesAndActors;
+
+
+	method addTitle(Str $title) {
+		@.titles.push: $title;
 	}
-}
 
-
-sub addTitle
-{
-	my($self,$title) = @_;
-	push @{$self->titles},$title;
-}
-sub addActor
-{
-	my($self,$actor) = @_;
-	push @{$self->actors},$actor;
-}
-sub addTitleAndActor
-{
-	my($self,$titleAndActor) = @_;
-	push @{$self->titlesAndActors},$titleAndActor;
-}
-
-sub getAllTitles 
-{
-	my $self = shift;
-	$self->titles
-}
-sub getAllActors 
-{
-	my $self = shift;
-	$self->actors
-}
-
-sub getActorsForTitle
-{
-	my($self,$title) = @_;
-	my @retval = ();
-	for( @{$self->titlesAndActors} ) 
-	{
-		push @retval,$_->actor if $title eq $_->title;
+	method addActor(Str $actor) {
+		@.actors.push: $actor;
 	}
-	\@retval
-}
 
-sub getTitlesForActor
-{
-	my($self,$actor) = @_;
-	my @retval = ();
-	for( @{$self->titlesAndActors} ) 
-	{
-		push @retval,$_->title if $actor eq $_->actor;
+	method addTitleAndActor(TitleAndActor $titleAndActor) {
+		@.titlesAndActors.push: $titleAndActor;
 	}
-	\@retval
-}
 
-1;
+	method getActorsForTitle($title) {
+		my @retval;
+		for @.titlesAndActors {
+			@retval.push: $_.actor if $title eq $_.title;
+		}
+		@retval
+	}
+
+	method getTitlesForActor($actor) {
+		my @retval;
+		for @.titlesAndActors {
+			@retval.push: $_.title if $actor eq $_.actor;
+		}
+		@retval
+	}
+
+}

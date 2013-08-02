@@ -1,22 +1,21 @@
 
 
-#//DvdList.java - the Concrete Aggregate (with a Concrete Iterator inner class)
+#//DvdList - the Concrete Aggregate (with a Concrete Iterator inner class)
 
+use Patterns::Behavioral::Iterator::IteratorInterface;
+use Patterns::Behavioral::Iterator::DvdListIterator;
 
-package Patterns::Behavioral::Iterator::DvdList;
+class DvdList;
 
-use Moo;
-has titles => ( is=> 'ro');
-has titleCount => ( is=> 'rw');
-has arraySize => ( is=> 'rw');
-has iterator => (is => 'rw');
+has @!titles;
+has $.titleCount is rw;
+has IteratorInterface iterator is rw;
 
 sub BUILDARGS
 {
 	{
 		titles => [],
 		titleCount => 0,
-		arraySize => 0,
 	}
 }
 

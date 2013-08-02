@@ -1,7 +1,7 @@
 package Patterns::Creational::Abstract_Factory::Soup;
 
 
-#//Soup.java - A helper class
+#//Soup - A helper class
 
 use Moo;
 has soupName => (is => 'ro');

@@ -1,7 +1,7 @@
 package Patterns::Creational::Factory_Method::HonoluluSoupFactoryMethodSubclass;
 
 
-#//HonoluluSoupFactoryMethodSubclass.java - Two of Two Subclass Factory Methods
+#//HonoluluSoupFactoryMethodSubclass - Two of Two Subclass Factory Methods
 use Moo;
 extends 'Patterns::Creational::Factory_Method::SoupFactoryMethod';
 

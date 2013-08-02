@@ -23,4 +23,4 @@ is( $dvdLower->getTitle ,'mulholland dr.',"Lowercase super title :");
 is( $dvdUp->uppercasetitle ,'MULHOLLAND DR.',"Upcase UC title :");
 is( $dvdUp->getTitle ,'mulholland dr.',"Upcase super title :");
 
-done_testing();
+done();

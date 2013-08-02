@@ -1,6 +1,6 @@
 package Patterns::Behavioral::Template_Method::TitleInfo;
 
-#//TitleInfo.java - the abstract Template
+#//TitleInfo - the abstract Template
 use base 'Class::Virtually::Abstract';
 __PACKAGE__->virtual_methods(qw/
 getTitleBlurb

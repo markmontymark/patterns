@@ -1,22 +1,14 @@
-#//DvdTitleActorExpression.java - Four Of Four Terminal Expressions
+#//DvdTitleActorExpression - Four Of Four Terminal Expressions
 
-package Patterns::Behavioral::Interpreter::DvdTitleActorExpression;
+use Patterns::Behavioral::Interpreter::DvdAbstractExpression;
 
-use Moo;
-extends 'Patterns::Behavioral::Interpreter::DvdAbstractExpression';
-has actor => (is=>'rw');
-sub BUILDARGS
-{
-	my($class,$actor) = @_;
-	{ actor => $actor}
+class DvdTitleActorExpression is DvdAbstractExpression {
+
+	has $.actor is rw;
+
+	method interpret($ctx) {
+		my $objs = $ctx.getTitlesForActor: $.actor;
+		$objs.join: ', '
+	}
+
 }
-
-
-sub interpret
-{
-	my($self,$ctx) = @_;
-	my $titlesAndActors = $ctx->getTitlesForActor($self->actor);
-	join ', ',@$titlesAndActors
-}
-
-1;

@@ -1,7 +1,7 @@
 package Patterns::Structural::Proxy::PotOfTea;
 
 
-#//PotOfTea.java - the Real Subject
+#//PotOfTea - the Real Subject
 
 use Moo;
 with 'Patterns::Structural::Proxy::PotOfTeaInterface';

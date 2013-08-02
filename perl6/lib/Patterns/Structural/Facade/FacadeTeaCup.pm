@@ -1,6 +1,6 @@
 package Patterns::Structural::Facade::FacadeTeaCup;
 
-#//FacadeTeaCup.java - one of three classes the facade calls
+#//FacadeTeaCup - one of three classes the facade calls
 use Moo;
 use v5.016;
 

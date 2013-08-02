@@ -1,25 +1,9 @@
+#//TitleBlurbVisitor - the abstract Visitor
 
-package Patterns::Behavioral::Visitor::TitleBlurbVisitor;
+class TitleBlurbVisitor {
 
-#//TitleBlurbVisitor.java - the abstract Visitor
-use base 'Class::Virtually::Abstract';
-__PACKAGE__->virtual_methods( qw/ 
-visit 
-/);
-use Moo;
-has titleBlurb => (is => 'rw');
+	has $.titleBlurb is rw;
 
-sub setTitleBlurb
-{
-	my($self,$blurbIn) = @_;
-	$self->titleBlurb($blurbIn);
+	multi method visit() { ... }
+
 }
-
-sub getTitleBlurb 
-{
-	my $self = shift;
-	$self->titleBlurb
-}
-    
-
-1;

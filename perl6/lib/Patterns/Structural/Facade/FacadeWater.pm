@@ -1,7 +1,7 @@
 package Patterns::Structural::Facade::FacadeWater;
 
 
-#//FacadeWater.java - two of three classes the facade calls
+#//FacadeWater - two of three classes the facade calls
 use Moo;
 has isBoiling => is => 'rw';
 

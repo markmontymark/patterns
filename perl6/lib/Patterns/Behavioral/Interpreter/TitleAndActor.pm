@@ -1,4 +1,4 @@
-# //TitleAndActor.java - A Helper Class
+# //TitleAndActor - A Helper Class
 class TitleAndActor {
 
 	has $.title is rw;

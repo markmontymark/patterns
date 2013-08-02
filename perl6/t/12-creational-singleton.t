@@ -31,4 +31,4 @@ say("Second person getting a spoon");
 $spoonForSecondPerson->useSpoon;
 say  $spoonForSecondPerson ? $spoonForSecondPerson->toString : "No spoon was available";
 
-done_testing();
+done();

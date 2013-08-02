@@ -1,4 +1,4 @@
-package Patterns::Behavioral::Interpreter;
+package Patterns::Behavioral::Interpreter {
 
 use Patterns::Behavioral::Interpreter::TitleAndActor;
 use Patterns::Behavioral::Interpreter::DvdAbstractExpression;
@@ -9,4 +9,4 @@ use Patterns::Behavioral::Interpreter::DvdTitleExpression;
 use Patterns::Behavioral::Interpreter::DvdInterpreterContext;
 use Patterns::Behavioral::Interpreter::DvdInterpreterClient;
 
-1;
+}

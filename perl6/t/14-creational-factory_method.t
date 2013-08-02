@@ -51,4 +51,4 @@ is("At the  " . $honoluluSoupBuffet->soupBuffetName() . $honoluluSoupBuffet->get
 	"At the  Honolulu Soup Buffet Today's Soups!   Chicken Soup: ChickenSoup Clam Chowder: PacificClamChowder Fish Chowder: OpakapakaFishChowder Minnestrone: Minnestrone Pasta Fazul: Pasta Fazul Tofu Soup: Tofu Soup Vegetable Soup: Vegetable Sou",
 	'Testing Honolulu soup buffet');
 
-done_testing();
+done();

@@ -1,24 +1,15 @@
-package Patterns::Behavioral::Visitor::AbstractTitleInfo;
+#//AbstractTitleInfo - the abstract Visitee
 
-#//AbstractTitleInfo.java - the abstract Visitee
-use base 'Class::Virtually::Abstract';
-__PACKAGE__->virtual_methods(qw/
-	accept
-/);
-use Moo;
-has titleName => (is => 'rw');
+use Patterns::Behavioral::Visitor::TitleBlurbVisitor;
+
+class AbstractTitleInfo {
+
+	has $.titleName is rw;
+
+	method accept(TitleBlurbVisitor $tbv) { 
+		$tbv.visit: self
+	}
 	
-sub setTitleName
-{
-	my($self,$title) = @_;
-	$self->titleName($title);
 }
-sub getTitleName
-{
-	my $self = shift;
-	$self->titleName
-}
-    
-1;
 
 

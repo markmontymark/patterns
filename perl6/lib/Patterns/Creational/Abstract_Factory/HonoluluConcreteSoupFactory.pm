@@ -1,6 +1,6 @@
 package Patterns::Creational::Abstract_Factory::HonoluluConcreteSoupFactory; ##Concrete?  gross
 
-#//HonoluluConcreteSoupFactory.java - One of Two concrete factories extending the abstract factory
+#//HonoluluConcreteSoupFactory - One of Two concrete factories extending the abstract factory
 use Moo;
 extends 'Patterns::Creational::Abstract_Factory::AbstractSoupFactory';
 

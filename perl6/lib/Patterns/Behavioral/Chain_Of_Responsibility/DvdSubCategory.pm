@@ -1,6 +1,6 @@
 package Patterns::Behavioral::Chain_Of_Responsibility::DvdSubCategory;
 
-#//DvdSubCategory.java - the Middle Class in the Chain
+#//DvdSubCategory - the Middle Class in the Chain
 
 use Moo;
 with('Patterns::Behavioral::Chain_Of_Responsibility::TopTitle');

@@ -1,6 +1,6 @@
 package Patterns::Creational::Prototype::AbstractSpoon;
 
-#//AbstractSpoon.java - One of Two Prototypes
+#//AbstractSpoon - One of Two Prototypes
 
 use base 'Class::Virtually::Abstract';
 use Moo;

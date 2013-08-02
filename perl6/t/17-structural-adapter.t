@@ -20,4 +20,4 @@ my $teaBall = new Patterns::Structural::Adapter::TeaBall($looseLeafTea);
 $teaCup->steepTeaBag($teaBall);
 is($teaBall->teaBagIsSteeped, 1, 'Test that tea ball steeped teabag');
 
-done_testing;
+done();

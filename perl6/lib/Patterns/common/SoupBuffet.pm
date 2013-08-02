@@ -1,7 +1,7 @@
 package Patterns::Creational::Builder::SoupBuffet;
 
 
-#//SoupBuffet.java - A helper class
+#//SoupBuffet - A helper class
 use Moo;
 
 has soupBuffetName => (is => 'rw');

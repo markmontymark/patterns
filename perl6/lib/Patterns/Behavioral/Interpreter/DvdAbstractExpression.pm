@@ -1,8 +1,7 @@
-#//DvdAbstractExpression.java - The Abstract Expression
-package Patterns::Behavioral::Interpreter::DvdAbstractExpression;
-use base qw(Class::Virtually::Abstract);
-__PACKAGE__->virtual_methods(qw(
-    interpret
-));
+#//DvdAbstractExpression - The Abstract Expression
+class DvdAbstractExpression
+{
+    multi method interpret( $ctx ) { ... }
+    multi method interpret( $ctx , $ctx1 ) { ... }
+}
 
-1;

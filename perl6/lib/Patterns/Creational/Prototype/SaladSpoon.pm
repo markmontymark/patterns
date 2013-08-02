@@ -1,7 +1,7 @@
 package Patterns::Creational::Prototype::SaladSpoon;
 
 
-#//SaladSpoon.java - The Concrete Prototype extending the AbstractSpoon Prototype
+#//SaladSpoon - The Concrete Prototype extending the AbstractSpoon Prototype
 
 use Moo;
 extends 'Patterns::Creational::Prototype::AbstractSpoon';

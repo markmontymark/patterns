@@ -33,4 +33,4 @@ while (!$iterator->isDone())
 ok("Iterator didn't loop forever");
 
 
-done_testing();
+done();

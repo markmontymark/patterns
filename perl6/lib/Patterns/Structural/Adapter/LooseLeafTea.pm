@@ -1,7 +1,7 @@
 package Patterns::Structural::Adapter::LooseLeafTea;
 
 
-#//LooseLeafTea.java - the adaptee
+#//LooseLeafTea - the adaptee
 
 use Moo;
 has teaIsSteeped => is => 'rw', default => sub {0};

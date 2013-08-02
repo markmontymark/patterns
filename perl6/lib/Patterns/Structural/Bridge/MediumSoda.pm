@@ -1,7 +1,7 @@
 package Patterns::Structural::Bridge::MediumSoda;
 
 
-#//MediumSoda.java - one of two classes extending the Abstract
+#//MediumSoda - one of two classes extending the Abstract
 use Moo;
 extends 'Patterns::Structural::Bridge::Soda';
 

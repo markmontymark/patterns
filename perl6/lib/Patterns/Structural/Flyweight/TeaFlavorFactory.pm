@@ -1,7 +1,7 @@
 package Patterns::Structural::Flyweight::TeaFlavorFactory;
 
 
-#//TeaFlavorFactory.java - the Factory
+#//TeaFlavorFactory - the Factory
 
 use Moo;
 has flavors => is => 'rw';

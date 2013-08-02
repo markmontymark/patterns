@@ -1,4 +1,4 @@
-#//DvdSubscriber.java - the observer
+#//DvdSubscriber - the observer
 
 package Patterns::Behavioral::Observer::DvdSubscriber;
 

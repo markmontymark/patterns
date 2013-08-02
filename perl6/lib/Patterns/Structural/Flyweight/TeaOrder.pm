@@ -1,6 +1,6 @@
 package Patterns::Structural::Flyweight::TeaOrder;
 
-#//TeaOrder.java - the Flyweight
+#//TeaOrder - the Flyweight
 
 use base 'Class::Virtually::Abstract';
 __PACKAGE__->virtual_methods( qw/ serveTea / );

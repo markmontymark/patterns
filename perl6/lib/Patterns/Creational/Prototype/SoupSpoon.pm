@@ -1,7 +1,7 @@
 package Patterns::Creational::Prototype::SoupSpoon;
 
 
-#//SoupSpoon.java - The Concrete Prototype extending the AbstractSpoon Prototype
+#//SoupSpoon - The Concrete Prototype extending the AbstractSpoon Prototype
 
 use Moo;
 extends 'Patterns::Creational::Prototype::AbstractSpoon';

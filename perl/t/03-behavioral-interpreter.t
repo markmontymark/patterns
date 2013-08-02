@@ -1,7 +1,7 @@
 use v5.016;
 use strict;
 use warnings;
-use Test::More tests => 5;
+use Test::More tests => 6;
 
 
 use Patterns::Behavioral::Interpreter;
@@ -30,5 +30,6 @@ is($client->interpret( "show actor for title "), 'Query Result: Ethan Hawke, Den
 is($client->interpret( "show actor for title <Hamlet>"), 'Query Result: Ethan Hawke', "interpreting show actor for title <Hamlet>"); 
 is($client->interpret( "show title"), 'Query Result: Caddy Shack, Training Day, Hamlet', "interpreting show title: ");
 is($client->interpret( "show title for actor") , 'Query Result: Caddy Shack, Training Day, Hamlet', "interpreting show title for actor : " );
+is($client->interpret( "show title for actor <Ethan Hawke>") , 'Query Result: Hamlet, Training Day, Caddy Shack', "interpreting show title for actor <Ethan Hawke> : " );
 
 done_testing();

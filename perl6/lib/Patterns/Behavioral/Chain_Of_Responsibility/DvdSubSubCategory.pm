@@ -1,6 +1,6 @@
 package Patterns::Behavioral::Chain_Of_Responsibility::DvdSubSubCategory;
 
-#//DvdSubSubCategory.java - the Lowest Class in the Chain
+#//DvdSubSubCategory - the Lowest Class in the Chain
 
 use Moo;
 with('Patterns::Behavioral::Chain_Of_Responsibility::TopTitle');

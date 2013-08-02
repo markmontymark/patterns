@@ -2,7 +2,7 @@ package Patterns::Creational::Abstract_Factory::BostonConcreteSoupFactory; ##Con
 
 
 
-#//BostonConcreteSoupFactory.java - One of Two concrete factories extending the abstract factory
+#//BostonConcreteSoupFactory - One of Two concrete factories extending the abstract factory
 use Moo;
 extends 'Patterns::Creational::Abstract_Factory::AbstractSoupFactory';
 

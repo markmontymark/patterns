@@ -1,5 +1,5 @@
 
-#//DvdRelease.java - a helper class
+#//DvdRelease - a helper class
 
 package Patterns::Behavioral::Observer::DvdRelease;
 

@@ -4,7 +4,7 @@
 #//Java Design Patterns Memento
 #//Memento (aka Token) Overview
 #//One object stores another objects state.
-#//DvdDetails.java - the Originator
+#//DvdDetails - the Originator
 #//(the class to be backed up)
 #//Contains the inner class DvdMemento - the Memento
 

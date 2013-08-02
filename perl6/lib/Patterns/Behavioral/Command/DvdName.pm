@@ -2,7 +2,7 @@ package Patterns::Behavioral::Command::DvdName;
 use Moo;
 has titleName => (is => 'rw');
 
-# //DvdName.java - the Receiver
+# //DvdName - the Receiver
 
 sub BUILDARGS
 {

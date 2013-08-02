@@ -1,6 +1,6 @@
 package Patterns::Creational::Prototype::AbstractFork;
 
-#//AbstractFork.java - Two of Two Prototypes
+#//AbstractFork - Two of Two Prototypes
 
 use base 'Class::Virtually::Abstract';
 use Moo;

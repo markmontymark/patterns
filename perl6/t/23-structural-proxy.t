@@ -13,4 +13,4 @@ say(" ");
 say("TestProxy: pouring tea");
 is( $potOfTea->pourTea() , 'Pouring tea', 'Test pouring from a pot of tea');
 
-done_testing;
+done();

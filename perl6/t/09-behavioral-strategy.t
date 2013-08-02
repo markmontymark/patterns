@@ -3,7 +3,7 @@
 use v6;
 use Test;
 
-use lib 'lib/Patterns/Behavioral/Strategy';
+use lib 'blib/lib/Patterns/Behavioral/Strategy';
 
 use DvdNameContext;
 

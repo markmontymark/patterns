@@ -1,7 +1,7 @@
 package Patterns::Structural::Composite::OneTeaBag;
 
 
-#//OneTeaBag.java - one composite extension - the "leaf"
+#//OneTeaBag - one composite extension - the "leaf"
 
 use Moo;
 extends 'Patterns::Structural::Composite::TeaBags';

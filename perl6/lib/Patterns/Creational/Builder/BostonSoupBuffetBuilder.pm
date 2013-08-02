@@ -1,7 +1,7 @@
 package Patterns::Creational::Builder::BostonSoupBuffetBuilder;
 
 
-#//BostonSoupBuffetBuilder.java - One of Two Builder Subclasses
+#//BostonSoupBuffetBuilder - One of Two Builder Subclasses
 
 use Moo;
 extends 'Patterns::Creational::Builder::SoupBuffetBuilder';

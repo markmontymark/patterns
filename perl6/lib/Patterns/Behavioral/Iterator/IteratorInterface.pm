@@ -6,14 +6,13 @@
 #/// Privacy Policy at http://www.fluffycat.com/Privacy-Policy/
 #/Iterator (aka Cursor) Overview
 #/One object can traverse all of the elements of another object.
-#/DvdListIterator.java - the Iterator Interface
+#/DvdListIterator - the Iterator Interface
 
-package Patterns::Behavioral::Iterator::IteratorInterface;
-use Moo::Role;
+class IteratorInterface {
 
-sub first { ... }
-sub next { ... }
-sub isDone { ... }
-sub currentItem { ... }
+	method first { ... }
+	method advance { ... }
+	method isDone { ... }
+	method currentItem { ... }
 
-1;
+}

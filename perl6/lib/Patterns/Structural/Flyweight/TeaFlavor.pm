@@ -1,6 +1,6 @@
 package Patterns::Structural::Flyweight::TeaFlavor;
 
-#//TeaFlavor.java - the Concrete Flyweight
+#//TeaFlavor - the Concrete Flyweight
 
 use Moo;
 extends 'Patterns::Structural::Flyweight::TeaOrder';

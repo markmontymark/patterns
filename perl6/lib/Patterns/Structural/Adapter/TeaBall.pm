@@ -1,7 +1,7 @@
 package Patterns::Structural::Adapter::TeaBall;
 
 
-#//TeaBall.java - the adapter
+#//TeaBall - the adapter
 
 use Moo;
 extends 'Patterns::Structural::Adapter::TeaBag';

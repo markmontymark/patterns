@@ -1,6 +1,6 @@
 package Patterns::Structural::Proxy::PotOfTeaProxy;
 
-#//PotOfTeaProxy.java - the Proxy
+#//PotOfTeaProxy - the Proxy
 use Moo;
 with 'Patterns::Structural::Proxy::PotOfTeaInterface';
 

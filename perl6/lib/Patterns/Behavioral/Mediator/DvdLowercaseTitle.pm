@@ -1,4 +1,4 @@
-#//DvdLowercaseTitle.java - One of Two Concrete Colleagues or Mediatees
+#//DvdLowercaseTitle - One of Two Concrete Colleagues or Mediatees
 
 package Patterns::Behavioral::Mediator::DvdLowercaseTitle;
 

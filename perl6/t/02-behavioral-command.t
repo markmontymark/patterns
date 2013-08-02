@@ -38,4 +38,4 @@ say $spongeBob->toString ;
 is($jayAndBob->toString,'DVD: Jay*and*Silent*Bob*Strike*Back','test to string');
 is($spongeBob->toString,'DVD: Sponge Bob Squarepants - Nautical Nonsense and Sponge Buddies','test to string');
 
-done_testing();
+done();

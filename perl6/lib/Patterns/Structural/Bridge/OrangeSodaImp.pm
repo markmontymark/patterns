@@ -1,7 +1,7 @@
 package Patterns::Structural::Bridge::OrangeSodaImp;
 
 
-#//OrangeSodaImp.java - one of three classes extending the Implementation Base Class
+#//OrangeSodaImp - one of three classes extending the Implementation Base Class
 
 use Moo;
 extends 'Patterns::Structural::Bridge::SodaImp';

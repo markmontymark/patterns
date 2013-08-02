@@ -33,4 +33,4 @@ is("At the " .  $honoluluSoupBuffet->soupBuffetName() .  $honoluluSoupBuffet->ge
 	'Testing Honolulu soup buffet');
 
 
-done_testing();
+done();

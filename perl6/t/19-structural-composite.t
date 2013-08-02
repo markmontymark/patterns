@@ -51,5 +51,5 @@ say(" ");
 say("Removing teaBag2 from tinOfTeaBags");
 is ($tinOfTeaBags->remove($teaBag2) ?  "teaBag2 successfully removed from tinOfTeaBags" :  "teaBag2 not successfully removed from tinOfTeaBags" ,"teaBag2 successfully removed from tinOfTeaBags", 'Test removing teaBag2 from tin');
 say("The tinOfTeaBags now has " . $tinOfTeaBags->countTeaBags() . " tea bags in it.");
-done_testing;
+done();
 

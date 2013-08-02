@@ -50,4 +50,4 @@ $xfilS5->updateDvdReleaseDate(2002, 5, 14);
 
 $xfiles->updateDvd($xfilS5);
 
-done_testing();
+done();

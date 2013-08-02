@@ -2,7 +2,7 @@
 package Patterns::Behavioral::Template_Method::BookTitleInfo;
 
 
-#//BookTitleInfo.java - two of three concrete templates
+#//BookTitleInfo - two of three concrete templates
 
 use Moo;
 extends 'Patterns::Behavioral::Template_Method::TitleInfo';

@@ -45,5 +45,5 @@ for (0..($ordersMade-1))
 say(" ");       
 is("total teaFlavor objects made: " . $teaFlavorFactory->teasMade(), 'total teaFlavor objects made: 3','Test total tea flavors made');
 
-done_testing;
+done();
 

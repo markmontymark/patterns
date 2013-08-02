@@ -1,4 +1,4 @@
-#//DvdMediator.java - The Mediator
+#//DvdMediator - The Mediator
 
 
 package Patterns::Behavioral::Mediator::DvdMediator;

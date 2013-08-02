@@ -1,7 +1,7 @@
 package Patterns::Structural::Bridge::GrapeSodaImp;
 
 
-#//GrapeSodaImp.java - one of three classes extending the Implementation Base Class
+#//GrapeSodaImp - one of three classes extending the Implementation Base Class
 
 use Moo;
 extends 'Patterns::Structural::Bridge::SodaImp';
