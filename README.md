@@ -109,7 +109,7 @@ This is by far the most Python I have ever wrote, so probaly has tons of bad hab
 
 Install Perl6
 
-See notes in perl6/README.md as they're just a couple of steps, though fairly painless.
+See notes in perl6/README.md as they're *not* just a couple of steps...
 
 
 
