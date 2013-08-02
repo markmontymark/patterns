@@ -16,6 +16,7 @@ Much thanks to Larry for allowing to me to start off this project with his Java 
 	C - complete
 	PHP - complete
 	Python - complete
+	Perl6 - started, Behavioral - Visitor is done and tested, the rest is still a copy of Perl5 until it's fully ported over to Perl6
 	C++ - incomplete
 
 # Quick start
@@ -103,6 +104,12 @@ Running the tests for Python 3
 TODO
 	
 This is by far the most Python I have ever wrote, so probaly has tons of bad habits or bad idioms, so should fix that eventually.
+
+## Perl6
+
+Install Perl6
+
+See notes in perl6/README.md as they're just a couple of steps, though fairly painless.
 
 
 
