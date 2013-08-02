@@ -4,21 +4,31 @@ use Patterns::Behavioral::Interpreter::TitleAndActor;
 
 class DvdInterpreterContext {
 
-	has Str @.titles;
-	has Str @.actors;
+	has %.titles;
+	has %.actors;
 	has TitleAndActor @.titlesAndActors;
 
 
 	method addTitle(Str $title) {
-		@.titles.push: $title;
+		%.titles{$title} = 0;
 	}
 
 	method addActor(Str $actor) {
-		@.actors.push: $actor;
+		%.actors{$actor} = 0;
 	}
 
 	method addTitleAndActor(TitleAndActor $titleAndActor) {
 		@.titlesAndActors.push: $titleAndActor;
+		self.addTitle( $titleAndActor.title );
+		self.addActor( $titleAndActor.actor );
+	}
+
+	method getTitles {
+		%.titles.keys.sort
+	}
+
+	method getActors{
+		%.actors.keys.sort
 	}
 
 	method getActorsForTitle($title) {
@@ -26,7 +36,7 @@ class DvdInterpreterContext {
 		for @.titlesAndActors {
 			@retval.push: $_.actor if $title eq $_.title;
 		}
-		@retval
+		@retval.sort
 	}
 
 	method getTitlesForActor($actor) {
@@ -34,7 +44,7 @@ class DvdInterpreterContext {
 		for @.titlesAndActors {
 			@retval.push: $_.title if $actor eq $_.actor;
 		}
-		@retval
+		@retval.sort
 	}
 
 }

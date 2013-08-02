@@ -19,12 +19,6 @@ use DvdInterpreterContext;
 #say "n $n";
 
 my $ctx = DvdInterpreterContext.new();
-$ctx.addTitle("Caddy Shack");
-$ctx.addTitle("Training Day");
-$ctx.addTitle("Hamlet");
-
-$ctx.addActor("Ethan Hawke");
-$ctx.addActor("Denzel Washington");
 
 $ctx.addTitleAndActor( TitleAndActor.new(title=>"Hamlet", actor=>"Ethan Hawke"));
 $ctx.addTitleAndActor( TitleAndActor.new(title=>"Training Day", actor=>"Ethan Hawke"));
@@ -33,10 +27,12 @@ $ctx.addTitleAndActor( TitleAndActor.new(title=>"Training Day", actor=>"Denzel W
 
 my $client = DvdInterpreterClient.new( ctx=>$ctx );
 
-is($client.interpret( "show actor"),'Query Result: Ethan Hawke, Denzel Washington','Show actors test');
-#is($client.interpret( "show actor for title "), 'Query Result: Ethan Hawke, Denzel Washington', "interpreting show actor for title "); 
+is($client.interpret( "show actor"),'Query Result: Denzel Washington, Ethan Hawke','Show actors test');
+is($client.interpret( "show actor for title "), 'Query Result: Denzel Washington, Ethan Hawke', "interpreting show actor for title "); 
 is($client.interpret( "show actor for title <Hamlet>"), 'Query Result: Ethan Hawke', "interpreting show actor for title <Hamlet>"); 
-is($client.interpret( "show title"), 'Query Result: Caddy Shack, Training Day, Hamlet', "interpreting show title: ");
-is($client.interpret( "show title for actor <Ethan Hawke>") , 'Query Result: Caddy Shack, Training Day, Hamlet', "interpreting show title for actor <Ethan Hawke>: " );
+is($client.interpret( "show title"), 'Query Result: Caddy Shack, Hamlet, Training Day', "interpreting show title: ");
+is($client.interpret( "show title for actor <Ethan Hawke>") , 'Query Result: Caddy Shack, Hamlet, Training Day', "interpreting show title for actor <Ethan Hawke>: " );
+is($client.interpret( "show title for actor <Denzel Washington>") , 'Query Result: Training Day', "interpreting show title for actor <Denzel Washington>: " );
+is($client.interpret( "show title for actor <Bogus>") , 'Query Result: ', "interpreting show title for unknown actor <Bogus>: " );
 
 done();

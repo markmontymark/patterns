@@ -60,7 +60,6 @@ class DvdInterpreterClient {
 			} 
 			elsif (not defined $searchString) and ($subQuery ne ' ') and ($_ ~~ /^\</) {
 				$searchString = $_;
-				say "building searchString " ~ $searchString;
 				$searchStarted = 1;
 				$searchEnded = 1 if $_ ~~ /\>$/;
 			} 
@@ -71,19 +70,16 @@ class DvdInterpreterClient {
 		}
 
 		if defined $searchString {
-			$searchString = $searchString.subst( rx/[\<\>]/, '', :g);
-			say "aftewards searchString " ~ $searchString;
+			$searchString = $searchString.subst(/ <[\<\>]> /, '', :g);
 		}
 			#//remove <>
 			 
 		my DvdAbstractExpression $abstractExpression;
 			 
 		if $mainQuery eq 'A' {
-			say "searchString " ~ $searchString ;
 			$abstractExpression = ( $subQuery eq 'T' && defined $searchString) ??  DvdActorTitleExpression.new(title=>$searchString) !!  DvdActorExpression.new();
 		}      
 		elsif  $mainQuery eq 'T' {	
-			say "searchString " ~ $searchString ;
 			$abstractExpression = ($subQuery eq 'A' && defined $searchString) ??  DvdTitleActorExpression.new(actor=>$searchString) !!  DvdTitleExpression.new();
 		}
 		else {

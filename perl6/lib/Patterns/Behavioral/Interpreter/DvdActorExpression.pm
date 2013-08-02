@@ -6,7 +6,7 @@ use Patterns::Behavioral::Interpreter::DvdInterpreterContext;
 class DvdActorExpression is DvdAbstractExpression {
 
 	method interpret($ctx) {
-		my $actors = $ctx.actors;
+		my $actors = $ctx.getActors();
 		$actors.join: ', '
 	}
 
