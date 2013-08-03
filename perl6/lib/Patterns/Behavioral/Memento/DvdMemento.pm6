@@ -1,26 +1,18 @@
-package Patterns::Behavioral::Memento::DvdMemento;
+class DvdMemento {
 
-use Moo;
-has cache => (is => 'ro');
-sub BUILDARGS
-{
+	has %.cache;
+
+	method setState( %obj )
 	{
-		cache => {}
+		for %obj.kv -> $k,$v
+		{
+			%.cache{$k} = $v 
+		}
 	}
-}
 
-sub setState
-{
-	my($self, $objToSave) = @_;
-	for( keys %$objToSave)
+	method getState
 	{
-		$self->cache->{$_} = $objToSave->{$_};
+		%.cache
 	}
-}
 
-sub getState
-{
-	shift->cache
 }
-
-1;

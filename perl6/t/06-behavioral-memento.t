@@ -1,32 +1,28 @@
-use v5.016;
-use strict;
-use warnings;
-use Test::More tests => 3;
+use v6;
+use Test;
 
-BEGIN{ use_ok 'Patterns::Behavioral::Memento'};
+use lib 'blib/lib';
+use Patterns::Behavioral::Memento;
 
 my $dvdMementoCaretaker;  
 
-my $stars = ["Guy Pearce"];
-my $dvdDetails = new Patterns::Behavioral::Memento::DvdDetails("Memento", $stars, '1'); 
-say($dvdDetails->formatDvdDetails);
+my @stars = ["Guy Pearce"];
+my $dvdDetails = DvdDetails.new("Memento", @stars, '1'); 
 
-ok(ref $dvdDetails);
-$dvdMementoCaretaker = $dvdDetails->createDvdMemento();
-ok(ref $dvdMementoCaretaker);
-say("as first instantiated");
+is $dvdDetails.formatDvdDetails, 'DVD: Memento, starring: Guy Pearce, encoding region: 1', 'first format of dvd details';
+$dvdMementoCaretaker = $dvdDetails.createDvdMemento();
+is (defined $dvdMementoCaretaker), True, 'creating a dvdmemento';
+#say "as first instantiated";
 
-say("");       
-$dvdDetails->addStar("edskdzkvdfb");  
+#say ;       
+$dvdDetails.addStar("edskdzkvdfb");  
 #//oops - Cappuccino on the keyboard!
-say("after star added incorrectly");
-say($dvdDetails->formatDvdDetails());
+#say "after star added incorrectly";
+is $dvdDetails.formatDvdDetails, 'DVD: Memento, starring: Guy Pearce, edskdzkvdfb, encoding region: 1', 'second format of dvd details';
 
-
-say("");
-$dvdDetails->setDvdMemento($dvdMementoCaretaker);
+$dvdDetails.setDvdMemento($dvdMementoCaretaker);
 #//back off changes
-say("after DvdMemento state is restored to DvdDetails");
-say($dvdDetails->formatDvdDetails);
+#say "after DvdMemento state is restored to DvdDetails";
+is $dvdDetails.formatDvdDetails, 'DVD: Memento, starring: Guy Pearce, encoding region: 1', 'restored format details';
 
 done();

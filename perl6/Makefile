@@ -73,7 +73,7 @@ $(BLIB)/lib/Patterns/Behavioral/Iterator.pir : lib/Patterns/Behavioral/Iterator.
 	$(CP) lib/Patterns/Behavioral/Iterator.pm6 $(BLIB)/lib/Patterns/Behavioral/Iterator.pm6
 	PERL6LIB=$(P6LIB) $(PERL6) --target=pir --output=$(BLIB)/lib/Patterns/Behavioral/Iterator.pir lib/Patterns/Behavioral/Iterator.pm6
 
-$(BLIB)/lib/Patterns/Behavioral/Memento.pir : lib/Patterns/Behavioral/Memento.pm6 $(BLIB)/lib/Patterns/Behavioral/Memento/DvdDetails.pir $(BLIB)/lib/Patterns/Behavioral/Memento/DvdMemento.pir
+$(BLIB)/lib/Patterns/Behavioral/Memento.pir : lib/Patterns/Behavioral/Memento.pm6 $(BLIB)/lib/Patterns/Behavioral/Memento/DvdMemento.pir $(BLIB)/lib/Patterns/Behavioral/Memento/DvdDetails.pir 
 	$(MKDIR) $(BLIB)/lib/Patterns/Behavioral/
 	$(CP) lib/Patterns/Behavioral/Memento.pm6 $(BLIB)/lib/Patterns/Behavioral/Memento.pm6
 	PERL6LIB=$(P6LIB) $(PERL6) --target=pir --output=$(BLIB)/lib/Patterns/Behavioral/Memento.pir lib/Patterns/Behavioral/Memento.pm6
