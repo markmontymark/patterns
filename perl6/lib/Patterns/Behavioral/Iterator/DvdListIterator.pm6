@@ -3,36 +3,39 @@
 #//DvdList - the Concrete Aggregate (with a Concrete Iterator inner class)
 
 use Patterns::Behavioral::Iterator::IteratorInterface;
+use Patterns::Behavioral::Iterator::DvdList;
 
 class DvdListIterator is IteratorInterface {
 
 	has $!currentPosition;
-	has DvdList $!list;
+	has DvdList $.dvdList;
 
-	method BUILD
+
+	method new( DvdList $dvdList, $currentPosition? )
 	{
-		$!currentPosition = 0;
-		@!list = [];
+		return self.bless(*,	
+			:currentPosition( defined $currentPosition ?? $currentPosition !! 0 ),
+			:$dvdList );
 	}
-       
-	method first 
+
+	method reset
 	{
 		$!currentPosition = 0;
 	}
        
 	method advance
 	{
-		$!currentPosition += 1 if $!currentPosition < @!list.titleCount;
+		$!currentPosition += 1 if $!currentPosition < $.dvdList.titles.elems;
 	}
 			 
 	method isDone 
 	{
-		$!currentPosition >= @!.list->titleCount
+		$!currentPosition >= $.dvdList.titles.elems
 	}
 			 
 	method currentItem
 	{
-		$self->list->titles->[ $self->currentPosition ]
+		$.dvdList.titles[ $!currentPosition ]
 	}
 
 }

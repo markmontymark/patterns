@@ -9,8 +9,7 @@
 #/DvdListIterator - the Iterator Interface
 
 class IteratorInterface {
-
-	method first { ... }
+	method reset { ... }
 	method advance { ... }
 	method isDone { ... }
 	method currentItem { ... }

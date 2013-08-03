@@ -1,36 +1,42 @@
-use v5.016;
-use strict;
-use warnings;
-use Test::More tests => 3;
+use v6;
+use Test;
 
-BEGIN{ use_ok 'Patterns::Behavioral::Iterator'};
+use lib 'blib/lib';
 
-my $movies = new Patterns::Behavioral::Iterator::DvdList;
-$movies->append("10 Things I Hate About You");
-$movies->append("Shakespeare In Love");
-$movies->append("O (2001)");
-$movies->append("American Pie 2");
-$movies->append("Scotland, PA.");
-$movies->append("Hamlet (2000)");
+use Patterns::Behavioral::Iterator;
 
-my $iterator = $movies->createIterator();
-while (!$iterator->isDone()) 
+my $movies = DvdList.new();
+$movies.append("10 Things I Hate About You");
+$movies.append("Shakespeare In Love");
+$movies.append("O (2001)");
+$movies.append("American Pie 2");
+$movies.append("Scotland, PA.");
+$movies.append("Hamlet (2000)");
+
+my $elems = $movies.titleCount;
+
+my $iterator = DvdListIterator.new( $movies );
+$iterator.reset();
+my $i = 0;
+
+until $iterator.isDone()
 {
-	say($iterator->currentItem());
-	$iterator->next();  
+	$i++;
+	$iterator.advance();  
 }
-ok("Iterator didn't loop forever");
+is($i, $elems, "Iterator looped $i times");
        
-$movies->remove("American Pie 2");
-       
-say(" ");   
-$iterator->first();       
-while (!$iterator->isDone()) 
+$movies.remove("American Pie 2");
+$iterator.reset();
+
+$i = 0;
+until $iterator.isDone()
 {
-	say($iterator->currentItem());
-	$iterator->next();  
+	$i++;
+	#say  $iterator.currentItem();
+	$iterator.advance();  
 }       
-ok("Iterator didn't loop forever");
+is($i, $elems - 1, "Iterator looped " ~ ($elems - 1) ~ " times");
 
 
 done();

@@ -2,63 +2,45 @@
 
 #//DvdList - the Concrete Aggregate (with a Concrete Iterator inner class)
 
-use Patterns::Behavioral::Iterator::IteratorInterface;
-use Patterns::Behavioral::Iterator::DvdListIterator;
 
-class DvdList;
+class DvdList {
 
-has @!titles;
-has $.titleCount is rw;
-has IteratorInterface iterator is rw;
+	has @.titles;
+	has $.titleCount is rw = 0;
 
-sub BUILDARGS
-{
+	method dump
 	{
-		titles => [],
-		titleCount => 0,
+		say " dumping " ~ @.titles.join: ',';
 	}
-}
 
-sub append
-{
-	my($self,$title) = @_;
-	push @{$self->titles},$title;
-	$self->titleCount($self->titleCount + 1 );
-   
-}
+	method append($title) {
+		@.titles.push: $title;
+		#say "my titles " ~ @.titles.join: ',';
+		$.titleCount += 1;
+	}
 
-##
-## doesn't handle multiple removal of same title N times, only removes first
-##
-sub remove 
-{
-	my($self,$title) = @_;
-   my $found = 0;
-	my $foundI = -1;
-	my $i  = 0;	
-   for( @{$self->titles})
-	{
-		if($title eq $_)
-		{
-			$foundI = $i;
-			last;
+	method getTitles {
+		@.titles
+	}
+
+	##
+	## doesn't handle multiple removal of same title N times, only removes first
+	##
+	method remove (Str $title) {
+		my $found = 0;
+		my $foundI = -1;
+		my $i = 0;	
+		for @.titles {
+			if $title eq $_ {
+				$foundI = $i;
+				last;
+			}
+			$i += 1;
 		}
-		$i ++;
-   }
-	if($foundI != -1 )
-	{
-		$self->titleCount( $self->titleCount - 1 );
-		my $t = $self->titles;
-		splice(@$t,$foundI,1);		
+		if $foundI != -1 {
+			$.titleCount -= 1;
+			@.titles.splice($foundI,1);
+		}
 	}
-}
 
-sub createIterator
-{	
-	my $self = shift;
-	return $self->iterator if $self->iterator;
-	$self->iterator(new Patterns::Behavioral::Iterator::DvdListIterator($self));
-	$self->iterator
-}
-
-1; 
+} 

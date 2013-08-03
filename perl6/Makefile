@@ -2,7 +2,7 @@
 
 PERL6  = perl6
 DESTDIR= 
-PREFIX = /home/mkoopman/vendor/rakudo-star-2013.05/install/lib/parrot/5.3.0/languages/perl6/site
+PREFIX = $(HOME)/vendor/rakudo-star-2013.05/install/lib/parrot/5.3.0/languages/perl6/site
 BLIB   = blib
 P6LIB  = $(PWD)/$(BLIB)/lib:$(PWD)/lib:$(PERL6LIB)
 CP     = cp -p
@@ -68,7 +68,7 @@ $(BLIB)/lib/Patterns/Behavioral/Interpreter/DvdTitleExpression.pir : lib/Pattern
 	$(CP) lib/Patterns/Behavioral/Interpreter/DvdTitleExpression.pm6 $(BLIB)/lib/Patterns/Behavioral/Interpreter/DvdTitleExpression.pm6
 	PERL6LIB=$(P6LIB) $(PERL6) --target=pir --output=$(BLIB)/lib/Patterns/Behavioral/Interpreter/DvdTitleExpression.pir lib/Patterns/Behavioral/Interpreter/DvdTitleExpression.pm6
 
-$(BLIB)/lib/Patterns/Behavioral/Iterator.pir : lib/Patterns/Behavioral/Iterator.pm6 $(BLIB)/lib/Patterns/Behavioral/Iterator/IteratorInterface.pir $(BLIB)/lib/Patterns/Behavioral/Iterator/DvdListIterator.pir $(BLIB)/lib/Patterns/Behavioral/Iterator/DvdList.pir
+$(BLIB)/lib/Patterns/Behavioral/Iterator.pir : lib/Patterns/Behavioral/Iterator.pm6 $(BLIB)/lib/Patterns/Behavioral/Iterator/IteratorInterface.pir $(BLIB)/lib/Patterns/Behavioral/Iterator/DvdList.pir $(BLIB)/lib/Patterns/Behavioral/Iterator/DvdListIterator.pir 
 	$(MKDIR) $(BLIB)/lib/Patterns/Behavioral/
 	$(CP) lib/Patterns/Behavioral/Iterator.pm6 $(BLIB)/lib/Patterns/Behavioral/Iterator.pm6
 	PERL6LIB=$(P6LIB) $(PERL6) --target=pir --output=$(BLIB)/lib/Patterns/Behavioral/Iterator.pir lib/Patterns/Behavioral/Iterator.pm6
@@ -328,15 +328,15 @@ $(BLIB)/lib/Patterns/Behavioral/Iterator/IteratorInterface.pir : lib/Patterns/Be
 	$(CP) lib/Patterns/Behavioral/Iterator/IteratorInterface.pm6 $(BLIB)/lib/Patterns/Behavioral/Iterator/IteratorInterface.pm6
 	PERL6LIB=$(P6LIB) $(PERL6) --target=pir --output=$(BLIB)/lib/Patterns/Behavioral/Iterator/IteratorInterface.pir lib/Patterns/Behavioral/Iterator/IteratorInterface.pm6
 
-$(BLIB)/lib/Patterns/Behavioral/Iterator/DvdListIterator.pir : lib/Patterns/Behavioral/Iterator/DvdListIterator.pm6
-	$(MKDIR) $(BLIB)/lib/Patterns/Behavioral/Iterator/
-	$(CP) lib/Patterns/Behavioral/Iterator/DvdListIterator.pm6 $(BLIB)/lib/Patterns/Behavioral/Iterator/DvdListIterator.pm6
-	PERL6LIB=$(P6LIB) $(PERL6) --target=pir --output=$(BLIB)/lib/Patterns/Behavioral/Iterator/DvdListIterator.pir lib/Patterns/Behavioral/Iterator/DvdListIterator.pm6
-
 $(BLIB)/lib/Patterns/Behavioral/Iterator/DvdList.pir : lib/Patterns/Behavioral/Iterator/DvdList.pm6
 	$(MKDIR) $(BLIB)/lib/Patterns/Behavioral/Iterator/
 	$(CP) lib/Patterns/Behavioral/Iterator/DvdList.pm6 $(BLIB)/lib/Patterns/Behavioral/Iterator/DvdList.pm6
 	PERL6LIB=$(P6LIB) $(PERL6) --target=pir --output=$(BLIB)/lib/Patterns/Behavioral/Iterator/DvdList.pir lib/Patterns/Behavioral/Iterator/DvdList.pm6
+
+$(BLIB)/lib/Patterns/Behavioral/Iterator/DvdListIterator.pir : lib/Patterns/Behavioral/Iterator/DvdListIterator.pm6
+	$(MKDIR) $(BLIB)/lib/Patterns/Behavioral/Iterator/
+	$(CP) lib/Patterns/Behavioral/Iterator/DvdListIterator.pm6 $(BLIB)/lib/Patterns/Behavioral/Iterator/DvdListIterator.pm6
+	PERL6LIB=$(P6LIB) $(PERL6) --target=pir --output=$(BLIB)/lib/Patterns/Behavioral/Iterator/DvdListIterator.pir lib/Patterns/Behavioral/Iterator/DvdListIterator.pm6
 
 $(BLIB)/lib/Patterns/Creational/Singleton/SingleSpoon.pir : lib/Patterns/Creational/Singleton/SingleSpoon.pm6
 	$(MKDIR) $(BLIB)/lib/Patterns/Creational/Singleton/
