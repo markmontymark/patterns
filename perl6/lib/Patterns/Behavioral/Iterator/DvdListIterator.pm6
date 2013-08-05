@@ -2,10 +2,9 @@
 
 #//DvdList - the Concrete Aggregate (with a Concrete Iterator inner class)
 
-use Patterns::Behavioral::Iterator::IteratorInterface;
 use Patterns::Behavioral::Iterator::DvdList;
 
-class DvdListIterator is IteratorInterface {
+class DvdListIterator is Iterator {
 
 	has $!currentPosition;
 	has DvdList $.dvdList;

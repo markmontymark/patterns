@@ -1,93 +1,74 @@
-package Patterns::Behavioral::Chain_Of_Responsibility::DvdSubCategory;
+#  DvdSubCategory - the Middle Class in the Chain
 
-#//DvdSubCategory - the Middle Class in the Chain
+use Patterns::Behavioral::Chain_Of_Responsibility::TopTitle;
+use Patterns::Behavioral::Chain_Of_Responsibility::DvdCategory;
 
-use Moo;
-with('Patterns::Behavioral::Chain_Of_Responsibility::TopTitle');
-
-has subCategory => ( is => 'rw');
-has topSubCategoryTitle => ( is => 'rw');
-has parent => ( is => 'ro', 
-	#isa => 'Patterns::Behavioral::Chain_Of_Responsibility::DvdCategory', 
-);
-
-sub BUILDARGS 
-{
-my( $class, $parent, $subCategory) = @_;
-return { 
-	subCategory => $subCategory,
-	parent => $parent,
-};
-};
+class DvdSubCategory is TopTitle {
 
 
-#   
-#   public DvdSubCategory(DvdCategory dvdCategory, String subCategory) {
-#        this.setSubCategory(subCategory); 
-#        this.parent = dvdCategory;
-#   }    
+	has Str $.subCategory is rw;
+	has Str $.topSubCategoryTitle is rw;
+	has DvdCategory $.parent;
+
+
+#	method new( DvdCategory $parent, Str $subCategory )
+#	{
+#		return self.bless(*,:$parent, :$subCategory);
+#	}
+
+
+	method setSubCategory (Str $sc )
+	{
+		$.subCategory = $sc
+	}
+
+	method getSubCategory 
+	{
+		return $.subCategory()
+	}
+  
+	method setCategory (Str $c )
+	{
+		$.parent.setCategory($c);
+	}
+
+	method getCategory
+	{
+		return $.parent.getCategory()
+	}
    
-sub setSubCategory 
-{
-	my $self = shift;
-	$self->subCategory(@_);
-}
-sub getSubCategory 
-{
-	my $self = shift;
-	$self->subCategory
-}
-  
-sub setCategory
-{
-	my $self = shift;
-	$self->parent->setCategory(@_);
-}
+	method setTopSubCategoryTitle($tsct)
+	{
+		$.topSubCategoryTitle = $tsct
+	}
 
-sub getCategory
-{
-	my $self = shift;
-	$self->parent->getCategory()
-}
-   
-sub setTopSubCategoryTitle
-{
-	my $self = shift;
-	$self->topSubCategoryTitle(@_);
-}
+	method getTopSubCategoryTitle
+	{
+		return $.topSubCategoryTitle()
+	}
 
-sub getTopSubCategoryTitle
-{
-	my $self = shift;
-	$self->topSubCategoryTitle
-}
+	method setTopCategoryTitle(Str $tct)
+	{
+		$.parent.topCategoryTitle  = $tct;
+	}
 
-sub setTopCategoryTitle
-{
-	my $self = shift;
-	$self->parent->topCategoryTitle(@_);
-}
-
-sub getTopCategoryTitle
-{
-	my $self = shift;
-	$self->parent->topCategoryTitle
-}
+	method getTopCategoryTitle
+	{
+		return $.parent.topCategoryTitle()
+	}
   
   
-## interface subs 
-sub getAllCategories
-{
-	my $self = shift;
-	return $self->getCategory . "/" . $self->getSubCategory;
-}
+	## interface subs 
+	method getAllCategories
+	{
+		return self.getCategory() ~  '/' ~ self.getSubCategory()
+	}
 
-sub getTopTitle
-{
-	my $self = shift;
-	return $self->getTopSubCategoryTitle if $self->getTopSubCategoryTitle;
-	print "no top title in Category/SubCategory " . $self->getAllCategories . "\n"; 
-	return $self->parent->getTopTitle;
-}
+	method getTopTitle
+	{
+		return $.topSubCategoryTitle() if $.topSubCategoryTitle.defined;
+		#say 'no top title in Category/SubCategory ' ~ self.getAllCategories() ; 
+		return $.parent.getTopTitle();
+	}
 
-1;
+}

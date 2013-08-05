@@ -27,12 +27,12 @@ $ctx.addTitleAndActor( TitleAndActor.new(title=>"Training Day", actor=>"Denzel W
 
 my $client = DvdInterpreterClient.new( ctx=>$ctx );
 
-is($client.interpret( "show actor"),'Query Result: Denzel Washington, Ethan Hawke','Show actors test');
-is($client.interpret( "show actor for title "), 'Query Result: Denzel Washington, Ethan Hawke', "interpreting show actor for title "); 
-is($client.interpret( "show actor for title <Hamlet>"), 'Query Result: Ethan Hawke', "interpreting show actor for title <Hamlet>"); 
-is($client.interpret( "show title"), 'Query Result: Caddy Shack, Hamlet, Training Day', "interpreting show title: ");
-is($client.interpret( "show title for actor <Ethan Hawke>") , 'Query Result: Caddy Shack, Hamlet, Training Day', "interpreting show title for actor <Ethan Hawke>: " );
-is($client.interpret( "show title for actor <Denzel Washington>") , 'Query Result: Training Day', "interpreting show title for actor <Denzel Washington>: " );
-is($client.interpret( "show title for actor <Bogus>") , 'Query Result: ', "interpreting show title for unknown actor <Bogus>: " );
+is($client.interpret( "show actor"),'Query Result: Denzel Washington, Ethan Hawke',$?FILE ~ ' Show actors test');
+is($client.interpret( "show actor for title "), 'Query Result: Denzel Washington, Ethan Hawke', "$?FILE interpreting show actor for title "); 
+is($client.interpret( "show actor for title <Hamlet>"), 'Query Result: Ethan Hawke', "$?FILE interpreting show actor for title <Hamlet>"); 
+is($client.interpret( "show title"), 'Query Result: Caddy Shack, Hamlet, Training Day', "$?FILE interpreting show title: ");
+is($client.interpret( "show title for actor <Ethan Hawke>") , 'Query Result: Caddy Shack, Hamlet, Training Day', "$?FILE interpreting show title for actor <Ethan Hawke>: " );
+is($client.interpret( "show title for actor <Denzel Washington>") , 'Query Result: Training Day', "$?FILE interpreting show title for actor <Denzel Washington>: " );
+is($client.interpret( "show title for actor <Bogus>") , 'Query Result: ', "$?FILE interpreting show title for unknown actor <Bogus>: " );
 
 done();

@@ -20,28 +20,20 @@ my $sheepRaider = GameInfo.new(titleName=>"Sheep Raider");
 
 my $titleLongBlurbVisitor = TitleLongBlurbVisitor.new();
 
-#say("Long Blurbs:");     
 $bladeRunner.accept($titleLongBlurbVisitor);
-is($titleLongBlurbVisitor.titleBlurb,'LB-DVD: Blade Runner , starring Harrison Ford , region: 1','Blade runner long blurb');
-#say("Testing bladeRunner   " ~ $titleLongBlurbVisitor.titleBlurb);
+is $titleLongBlurbVisitor.titleBlurb,'LB-DVD: Blade Runner , starring Harrison Ford , region: 1',"$?FILE Blade runner long blurb";
 $electricSheep.accept($titleLongBlurbVisitor);
-is($titleLongBlurbVisitor.titleBlurb,'LB-Book: Do Androids Dream of Electric Sheep? , Author: Phillip K. Dick','Electric sheep long blurb');
-#say("Testing electricSheep " ~ $titleLongBlurbVisitor.titleBlurb);
+is $titleLongBlurbVisitor.titleBlurb,'LB-Book: Do Androids Dream of Electric Sheep? , Author: Phillip K. Dick',"$?FILE Electric sheep long blurb";
 $sheepRaider.accept($titleLongBlurbVisitor);
-is($titleLongBlurbVisitor.titleBlurb,'LB-Game: Sheep Raider','Sheep raider long blurb');
-#say("Testing sheepRaider   " ~ $titleLongBlurbVisitor.titleBlurb);
+is $titleLongBlurbVisitor.titleBlurb,'LB-Game: Sheep Raider',"$?FILE Sheep raider long blurb";
 
 my $titleShortBlurbVisitor = TitleShortBlurbVisitor.new();
 
-#say("Short Blurbs:");     
 $bladeRunner.accept($titleShortBlurbVisitor);
-is($titleShortBlurbVisitor.titleBlurb,'SB-DVD: Blade Runner','Blade runner short blurb');
-#say("Testing bladeRunner   " ~ $titleShortBlurbVisitor.titleBlurb);
+is $titleShortBlurbVisitor.titleBlurb,'SB-DVD: Blade Runner',"$?FILE Blade runner short blurb";
 $electricSheep.accept($titleShortBlurbVisitor);
-is($titleShortBlurbVisitor.titleBlurb,'SB-Book: Do Androids Dream of Electric Sheep?','Electric sheep short blurb');
-#say("Testing electricSheep " ~ $titleShortBlurbVisitor.titleBlurb);
+is $titleShortBlurbVisitor.titleBlurb,'SB-Book: Do Androids Dream of Electric Sheep?',"$?FILE Electric sheep short blurb";
 $sheepRaider.accept($titleShortBlurbVisitor);
-is($titleShortBlurbVisitor.titleBlurb,'SB-Game: Sheep Raider','Sheep raider short blurb');
-#say("Testing sheepRaider   " ~ $titleShortBlurbVisitor.titleBlurb);
+is $titleShortBlurbVisitor.titleBlurb,'SB-Game: Sheep Raider',"$?FILE Sheep raider short blurb";
 
 done();

@@ -8,7 +8,6 @@
 package Patterns::Behavioral::Iterator
 {
 
-use Patterns::Behavioral::Iterator::IteratorInterface;
 use Patterns::Behavioral::Iterator::DvdListIterator;
 use Patterns::Behavioral::Iterator::DvdList;
 

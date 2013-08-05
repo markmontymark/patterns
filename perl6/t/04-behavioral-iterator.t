@@ -24,7 +24,7 @@ until $iterator.isDone()
 	$i++;
 	$iterator.advance();  
 }
-is($i, $elems, "Iterator looped $i times");
+is($i, $elems, "$?FILE Iterator looped $i times");
        
 $movies.remove("American Pie 2");
 $iterator.reset();
@@ -36,7 +36,7 @@ until $iterator.isDone()
 	#say  $iterator.currentItem();
 	$iterator.advance();  
 }       
-is($i, $elems - 1, "Iterator looped " ~ ($elems - 1) ~ " times");
+is($i, $elems - 1, "$?FILE Iterator looped " ~ ($elems - 1) ~ " times");
 
 
 done();

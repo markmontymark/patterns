@@ -4,42 +4,38 @@
 #//Chain of Responsibility Overview
 #//A method called in one class will move up a class hierarchy until a method is found that can properly handle the call.
 
-use v5.016;
+use v6;
 
-use strict;
-use warnings;
+use Test;
 
-use Test::More;
+use lib 'blib/lib';
 
 use Patterns::Behavioral::Chain_Of_Responsibility;
 
-BEGIN {*USING:: = *Patterns::Behavioral::Chain_Of_Responsibility::}
-
-#//TestChainOfResponsibility - testing the Chain of Responsibility
-
 my $topTitle;
-my $comedy = new USING::DvdCategory("Comedy");
-$comedy->setTopCategoryTitle("Ghost World");
+my $comedy = DvdCategory.new(category => "Comedy");
+$comedy.setTopCategoryTitle("Ghost World");
 
-my $comedyChildrens = new USING::DvdSubCategory($comedy, "Childrens");
+my $comedyChildrens = DvdSubCategory.new(parent => $comedy, subCategory => "Childrens");
 
-my $comedyChildrensAquatic = new USING::DvdSubSubCategory($comedyChildrens, "Aquatic");
-$comedyChildrensAquatic->setTopSubSubCategoryTitle( "Sponge Bob Squarepants");
+my $comedyChildrensAquatic = DvdSubSubCategory.new( parent => $comedyChildrens, subSubCategory => "Aquatic");
+$comedyChildrensAquatic.setTopSubSubCategoryTitle( "Sponge Bob Squarepants");
+$topTitle = $comedy.getTopTitle();
 
-say("");
-say("Getting top comedy title:");
-$topTitle = $comedy->getTopTitle();
-say("The top title for " , $comedy->getAllCategories() , " is " , $topTitle);
-is($topTitle,'Ghost World','Top title test');
+is "The top title for " ~ $comedy.getAllCategories() ~ " is " ~ $topTitle,
+	'The top title for Comedy is Ghost World',
+	"$?FILE dvdcategory test";
 
-say("");
-say("Getting top comedy/childrens title:");
-$topTitle = $comedyChildrens->getTopTitle();
-say("The top title for " , $comedyChildrens->getAllCategories() , " is " , $topTitle);
+$topTitle = $comedyChildrens.getTopTitle();
 
-say("");
-say("Getting top comedy/childrens/aquatic title:");
-$topTitle = $comedyChildrensAquatic->getTopTitle();
-say("The top title for " , $comedyChildrensAquatic->getAllCategories() , " is " , $topTitle);
+is "The top title for " ~ $comedyChildrens.getAllCategories() ~ " is " ~ $topTitle, 
+	"The top title for Comedy/Childrens is Ghost World" , 
+	"$?FILE dvd sub category test";
+
+$topTitle = $comedyChildrensAquatic.getTopTitle();
+
+is "The top title for " ~ $comedyChildrensAquatic.getAllCategories() ~ " is " ~ $topTitle, 
+	'The top title for Comedy/Childrens/Aquatic is Sponge Bob Squarepants' , 
+	"$?FILE dvd sub sub category test";
 
 done();
