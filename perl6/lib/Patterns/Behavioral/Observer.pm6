@@ -7,11 +7,10 @@
 #//(the class which is observed)
 
 
-package Patterns::Behavioral::Observer;
+package Patterns::Behavioral::Observer {
 
 use Patterns::Behavioral::Observer::DvdRelease;
 use Patterns::Behavioral::Observer::DvdReleaseByCategory;
 use Patterns::Behavioral::Observer::DvdSubscriber;
 
-
-1;
+}

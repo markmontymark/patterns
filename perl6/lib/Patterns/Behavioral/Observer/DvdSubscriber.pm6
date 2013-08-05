@@ -1,37 +1,35 @@
 #//DvdSubscriber - the observer
 
-package Patterns::Behavioral::Observer::DvdSubscriber;
+use Patterns::Behavioral::Observer::DvdRelease;
 
-use Data::Dumper;
-use v5.016;
-use Moo;
-has name => (is => 'ro');
+class DvdSubscriber {
 
-sub BUILDARGS
-{
-	my($class,$name) = @_;
-	{ name => $name }
-} 
+	has $.name;
+
+	method new($name)
+	{
+		return self.bless( *, :$name );
+	} 
    
-sub newDvdRelease
-{
-	my($self, $release, $subscriberName ) = @_;
-	say("");
-	say("Hello " . $self->name . ", subscriber to the " . $subscriberName . " DVD release list.");
-	say("The new Dvd " . 
-		$release->name . " will be released on " . 
-		$release->releaseMonth . "/" . 
-		$release->releaseDay . "/" . 
-		$release->releaseYear . ".");
-}
+	method newDvdRelease( DvdRelease $release, Str $subscriberName )
+	{
+		return "Hello " ~ $.name ~ ", subscriber to the " ~ $subscriberName ~ " DVD release list.\n" ~
+			"The new Dvd " ~ 
+			$release.name ~ " will be released on " ~
+			$release.releaseMonth ~ "/" ~ 
+			$release.releaseDay ~ "/" ~ 
+			$release.releaseYear ~ ".\n";
+	}
 
-sub updateDvdRelease
-{
-	my($self, $release, $subscriptionListName)  = @_;
-	say("");
-	say("Hello " . $self->name .  ", subscriber to the " .  $subscriptionListName .  " DVD release list.");
-	say( "The following DVDs release has been revised: " .  
-		$release->name . " will be released on " .  $release->releaseMonth . "/" .  $release->releaseDay . "/" .  $release->releaseYear . ".");
-}   
+	method updateDvdRelease( DvdRelease $release, Str $subscriptionListName) 
+	{
+		return "Hello " ~ $.name ~  ", subscriber to the " ~  $subscriptionListName ~  " DVD release list.\n" ~
+			"The following DVDs release has been revised: " ~  
+			$release.name ~ " will be released on " ~ 
+			$release.releaseMonth ~ "/" ~  
+			$release.releaseDay ~ "/" ~  
+			$release.releaseYear ~ ".\n";
+	}   
+}
 
 1;
