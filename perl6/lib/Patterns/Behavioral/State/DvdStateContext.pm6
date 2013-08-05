@@ -1,24 +1,27 @@
 
-use v6;
-
-package Patterns::Behavioral::State;
+use Patterns::Behavioral::State::DvdStateNameExclaim;
+use Patterns::Behavioral::State::DvdStateNameStars;
 
 class DvdStateContext {
 
-	has $!dvdStateName => (is => 'rw');
+	has DvdStateName $!dvdStateName is rw = DvdStateNameStars.new();
+	has Int $!starCount is rw = 0;
 
-	method new(Str $name) {
-		my $o = self.bless(*,$name);
-		$o.setDvdStateName( DvdStateNameStars.new() )
-		return $o
-	}
+#	method new {
+#		my $starCount = 0;
+#		return self.bless(*, dvdStateName => DvdStateNameStars.new() , :$starCount );
+#	}
 
-	method setDvdStateName(DvdStateName $dsn) {
-		self.dvdStateName = $dsn;
-	}
-   
-	method getName($name) {
-		self.dvdStateName.getName($name);
+	method getName( Str $name) {
+		if $!starCount === 2 {
+			$!dvdStateName = DvdStateNameExclaim.new();
+		}
+		elsif $!starCount === 3 {
+			$!dvdStateName = DvdStateNameStars.new();
+			$!starCount = 0 ;
+		}
+		$!starCount += 1;
+		return $!dvdStateName.getName($name);
 	}
 }
 

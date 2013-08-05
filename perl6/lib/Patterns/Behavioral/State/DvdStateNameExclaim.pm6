@@ -1,15 +1,10 @@
 
-use v6;
+use Patterns::Behavioral::State::DvdStateName;
 
-package Patterns::Behavioral::State;
+class DvdStateNameExclaim is DvdStateName {
 
-class DvdStateNameExclaim does DvdStateName {
-
-	method getName(DvdStateContext $ctx,$name) {
-		(my $t = $name) =~ s/ /!/g;
-		#//show exclaim only once, switch back to stars
-		$ctx->setDvdStateName(DvdStateNameStars.new());
-		return $t;
+	method getName($name) {
+		return $name.subst( rx/ ' ' /, '!', :g );
 	}
 
 }

@@ -1,9 +1,6 @@
-use v6;
-
 #//DvdStateName - the State interface
 
-role DvdStateName {
-	method getName(DvdStateContext $ctx,$name) { ... }
+class DvdStateName {
+	method getName($name) { ... }
 }
 
-1;
