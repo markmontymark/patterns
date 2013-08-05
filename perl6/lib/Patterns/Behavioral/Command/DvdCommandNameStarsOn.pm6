@@ -1,24 +1,20 @@
 
 # //DvdCommandNameStarsOn - one of two Concrete Commands
 
-package Patterns::Behavioral::Command::DvdCommandNameStarsOn;
+use Patterns::Behavioral::Command::CommandAbstract;
+use Patterns::Behavioral::Command::DvdName;
 
-use Moo;
-extends 'Patterns::Behavioral::Command::CommandAbstract';
-has dvdName => (is => 'rw');
+class DvdCommandNameStarsOn is CommandAbstract {
 
-sub BUILDARGS
-{
-	my($class, $dvdName) = @_;
+	has DvdName $.dvdName;
+
+	method new (DvdName $dvdName)
 	{
-		dvdName => $dvdName
+		return self.bless( * , :$dvdName );
+	}
+
+	method execute
+	{
+		$.dvdName.setNameStarsOn()
 	}
 }
-
-sub execute
-{
-	my $self = shift;
-	$self->dvdName->setNameStarsOn;
-}
-
-1;

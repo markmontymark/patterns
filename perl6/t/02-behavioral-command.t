@@ -1,41 +1,41 @@
-use v5.016;
-use strict;
-use warnings;
-use Test::More tests => 6;
+use v6;
+use Test;
+
+use lib 'blib/lib';
 use Patterns::Behavioral::Command;
 
-BEGIN {*USING:: = *Patterns::Behavioral::Command::}
 
-my $jayAndBob = new USING::DvdName("Jay and Silent Bob Strike Back");
-my $spongeBob = new USING::DvdName("Sponge Bob Squarepants - Nautical Nonsense and Sponge Buddies");
+my $jayAndBob = DvdName.new(titleName => "Jay and Silent Bob Strike Back");
+my $spongeBob = DvdName.new(titleName => "Sponge Bob Squarepants - Nautical Nonsense and Sponge Buddies");
 
-my $bobStarsOn = new USING::DvdCommandNameStarsOn($jayAndBob);
-my $bobStarsOff = new USING::DvdCommandNameStarsOff($jayAndBob);
-my $spongeStarsOn = new USING::DvdCommandNameStarsOn($spongeBob);
-my $spongeStarsOff = new USING::DvdCommandNameStarsOff($spongeBob);
+my $bobStarsOn = DvdCommandNameStarsOn.new($jayAndBob);
+my $bobStarsOff = DvdCommandNameStarsOff.new($jayAndBob);
+my $spongeStarsOn = DvdCommandNameStarsOn.new($spongeBob);
+my $spongeStarsOff = DvdCommandNameStarsOff.new($spongeBob);
 
-say "as first instantiated";
-say $jayAndBob->toString;  
-say $spongeBob->toString; 
-is($jayAndBob->toString,'DVD: Jay and Silent Bob Strike Back','test to string');
-is($spongeBob->toString,'DVD: Sponge Bob Squarepants - Nautical Nonsense and Sponge Buddies','test to string');
+is $jayAndBob.toString(),
+	'DVD: Jay and Silent Bob Strike Back',
+	"$?FILE create obj 1 ";
+is $spongeBob.toString(),
+	'DVD: Sponge Bob Squarepants - Nautical Nonsense and Sponge Buddies',
+	"$?FILE create obj 2  ";
 
 
-$bobStarsOn->execute;
-$spongeStarsOn->execute;
-say " ";
-say "stars on";
-say $jayAndBob->toString;
-say $spongeBob->toString;
-is($jayAndBob->toString,'DVD: Jay*and*Silent*Bob*Strike*Back','test to string');
-is($spongeBob->toString,'DVD: Sponge*Bob*Squarepants*-*Nautical*Nonsense*and*Sponge*Buddies','test to string');
+$bobStarsOn.execute();
+$spongeStarsOn.execute();
+is $jayAndBob.toString(),
+	'DVD: Jay*and*Silent*Bob*Strike*Back',
+	"$?FILE stars on both 1";
+is $spongeBob.toString(),
+	'DVD: Sponge*Bob*Squarepants*-*Nautical*Nonsense*and*Sponge*Buddies',
+	"$?FILE stars on both 2";
 
-$spongeStarsOff->execute;
-say " ";
-say "sponge stars off" ;
-say $jayAndBob->toString ;
-say $spongeBob->toString ;
-is($jayAndBob->toString,'DVD: Jay*and*Silent*Bob*Strike*Back','test to string');
-is($spongeBob->toString,'DVD: Sponge Bob Squarepants - Nautical Nonsense and Sponge Buddies','test to string');
+$spongeStarsOff.execute();
+is $jayAndBob.toString(),
+	'DVD: Jay*and*Silent*Bob*Strike*Back',
+	"$?FILE turn off stars just on sponge 1";
+is $spongeBob.toString(),
+	'DVD: Sponge Bob Squarepants - Nautical Nonsense and Sponge Buddies',
+	"$?FILE turn off stars just on sponge 2";
 
 done();

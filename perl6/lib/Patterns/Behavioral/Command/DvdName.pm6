@@ -1,37 +1,21 @@
-package Patterns::Behavioral::Command::DvdName;
-use Moo;
-has titleName => (is => 'rw');
-
 # //DvdName - the Receiver
 
-sub BUILDARGS
-{
-	my($class,$titleName) = @_;
+class DvdName {
 
-	{
-		titleName => $titleName,
+	has $.titleName is rw;
+
+	method setNameStarsOn {	
+		$.titleName = $.titleName.subst( rx / ' ' /, '*', :g );
 	}
-}
 
+	method setNameStarsOff {
+		$.titleName = $.titleName.subst( rx / '*' /, ' ', :g );
+	}
 
-sub setNameStarsOn 
-{
-	my $self = shift;
-	(my $t = $self->titleName) =~ s/ /*/g;
-	$self->titleName($t);
-}
-sub setNameStarsOff
-{
-	my $self = shift;
-	(my $t = $self->titleName) =~ s/[*]/ /g;
-	$self->titleName($t);
-}
+	method toString
+	{
+		'DVD: ' ~ $.titleName
+	}
 
-sub toString
-{
-	my $self = shift;
-	'DVD: ' . $self->titleName
 }
-
-1;
 
