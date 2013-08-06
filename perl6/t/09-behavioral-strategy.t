@@ -7,30 +7,28 @@ use lib 'blib/lib';
 
 use Patterns::Behavioral::Strategy;
 
-use DvdNameContext;
+my $allCapContext = DvdNameContext.new( dvdNameStrategy => DvdNameAllCapStrategy.new() );
+my $theEndContext = DvdNameContext.new( dvdNameStrategy => DvdNameTheAtEndStrategy.new() );
+my $spacesContext = DvdNameContext.new( dvdNameStrategy => DvdNameReplaceSpacesStrategy.new() );
 
-my $allCapContext = DvdNameContext.new( dvdNameStrategy => DvdNameAllCapStrategy.new );
-my $theEndContext = DvdNameContext.new( dvdNameStrategy => DvdNameTheAtEndStrategy.new );
-my $spacesContext = DvdNameContext.new( dvdNameStrategy => DvdNameReplaceSpacesStrategy.new );
-
-my $dvdNames = [
+my @names = (
 	"Jay and Silent Bob Strike Back",
 	"The Fast and the Furious",
 	"The Others"
-];
+);
 
-my $replaceChar = '*';       
+my $char = '*';
 
-is( join(',',@($allCapContext.formatDvdNames($dvdNames,$replaceChar))) ,
+is $allCapContext.formatDvdNames( :@names).join(',') ,
 	'JAY AND SILENT BOB STRIKE BACK,THE FAST AND THE FURIOUS,THE OTHERS', 
-	"$*PROGRAM_NAME All caps context");
+	"$?FILE All caps context";
 
-is( join(',',@($theEndContext.formatDvdNames($dvdNames,$replaceChar))), 
+is join(',',$theEndContext.formatDvdNames( :@names)), 
 	'Jay and Silent Bob Strike Back,Fast and the Furious, The,Others, The', 
-	"$*PROGRAM_NAME The End context");
+	"$?FILE The End context";
 
-is( join(',',@($spacesContext.formatDvdNames($dvdNames, $replaceChar))),
+is join(',',$spacesContext.formatDvdNames( :@names, :$char )),
 	'Jay*and*Silent*Bob*Strike*Back,The*Fast*and*the*Furious,The*Others',
-	"$*PROGRAM_NAME Space context");
+	"$?FILE Space context";
 
 done();

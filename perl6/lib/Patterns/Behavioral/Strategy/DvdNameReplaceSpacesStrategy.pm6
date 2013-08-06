@@ -1,15 +1,13 @@
 
 #//DvdNameReplaceSpacesStrategy - three of three concrete strategies
 
-use lib '.';
-use DvdNameStrategy;
+use Patterns::Behavioral::Strategy::DvdNameStrategy;
 
-class DvdNameReplaceSpacesStrategy is DvdNameStrategy {
+class DvdNameReplaceSpacesStrategy does DvdNameStrategy {
 
-	method formatDvdName($dvdName,$char) {
-		my $t = $dvdName;
-		$t ~~ s:g/\s+/$char/;
-		return $t
+	method formatDvdName( Str $name is copy, Str $char) {
+		$name ~~ s:g/\s+/$char/;
+		return $name;
 	}
 
 }

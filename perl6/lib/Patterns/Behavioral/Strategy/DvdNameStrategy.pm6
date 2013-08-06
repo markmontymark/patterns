@@ -1,6 +1,6 @@
 #DvdNameStrategy - the abstract strategy
 
-class DvdNameStrategy
+role DvdNameStrategy
 {
-	method formatDvdName() { ... }
+	method formatDvdName( Str $name , Str $char? ) { ... }
 }

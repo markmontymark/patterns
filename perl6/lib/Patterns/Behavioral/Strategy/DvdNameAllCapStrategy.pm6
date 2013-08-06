@@ -1,11 +1,10 @@
 #//DvdNameAllCapStrategy - one of three concrete strategies
 
-use lib '.';
-use DvdNameStrategy;
+use Patterns::Behavioral::Strategy::DvdNameStrategy;
 
-class DvdNameAllCapStrategy is DvdNameStrategy {
+class DvdNameAllCapStrategy does DvdNameStrategy {
 
-	method formatDvdName(Str $dvdName, Str $charIn)
+	method formatDvdName(Str $dvdName, Str $char?)
 	{
 		uc $dvdName
 	}

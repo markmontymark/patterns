@@ -1,27 +1,29 @@
 # vi: filetype=perl6:
 #//DvdNameContext - the context
 
-use lib '.';
-
-use DvdNameAllCapStrategy;
-use DvdNameTheAtEndStrategy;
-use DvdNameReplaceSpacesStrategy;
+use Patterns::Behavioral::Strategy::DvdNameAllCapStrategy;
+use Patterns::Behavioral::Strategy::DvdNameTheAtEndStrategy;
+use Patterns::Behavioral::Strategy::DvdNameReplaceSpacesStrategy;
 
 class DvdNameContext {
 
-	has $.dvdNameStrategy is rw;
-  
-	method formatDvdNames($names,$char) {
-		$char = ' ' unless defined $char;
-		return [
-			$names.map: {
-				my $before = $_;
-				my $after = $.dvdNameStrategy.formatDvdName($_, $char);
-				#say "Dvd name before formatting: $before";
-				#say "Dvd name after formatting:  $after";
-				$after
+	has DvdNameStrategy $.dvdNameStrategy is rw;
+ 
+ 
+#	multi method formatDvdNames( Str @names) 
+#	{
+#		return .formatDvdNames( ' ', @names );
+#	}
+
+	method formatDvdNames( :@names, Str :$char? ) 
+	{
+		return @names.map: {
+				my $bef = $_;
+				my $aft = $.dvdNameStrategy.formatDvdName($_, $char);
+				#say "Dvd name before formatting: $bef";
+				#say "Dvd name after formatting:  $aft";
+				$aft
 			}
-		];
 	}
 
 }

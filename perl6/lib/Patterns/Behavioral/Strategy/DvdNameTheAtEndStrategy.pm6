@@ -1,16 +1,15 @@
 
 #//DvdNameTheAtEndStrategy - two of three concrete strategies
 
-use lib '.';
-use DvdNameStrategy;
+use Patterns::Behavioral::Strategy::DvdNameStrategy;
 
-class DvdNameTheAtEndStrategy is DvdNameStrategy {
+class DvdNameTheAtEndStrategy does DvdNameStrategy {
 
-	method formatDvdName($dvdName,$char) {
-		return substr($dvdName,4) ~ ', The' if $dvdName ~~ /^The\s+/;
-		return substr($dvdName,4) ~ ", THE" if $dvdName ~~ /^THE\s+/;
-		return substr($dvdName,4) ~ ", the" if $dvdName ~~ /^the\s+/;
-		return $dvdName;
+	method formatDvdName( Str $name , Str $char?) 
+	{
+		return substr($name,4) ~ (', ') ~ $/[0] if $name ~~ m:i/ ^ (the)\s+ /;
+		#return substr($name,4) ~ (', ') ~ $0 if $name ~~ m:i/ ^ (the)\s+ /;
+		return $name;
 	}
 
 }
