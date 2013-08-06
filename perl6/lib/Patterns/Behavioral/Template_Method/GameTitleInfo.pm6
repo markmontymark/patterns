@@ -1,29 +1,19 @@
 
-
-package Patterns::Behavioral::Template_Method::GameTitleInfo;
-
-
 #//GameTitleInfo - three of three concrete templates
-use Moo;
-extends 'Patterns::Behavioral::Template_Method::TitleInfo';
 
-sub BUILDARGS
-{
-	my($class,$titleName) = @_;
-	{ titleName => $titleName }
+use Patterns::Behavioral::Template_Method::TitleInfo;
+
+class GameTitleInfo does TitleInfo {
+
+	method new( Str $titleName )
+	{
+		return self.bless( * , :$titleName );
+	}
+
+	method getTitleBlurb
+	{
+		'Game: ' ~ self.getTitleName()
+	}
+
 }
-
-sub BUILD
-{
-	my($self) = @_;
-	$self->setTitleName( $self->titleName );
-}
-
-sub getTitleBlurb
-{
-	my $self = shift;
-   'Game: ' . $self->getTitleName
-}
-
-1;
 

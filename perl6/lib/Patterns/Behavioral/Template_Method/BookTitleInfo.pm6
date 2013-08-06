@@ -1,45 +1,23 @@
-
-package Patterns::Behavioral::Template_Method::BookTitleInfo;
-
-
 #//BookTitleInfo - two of three concrete templates
 
-use Moo;
-extends 'Patterns::Behavioral::Template_Method::TitleInfo';
+use Patterns::Behavioral::Template_Method::TitleInfo;
 
-has author => (is => 'rw');
+class BookTitleInfo does TitleInfo {
+
+	has $.author is rw;
     
-sub BUILDARGS
-{
-	my($class,$titleName, $author)  = @_;
+	method new(Str $titleName, Str$author)
 	{
-		titleName => $titleName,
-		author => $author,
+		return self.bless( * , :$titleName, :$author );
+	}
+
+	method getAuthor
+	{
+		$.author
+	}
+
+	method getTitleBlurb
+	{
+		'Book: ' ~ self.getTitleName() ~  ', Author: ' ~ self.getAuthor()
 	}
 }
-
-sub BUILD
-{
-	my($self) = @_;
-	$self->setTitleName( $self->titleName );
-	$self->setAuthor ( $self->author );
-}    
-
-
-sub setAuthor
-{
-	my($self, $author) = @_;
-	$self->author($author);
-}
-sub getAuthor
-{
-	shift -> author
-}
-
-sub getTitleBlurb
-{
-	my($self) = @_;
-	"Book: " . $self->getTitleName .  ", Author: " . $self->getAuthor
-}
-
-1;
