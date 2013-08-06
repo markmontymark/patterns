@@ -1,10 +1,3 @@
-#use Patterns::common::ChickenSoup;
-#use Patterns::common::ClamChowder;
-#use Patterns::common::FishChowder;
-#use Patterns::common::Minnestrone;
-#use Patterns::common::PastaFazul;
-#use Patterns::common::TofuSoup;
-#use Patterns::common::VegetableSoup;
 
 use Patterns::common::SoupBuffet;
 

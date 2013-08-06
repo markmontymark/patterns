@@ -1,39 +1,35 @@
-use strict;
-use warnings;
-use v5.016;
+use v6;
 
-use Test::More tests => 3;
+use Test;
 
-BEGIN{use_ok 'Patterns::Creational::Abstract_Factory'};
+use lib 'blib/lib';
+use Patterns::Creational::Abstract_Factory;
 
 
-sub MakeSoupOfTheDay
+sub MakeSoupOfTheDay ( AbstractSoupFactory $sf ) returns Soup
 {
-	my $concreteSoupFactory = shift;
-	srand;
 	my $r = 3;
-	my $soups = [ $concreteSoupFactory->makeChickenSoup(),
-           $concreteSoupFactory->makeClamChowder(),
-           $concreteSoupFactory->makeFishChowder(),
-           $concreteSoupFactory->makeMinnestrone(),
-           $concreteSoupFactory->makePastaFazul(),
-           $concreteSoupFactory->makeTofuSoup(),
-           $concreteSoupFactory->makeVegetableSoup(),
-           $concreteSoupFactory->makeVegetableSoup(),
-       ];
-	$soups->[$r]
+	my Soup @soups = ( $sf.makeChickenSoup(),
+           $sf.makeClamChowder(),
+           $sf.makeFishChowder(),
+           $sf.makeMinnestrone(),
+           $sf.makePastaFazul(),
+           $sf.makeTofuSoup(),
+           $sf.makeVegetableSoup(),
+       );
+	return @soups[$r];
 }        
 
-my $concreteSoupFactory = new Patterns::Creational::Abstract_Factory::BostonConcreteSoupFactory();
+my AbstractSoupFactory $concreteSoupFactory = BostonConcreteSoupFactory.new();
 my $soupOfTheDay = &MakeSoupOfTheDay($concreteSoupFactory);
-is("The Soup of the day " .  $concreteSoupFactory->factoryLocation .  " is " .  $soupOfTheDay->soupName(),
+
+is "The Soup of the day " ~  $concreteSoupFactory.factoryLocation ~  " is " ~  $soupOfTheDay.soupName,
 	"The Soup of the day Boston is Minnestrone",
-	'Testing boston soup of the day');
+	"$?FILE Testing boston soup of the day";
 
-$concreteSoupFactory = new Patterns::Creational::Abstract_Factory::HonoluluConcreteSoupFactory();
+$concreteSoupFactory = HonoluluConcreteSoupFactory.new();
 $soupOfTheDay = &MakeSoupOfTheDay($concreteSoupFactory);
-is("The Soup of the day " .  $concreteSoupFactory->factoryLocation .  " is " .  $soupOfTheDay->soupName,
+is "The Soup of the day " ~  $concreteSoupFactory.factoryLocation ~  " is " ~  $soupOfTheDay.soupName,
 	"The Soup of the day Honolulu is Minnestrone",
-	'Testing boston soup of the day');
+	"$?FILE Testing honolulu soup of the day";
 
-1;

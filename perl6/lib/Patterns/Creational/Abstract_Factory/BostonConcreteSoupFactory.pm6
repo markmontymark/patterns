@@ -1,24 +1,18 @@
-package Patterns::Creational::Abstract_Factory::BostonConcreteSoupFactory; ##Concrete?  gross
+# BostonConcreteSoupFactory - One of Two concrete factories extending the abstract factory
 
+use Patterns::Creational::Abstract_Factory::AbstractSoupFactory;
+use Patterns::common::BostonClamChowder;
+use Patterns::common::BostonFishChowder;
 
+class BostonConcreteSoupFactory does AbstractSoupFactory {
 
-#//BostonConcreteSoupFactory - One of Two concrete factories extending the abstract factory
-use Moo;
-extends 'Patterns::Creational::Abstract_Factory::AbstractSoupFactory';
-
-sub BUILDARGS
-{
+	method new
 	{
-		factoryLocation =>"Boston"
+		return self.bless( * , :factoryLocation('Boston') );
 	}
-}
 
-sub makeClamChowder {
-	new Patterns::Creational::Abstract_Factory::BostonClamChowder
-}
-sub makeFishChowder {
-	new Patterns::Creational::Abstract_Factory::BostonFishChowder
-}
+	method makeClamChowder { BostonClamChowder.new() }
+	method makeFishChowder { BostonFishChowder.new() }
 
-1;
+}
 

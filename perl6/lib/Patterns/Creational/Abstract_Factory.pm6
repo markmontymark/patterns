@@ -1,4 +1,4 @@
-package Patterns::Creational::Abstract_Factory;
+package Patterns::Creational::Abstract_Factory {
 
 #// Original copy of this content taken from http://www.fluffycat.com/Java-Design-Patterns/ in 2010
 #// Original Author: Larry Truett
@@ -13,19 +13,7 @@ package Patterns::Creational::Abstract_Factory;
 #
 
 use Patterns::Creational::Abstract_Factory::BostonConcreteSoupFactory;
-use Patterns::Creational::Abstract_Factory::Soup;
 use Patterns::Creational::Abstract_Factory::HonoluluConcreteSoupFactory;
-use Patterns::Creational::Abstract_Factory::HonoluluFishChowder;
-use Patterns::Creational::Abstract_Factory::FishChowder;
 use Patterns::Creational::Abstract_Factory::AbstractSoupFactory;
-use Patterns::Creational::Abstract_Factory::HonoluluClamChowder;
-use Patterns::Creational::Abstract_Factory::PastaFazul;
-use Patterns::Creational::Abstract_Factory::TofuSoup;
-use Patterns::Creational::Abstract_Factory::BostonFishChowder;
-use Patterns::Creational::Abstract_Factory::ClamChowder;
-use Patterns::Creational::Abstract_Factory::VegetableSoup;
-use Patterns::Creational::Abstract_Factory::ChickenSoup;
-use Patterns::Creational::Abstract_Factory::Minnestrone;
-use Patterns::Creational::Abstract_Factory::BostonClamChowder;
 
-1;
+}

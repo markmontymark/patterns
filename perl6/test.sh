@@ -19,3 +19,4 @@ perl6 t/11-behavioral-template_method.t
 perl6 t/12-creational-singleton.t
 perl6 t/14-creational-factory_method.t
 perl6 t/15-creational-builder.t
+perl6 t/16-creational-abstract_factory.t
