@@ -1,23 +1,13 @@
-package Patterns::Creational::Factory_Method::HonoluluSoupFactoryMethodSubclass;
-
-
 #//HonoluluSoupFactoryMethodSubclass - Two of Two Subclass Factory Methods
-use Moo;
-extends 'Patterns::Creational::Factory_Method::SoupFactoryMethod';
 
-sub makeBuffetName
-{ 
-	"Honolulu Soup Buffet"
+use Patterns::common::HonoluluClamChowder;
+use Patterns::common::HonoluluFishChowder;
+
+use Patterns::Creational::Factory_Method::SoupFactoryMethod;
+class HonoluluSoupFactoryMethodSubclass does SoupFactoryMethod {
+
+	method makeBuffetName  {"Honolulu Soup Buffet" }
+	method makeClamChowder { HonoluluClamChowder.new() }
+	method makeFishChowder { HonoluluFishChowder.new() }
+
 }
-
-sub makeClamChowder
-{
-	new Patterns::Creational::Factory_Method::HonoluluClamChowder();
-}
-
-sub makeFishChowder
-{
-	new Patterns::Creational::Factory_Method::HonoluluFishChowder();
-}
-
-1;

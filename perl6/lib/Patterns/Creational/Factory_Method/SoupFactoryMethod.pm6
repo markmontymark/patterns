@@ -1,35 +1,25 @@
-package Patterns::Creational::Factory_Method::SoupFactoryMethod;
+#use Patterns::common::ChickenSoup;
+#use Patterns::common::ClamChowder;
+#use Patterns::common::FishChowder;
+#use Patterns::common::Minnestrone;
+#use Patterns::common::PastaFazul;
+#use Patterns::common::TofuSoup;
+#use Patterns::common::VegetableSoup;
 
-use Moo;
-        
-sub makeSoupBuffet {
-	new Patterns::Creational::Factory_Method::SoupBuffet
-}
+use Patterns::common::SoupBuffet;
 
-sub makeChickenSoup {
-	new Patterns::Creational::Factory_Method::ChickenSoup
-}
-sub makeClamChowder {
-	new Patterns::Creational::Factory_Method::ClamChowder
-}
-sub makeFishChowder {
-	new Patterns::Creational::Factory_Method::FishChowder
-}
-sub makeMinnestrone {
-	new Patterns::Creational::Factory_Method::Minnestrone
-}
-sub makePastaFazul {
-	new Patterns::Creational::Factory_Method::PastaFazul
-}
-sub makeTofuSoup {
-	new Patterns::Creational::Factory_Method::TofuSoup
-}
-sub makeVegetableSoup {
-	new Patterns::Creational::Factory_Method::VegetableSoup
-}
+role SoupFactoryMethod {
 
-sub makeBuffetName {
-	"Soup Buffet"
-}
+	method makeSoupBuffet { SoupBuffet.new() }
 
-1;
+	method makeBuffetName { 'Soup Buffet' }
+	method makeChickenSoup { ChickenSoup.new() }
+	method makeClamChowder { ClamChowder.new() }
+	method makeFishChowder { FishChowder.new() }
+	method makeMinnestrone { Minnestrone.new() }
+	method makePastaFazul { PastaFazul.new() }
+	method makeTofuSoup { TofuSoup.new() }
+	method makeVegetableSoup { VegetableSoup.new() }
+
+
+}
