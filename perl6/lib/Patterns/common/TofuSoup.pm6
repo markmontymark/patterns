@@ -1,18 +1,14 @@
-package Patterns::Creational::Abstract_Factory::TofuSoup;
+use Patterns::common::Soup;
 
-use Moo;
-extends 'Patterns::Creational::Abstract_Factory::Soup';
+class TofuSoup is Soup {
 
-sub BUILDARGS
-{
+	method new
    {
-      soupName => "Tofu Soup",
-      soupIngredients => [
+      return self.bless( * , :soupName('Tofu Soup'), :soupIngredients( [
         "1 Pound tofu",
         "1 cup carrot juice",
         "1/4 cup spirolena",
-      ]
-    }
+      ] ))
+	}
 }
 
-1;

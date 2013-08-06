@@ -1,47 +1,44 @@
-package Patterns::Creational::Builder::SoupBuffetBuilder;
+use Patterns::common::ChickenSoup;
+use Patterns::common::ClamChowder;
+use Patterns::common::FishChowder;
+use Patterns::common::Minnestrone;
+use Patterns::common::PastaFazul;
+use Patterns::common::TofuSoup;
+use Patterns::common::VegetableSoup;
+use Patterns::common::SoupBuffet;
 
-use base 'Class::Virtually::Abstract';
-__PACKAGE__->virtual_methods(qw/setSoupBuffetName/);
-use Moo;
-has soupBuffet => (is=>'rw');
+role SoupBuffetBuilder {
+
+	has SoupBuffet $.soupBuffet is rw;
         
-sub getSoupBuffet {
-	my $self = shift;
-	return $self->soupBuffet;
-}
+	method getSoupBuffet {
+		return $.soupBuffet;
+	}
 
-sub buildSoupBuffet {
-	my $self = shift;
-	$self->soupBuffet ( new Patterns::Creational::Builder::SoupBuffet() );
-}
+	method buildSoupBuffet {
+		$.soupBuffet = SoupBuffet.new()
+	}
 
-sub buildChickenSoup {
-	my $self = shift;
-	$self->soupBuffet->chickenSoup ( new Patterns::Creational::Builder::ChickenSoup());
-}
-sub buildClamChowder {
-	my $self = shift;
-	$self->soupBuffet->clamChowder ( new Patterns::Creational::Builder::ClamChowder());
-}
-sub buildFishChowder {
-	my $self = shift;
-	$self->soupBuffet->fishChowder ( new Patterns::Creational::Builder::FishChowder());
-}
-sub buildMinnestrone {
-	my $self = shift;
-	$self->soupBuffet->minnestrone ( new Patterns::Creational::Builder::Minnestrone());
-}
-sub buildPastaFazul {
-	my $self = shift;
-	$self->soupBuffet->pastaFazul ( new Patterns::Creational::Builder::PastaFazul());
-}
-sub buildTofuSoup {
-	my $self = shift;
-	$self->soupBuffet->tofuSoup ( new Patterns::Creational::Builder::TofuSoup());
-}
-sub buildVegetableSoup {
-	my $self = shift;
-	$self->soupBuffet->vegetableSoup( new Patterns::Creational::Builder::VegetableSoup() );
-}
+	method buildChickenSoup {
+		$.soupBuffet.chickenSoup = ChickenSoup.new()
+	}
+	method buildClamChowder {
+		$.soupBuffet.clamChowder = ClamChowder.new()
+	}
+	method buildFishChowder {
+		$.soupBuffet.fishChowder = FishChowder.new()
+	}
+	method buildMinnestrone {
+		$.soupBuffet.minnestrone = Minnestrone.new()
+	}
+	method buildPastaFazul {
+		$.soupBuffet.pastaFazul  = PastaFazul.new()
+	}
+	method buildTofuSoup {
+		$.soupBuffet.tofuSoup  = TofuSoup.new()
+	}
+	method buildVegetableSoup {
+		$.soupBuffet.vegetableSoup = VegetableSoup.new()
+	}
 
-1;
+}

@@ -1,16 +1,13 @@
-package Patterns::Creational::Abstract_Factory::Soup;
+# Soup - A helper class
 
+class Soup {
 
-#//Soup - A helper class
+	has Str $.soupName;
+	has Str @.soupIngredients;
 
-use Moo;
-has soupName => (is => 'ro');
-has soupIngredients => (is => 'ro');
+	method toString
+	{
+		($.soupName, 'Ingredients: ', @.soupIngredients).join: ' '
+	}        
 
-sub toString
-{
-	my $self = shift;
-	join ' ',($self->soupName,'Ingredients: ',@{$self->soupIngredients})
-}        
-
-1;
+}

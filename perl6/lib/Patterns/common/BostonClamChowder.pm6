@@ -1,20 +1,16 @@
-package Patterns::Creational::Abstract_Factory::BostonClamChowder;
+use Patterns::common::ClamChowder;
 
-use Moo;
-extends 'Patterns::Creational::Abstract_Factory::ClamChowder';
+class BostonClamChowder is ClamChowder {
 
-sub BUILDARGS
-{
+	method new
 	{
-		soupName => "QuahogChowder",
-		soupIngredients => [
+		return self.bless( * , :soupName('QuahogChowder'), :soupIngredients( [
         "1 Pound Fresh Quahogs",
         "1 cup corn",
         "1/2 cup heavy cream",
         "1/4 cup butter",
         "1/4 cup potato chips",
-		]
-    }
+		]) )
+	}
 }
 
-1;

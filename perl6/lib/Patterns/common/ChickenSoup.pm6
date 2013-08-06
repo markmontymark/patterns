@@ -1,19 +1,16 @@
-package Patterns::Creational::Abstract_Factory::ChickenSoup;
-use Moo;
-extends 'Patterns::Creational::Abstract_Factory::Soup';
+use Patterns::common::Soup;
 
-sub BUILDARGS
-{
+class ChickenSoup is Soup {
+
+	method new
    {
-      soupName => "ChickenSoup",
-      soupIngredients => [
+      return self.bless( * , :soupName('ChickenSoup'), :soupIngredients( [
         "1 Pound diced chicken",
         "1/2 cup rice",
         "1 cup bullion",
         "1/16 cup butter",
         "1/4 cup diced carrots",
-      ]
-    }
+      ] ) )
+	}
 }
 
-1;

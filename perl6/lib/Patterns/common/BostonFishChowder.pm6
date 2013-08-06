@@ -1,21 +1,17 @@
-package Patterns::Creational::Abstract_Factory::BostonFishChowder;
+use Patterns::common::FishChowder;
 
-use Moo;
-extends 'Patterns::Creational::Abstract_Factory::FishChowder';
+class BostonFishChowder is FishChowder {
 
-sub BUILDARGS
-{
+	method new
    {
-       soupName => "ScrodFishChowder",
-       soupIngredients => [
-       "1 Pound Fresh Scrod",
-       "1 cup corn",
-       "1/2 cup heavy cream",
-       "1/4 cup butter",
-       "1/4 cup potato chips",
-      ]
-    }
+       return self.bless( * , :soupName('ScrodFishChowder'), :soupIngredients( [
+			 "1 Pound Fresh Scrod",
+			 "1 cup corn",
+			 "1/2 cup heavy cream",
+			 "1/4 cup butter",
+			 "1/4 cup potato chips",
+      ] ) )
+	}
 }
 
 
-1;

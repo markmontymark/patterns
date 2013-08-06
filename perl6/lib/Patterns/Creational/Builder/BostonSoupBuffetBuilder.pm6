@@ -1,24 +1,20 @@
-package Patterns::Creational::Builder::BostonSoupBuffetBuilder;
-
-
 #//BostonSoupBuffetBuilder - One of Two Builder Subclasses
 
-use Moo;
-extends 'Patterns::Creational::Builder::SoupBuffetBuilder';
+use Patterns::Creational::Builder::SoupBuffetBuilder;
+use Patterns::common::BostonClamChowder;
+use Patterns::common::BostonFishChowder;
 
-sub buildClamChowder {
-	my $self = shift;
-	$self->soupBuffet->clamChowder ( new Patterns::Creational::Builder::BostonClamChowder() );
-}
-sub buildFishChowder {
-	my $self = shift;
-	$self->soupBuffet->fishChowder ( new Patterns::Creational::Builder::BostonFishChowder() );
-}
+class BostonSoupBuffetBuilder does SoupBuffetBuilder {
 
-sub setSoupBuffetName {
-	my $self = shift;
-	$self->soupBuffet->soupBuffetName( "Boston Soup Buffet");
-}
+	method buildClamChowder {
+		$.soupBuffet.clamChowder = BostonClamChowder.new() ;
+	}
+	method buildFishChowder {
+		$.soupBuffet.fishChowder = BostonFishChowder.new() ;
+	}
+	method setSoupBuffetName {
+		$.soupBuffet.soupBuffetName = "Boston Soup Buffet";
+	}
 
-1;
+}
 

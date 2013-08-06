@@ -1,36 +1,42 @@
-package Patterns::Creational::Builder::SoupBuffet;
-
-
 #//SoupBuffet - A helper class
-use Moo;
 
-has soupBuffetName => (is => 'rw');
-has chickenSoup => (is => 'rw');
-has clamChowder => (is => 'rw');
-has fishChowder => (is => 'rw');
-has minnestrone => (is => 'rw');
-has pastaFazul => (is => 'rw');
-has tofuSoup => (is => 'rw');
-has vegetableSoup => (is => 'rw');
+use Patterns::common::ChickenSoup;
+use Patterns::common::ClamChowder;
+use Patterns::common::FishChowder;
+use Patterns::common::Minnestrone;
+use Patterns::common::PastaFazul;
+use Patterns::common::TofuSoup;
+use Patterns::common::VegetableSoup;
 
-sub getTodaysSoups 
-{
-	my $self = shift;
-  " Today's Soups!  ".
-	  " Chicken Soup: " .
-	  $self->chickenSoup->soupName() .
-	  " Clam Chowder: " .
-	  $self->clamChowder->soupName() .
-	  " Fish Chowder: " .
-	  $self->fishChowder->soupName() .
-	  " Minnestrone: " .
-	  $self->minnestrone->soupName() .
-	  " Pasta Fazul: " .
-	  $self->pastaFazul->soupName() .
-	  " Tofu Soup: " .
-	  $self->tofuSoup->soupName() .
-	  " Vegetable Soup: " .
-	  $self->vegetableSoup->soupName()
+class SoupBuffet {
+
+	has Str $.soupBuffetName is rw;
+	has ChickenSoup $.chickenSoup  is rw;
+	has ClamChowder $.clamChowder  is rw;
+	has FishChowder $.fishChowder  is rw;
+	has Minnestrone $.minnestrone  is rw;
+	has PastaFazul $.pastaFazul is rw;
+	has TofuSoup $.tofuSoup is rw;
+	has VegetableSoup $.vegetableSoup is rw;
+
+
+	method getTodaysSoups 
+	{
+	  ' Today\'s Soups!  ' ~
+		  ' Chicken Soup: ' ~
+		  $.chickenSoup.soupName ~
+		  " Clam Chowder: " ~
+		  $.clamChowder.soupName ~
+		  " Fish Chowder: " ~
+		  $.fishChowder.soupName ~
+		  " Minnestrone: " ~
+		  $.minnestrone.soupName ~
+		  " Pasta Fazul: " ~
+		  $.pastaFazul.soupName ~
+		  " Tofu Soup: " ~
+		  $.tofuSoup.soupName ~
+		  " Vegetable Soup: " ~
+		  $.vegetableSoup.soupName
+	}
 }
 
-1;

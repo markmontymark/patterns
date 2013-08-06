@@ -1,18 +1,13 @@
-package Patterns::Creational::Abstract_Factory::Minnestrone;
+use Patterns::common::Soup;
 
-use Moo;
-extends 'Patterns::Creational::Abstract_Factory::Soup';
+class Minnestrone is Soup {
 
-sub BUILDARGS
-{
-   {
-      soupName => "Minnestrone",
-      soupIngredients => [
+   method new 
+	{
+		return self.bless( * , :soupName('Minnestrone'), :soupIngredients( [
         "1 Pound tomatos",
         "1/2 cup pasta",
         "1 cup tomato juice",
-      ]
-    }
+      ]) )
+	}
 }
-
-1;

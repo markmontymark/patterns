@@ -17,3 +17,4 @@ perl6 t/09-behavioral-strategy.t
 perl6 t/10-behavioral-visitor.t
 perl6 t/11-behavioral-template_method.t
 perl6 t/12-creational-singleton.t
+perl6 t/15-creational-builder.t
