@@ -1,28 +1,24 @@
-package Patterns::Creational::Prototype::PrototypeFactory;
+use Patterns::Creational::Prototype::AbstractFork;
+use Patterns::Creational::Prototype::AbstractSpoon;
 
-use Moo;
-has prototypeSpoon 	=> (is => 'ro' );#, isa=>sub{ref $_[0]'Patterns::Creational::Prototype::AbstractSpoon');
-has prototypeFork 	=> (is => 'ro' );#, isa=>'Patterns::Creational::Prototype::AbstractFork');
+class PrototypeFactory {
 
-sub BUILDARGS
-{
-	my($class, $spoon, $fork ) = @_;
+	has AbstractSpoon $.prototypeSpoon;#, isa=>sub{ref $_[0]'Patterns::Creational::Prototype::AbstractSpoon');
+	has AbstractFork  $.prototypeFork;#, isa=>'Patterns::Creational::Prototype::AbstractFork');
+
+	method new( AbstractSpoon :$spoon, AbstractFork:$fork )
 	{
-		prototypeSpoon => $spoon,
-		prototypeFork	=> $fork,
+		return self.bless( * , :prototypeSpoon($spoon), :prototypeFork($fork) );
 	}
-}
 
-sub makeSpoon
-{
-	my $self = shift;
-	bless $self->prototypeSpoon->clone, ref $self->prototypeSpoon
-}
+	method makeSpoon
+	{
+		$.prototypeSpoon.clone()
+	}
 
-sub makeFork
-{
-	my $self = shift;
-	bless $self->prototypeFork->clone, ref $self->prototypeFork
-}
+	method makeFork
+	{
+		$.prototypeFork.clone()
+	}
 
-1;
+}

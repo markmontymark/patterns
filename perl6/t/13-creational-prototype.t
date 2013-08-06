@@ -1,26 +1,30 @@
-use strict;
-use warnings;
-use v5.016;
+use v6;
 
-use Test::More tests => 3;
+use Test;
 
-BEGIN{use_ok 'Patterns::Creational::Prototype'};
+use lib 'blib/lib';
+use Patterns::Creational::Prototype;
 
-say( "Creating a Prototype Factory with a SoupSpoon and a SaladFork");
-my $prototypeFactory = new Patterns::Creational::Prototype::PrototypeFactory(
-	new Patterns::Creational::Prototype::SoupSpoon(), 
-	new Patterns::Creational::Prototype::SaladFork());
-my $spoon = $prototypeFactory->makeSpoon();
-my $fork = $prototypeFactory->makeFork();
-say("Getting the Spoon and Fork name:");
-is ("Spoon: " . $spoon->spoonName . ", Fork: " . $fork->forkName ,'Spoon: Soup Spoon, Fork: Salad Fork', 'Testing with SoupSpoon and SaladFork');
-say(" ");       
-say("Creating a Prototype Factory with a SaladSpoon and a SaladFork");
-$prototypeFactory = new Patterns::Creational::Prototype::PrototypeFactory(
-	new Patterns::Creational::Prototype::SaladSpoon(), 
-	new Patterns::Creational::Prototype::SaladFork());
-$spoon = $prototypeFactory->makeSpoon();
-$fork = $prototypeFactory->makeFork();
-say("Getting the Spoon and Fork name:");
-is("Spoon: " . $spoon->spoonName() . 
-	", Fork: " . $fork->forkName() ,'Spoon: Salad Spoon, Fork: Salad Fork', 'Testing with SaladSpoon and SaladFork');
+my PrototypeFactory $prototypeFactory = PrototypeFactory.new( 
+	spoon => SoupSpoon.new(), 
+	fork =>  SaladFork.new());
+
+my $spoon = $prototypeFactory.makeSpoon();
+my $fork = $prototypeFactory.makeFork();
+
+is "Spoon: " ~ $spoon.spoonName ~ ", Fork: " ~ $fork.forkName ,
+	'Spoon: Soup Spoon, Fork: Salad Fork', 
+	"$?FILE Testing with SoupSpoon and SaladFork";
+
+$prototypeFactory = PrototypeFactory.new(
+	spoon => SaladSpoon.new(), 
+	fork  => SaladFork.new());
+
+$spoon = $prototypeFactory.makeSpoon();
+$fork = $prototypeFactory.makeFork();
+
+is "Spoon: " ~ $spoon.spoonName() ~ ", Fork: " ~ $fork.forkName() ,
+	'Spoon: Salad Spoon, Fork: Salad Fork', 
+	"$?FILE Testing with SaladSpoon and SaladFork";
+
+done();

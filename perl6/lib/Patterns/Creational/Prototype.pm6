@@ -7,7 +7,7 @@
 
 
 
-package Patterns::Creational::Prototype;
+package Patterns::Creational::Prototype {
 
 use Patterns::Creational::Prototype::Cloneable;
 use Patterns::Creational::Prototype::AbstractFork;
@@ -17,4 +17,4 @@ use Patterns::Creational::Prototype::SaladFork;
 use Patterns::Creational::Prototype::SaladSpoon;
 use Patterns::Creational::Prototype::PrototypeFactory;
 
-1;
+}

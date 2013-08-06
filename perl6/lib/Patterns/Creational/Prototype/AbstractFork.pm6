@@ -1,11 +1,10 @@
-package Patterns::Creational::Prototype::AbstractFork;
-
 #//AbstractFork - Two of Two Prototypes
 
-use base 'Class::Virtually::Abstract';
-use Moo;
-with 'Patterns::Creational::Prototype::Cloneable';
+use Patterns::Creational::Prototype::Cloneable;
 
-has forkName => (is => 'rw' );
+class AbstractFork does Cloneable {
 
-1;
+	has Str $.forkName is rw;
+	method new { ... }
+
+}

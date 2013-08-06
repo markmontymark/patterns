@@ -1,16 +1,13 @@
-package Patterns::Creational::Prototype::SaladFork;
 
+#//SaladFork - A Concrete Prototype extending the AbstractFork Prototype
 
-#//SaladFork - The Concrete Prototype extending the AbstractFork Prototype
+use Patterns::Creational::Prototype::AbstractFork;
 
-use Moo;
-extends 'Patterns::Creational::Prototype::AbstractFork';
+class SaladFork is AbstractFork {
 
-sub BUILD
-{
-	my $self = shift;
-	$self->forkName('Salad Fork');
+	method new
+	{
+		return self.bless( * , :forkName('Salad Fork'));
+	}
 }
-
-1;
 

@@ -1,16 +1,13 @@
-package Patterns::Creational::Prototype::SoupSpoon;
 
+#//SoupSpoon - A Concrete Prototype extending the AbstractSpoon Prototype
 
-#//SoupSpoon - The Concrete Prototype extending the AbstractSpoon Prototype
+use Patterns::Creational::Prototype::AbstractSpoon;
 
-use Moo;
-extends 'Patterns::Creational::Prototype::AbstractSpoon';
+class SoupSpoon is AbstractSpoon {
 
-sub BUILD
-{
-	my $self = shift;
-	$self->spoonName('Soup Spoon');
+	method new
+	{
+		return self.bless( * , :spoonName('Soup Spoon'));
+	}
 }
-
-1;
 
