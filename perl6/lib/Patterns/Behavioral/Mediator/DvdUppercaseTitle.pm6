@@ -1,45 +1,41 @@
 #//DvdUpcaseTitle - Two of Two Concrete Colleagues or Mediatees
 
-package Patterns::Behavioral::Mediator::DvdUppercaseTitle;
+use Patterns::Behavioral::Mediator::DvdTitle;
 
-use Moo;
-extends 'Patterns::Behavioral::Mediator::DvdTitle';
+class DvdUppercaseTitle does DvdTitle {
 
-has uppercasetitle => (is => 'rw');
-has mediator => (is => 'rw');
+	has Str $.uppercasetitle is rw;
 
-
-sub BUILDARGS
-{
-	my($class,$title,$mediator) = @_;
+	multi method new( DvdTitle $titleObj )
 	{
-		title => ref $title ? $title->title : $title,
-		mediator => $mediator,
+		my $title = $titleObj.getTitle();
+		return self.init( self.bless( * , :$title) );
 	}
+	multi method new( Str $title )
+	{
+		return self.init( self.bless( * , :$title ) );
+	}
+
+	method init( DvdUppercaseTitle $self )
+	{
+		$self.resetTitle();
+		return $self;
+	}
+
+	multi method resetTitle( Str $title )
+	{
+		self.setTitle($title);
+		self.uppercasetitle = uc self.title ;
+	}
+
+	multi method resetTitle( )
+	{
+		self.uppercasetitle = uc self.title ;
+	}
+
+	method setSuperTitleUpcase {
+		self.setTitle( self.uppercasetitle );
+	}	
+
+
 }
-
-sub BUILD
-{
-	my $self = shift;
-	$self->setTitle( $self->title);
-	$self->resetTitle;
-	$self->mediator->uppercasetitle($self);
-}
-
-
-sub resetTitle
-{
-	my( $self,$title ) = @_;
-	$self->setTitle($title) if defined $title;
-	$self->uppercasetitle( uc $self->title );
-}
-
-sub setSuperTitleUpcase {
-	my $self = shift;
-	$self->setTitle( $self->uppercasetitle );
-	$self->dvdMediator->changeTitle($self);       
-}
-
-
-1;
-

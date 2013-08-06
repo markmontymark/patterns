@@ -1,24 +1,26 @@
-#//DvdMediator - The Mediator
+#  DvdMediator - The Mediator
 
+use Patterns::Behavioral::Mediator::DvdLowercaseTitle;
+use Patterns::Behavioral::Mediator::DvdUppercaseTitle;
 
-package Patterns::Behavioral::Mediator::DvdMediator;
+class DvdMediator {
 
-use Moo;
-has uppercasetitle => ( is => 'rw');
-has lowercasetitle => ( is => 'rw');
+	has DvdLowercaseTitle $.lowercasetitle is rw;
+	has DvdUppercaseTitle $.uppercasetitle is rw;
 
-sub changeTitle
-{
-	my( $self, $title ) = @_;
-	if( ref $title =~ /lower/i ) ##ugh
+	method new( DvdLowercaseTitle $lowercasetitle, DvdUppercaseTitle $uppercasetitle )
 	{
-		$self->lowercasetitle->resetTitle( $title->title );
+		return self.bless( * , :$lowercasetitle, :$uppercasetitle );
 	}
-	else
+
+	multi method changeTitle (DvdLowercaseTitle $title )
 	{
-		$self->uppercasetitle->resetTitle( $title->title);
+		$.lowercasetitle.resetTitle( $title.title );
+	}
+
+	multi method changeTitle (DvdUppercaseTitle $title )
+	{
+		$.uppercasetitle.resetTitle( $title.title);
 	}
 }
 
-
-1;

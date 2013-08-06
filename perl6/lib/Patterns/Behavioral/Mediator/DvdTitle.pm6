@@ -6,23 +6,18 @@
 #//Passes communication between two or more objects.
 #//DvdTitle - the Abstract Colleague or Mediatee
 
+role DvdTitle {
 
-package Patterns::Behavioral::Mediator::DvdTitle;
-
-use base 'Class::Virtually::Abstract';
-use Moo;
-has title => (is => 'rw');
+	has Str $.title is rw;
    
-sub setTitle
-{
-	my($self,$title) = @_;
-	$self->title($title);
-}
+	method setTitle( Str $t )
+	{
+		$.title = $t;
+	}
 
-sub getTitle
-{
-	my $self = shift;
-	$self->title
-}
+	method getTitle
+	{
+		$.title
+	}
 
-1;
+}
