@@ -7,53 +7,34 @@
 #//Singleton Overview
 #//A class distributes the only instance of itself.
 
-package Patterns::Creational::Singleton::SingleSpoon;
+class SingleSpoon {
 
-use Moo;
+	our $.theSpoon;
 
-our $_SPOON = new Patterns::Creational::Singleton::SingleSpoon;
-has soupLastUsedWith => (is => 'rw');
-has isAvailable => (
-	is => 'rw',
-	 default=> 1);
-has theSpoon => (
-	is => 'ro',
-	default => sub{return $_SPOON});
-has theSpoonIsAvailable => (is => 'ro');
+	has Bool $.isAvailable is rw = True;
 
-sub BUILD
-{
-	my($self) = @_;
-	$self = $_SPOON;
-	return $_SPOON;
-}
-
-
-sub useSpoon
-{
-	my $self = shift;
-	if($self->isAvailable)
+	method new 
 	{
-		$self->isAvailable(0);
-		return;
+		unless $.theSpoon.defined {
+			$.theSpoon = self.bless( * );
+		}
+		return $.theSpoon;
 	}
-	#warn "Spoon in use";
+
+	method useSpoon
+	{
+		$.isAvailable = False if $.isAvailable;
+	}
+
+
+	method toString 
+	{
+		'The spoon is' ~ ($.isAvailable ?? ' ' !! ' not ') ~ 'available.'
+	}
+
+	method returnSpoon
+	{
+		$.isAvailable = True;
+	}   
+
 }
-
-sub toString 
-{
-	my $self = shift;
-	'The spoon is' . 
-		($self->isAvailable ? ' ' : ' not ') . 
-		'available.  The spoon was ' . 
-		($self->soupLastUsedWith ? ('last used with '. $self->soupLastUsedWith) :  'not used yet') . '.';
-}
-
-sub returnSpoon
-{
-	my $self = shift;
-	$self->soupLastUsedWith(undef);
-	$self->isAvailable(1);
-}   
-
-1;

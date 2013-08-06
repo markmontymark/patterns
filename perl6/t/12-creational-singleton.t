@@ -1,34 +1,27 @@
 
-use strict;
-use warnings;
-use v5.016;
+use v6;
 
-use Test::More tests => 2;
+use Test;
 
-BEGIN{use_ok 'Patterns::Creational::Singleton'};
+use lib 'blib/lib';
 
-say("First person getting the spoon");
-my $spoonForFirstPerson = $Patterns::Creational::Singleton::SingleSpoon::_SPOON;
-$spoonForFirstPerson->useSpoon;
-say  $spoonForFirstPerson ? $spoonForFirstPerson->toString : "No spoon was available";
-say "";
+use Patterns::Creational::Singleton;
 
-say("Second person getting a spoon");
-my $spoonForSecondPerson = $Patterns::Creational::Singleton::SingleSpoon::_SPOON;
-is( "$spoonForFirstPerson", "$spoonForSecondPerson", 'Object toString expected to be equal');
-$spoonForSecondPerson->useSpoon();
-say  $spoonForSecondPerson ? $spoonForSecondPerson->toString : "No spoon was available";
+my $spoonForFirstPerson = SingleSpoon.new();
+is $spoonForFirstPerson.toString() , 'The spoon is available.' , "$?FILE first spoon instance";
+$spoonForFirstPerson.useSpoon();
 
-say "";
+my $spoonForSecondPerson = SingleSpoon.new();
+is "$spoonForFirstPerson", "$spoonForSecondPerson", "$?FILE Object toString expected to be equal";
 
-say("First person returning the spoon");
-$spoonForFirstPerson->returnSpoon;       
-say("The spoon was returned");
+$spoonForSecondPerson.useSpoon();
+is $spoonForSecondPerson.toString(), 'The spoon is not available.', "$?FILE Second spoon toString should not have spoon available";
 
-say "";
+$spoonForFirstPerson.returnSpoon();       
+is $spoonForSecondPerson.toString(), 'The spoon is available.',"$?FILE First spoon returned ,second spoon toString test";
 
-say("Second person getting a spoon");
-$spoonForSecondPerson->useSpoon;
-say  $spoonForSecondPerson ? $spoonForSecondPerson->toString : "No spoon was available";
+
+$spoonForSecondPerson.useSpoon();
+is $spoonForSecondPerson.toString() , 'The spoon is not available.' , "$?FILE Second spoon toString";
 
 done();

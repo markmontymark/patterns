@@ -7,8 +7,8 @@
 #//Singleton Overview
 #//A class distributes the only instance of itself.
 
-package Patterns::Creational::Singleton;
+package Patterns::Creational::Singleton {
 
 use Patterns::Creational::Singleton::SingleSpoon;
 
-1;
+}
