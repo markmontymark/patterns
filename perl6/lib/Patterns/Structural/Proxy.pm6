@@ -6,8 +6,8 @@ package Patterns::Structural::Proxy {
 #//One class controls the creation of and access to objects in another class.
 
 
-use Patterns::Structural::Proxy::PotOfTeaProxy;
-use Patterns::Structural::Proxy::PotOfTea;
 use Patterns::Structural::Proxy::PotOfTeaInterface;
+use Patterns::Structural::Proxy::PotOfTea;
+use Patterns::Structural::Proxy::PotOfTeaProxy;
 
 }

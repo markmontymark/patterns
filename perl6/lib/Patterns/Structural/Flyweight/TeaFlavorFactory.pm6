@@ -1,32 +1,25 @@
-use Patterns::Structural::Flyweight::;
-class TeaFlavorFactory; {
-
-
 #//TeaFlavorFactory - the Factory
 
+use Patterns::Structural::Flyweight::TeaFlavor;
 
-has flavors => is => 'rw';
-has teasMade => is => 'rw';
+class TeaFlavorFactory {
 
-method new
-{
-	{flavors => [], teasMade => 0 }
-}
-   
-method getTeaFlavor
-{
-	my($self,$flavor) = @_;
-	if ($self->teasMade > 0) 
+	has TeaFlavor @.flavors;
+	has Int $.teasMade is rw = 0;
+
+	method getTeaFlavor( Str $flavor ) returns TeaFlavor
 	{
-		for( @{$self->flavors} )
+		if $.teasMade > 0
 		{
-			return $_ if $flavor eq $_->teaFlavor;
+			for @.flavors
+			{
+				return $_ if $flavor eq $_.teaFlavor;
+			}
 		}
+		@.flavors.push: TeaFlavor.new($flavor);
+		$.teasMade += 1;
+		return @.flavors[ $.teasMade - 1 ];
 	}
-	push @{$self->flavors}, new Patterns::Structural::Flyweight::TeaFlavor($flavor);
-	$self->teasMade( $self->teasMade + 1 );
-	return $self->flavors->[ $self->teasMade - 1 ];
-}
    
 
 }

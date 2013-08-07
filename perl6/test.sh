@@ -21,3 +21,10 @@ perl6 t/13-creational-prototype.t
 perl6 t/14-creational-factory_method.t
 perl6 t/15-creational-builder.t
 perl6 t/16-creational-abstract_factory.t
+perl6 t/17-structural-adapter.t
+perl6 t/18-structural-bridge.t
+perl6 t/19-structural-composite.t
+perl6 t/20-structural-decorator.t
+perl6 t/21-structural-facade.t
+perl6 t/22-structural-flyweight.t
+perl6 t/23-structural-proxy.t

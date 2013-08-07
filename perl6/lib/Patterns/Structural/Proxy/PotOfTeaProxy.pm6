@@ -1,17 +1,16 @@
-use Patterns::Structural::Proxy::;
-class PotOfTeaProxy; {
-
 #//PotOfTeaProxy - the Proxy
 
-with 'Patterns::Structural::Proxy::PotOfTeaInterface';
+use Patterns::Structural::Proxy::PotOfTeaInterface;
+use Patterns::Structural::Proxy::PotOfTea;
 
-has potOfTea => is => 'rw';
-method pourTea
-{
-	my $self = shift;
-	$self->potOfTea( new Patterns::Structural::Proxy::PotOfTea )
-		unless defined $self->potOfTea;
-   $self->potOfTea->pourTea()
-}
+class PotOfTeaProxy does PotOfTeaInterface {
+
+has PotOfTea $.potOfTea is rw;
+
+	method pourTea
+	{
+		$.potOfTea = PotOfTea.new() unless $.potOfTea.defined;
+		$.potOfTea.pourTea()
+	}
 
 }

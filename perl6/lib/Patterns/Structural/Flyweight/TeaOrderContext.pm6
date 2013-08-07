@@ -1,15 +1,12 @@
-use Patterns::Structural::Flyweight::;
-class TeaOrderContext; {
-
-
 #//TeaOrderContext - the Context
 
-has tableNumber => is => 'rw';
+class TeaOrderContext {
 
-method new
-{
-	my ($class,$tableNumber ) = @_;
-	{ tableNumber => $tableNumber }
-}
+	has Int $.tableNumber is rw;
+
+	method new( Int $tableNumber)
+	{
+		return self.bless( * , :$tableNumber );
+	}
 
 }

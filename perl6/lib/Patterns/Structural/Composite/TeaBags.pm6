@@ -1,18 +1,17 @@
-use Patterns::Structural::Composite::;
-class TeaBags; {
+role TeaBags {
 
-use base 'Class::Virtually::Abstract';
-__PACKAGE__->virtual_methods(qw/countTeaBags add remove/);
+	has TeaBags $.parent is rw;
+	has Str $.name is rw;
+	has TeaBags @.teaBagList is rw = ();
 
+	method new (Str $name )
+	{
+		return self.bless( * , :$name );
+	}
 
-has parent => is => 'rw';
-has name => is => 'rw';
-has teaBagList => is => 'rw';
+	method countTeaBags returns Int { ... }
+	method add returns Bool { ... }
+	method remove returns Bool { ... }
 
-method new
-{
-	my($class,$name) = @_;
-	{ name => $name }
-}
 
 }

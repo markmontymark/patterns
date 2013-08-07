@@ -7,7 +7,7 @@ package Patterns::Structural::Facade {
 
 use Patterns::Structural::Facade::FacadeTeaBag;
 use Patterns::Structural::Facade::FacadeWater;
-use Patterns::Structural::Facade::FacadeCuppaMaker;
 use Patterns::Structural::Facade::FacadeTeaCup;
+use Patterns::Structural::Facade::FacadeCuppaMaker;
 
 }

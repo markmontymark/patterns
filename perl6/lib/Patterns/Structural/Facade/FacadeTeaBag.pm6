@@ -1,7 +1,5 @@
-use Patterns::Structural::Facade::;
-class FacadeTeaBag; {
+class FacadeTeaBag {
 
-
-has flavor => is => 'rw';
+	has Str $.flavor is rw;
 
 }

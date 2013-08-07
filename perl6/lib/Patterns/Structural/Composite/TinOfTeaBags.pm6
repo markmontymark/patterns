@@ -1,47 +1,36 @@
-use Patterns::Structural::Composite::;
-class TinOfTeaBags; {
-
 #//TinOfTeaBags - one composite extension - the "node"
 
-extends 'Patterns::Structural::Composite::TeaBags';
+use Patterns::Structural::Composite::TeaBags;
 
-method new
-{
-	my($class,$name) = @_;
-	{ name => $name, teaBagList => [] }
-}
+class TinOfTeaBags does TeaBags {
 
-method countTeaBags {
-	my $self = shift;
-	my $totalTeaBags = 0;
-	$totalTeaBags += $_->countTeaBags for @{$self->teaBagList};
-	$totalTeaBags
-}
-
-method add
-{
-	my($self,$teaBags) = @_;
-	$teaBags->parent($self);
-	return push @{$self->teaBagList},$teaBags;
-}
-
-method remove
-{
-	my($self,$toRemove) = @_;
-	my @newList = ();
-	my $found_at_least_one = 0;
-	for( @{$self->teaBagList} )
-	{
-		if($_ == $toRemove)
-		{
-			$found_at_least_one = 1 unless $found_at_least_one;
-		}
-		else
-		{
-			push @newList,$_;
-		}
+	method countTeaBags {
+		my Int $totalTeaBags = 0;
+		$totalTeaBags += $_.countTeaBags() for @.teaBagList;
+		$totalTeaBags
 	}
-	$found_at_least_one
-}
+
+	method add (TeaBags $teaBags)
+	{
+		$teaBags.parent = self;
+		@.teaBagList.push: $teaBags;
+		True
+	}
+
+	method remove( TeaBags $toRemove )
+	{
+		my Bool $found_at_least_one = False;
+		my $len = @.teaBagList.elems;
+		my $ri;
+		for (-1*($len - 1))..0 {
+			$ri = -1 * $_;
+			my TeaBags $tb = @.teaBagList[ $ri ];
+			if $tb === $toRemove {
+				$found_at_least_one = True unless $found_at_least_one;
+				@.teaBagList.splice: $ri,1;
+			}
+		}
+		$found_at_least_one
+	}
 
 }

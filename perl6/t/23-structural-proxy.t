@@ -5,15 +5,10 @@ use v6;
 use Test;
 
 use lib 'blib/lib';
+use Patterns::Structural::Proxy;
 
 
-use Patterns::Structural::Proxy
-
-
-say("TestProxy: instantiating PotOfTeaProxy");
-my $potOfTea = new Patterns::Structural::Proxy::PotOfTeaProxy();
-say(" ");
-say("TestProxy: pouring tea");
-is( $potOfTea->pourTea() , 'Pouring tea', 'Test pouring from a pot of tea');
+my $potOfTea = PotOfTeaProxy.new();
+is  $potOfTea.pourTea() , 'Pouring tea', "$?FILE Test pouring from a pot of tea";
 
 done();

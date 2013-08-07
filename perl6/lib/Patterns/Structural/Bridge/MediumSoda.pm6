@@ -1,24 +1,20 @@
-use Patterns::Structural::Bridge::;
-class MediumSoda; {
-
-
 #//MediumSoda - one of two classes extending the Abstract
 
-extends 'Patterns::Structural::Bridge::Soda';
+use Patterns::Structural::Bridge::Soda;
 
-method BUILD
-{
-	my($self) = @_;
-	$self->setSodaImp();
-}
+class MediumSoda does Soda {
 
-method pourSoda 
-{
-	my $self = shift;
-	my $sodaImp = $self->getSodaImp;
-	my @retval;
-	push @retval,$sodaImp->pourSodaImp for 0..1;
-	join ' ',@retval
-}
+	method new
+	{
+		self.bless( * )
+	}
+
+	method pourSoda 
+	{
+		my $sodaImp = $.getSodaImp();
+		(0..1).map: { 
+			$sodaImp.pourSodaImp()
+		}
+	}
 
 }

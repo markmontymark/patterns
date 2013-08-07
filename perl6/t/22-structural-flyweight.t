@@ -6,24 +6,22 @@ use Test;
 
 use lib 'blib/lib';
 
+use Patterns::Structural::Flyweight;
 
-use Patterns::Structural::Flyweight
 
-
-my @flavors;
-my @tables;
+my TeaFlavor @flavors;
+my TeaOrderContext @tables;
 
 my $ordersMade = 0;    
 my $teaFlavorFactory;
 
-sub takeOrders
+sub takeOrders($flavorIn, $table)
 {
-	my($flavorIn, $table)  = @_;
-	$flavors[$ordersMade] = $teaFlavorFactory->getTeaFlavor($flavorIn);
-	$tables[$ordersMade++] = new Patterns::Structural::Flyweight::TeaOrderContext($table);
+	@flavors[$ordersMade] = $teaFlavorFactory.getTeaFlavor($flavorIn);
+	@tables[$ordersMade++] =  TeaOrderContext.new($table);
 }
 
-$teaFlavorFactory = new Patterns::Structural::Flyweight::TeaFlavorFactory();
+$teaFlavorFactory = TeaFlavorFactory.new();
 
 &takeOrders("chai", 2);    
 &takeOrders("chai", 2);
@@ -41,12 +39,14 @@ $teaFlavorFactory = new Patterns::Structural::Flyweight::TeaFlavorFactory();
 &takeOrders("chai", 121);
 &takeOrders("earl grey", 121);
 
-for (0..($ordersMade-1))
+for 0..($ordersMade-1)
 {
-	$flavors[$_]->serveTea($tables[$_]);
+	@flavors[$_].serveTea(@tables[$_]);
 }  
-say(" ");       
-is("total teaFlavor objects made: " . $teaFlavorFactory->teasMade(), 'total teaFlavor objects made: 3','Test total tea flavors made');
+
+is "total teaFlavor objects made: " ~ $teaFlavorFactory.teasMade(), 
+	'total teaFlavor objects made: 3',
+	"$?FILE Test total tea flavors made";
 
 done();
 

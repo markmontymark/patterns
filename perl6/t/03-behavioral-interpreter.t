@@ -18,7 +18,7 @@ use DvdInterpreterClient;
 use DvdInterpreterContext;
 
 ###BEGIN {*Patterns::Behavioral::Interpreter:: = *Patterns::Behavioral::Interpreter::}
-#my $n = Patterns::Behavioral::Interpreter::DvdActorExpression->new();
+#my $n = Patterns::Behavioral::Interpreter::DvdActorExpression.new();
 #say "n $n";
 
 my $ctx = DvdInterpreterContext.new();

@@ -1,19 +1,18 @@
-use Patterns::Structural::Bridge::;
-class Soda; {
+use Patterns::Structural::Bridge::SodaImp;
+use Patterns::Structural::Bridge::SodaImpSingleton;
 
-use base 'Class::Virtually::Abstract';
-__PACKAGE__->virtual_methods(qw/pourSoda/);
+role Soda {
 
-has sodaImp => is => 'rw';
+	has SodaImp $.sodaImp is rw;
 
-method setSodaImp {
-	my $self = shift;
-	$self->sodaImp( Patterns::Structural::Bridge::SodaImpSingleton::getTheSodaImp() );
-}
+	method pourSoda { ... }
 
-method getSodaImp{
-	my $self = shift;
-	$self->sodaImp
-}
+	method setSodaImp {
+		$.sodaImp = SodaImpSingleton.getTheSodaImp();
+	}
+
+	method getSodaImp {
+		$.sodaImp
+	}
 
 }

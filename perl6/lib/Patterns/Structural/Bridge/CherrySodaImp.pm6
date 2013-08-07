@@ -1,20 +1,12 @@
-use Patterns::Structural::Bridge::;
-class CherrySodaImp; {
-
-
 #//CherrySodaImp - one of three classes extending the Implementation Base Class
 
+use Patterns::Structural::Bridge::SodaImp;
 
-extends 'Patterns::Structural::Bridge::SodaImp';
-has msg => is => 'ro';
-method new 
-{
-	{ msg => "Yummy Cherry Soda!" }
-}
+class CherrySodaImp does SodaImp {
+
+	method new 
+	{
+		return self.bless( * , :msg( 'Yummy Cherry Soda!' ) );
+	}
     
-method pourSodaImp {
-	my $self = shift;
-	$self->msg
-}
-
 }

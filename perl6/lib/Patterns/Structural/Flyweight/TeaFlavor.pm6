@@ -1,24 +1,20 @@
-use Patterns::Structural::Flyweight::;
-class TeaFlavor; {
-
 #//TeaFlavor - the Concrete Flyweight
 
+use Patterns::Structural::Flyweight::TeaOrder;
+use Patterns::Structural::Flyweight::TeaOrderContext;
 
-extends 'Patterns::Structural::Flyweight::TeaOrder';
+class TeaFlavor is TeaOrder {
 
-has teaFlavor => is => 'rw';
-method new
-{
-	my ($class, $flavor ) = @_;
+	has Str $.teaFlavor is rw;
+
+	method new( Str $teaFlavor )
 	{
-		teaFlavor => $flavor 
+		return self.bless( * , :$teaFlavor );
 	}
-}
-   
-method serveTea
-{
-	my($self, $ctx ) = @_;
-	"Serving tea flavor " . $self->teaFlavor . " to table number " . $ctx->tableNumber 
-}
+		
+	method serveTea (TeaOrderContext $ctx )
+	{
+		"Serving tea flavor " ~ $.teaFlavor ~ " to table number " ~ $ctx.tableNumber 
+	}
 
 }

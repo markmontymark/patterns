@@ -1,22 +1,19 @@
-use Patterns::Structural::Bridge::;
-class SuperSizeSoda; {
+#  SuperSizeSoda - two of two classes extending the Abstract
 
+use Patterns::Structural::Bridge::Soda;
 
-#//SuperSizeSoda - two of two classes extending the Abstract
+class SuperSizeSoda does Soda {
 
-extends 'Patterns::Structural::Bridge::Soda';
-method BUILD
-{
-	my $self = shift;
-	$self->setSodaImp();
-}
+	method new
+	{
+		my $self = self.bless( * );
+		$self.setSodaImp();
+		$self
+	}
 
-method pourSoda
-{
-	my $self = shift;
-	my @retval;
-   push @retval,$self->sodaImp->pourSodaImp for 1..5;
-	join ' ',@retval
-}
+	method pourSoda
+	{
+		(1..5).map: { $.sodaImp.pourSodaImp() }
+	}
 
 }

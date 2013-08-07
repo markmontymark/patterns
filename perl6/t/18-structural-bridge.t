@@ -3,7 +3,7 @@ use v6;
 use Test;
 
 use lib 'blib/lib';
-use Patterns::Structural::Bridge
+use Patterns::Structural::Bridge;
 
 sub testCherryPlatform {
 	SodaImpSingleton.setTheSodaImp(CherrySodaImp.new());

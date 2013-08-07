@@ -1,8 +1,9 @@
-use Patterns::Structural::Bridge::;
-class SodaImp; {
+role SodaImp {
 
-use base 'Class::Virtually::Abstract';
-__PACKAGE__->virtual_methods( qw/pourSodaImp/ );
+	has Str $!msg;
 
+	method pourSodaImp { 
+		return $!msg;
+	}
 
 }

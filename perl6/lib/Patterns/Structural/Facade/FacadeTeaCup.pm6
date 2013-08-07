@@ -1,53 +1,47 @@
-use Patterns::Structural::Facade::;
-class FacadeTeaCup; {
-
 #//FacadeTeaCup - one of three classes the facade calls
 
-use v5.016;
+use Patterns::Structural::Facade::FacadeWater;
+use Patterns::Structural::Facade::FacadeTeaBag;
 
-has teaBagIsSteeped => is => 'rw';
-has water => is => 'rw';
-has teaBag => is => 'rw';
+class FacadeTeaCup {
+
+	has Bool $.teaBagIsSteeped is rw;
+	has FacadeWater $.water is rw;
+	has FacadeTeaBag $.teaBag is rw;
     
-method BUILD
-{
-	my $self = shift;
-	$self->teaBagIsSteeped(0);
-}    
+	method new
+	{
+		return self.bless( * , :teaBagIsSteeped(False) );	
+	}    
    
-method steepTeaBag 
-{
-	my $self = shift;
-	if($self->teaBag && 
-		$self->water && 
-		$self->water->isBoiling
-	) 
+	method steepTeaBag 
 	{
-		say("the tea is steeping in the cup");
-		$self->teaBagIsSteeped(1);
-	} 
-	else 
-	{
-		say("the tea is not steeping in the cup");
-		$self->teaBagIsSteeped(0);
-	}           
-}
-   
-method toString
-{
-	my $self = shift;
-	return "A nice cuppa tea!" if $self->teaBagIsSteeped;
-	my $tempString = "A cup with ";
-	if ($self->water) {
-		$tempString .=  $self->water->isBoiling ? "boiling water " : "cold water ";
+		if $.teaBag.defined && $.water.defined && $.water.isBoiling() 
+		{
+			$.teaBagIsSteeped = True;
+			"the tea is steeping in the cup"
+		} 
+		else 
+		{
+			$.teaBagIsSteeped = False;
+			"the tea is not steeping in the cup"
+		}           
 	}
-	else 
+		
+	method toString
 	{
-		$tempString .= "no water ";
-	}
+		return "A nice cuppa tea!" if $.teaBagIsSteeped;
+		my $tempString = "A cup with ";
+		if $.water.defined {
+			$tempString ~=  $.water.isBoiling() ?? "boiling water " !! "cold water ";
+		}
+		else 
+		{
+			$tempString ~= "no water ";
+		}
 
-	$tempString .= $self->teaBag ? "and a tea bag" : "and no tea bag";
-	$tempString
-}
+		$tempString ~= $.teaBag.defined ?? "and a tea bag" !! "and no tea bag";
+		$tempString
+	}
 
 }
