@@ -12,12 +12,19 @@ Much thanks to Larry for allowing to me to start off this project with his Java 
 	Java - complete (copied, see Attribution)
 	Perl - complete
 	CoffeeScript - complete
-	JavaScript - complete (using CoffeeScript's compilation, plus removed Coffeescript dependency in Gruntfile.js and package.json)
+	JavaScript - complete
 	C - complete
 	PHP - complete
 	Python - complete
 	Perl6 - complete
-	C++ - incomplete
+
+	TODO
+	C++ 
+	Ruby
+	Go
+	Erlang
+	Java 1.7
+		
 
 # Quick start
 
