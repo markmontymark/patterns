@@ -1,14 +1,15 @@
-package Patterns::Structural::Proxy::PotOfTea;
+use Patterns::Structural::Proxy::;
+class PotOfTea; {
 
 
 #//PotOfTea - the Real Subject
 
-use Moo;
+
 with 'Patterns::Structural::Proxy::PotOfTeaInterface';
 
-sub pourTea
+method pourTea
 {
 	"Pouring tea"
 }
 
-1;
+}

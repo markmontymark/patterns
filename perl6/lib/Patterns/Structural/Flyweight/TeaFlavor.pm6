@@ -1,12 +1,13 @@
-package Patterns::Structural::Flyweight::TeaFlavor;
+use Patterns::Structural::Flyweight::;
+class TeaFlavor; {
 
 #//TeaFlavor - the Concrete Flyweight
 
-use Moo;
+
 extends 'Patterns::Structural::Flyweight::TeaOrder';
 
 has teaFlavor => is => 'rw';
-sub BUILDARGS
+method new
 {
 	my ($class, $flavor ) = @_;
 	{
@@ -14,10 +15,10 @@ sub BUILDARGS
 	}
 }
    
-sub serveTea
+method serveTea
 {
 	my($self, $ctx ) = @_;
 	"Serving tea flavor " . $self->teaFlavor . " to table number " . $ctx->tableNumber 
 }
 
-1;
+}

@@ -1,19 +1,20 @@
-package Patterns::Structural::Bridge::GrapeSodaImp;
+use Patterns::Structural::Bridge::;
+class GrapeSodaImp; {
 
 
 #//GrapeSodaImp - one of three classes extending the Implementation Base Class
 
-use Moo;
+
 extends 'Patterns::Structural::Bridge::SodaImp';
 has msg => is => 'ro';
-sub BUILDARGS 
+method new 
 {
 	{ msg => "Yummy Grape Soda!" }
 }
     
-sub pourSodaImp {
+method pourSodaImp {
 	my $self = shift;
 	$self->msg
 }
 
-1;
+}

@@ -1,4 +1,4 @@
-package Patterns::Structural::Decorator;
+package Patterns::Structural::Decorator {
 
 #//// Original copy of this content taken from http://www.fluffycat.com/Java-Design-Patterns/ in 2010
 #//// Original Author: Larry Truett
@@ -10,4 +10,4 @@ use Patterns::Structural::Decorator::Tea;
 use Patterns::Structural::Decorator::TeaLeaves;
 use Patterns::Structural::Decorator::ChaiDecorator;
 
-1;
+}

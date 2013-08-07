@@ -1,19 +1,20 @@
-package Patterns::Structural::Bridge::CherrySodaImp;
+use Patterns::Structural::Bridge::;
+class CherrySodaImp; {
 
 
 #//CherrySodaImp - one of three classes extending the Implementation Base Class
 
-use Moo;
+
 extends 'Patterns::Structural::Bridge::SodaImp';
 has msg => is => 'ro';
-sub BUILDARGS 
+method new 
 {
 	{ msg => "Yummy Cherry Soda!" }
 }
     
-sub pourSodaImp {
+method pourSodaImp {
 	my $self = shift;
 	$self->msg
 }
 
-1;
+}

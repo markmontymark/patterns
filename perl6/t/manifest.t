@@ -1,8 +1,11 @@
 #!perl -T
 
-use strict;
-use warnings;
-use Test::More;
+
+
+use Test;
+
+use lib 'blib/lib';
+
 
 unless ( $ENV{RELEASE_TESTING} ) {
     plan( skip_all => "Author tests not required for installation" );

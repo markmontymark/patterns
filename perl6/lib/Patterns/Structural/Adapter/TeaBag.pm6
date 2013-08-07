@@ -1,12 +1,10 @@
-package Patterns::Structural::Adapter::TeaBag;
+class TeaBag {
 
-use Moo;
-has teaBagIsSteeped => is => 'rw', default => sub{0};
-    
-sub steepTeaInCup
-{
-	my $self = shift;
-	$self->teaBagIsSteeped(1);
+	has Bool $.teaBagIsSteeped is rw = False;
+		 
+	method steepTeaInCup
+	{
+		$.teaBagIsSteeped = True;
+	}
+
 }
-
-1;

@@ -1,20 +1,21 @@
-package Patterns::Structural::Facade::FacadeTeaCup;
+use Patterns::Structural::Facade::;
+class FacadeTeaCup; {
 
 #//FacadeTeaCup - one of three classes the facade calls
-use Moo;
+
 use v5.016;
 
 has teaBagIsSteeped => is => 'rw';
 has water => is => 'rw';
 has teaBag => is => 'rw';
     
-sub BUILD
+method BUILD
 {
 	my $self = shift;
 	$self->teaBagIsSteeped(0);
 }    
    
-sub steepTeaBag 
+method steepTeaBag 
 {
 	my $self = shift;
 	if($self->teaBag && 
@@ -32,7 +33,7 @@ sub steepTeaBag
 	}           
 }
    
-sub toString
+method toString
 {
 	my $self = shift;
 	return "A nice cuppa tea!" if $self->teaBagIsSteeped;
@@ -49,4 +50,4 @@ sub toString
 	$tempString
 }
 
-1;
+}

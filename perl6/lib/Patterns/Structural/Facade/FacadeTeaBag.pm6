@@ -1,6 +1,7 @@
-package Patterns::Structural::Facade::FacadeTeaBag;
+use Patterns::Structural::Facade::;
+class FacadeTeaBag; {
 
-use Moo;
+
 has flavor => is => 'rw';
 
-1;
+}

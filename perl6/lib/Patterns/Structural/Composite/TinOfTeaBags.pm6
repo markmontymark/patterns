@@ -1,30 +1,31 @@
-package Patterns::Structural::Composite::TinOfTeaBags;
+use Patterns::Structural::Composite::;
+class TinOfTeaBags; {
 
 #//TinOfTeaBags - one composite extension - the "node"
-use Moo;
+
 extends 'Patterns::Structural::Composite::TeaBags';
 
-sub BUILDARGS
+method new
 {
 	my($class,$name) = @_;
 	{ name => $name, teaBagList => [] }
 }
 
-sub countTeaBags {
+method countTeaBags {
 	my $self = shift;
 	my $totalTeaBags = 0;
 	$totalTeaBags += $_->countTeaBags for @{$self->teaBagList};
 	$totalTeaBags
 }
 
-sub add
+method add
 {
 	my($self,$teaBags) = @_;
 	$teaBags->parent($self);
 	return push @{$self->teaBagList},$teaBags;
 }
 
-sub remove
+method remove
 {
 	my($self,$toRemove) = @_;
 	my @newList = ();
@@ -43,4 +44,4 @@ sub remove
 	$found_at_least_one
 }
 
-1;
+}

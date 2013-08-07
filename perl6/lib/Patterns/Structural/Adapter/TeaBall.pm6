@@ -1,27 +1,21 @@
-package Patterns::Structural::Adapter::TeaBall;
-
-
 #//TeaBall - the adapter
 
-use Moo;
-extends 'Patterns::Structural::Adapter::TeaBag';
+use Patterns::Structural::Adapter::TeaBag;
+use Patterns::Structural::Adapter::LooseLeafTea;
 
-has looseLeafTea => is => 'rw';
+class TeaBall is TeaBag {
 
-sub BUILDARGS
-{
-	my($class,$looseLeafTea) = @_;
+	has LooseLeafTea $.looseLeafTea is rw;
+
+	method new( LooseLeafTea $looseLeafTea)
 	{
-		looseLeafTea => $looseLeafTea,
-		teaBagIsSteeped => $looseLeafTea->teaIsSteeped
+		return self.bless( * , :$looseLeafTea, :teaBagIsSteeped( $looseLeafTea.teaIsSteeped ) );
 	}
-}
    
-sub steepTeaInCup 
-{
-	my $self = shift;
-	$self->looseLeafTea->steepTea();
-	$self->teaBagIsSteeped(1);
-}
+	method steepTeaInCup 
+	{
+		$.looseLeafTea.steepTea();
+		$.teaBagIsSteeped = True;
+	}
 
-1;
+}

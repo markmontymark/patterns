@@ -1,18 +1,19 @@
-package Patterns::Structural::Bridge::SodaImpSingleton;
+use Patterns::Structural::Bridge::;
+class SodaImpSingleton; {
 
 
 #//SodaImpSingleton - a Singleton to hold the current SodaImp
 
 our $sodaImp;
 
-sub setTheSodaImp
+method setTheSodaImp
 {
 	$sodaImp = shift;
 }
     
-sub getTheSodaImp 
+method getTheSodaImp 
 {
 	$sodaImp
 }
 
-1;
+}

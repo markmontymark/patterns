@@ -1,18 +1,19 @@
-package Patterns::Structural::Flyweight::TeaFlavorFactory;
+use Patterns::Structural::Flyweight::;
+class TeaFlavorFactory; {
 
 
 #//TeaFlavorFactory - the Factory
 
-use Moo;
+
 has flavors => is => 'rw';
 has teasMade => is => 'rw';
 
-sub BUILDARGS
+method new
 {
 	{flavors => [], teasMade => 0 }
 }
    
-sub getTeaFlavor
+method getTeaFlavor
 {
 	my($self,$flavor) = @_;
 	if ($self->teasMade > 0) 
@@ -28,4 +29,4 @@ sub getTeaFlavor
 }
    
 
-1;
+}

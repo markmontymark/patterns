@@ -1,9 +1,12 @@
 #!perl -T
 
 use 5.006;
-use strict;
-use warnings;
-use Test::More tests => 3;
+
+
+use Test;
+
+use lib 'blib/lib';
+
 
 sub not_in_file_ok {
     my ($filename, %regex) = @_;

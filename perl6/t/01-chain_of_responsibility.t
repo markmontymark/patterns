@@ -10,6 +10,9 @@ use Test;
 
 use lib 'blib/lib';
 
+
+use lib 'blib/lib';
+
 use Patterns::Behavioral::Chain_Of_Responsibility;
 
 my $topTitle;

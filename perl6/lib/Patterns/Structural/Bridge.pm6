@@ -1,5 +1,4 @@
-package Patterns::Structural::Bridge;
-
+package Patterns::Structural::Bridge {
 #//// Original copy of this content taken from http://www.fluffycat.com/Java-Design-Patterns/ in 2010
 #//// Original Author: Larry Truett
 #//// Privacy Policy at http://www.fluffycat.com/Privacy-Policy/
@@ -17,4 +16,4 @@ use Patterns::Structural::Bridge::Soda;
 use Patterns::Structural::Bridge::MediumSoda;
 use Patterns::Structural::Bridge::SodaImpSingleton;
 
-1;
+}

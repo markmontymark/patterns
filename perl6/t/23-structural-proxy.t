@@ -1,10 +1,13 @@
-use strict;
-use warnings;
-use v5.016;
 
-use Test::More tests => 2;
 
-BEGIN{use_ok 'Patterns::Structural::Proxy'};
+use v6;
+
+use Test;
+
+use lib 'blib/lib';
+
+
+use Patterns::Structural::Proxy
 
 
 say("TestProxy: instantiating PotOfTeaProxy");

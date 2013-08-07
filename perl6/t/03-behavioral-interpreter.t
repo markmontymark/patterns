@@ -1,6 +1,9 @@
 use v6;
 use Test;
 
+use lib 'blib/lib';
+
+
 
 use lib 'blib/lib';
 use lib 'blib/lib/Patterns/Behavioral/Interpreter';

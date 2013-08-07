@@ -3,6 +3,9 @@ use Test;
 
 use lib 'blib/lib';
 
+
+use lib 'blib/lib';
+
 use Patterns::Behavioral::Iterator;
 
 my $movies = DvdList.new();

@@ -2,6 +2,9 @@ use v6;
 use Test;
 
 use lib 'blib/lib';
+
+
+use lib 'blib/lib';
 use Patterns::Behavioral::Command;
 
 

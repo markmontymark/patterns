@@ -5,6 +5,9 @@ use Test;
 
 use lib 'blib/lib';
 
+
+use lib 'blib/lib';
+
 use Patterns::Behavioral::Strategy;
 
 my $allCapContext = DvdNameContext.new( dvdNameStrategy => DvdNameAllCapStrategy.new() );

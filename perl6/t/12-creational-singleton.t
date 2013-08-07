@@ -5,6 +5,9 @@ use Test;
 
 use lib 'blib/lib';
 
+
+use lib 'blib/lib';
+
 use Patterns::Creational::Singleton;
 
 my $spoonForFirstPerson = SingleSpoon.new();

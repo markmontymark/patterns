@@ -1,16 +1,17 @@
-package Patterns::Structural::Bridge::SuperSizeSoda;
+use Patterns::Structural::Bridge::;
+class SuperSizeSoda; {
 
 
 #//SuperSizeSoda - two of two classes extending the Abstract
-use Moo;
+
 extends 'Patterns::Structural::Bridge::Soda';
-sub BUILD
+method BUILD
 {
 	my $self = shift;
 	$self->setSodaImp();
 }
 
-sub pourSoda
+method pourSoda
 {
 	my $self = shift;
 	my @retval;
@@ -18,4 +19,4 @@ sub pourSoda
 	join ' ',@retval
 }
 
-1;
+}

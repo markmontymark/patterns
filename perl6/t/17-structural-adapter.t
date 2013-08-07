@@ -1,23 +1,21 @@
-use strict;
-use warnings;
-use v5.016;
+use v6;
 
-use Test::More tests => 3;
+use Test;
 
-BEGIN{use_ok 'Patterns::Structural::Adapter'};
+use lib 'blib/lib';
 
 
-my $teaCup = new Patterns::Structural::Adapter::TeaCup();
+use Patterns::Structural::Adapter;
 
-say("Steeping tea bag");
-my $teaBag = new Patterns::Structural::Adapter::TeaBag();       
-$teaCup->steepTeaBag($teaBag);
-is($teaBag->teaBagIsSteeped, 1, 'Test that tea bag cup steeped tea');
+my $teaCup = TeaCup.new();
 
-say("Steeping loose leaf tea");
-my $looseLeafTea = new Patterns::Structural::Adapter::LooseLeafTea();
-my $teaBall = new Patterns::Structural::Adapter::TeaBall($looseLeafTea);
-$teaCup->steepTeaBag($teaBall);
-is($teaBall->teaBagIsSteeped, 1, 'Test that tea ball steeped teabag');
+my $teaBag = TeaBag.new();       
+$teaCup.steepTeaBag($teaBag);
+is $teaBag.teaBagIsSteeped(), True, "$?FILE Test that tea bag cup steeped tea";
+
+my $looseLeafTea = LooseLeafTea.new();
+my $teaBall = TeaBall.new($looseLeafTea);
+$teaCup.steepTeaBag($teaBall);
+is $teaBall.teaBagIsSteeped(), True, "$?FILE Test that tea ball steeped teabag";
 
 done();

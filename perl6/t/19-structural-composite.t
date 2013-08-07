@@ -1,10 +1,13 @@
-use strict;
-use warnings;
-use v5.016;
 
-use Test::More tests => 6;
 
-BEGIN{use_ok 'Patterns::Structural::Composite'};
+use v6;
+
+use Test;
+
+use lib 'blib/lib';
+
+
+use Patterns::Structural::Composite
 
 
 say("Creating tinOfTeaBags");

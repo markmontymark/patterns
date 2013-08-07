@@ -4,6 +4,9 @@ use v6;
 use Test;
 
 use lib 'blib/lib';
+
+
+use lib 'blib/lib';
 use Patterns::Creational::Factory_Method;
 
 my $soupFactoryMethod = SoupFactoryMethod.new();

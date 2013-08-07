@@ -1,22 +1,14 @@
-package Patterns::Structural::Decorator::TeaLeaves;
-
 #//TeaLeaves - the decoratee
-use Moo;
-with 'Patterns::Structural::Decorator::Tea';
-has teaIsSteeped => is => 'rw';
 
-sub BUILDARGS
-{
+use Patterns::Structural::Decorator::Tea;
+
+class TeaLeaves does Tea {
+
+	has Bool $.teaIsSteeped is rw = False;
+
+	method steepTea 
 	{
-		teaIsSteeped => 0,
+		$.teaIsSteeped = True
 	}
-}
 
-   
-sub steepTea 
-{
-	my $self = shift;
-	$self->teaIsSteeped(1);
 }
-
-1;

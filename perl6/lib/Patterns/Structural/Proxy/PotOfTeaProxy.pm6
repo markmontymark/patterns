@@ -1,11 +1,12 @@
-package Patterns::Structural::Proxy::PotOfTeaProxy;
+use Patterns::Structural::Proxy::;
+class PotOfTeaProxy; {
 
 #//PotOfTeaProxy - the Proxy
-use Moo;
+
 with 'Patterns::Structural::Proxy::PotOfTeaInterface';
 
 has potOfTea => is => 'rw';
-sub pourTea
+method pourTea
 {
 	my $self = shift;
 	$self->potOfTea( new Patterns::Structural::Proxy::PotOfTea )
@@ -13,4 +14,4 @@ sub pourTea
    $self->potOfTea->pourTea()
 }
 
-1;
+}

@@ -1,19 +1,20 @@
-package Patterns::Structural::Facade::FacadeWater;
+use Patterns::Structural::Facade::;
+class FacadeWater; {
 
 
 #//FacadeWater - two of three classes the facade calls
-use Moo;
+
 has isBoiling => is => 'rw';
 
-sub BUILDARGS
+method new
 {
 	{ isBoiling => 0 }
 }
     
-sub boil
+method boil
 {
 	my $self = shift;
 	$self->isBoiling(1);
 }
 
-1;
+}

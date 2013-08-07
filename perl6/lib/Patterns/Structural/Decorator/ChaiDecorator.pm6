@@ -1,46 +1,38 @@
-package Patterns::Structural::Decorator::ChaiDecorator;
-
 #//ChaiDecorator - the decorator
 
-use Moo;
-with 'Patterns::Structural::Decorator::Tea';
+use Patterns::Structural::Decorator::Tea;
 
-has teaToMakeChai => (is => 'rw');
-has ingredients => (is => 'rw');
+class ChaiDecorator does Tea {
 
-sub BUILDARGS
-{
-	my($class,$teaToMakeChai) = @_;
+	has Tea $.teaToMakeChai is rw;
+	has @.ingredients;
+
+	method new( Tea $teaToMakeChai)
 	{ 
-		teaToMakeChai => $teaToMakeChai, 
-		ingredients => [
-			"bay leaf",
-			"cinnamon stick",
-			"ginger",
-			"honey",
-			"soy milk",
-			"vanilla bean",
-		]
+		return self.bless( * , :$teaToMakeChai, :ingredients( (
+			'bay leaf',
+			'cinnamon stick',
+			'ginger',
+			'honey',
+			'soy milk',
+			'vanilla bean',
+		)));
 	}
-}
 
-sub steepTea 
-{
-	my $self = shift;
-	$self->steepChai;
-}
+	method steepTea 
+	{
+		$.steepChai()
+	}
 
-sub steepChai
-{
-	my $self = shift;
-	$self->teaToMakeChai->steepTea();
-   $self->steepChaiIngredients();
-}    
-   
-sub steepChaiIngredients
-{
-	my $self = shift;
-	join '',@{$self->ingredients}
-}
+	method steepChai
+	{
+		$.teaToMakeChai.steepTea();
+		$.steepChaiIngredients()
+	}
+		
+	method steepChaiIngredients
+	{
+		@.ingredients.join: ''
+	}
 
-1;
+}

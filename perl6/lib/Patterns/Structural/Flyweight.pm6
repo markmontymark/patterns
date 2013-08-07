@@ -1,5 +1,4 @@
-package Patterns::Structural::Flyweight;
-
+package Patterns::Structural::Flyweight {
 #//// Original copy of this content taken from http://www.fluffycat.com/Java-Design-Patterns/ in 2010
 #//// Original Author: Larry Truett
 #//// Privacy Policy at http://www.fluffycat.com/Privacy-Policy/
@@ -12,4 +11,4 @@ use Patterns::Structural::Flyweight::TeaFlavor;
 use Patterns::Structural::Flyweight::TeaFlavorFactory;
 use Patterns::Structural::Flyweight::TeaOrderContext;
 
-1;
+}

@@ -1,14 +1,14 @@
-package Patterns::Structural::Composite::OneTeaBag;
+use Patterns::Structural::Composite::;
+class OneTeaBag; {
 
 
 #//OneTeaBag - one composite extension - the "leaf"
 
-use Moo;
+
 extends 'Patterns::Structural::Composite::TeaBags';
 
-sub countTeaBags { 1 } 
-sub add { 0 }
-sub remove{ 0 }
+method countTeaBags { 1 } 
+method add { 0 }
+method remove{ 0 }
 
-1;
-
+}

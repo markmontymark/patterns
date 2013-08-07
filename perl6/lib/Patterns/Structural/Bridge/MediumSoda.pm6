@@ -1,17 +1,18 @@
-package Patterns::Structural::Bridge::MediumSoda;
+use Patterns::Structural::Bridge::;
+class MediumSoda; {
 
 
 #//MediumSoda - one of two classes extending the Abstract
-use Moo;
+
 extends 'Patterns::Structural::Bridge::Soda';
 
-sub BUILD
+method BUILD
 {
 	my($self) = @_;
 	$self->setSodaImp();
 }
 
-sub pourSoda 
+method pourSoda 
 {
 	my $self = shift;
 	my $sodaImp = $self->getSodaImp;
@@ -20,4 +21,4 @@ sub pourSoda
 	join ' ',@retval
 }
 
-1;
+}

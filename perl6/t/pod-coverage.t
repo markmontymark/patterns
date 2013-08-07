@@ -1,6 +1,9 @@
-use strict;
-use warnings;
-use Test::More;
+
+
+use Test;
+
+use lib 'blib/lib';
+
 
 # Ensure a recent version of Test::Pod::Coverage
 my $min_tpc = 1.08;

@@ -1,9 +1,10 @@
-package Patterns::Structural::Facade::FacadeCuppaMaker;
+use Patterns::Structural::Facade::;
+class FacadeCuppaMaker; {
 
-use Moo;
+
 has teaBagIsSteeped => is => 'rw';
     
-sub makeACuppa 
+method makeACuppa 
 {
 	my $cup = new Patterns::Structural::Facade::FacadeTeaCup();
 	my $teaBag = new Patterns::Structural::Facade::FacadeTeaBag();
@@ -15,4 +16,4 @@ sub makeACuppa
    $cup
 }
 
-1;
+}
