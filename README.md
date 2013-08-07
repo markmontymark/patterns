@@ -16,7 +16,7 @@ Much thanks to Larry for allowing to me to start off this project with his Java 
 	C - complete
 	PHP - complete
 	Python - complete
-	Perl6 - started, Behavioral - Visitor is done and tested, the rest is still a copy of Perl5 until it's fully ported over to Perl6
+	Perl6 - complete
 	C++ - incomplete
 
 # Quick start
@@ -111,6 +111,12 @@ Install Perl6
 
 See notes in perl6/README.md as they're *not* just a couple of steps...
 
+Once that's sorted:
+
+	ufo
+	make
+	./test.sh
+
 
 
 
@@ -126,7 +132,7 @@ GoF book groups software dev patterns into 3 groups:  Creational, Structural, an
 
 *Builder* 	Make and return one object various ways.
 
-*Factory* Method 	Methods to make and return components of one object various ways.
+*Factory Method* 	Methods to make and return components of one object various ways.
 
 *Prototype* 	Make new objects by cloning the objects which you set as prototypes.
 
@@ -167,9 +173,9 @@ GoF book groups software dev patterns into 3 groups:  Creational, Structural, an
 
 *State* 	An object appears to change its` class when the class it passes calls through to switches itself for a related class.
 
-*Strategy* 	An object controls which of a family of methods is called. Each method is in its` own class that extends a common base class.
+*Strategy*	An object controls which of a family of methods is called. Each method is in its` own class that extends a common base class.
 
-*Template* 	An abstract class defines various methods, and has one non-overridden method which calls the various methods.
+*Template Method*	An abstract class defines various methods, and has one non-overridden method which calls the various methods.
 
 *Visitor* 	One or more related classes have the same method, which calls a method specific for themselves in another class.
 
