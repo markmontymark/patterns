@@ -12,7 +12,7 @@ role Soda {
 	}
 
 	method getSodaImp {
-		$.sodaImp
+		SodaImpSingleton.getTheSodaImp()
 	}
 
 }

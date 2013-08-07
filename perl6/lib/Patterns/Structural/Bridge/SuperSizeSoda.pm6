@@ -4,16 +4,15 @@ use Patterns::Structural::Bridge::Soda;
 
 class SuperSizeSoda does Soda {
 
-	method new
+	method new 
 	{
-		my $self = self.bless( * );
-		$self.setSodaImp();
-		$self
+		return self.bless( *  );
 	}
 
 	method pourSoda
 	{
-		(1..5).map: { $.sodaImp.pourSodaImp() }
+      my $sodaImp = $.getSodaImp();
+		( (1..5).map: { $sodaImp.pourSodaImp() }).join: ' '
 	}
 
 }

@@ -1,9 +1,9 @@
 role SodaImp {
 
-	has Str $!msg;
+	has Str $.msg;
 
 	method pourSodaImp { 
-		return $!msg;
+		return $.msg;
 	}
 
 }

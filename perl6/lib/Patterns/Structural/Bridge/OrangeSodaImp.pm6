@@ -4,9 +4,9 @@ use Patterns::Structural::Bridge::SodaImp;
 
 class OrangeSodaImp does SodaImp {
 
-	method new 
+	method new (Str $msg = 'Yummy Orange Soda!')
 	{
-		return self.bless( * , :msg('Yummy Orange Soda!') );
+		return self.bless( * , :$msg );
 	}
     
 }

@@ -27,7 +27,6 @@ sub testGrapePlatform {
 }   
 
 sub testOrangePlatform {
-
 	SodaImpSingleton.setTheSodaImp(OrangeSodaImp.new());
 	my $mediumSoda = MediumSoda.new();
 	is $mediumSoda.pourSoda(), 'Yummy Orange Soda! Yummy Orange Soda!', 

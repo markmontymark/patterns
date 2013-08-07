@@ -12,9 +12,7 @@ class MediumSoda does Soda {
 	method pourSoda 
 	{
 		my $sodaImp = $.getSodaImp();
-		(0..1).map: { 
-			$sodaImp.pourSodaImp()
-		}
+		( (1..2).map: { $sodaImp.pourSodaImp() }).join: ' '
 	}
 
 }
