@@ -1,15 +1,12 @@
 #//TitleBlurbVisitor - the abstract Visitor
-class TitleBlurbVisitor:
+class TitleBlurbVisitor
 
 	#def __init__():pass
 
 	titleBlurb   = None
 
-	def setTitleBlurb (self,blurbIn) :
-		self.titleBlurb = blurbIn
+	def setTitleBlurb (blurbIn) 		@titleBlurb = blurbIn
 
-	def getTitleBlurb (self): 
-		return self.titleBlurb
+	def getTitleBlurb (self)		return @titleBlurb
 
-	def visit (self,info) :
-		raise Exception("Unimplemented method TitleBlurbVisitor.visit")
+	def visit (info) 		raise Exception("Unimplemented method TitleBlurbVisitor.visit")

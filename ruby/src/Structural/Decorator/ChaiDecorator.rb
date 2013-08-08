@@ -1,14 +1,13 @@
 #- the decorator
 
-from Tea import Tea
+require "Tea"
 
-class ChaiDecorator(Tea):
+class ChaiDecorator < Tea
 
 	chaiIngredients = []
 
-	def initialize(teaToMakeChai) :
-		self.teaToMakeChai = teaToMakeChai
-		self.chaiIngredients = [ 
+	def initialize(teaToMakeChai) 		@teaToMakeChai = teaToMakeChai
+		@chaiIngredients = [ 
 			'bay leaf', 
 			'cinnamon stick', 
 			'ginger', 
@@ -16,13 +15,10 @@ class ChaiDecorator(Tea):
 			'soy milk', 
 			'vanilla bean' ]
 
-	def steepTea(self) :
-		return self.steepChai()
+	def steepTea(self) 		return @steepChai()
 
-	def steepChai(self) :
-		self.teaToMakeChai.steepTea()
-		return self.steepChaiIngredients() + ', tea is steeping with chai'
+	def steepChai(self) 		@teaToMakeChai.steepTea()
+		return @steepChaiIngredients() + ', tea is steeping with chai'
 
-	def steepChaiIngredients(self) :
-		return ', '.join( [ (i + ' is steeping ') for i in self.chaiIngredients] )
+	def steepChaiIngredients(self) 		return ', '.join( [ (i + ' is steeping ') for i in @chaiIngredients] )
 

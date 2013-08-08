@@ -6,14 +6,11 @@
 
 # PrototypeFactory - a Factory for Prototypes
 
-class PrototypeFactory:
+class PrototypeFactory
 
-	def initialize(prototypeSpoon,prototypeFork):
-		self.prototypeSpoon = prototypeSpoon
-		self.prototypeFork = prototypeFork
+	def initialize(prototypeSpoon,prototypeFork)		@prototypeSpoon = prototypeSpoon
+		@prototypeFork = prototypeFork
 	
-	def makeSpoon(self) : 
-		return self.prototypeSpoon.clone()
+	def makeSpoon(self) 		return @prototypeSpoon.clone()
 
-	def makeFork(self) : 
-		return self.prototypeFork.clone()
+	def makeFork(self) 		return @prototypeFork.clone()

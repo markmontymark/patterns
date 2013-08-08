@@ -1,11 +1,9 @@
 #//DvdCommandNameStarsOff - two of two Concrete Commands
 
-from CommandAbstract import CommandAbstract
+require "CommandAbstract"
 
-class DvdCommandNameStarsOff(CommandAbstract) :
+class DvdCommandNameStarsOff < CommandAbstract
 
-	def initialize(dvdName) :
-		self.dvdName = dvdName
+	def initialize(dvdName) 		@dvdName = dvdName
 
-	def execute(self) : 
-		self.dvdName.setNameStarsOff()
+	def execute(self) 		@dvdName.setNameStarsOff()

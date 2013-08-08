@@ -1,53 +1,34 @@
 #//DvdInterpreterContext - The Context
 
-class DvdInterpreterContext:
+class DvdInterpreterContext
 
-	def initialize(titles = None, actors = None, titlesAndActors = None):
-		if titles == None:
-			self.titles = []
-		else :
-			self.titles = titles
+	def initialize(titles = None, actors = None, titlesAndActors = None)		if titles == None			@titles = []
+		else 			@titles = titles
 
-		if actors == None:
-			self.actors = []
-		else :
-			self.actors =actors  
+		if actors == None			@actors = []
+		else 			@actors =actors  
 
-		if titlesAndActors == None :
-			self.titlesAndActors = []
-		else :
-			self.titlesAndActors = titlesAndActors 
+		if titlesAndActors == None 			@titlesAndActors = []
+		else 			@titlesAndActors = titlesAndActors 
 
-	def addTitle(self,title) : 
-		self.titles.append(title)
+	def addTitle(title) 		@titles.append(title)
 
-	def addActor(self,actor) : 
-		self.actors.append(actor)
+	def addActor(actor) 		@actors.append(actor)
 
-	def addTitleAndActor(self,titleAndActor) : 
-		self.titlesAndActors.append(titleAndActor)
+	def addTitleAndActor(titleAndActor) 		@titlesAndActors.append(titleAndActor)
 
-	def getAllTitles(self) : 
-		return self.titles
+	def getAllTitles(self) 		return @titles
 
-	def getAllActors(self) : 
-		return self.actors
+	def getAllActors(self) 		return @actors
 
-	def getActorsForTitle(self,title) :
-		retval = []
-		for ta in self.titlesAndActors:
-			if ta.getTitle() == title :
-				retval.append(ta.getActor())
+	def getActorsForTitle(title) 		retval = []
+		for ta in @titlesAndActors			if ta.getTitle() == title 				retval.append(ta.getActor())
 		return retval
-		#return [ta.getActor() for ta in self.titlesAndActors if ta.getTitle() == title]
+		#return [ta.getActor() for ta in @titlesAndActors if ta.getTitle() == title]
 
-	def getTitlesForActor(self,actor) :
-		retval = []
-		if actor == None :
-			return retval
+	def getTitlesForActor(actor) 		retval = []
+		if actor == None 			return retval
 
-		for ta in self.titlesAndActors:
-			if ta.getActor() == actor :
-				retval.append(ta.getTitle())
+		for ta in @titlesAndActors			if ta.getActor() == actor 				retval.append(ta.getTitle())
 		return retval
 

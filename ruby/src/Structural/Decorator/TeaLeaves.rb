@@ -1,14 +1,13 @@
 
 # - the decoratee
 
-from Tea import Tea
+require "Tea"
 
-class TeaLeaves(Tea):
+class TeaLeaves < Tea
 
 	def initialize()
-		self.teaIsSteeped = False
+		@teaIsSteeped = False
 
-	def steepTea(self) :
-		self.teaIsSteeped = True
+	def steepTea(self) 		@teaIsSteeped = True
 		return "tea leaves are steeping"
 

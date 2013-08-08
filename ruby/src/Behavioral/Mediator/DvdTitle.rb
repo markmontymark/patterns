@@ -1,10 +1,8 @@
 # //DvdTitle - the Abstract Mediatee
 
-class DvdTitle :
+class DvdTitle
 	title = None
 
-	def setTitle(self,titleIn) :
-		self.title = titleIn
+	def setTitle(titleIn) 		@title = titleIn
 
-	def getTitle(self) :
-		return self.title
+	def getTitle(self) 		return @title

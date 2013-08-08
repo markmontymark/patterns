@@ -1,56 +1,41 @@
 #//DvdSubSubCategory.java - the Lowest Class in the Chain
 
-from TopTitle import TopTitle
+require "TopTitle"
 
-class DvdSubSubCategory(TopTitle):
+class DvdSubSubCategory < TopTitle
 
 	subSubCategory   = None
 	topSubSubCategoryTitle   = None
 	parent   = None
 
-	def initialize(dvdSubCategory, subCategory) :
-		self.setSubSubCategory(subCategory)
-		self.parent = dvdSubCategory
+	def initialize(dvdSubCategory, subCategory) 		@setSubSubCategory(subCategory)
+		@parent = dvdSubCategory
 
-	def setSubSubCategory(self,subSubCategoryIn) :
-		self.subSubCategory = subSubCategoryIn
+	def setSubSubCategory(subSubCategoryIn) 		@subSubCategory = subSubCategoryIn
 
-	def getSubSubCategory(self) :  
-		return self.subSubCategory
+	def getSubSubCategory(self) 		return @subSubCategory
 
-	def setSubCategory(self,subCategoryIn) :
-		self.parent.setSubCategory(subCategoryIn)
+	def setSubCategory(subCategoryIn) 		@parent.setSubCategory(subCategoryIn)
 
-	def getSubCategory(self) : 
-		return self.parent.getSubCategory()
+	def getSubCategory(self) 		return @parent.getSubCategory()
 
-	def setCategory(self,categoryIn) :
-		self.parent.setCategory(categoryIn)
+	def setCategory(categoryIn) 		@parent.setCategory(categoryIn)
 
-	def getCategory(self) : 
-		return self.parent.getCategory()
+	def getCategory(self) 		return @parent.getCategory()
 
-	def getAllCategories(self) : 
-		return "{0}/{1}/{2}".format(self.getCategory(), self.getSubCategory(), self.getSubSubCategory())
+	def getAllCategories(self) 		return "{0}/{1}/{2}".format(@getCategory(), @getSubCategory(), @getSubSubCategory())
 
-	def setTopSubSubCategoryTitle(self,topSubSubCategoryTitleIn) :
-		self.topSubSubCategoryTitle = topSubSubCategoryTitleIn
+	def setTopSubSubCategoryTitle(topSubSubCategoryTitleIn) 		@topSubSubCategoryTitle = topSubSubCategoryTitleIn
 
-	def getTopSubSubCategoryTitle(self) : 
-		return self.topSubSubCategoryTitle
+	def getTopSubSubCategoryTitle(self) 		return @topSubSubCategoryTitle
 
-	def setTopSubCategoryTitle(self,topSubCategoryTitleIn) :
-		self.parent.setTopSubCategoryTitle(topSubCategoryTitleIn)
+	def setTopSubCategoryTitle(topSubCategoryTitleIn) 		@parent.setTopSubCategoryTitle(topSubCategoryTitleIn)
 
-	def getTopSubCategoryTitle(self) : 
-		return self.parent.getTopSubCategoryTitle()
+	def getTopSubCategoryTitle(self) 		return @parent.getTopSubCategoryTitle()
 
-	def setTopCategoryTitle(self,topCategoryTitleIn) :
-		self.parent.setTopCategoryTitle(topCategoryTitleIn)
+	def setTopCategoryTitle(topCategoryTitleIn) 		@parent.setTopCategoryTitle(topCategoryTitleIn)
 
-	def getTopCategoryTitle(self) : 
-		return self.parent.getTopCategoryTitle()
+	def getTopCategoryTitle(self) 		return @parent.getTopCategoryTitle()
 
-	def getTopTitle(self) : 
-		return self.getTopSubSubCategoryTitle() if self.getTopSubSubCategoryTitle() else self.parent.getTopTitle()
+	def getTopTitle(self) 		return @getTopSubSubCategoryTitle() if @getTopSubSubCategoryTitle() else @parent.getTopTitle()
 

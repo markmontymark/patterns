@@ -1,10 +1,9 @@
 
-class TeaBag:
+class TeaBag
 
 	def initialize()
-		self.teaBagIsSteeped = False
+		@teaBagIsSteeped = False
 
-	def steepTeaInCup(self) :
-		self.teaBagIsSteeped = True
+	def steepTeaInCup(self) 		@teaBagIsSteeped = True
 		return 'tea bag is steeping in cup'
 

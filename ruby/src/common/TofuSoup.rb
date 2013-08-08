@@ -1,12 +1,14 @@
 
 
-from Soup import Soup
-class TofuSoup(Soup) :    
+require "common/Soup"
+class TofuSoup < Soup    
 	def initialize()
-		self.soupName = 'Tofu Soup'
-		self.soupIngredients = [
+		@soupName = 'Tofu Soup'
+		@soupIngredients = [
 			'1 Pound tofu',
 			'1 cup carrot juice',
 			'1/4 cup spirolena', ]
+	end
+end
 
 

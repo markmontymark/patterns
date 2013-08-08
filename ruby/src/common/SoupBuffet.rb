@@ -1,60 +1,72 @@
 # SoupBuffet- A helper class
 
-from ChickenSoup import ChickenSoup
-from ClamChowder import ClamChowder
-from FishChowder import FishChowder
-from Minnestrone import Minnestrone
-from PastaFazul import PastaFazul
-from TofuSoup import TofuSoup
-from VegetableSoup import VegetableSoup
+require "common/ChickenSoup"
+require "common/ClamChowder"
+require "common/FishChowder"
+require "common/Minnestrone"
+require "common/PastaFazul"
+require "common/TofuSoup"
+require "common/VegetableSoup"
 
-class SoupBuffet :
+class SoupBuffet
 
 	def initialize()
-		self.soupBuffetName = None
-		self.chickenSoup = None
-		self.clamChowder = None
-		self.fishChowder = None
-		self.minnestrone = None
-		self.pastaFazul = None
-		self.tofuSoup = None
-		self.vegetableSoup = None
+		@soupBuffetName = None
+		@chickenSoup = None
+		@clamChowder = None
+		@fishChowder = None
+		@minnestrone = None
+		@pastaFazul = None
+		@tofuSoup = None
+		@vegetableSoup = None
+	end
 
-	def setSoupBuffetName(self,soupBuffetNameIn) :
-		self.soupBuffetName = soupBuffetNameIn
+	def setSoupBuffetName(soupBuffetNameIn)
+		@soupBuffetName = soupBuffetNameIn
+	end
 
-	def setChickenSoup(self,chickenSoupIn) :
-		self.chickenSoup = chickenSoupIn
+	def setChickenSoup(chickenSoupIn) 
+		@chickenSoup = chickenSoupIn
+	end
 
-	def setClamChowder(self,clamChowderIn) :
-		self.clamChowder = clamChowderIn
+	def setClamChowder(clamChowderIn)
+		@clamChowder = clamChowderIn
+	end
 
-	def setFishChowder(self,fishChowderIn) :
-		self.fishChowder = fishChowderIn
+	def setFishChowder(fishChowderIn) 
+		@fishChowder = fishChowderIn
+	end
 
-	def setMinnestrone(self,minnestroneIn) :
-		self.minnestrone = minnestroneIn
+	def setMinnestrone(minnestroneIn)
+		@minnestrone = minnestroneIn
+	end
 
-	def setPastaFazul(self,pastaFazulIn) :
-		self.pastaFazul = pastaFazulIn
+	def setPastaFazul(pastaFazulIn)
+		@pastaFazul = pastaFazulIn
+	end
 
-	def setTofuSoup(self,tofuSoupIn) :
-		self.tofuSoup = tofuSoupIn
+	def setTofuSoup(tofuSoupIn)
+		@tofuSoup = tofuSoupIn
+	end
 
-	def setVegetableSoup(self,vegetableSoupIn) :
-		self.vegetableSoup = vegetableSoupIn
+	def setVegetableSoup(vegetableSoupIn) 		
+		@vegetableSoup = vegetableSoupIn
+	end
 
-	def getSoupBuffetName(self) :  
-		return self.soupBuffetName
+	def getSoupBuffetName() 		
+		return @soupBuffetName
+	end
 
-	def getTodaysSoups(self) :  
-		return ', '.join([
+	def getTodaysSoups() 		
+		return [
 			" Today's Soups!  ",
-			" Chicken Soup: ", self.chickenSoup.soupName,
-			" Clam Chowder: ", self.clamChowder.soupName,
-			" Fish Chowder: ", self.fishChowder.soupName,
-			" Minnestrone: ", self.minnestrone.soupName,
-			" Pasta Fazul: ", self.pastaFazul.soupName,
-			" Tofu Soup: ", self.tofuSoup.soupName,
-			" Vegetable Soup: ", self.vegetableSoup.soupName
-			])
+			" Chicken Soup: ", @chickenSoup.soupName,
+			" Clam Chowder: ", @clamChowder.soupName,
+			" Fish Chowder: ", @fishChowder.soupName,
+			" Minnestrone: ", @minnestrone.soupName,
+			" Pasta Fazul: ", @pastaFazul.soupName,
+			" Tofu Soup: ", @tofuSoup.soupName,
+			" Vegetable Soup: ", @vegetableSoup.soupName
+			].join(', ');
+	end
+end

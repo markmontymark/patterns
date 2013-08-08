@@ -1,42 +1,31 @@
 
-from TopTitle import TopTitle
+require "TopTitle"
 
-class DvdSubCategory(TopTitle) :
+class DvdSubCategory < TopTitle
 
 	subCategory = None
 	topSubCategoryTitle = None
 	parent = None
 
-	def initialize( dvdCategory, subCategory) :
-		self.setSubCategory(subCategory)
-		self.parent = dvdCategory
+	def initialize( dvdCategory, subCategory) 		@setSubCategory(subCategory)
+		@parent = dvdCategory
 
-	def setSubCategory(self,subCategoryIn) :
-		self.subCategory = subCategoryIn
+	def setSubCategory(subCategoryIn) 		@subCategory = subCategoryIn
 
-	def getSubCategory(self) : 
-		return self.subCategory
+	def getSubCategory(self) 		return @subCategory
 
-	def setCategory(self,categoryIn) :
-		self.parent.setCategory(categoryIn)
+	def setCategory(categoryIn) 		@parent.setCategory(categoryIn)
 
-	def getCategory(self) :
-		return self.parent.getCategory()
+	def getCategory(self) 		return @parent.getCategory()
 
-	def getAllCategories(self) : 
-		return '{0}/{1}'.format(self.getCategory(),self.getSubCategory())
+	def getAllCategories(self) 		return '{0}/{1}'.format(@getCategory(),@getSubCategory())
 
-	def setTopSubCategoryTitle(self,topSubCategoryTitleIn) :
-		self.topSubCategoryTitle = topSubCategoryTitleIn
+	def setTopSubCategoryTitle(topSubCategoryTitleIn) 		@topSubCategoryTitle = topSubCategoryTitleIn
 
-	def getTopSubCategoryTitle(self) :
-		return self.topSubCategoryTitle
+	def getTopSubCategoryTitle(self) 		return @topSubCategoryTitle
 
-	def setTopCategoryTitle(topCategoryTitleIn) : 
-		self.parent.setTopCategoryTitle(topCategoryTitleIn)
+	def setTopCategoryTitle(topCategoryTitleIn) 		@parent.setTopCategoryTitle(topCategoryTitleIn)
 
-	def getTopCategoryTitle(self) : 
-		return self.parent.getTopCategoryTitle()
+	def getTopCategoryTitle(self) 		return @parent.getTopCategoryTitle()
 
-	def getTopTitle(self) :
-		return self.getTopSubCategoryTitle() if self.getTopSubCategoryTitle() else self.parent.getTopTitle()
+	def getTopTitle(self) 		return @getTopSubCategoryTitle() if @getTopSubCategoryTitle() else @parent.getTopTitle()

@@ -1,16 +1,12 @@
 #//TitleLongBlurbVisitor - one of two concrete Visitors
 
-from TitleBlurbVisitor import TitleBlurbVisitor
-from BookInfo import BookInfo
-from DvdInfo import DvdInfo
-from GameInfo import GameInfo
+require "TitleBlurbVisitor"
+require "BookInfo"
+require "DvdInfo"
+require "GameInfo"
 
-class TitleLongBlurbVisitor(TitleBlurbVisitor):
+class TitleLongBlurbVisitor < TitleBlurbVisitor
 
-	def visit (self, info):
-		if isinstance(info,BookInfo):
-			self.setTitleBlurb("LB-Book: " + info.titleName + ", Author: " + info.author)
-		elif isinstance(info,DvdInfo):
-			self.setTitleBlurb("LB-DVD: " + info.titleName + ", starring " + info.star + ", encoding region: " + info.region)
-		elif isinstance(info,GameInfo):
-			self.setTitleBlurb("LB-Game: " + info.titleName )
+	def visit ( info)		if isinstance(info,BookInfo)			@setTitleBlurb("LB-Book: " + info.titleName + ", Author: " + info.author)
+		elif isinstance(info,DvdInfo)			@setTitleBlurb("LB-DVD: " + info.titleName + ", starring " + info.star + ", encoding region: " + info.region)
+		elif isinstance(info,GameInfo)			@setTitleBlurb("LB-Game: " + info.titleName )

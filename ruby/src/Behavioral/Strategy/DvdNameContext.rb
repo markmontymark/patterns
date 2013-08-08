@@ -1,32 +1,25 @@
 #//DvdNameContext - the context
 
-from DvdNameAllCapStrategy import DvdNameAllCapStrategy
-from DvdNameTheAtEndStrategy import DvdNameTheAtEndStrategy
-from DvdNameReplaceSpacesStrategy import DvdNameReplaceSpacesStrategy
+require "DvdNameAllCapStrategy"
+require "DvdNameTheAtEndStrategy"
+require "DvdNameReplaceSpacesStrategy"
 
-class DvdNameContext:
+class DvdNameContext
 
 	dvdNameStrategy = None
 
-	def initialize(strategyTypeIn) :
-		if strategyTypeIn == 'C' :
-			self.dvdNameStrategy = DvdNameAllCapStrategy()
+	def initialize(strategyTypeIn) 		if strategyTypeIn == 'C' 			@dvdNameStrategy = DvdNameAllCapStrategy()
 
-		elif strategyTypeIn == 'E' :
-			self.dvdNameStrategy = DvdNameTheAtEndStrategy()
+		elif strategyTypeIn == 'E' 			@dvdNameStrategy = DvdNameTheAtEndStrategy()
 
-		elif strategyTypeIn == 'S' :
-			self.dvdNameStrategy = DvdNameReplaceSpacesStrategy()
+		elif strategyTypeIn == 'S' 			@dvdNameStrategy = DvdNameReplaceSpacesStrategy()
 
-		else :
-			self.dvdNameStrategy = DvdNameTheAtEndStrategy()
+		else 			@dvdNameStrategy = DvdNameTheAtEndStrategy()
 
-	def formatDvdNames (self, names, replacementIn = ' ' ) :
-		list = []
-		for name in names:
-			list.append("""
+	def formatDvdNames ( names, replacementIn = ' ' ) 		list = []
+		for name in names			list.append("""
 Dvd name before formatting: """ + name + """
-Dvd name after formatting:  """ + self.dvdNameStrategy.formatDvdName(name, replacementIn) + """
+Dvd name after formatting:  """ + @dvdNameStrategy.formatDvdName(name, replacementIn) + """
 ==========================
 			""")
 		return "\n".join(list)

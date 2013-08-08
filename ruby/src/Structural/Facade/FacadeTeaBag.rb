@@ -1,5 +1,5 @@
 
 # three of three classes the facade calls
-class FacadeTeaBag :
+class FacadeTeaBag
 
 	def initialize()pass	

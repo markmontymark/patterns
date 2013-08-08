@@ -1,5 +1,4 @@
-# vi: filetype=perl6:
-
+# vi: filetype=perl6
 use v6;
 use Test;
 

@@ -25,37 +25,27 @@ from common.PastaFazul import PastaFazul
 from common.TofuSoup import TofuSoup
 from common.VegetableSoup import VegetableSoup
 
-class SoupBuffetBuilder:
+class SoupBuffetBuilder
 
 	def initialize() 
 		raise Exception("Can't instantiate abstract class, SoupBuffetBuilder")
 
-	def setSoupBuffetName(self) : 
-		raise Exception("Unimplemented method SoupBuffetBuilder.setSoupBuffetName")
+	def setSoupBuffetName(self) 		raise Exception("Unimplemented method SoupBuffetBuilder.setSoupBuffetName")
 
-	def getSoupBuffet(self)       : 
-		return self.soupBuffet
+	def getSoupBuffet(self)       		return @soupBuffet
 
-	def buildSoupBuffet(self)     : 
-		self.soupBuffet = SoupBuffet()
+	def buildSoupBuffet(self)     		@soupBuffet = SoupBuffet()
 
-	def buildChickenSoup(self)    : 
-		self.soupBuffet.chickenSoup = ChickenSoup()
+	def buildChickenSoup(self)    		@soupBuffet.chickenSoup = ChickenSoup()
 
-	def buildClamChowder(self)    : 
-		self.soupBuffet.clamChowder = ClamChowder()
+	def buildClamChowder(self)    		@soupBuffet.clamChowder = ClamChowder()
 
-	def buildFishChowder(self)    : 
-		self.soupBuffet.fishChowder = FishChowder()
+	def buildFishChowder(self)    		@soupBuffet.fishChowder = FishChowder()
 
-	def buildMinnestrone(self)    : 
-		self.soupBuffet.minnestrone = Minnestrone()
+	def buildMinnestrone(self)    		@soupBuffet.minnestrone = Minnestrone()
 
-	def buildPastaFazul(self)     : 
-		self.soupBuffet.pastaFazul = PastaFazul()
+	def buildPastaFazul(self)     		@soupBuffet.pastaFazul = PastaFazul()
 
-	def buildTofuSoup(self)       : 
-		self.soupBuffet.tofuSoup = TofuSoup()
+	def buildTofuSoup(self)       		@soupBuffet.tofuSoup = TofuSoup()
 
-	def buildVegetableSoup(self)  : 
-		self.soupBuffet.vegetableSoup = VegetableSoup()
+	def buildVegetableSoup(self)  		@soupBuffet.vegetableSoup = VegetableSoup()

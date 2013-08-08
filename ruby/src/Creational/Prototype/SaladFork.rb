@@ -1,8 +1,8 @@
 
 #//SaladForki One of Two Concrete Prototypes extending the AbstractFork Prototype
-from AbstractFork import AbstractFork
+require "AbstractFork"
 
-class SaladFork(AbstractFork):
+class SaladFork < AbstractFork
 	def initialize()
-		self.setForkName('Salad Fork')
+		@setForkName('Salad Fork')
 

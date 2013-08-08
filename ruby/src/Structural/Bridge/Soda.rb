@@ -1,17 +1,14 @@
 
-from SodaImpSingleton import SodaImpSingleton
+require "SodaImpSingleton"
 
-class Soda:
+class Soda
 
 	def initialize()
 		raise Exception("Can't instantiate abstract class, Soda")
 
-	def setSodaImp(self) : 
-		self.sodaImp = SodaImpSingleton._sodaimp
+	def setSodaImp(self) 		@sodaImp = SodaImpSingleton._sodaimp
 
-	def getSodaImp(self) :
-		return self.sodaImp
+	def getSodaImp(self) 		return @sodaImp
 
-	def pourSoda(self) : 
-		raise Exception("Unimplemented method Soda.pourSoda")
+	def pourSoda(self) 		raise Exception("Unimplemented method Soda.pourSoda")
 

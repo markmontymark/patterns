@@ -1,16 +1,14 @@
 
 #  BostonConcreteSoupFactory  One of Two concrete factories extending the abstract factory
 
-from AbstractSoupFactory import AbstractSoupFactory
+require "AbstractSoupFactory"
 from common.BostonClamChowder import BostonClamChowder
 from common.BostonFishChowder import BostonFishChowder
 
-class BostonConcreteSoupFactory(AbstractSoupFactory) :
+class BostonConcreteSoupFactory < AbstractSoupFactory
 	def initialize()
-		self.factoryLocation = "Boston"
+		@factoryLocation = "Boston"
 
-	def makeClamChowder(self) : 
-		return BostonClamChowder()
+	def makeClamChowder(self) 		return BostonClamChowder()
 
-	def makeFishChowder(self) : 
-		return BostonFishChowder()
+	def makeFishChowder(self) 		return BostonFishChowder()

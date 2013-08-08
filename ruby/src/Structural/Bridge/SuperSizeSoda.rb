@@ -1,17 +1,15 @@
 
 # two of two classes extending the Abstract
 
-from Soda import Soda
+require "Soda"
 
-class SuperSizeSoda(Soda):
+class SuperSizeSoda < Soda
 
 	def initialize() 
-		self.setSodaImp()
+		@setSodaImp()
 
-	def pourSoda(self) :
-		sodaImp = self.getSodaImp()
+	def pourSoda(self) 		sodaImp = @getSodaImp()
 		retval = []
-		for i in range(5):
-			retval.append('...glug...')
+		for i in range(5)			retval.append('...glug...')
 			retval.append(sodaImp.pourSodaImp())
 		return retval

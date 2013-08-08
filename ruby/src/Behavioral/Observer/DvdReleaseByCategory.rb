@@ -3,64 +3,43 @@
 #//DvdReleaseByCategory.java - the subject
 #//(the class which is observed)
 
-class DvdReleaseByCategory :
+class DvdReleaseByCategory
 	
 	dvdReleaseList = None
 	subscriberList = None
 
-	def initialize(categoryName,subscriberList = None, dvdReleaseList = None ) :
-		self.categoryName = categoryName
-		if subscriberList == None :
-			self.subscriberList =  []
-		else :
-			self.subscriberList = subscriberList
+	def initialize(categoryName,subscriberList = None, dvdReleaseList = None ) 		@categoryName = categoryName
+		if subscriberList == None 			@subscriberList =  []
+		else 			@subscriberList = subscriberList
 
-		if dvdReleaseList == None :
-			self.dvdReleaseList = []
-		else :
-			self.dvdReleaseList = dvdReleaseList
+		if dvdReleaseList == None 			@dvdReleaseList = []
+		else 			@dvdReleaseList = dvdReleaseList
 
-	def __repr__(self):
-		return '"categoryName":"{0}","subscriberList":{1},"dvdReleaseList":{2}'.format(self.getCategoryName(), ','.join([str(x) for x in self.subscriberList]),','.join([str(x) for x in self.dvdReleaseList]))
+	def __repr__(self)		return '"categoryName":"{0}","subscriberList":{1},"dvdReleaseList":{2}'.format(@getCategoryName(), ','.join([str(x) for x in @subscriberList]),','.join([str(x) for x in @dvdReleaseList]))
 
-	def getCategoryName (self): 
-		return self.categoryName
+	def getCategoryName (self)		return @categoryName
 
-	def addSubscriber (self,dvdSubscriber) : 
-		self.subscriberList.append(dvdSubscriber)
+	def addSubscriber (dvdSubscriber) 		@subscriberList.append(dvdSubscriber)
 
-	def removeSubscriber (self,dvdSubscriber) :
-		founds = []
-		for i in reversed(range(len(self.subscriberList))) :
-			if self.subscriberList[i] == dvdSubscriber :
-				founds.append(i)
-		if len(founds) > 0 :
-			for i in founds :
-				del self.subscriberList[i]
+	def removeSubscriber (dvdSubscriber) 		founds = []
+		for i in reversed(range(len(@subscriberList))) 			if @subscriberList[i] == dvdSubscriber 				founds.append(i)
+		if len(founds) > 0 			for i in founds 				del @subscriberList[i]
 			return True
 		return False
 
 
-	def newDvdRelease (self,dvdRelease):
-		self.dvdReleaseList.append(dvdRelease)
-		return self.notifySubscribersOfNewDvd(dvdRelease)
+	def newDvdRelease (dvdRelease)		@dvdReleaseList.append(dvdRelease)
+		return @notifySubscribersOfNewDvd(dvdRelease)
 
-	def updateDvd (self,dvdRelease):
-		dvdUpdated = False
-		for i in range(len(self.dvdReleaseList)) :
-			if dvdRelease.serialNumber == self.dvdReleaseList[i].serialNumber:
-				del self.dvdReleaseList[i]
-				self.dvdReleaseList.append(dvdRelease)
+	def updateDvd (dvdRelease)		dvdUpdated = False
+		for i in range(len(@dvdReleaseList)) 			if dvdRelease.serialNumber == @dvdReleaseList[i].serialNumber				del @dvdReleaseList[i]
+				@dvdReleaseList.append(dvdRelease)
 				dvdUpdated = True
 				break
-		if dvdUpdated:
-			return self.notifySubscribersOfUpdate(dvdRelease)
-		else:
-			return self.newDvdRelease(dvdRelease)
+		if dvdUpdated			return @notifySubscribersOfUpdate(dvdRelease)
+		else			return @newDvdRelease(dvdRelease)
 
 
-	def notifySubscribersOfNewDvd (self,dvdRelease):
-		return [s.newDvdRelease(dvdRelease,self.getCategoryName()) for s in self.subscriberList]
+	def notifySubscribersOfNewDvd (dvdRelease)		return [s.newDvdRelease(dvdRelease,@getCategoryName()) for s in @subscriberList]
 
-	def notifySubscribersOfUpdate (self,dvdRelease):
-		return [ s.updateDvdRelease(dvdRelease,self.getCategoryName()) for s in self.subscriberList ]
+	def notifySubscribersOfUpdate (dvdRelease)		return [ s.updateDvdRelease(dvdRelease,@getCategoryName()) for s in @subscriberList ]

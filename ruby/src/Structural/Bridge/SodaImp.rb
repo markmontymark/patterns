@@ -1,9 +1,8 @@
 # - the Implementation Base Class
 
 
-class SodaImp:
+class SodaImp
 
 	def __new__():pass
 
-	def pourSodaImp(self) :
-		raise Exception("Unimplemented method, SodaImp.pourSodaImp")
+	def pourSodaImp(self) 		raise Exception("Unimplemented method, SodaImp.pourSodaImp")

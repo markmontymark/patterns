@@ -1,8 +1,7 @@
 
 # three of three classes extending the Implementation Base Class
 
-from SodaImp import SodaImp
+require "SodaImp"
 
-class OrangeSodaImp(SodaImp):
-	def pourSodaImp(self) : 
-		return "Citrusy Orange Soda!"
+class OrangeSodaImp < SodaImp
+	def pourSodaImp(self) 		return "Citrusy Orange Soda!"

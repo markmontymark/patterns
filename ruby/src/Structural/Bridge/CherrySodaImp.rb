@@ -1,8 +1,7 @@
 
 # - two of three classes extending the Implementation Base Class
 
-from SodaImp import SodaImp
+require "SodaImp"
 
-class CherrySodaImp(SodaImp):
-	def pourSodaImp(self) : 
-		return "Yummy Cherry Soda!"
+class CherrySodaImp < SodaImp
+	def pourSodaImp(self) 		return "Yummy Cherry Soda!"

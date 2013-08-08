@@ -1,12 +1,9 @@
 #//TitleAndActor - A Helper Class
 
-class TitleAndActor:
-	def initialize(title,actor) :
-		self.title = title
-		self.actor = actor
+class TitleAndActor
+	def initialize(title,actor) 		@title = title
+		@actor = actor
 	
-	def getTitle(self) :
-		return self.title
+	def getTitle(self) 		return @title
 
-	def getActor(self) :
-		return self.actor
+	def getActor(self) 		return @actor

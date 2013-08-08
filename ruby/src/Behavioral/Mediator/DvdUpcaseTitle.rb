@@ -1,30 +1,24 @@
 
 #//DvdUpcaseTitle - Two of Two Concrete Colleagues or Mediatees
 
-from DvdTitle import DvdTitle
+require "DvdTitle"
 
-class DvdUpcaseTitle(DvdTitle) :
+class DvdUpcaseTitle < DvdTitle
 
 	upcaseTitle = None
 	dvdMediator = None
 
-	def initialize(title, dvdMediator) :
-		self.setTitle( title.getTitle() if isinstance(title,DvdTitle) else title )
-		self.resetTitle()
-		self.dvdMediator = dvdMediator
-		self.dvdMediator.setUpcase(self)
+	def initialize(title, dvdMediator) 		@setTitle( title.getTitle() if isinstance(title,DvdTitle) else title )
+		@resetTitle()
+		@dvdMediator = dvdMediator
+		@dvdMediator.setUpcase(self)
 
-	def resetTitle(self,title = None ):
-		if title :
-			self.setTitle(title) 
-		self.setUpcaseTitle(self.getTitle().upper())
+	def resetTitle(title = None )		if title 			@setTitle(title) 
+		@setUpcaseTitle(@getTitle().upper())
 
-	def setSuperTitleUpcase(self) :
-		self.setTitle(self.getUpcaseTitle())
-		self.dvdMediator.changeTitle(self)
+	def setSuperTitleUpcase(self) 		@setTitle(@getUpcaseTitle())
+		@dvdMediator.changeTitle(self)
 
-	def getUpcaseTitle(self) :
-		return self.upcaseTitle
+	def getUpcaseTitle(self) 		return @upcaseTitle
 
-	def setUpcaseTitle (self,upcaseTitle) : 
-		self.upcaseTitle = upcaseTitle
+	def setUpcaseTitle (upcaseTitle) 		@upcaseTitle = upcaseTitle

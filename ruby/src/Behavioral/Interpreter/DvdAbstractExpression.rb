@@ -1,5 +1,4 @@
 #//DvdAbstractExpression - The Abstract Expression
-class DvdAbstractExpression:
+class DvdAbstractExpression
 
-	def interpret(self,ctx): 
-		raise Exception('Unimplemented method, DvdAbstractExpression.interpret')
+	def interpret(ctx)		raise Exception('Unimplemented method, DvdAbstractExpression.interpret')

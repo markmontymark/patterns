@@ -1,18 +1,15 @@
 
 # two of three classes the facade calls
-class FacadeWater:
+class FacadeWater
 
 	waterIsBoiling = None
 
 	def initialize() 
-		self.setWaterIsBoiling(False)
+		@setWaterIsBoiling(False)
 
-	def boilFacadeWater(self) :
-		self.setWaterIsBoiling( True )
+	def boilFacadeWater(self) 		@setWaterIsBoiling( True )
 		return "water is boiling"
 
-	def setWaterIsBoiling(self,isWaterBoiling) :
-		self. waterIsBoiling = isWaterBoiling
+	def setWaterIsBoiling(isWaterBoiling) 		@ waterIsBoiling = isWaterBoiling
 
-	def getWaterIsBoiling(self) : 
-		return self.waterIsBoiling
+	def getWaterIsBoiling(self) 		return @waterIsBoiling

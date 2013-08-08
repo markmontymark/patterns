@@ -4,17 +4,14 @@
 
 import copy
 
-class AbstractFork:
+class AbstractFork
 
 	def initialize()
 		raise Exception("Can't instantiate abstract class, AbstractFork")
 
-	def setForkName(self,forkName) :
-		self.forkName = forkName
+	def setForkName(forkName) 		@forkName = forkName
 
-	def getForkName(self) : 
-		return self.forkName
+	def getForkName(self) 		return @forkName
 
-	def clone(self) :
-		return copy.deepcopy(self)
+	def clone(self) 		return copy.deepcopy(self)
 

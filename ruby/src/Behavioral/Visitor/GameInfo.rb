@@ -1,9 +1,7 @@
 #//GameInfo.java - three of three concrete Visitees
-from AbstractTitleInfo import AbstractTitleInfo
+require "AbstractTitleInfo"
 
-class GameInfo(AbstractTitleInfo):
-	def initialize(titleName) :
-		super(GameInfo,self).__init__(titleName)
+class GameInfo < AbstractTitleInfo
+	def initialize(titleName) 		super(GameInfo,self).__init__(titleName)
 
-	def accept(self,titleBlurbVisitor) :
-		 titleBlurbVisitor.visit(self)
+	def accept(titleBlurbVisitor) 		 titleBlurbVisitor.visit(self)

@@ -1,6 +1,5 @@
 #//DvdActorExpression - One Of Four Terminal Expressions
-from DvdAbstractExpression import DvdAbstractExpression 
+require "DvdAbstractExpression"
 
-class DvdActorExpression(DvdAbstractExpression) :
-	def interpret(self,ctx) :
-		return ', '.join(ctx.getAllActors())
+class DvdActorExpression < DvdAbstractExpression
+	def interpret(ctx) 		return ', '.join(ctx.getAllActors())

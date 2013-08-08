@@ -1,26 +1,18 @@
 
 
 #//DvdListIterator
-from IteratorInterface import IteratorInterface 
+require "IteratorInterface"
 
-class DvdListIterator(IteratorInterface):
+class DvdListIterator < IteratorInterface
 
-	def initialize(list=None):
-		self.currentPosition = 0
-		if list is None :
-			self.list = []
-		else :
-			self.list = list
+	def initialize(list=None)		@currentPosition = 0
+		if list is None 			@list = []
+		else 			@list = list
 			
-	def first(self) : 
-		self.currentPosition = 0
+	def first(self) 		@currentPosition = 0
 			 
-	def next(self) :
-		if self.currentPosition < self.list.titleCount:
-			self.currentPosition += 1 
+	def next(self) 		if @currentPosition < @list.titleCount			@currentPosition += 1 
 			 
-	def isDone(self) : 
-		return self.currentPosition >= self.list.titleCount
+	def isDone(self) 		return @currentPosition >= @list.titleCount
 			 
-	def currentItem(self) : 
-		return self.list.titles[ self.currentPosition ]
+	def currentItem(self) 		return @list.titles[ @currentPosition ]

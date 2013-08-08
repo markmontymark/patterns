@@ -1,10 +1,8 @@
 #//DvdActorTitleExpression - Two Of Four Terminal Expressions
 
-from DvdAbstractExpression import DvdAbstractExpression
+require "DvdAbstractExpression"
 
-class DvdActorTitleExpression(DvdAbstractExpression) :
-	def initialize(title):
-		self.title = title
+class DvdActorTitleExpression < DvdAbstractExpression
+	def initialize(title)		@title = title
 
-	def interpret(self,ctx) :
-		return ', '.join(ctx.getActorsForTitle(self.title))
+	def interpret(ctx) 		return ', '.join(ctx.getActorsForTitle(@title))

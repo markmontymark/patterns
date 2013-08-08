@@ -1,18 +1,14 @@
 #//AbstractTitleInfo.java - the abstract Visitee
 
-class AbstractTitleInfo(object):
+class AbstractTitleInfo < object
 
 	titleName = None
 
-	def initialize(titleName):
-		self.setTitleName(titleName)
+	def initialize(titleName)		@setTitleName(titleName)
 
-	def setTitleName (self,titleNameIn) :
-		self.titleName = titleNameIn
+	def setTitleName (titleNameIn) 		@titleName = titleNameIn
 
-	def getTitleName (self) : 
-		return self.titleName
+	def getTitleName (self) 		return @titleName
 
-	def accept (self,titleBlurbVisitor) :
-		raise Exception("Unimplemented method, AbstractTitleInfo.accept")
+	def accept (titleBlurbVisitor) 		raise Exception("Unimplemented method, AbstractTitleInfo.accept")
 

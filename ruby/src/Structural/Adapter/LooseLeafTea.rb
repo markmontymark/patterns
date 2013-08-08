@@ -2,12 +2,11 @@
 # - the adaptee
 
 
-class LooseLeafTea:
+class LooseLeafTea
 
 	def initialize()
-		self.teaIsSteeped = False
+		@teaIsSteeped = False
 
-	def steepTea(self) :
-		self.teaIsSteeped = True
+	def steepTea(self) 		@teaIsSteeped = True
 		return 'tea is steeping'
 

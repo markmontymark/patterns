@@ -1,21 +1,17 @@
 
 #//BookTitleInfo - two of three concrete templates
 
-from TitleInfo import TitleInfo
+require "TitleInfo"
 
-class BookTitleInfo(TitleInfo):
+class BookTitleInfo < TitleInfo
 
 	author = None
 
-	def initialize(titleName,author) :
-		self.setTitleName(titleName)
-		self.setAuthor(author)
+	def initialize(titleName,author) 		@setTitleName(titleName)
+		@setAuthor(author)
 
-	def setAuthor (self,a) :
-		self.author = a
+	def setAuthor (a) 		@author = a
 
-	def getAuthor (self) : 
-		return self.author
+	def getAuthor (self) 		return @author
 
-	def getTitleBlurb (self): 
-		return "Book: {0}, Author: {1}".format( self.getTitleName() , self.getAuthor() )
+	def getTitleBlurb (self)		return "Book: {0}, Author: {1}".format( @getTitleName() , @getAuthor() )

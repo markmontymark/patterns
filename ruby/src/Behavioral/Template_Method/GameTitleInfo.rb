@@ -1,10 +1,8 @@
 #//GameTitleInfo.java - three of three concrete templates
 
-from TitleInfo import TitleInfo
+require "TitleInfo"
 
-class GameTitleInfo(TitleInfo) :
-	def initialize(titleName):
-		self.setTitleName(titleName)
+class GameTitleInfo < TitleInfo
+	def initialize(titleName)		@setTitleName(titleName)
 
-	def getTitleBlurb (self): 
-		return "Game: {0}".format( self.getTitleName() )
+	def getTitleBlurb (self)		return "Game: {0}".format( @getTitleName() )

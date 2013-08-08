@@ -1,14 +1,11 @@
 
 #//TeaFlavor.java - the Concrete Flyweight
 
-from TeaOrder import TeaOrder
+require "TeaOrder"
 
-class TeaFlavor(TeaOrder) :
-	def initialize(teaFlavor) :
-		self.teaFlavor = teaFlavor
+class TeaFlavor < TeaOrder
+	def initialize(teaFlavor) 		@teaFlavor = teaFlavor
 
-	def getFlavor(self) : 
-		return self.teaFlavor
+	def getFlavor(self) 		return @teaFlavor
 
-	def serveTea(self,teaOrderContext) :
-		return "Serving tea flavor {0} to table number {1}".format( self.teaFlavor, teaOrderContext.getTable())
+	def serveTea(teaOrderContext) 		return "Serving tea flavor {0} to table number {1}".format( @teaFlavor, teaOrderContext.getTable())

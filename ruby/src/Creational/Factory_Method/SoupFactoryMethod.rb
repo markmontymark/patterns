@@ -21,34 +21,25 @@ from common.PastaFazul import PastaFazul
 from common.TofuSoup import TofuSoup
 from common.VegetableSoup import VegetableSoup
 
-class SoupFactoryMethod:
+class SoupFactoryMethod
 	
 	def __new__(cls,*args, **kwargs) : pass
 
-	def makeSoupBuffet(self) : 
-		return SoupBuffet()
+	def makeSoupBuffet(self) 		return SoupBuffet()
 
-	def makeChickenSoup(self) : 
-		return ChickenSoup()
+	def makeChickenSoup(self) 		return ChickenSoup()
 
-	def makeClamChowder(self) : 
-		return ClamChowder()
+	def makeClamChowder(self) 		return ClamChowder()
 
-	def makeFishChowder(self) : 
-		return FishChowder()
+	def makeFishChowder(self) 		return FishChowder()
 
-	def makeMinnestrone(self) : 
-		return Minnestrone()
+	def makeMinnestrone(self) 		return Minnestrone()
 
-	def makePastaFazul(self) : 
-		return PastaFazul()
+	def makePastaFazul(self) 		return PastaFazul()
 
-	def makeTofuSoup(self) : 
-		return TofuSoup()
+	def makeTofuSoup(self) 		return TofuSoup()
 
-	def makeVegetableSoup(self) : 
-		return VegetableSoup()
+	def makeVegetableSoup(self) 		return VegetableSoup()
 
-	def makeBuffetName(self) : 
-		return "Soup Buffet"
+	def makeBuffetName(self) 		return "Soup Buffet"
 

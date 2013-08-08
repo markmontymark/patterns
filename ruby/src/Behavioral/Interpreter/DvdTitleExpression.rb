@@ -1,7 +1,6 @@
 #//DvdTitleExpression - Three Of Four Terminal Expressions
 
-from DvdAbstractExpression import DvdAbstractExpression
+require "DvdAbstractExpression"
 
-class DvdTitleExpression(DvdAbstractExpression) :
-	def interpret(self, ctx) :
-		return ', '.join( ctx.getAllTitles())
+class DvdTitleExpression < DvdAbstractExpression
+	def interpret( ctx) 		return ', '.join( ctx.getAllTitles())
