@@ -2,12 +2,21 @@
 
 #/HonoluluSoupBuffetBuilder - Two of Two Builder Subclasses
 
-require "SoupBuffetBuilder"
-from common.HonoluluClamChowder import HonoluluClamChowder
-from common.HonoluluFishChowder import HonoluluFishChowder
+require "Creational/Builder/SoupBuffetBuilder"
+require "common/HonoluluClamChowder"
+require "common/HonoluluFishChowder"
 
 class HonoluluSoupBuffetBuilder < SoupBuffetBuilder
-	def initialize()pass
-	def buildClamChowder(self)   		@soupBuffet.clamChowder = HonoluluClamChowder()
-	def buildFishChowder(self)   		@soupBuffet.fishChowder = HonoluluFishChowder()
-	def setSoupBuffetName(self) 		@soupBuffet.soupBuffetName = "Honolulu Soup Buffet"
+	def buildClamChowder()
+   		@soupBuffet.clamChowder = HonoluluClamChowder.new
+	end
+
+	def buildFishChowder()
+   		@soupBuffet.fishChowder = HonoluluFishChowder.new
+	end
+
+	def setSoupBuffetName()
+ 		@soupBuffet.soupBuffetName = "Honolulu Soup Buffet"
+	end
+
+end

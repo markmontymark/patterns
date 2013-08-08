@@ -3,16 +3,27 @@
 
 class DvdName
 
-	titleName = None
+	def initialize(titleName)
+ 		setTitleName(titleName)
+	end
 
-	def initialize(titleName) 		@setTitleName(titleName)
+	def setTitleName(titleNameIn)
+ 		@titleName = titleNameIn
+	end
 
-	def setTitleName(titleNameIn) 		@titleName = titleNameIn
+	def getTitleName()
+ 		return @titleName
+	end
 
-	def getTitleName(self) 		return @titleName
+	def setNameStarsOn()
+ 		setTitleName(getTitleName().replace(' ','*'))
+	end
 
-	def setNameStarsOn(self) 		@setTitleName(@getTitleName().replace(' ','*'))
+	def setNameStarsOff()
+ 		setTitleName(getTitleName().replace('*',' '))
+	end
 
-	def setNameStarsOff(self) 		@setTitleName(@getTitleName().replace('*',' '))
-
-	def __str__(self)		return "DVD: {0}".format(@getTitleName())
+	def __str__()
+		return "DVD: {0}".format(getTitleName())
+	end
+end

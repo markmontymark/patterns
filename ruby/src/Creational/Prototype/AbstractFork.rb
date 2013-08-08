@@ -2,16 +2,23 @@
 
 #//AbstractFork - Two of Two Prototypes
 
-import copy
-
 class AbstractFork
 
 	def initialize()
 		raise Exception("Can't instantiate abstract class, AbstractFork")
+	end
 
-	def setForkName(forkName) 		@forkName = forkName
+	def setForkName(forkName)
+ 		@forkName = forkName
+	end
 
-	def getForkName(self) 		return @forkName
+	def getForkName()
+ 		return @forkName
+	end
 
-	def clone(self) 		return copy.deepcopy(self)
+	def clone()
+ 		return copy.deepcopy(self)
+	end
+
+end
 

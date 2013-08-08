@@ -2,23 +2,40 @@
 
 #//DvdLowercaseTitle- One of Two Concrete Colleagues or Mediatees
 
-require "DvdTitle"
+require "Behavioral/Mediator/DvdTitle"
 
 class DvdLowercaseTitle < DvdTitle
-	LowercaseTitle = None
-	dvdMediator = None
 
-	def initialize( title, dvdMediator) 		@setTitle( title.getTitle() if isinstance(title, DvdTitle)  else title)
-		@resetTitle()
+	def initialize( title, dvdMediator)
+		@LowercaseTitle = None
+		if isinstance(title, DvdTitle)  
+			setTitle( title.getTitle() )
+		else 
+			setTitle(title)
+		end
+		resetTitle()
 		@dvdMediator = dvdMediator
 		@dvdMediator.setLowercase(self)
+	end
 
-	def resetTitle (title = None) 		if title			@setTitle(title)
-		@setLowercaseTitle(@getTitle().lower())
+	def resetTitle (title = None)
+ 		if title
+			setTitle(title)
+		end
+		setLowercaseTitle(getTitle().lower())
+	end
 
-	def setSuperTitleLowercase(self) 		@setTitle(@getLowercaseTitle())
+	def setSuperTitleLowercase()
+ 		setTitle(getLowercaseTitle())
 		@dvdMediator.changeTitle(self)
+	end
 
-	def getLowercaseTitle(self) 		return @LowercaseTitle
+	def getLowercaseTitle()
+ 		return @LowercaseTitle
+	end
 
-	def setLowercaseTitle(aLowercaseTitle) 		@LowercaseTitle = aLowercaseTitle
+	def setLowercaseTitle(aLowercaseTitle)
+ 		@LowercaseTitle = aLowercaseTitle
+	end
+
+end

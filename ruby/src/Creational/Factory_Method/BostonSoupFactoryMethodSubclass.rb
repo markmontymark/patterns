@@ -1,14 +1,22 @@
 
 
 #//BostonSoupFactoryMethodSubclass - Two of Two Subclass Factory Methods
-require "SoupFactoryMethod"
-from common.BostonClamChowder import BostonClamChowder
-from common.BostonFishChowder import BostonFishChowder
+require "Creational/Factory_Method/SoupFactoryMethod"
+require "common/BostonClamChowder"
+require "common/BostonFishChowder"
 
 class BostonSoupFactoryMethodSubclass < SoupFactoryMethod
 
-	def makeBuffetName(self)   		return "Boston Soup Buffet"
+	def makeBuffetName()
+   		return "Boston Soup Buffet"
+	end
 
-	def makeClamChowder(self)   		return BostonClamChowder()
+	def makeClamChowder()
+   		return BostonClamChowder.new()
+	end
 
-	def makeFishChowder(self)   		return BostonFishChowder()
+	def makeFishChowder()
+   		return BostonFishChowder.new()
+	end
+
+end

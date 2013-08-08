@@ -1,15 +1,19 @@
 
-#//TeaBall.java - the adapter
+#//TeaBall - the adapter
 
-require "TeaBag"
+require "Structural/Adapter/TeaBag"
 
 class TeaBall < TeaBag
 
-	looseLeafTea = None
-
-	def initialize(looseLeafTea) 		@looseLeafTea = looseLeafTea
+	def initialize(looseLeafTea)
+ 		@looseLeafTea = looseLeafTea
 		@teaBagIsSteeped = @looseLeafTea.teaIsSteeped
+	end
 
-	def steepTeaInCup(self) 		@looseLeafTea.steepTea()
+	def steepTeaInCup()
+ 		@looseLeafTea.steepTea()
 		@teaBagIsSteeped = True
+	end
+
+end
 

@@ -1,11 +1,20 @@
-# //DvdNameTheAtEndStrategy.java - two of three concrete strategies
+# //DvdNameTheAtEndStrategy - two of three concrete strategies
 
 
-require "DvdNameStrategy"
+require "Behavioral/Strategy/DvdNameStrategy"
 
 class DvdNameTheAtEndStrategy < DvdNameStrategy
-	def formatDvdName (dvdName,charIn)		if dvdName.startswith('The ')			return dvdName[4:] + ", The"
-		elif dvdName.startswith('THE ' )			return dvdName[4:] + ", THE"
-		elif dvdName.startswith('the ')			return dvdName[4:] + ", the"
-		else			return dvdName
+
+	def formatDvdName (dvdName,charIn)
+		if dvdName.startswith('The ')
+			return dvdName.substring(4) + ", The"
+		elsif dvdName.startswith('THE ' )
+			return dvdName.substring(4) + ", THE"
+		elsif dvdName.startswith('the ')
+			return dvdName.substring(4) + ", the"
+		else
+			return dvdName
+		end
+	end
+end
 

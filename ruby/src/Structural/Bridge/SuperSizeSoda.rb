@@ -1,15 +1,23 @@
 
-# two of two classes extending the Abstract
+# - one of two classes extending the Abstract
 
-require "Soda"
+require "Structural/Bridge/Soda"
 
 class SuperSizeSoda < Soda
 
 	def initialize() 
-		@setSodaImp()
+		setSodaImp()
+	end
 
-	def pourSoda(self) 		sodaImp = @getSodaImp()
+	def pourSoda()
+ 		sodaImp = getSodaImp()
 		retval = []
-		for i in range(5)			retval.append('...glug...')
+		( 1..5 ).each do
+			retval.append('...glug...')
 			retval.append(sodaImp.pourSodaImp())
+		end
 		return retval
+	end
+
+end
+

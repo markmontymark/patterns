@@ -1,15 +1,20 @@
-# //DvdStateContext.java - the Context
+# //DvdStateContext - the Context
 
-require "DvdStateName"
-require "DvdStateNameStars"
+require "Behavioral/State/DvdStateName"
+require "Behavioral/State/DvdStateNameStars"
 
 class DvdStateContext
 
-	dvdStateName = None
-
 	def initialize() 
-		@dvdStateName = DvdStateNameStars()  # start with stars
+		@dvdStateName = DvdStateNameStars.new  # start with stars
+	end
 
-	def setDvdStateName (dvdStateNameIn)		@dvdStateName = dvdStateNameIn
+	def setDvdStateName (dvdStateNameIn)
+		@dvdStateName = dvdStateNameIn
+	end
 
-	def showName (nameIn)		return @dvdStateName.showName(nameIn)
+
+	def showName (nameIn)
+		return @dvdStateName.showName(nameIn)
+	end
+end

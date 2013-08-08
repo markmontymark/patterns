@@ -2,7 +2,13 @@
 
 class TeaOrderContext
 
-	def initialize(tableNumber) 		@tableNumber = tableNumber
+	def initialize(tableNumber)
+ 		@tableNumber = tableNumber
+	end
 
-	def getTable(self) 		return @tableNumber
+	def getTable()
+ 		return @tableNumber
+	end
+
+end
 

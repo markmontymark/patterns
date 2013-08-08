@@ -11,58 +11,44 @@ BostonSoupBuffetBuilder and the HonoluluSoupBuffetBuilder both extend the SoupBu
 An object can be defined as an SoupBuffetBuilder, and instantiated as either a BostonSoupBuffetBuilder (BSBB) or a HonoluluSoupBuffetBuilder (HSBB). Both BSBB or HSBB have a buildFishChowder method, and both return a FishChowder type class. However, the BSBB returns a FishChowder subclass of BostonFishChowder, while the HSBB returns a FishChowder subclass of HonoluluFishChowder.
 Still reading? Save your time, watch the video lessons!
 Video tutorial on design patterns
-SoupBuffetBuilder.java - a Builder
+SoupBuffetBuilder - a Builder
 
 abstract class SoupBuffetBuilder {
     SoupBuffet soupBuffet;
         
     public SoupBuffet getSoupBuffet() {
         return soupBuffet;
-    }
     
     public void buildSoupBuffet() {
         soupBuffet = new SoupBuffet();
-    }
     
     public abstract void setSoupBuffetName();
         
     public void buildChickenSoup() {
         soupBuffet.chickenSoup = new ChickenSoup();
-    }
     public void buildClamChowder() {
         soupBuffet.clamChowder = new ClamChowder();
-    }
     public void buildFishChowder() {
         soupBuffet.fishChowder = new FishChowder();
-    }
     public void buildMinnestrone() {
         soupBuffet.minnestrone = new Minnestrone();
-    }
     public void buildPastaFazul() {
         soupBuffet.pastaFazul = new PastaFazul();
-    }
     public void buildTofuSoup() {
         soupBuffet.tofuSoup = new TofuSoup();
-    }
     public void buildVegetableSoup() {
         soupBuffet.vegetableSoup = new VegetableSoup();
-    }
-}
 
-BostonSoupBuffetBuilder.java - One of Two Builder Subclasses
+BostonSoupBuffetBuilder - One of Two Builder Subclasses
 
 class BostonSoupBuffetBuilder extends SoupBuffetBuilder {
     public void buildClamChowder() {
        soupBuffet.clamChowder = new BostonClamChowder();
-    }
     public void buildFishChowder() {
        soupBuffet.fishChowder = new BostonFishChowder();
-    }    
     
     public void setSoupBuffetName() {
        soupBuffet.soupBuffetName = "Boston Soup Buffet";
-    }
-}
 
 class BostonClamChowder extends ClamChowder {
     public BostonClamChowder() {
@@ -73,8 +59,6 @@ class BostonClamChowder extends ClamChowder {
         soupIngredients.add("1/2 cup heavy cream");
         soupIngredients.add("1/4 cup butter");    
         soupIngredients.add("1/4 cup potato chips");
-    }
-}
 
 class BostonFishChowder extends FishChowder {
     public BostonFishChowder() {
@@ -85,23 +69,17 @@ class BostonFishChowder extends FishChowder {
         soupIngredients.add("1/2 cup heavy cream");
         soupIngredients.add("1/4 cup butter");    
         soupIngredients.add("1/4 cup potato chips");
-    }
-}
 
-HonoluluSoupBuffetBuilder.java - Two of Two Builder Subclasses
+HonoluluSoupBuffetBuilder - Two of Two Builder Subclasses
 
 class HonoluluSoupBuffetBuilder extends SoupBuffetBuilder {
     public void buildClamChowder() {
         soupBuffet.clamChowder = new HonoluluClamChowder();
-    }
     public void buildFishChowder() {
         soupBuffet.fishChowder = new HonoluluFishChowder();
-    }
     
     public void setSoupBuffetName() {
         soupBuffet.soupBuffetName = "Honolulu Soup Buffet";
-    }
-}
 
 class HonoluluClamChowder extends ClamChowder {
     public HonoluluClamChowder() {
@@ -112,8 +90,6 @@ class HonoluluClamChowder extends ClamChowder {
         soupIngredients.add("1/2 cup coconut milk");
         soupIngredients.add("1/4 cup SPAM");    
         soupIngredients.add("1/4 cup taro chips");
-    }
-}
 
 class HonoluluFishChowder extends FishChowder {
     public HonoluluFishChowder() {
@@ -124,11 +100,9 @@ class HonoluluFishChowder extends FishChowder {
         soupIngredients.add("1/2 cup coconut milk");
         soupIngredients.add("1/4 cup SPAM");    
         soupIngredients.add("1/4 cup taro chips");
-    }
-}
 
 
-Soup.java - A helper class
+Soup - A helper class
 
 import java.util.ArrayList;
 import java.util.ListIterator;
@@ -141,7 +115,6 @@ abstract class Soup
    public String getSoupName()
    {
        return soupName;
-   }
    
    public String toString()
    {
@@ -151,10 +124,7 @@ abstract class Soup
         while (soupIterator.hasNext())
         {
             stringOfIngredients.append((String)soupIterator.next());
-        }
         return stringOfIngredients.toString();
-   }
-}        
 
 class ChickenSoup extends Soup
 {
@@ -166,8 +136,6 @@ class ChickenSoup extends Soup
         soupIngredients.add("1 cup bullion");      
         soupIngredients.add("1/16 cup butter");    
         soupIngredients.add("1/4 cup diced carrots");          
-    }
-}   
 
 class ClamChowder extends Soup
 {
@@ -179,8 +147,6 @@ class ClamChowder extends Soup
         soupIngredients.add("1/2 cup milk");      
         soupIngredients.add("1/4 cup butter");    
         soupIngredients.add("1/4 cup chips");          
-    }
-}
 
 class FishChowder extends Soup
 {
@@ -192,8 +158,6 @@ class FishChowder extends Soup
         soupIngredients.add("1/2 cup milk");      
         soupIngredients.add("1/4 cup butter");    
         soupIngredients.add("1/4 cup chips");          
-    }
-}
 
 class Minnestrone extends Soup
 {
@@ -203,8 +167,6 @@ class Minnestrone extends Soup
         soupIngredients.add("1 Pound tomatos");
         soupIngredients.add("1/2 cup pasta");    
         soupIngredients.add("1 cup tomato juice");             
-    }
-}
 
 class PastaFazul extends Soup
 {
@@ -215,8 +177,6 @@ class PastaFazul extends Soup
         soupIngredients.add("1/2 cup pasta");    
         soupIngredients.add("1/2 cup diced carrots");          
         soupIngredients.add("1 cup tomato juice");             
-    }
-}
 
 class TofuSoup extends Soup
 {
@@ -226,8 +186,6 @@ class TofuSoup extends Soup
         soupIngredients.add("1 Pound tofu");
         soupIngredients.add("1 cup carrot juice");    
         soupIngredients.add("1/4 cup spirolena");         
-    }
-}
 
 class VegetableSoup extends Soup
 {
@@ -237,10 +195,8 @@ class VegetableSoup extends Soup
         soupIngredients.add("1 cup bullion");    
         soupIngredients.add("1/4 cup carrots");         
         soupIngredients.add("1/4 cup potatoes");         
-    }
-}
 
-SoupBuffet.java - A helper class
+SoupBuffet - A helper class
 
 class SoupBuffet {
    String soupBuffetName;
@@ -255,32 +211,23 @@ class SoupBuffet {
 
    public String getSoupBuffetName() {
        return soupBuffetName;
-   }
    public void setSoupBuffetName(String soupBuffetNameIn) {
       soupBuffetName = soupBuffetNameIn;
-   }
    
    public void setChickenSoup(ChickenSoup chickenSoupIn) {
        chickenSoup = chickenSoupIn;
-   }
    public void setClamChowder(ClamChowder clamChowderIn) {
        clamChowder = clamChowderIn;
-   }
    public void setFishChowder(FishChowder fishChowderIn) {
       fishChowder = fishChowderIn;
-   }
    public void setMinnestrone(Minnestrone minnestroneIn) {
       minnestrone = minnestroneIn;
-   }
    public void setPastaFazul(PastaFazul pastaFazulIn) {
        pastaFazul = pastaFazulIn;
-   }
    public void setTofuSoup(TofuSoup tofuSoupIn) {
        tofuSoup = tofuSoupIn;
-   }
    public void setVegetableSoup(VegetableSoup vegetableSoupIn) {
        vegetableSoup = vegetableSoupIn;
-   }
    
    public String getTodaysSoups() {
         StringBuffer stringOfSoups = new StringBuffer();
@@ -300,10 +247,8 @@ class SoupBuffet {
         stringOfSoups.append(" Vegetable Soup: ");        
         stringOfSoups.append(this.vegetableSoup.getSoupName());
         return stringOfSoups.toString();          
-   }
-}        
 
-TestSoupBuffetBuilder.java - Testing the builder
+TestSoupBuffetBuilder - Testing the builder
 
 class TestSoupBuffetBuilder {
 
@@ -322,7 +267,6 @@ class TestSoupBuffetBuilder {
         soupBuffetBuilder.buildVegetableSoup();
         
         return soupBuffetBuilder.getSoupBuffet();
-   }     
     
    public static void main(String[] args) {
        
@@ -337,8 +281,6 @@ class TestSoupBuffetBuilder {
        System.out.println("At the " + 
                            honoluluSoupBuffet.getSoupBuffetName() + 
                            honoluluSoupBuffet.getTodaysSoups());
-   }
-}      
 
 Test Results
 

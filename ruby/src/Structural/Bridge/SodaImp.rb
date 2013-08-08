@@ -3,6 +3,13 @@
 
 class SodaImp
 
-	def __new__():pass
+	def __new__()
+ 		raise Exception("Unimplemented method, SodaImp.new")
+	end
 
-	def pourSodaImp(self) 		raise Exception("Unimplemented method, SodaImp.pourSodaImp")
+	def pourSodaImp()
+ 		raise Exception("Unimplemented method, SodaImp.pourSodaImp")
+	end
+
+
+end

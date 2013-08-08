@@ -1,3 +1,9 @@
 class TopTitle
-	def getTopTitle(self) : raise Exception('Unimplmeneted method, TopTitle.getTopTitle')
-	def getAllCategories(self) : raise Exception('Unimplmeneted method, TopTitle.getAllCategories')
+	def getTopTitle() 
+		raise Exception('Unimplmeneted method, TopTitle.getTopTitle')
+	end
+
+	def getAllCategories() 
+		raise Exception('Unimplmeneted method, TopTitle.getAllCategories')
+	end
+end

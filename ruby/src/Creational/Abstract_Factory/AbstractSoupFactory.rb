@@ -14,20 +14,40 @@
 #//AbstractSoupFactory - An Abstract Factory
 
 class AbstractSoupFactory
-	def initialize(factoryLocation) 		raise Exception("Can't instantiate an abstract class, AbstractSoupFactory")
+	def initialize(factoryLocation)
+ 		raise Exception("Can't instantiate an abstract class, AbstractSoupFactory")
+	end
 
-	def getFactoryLocation(self) 		return @factoryLocation
+	def getFactoryLocation()
+ 		return @factoryLocation
+	end
 
-	def makeChickenSoup(self) 		return ChickenSoup()
+	def makeChickenSoup()
+ 		return ChickenSoup.new()
+	end
 
-	def makeClamChowder(self) 		return ClamChowder()
+	def makeClamChowder()
+ 		return ClamChowder.new()
+	end
 
-	def makeFishChowder(self) 		return FishChowder()
+	def makeFishChowder()
+ 		return FishChowder.new()
+	end
 
-	def makeMinnestrone(self) 		return Minnestrone()
+	def makeMinnestrone()
+ 		return Minnestrone.new()
+	end
 
-	def makePastaFazul(self) 		return PastaFazul()
+	def makePastaFazul()
+ 		return PastaFazul.new()
+	end
 
-	def makeTofuSoup(self) 		return TofuSoup()
+	def makeTofuSoup()
+ 		return TofuSoup.new()
+	end
 
-	def makeVegetableSoup(self) 		return VegetableSoup()
+	def makeVegetableSoup()
+ 		return VegetableSoup.new()
+	end
+
+end

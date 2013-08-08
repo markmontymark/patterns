@@ -1,16 +1,19 @@
 #//Define a macro language and syntax, parsing input into objects which perform the correct opertaions.
 #//DvdInterpreterClient - the Client
 
-require "DvdActorExpression"
-require "DvdTitleExpression"
-require "DvdTitleActorExpression"
-require "DvdActorTitleExpression"
+require "Behavioral/Interpreter/DvdActorExpression"
+require "Behavioral/Interpreter/DvdTitleExpression"
+require "Behavioral/Interpreter/DvdTitleActorExpression"
+require "Behavioral/Interpreter/DvdActorTitleExpression"
 
 class DvdInterpreterClient
-	def initialize(ctx) 		@ctx = ctx
+	def initialize(ctx)
+ 		@ctx = ctx
+	end
 
 	#// expression syntax	#/ show title | actor [for actor | title ]
-	def interpret(expression) 		result = ["Query Result: "]
+	def interpret(expression)
+ 		result = ["Query Result: "]
 		mainQuery = ' '
 		subQuery = ' '
 		forUsed = False
@@ -19,34 +22,68 @@ class DvdInterpreterClient
 		searchEnded = False
 
 		tokens = expression.split(' ')
-		for currentToken in tokens 			if currentToken == "show" 				continue
+		for currentToken in tokens
+ 			if currentToken == "show"
+ 				continue
+			end
+
 			#//show in all queries, not really used
-			if currentToken == "title" 				if mainQuery == ' ' 					mainQuery = 'T'
-				else 					if forUsed and subQuery == ' ' 						subQuery = 'T'
-			elif currentToken == "actor" 				if mainQuery == ' ' 					mainQuery = 'A'
-				else 					if forUsed and subQuery == ' ' 						subQuery = 'A'
+			if currentToken == "title"
+ 				if mainQuery == ' '
+ 					mainQuery = 'T'
+				elsif forUsed and subQuery == ' '
+ 						subQuery = 'T'
+				end
+			elsif currentToken == "actor"
+ 				if mainQuery == ' '
+ 					mainQuery = 'A'
+				elsif forUsed and subQuery == ' '
+ 						subQuery = 'A'
+				end
 
-			elif currentToken == 'for' 				forUsed = True
+			elsif currentToken == 'for'
+ 				forUsed = True
 
-			elif searchString == None and subQuery != ' ' and  currentToken.startswith("<") 				searchString = currentToken
+			elsif searchString == None and subQuery != ' ' and  currentToken.startswith("<")
+ 				searchString = currentToken
 				searchStarted = True
-				if currentToken.endswith(">") 					searchEnded = True 
+				if currentToken.endswith(">")
+ 					searchEnded = True 
+				end
 
-			elif searchStarted and not searchEnded 				searchString += " " + currentToken
-				if currentToken.endswith(">")					searchEnded = True 
-			#end for 
+			elsif searchStarted and not searchEnded
+ 				searchString += " " + currentToken
+				if currentToken.endswith(">")
+					searchEnded = True 
+				end
+			end
+		end
 
 
 		#//remove <>
-		if searchString != None 			searchString = searchString.strip('<>')
+		if searchString != None
+ 			searchString = searchString.strip('<>')
 			#searchString = searchString.substring(1,(searchString.length() - 1)) 
+		end
 
 		expr = None
-		if mainQuery == 'A' 			if subQuery == 'T' 				expr = DvdActorTitleExpression(searchString) 
-			else 				expr = DvdActorExpression()
-		elif mainQuery == 'T' 			if subQuery == 'A' 				expr = DvdTitleActorExpression(searchString) 
-			else 				expr = DvdTitleExpression()
-		else 			return str(result)
+		if mainQuery == 'A'
+ 			if subQuery == 'T'
+ 				expr = DvdActorTitleExpression(searchString) 
+			else
+ 				expr = DvdActorExpression()
+			end
+		elsif mainQuery == 'T'
+ 			if subQuery == 'A'
+ 				expr = DvdTitleActorExpression(searchString) 
+			else
+ 				expr = DvdTitleExpression()
+			end
+		else
+ 			return str(result)
+		end
 
 		result.append(expr.interpret(@ctx))
 		return str(result)
+	end
+end

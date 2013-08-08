@@ -4,11 +4,20 @@
 #/ the Iterator Interface
 
 class IteratorInterface
-	def first(self) 		raise Exception('Unimplemented method, IteratorInterface.first')
+	def first()
+ 		raise Exception('Unimplemented method, IteratorInterface.first')
+	end
 
-	def next(self) 		raise Exception('Unimplemented method, IteratorInterface.next')
+	def next()
+ 		raise Exception('Unimplemented method, IteratorInterface.next')
+	end
 
-	def isDone(self) 		raise Exception('Unimplemented method, IteratorInterface.isDone')
+	def isDone()
+ 		raise Exception('Unimplemented method, IteratorInterface.isDone')
+	end
 
-	def currentItem(self) 		raise Exception('Unimplemented method, IteratorInterface.currentItem')
+	def currentItem()
+ 		raise Exception('Unimplemented method, IteratorInterface.currentItem')
+	end
+end
 

@@ -2,16 +2,24 @@
 
 # AbstractSpoon- One of Two Prototypes
 
-import copy
 
 class AbstractSpoon
 
 	def initialize()
 		raise Exception("Can't instantiate abstract class, AbstractSpoon")
+	end
 
-	def setSpoonName(spoonName) 		@spoonName = spoonName
+	def setSpoonName(spoonName)
+ 		@spoonName = spoonName
+	end
 
-	def getSpoonName(self) 		return @spoonName
+	def getSpoonName()
+ 		return @spoonName
+	end
 
-	def clone(self) 		return copy.deepcopy(self)
+	def clone()
+ 		return copy.deepcopy(self)
+	end
+
+end
 

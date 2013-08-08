@@ -1,7 +1,10 @@
 
 #//SaladSpoon- One of Two Concrete Prototypes extending the AbstractSpoon Prototype
-require "AbstractSpoon"
+require "Creational/Prototype/AbstractSpoon"
 
 class SaladSpoon < AbstractSpoon
 	def initialize()
-		@setSpoonName('Salad Spoon')
+		setSpoonName('Salad Spoon')
+	end
+
+end

@@ -11,30 +11,48 @@
 
 #/If you were to create a spoon "pool" you would have the same basic logic as shown, however multiple spoons would be distributed. The variable theSpoon would hold an array or collection of spoons. The variable theSpoonIsAvaialable would become a counter of the number of available spoons.
 
-class SingleSpoon < object
+class SingleSpoon
 
-	__instance = None
+	@__instance = None
 
 
-	def __new__(cls)		if cls.__instance == None			#cls.__instance = type.__new__(cls)
+	def __new__(*cls)
+		if cls.__instance == None			#cls.__instance = type.__new__(cls)
 			cls.__instance = super(SingleSpoon, cls).__new__(cls)
 			cls.__instance.soupLastUsedWith = None
 			cls.__instance.theSpoonIsAvailable = True
+		end
 		return cls.__instance
+	end
 
-	def __str__(self) 		return "Behold the glorious single spoon!"
+	def __str__()
+ 		return "Behold the glorious single spoon!"
+	end
 
-	def returnTheSpoon(self) 		SingleSpoon.__instance.cleanSpoon()
+	def returnTheSpoon()
+ 		SingleSpoon.__instance.cleanSpoon()
 		SingleSpoon.__instance.theSpoonIsAvailable = True
+	end
 
-	def getTheSpoon(self) 		#//if spoon not available  return None
-		if SingleSpoon.__instance.theSpoonIsAvailable			SingleSpoon.__instance.theSpoonIsAvailable = False
+	def getTheSpoon() 		#//if spoon not available  return None
+		if SingleSpoon.__instance.theSpoonIsAvailable
+			SingleSpoon.__instance.theSpoonIsAvailable = False
 			return SingleSpoon.__instance
+		end
 		return None
+	end
 
-	def getSoupLastUsedWith(self) 		return SingleSpoon.__instance.soupLastUsedWith
+	def getSoupLastUsedWith()
+ 		return SingleSpoon.__instance.soupLastUsedWith
+	end
 
-	def setSoupLastUsedWith(soup) 		SingleSpoon.__instance.soupLastUsedWith = soup
+	def setSoupLastUsedWith(soup)
+ 		SingleSpoon.__instance.soupLastUsedWith = soup
+	end
 
-	def cleanSpoon(self) 		@setSoupLastUsedWith(None)
+	def cleanSpoon()
+ 		setSoupLastUsedWith(None)
+	end
+
+end
 

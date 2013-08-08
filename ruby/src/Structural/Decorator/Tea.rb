@@ -1,3 +1,10 @@
 class Tea
-    teaIsSteeped = None
-    def steepTea(self)       raise Exception("Unimplemented method, Tea.steepTea")
+
+	def initialize()
+		 @teaIsSteeped = False
+	end
+
+	def steepTea()
+       raise Exception("Unimplemented method, Tea.steepTea")
+	end
+end

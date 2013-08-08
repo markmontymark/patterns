@@ -1,7 +1,10 @@
 
 # three of three classes extending the Implementation Base Class
 
-require "SodaImp"
+require "Structural/Bridge/SodaImp"
 
 class OrangeSodaImp < SodaImp
-	def pourSodaImp(self) 		return "Citrusy Orange Soda!"
+	def pourSodaImp()
+ 		return "Citrusy Orange Soda!"
+	end
+end

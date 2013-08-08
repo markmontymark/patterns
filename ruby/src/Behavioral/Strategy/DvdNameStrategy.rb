@@ -1,7 +1,13 @@
 # //DvdNameStrategy - the abstract strategy
 
-class DvdNameStrategy < object
+class DvdNameStrategy 
 
-	def initialize() pass
+	def initialize() 
+		raise Exception("Unimplemented ctor")
+	end
 
-	def formatDvdName( dvdName, charIn) 		raise Exception("Unimplemented method DvdNameStrategy.formatDvdName")
+	def formatDvdName( dvdName, charIn)
+ 		raise Exception("Unimplemented method DvdNameStrategy.formatDvdName")
+	end
+
+end

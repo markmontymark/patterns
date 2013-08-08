@@ -12,34 +12,52 @@
 #//Video tutorial on design patterns
 #  SoupFactoryMethod - a Factory Method
 
-from common.SoupBuffet import SoupBuffet
-from common.ChickenSoup import ChickenSoup
-from common.ClamChowder import ClamChowder
-from common.FishChowder import FishChowder
-from common.Minnestrone import Minnestrone
-from common.PastaFazul import PastaFazul
-from common.TofuSoup import TofuSoup
-from common.VegetableSoup import VegetableSoup
+require "common/SoupBuffet"
+require "common/ChickenSoup"
+require "common/ClamChowder"
+require "common/FishChowder"
+require "common/Minnestrone"
+require "common/PastaFazul"
+require "common/TofuSoup"
+require "common/VegetableSoup"
 
 class SoupFactoryMethod
 	
-	def __new__(cls,*args, **kwargs) : pass
+	def makeSoupBuffet()
+ 		return SoupBuffet.new()
+	end
 
-	def makeSoupBuffet(self) 		return SoupBuffet()
+	def makeChickenSoup()
+ 		return ChickenSoup.new()
+	end
 
-	def makeChickenSoup(self) 		return ChickenSoup()
+	def makeClamChowder()
+ 		return ClamChowder.new()
+	end
 
-	def makeClamChowder(self) 		return ClamChowder()
+	def makeFishChowder()
+ 		return FishChowder.new()
+	end
 
-	def makeFishChowder(self) 		return FishChowder()
+	def makeMinnestrone()
+ 		return Minnestrone.new()
+	end
 
-	def makeMinnestrone(self) 		return Minnestrone()
+	def makePastaFazul()
+ 		return PastaFazul.new()
+	end
 
-	def makePastaFazul(self) 		return PastaFazul()
+	def makeTofuSoup()
+ 		return TofuSoup.new()
+	end
 
-	def makeTofuSoup(self) 		return TofuSoup()
+	def makeVegetableSoup()
+ 		return VegetableSoup.new()
+	end
 
-	def makeVegetableSoup(self) 		return VegetableSoup()
+	def makeBuffetName()
+ 		return "Soup Buffet"
+	end
 
-	def makeBuffetName(self) 		return "Soup Buffet"
+end
 

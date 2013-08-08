@@ -1,12 +1,22 @@
 
 #/BostonSoupBuffetBuilder - Two of Two Builder Subclasses
 
-require "SoupBuffetBuilder"
-from common.BostonClamChowder import BostonClamChowder
-from common.BostonFishChowder import BostonFishChowder
+require "Creational/Builder/SoupBuffetBuilder"
+require "common/BostonClamChowder"
+require "common/BostonFishChowder"
 
 class BostonSoupBuffetBuilder < SoupBuffetBuilder
-	def initialize() pass
-	def buildClamChowder(self)   		@soupBuffet.clamChowder = BostonClamChowder()
-	def buildFishChowder(self)   		@soupBuffet.fishChowder = BostonFishChowder()
-	def setSoupBuffetName(self) 		@soupBuffet.soupBuffetName = "Boston Soup Buffet"
+
+	def buildClamChowder()
+   		@soupBuffet.clamChowder = BostonClamChowder.new
+	end
+
+	def buildFishChowder()
+   		@soupBuffet.fishChowder = BostonFishChowder.new
+	end
+
+	def setSoupBuffetName()
+ 		@soupBuffet.soupBuffetName = "Boston Soup Buffet"
+	end
+
+end

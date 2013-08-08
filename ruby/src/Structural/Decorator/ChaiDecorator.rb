@@ -1,12 +1,11 @@
 #- the decorator
 
-require "Tea"
+require "Structural/Decorator/Tea"
 
 class ChaiDecorator < Tea
 
-	chaiIngredients = []
-
-	def initialize(teaToMakeChai) 		@teaToMakeChai = teaToMakeChai
+	def initialize(teaToMakeChai)
+ 		@teaToMakeChai = teaToMakeChai
 		@chaiIngredients = [ 
 			'bay leaf', 
 			'cinnamon stick', 
@@ -14,11 +13,20 @@ class ChaiDecorator < Tea
 			'honey', 
 			'soy milk', 
 			'vanilla bean' ]
+	end
 
-	def steepTea(self) 		return @steepChai()
+	def steepTea()
+ 		return steepChai()
+	end
 
-	def steepChai(self) 		@teaToMakeChai.steepTea()
-		return @steepChaiIngredients() + ', tea is steeping with chai'
+	def steepChai()
+ 		@teaToMakeChai.steepTea()
+		return steepChaiIngredients() + ', tea is steeping with chai'
+	end
 
-	def steepChaiIngredients(self) 		return ', '.join( [ (i + ' is steeping ') for i in @chaiIngredients] )
+	def steepChaiIngredients()
+		return (@chaiIngredients.map { |i| (i + ' is steeping ') }).join(', ')
+	end
+
+end
 

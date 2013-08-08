@@ -9,10 +9,14 @@ require './src/Structural/Proxy/PotOfTea.rb'
 
 class PotOfTeaProxy < PotOfTeaInterface
 
-	@potOfTea
+	def initialize
+		@potOfTea = PotOfTea.new
+	end
 
 	def pourTea
-		@potOfTea = PotOfTea.new
+		unless @potOfTea
+			@potOfTea = PotOfTea.new
+		end
 		@potOfTea.pourTea
 	end
 

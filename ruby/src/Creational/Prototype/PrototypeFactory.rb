@@ -8,9 +8,17 @@
 
 class PrototypeFactory
 
-	def initialize(prototypeSpoon,prototypeFork)		@prototypeSpoon = prototypeSpoon
+	def initialize(prototypeSpoon,prototypeFork)		
+		@prototypeSpoon = prototypeSpoon
 		@prototypeFork = prototypeFork
+	end
 	
-	def makeSpoon(self) 		return @prototypeSpoon.clone()
+	def makeSpoon()
+ 		return @prototypeSpoon.clone()
+	end
 
-	def makeFork(self) 		return @prototypeFork.clone()
+	def makeFork()
+ 		return @prototypeFork.clone()
+	end
+
+end

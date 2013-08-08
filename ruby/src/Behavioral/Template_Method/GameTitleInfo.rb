@@ -1,8 +1,14 @@
-#//GameTitleInfo.java - three of three concrete templates
+#//GameTitleInfo - three of three concrete templates
 
-require "TitleInfo"
+require "Behavioral/Template_Method/TitleInfo"
 
 class GameTitleInfo < TitleInfo
-	def initialize(titleName)		@setTitleName(titleName)
+	def initialize(titleName)
+		setTitleName(titleName)
+	end
 
-	def getTitleBlurb (self)		return "Game: {0}".format( @getTitleName() )
+	def getTitleBlurb ()
+		return "Game: {0}".format( getTitleName() )
+	end
+
+end

@@ -1,15 +1,17 @@
 
 # //DvdInfo - one of three concrete Visitees
-require "AbstractTitleInfo"
+require "Behavioral/Visitor/AbstractTitleInfo"
 
 class DvdInfo < AbstractTitleInfo
 
-	star = None
-	region  = None
-
-	def initialize(titleName,star,region)		super(DvdInfo,self).__init__(titleName)
+	def initialize(titleName,star,region)
+		super(titleName)
 		@star = star
 		@region = region
+	end
 
-	def accept (titleBlurbVisitor) 		titleBlurbVisitor.visit(self)
+	def accept (titleBlurbVisitor)
+ 		titleBlurbVisitor.visit(self)
+	end
+end
 

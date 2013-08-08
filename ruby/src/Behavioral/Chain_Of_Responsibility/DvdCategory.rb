@@ -1,20 +1,34 @@
-require "TopTitle"
+require "Behavioral/Chain_Of_Responsibility/TopTitle"
 
 class DvdCategory < TopTitle
 
-	category = None
-	topCategoryTitle = None
 
-	def initialize(category) 		@setCategory(category)
+	def initialize(category)
+ 		setCategory(category)
+		@topCategoryTitle = None
+	end
 
-	def setCategory(categoryIn) 		@category = categoryIn
+	def setCategory(categoryIn)
+ 		@category = categoryIn
+	end
 
-	def getCategory(self) 		return  @category
+	def getCategory()
+ 		return  @category
+	end
 
-	def getAllCategories(self) 		return @getCategory()
+	def getAllCategories()
+ 		return getCategory()
+	end
 
-	def setTopCategoryTitle(topCategoryTitleIn) 		@topCategoryTitle = topCategoryTitleIn
+	def setTopCategoryTitle(topCategoryTitleIn)
+ 		@topCategoryTitle = topCategoryTitleIn
+	end
 
-	def getTopCategoryTitle(self) 		return @topCategoryTitle
+	def getTopCategoryTitle()
+ 		return @topCategoryTitle
+	end
 
-	def getTopTitle(self) 		return @topCategoryTitle
+	def getTopTitle()
+ 		return @topCategoryTitle
+	end
+end

@@ -1,13 +1,21 @@
 
 
 #//HonoluluSoupFactoryMethodSubclass - Two of Two Subclass Factory Methods
-require "SoupFactoryMethod"
-from common.HonoluluClamChowder import HonoluluClamChowder
-from common.HonoluluFishChowder import HonoluluFishChowder
+require "Creational/Factory_Method/SoupFactoryMethod"
+require "common/HonoluluClamChowder"
+require "common/HonoluluFishChowder"
 
 class HonoluluSoupFactoryMethodSubclass < SoupFactoryMethod
-	def makeBuffetName(self)   		return "Honolulu Soup Buffet"
+	def makeBuffetName()
+		return "Honolulu Soup Buffet"
+	end
 
-	def makeClamChowder(self)  		return HonoluluClamChowder()
+	def makeClamChowder()
+  		return HonoluluClamChowder.new()
+	end
 
-	def makeFishChowder(self)   		return HonoluluFishChowder()
+	def makeFishChowder()
+		return HonoluluFishChowder.new()
+	end
+
+end

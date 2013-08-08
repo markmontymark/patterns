@@ -1,10 +1,12 @@
 
 ## DvdNameAllCapStrategy - one of three concrete strategies
 
-require "DvdNameStrategy"
+require "Behavorial/Strategy/DvdNameStrategy"
 
 class DvdNameAllCapStrategy < DvdNameStrategy
-	def initialize()
-		"""empty init"""
 	
-	def formatDvdName( dvdName, charIn)		return dvdName.upper()
+	def formatDvdName( dvdName, charIn)
+		return dvdName.upper()
+	end
+
+end

@@ -1,12 +1,16 @@
-# //BookInfo.java - one of three concrete Visitees
+# //BookInfo - one of three concrete Visitees
 require "AbstractTitleInfo"
 
 class BookInfo < AbstractTitleInfo
 
-	author = None
-
-	def initialize(titleName,author) 		super(BookInfo,self).__init__(titleName)
+	def initialize(titleName,author)
+ 		super(titleName)
 		@author = author
+	end
 
-	def accept (titleBlurbVisitor) 		titleBlurbVisitor.visit(self)
+	def accept (titleBlurbVisitor)
+ 		titleBlurbVisitor.visit(self)
+	end
+
+end
 

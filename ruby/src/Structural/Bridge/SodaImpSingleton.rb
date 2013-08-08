@@ -1,12 +1,16 @@
 
-#//SodaImpSingleton.java - a Singleton to hold the current SodaImp
+#//SodaImpSingleton - a Singleton to hold the current SodaImp
 
 class SodaImpSingleton
 
-	_sodaimp = None
-	
-	def initialize(sodaimp)		SodaImpSingleton._sodaimp = sodaimp
+	def initialize(sodaimp)
+		self._sodaimp = sodaimp
+	end
 
-	@staticmethod
-	def getTheSodaImp() 		return SodaImpSingleton._sodaimp
+	def getTheSodaImp()
+ 		return SodaImpSingleton._sodaimp
+	end
+
+end
+
 

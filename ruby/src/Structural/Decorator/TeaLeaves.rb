@@ -1,13 +1,18 @@
 
 # - the decoratee
 
-require "Tea"
+require "Structural/Decorator/Tea"
 
 class TeaLeaves < Tea
 
 	def initialize()
 		@teaIsSteeped = False
+	end
 
-	def steepTea(self) 		@teaIsSteeped = True
+	def steepTea()
+ 		@teaIsSteeped = True
 		return "tea leaves are steeping"
+	end
+
+end
 

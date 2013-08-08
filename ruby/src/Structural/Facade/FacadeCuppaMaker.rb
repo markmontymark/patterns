@@ -1,17 +1,23 @@
-require "FacadeTeaCup"
-require "FacadeTeaBag"
-require "FacadeWater"
+require "Structural/Facade/FacadeTeaCup"
+require "Structural/Facade/FacadeTeaBag"
+require "Structural/Facade/FacadeWater"
 
 class FacadeCuppaMaker
 
-	teaBagIsSteeped  = None
+	def initialize()
+		@teaBagIsSteeped = False
+	end
 
-	def makeACuppa(self) 		cup = FacadeTeaCup()
-		teaBag = FacadeTeaBag()
-		water = FacadeWater()
+	def makeACuppa() 		
+		cup = FacadeTeaCup.new()
+		teaBag = FacadeTeaBag.new()
+		water = FacadeWater.new()
 		cup.addFacadeTeaBag(teaBag)
 		water.boilFacadeWater()
 		cup.addFacadeWater(water)
 		cup.steepTeaBag()
 		return cup
+	end
+
+end
 

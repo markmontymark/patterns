@@ -1,23 +1,39 @@
 class TeaBags
 
-	teaBagList = None # instance of []
-	parent = None  # instance of TeaBags
-	name = None
+	def initialize()
+ 		raise Exception("Can't instantiate abstract class, TeaBags")
+	end
 
-	def constructor (self) 		raise Exception("Can't instantiate abstract class, TeaBags")
+	def countTeaBags ()
+ 		raise Exception("Unimplemented method TeaBags.countTeaBags")
+	end
 
-	def countTeaBags (self) 		raise Exception("Unimplemented method TeaBags.countTeaBags")
+	def add ()
+ 		raise Exception("Unimplemented method TeaBags.add")
+	end
 
-	def add (self) 		raise Exception("Unimplemented method TeaBags.add")
+	def remove ()
+ 		raise Exception("Unimplemented method TeaBags.remove")
+	end
 
-	def remove (self) 		raise Exception("Unimplemented method TeaBags.remove")
+	def createListIterator ()
+ 		raise Exception("Unimplemented method TeaBags.createListIterator")
+	end
 
-	def createListIterator (self) 		raise Exception("Unimplemented method TeaBags.createListIterator")
+	def setName(nameIn)
+ 		@name = nameIn
+	end
 
-	def setName(nameIn) 		@name = nameIn
+	def getName()
+ 		return @name
+	end
 
-	def getName(self) 		return @name
+	def setParent(parentIn)
+ 		@parent = parentIn
+	end
 
-	def setParent(parentIn) 		@parent = parentIn
+	def getParent()
+ 		return @parent
+	end
 
-	def getParent(self) 		return @parent
+end

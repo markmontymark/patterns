@@ -13,39 +13,62 @@
 #//An object can be defined as an SoupBuffetBuilder, and instantiated as either a BostonSoupBuffetBuilder (BSBB) or a HonoluluSoupBuffetBuilder (HSBB). Both BSBB or HSBB have a buildFishChowder method, and both return a FishChowder type class. However, the BSBB returns a FishChowder subclass of BostonFishChowder, while the HSBB returns a FishChowder subclass of HonoluluFishChowder.
 #//Still reading? Save your time, watch the video lessons!
 #//Video tutorial on design patterns
-#//SoupBuffetBuilder.java - a Builder
+#//SoupBuffetBuilder - a Builder
 #
 
-from common.SoupBuffet import SoupBuffet
-from common.ChickenSoup import ChickenSoup
-from common.ClamChowder import ClamChowder
-from common.FishChowder import FishChowder
-from common.Minnestrone import Minnestrone
-from common.PastaFazul import PastaFazul
-from common.TofuSoup import TofuSoup
-from common.VegetableSoup import VegetableSoup
+require "common/SoupBuffet"
+require "common/ChickenSoup"
+require "common/ClamChowder"
+require "common/FishChowder"
+require "common/Minnestrone"
+require "common/PastaFazul"
+require "common/TofuSoup"
+require "common/VegetableSoup"
 
 class SoupBuffetBuilder
 
 	def initialize() 
 		raise Exception("Can't instantiate abstract class, SoupBuffetBuilder")
+	end
 
-	def setSoupBuffetName(self) 		raise Exception("Unimplemented method SoupBuffetBuilder.setSoupBuffetName")
+	def setSoupBuffetName()
+ 		raise Exception("Unimplemented method SoupBuffetBuilder.setSoupBuffetName")
+	end
 
-	def getSoupBuffet(self)       		return @soupBuffet
+	def getSoupBuffet()
+		return @soupBuffet
+	end
 
-	def buildSoupBuffet(self)     		@soupBuffet = SoupBuffet()
+	def buildSoupBuffet()
+		@soupBuffet = SoupBuffet.new
+	end
 
-	def buildChickenSoup(self)    		@soupBuffet.chickenSoup = ChickenSoup()
+	def buildChickenSoup()
+		@soupBuffet.chickenSoup = ChickenSoup.new
+	end
 
-	def buildClamChowder(self)    		@soupBuffet.clamChowder = ClamChowder()
+	def buildClamChowder()
+		@soupBuffet.clamChowder = ClamChowder.new
+	end
 
-	def buildFishChowder(self)    		@soupBuffet.fishChowder = FishChowder()
+	def buildFishChowder()
+		@soupBuffet.fishChowder = FishChowder.new
+	end
 
-	def buildMinnestrone(self)    		@soupBuffet.minnestrone = Minnestrone()
+	def buildMinnestrone()
+		@soupBuffet.minnestrone = Minnestrone.new
+	end
 
-	def buildPastaFazul(self)     		@soupBuffet.pastaFazul = PastaFazul()
+	def buildPastaFazul()
+		@soupBuffet.pastaFazul = PastaFazul.new
+	end
 
-	def buildTofuSoup(self)       		@soupBuffet.tofuSoup = TofuSoup()
+	def buildTofuSoup()
+		@soupBuffet.tofuSoup = TofuSoup.new
+	end
 
-	def buildVegetableSoup(self)  		@soupBuffet.vegetableSoup = VegetableSoup()
+	def buildVegetableSoup()
+  		@soupBuffet.vegetableSoup = VegetableSoup.new
+	end
+
+end

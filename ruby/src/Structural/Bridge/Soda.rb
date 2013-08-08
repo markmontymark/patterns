@@ -1,14 +1,23 @@
 
-require "SodaImpSingleton"
+require "Structural/Bridge/SodaImpSingleton"
 
 class Soda
 
 	def initialize()
 		raise Exception("Can't instantiate abstract class, Soda")
+	end
 
-	def setSodaImp(self) 		@sodaImp = SodaImpSingleton._sodaimp
+	def setSodaImp()
+ 		@sodaImp = SodaImpSingleton._sodaimp
+	end
 
-	def getSodaImp(self) 		return @sodaImp
+	def getSodaImp()
+ 		return @sodaImp
+	end
 
-	def pourSoda(self) 		raise Exception("Unimplemented method Soda.pourSoda")
+	def pourSoda()
+ 		raise Exception("Unimplemented method Soda.pourSoda")
+	end
+
+end
 

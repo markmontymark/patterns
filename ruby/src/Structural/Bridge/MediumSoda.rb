@@ -1,15 +1,22 @@
 # - one of two classes extending the Abstract
 
-require "Soda"
+require "Structural/Bridge/Soda"
 
 class MediumSoda < Soda
 
 	def initialize() 
-		@setSodaImp()
+		setSodaImp()
+	end
 
-	def pourSoda(self) 		sodaImp = @getSodaImp()
+	def pourSoda()
+ 		sodaImp = getSodaImp()
 		retval = []
-		for i in range(2)			retval.append('...glug...')
+		( 1..2 ).each do
+			retval.append('...glug...')
 			retval.append(sodaImp.pourSodaImp())
+		end
 		return retval
+	end
+
+end
 

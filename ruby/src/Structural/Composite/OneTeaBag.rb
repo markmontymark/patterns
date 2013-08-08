@@ -1,15 +1,27 @@
 
 # - one composite extension - the "leaf"
 
-require "TeaBags"
+require "Structural/Composite/TeaBags"
 
 class OneTeaBag < TeaBags
-	def initialize(name)		@name = name
+	def initialize(name)
+		@name = name
+	end
 
-	def countTeaBags(self) 		return 1
+	def countTeaBags()
+ 		return 1
+	end
 
-	def add(self) 		return False
+	def add()
+ 		return False
+	end
 
-	def remove(self) 		return False
+	def remove()
+ 		return False
+	end
 
-	def createListIterator(self) 		return None
+	def createListIterator()
+ 		return None
+	end
+
+end

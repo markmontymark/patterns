@@ -1,14 +1,21 @@
 
 #//HonoluluConcreteSoupFactory - Two of Two concrete factories extending the abstract factory
 
-require "AbstractSoupFactory"
-from common.HonoluluClamChowder import HonoluluClamChowder
-from common.HonoluluFishChowder import HonoluluFishChowder
+require "Creational/Abstract_Factory/AbstractSoupFactory"
+require "common/HonoluluClamChowder"
+require "common/HonoluluFishChowder"
 
 class HonoluluConcreteSoupFactory < AbstractSoupFactory
 	def initialize()
 		@factoryLocation = "Honolulu"
+	end
 
-	def makeClamChowder(self) 		return HonoluluClamChowder()
+	def makeClamChowder()
+ 		return HonoluluClamChowder.new
+	end
 
-	def makeFishChowder(self) 		return HonoluluFishChowder()
+	def makeFishChowder()
+ 		return HonoluluFishChowder.new
+	end
+
+end
