@@ -3,7 +3,7 @@
 RUBY  = ruby
 DESTDIR= 
 BLIB   = blib
-RLIB  = $(PWD)/$(BLIB)/lib:$(PWD)/lib:$(RUBYLIB)
+RLIB  = $(PWD)/$(BLIB)/lib:$(PWD)/lib:.:$(RUBYLIB)
 CP     = cp -p
 MKDIR  = mkdir -p
 
@@ -654,7 +654,7 @@ $(BLIB)/common/BostonClamChowder.rb : src/common/BostonClamChowder.rb
 
 
 test: build
-	env RUBYLIB=$(RLIB) prove -e '$(RUBY) -Ilib:test' -r t/*.rb
+	env RUBYLIB=$(RLIB) prove -f -e '$(RUBY) -Iblib' -r t/*.t
 
 loudtest: build
 	env RUBYLIB=$(RLIB) prove -ve '$(RUBY) -Ilib:test' -r t/*.rb

@@ -1,7 +1,7 @@
 
 #//TeaFlavorFactory - the Factory
 
-require "Structural/Flyweight/TeaFlavor"
+require_relative "TeaFlavor"
 
 class TeaFlavorFactory
 
@@ -19,7 +19,7 @@ class TeaFlavorFactory
 			end
 		end
 		retval = TeaFlavor.new(flavorToGet)
-		@flavors.append( retval )
+		@flavors.push( retval )
 		@teasMade += 1
 		return retval
 	end

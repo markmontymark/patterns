@@ -1,7 +1,7 @@
 
 #//TeaFlavor - the Concrete Flyweight
 
-require "Structural/Flyweight/TeaOrder"
+require_relative "TeaOrder"
 
 class TeaFlavor < TeaOrder
 	def initialize(teaFlavor)
@@ -13,7 +13,7 @@ class TeaFlavor < TeaOrder
 	end
 
 	def serveTea(teaOrderContext)
- 		return "Serving tea flavor {0} to table number {1}".format( @teaFlavor, teaOrderContext.getTable())
+ 		return "Serving tea flavor #{@teaFlavor} to table number #{teaOrderContext.getTable()}"
 	end
 
 end
