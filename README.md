@@ -140,7 +140,7 @@ Install Ruby, RubyGems, a custom Tapper test module
    sudo gem install --local tapper-0.0.1.gem
 
 
-## Running the rbu tests
+## Running the ruby tests
 
    git clone git@github.com:markmontymark/patterns.git
    cd patterns/ruby
