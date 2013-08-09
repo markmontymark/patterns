@@ -13,8 +13,7 @@ class DvdStateContext
 		@dvdStateName = dvdStateNameIn
 	end
 
-
 	def showName (nameIn)
-		return @dvdStateName.showName(nameIn)
+		return @dvdStateName.showName(self,nameIn)
 	end
 end

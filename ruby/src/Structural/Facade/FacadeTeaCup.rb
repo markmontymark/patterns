@@ -4,7 +4,7 @@
 class FacadeTeaCup
 
 	def initialize()
-		setTeaBagIsSteeped(False)
+		setTeaBagIsSteeped(false)
 	end
 
 	def setTeaBagIsSteeped(isTeaBagSteeped)
@@ -27,32 +27,32 @@ class FacadeTeaCup
 
 	def steepTeaBag()
  		if @facadeTeaBag and @facadeWater and @facadeWater.getWaterIsBoiling()
- 			setTeaBagIsSteeped(True)
+ 			setTeaBagIsSteeped(true)
 			return "the tea is steeping in the cup"
 		end
-		setTeaBagIsSteeped(False)
+		setTeaBagIsSteeped(false)
 		return "the tea is not steeping in the cup"
 	end
 
-	def __str__()
+	def to_s()
  		if getTeaBagIsSteeped()
  			return "A nice cuppa tea!" 
 		end
 		retval = ["A cup with "]
 		if @facadeWater
  			if @facadeWater.getWaterIsBoiling()
- 				retval.append("boiling water ")
+ 				retval.push("boiling water ")
 			else
- 				retval.append("cold water ")
+ 				retval.push("cold water ")
 			end
 		else
- 			retval.append("no water ")
+ 			retval.push("no water ")
 		end
 
 		if @facadeTeaBag
- 			retval.append("and a tea bag")
+ 			retval.push("and a tea bag")
 		else
- 			retval.append("and no tea bag")
+ 			retval.push("and no tea bag")
 		end
 		return ''.join(retval)
 	end

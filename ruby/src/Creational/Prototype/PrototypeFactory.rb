@@ -14,11 +14,11 @@ class PrototypeFactory
 	end
 	
 	def makeSpoon()
- 		return @prototypeSpoon.clone()
+ 		@prototypeSpoon.clone
 	end
 
 	def makeFork()
- 		return @prototypeFork.clone()
+ 		@prototypeFork.clone
 	end
 
 end

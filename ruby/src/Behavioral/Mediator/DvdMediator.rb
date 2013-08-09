@@ -1,7 +1,7 @@
 
 #//DvdMediator- The Mediator
-require "Behavioral/Mediator/DvdLowercaseTitle"
-require "Behavioral/Mediator/DvdUpcaseTitle"
+#require "Behavioral/Mediator/DvdLowercaseTitle"
+#require "Behavioral/Mediator/DvdUpcaseTitle"
 
 class DvdMediator
 
@@ -14,9 +14,9 @@ class DvdMediator
 	end
 
 	def changeTitle(title)
-		if isinstance(title, DvdUpcaseTitle)
+		if title.is_a? DvdUppercaseTitle
  			@dvdLowercaseTitle.resetTitle(@dvdUpcaseTitle.getTitle())
-		elsif isinstance(title, DvdLowercaseTitle)
+		elsif title.is_a? DvdLowercaseTitle
  			@dvdUpcaseTitle.resetTitle(@dvdLowercaseTitle.getTitle())
 		end
 	end

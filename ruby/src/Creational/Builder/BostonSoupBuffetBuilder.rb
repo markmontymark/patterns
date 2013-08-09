@@ -7,6 +7,9 @@ require "common/BostonFishChowder"
 
 class BostonSoupBuffetBuilder < SoupBuffetBuilder
 
+	def initialize
+	end
+
 	def buildClamChowder()
    		@soupBuffet.clamChowder = BostonClamChowder.new
 	end
@@ -16,7 +19,7 @@ class BostonSoupBuffetBuilder < SoupBuffetBuilder
 	end
 
 	def setSoupBuffetName()
- 		@soupBuffet.soupBuffetName = "Boston Soup Buffet"
+ 		@soupBuffet.setSoupBuffetName("Boston Soup Buffet")
 	end
 
 end

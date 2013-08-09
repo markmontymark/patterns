@@ -1,36 +1,32 @@
-# vi: filetype=perl6
-gem "minitest";
-require "minitest/autorun"
 
-use lib 'blib/lib';
+require "tapper"
+require "Behavioral/Strategy"
+
+extend Tapper
 
 
-use lib 'blib/lib';
+allCapContext = DvdNameContext.new( 'C' )
+theEndContext = DvdNameContext.new( 'E' )
+spacesContext = DvdNameContext.new( 'S' )
 
-require "Behavioral::Strategy;
-
-my $allCapContext = DvdNameContext.new( dvdNameStrategy => DvdNameAllCapStrategy.new() );
-my $theEndContext = DvdNameContext.new( dvdNameStrategy => DvdNameTheAtEndStrategy.new() );
-my $spacesContext = DvdNameContext.new( dvdNameStrategy => DvdNameReplaceSpacesStrategy.new() );
-
-my @names = (
+names = [
 	"Jay and Silent Bob Strike Back",
 	"The Fast and the Furious",
 	"The Others"
-);
+];
 
-my $char = '*';
+char = '*';
 
-is $allCapContext.formatDvdNames( :@names).join(',') ,
-	'JAY AND SILENT BOB STRIKE BACK,THE FAST AND THE FURIOUS,THE OTHERS', 
-	"$?FILE All caps context";
+test "All caps context" do
+	assert_equal allCapContext.formatDvdNames( names), 'JAY AND SILENT BOB STRIKE BACK,THE FAST AND THE FURIOUS,THE OTHERS'
+end
 
-is join(',',$theEndContext.formatDvdNames( :@names)), 
-	'Jay and Silent Bob Strike Back,Fast and the Furious, The,Others, The', 
-	"$?FILE The End context";
+test "The End context" do
+	assert_equal theEndContext.formatDvdNames( names), 'Jay and Silent Bob Strike Back,Fast and the Furious, The,Others, The'
+end
 
-is join(',',$spacesContext.formatDvdNames( :@names, :$char )),
-	'Jay*and*Silent*Bob*Strike*Back,The*Fast*and*the*Furious,The*Others',
-	"$?FILE Space context";
+test "Space context" do
+	assert_equal spacesContext.formatDvdNames( names, char ), 'Jay*and*Silent*Bob*Strike*Back,The*Fast*and*the*Furious,The*Others'
+end
 
-done();
+done

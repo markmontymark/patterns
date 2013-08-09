@@ -6,11 +6,11 @@ require "Structural/Decorator/Tea"
 class TeaLeaves < Tea
 
 	def initialize()
-		@teaIsSteeped = False
+		@teaIsSteeped = false
 	end
 
 	def steepTea()
- 		@teaIsSteeped = True
+ 		@teaIsSteeped = true
 		return "tea leaves are steeping"
 	end
 

@@ -10,11 +10,11 @@ class DvdTitleInfo < TitleInfo
 	end
 
 	def getTitleBlurb()
- 		return "DVD: {0}, starring {1} ".format(@titleName, @star)
+ 		"DVD: #{getTitleName}, starring #{@star}"
 	end
 
 	def getDvdEncodingRegionInfo()
-		return ", encoding region: {0}".format(@encodingRegion)
+		", encoding region: #{@encodingRegion}"
 	end
 
 end

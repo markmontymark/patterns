@@ -1,30 +1,48 @@
 
-gem "minitest";
-require "minitest/autorun"
-
+require "tapper"
 require 'Behavioral/Visitor'
 
+extend Tapper
 
-my $bladeRunner = DvdInfo.new(titleName=>"Blade Runner", star=>"Harrison Ford", region=>'1');
-my $electricSheep = BookInfo.new(titleName=>"Do Androids Dream of Electric Sheep?", author=>"Phillip K. Dick");
-my $sheepRaider = GameInfo.new(titleName=>"Sheep Raider");
 
-my $titleLongBlurbVisitor = TitleLongBlurbVisitor.new();
 
-$bladeRunner.accept($titleLongBlurbVisitor);
-is $titleLongBlurbVisitor.titleBlurb,'LB-DVD: Blade Runner , starring Harrison Ford , region: 1',"$?FILE Blade runner long blurb";
-$electricSheep.accept($titleLongBlurbVisitor);
-is $titleLongBlurbVisitor.titleBlurb,'LB-Book: Do Androids Dream of Electric Sheep? , Author: Phillip K. Dick',"$?FILE Electric sheep long blurb";
-$sheepRaider.accept($titleLongBlurbVisitor);
-is $titleLongBlurbVisitor.titleBlurb,'LB-Game: Sheep Raider',"$?FILE Sheep raider long blurb";
+bladeRunner = DvdInfo.new("Blade Runner", "Harrison Ford", '1')
+electricSheep = BookInfo.new("Do Androids Dream of Electric Sheep?", "Phillip K. Dick")
+sheepRaider = GameInfo.new("Sheep Raider")
 
-my $titleShortBlurbVisitor = TitleShortBlurbVisitor.new();
+titleLongBlurbVisitor = TitleLongBlurbVisitor.new
 
-$bladeRunner.accept($titleShortBlurbVisitor);
-is $titleShortBlurbVisitor.titleBlurb,'SB-DVD: Blade Runner',"$?FILE Blade runner short blurb";
-$electricSheep.accept($titleShortBlurbVisitor);
-is $titleShortBlurbVisitor.titleBlurb,'SB-Book: Do Androids Dream of Electric Sheep?',"$?FILE Electric sheep short blurb";
-$sheepRaider.accept($titleShortBlurbVisitor);
-is $titleShortBlurbVisitor.titleBlurb,'SB-Game: Sheep Raider',"$?FILE Sheep raider short blurb";
+bladeRunner.accept(titleLongBlurbVisitor)
+test "Blade runner long blurb" do
+	assert_equal titleLongBlurbVisitor.titleBlurb,'LB-DVD: Blade Runner, starring Harrison Ford, region: 1'
+end
 
-done();
+electricSheep.accept(titleLongBlurbVisitor)
+test "Electric sheep long blurb" do
+	assert_equal titleLongBlurbVisitor.titleBlurb,'LB-Book: Do Androids Dream of Electric Sheep?, Author: Phillip K. Dick'
+end
+
+sheepRaider.accept(titleLongBlurbVisitor)
+test "Sheep raider long blurb" do
+	assert_equal titleLongBlurbVisitor.titleBlurb,'LB-Game: Sheep Raider'
+end
+
+
+titleShortBlurbVisitor = TitleShortBlurbVisitor.new
+
+bladeRunner.accept(titleShortBlurbVisitor)
+test "Blade runner short blurb" do
+	assert_equal titleShortBlurbVisitor.titleBlurb,'SB-DVD: Blade Runner'
+end
+
+electricSheep.accept(titleShortBlurbVisitor)
+test "Electric sheep short blurb" do
+	assert_equal titleShortBlurbVisitor.titleBlurb,'SB-Book: Do Androids Dream of Electric Sheep?'
+end
+
+sheepRaider.accept(titleShortBlurbVisitor)
+test "Sheep raider short blurb" do
+	assert_equal titleShortBlurbVisitor.titleBlurb,'SB-Game: Sheep Raider'
+end
+
+done

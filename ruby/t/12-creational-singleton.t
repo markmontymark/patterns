@@ -1,30 +1,34 @@
 
 
-gem "minitest";
-require "minitest/autorun"
+require "tapper"
+require "Creational/Singleton"
 
-use lib 'blib/lib';
-
-
-use lib 'blib/lib';
-
-require "Creational::Singleton;
-
-my $spoonForFirstPerson = SingleSpoon.new();
-is $spoonForFirstPerson.toString() , 'The spoon is available.' , "$?FILE first spoon instance";
-$spoonForFirstPerson.useSpoon();
-
-my $spoonForSecondPerson = SingleSpoon.new();
-is "$spoonForFirstPerson", "$spoonForSecondPerson", "$?FILE Object toString expected to be equal";
-
-$spoonForSecondPerson.useSpoon();
-is $spoonForSecondPerson.toString(), 'The spoon is not available.', "$?FILE Second spoon toString should not have spoon available";
-
-$spoonForFirstPerson.returnSpoon();       
-is $spoonForSecondPerson.toString(), 'The spoon is available.',"$?FILE First spoon returned ,second spoon toString test";
+extend Tapper
 
 
-$spoonForSecondPerson.useSpoon();
-is $spoonForSecondPerson.toString() , 'The spoon is not available.' , "$?FILE Second spoon toString";
+spoonForFirstPerson = SingleSpoon.instance
 
-done();
+test "first spoon instance" do
+	assert_equal spoonForFirstPerson.to_s, 'Behold the glorious single spoon!' 
+end
+
+
+
+SingleSpoon.instance.useSpoon()
+
+spoonForSecondPerson = SingleSpoon.instance
+test "Object to_s expected to be equal" do
+	assert_equal spoonForFirstPerson, spoonForSecondPerson
+end
+
+test "Second spoon to_s should not have spoon available" do
+	assert_equal spoonForSecondPerson.useSpoon(), 'Spoon in use'
+end
+
+spoonForFirstPerson.returnTheSpoon()       
+test "First spoon returned ,second spoon to_s test" do
+	assert_nil spoonForSecondPerson.useSpoon(), 'The spoon is available.'
+end
+
+
+done

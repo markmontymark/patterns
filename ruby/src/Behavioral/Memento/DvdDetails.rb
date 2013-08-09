@@ -8,65 +8,37 @@ require "Behavioral/Memento/DvdMemento"
 
 class DvdDetails
 
+	attr_accessor :titleName,:stars,:region
+
 	def initialize(titleName,stars = [],region = 1)
-		@state = {}
-		setTitleName(titleName)
-		setStars(stars)
-		setRegion(region)
+		@titleName = titleName
+		@stars = stars
+		@region = region
 	end
-
-	def getTitleName()
- 		return @state['titleName']
-	end
-
-	def setTitleName(t)
- 		@state['titleName'] = t
-	end
-
-	def getStars()
- 		return @state['stars']
-	end
-
-	def setStars(t)
- 		@state['stars'] = t
-	end
-
-	def getRegion()
- 		return @state['region']
-	end
-
-	def setRegion(t)
- 		@state['region'] = t
-	end
-
 
 	def addStar(star)
- 		@state['stars'].append(star)
+ 		@stars.push(star)
 	end
 
 	def starsAsString()
- 		return getStars().join(', ')
+ 		return @stars.join(', ')
 	end
 
 	def formatDvdDetails()
- 		return "DVD: {0} starring: {1} encoding region: {2}".format(getTitleName(),starsAsString(), getRegion() );
+ 		"DVD: #{ @titleName }, starring: #{ starsAsString() }, encoding region: #{ @region }"
 	end
 
 	#   //sets current state to what DvdMemento has
 	def setDvdMemento (memento )
- 		for k in @state
-			@state[k] = None
-		end
 		c = memento.getState()
-		for k in c
-			@state[k] = c[k]
-		end
+		@titleName = c.titleName
+		@stars = c.stars
+		@region = c.region
 	end
 
 	#//save current state of DvdDetails in a DvdMemento
 	def createDvdMemento ()
- 		mem = DvdMemento()
-		mem.setState(@state)
+ 		mem = DvdMemento.new(self)
 		return mem
 	end
 

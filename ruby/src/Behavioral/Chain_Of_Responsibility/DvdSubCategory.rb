@@ -6,7 +6,7 @@ class DvdSubCategory < TopTitle
 
 	def initialize( dvdCategory, subCategory)
  		setSubCategory(subCategory)
-		@topSubCategoryTitle = None
+		@topSubCategoryTitle = nil
 		@parent = dvdCategory
 	end
 
@@ -27,7 +27,7 @@ class DvdSubCategory < TopTitle
 	end
 
 	def getAllCategories()
- 		return '{0}/{1}'.format(getCategory(),getSubCategory())
+ 		return "#{getCategory()}/#{getSubCategory()}"
 	end
 
 	def setTopSubCategoryTitle(topSubCategoryTitleIn)
@@ -35,7 +35,7 @@ class DvdSubCategory < TopTitle
 	end
 
 	def getTopSubCategoryTitle()
- 		return topSubCategoryTitle()
+ 		return @topSubCategoryTitle
 	end
 
 	def setTopCategoryTitle(topCategoryTitleIn)

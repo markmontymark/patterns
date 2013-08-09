@@ -11,11 +11,11 @@ class DvdStateNameStars < DvdStateName
 	
 	def showName (ctx, name)
 		@starCount += 1
-		retval = name.replace(' ','*', @starCount)  #// show stars twice, switch to exclamation point
+		retval = name.sub(' ','*')  #// show stars twice, switch to exclamation point
 		if @starCount > 1
  			ctx.setDvdStateName( DvdStateNameExclaim.new )
 		end
-		return retval;
+		retval
 	end
 end
 

@@ -3,11 +3,13 @@
 
 require "Behavioral/Mediator/DvdTitle"
 
-class DvdUpcaseTitle < DvdTitle
+class DvdUppercaseTitle < DvdTitle
+
+	attr_accessor :uppercasetitle, :title
 
 	def initialize(title, dvdMediator)
-		@upcaseTitle = None
-		if isinstance(title,DvdTitle) 
+		@uppercasetitle = nil
+		if title.is_a? DvdTitle
 			setTitle( title.getTitle() )
 		else 
 			setTitle( title )
@@ -17,11 +19,11 @@ class DvdUpcaseTitle < DvdTitle
 		@dvdMediator.setUpcase(self)
 	end
 
-	def resetTitle(title = None )
+	def resetTitle(title = nil )
 		if title
  			setTitle(title) 
 		end
-		setUpcaseTitle(getTitle().upper())
+		setUpcaseTitle(getTitle().upcase())
 	end
 
 	def setSuperTitleUpcase()
@@ -30,11 +32,11 @@ class DvdUpcaseTitle < DvdTitle
 	end
 
 	def getUpcaseTitle()
- 		return @upcaseTitle
+ 		return @uppercasetitle
 	end
 
 	def setUpcaseTitle (upcaseTitle)
- 		@upcaseTitle = upcaseTitle
+ 		@uppercasetitle = upcaseTitle
 	end
 
 end

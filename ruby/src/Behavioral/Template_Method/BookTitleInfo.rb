@@ -19,6 +19,6 @@ class BookTitleInfo < TitleInfo
 	end
 
 	def getTitleBlurb ()
-		return "Book: {0}, Author: {1}".format( getTitleName() , getAuthor() )
+		"Book: #{getTitleName()}, Author: #{getAuthor() }"
 	end
 end

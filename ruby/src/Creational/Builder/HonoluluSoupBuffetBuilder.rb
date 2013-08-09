@@ -7,6 +7,10 @@ require "common/HonoluluClamChowder"
 require "common/HonoluluFishChowder"
 
 class HonoluluSoupBuffetBuilder < SoupBuffetBuilder
+
+   def initialize
+   end
+
 	def buildClamChowder()
    		@soupBuffet.clamChowder = HonoluluClamChowder.new
 	end

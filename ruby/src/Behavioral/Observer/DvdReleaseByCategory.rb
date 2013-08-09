@@ -5,15 +5,15 @@
 
 class DvdReleaseByCategory
 	
-	def initialize(categoryName,subscriberList = None, dvdReleaseList = None )
+	def initialize(categoryName,subscriberList = nil, dvdReleaseList = nil )
  		@categoryName = categoryName
-		if subscriberList == None
+		if subscriberList == nil
  			@subscriberList =  []
 		else
  			@subscriberList = subscriberList
 		end
 
-		if dvdReleaseList == None
+		if dvdReleaseList == nil
  			@dvdReleaseList = []
 		else
  			@dvdReleaseList = dvdReleaseList
@@ -31,38 +31,38 @@ class DvdReleaseByCategory
 	end
 
 	def addSubscriber (dvdSubscriber)
- 		@subscriberList.append(dvdSubscriber)
+ 		@subscriberList.push(dvdSubscriber)
 	end
 
 	def removeSubscriber (dvdSubscriber)
  		founds = []
-		for i in reversed(range(len(@subscriberList)))
+		(@subscriberList.length-1).downto(0) { |i|
  			if @subscriberList[i] == dvdSubscriber
- 				founds.append(i)
+ 				founds.push(i)
 			end
-		end
-		if len(founds) > 0
+		}
+		if founds.length > 0
  			for i in founds
- 				del @subscriberList[i]
+ 				@subscriberList.delete_at(i)
 			end
-			return True
+			return true
 		end
-		return False
+		return false
 	end
 
 
 	def newDvdRelease (dvdRelease)
-		@dvdReleaseList.append(dvdRelease)
+		@dvdReleaseList.push(dvdRelease)
 		return notifySubscribersOfNewDvd(dvdRelease)
 	end
 
 	def updateDvd (dvdRelease)
-		dvdUpdated = False
-		for i in range(len(@dvdReleaseList))
+		dvdUpdated = false
+		for i in 0..(@dvdReleaseList.length-1)
  			if dvdRelease.serialNumber == @dvdReleaseList[i].serialNumber
-				del @dvdReleaseList[i]
-				@dvdReleaseList.append(dvdRelease)
-				dvdUpdated = True
+				@dvdReleaseList.delete_at(i)
+				@dvdReleaseList.push(dvdRelease)
+				dvdUpdated = true
 				break
 			end
 		end
@@ -75,11 +75,11 @@ class DvdReleaseByCategory
 
 
 	def notifySubscribersOfNewDvd (dvdRelease)
-		return @subscriberList.map { |s| s.newDvdRelease(dvdRelease,getCategoryName()) }
+		(@subscriberList.map { |s| s.newDvdRelease(dvdRelease,getCategoryName()) }).join('')
 	end
 
 	def notifySubscribersOfUpdate (dvdRelease)
-		return @subscriberList.map { |s| s.updateDvdRelease(dvdRelease,getCategoryName()) }
+		(@subscriberList.map { |s| s.updateDvdRelease(dvdRelease,getCategoryName()) }).join('')
 	end
 
 end

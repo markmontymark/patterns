@@ -1,5 +1,5 @@
 #// Original copy of this content taken from http://www.fluffycat.com/Java-Design-Patterns/ in 2010
-#// Original Author: Larry Truett
+#// Original Author: Larry truett
 #// Privacy Policy at http://www.fluffycat.com/Privacy-Policy/
 #Java Design Patterns Prototype
 #Prototype Overview

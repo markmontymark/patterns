@@ -6,20 +6,22 @@ require "Behavioral/Iterator/DvdListIterator"
 
 class DvdList
 
+	attr_accessor :titleCount
 
-	def initialize( titles = None)
- 		@iterator = None
+
+	def initialize( titles = nil)
+ 		@iterator = nil
 		@titleCount = 0
 		@arraySize = 0
-		if titles == None
+		if titles == nil
  			@titles = []
 		else
  			@titles = titles
 		end
 	end
 		
-	def append(title)
- 		@titles.append(title)
+	def push(title)
+ 		@titles.push(title)
 		@titleCount += 1
 	end
 
@@ -28,16 +30,16 @@ class DvdList
 	##
 	def remove(title)
  		founds = []
-		for i in reversed(range((len(@titles)-1)))
+		(@titles.length-1).downto(0).each { |i|
  			if @titles[i] == title
- 				founds.append(i)
+ 				founds.push(i)
 			end
-		end
+		}
 
-		if len(founds) > 0
+		if founds.length > 0
 			for i in founds
  				@titleCount -= 1
-				del @titles[i]
+				@titles.delete_at(i)
 			end
 		end
 	end

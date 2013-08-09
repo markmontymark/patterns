@@ -1,6 +1,8 @@
 #//TitleBlurbVisitor - the abstract Visitor
 class TitleBlurbVisitor
 
+	attr_accessor :titleBlurb
+
 	def setTitleBlurb (blurbIn)
  		@titleBlurb = blurbIn
 	end
@@ -10,6 +12,6 @@ class TitleBlurbVisitor
 	end
 
 	def visit (info)
- 		raise Exception("Unimplemented method TitleBlurbVisitor.visit")
+ 		raise "Unimplemented method TitleBlurbVisitor.visit"
 	end
 end

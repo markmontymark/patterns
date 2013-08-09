@@ -1,33 +1,26 @@
 
-gem "minitest";
-require "minitest/autorun"
+require "tapper"
+require "Creational/Prototype"
 
-use lib 'blib/lib';
+extend Tapper
 
 
-use lib 'blib/lib';
-require "Creational::Prototype;
+prototypeFactory = PrototypeFactory.new( SoupSpoon.new, SaladFork.new)
 
-my PrototypeFactory $prototypeFactory = PrototypeFactory.new( 
-	spoon => SoupSpoon.new(), 
-	fork =>  SaladFork.new());
+spoon = prototypeFactory.makeSpoon()
+forky = prototypeFactory.makeFork()
 
-my $spoon = $prototypeFactory.makeSpoon();
-my $fork = $prototypeFactory.makeFork();
+test "Testing with SoupSpoon and SaladFork" do
+	assert_equal "Spoon: #{spoon.spoonName}, Fork: #{forky.forkName}" , 'Spoon: Soup Spoon, Fork: Salad Fork' 
+end
 
-is "Spoon: " ~ $spoon.spoonName ~ ", Fork: " ~ $fork.forkName ,
-	'Spoon: Soup Spoon, Fork: Salad Fork', 
-	"$?FILE Testing with SoupSpoon and SaladFork";
+prototypeFactory = PrototypeFactory.new( SaladSpoon.new, SaladFork.new)
 
-$prototypeFactory = PrototypeFactory.new(
-	spoon => SaladSpoon.new(), 
-	fork  => SaladFork.new());
+spoon = prototypeFactory.makeSpoon()
+forky = prototypeFactory.makeFork()
 
-$spoon = $prototypeFactory.makeSpoon();
-$fork = $prototypeFactory.makeFork();
+test "Testing with SaladSpoon and SaladFork" do
+	assert_equal "Spoon: #{spoon.spoonName}, Fork: #{forky.forkName}", 'Spoon: Salad Spoon, Fork: Salad Fork'
+end
 
-is "Spoon: " ~ $spoon.spoonName() ~ ", Fork: " ~ $fork.forkName() ,
-	'Spoon: Salad Spoon, Fork: Salad Fork', 
-	"$?FILE Testing with SaladSpoon and SaladFork";
-
-done();
+done

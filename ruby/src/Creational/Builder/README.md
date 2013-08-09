@@ -1,5 +1,5 @@
 // Original copy of this content taken from http://www.fluffycat.com/Java-Design-Patterns/ in 2010
-// Original Author: Larry Truett
+// Original Author: Larry truett
 // Privacy Policy at http://www.fluffycat.com/Privacy-Policy/
 Builder Overview
 Make and return one object various ways.
@@ -119,11 +119,11 @@ abstract class Soup
    public String toString()
    {
         StringBuffer stringOfIngredients = new StringBuffer(soupName);
-        stringOfIngredients.append(" Ingredients: ");
+        stringOfIngredients.push(" Ingredients: ");
         ListIterator soupIterator = soupIngredients.listIterator();
         while (soupIterator.hasNext())
         {
-            stringOfIngredients.append((String)soupIterator.next());
+            stringOfIngredients.push((String)soupIterator.next());
         return stringOfIngredients.toString();
 
 class ChickenSoup extends Soup
@@ -231,21 +231,21 @@ class SoupBuffet {
    
    public String getTodaysSoups() {
         StringBuffer stringOfSoups = new StringBuffer();
-        stringOfSoups.append(" Today's Soups!  ");
-        stringOfSoups.append(" Chicken Soup: ");        
-        stringOfSoups.append(this.chickenSoup.getSoupName()); 
-        stringOfSoups.append(" Clam Chowder: ");        
-        stringOfSoups.append(this.clamChowder.getSoupName()); 
-        stringOfSoups.append(" Fish Chowder: ");        
-        stringOfSoups.append(this.fishChowder.getSoupName()); 
-        stringOfSoups.append(" Minnestrone: ");        
-        stringOfSoups.append(this.minnestrone.getSoupName());
-        stringOfSoups.append(" Pasta Fazul: ");        
-        stringOfSoups.append(this.pastaFazul.getSoupName());
-        stringOfSoups.append(" Tofu Soup: ");        
-        stringOfSoups.append(this.tofuSoup.getSoupName());
-        stringOfSoups.append(" Vegetable Soup: ");        
-        stringOfSoups.append(this.vegetableSoup.getSoupName());
+        stringOfSoups.push(" Today's Soups!  ");
+        stringOfSoups.push(" Chicken Soup: ");        
+        stringOfSoups.push(this.chickenSoup.getSoupName()); 
+        stringOfSoups.push(" Clam Chowder: ");        
+        stringOfSoups.push(this.clamChowder.getSoupName()); 
+        stringOfSoups.push(" Fish Chowder: ");        
+        stringOfSoups.push(this.fishChowder.getSoupName()); 
+        stringOfSoups.push(" Minnestrone: ");        
+        stringOfSoups.push(this.minnestrone.getSoupName());
+        stringOfSoups.push(" Pasta Fazul: ");        
+        stringOfSoups.push(this.pastaFazul.getSoupName());
+        stringOfSoups.push(" Tofu Soup: ");        
+        stringOfSoups.push(this.tofuSoup.getSoupName());
+        stringOfSoups.push(" Vegetable Soup: ");        
+        stringOfSoups.push(this.vegetableSoup.getSoupName());
         return stringOfSoups.toString();          
 
 TestSoupBuffetBuilder - Testing the builder

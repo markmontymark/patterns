@@ -2,13 +2,16 @@
 class TeaBag
 
 	def initialize()
-		@teaBagIsSteeped = False
+		@teaBagIsSteeped = false
 	end
 
 	def steepTeaInCup()
- 		@teaBagIsSteeped = True
+ 		@teaBagIsSteeped = true
 		return 'tea bag is steeping in cup'
 	end
 
+	def getTeaBagIsSteeped
+		@teaBagIsSteeped
+	end
 end
 

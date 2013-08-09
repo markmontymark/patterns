@@ -10,15 +10,19 @@ require "common/VegetableSoup"
 
 class SoupBuffet
 
+	
+	attr_reader :soupBuffetName, :chickenSoup, :clamChowder, :fishChowder, :minnestrone, :pastaFazul, :tofuSoup, :vegetableSoup
+	attr_writer :soupBuffetName, :chickenSoup, :clamChowder, :fishChowder, :minnestrone, :pastaFazul, :tofuSoup, :vegetableSoup
+
 	def initialize()
-		@soupBuffetName = None
-		@chickenSoup = None
-		@clamChowder = None
-		@fishChowder = None
-		@minnestrone = None
-		@pastaFazul = None
-		@tofuSoup = None
-		@vegetableSoup = None
+		@soupBuffetName = nil
+		@chickenSoup = nil
+		@clamChowder = nil
+		@fishChowder = nil
+		@minnestrone = nil
+		@pastaFazul = nil
+		@tofuSoup = nil
+		@vegetableSoup = nil
 	end
 
 	def setSoupBuffetName(soupBuffetNameIn)
@@ -54,19 +58,18 @@ class SoupBuffet
 	end
 
 	def getSoupBuffetName() 		
-		return @soupBuffetName
+		@soupBuffetName
 	end
 
 	def getTodaysSoups() 		
-		return [
-			" Today's Soups!  ",
-			" Chicken Soup: ", @chickenSoup.soupName,
-			" Clam Chowder: ", @clamChowder.soupName,
-			" Fish Chowder: ", @fishChowder.soupName,
-			" Minnestrone: ", @minnestrone.soupName,
-			" Pasta Fazul: ", @pastaFazul.soupName,
-			" Tofu Soup: ", @tofuSoup.soupName,
-			" Vegetable Soup: ", @vegetableSoup.soupName
-			].join(', ');
+		[
+			" Today's Soups!  Chicken Soup: #{@chickenSoup.soupName}",
+			"Clam Chowder: #{ @clamChowder.soupName }",
+			"Fish Chowder: #{ @fishChowder.soupName }",
+			"Minnestrone: #{ @minnestrone.soupName }",
+			"Pasta Fazul: #{ @pastaFazul.soupName }",
+			"Tofu Soup: #{ @tofuSoup.soupName }",
+			"Vegetable Soup: #{ @vegetableSoup.soupName }",
+		].join(', ')
 	end
 end

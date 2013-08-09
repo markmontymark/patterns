@@ -1,16 +1,12 @@
 
 class DvdMemento
 
-	def initialize(cache = {})
-		@cache = cache;
+	def initialize(toSave)
+ 		@cache = Marshal.load(Marshal.dump(toSave))
 	end
 
-	def setState (toSave)
- 		@cache = copy.deepcopy(toSave)
-	end
-
-	def getState ()
-		return @cache
+	def getState
+		@cache
 	end
 end
 

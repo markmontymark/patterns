@@ -1,7 +1,11 @@
 class Tea
 
 	def initialize()
-		 @teaIsSteeped = False
+		 @teaIsSteeped = false
+	end
+
+	def getTeaIsSteeped
+		@teaIsSteeped
 	end
 
 	def steepTea()

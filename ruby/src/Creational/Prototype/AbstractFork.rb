@@ -4,8 +4,10 @@
 
 class AbstractFork
 
+	attr_accessor :forkName
+
 	def initialize()
-		raise Exception("Can't instantiate abstract class, AbstractFork")
+		raise "Can't instantiate abstract class, AbstractFork"
 	end
 
 	def setForkName(forkName)
@@ -14,10 +16,6 @@ class AbstractFork
 
 	def getForkName()
  		return @forkName
-	end
-
-	def clone()
- 		return copy.deepcopy(self)
 	end
 
 end

@@ -1,21 +1,23 @@
 
-gem "minitest";
-require "minitest/autorun"
+require "tapper"
+require "Structural/Adapter"
 
-use lib 'blib/lib';
+extend Tapper
 
 
-require "Structural::Adapter;
+teaCup = TeaCup.new
 
-my $teaCup = TeaCup.new();
+teaBag = TeaBag.new
+teaCup.steepTeaBag(teaBag)
+test "Test that tea bag cup steeped tea" do
+	assert teaBag.getTeaBagIsSteeped
+end
 
-my $teaBag = TeaBag.new();       
-$teaCup.steepTeaBag($teaBag);
-is $teaBag.teaBagIsSteeped(), True, "$?FILE Test that tea bag cup steeped tea";
+looseLeafTea = LooseLeafTea.new
+teaBall = TeaBall.new(looseLeafTea)
+teaCup.steepTeaBag(teaBall)
+test "Test that tea ball steeped teabag" do
+	assert teaBall.getTeaBagIsSteeped
+end
 
-my $looseLeafTea = LooseLeafTea.new();
-my $teaBall = TeaBall.new($looseLeafTea);
-$teaCup.steepTeaBag($teaBall);
-is $teaBall.teaBagIsSteeped(), True, "$?FILE Test that tea ball steeped teabag";
-
-done();
+done

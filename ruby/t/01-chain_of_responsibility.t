@@ -4,35 +4,37 @@
 #//Chain of Responsibility Overview
 #//A method called in one class will move up a class hierarchy until a method is found that can properly handle the call.
 
-gem "minitest";
-require "minitest/autorun"
+require "tapper"
+require "Behavioral/Chain_Of_Responsibility"
 
-require "Behavioral::Chain_Of_Responsibility"
+extend Tapper
 
-$topTitle;
-$comedy = DvdCategory.new(category => "Comedy");
-$comedy.setTopCategoryTitle("Ghost World");
 
-$comedyChildrens = DvdSubCategory.new(parent => $comedy, subCategory => "Childrens");
+comedy = DvdCategory.new("Comedy");
+comedy.setTopCategoryTitle("Ghost World");
 
-$comedyChildrensAquatic = DvdSubSubCategory.new( parent => $comedyChildrens, subSubCategory => "Aquatic");
-$comedyChildrensAquatic.setTopSubSubCategoryTitle( "Sponge Bob Squarepants");
-$topTitle = $comedy.getTopTitle();
+comedyChildrens = DvdSubCategory.new( comedy, "Childrens");
 
-is "The top title for " ~ $comedy.getAllCategories() ~ " is " ~ $topTitle,
-	'The top title for Comedy is Ghost World',
-	"$?FILE dvdcategory test";
+comedyChildrensAquatic = DvdSubSubCategory.new( comedyChildrens, "Aquatic");
+comedyChildrensAquatic.setTopSubSubCategoryTitle( "Sponge Bob Squarepants");
+topTitle = comedy.getTopTitle()
 
-$topTitle = $comedyChildrens.getTopTitle();
+test "dvdcategory test" do
+	assert_equal "The top title for #{comedy.getAllCategories()} is #{topTitle}",
+		'The top title for Comedy is Ghost World'
+end
 
-is "The top title for " ~ $comedyChildrens.getAllCategories() ~ " is " ~ $topTitle, 
-	"The top title for Comedy/Childrens is Ghost World" , 
-	"$?FILE dvd sub category test";
+topTitle = comedyChildrens.getTopTitle();
 
-$topTitle = $comedyChildrensAquatic.getTopTitle();
+test "dvd sub category test" do
+	assert_equal "The top title for #{ comedyChildrens.getAllCategories() } is #{ topTitle }", "The top title for Comedy/Childrens is Ghost World"
+end
 
-is "The top title for " ~ $comedyChildrensAquatic.getAllCategories() ~ " is " ~ $topTitle, 
-	'The top title for Comedy/Childrens/Aquatic is Sponge Bob Squarepants' , 
-	"$?FILE dvd sub sub category test";
+topTitle = comedyChildrensAquatic.getTopTitle();
+
+test "dvd sub sub category test" do
+	assert_equal "The top title for #{ comedyChildrensAquatic.getAllCategories() } is #{ topTitle }", 
+	'The top title for Comedy/Childrens/Aquatic is Sponge Bob Squarepants'
+end
 
 done();

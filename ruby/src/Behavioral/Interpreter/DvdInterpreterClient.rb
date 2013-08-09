@@ -16,15 +16,15 @@ class DvdInterpreterClient
  		result = ["Query Result: "]
 		mainQuery = ' '
 		subQuery = ' '
-		forUsed = False
-		searchString = None
-		searchStarted = False
-		searchEnded = False
+		forUsed = false
+		searchString = nil
+		searchStarted = false
+		searchEnded = false
 
 		tokens = expression.split(' ')
 		for currentToken in tokens
  			if currentToken == "show"
- 				continue
+ 				next
 			end
 
 			#//show in all queries, not really used
@@ -42,48 +42,48 @@ class DvdInterpreterClient
 				end
 
 			elsif currentToken == 'for'
- 				forUsed = True
+ 				forUsed = true
 
-			elsif searchString == None and subQuery != ' ' and  currentToken.startswith("<")
+			elsif searchString == nil and subQuery != ' ' and  currentToken.start_with?("<")
  				searchString = currentToken
-				searchStarted = True
-				if currentToken.endswith(">")
- 					searchEnded = True 
+				searchStarted = true
+				if currentToken.end_with?(">")
+ 					searchEnded = true 
 				end
 
 			elsif searchStarted and not searchEnded
  				searchString += " " + currentToken
-				if currentToken.endswith(">")
-					searchEnded = True 
+				if currentToken.end_with?(">")
+					searchEnded = true 
 				end
 			end
 		end
 
 
 		#//remove <>
-		if searchString != None
- 			searchString = searchString.strip('<>')
+		if searchString != nil
+			searchString = searchString.slice(1..-2)
 			#searchString = searchString.substring(1,(searchString.length() - 1)) 
 		end
 
-		expr = None
+		expr = nil
 		if mainQuery == 'A'
  			if subQuery == 'T'
- 				expr = DvdActorTitleExpression(searchString) 
+ 				expr = DvdActorTitleExpression.new(searchString) 
 			else
- 				expr = DvdActorExpression()
+ 				expr = DvdActorExpression.new()
 			end
 		elsif mainQuery == 'T'
  			if subQuery == 'A'
- 				expr = DvdTitleActorExpression(searchString) 
+ 				expr = DvdTitleActorExpression.new(searchString) 
 			else
- 				expr = DvdTitleExpression()
+ 				expr = DvdTitleExpression.new()
 			end
 		else
  			return str(result)
 		end
 
-		result.append(expr.interpret(@ctx))
-		return str(result)
+		result.push(expr.interpret(@ctx))
+		result.join('')
 	end
 end

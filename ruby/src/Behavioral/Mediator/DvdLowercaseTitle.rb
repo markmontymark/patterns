@@ -6,9 +6,11 @@ require "Behavioral/Mediator/DvdTitle"
 
 class DvdLowercaseTitle < DvdTitle
 
+	attr_accessor :lowercasetitle, :title
+
 	def initialize( title, dvdMediator)
-		@LowercaseTitle = None
-		if isinstance(title, DvdTitle)  
+		@LowercaseTitle = nil
+		if title.is_a? DvdTitle
 			setTitle( title.getTitle() )
 		else 
 			setTitle(title)
@@ -18,11 +20,11 @@ class DvdLowercaseTitle < DvdTitle
 		@dvdMediator.setLowercase(self)
 	end
 
-	def resetTitle (title = None)
+	def resetTitle (title = nil)
  		if title
 			setTitle(title)
 		end
-		setLowercaseTitle(getTitle().lower())
+		setLowercaseTitle(getTitle().downcase())
 	end
 
 	def setSuperTitleLowercase()
@@ -31,11 +33,11 @@ class DvdLowercaseTitle < DvdTitle
 	end
 
 	def getLowercaseTitle()
- 		return @LowercaseTitle
+ 		return @lowercasetitle
 	end
 
 	def setLowercaseTitle(aLowercaseTitle)
- 		@LowercaseTitle = aLowercaseTitle
+ 		@lowercasetitle = aLowercaseTitle
 	end
 
 end

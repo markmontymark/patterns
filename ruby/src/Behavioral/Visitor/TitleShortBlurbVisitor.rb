@@ -2,20 +2,20 @@
 
 #//TitleShortBlurbVisitor - two of two concrete Visitors
 
-require "TitleBlurbVisitor"
-require "BookInfo"
-require "DvdInfo"
-require "GameInfo"
+#require "TitleBlurbVisitor"
+#require "BookInfo"
+#require "DvdInfo"
+#require "GameInfo"
 
 class TitleShortBlurbVisitor < TitleBlurbVisitor
 
 	def visit (info) 
-		if isinstance(info,BookInfo)
-			setTitleBlurb("SB-Book: " + info.titleName)
-		elsif isinstance(info,DvdInfo)
-			setTitleBlurb("SB-DVD: " + info.titleName)
-		elsif isinstance(info,GameInfo)
-			setTitleBlurb("SB-Game: " + info.titleName)
+		if info.is_a? BookInfo
+			setTitleBlurb("SB-Book: #{info.titleName}")
+		elsif info.is_a? DvdInfo
+			setTitleBlurb("SB-DVD: #{ info.titleName}")
+		elsif info.is_a? GameInfo
+			setTitleBlurb("SB-Game: #{info.titleName}")
 		end
 	end
 end

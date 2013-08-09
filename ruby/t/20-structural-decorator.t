@@ -1,17 +1,24 @@
 
 
-gem "minitest";
-require "minitest/autorun"
+require "tapper"
+require "Structural/Decorator"
 
-use lib 'blib/lib';
-require "Structural::Decorator;
-
-my $teaLeaves = TeaLeaves.new();
-ok($teaLeaves,'Make a teaLeaves obj');
-my $chaiDecorator = ChaiDecorator.new($teaLeaves);
-ok($chaiDecorator,'Make a chaiDecorator obj');
-$chaiDecorator.steepTea();
-is($chaiDecorator.teaToMakeChai.teaIsSteeped(), True ,'Tea is steeped');
+extend Tapper
 
 
-done();
+teaLeaves = TeaLeaves.new();
+test 'Make a teaLeaves obj' do
+	assert_kind_of TeaLeaves, teaLeaves
+end
+
+chaiDecorator = ChaiDecorator.new(teaLeaves)
+test 'Make a chaiDecorator obj' do
+	assert_kind_of ChaiDecorator, chaiDecorator
+end
+
+chaiDecorator.steepTea()
+test 'Tea is steeped' do
+	assert chaiDecorator.getTeaToMakeChai().getTeaIsSteeped()
+end
+
+done

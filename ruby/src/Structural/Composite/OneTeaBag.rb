@@ -13,15 +13,15 @@ class OneTeaBag < TeaBags
 	end
 
 	def add()
- 		return False
+ 		return false
 	end
 
 	def remove()
- 		return False
+ 		return false
 	end
 
 	def createListIterator()
- 		return None
+ 		return nil
 	end
 
 end

@@ -12,18 +12,18 @@ class DvdName
 	end
 
 	def getTitleName()
- 		return @titleName
+ 		@titleName
 	end
 
 	def setNameStarsOn()
- 		setTitleName(getTitleName().replace(' ','*'))
+ 		setTitleName(getTitleName().gsub(' ','*'))
 	end
 
 	def setNameStarsOff()
- 		setTitleName(getTitleName().replace('*',' '))
+ 		setTitleName(getTitleName().gsub('*',' '))
 	end
 
-	def __str__()
-		return "DVD: {0}".format(getTitleName())
+	def to_s()
+		return "DVD: #{getTitleName()}"
 	end
 end

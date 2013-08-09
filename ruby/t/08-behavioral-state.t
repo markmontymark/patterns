@@ -1,28 +1,25 @@
-gem "minitest";
-require "minitest/autorun"
+require "tapper"
+require "Behavioral/State"
 
-use lib 'blib/lib';
+extend Tapper
 
 
-use lib 'blib/lib';
-require "Behavioral::State;
+ctx = DvdStateContext.new();
 
-my $ctx = DvdStateContext.new();
+test "first state change" do
+	assert_equal ctx.showName( "Sponge Bob Squarepants - Nautical Nonsense and Sponge Buddies"), 'Sponge*Bob Squarepants - Nautical Nonsense and Sponge Buddies'
+end
 
-is $ctx.getName( "Sponge Bob Squarepants - Nautical Nonsense and Sponge Buddies"), 
-	'Sponge*Bob*Squarepants*-*Nautical*Nonsense*and*Sponge*Buddies', 
-	"$?FILE first state change";
+test "second state change" do
+	assert_equal ctx.showName( "Jay and Silent Bob Strike Back" ) , 'Jay*and Silent Bob Strike Back'
+end
 
-is $ctx.getName( "Jay and Silent Bob Strike Back" ) , 
-	'Jay*and*Silent*Bob*Strike*Back', 
-	"$?FILE second state change";
+test "third state change" do
+	assert_equal ctx.showName( "Buffy The Vampire Slayer Season 2"), 'Buffy!The Vampire Slayer Season 2'
+end
 
-is $ctx.getName( "Buffy The Vampire Slayer Season 2"), 
-	'Buffy!The!Vampire!Slayer!Season!2', 
-	"$?FILE third state change";
+test "fourth state change" do
+	assert_equal ctx.showName( "The Sopranos Season 2"), 'The*Sopranos Season 2'
+end
 
-is $ctx.getName( "The Sopranos Season 2"), 
-	'The*Sopranos*Season*2', 
-	"$?FILE fourth state change";
-
-done();
+done

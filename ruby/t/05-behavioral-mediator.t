@@ -1,31 +1,47 @@
-gem "minitest";
-require "minitest/autorun"
+require "tapper"
+require "Behavioral/Mediator"
 
-use lib 'blib/lib';
+extend Tapper
+
+dvdMediator = DvdMediator.new
+
+dvdLower = DvdLowercaseTitle.new("Mulholland Dr.",dvdMediator)
+dvdUp = DvdUppercaseTitle.new(dvdLower, dvdMediator)
 
 
-use lib 'blib/lib';
+test "Lowercase LC title : #{dvdLower.lowercasetitle}" do
+	assert_equal dvdLower.lowercasetitle ,'mulholland dr.'
+end
 
-require "Behavioral::Mediator;
+test "Lowercase super title :" do
+	assert_equal dvdLower.getTitle() ,'Mulholland Dr.'
+end
 
 
-my $dvdLower = DvdLowercaseTitle.new("Mulholland Dr.");
-my $dvdUp = DvdUppercaseTitle.new($dvdLower);
+test "Upcase UC title :"  do
+	assert_equal dvdUp.uppercasetitle ,'MULHOLLAND DR.'
+end
 
-my $dvdMediator = DvdMediator.new($dvdLower,$dvdUp);
+test "Upcase super title :" do
+	assert_equal dvdUp.getTitle() , 'Mulholland Dr.'
+end
 
-is $dvdLower.lowercasetitle ,'mulholland dr.',"$?FILE Lowercase LC title :" ~ $dvdLower.lowercasetitle;
-is $dvdLower.getTitle() ,'Mulholland Dr.',"$?FILE Lowercase super title :";
-is $dvdUp.uppercasetitle ,'MULHOLLAND DR.',"$?FILE Upcase UC title :" ;
-is $dvdUp.getTitle() , 'Mulholland Dr.',"$?FILE Upcase super title :";
+dvdLower.setSuperTitleLowercase()
 
-$dvdLower.setSuperTitleLowercase();
-#$dvdUp.setSuperTitleUpcase();
+test "Lowercase LC title :" do
+	assert_equal dvdLower.lowercasetitle ,'mulholland dr.'
+end
 
-#say("After Super set to LC");
-is $dvdLower.lowercasetitle ,'mulholland dr.',"$?FILE Lowercase LC title :";
-is $dvdLower.getTitle() ,'mulholland dr.',"$?FILE Lowercase super title :";
-is $dvdUp.uppercasetitle ,'MULHOLLAND DR.',"$?FILE Upcase UC title :";
-is $dvdUp.getTitle() ,'Mulholland Dr.',"$?FILE Upcase super title :";
+test "Lowercase super title :" do
+	assert_equal dvdLower.getTitle() ,'mulholland dr.'
+end
 
-done();
+test "Upcase UC title :" do
+	assert_equal dvdUp.uppercasetitle ,'MULHOLLAND DR.'
+end
+
+test "Upcase super title :" do 
+	assert_equal dvdUp.getTitle() ,'mulholland dr.'
+end
+
+done

@@ -8,6 +8,6 @@ class DvdActorTitleExpression < DvdAbstractExpression
 	end
 
 	def interpret(ctx)
- 		return ctx.getActorsForTitle(@title).join(', ');
+ 		return ctx.getActorsForTitle(@title).sort.join(', ');
 	end
 end

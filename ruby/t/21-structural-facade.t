@@ -1,16 +1,15 @@
 
 
+require "tapper"
+require "Structural/Facade"
 
-gem "minitest";
-require "minitest/autorun"
-
-use lib 'blib/lib';
+extend Tapper
 
 
-require "Structural::Facade;
+test  "Test tea cup facade " do
+	cuppaMaker = FacadeCuppaMaker.new;
+	teaCup = cuppaMaker.makeACuppa();
+	assert_equal "#{teaCup}" ,'A nice cuppa tea!'
+end
 
-my $cuppaMaker = FacadeCuppaMaker.new();
-my $teaCup = $cuppaMaker.makeACuppa();
-is $teaCup.toString() ,'A nice cuppa tea!', "$?FILE Test tea cup facade";
-
-done();
+done

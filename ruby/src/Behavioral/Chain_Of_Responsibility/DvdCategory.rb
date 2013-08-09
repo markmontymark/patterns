@@ -5,7 +5,7 @@ class DvdCategory < TopTitle
 
 	def initialize(category)
  		setCategory(category)
-		@topCategoryTitle = None
+		@topCategoryTitle = nil
 	end
 
 	def setCategory(categoryIn)

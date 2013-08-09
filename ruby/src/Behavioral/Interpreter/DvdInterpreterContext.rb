@@ -2,20 +2,20 @@
 
 class DvdInterpreterContext
 
-	def initialize(titles = None, actors = None, titlesAndActors = None)		
-		if titles == None			
+	def initialize(titles = nil, actors = nil, titlesAndActors = nil)		
+		if titles == nil			
 			@titles = []
 		else 			
 			@titles = titles
 		end
 
-		if actors == None			
+		if actors == nil			
 			@actors = []
 		else
- 			@actors =actors  
+ 			@actors = actors  
 		end
 
-		if titlesAndActors == None
+		if titlesAndActors == nil
  			@titlesAndActors = []
 		else
  			@titlesAndActors = titlesAndActors 
@@ -23,30 +23,30 @@ class DvdInterpreterContext
 	end
 
 	def addTitle(title)
- 		@titles.append(title)
+ 		@titles.push(title)
 	end
 
 	def addActor(actor)
- 		@actors.append(actor)
+ 		@actors.push(actor)
 	end
 
 	def addTitleAndActor(titleAndActor)
- 		@titlesAndActors.append(titleAndActor)
+ 		@titlesAndActors.push(titleAndActor)
 	end
 
 	def getAllTitles()
- 		return @titles
+ 		@titles.sort
 	end
 
 	def getAllActors()
- 		return @actors
+ 		@actors.sort
 	end
 
 	def getActorsForTitle(title)
  		retval = []
 		for ta in @titlesAndActors
 			if ta.getTitle() == title
- 				retval.append(ta.getActor())
+ 				retval.push(ta.getActor())
 			end
 		end
 		return retval
@@ -55,12 +55,12 @@ class DvdInterpreterContext
 
 	def getTitlesForActor(actor)
  		retval = []
-		if actor == None
+		if actor == nil
  			return retval
 		end
 		for ta in @titlesAndActors
 			if ta.getActor() == actor
- 				retval.append(ta.getTitle())
+ 				retval.push(ta.getTitle())
 			end
 		end
 		return retval

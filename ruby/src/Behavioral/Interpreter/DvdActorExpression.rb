@@ -3,6 +3,6 @@ require "Behavioral/Interpreter/DvdAbstractExpression"
 
 class DvdActorExpression < DvdAbstractExpression
 	def interpret(ctx)
- 		return ', '.join(ctx.getAllActors())
+ 		ctx.getAllActors().join(', ')
 	end
 end

@@ -1,20 +1,26 @@
 
-gem "minitest";
-require "minitest/autorun"
+require "tapper"
+require "Behavioral/Template_Method"
 
-use lib 'blib/lib';
-
-
-use lib 'blib/lib';
-require "Behavioral::Template_Method;
+extend Tapper
 
 
-my $bladeRunner = 	DvdTitleInfo.new("Blade Runner", "Harrison Ford", 1); 
-my $electricSheep = 	BookTitleInfo.new("Do Androids Dream of Electric Sheep?", "Phillip K. Dick");        
-my $sheepRaider = 	GameTitleInfo.new("Sheep Raider");
+bladeRunner = 	DvdTitleInfo.new("Blade Runner", "Harrison Ford", 1)
+electricSheep =BookTitleInfo.new("Do Androids Dream of Electric Sheep?", "Phillip K. Dick")
+sheepRaider = 	GameTitleInfo.new("Sheep Raider")
 
-is $bladeRunner.ProcessTitleInfo(), 	'DVD: Blade Runner, starring Harrison Ford 1', "$?FILE dvd Testing bladeRunner   ";
-is $electricSheep.ProcessTitleInfo(),	'Book: Do Androids Dream of Electric Sheep?, Author: Phillip K. Dick ', "$?FILE book Testing electricSheep ";
-is $sheepRaider.ProcessTitleInfo() ,	'Game: Sheep Raider ', "$?FILE game Testing sheepRaider   " ;
+test "dvd Testing bladeRunner   " do
+	assert_equal bladeRunner.processTitleInfo, 	'DVD: Blade Runner, starring Harrison Ford, encoding region: 1'
+end
 
-done();
+
+test "book Testing electricSheep " do
+	assert_equal electricSheep.processTitleInfo,	'Book: Do Androids Dream of Electric Sheep?, Author: Phillip K. Dick '
+end
+
+
+test "game Testing sheepRaider   " do
+	assert_equal sheepRaider.processTitleInfo ,	'Game: Sheep Raider '
+end
+
+done

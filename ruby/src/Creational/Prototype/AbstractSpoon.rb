@@ -5,8 +5,10 @@
 
 class AbstractSpoon
 
+	attr_accessor :spoonName	
+
 	def initialize()
-		raise Exception("Can't instantiate abstract class, AbstractSpoon")
+		raise "Can't instantiate abstract class, AbstractSpoon"
 	end
 
 	def setSpoonName(spoonName)
@@ -15,10 +17,6 @@ class AbstractSpoon
 
 	def getSpoonName()
  		return @spoonName
-	end
-
-	def clone()
- 		return copy.deepcopy(self)
 	end
 
 end

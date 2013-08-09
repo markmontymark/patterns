@@ -1,16 +1,12 @@
-gem "minitest"
+require "tapper"
 
-require "minitest/autorun"
-require "./src/Structural/Proxy/PotOfTeaProxy.rb"
+require "Structural/Proxy/PotOfTeaProxy"
 
-class TestProxy < Minitest::Test
+extend Tapper
 
-def setup
-	@theproxy = PotOfTeaProxy.new
+test "that_proxy_can_pour" do
+	theproxy = PotOfTeaProxy.new
+	assert_equal "Pouring tea", theproxy.pourTea
 end
 
-def test_that_proxy_can_pour
-	assert_equal "Pouring tea", @theproxy.pourTea
-end
-
-end
+done

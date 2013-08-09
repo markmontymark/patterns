@@ -1,11 +1,11 @@
-require "Structural/Facade/FacadeTeaCup"
-require "Structural/Facade/FacadeTeaBag"
-require "Structural/Facade/FacadeWater"
+#require "FacadeTeaCup"
+#require "FacadeTeaBag"
+#require "FacadeWater"
 
 class FacadeCuppaMaker
 
 	def initialize()
-		@teaBagIsSteeped = False
+		@teaBagIsSteeped = false
 	end
 
 	def makeACuppa() 		

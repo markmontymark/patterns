@@ -3,14 +3,26 @@
 
 class SodaImpSingleton
 
+	@@instance = SodaImpSingleton.new
+
+
 	def initialize(sodaimp)
-		self._sodaimp = sodaimp
+		@sodaimp = sodaimp
+	end
+
+	def self.instance
+		return @@instance
 	end
 
 	def getTheSodaImp()
- 		return SodaImpSingleton._sodaimp
+ 		return @sodaimp
 	end
 
+	def setTheSodaImp(si)
+ 		@sodaimp = si
+	end
+
+	private_class_method :new
 end
 
 

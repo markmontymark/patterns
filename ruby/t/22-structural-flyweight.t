@@ -1,7 +1,9 @@
 
 require "tapper"
 
-require_relative "../blib/Structural/Flyweight.rb"
+require "Structural/Flyweight"
+
+extend Tapper
 
 $flavors = [];
 $tables = [];
@@ -14,7 +16,7 @@ def takeOrders(flavorIn, table)
 	$ordersMade += 1
 end
 
-Tapper.test "that_proxy_can_pour" do
+test "that flyweight counts teas made" do
 	takeOrders("chai", 2);    
 	takeOrders("chai", 2);
 	takeOrders("camomile", 1);
@@ -35,8 +37,8 @@ Tapper.test "that_proxy_can_pour" do
 		$flavors[i].serveTea($tables[i]);
 	end
 
-	Tapper.assert_equal "total teaFlavor objects made: #{$teaFlavorFactory.getTotalTeaFlavorsMade}", 'total teaFlavor objects made: 3', "Test total tea flavors made";
+	assert_equal "total teaFlavor objects made: #{$teaFlavorFactory.getTotalTeaFlavorsMade}", 'total teaFlavor objects made: 3', "Test total tea flavors made";
 end
 
-Tapper.done
+done
 

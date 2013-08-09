@@ -1,13 +1,13 @@
 
 
 #//DvdListIterator
-require "Behavioral/Iterator/IteratorInterface"
+#require "Behavioral/Iterator/IteratorInterface"
 
 class DvdListIterator < IteratorInterface
 
-	def initialize(list=None)
+	def initialize(list=nil)
 		@currentPosition = 0
-		if list is None
+		if list == nil
  			@list = []
 		else
  			@list = list

@@ -8,7 +8,7 @@ class GameTitleInfo < TitleInfo
 	end
 
 	def getTitleBlurb ()
-		return "Game: {0}".format( getTitleName() )
+		"Game: #{getTitleName()}"
 	end
 
 end

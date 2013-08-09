@@ -8,7 +8,7 @@ class Soda
 	end
 
 	def setSodaImp()
- 		@sodaImp = SodaImpSingleton._sodaimp
+ 		@sodaImp = SodaImpSingleton.instance.getTheSodaImp
 	end
 
 	def getSodaImp()

@@ -2,6 +2,8 @@
 
 class DvdRelease
 
+		attr_accessor :serialNumber, :dvdName, :dvdReleaseYear, :dvdReleaseMonth, :dvdReleaseDay
+
 		def initialize(serialNumber, dvdName, dvdReleaseYear, dvdReleaseMonth, dvdReleaseDay)
  			@serialNumber = serialNumber
 			@dvdName = dvdName
@@ -10,8 +12,8 @@ class DvdRelease
 			@dvdReleaseDay = dvdReleaseDay
 		end
 
-		def __str__()
-			return '"serialNumber":"{0}","dvdName":"{1}","dvdReleaseYear":{2},"dvdReleaseMonth":{3},"dvdReleaseDay":{4}'.format(@serialNumber, @dvdName, @dvdReleaseYear, @dvdReleaseMonth, @dvdReleaseDay)
+		def to_s()
+			return "\"serialNumber\":\"#{@serialNumber}\",\"dvdName\":\"#{@dvdName}\",\"dvdReleaseYear\":#{@dvdReleaseYear},\"dvdReleaseMonth\":#{@dvdReleaseMonth},\"dvdReleaseDay\":#{@dvdReleaseDay}"
 		end
 
 

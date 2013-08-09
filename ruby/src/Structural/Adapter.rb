@@ -1,6 +1,6 @@
 
 #/// Original copy of this content taken from http://www.fluffycat.com/Java-Design-Patterns/ in 2010
-#//// Original Author: Larry Truett
+#//// Original Author: Larry truett
 #//// Privacy Policy at http://www.fluffycat.com/Privacy-Policy/
 #//Adapter (aka Wrapper) Overview
 #//In the Adapter Design Pattern, a class converts the interface of one class to be what another class expects.

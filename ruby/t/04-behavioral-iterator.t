@@ -1,45 +1,44 @@
-gem "minitest";
-require "minitest/autorun"
+require "tapper"
+require "Behavioral/Iterator"
 
-use lib 'blib/lib';
+extend Tapper
 
 
-use lib 'blib/lib';
+movies = DvdList.new();
+movies.push("10 Things I Hate About You");
+movies.push("Shakespeare In Love");
+movies.push("O (2001)");
+movies.push("American Pie 2");
+movies.push("Scotland, PA.");
+movies.push("Hamlet (2000)");
 
-require "Behavioral::Iterator;
+elems = movies.titleCount;
 
-my $movies = DvdList.new();
-$movies.append("10 Things I Hate About You");
-$movies.append("Shakespeare In Love");
-$movies.append("O (2001)");
-$movies.append("American Pie 2");
-$movies.append("Scotland, PA.");
-$movies.append("Hamlet (2000)");
+iterator = DvdListIterator.new( movies );
+iterator.first();
+i = 0;
 
-my $elems = $movies.titleCount;
+until iterator.isDone() do
+	i += 1
+	iterator.next();  
+end 
 
-my $iterator = DvdListIterator.new( $movies );
-$iterator.reset();
-my $i = 0;
-
-until $iterator.isDone()
-{
-	$i++;
-	$iterator.advance();  
-}
-is($i, $elems, "$?FILE Iterator looped $i times");
+test "Iterator looped #{i} times" do
+	assert_equal i, elems
+end
        
-$movies.remove("American Pie 2");
-$iterator.reset();
+movies.remove("American Pie 2");
+iterator.first();
 
-$i = 0;
-until $iterator.isDone()
-{
-	$i++;
-	#say  $iterator.currentItem();
-	$iterator.advance();  
-}       
-is($i, $elems - 1, "$?FILE Iterator looped " ~ ($elems - 1) ~ " times");
+i = 0;
+until iterator.isDone() do
+	i += 1
+	iterator.next()
+end 
+
+test "Iterator looped #{elems - 1} times" do
+	assert_equal i, (elems - 1)
+end
 
 
-done();
+done

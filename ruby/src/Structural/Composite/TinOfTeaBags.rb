@@ -20,20 +20,20 @@ class TinOfTeaBags < TeaBags
 
 	def add(teaBagsToAdd)
  		teaBagsToAdd.setParent(self)
-		@teaBagList.append(teaBagsToAdd)
+		@teaBagList.push(teaBagsToAdd)
 	end
 
 	def remove(teaBagsToRemove)
  		list = createListIterator()
-		list_size = len(list)
+		list_size = list.length
 		newlist = []
 		for teaBag in list
  			if teaBag != teaBagsToRemove
-				newlist.append(teaBag)
+				newlist.push(teaBag)
 			end
 		end
 		@teaBagList = newlist
-		return list_size != len(@teaBagList)
+		return list_size != @teaBagList.length
 	end
 
 	def createListIterator()

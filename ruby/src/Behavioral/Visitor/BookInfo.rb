@@ -1,7 +1,9 @@
 # //BookInfo - one of three concrete Visitees
-require "AbstractTitleInfo"
+#require "AbstractTitleInfo"
 
 class BookInfo < AbstractTitleInfo
+
+	attr_accessor :author
 
 	def initialize(titleName,author)
  		super(titleName)

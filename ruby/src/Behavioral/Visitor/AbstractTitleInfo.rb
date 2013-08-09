@@ -2,6 +2,8 @@
 
 class AbstractTitleInfo
 
+	attr_accessor :titleName
+
 	def initialize(titleName)
 		setTitleName(titleName)
 	end

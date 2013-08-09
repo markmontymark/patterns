@@ -5,8 +5,8 @@ require "Behavioral/State/DvdStateNameStars"
 
 class DvdStateNameExclaim < DvdStateName
 	def showName ( ctx, name)
-		retval = name.replace(' ','!',1)
+		retval = name.sub(' ','!')
 		ctx.setDvdStateName(DvdStateNameStars.new)
-		return retval
+		retval
 	end
 end

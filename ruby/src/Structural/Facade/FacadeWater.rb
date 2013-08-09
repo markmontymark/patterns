@@ -3,11 +3,11 @@
 class FacadeWater
 
 	def initialize() 
-		setWaterIsBoiling(False)
+		setWaterIsBoiling(false)
 	end
 
 	def boilFacadeWater()
- 		setWaterIsBoiling( True )
+ 		setWaterIsBoiling( true )
 		return "water is boiling"
 	end
 

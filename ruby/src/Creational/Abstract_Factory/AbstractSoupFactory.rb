@@ -1,6 +1,6 @@
 
 #//// Original copy of this content taken from http://www.fluffycat.com/Java-Design-Patterns/ in 2010
-#//// Original Author: Larry Truett
+#//// Original Author: Larry truett
 #//// Privacy Policy at http://www.fluffycat.com/Privacy-Policy/
 #//An abstract factory has sets of methods to make families of various objects.
 
@@ -13,13 +13,14 @@
 #//Video tutorial on design patterns
 #//AbstractSoupFactory - An Abstract Factory
 
+
 class AbstractSoupFactory
 	def initialize(factoryLocation)
  		raise Exception("Can't instantiate an abstract class, AbstractSoupFactory")
 	end
 
 	def getFactoryLocation()
- 		return @factoryLocation
+ 		@factoryLocation
 	end
 
 	def makeChickenSoup()

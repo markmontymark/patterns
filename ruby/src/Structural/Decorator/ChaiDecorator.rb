@@ -28,5 +28,9 @@ class ChaiDecorator < Tea
 		return (@chaiIngredients.map { |i| (i + ' is steeping ') }).join(', ')
 	end
 
+	def getTeaToMakeChai
+		@teaToMakeChai
+	end
+
 end
 

@@ -1,34 +1,34 @@
-gem "minitest";
-require "minitest/autorun"
+require "tapper"
+require "Behavioral/Memento"
 
-use lib 'blib/lib';
+extend Tapper
 
+stars = ["Guy Pearce"]
+dvdDetails = DvdDetails.new("Memento", stars, '1') 
 
-use lib 'blib/lib';
-require "Behavioral::Memento;
+test "first format of dvd details" do
+	assert_equal dvdDetails.formatDvdDetails, 'DVD: Memento, starring: Guy Pearce, encoding region: 1'
+end
 
-my $dvdMementoCaretaker;  
+dvdMementoCaretaker = dvdDetails.createDvdMemento()
 
-my @stars = ["Guy Pearce"];
-my $dvdDetails = DvdDetails.new("Memento", @stars, '1'); 
-
-is $dvdDetails.formatDvdDetails, 'DVD: Memento, starring: Guy Pearce, encoding region: 1', 
-	"$?FILE first format of dvd details";
-$dvdMementoCaretaker = $dvdDetails.createDvdMemento();
-is (defined $dvdMementoCaretaker), True, 
-	"$?FILE creating a dvdmemento";
+test "creating a dvdmemento" do
+	assert dvdMementoCaretaker
+end
 
 
 #//oops - Cappuccino on the keyboard!
-$dvdDetails.addStar("edskdzkvdfb");  
+dvdDetails.addStar("edskdzkvdfb")  
 
-is $dvdDetails.formatDvdDetails, 'DVD: Memento, starring: Guy Pearce, edskdzkvdfb, encoding region: 1', 
-	"$?FILE second format of dvd details";
+test "second format of dvd details" do
+	assert_equal dvdDetails.formatDvdDetails, 'DVD: Memento, starring: Guy Pearce, edskdzkvdfb, encoding region: 1'
+end
 
-$dvdDetails.setDvdMemento($dvdMementoCaretaker);
+dvdDetails.setDvdMemento(dvdMementoCaretaker)
 
 #//back off changes
-is $dvdDetails.formatDvdDetails, 'DVD: Memento, starring: Guy Pearce, encoding region: 1', 
-	"$?FILE restored format details";
+test "restored format details" do
+	assert_equal dvdDetails.formatDvdDetails, 'DVD: Memento, starring: Guy Pearce, encoding region: 1'
+end
 
-done();
+done

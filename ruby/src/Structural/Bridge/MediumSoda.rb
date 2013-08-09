@@ -12,10 +12,10 @@ class MediumSoda < Soda
  		sodaImp = getSodaImp()
 		retval = []
 		( 1..2 ).each do
-			retval.append('...glug...')
-			retval.append(sodaImp.pourSodaImp())
+			retval.push('...glug...')
+			retval.push(sodaImp.pourSodaImp())
 		end
-		return retval
+		retval.join(' ')
 	end
 
 end

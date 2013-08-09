@@ -19,10 +19,8 @@ class DvdNameContext
 	end
 
 	def formatDvdNames ( names, replacementIn = ' ' )
- 		list = []
-		for name in names
-			list.append("Dvd name before formatting: #{name}\nDvd name after formatting:  #{@dvdNameStrategy.formatDvdName(name, replacementIn)}")
-		end
-		return list.join("\n")
+		[names.map { |name| 
+			@dvdNameStrategy.formatDvdName(name, replacementIn) }
+		].join(",")
 	end
 end

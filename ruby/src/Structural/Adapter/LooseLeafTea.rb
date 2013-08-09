@@ -5,12 +5,16 @@
 class LooseLeafTea
 
 	def initialize()
-		@teaIsSteeped = False
+		@teaIsSteeped = false
 	end
 
 	def steepTea()
- 		@teaIsSteeped = True
+ 		@teaIsSteeped = true
 		return 'tea is steeping'
+	end
+
+	def getTeaIsSteeped
+		@teaIsSteeped
 	end
 
 end

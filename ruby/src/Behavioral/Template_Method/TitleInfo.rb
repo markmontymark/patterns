@@ -4,7 +4,7 @@ class TitleInfo
 
 	#//the "template method" - 
 	#//  calls the concrete class methods, is not overridden
-	def ProcessTitleInfo ()
+	def processTitleInfo ()
 		return [getTitleBlurb(), getDvdEncodingRegionInfo()].join('')
 	end
 
@@ -20,7 +20,7 @@ class TitleInfo
 	#//this is a "primitive operation", 
 	#//  and must be overridden in the concrete templates
 	def getTitleBlurb ()
-		raise Exception("Unimplemented method TitleInfo.getTitleBlurb")
+		raise "Unimplemented method TitleInfo.getTitleBlurb"
 	end
 
 	#//this is a "hook operation", which may be overridden, 

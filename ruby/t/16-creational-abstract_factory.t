@@ -1,38 +1,36 @@
 
-gem "minitest";
-require "minitest/autorun"
+require "tapper"
+require "Creational/Abstract_Factory"
 
-use lib 'blib/lib';
+extend Tapper
 
+def makeSoupOfTheDay( sf)
+	r = 3;
+	soups = [
+		sf.makeChickenSoup(),
+		sf.makeClamChowder(),
+		sf.makeFishChowder(),
+		sf.makeMinnestrone(),
+		sf.makePastaFazul(),
+		sf.makeTofuSoup(),
+		sf.makeVegetableSoup(),
+      ];
+	soups[r]
+end
 
-use lib 'blib/lib';
-require "Creational::Abstract_Factory;
+concreteSoupFactory = BostonConcreteSoupFactory.new();
+soupOfTheDay = makeSoupOfTheDay(concreteSoupFactory);
 
+test "Testing boston soup of the day" do
+	assert_equal "The Soup of the day #{concreteSoupFactory.getFactoryLocation} is #{soupOfTheDay.getSoupName}", "The Soup of the day Boston is Minnestrone"
+end
 
-sub MakeSoupOfTheDay ( AbstractSoupFactory $sf ) returns Soup
-{
-	my $r = 3;
-	my Soup @soups = ( $sf.makeChickenSoup(),
-           $sf.makeClamChowder(),
-           $sf.makeFishChowder(),
-           $sf.makeMinnestrone(),
-           $sf.makePastaFazul(),
-           $sf.makeTofuSoup(),
-           $sf.makeVegetableSoup(),
-       );
-	return @soups[$r];
-}        
+concreteSoupFactory = HonoluluConcreteSoupFactory.new();
+soupOfTheDay = makeSoupOfTheDay(concreteSoupFactory);
 
-my AbstractSoupFactory $concreteSoupFactory = BostonConcreteSoupFactory.new();
-my $soupOfTheDay = &MakeSoupOfTheDay($concreteSoupFactory);
+test "Testing honolulu soup of the day" do
+	assert_equal "The Soup of the day #{concreteSoupFactory.getFactoryLocation} is #{soupOfTheDay.getSoupName}","The Soup of the day Honolulu is Minnestrone"
+end
 
-is "The Soup of the day " ~  $concreteSoupFactory.factoryLocation ~  " is " ~  $soupOfTheDay.soupName,
-	"The Soup of the day Boston is Minnestrone",
-	"$?FILE Testing boston soup of the day";
-
-$concreteSoupFactory = HonoluluConcreteSoupFactory.new();
-$soupOfTheDay = &MakeSoupOfTheDay($concreteSoupFactory);
-is "The Soup of the day " ~  $concreteSoupFactory.factoryLocation ~  " is " ~  $soupOfTheDay.soupName,
-	"The Soup of the day Honolulu is Minnestrone",
-	"$?FILE Testing honolulu soup of the day";
+done
 

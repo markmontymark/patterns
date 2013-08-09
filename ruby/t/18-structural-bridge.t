@@ -1,44 +1,49 @@
 
-gem "minitest";
-require "minitest/autorun"
+require "tapper"
+require "Structural/Bridge"
 
-use lib 'blib/lib';
-require "Structural::Bridge;
+extend Tapper
 
-sub testCherryPlatform {
-	SodaImpSingleton.setTheSodaImp(CherrySodaImp.new());
-	my $mediumSoda = MediumSoda.new();
-	is $mediumSoda.pourSoda(), 'Yummy Cherry Soda! Yummy Cherry Soda!', 
-		"$?FILE Testing medium cherry";
+def testCherryPlatform 
+	SodaImpSingleton.instance.setTheSodaImp(CherrySodaImp.new());
+	mediumSoda = MediumSoda.new
+	test "Testing medium cherry" do
+		assert_equal mediumSoda.pourSoda(), '...glug... Yummy Cherry Soda! ...glug... Yummy Cherry Soda!'
+	end
 
-	my $superSizeSoda = SuperSizeSoda.new();
-	is $superSizeSoda.pourSoda(), 'Yummy Cherry Soda! Yummy Cherry Soda! Yummy Cherry Soda! Yummy Cherry Soda! Yummy Cherry Soda!', 
-		"$?FILE Testing supersize cherry";
-}
+	superSizeSoda = SuperSizeSoda.new
+	test "Testing supersize cherry" do
+		assert_equal superSizeSoda.pourSoda(), '...glug... Yummy Cherry Soda! ...glug... Yummy Cherry Soda! ...glug... Yummy Cherry Soda! ...glug... Yummy Cherry Soda! ...glug... Yummy Cherry Soda!'
+	end
+end
    
-sub testGrapePlatform {
-	SodaImpSingleton.setTheSodaImp(GrapeSodaImp.new());
-	my $mediumSoda = MediumSoda.new();
-	is $mediumSoda.pourSoda(), 'Yummy Grape Soda! Yummy Grape Soda!', 
-		"$?FILE Testing medium grape";
-	my $superSizeSoda = SuperSizeSoda.new();
-	is $superSizeSoda.pourSoda(), 'Yummy Grape Soda! Yummy Grape Soda! Yummy Grape Soda! Yummy Grape Soda! Yummy Grape Soda!', 
-		"$?FILE Testing supersize grape";
-}   
+def testGrapePlatform
+	SodaImpSingleton.instance.setTheSodaImp(GrapeSodaImp.new)
+	mediumSoda = MediumSoda.new
+	test "Testing medium grape" do
+		assert_equal mediumSoda.pourSoda(), '...glug... Delicious Grape Soda! ...glug... Delicious Grape Soda!'
+	end
+	superSizeSoda = SuperSizeSoda.new
+	test "Testing supersize grape" do
+		assert_equal superSizeSoda.pourSoda(), '...glug... Delicious Grape Soda! ...glug... Delicious Grape Soda! ...glug... Delicious Grape Soda! ...glug... Delicious Grape Soda! ...glug... Delicious Grape Soda!'
+	end
+end
 
-sub testOrangePlatform {
-	SodaImpSingleton.setTheSodaImp(OrangeSodaImp.new());
-	my $mediumSoda = MediumSoda.new();
-	is $mediumSoda.pourSoda(), 'Yummy Orange Soda! Yummy Orange Soda!', 
-		"$?FILE Testing medium orange";
+def testOrangePlatform 
+	SodaImpSingleton.instance.setTheSodaImp(OrangeSodaImp.new)
+	mediumSoda = MediumSoda.new
+	test "Testing medium orange" do
+		assert_equal mediumSoda.pourSoda(), '...glug... Citrusy Orange Soda! ...glug... Citrusy Orange Soda!'
+	end
 
-	my $superSizeSoda = SuperSizeSoda.new();
-	is $superSizeSoda.pourSoda(), 'Yummy Orange Soda! Yummy Orange Soda! Yummy Orange Soda! Yummy Orange Soda! Yummy Orange Soda!', 
-		"$?FILE Testing supersize orange";
-}
+	superSizeSoda = SuperSizeSoda.new
+	test "Testing supersize orange" do
+		assert_equal superSizeSoda.pourSoda(), '...glug... Citrusy Orange Soda! ...glug... Citrusy Orange Soda! ...glug... Citrusy Orange Soda! ...glug... Citrusy Orange Soda! ...glug... Citrusy Orange Soda!'
+	end
+end
     
-testCherryPlatform();
-testGrapePlatform();
-testOrangePlatform();
+testCherryPlatform
+testGrapePlatform
+testOrangePlatform
 
-done();
+done

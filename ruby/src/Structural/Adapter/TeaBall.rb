@@ -7,12 +7,12 @@ class TeaBall < TeaBag
 
 	def initialize(looseLeafTea)
  		@looseLeafTea = looseLeafTea
-		@teaBagIsSteeped = @looseLeafTea.teaIsSteeped
+		@teaBagIsSteeped = @looseLeafTea.getTeaIsSteeped
 	end
 
 	def steepTeaInCup()
  		@looseLeafTea.steepTea()
-		@teaBagIsSteeped = True
+		@teaBagIsSteeped = true
 	end
 
 end
