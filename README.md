@@ -17,10 +17,10 @@ Much thanks to Larry for allowing to me to start off this project with his Java 
 	PHP - complete
 	Python - complete
 	Perl6 - complete
+	Ruby - complete
 
 	TODO
 	C++ 
-	Ruby
 	Go
 	Erlang
 	Java 1.7
@@ -125,6 +125,31 @@ Once that's sorted:
 	./test.sh
 
 
+## Ruby
+
+Install Ruby, RubyGems, a custom Tapper test module
+
+	sudo apt-get install ruby1.9.1
+	sudo apt-get install rubygems
+
+### Tapper Setup
+
+   git clone git@github.com:judofyr/tapper.git
+   cd tapper
+   gem build tapper.gemspec
+   sudo gem install --local tapper-0.0.1.gem
+
+
+## Running the rbu tests
+
+   git clone git@github.com:markmontymark/patterns.git
+   cd patterns/ruby
+   make
+   make test
+   make loudtest
+   make timetest
+
+	
 
 
 
