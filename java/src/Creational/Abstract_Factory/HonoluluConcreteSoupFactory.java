@@ -1,9 +1,10 @@
-package Creational.Abstract_Factory;
-
-
 //HonoluluConcreteSoupFactory.java - Two of Two concrete factories extending the abstract factory
 
-class HonoluluConcreteSoupFactory extends AbstractSoupFactory {
+package Creational.Abstract_Factory;
+
+import common.*;
+
+public class HonoluluConcreteSoupFactory extends AbstractSoupFactory {
     public HonoluluConcreteSoupFactory() {
         factoryLocation = "Honolulu";
     }

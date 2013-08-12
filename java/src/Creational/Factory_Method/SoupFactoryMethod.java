@@ -1,4 +1,3 @@
-package Creational.Factory_Method;
 
 //// Original copy of this content taken from http://www.fluffycat.com/Java-Design-Patterns/ in 2010
 //// Original Author: Larry Truett
@@ -14,7 +13,12 @@ package Creational.Factory_Method;
 //Video tutorial on design patterns
 //SoupFactoryMethod.java - a Factory Method
 
-class SoupFactoryMethod {
+
+package Creational.Factory_Method;
+
+import common.*;
+
+public class SoupFactoryMethod {
     public SoupFactoryMethod() {}
         
     public SoupBuffet makeSoupBuffet() {

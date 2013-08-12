@@ -1,7 +1,8 @@
+//BostonSoupBuffetBuilder.java - One of Two Builder Subclasses
+
 package Creational.Builder;
 
-
-//BostonSoupBuffetBuilder.java - One of Two Builder Subclasses
+import common.*;
 
 class BostonSoupBuffetBuilder extends SoupBuffetBuilder {
     public void buildClamChowder() {

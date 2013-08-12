@@ -1,12 +1,14 @@
 package Behavioral.Chain_Of_Responsibility;
 
+import tap.*;
 
 //TestChainOfResponsibility.java - testing the Chain of Responsibility
 
 class TestChainOfResponsibility {
-   public static void main(String[] args) {
-        String topTitle;
-        DvdCategory comedy = new DvdCategory("Comedy");
+	public static void main(String[] args) {
+		Tapper tap = new Tapper();
+        final String topTitle;
+        final DvdCategory comedy = new DvdCategory("Comedy");
         comedy.setTopCategoryTitle("Ghost World");
         
         DvdSubCategory comedyChildrens = 
@@ -17,26 +19,26 @@ class TestChainOfResponsibility {
         comedyChildrensAquatic.setTopSubSubCategoryTitle(
           "Sponge Bob Squarepants");
 
-        System.out.println("");
-        System.out.println("Getting top comedy title:");
         topTitle = comedy.getTopTitle();
-        System.out.println("The top title for " + 
-                            comedy.getAllCategories() + 
-                            " is " + topTitle);
+			tap.test( "DvdCategory Test", new TestCase(){ public void test(){
+				  assert ("The top title for " + comedy.getAllCategories() + " is " + topTitle).equals(
+							 "The top title for Comedy is Ghost World");
+			} });
 
         System.out.println("");
         System.out.println("Getting top comedy/childrens title:");
-        topTitle = comedyChildrens.getTopTitle();
+        final String topTitle2 = comedyChildrens.getTopTitle();
         System.out.println("The top title for " + 
                             comedyChildrens.getAllCategories() + 
-                            " is " + topTitle);
+                            " is " + topTitle2);
 
         System.out.println("");
         System.out.println(
           "Getting top comedy/childrens/aquatic title:");
-        topTitle = comedyChildrensAquatic.getTopTitle();
+        final String topTitle3 = comedyChildrensAquatic.getTopTitle();
         System.out.println("The top title for " + 
                             comedyChildrensAquatic.getAllCategories() + 
-                            " is " + topTitle);
+                            " is " + topTitle3);
+		tap.done();
    }
 }

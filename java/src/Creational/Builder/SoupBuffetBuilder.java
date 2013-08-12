@@ -1,4 +1,3 @@
-package Creational.Builder;
 
 //// Original copy of this content taken from http://www.fluffycat.com/Java-Design-Patterns/ in 2010
 //// Original Author: Larry Truett
@@ -15,8 +14,13 @@ package Creational.Builder;
 //Video tutorial on design patterns
 //SoupBuffetBuilder.java - a Builder
 
-abstract class SoupBuffetBuilder {
-    SoupBuffet soupBuffet;
+package Creational.Builder;
+
+import common.*;
+
+abstract public class SoupBuffetBuilder {
+
+    public SoupBuffet soupBuffet;
         
     public SoupBuffet getSoupBuffet() {
         return soupBuffet;

@@ -1,9 +1,11 @@
-package Creational.Factory_Method;
-
-
 //HonoluluSoupFactoryMethodSubclass.java - Two of Two Subclass Factory Methods
 
-class HonoluluSoupFactoryMethodSubclass extends SoupFactoryMethod {
+
+package Creational.Factory_Method;
+
+import common.*;
+
+public class HonoluluSoupFactoryMethodSubclass extends SoupFactoryMethod {
     public String makeBuffetName() {
         return "Honolulu Soup Buffet";
     }

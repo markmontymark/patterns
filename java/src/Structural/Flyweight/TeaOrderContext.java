@@ -6,7 +6,7 @@ package Structural.Flyweight;
 public class TeaOrderContext {  
    int tableNumber; 
    
-   TeaOrderContext(int tableNumber) {
+   public TeaOrderContext(int tableNumber) {
        this.tableNumber = tableNumber;
    }
    

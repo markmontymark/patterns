@@ -8,8 +8,8 @@ public class PotOfTeaProxy implements PotOfTeaInterface {
     
    public PotOfTeaProxy() {}
    
-   public void pourTea() {
+   public String pourTea() {
        potOfTea = new PotOfTea();
-       potOfTea.pourTea();
+       return potOfTea.pourTea();
    }
 }

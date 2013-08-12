@@ -1,4 +1,3 @@
-package Creational.Abstract_Factory;
 
 //// Original copy of this content taken from http://www.fluffycat.com/Java-Design-Patterns/ in 2010
 //// Original Author: Larry Truett
@@ -14,7 +13,12 @@ package Creational.Abstract_Factory;
 //Video tutorial on design patterns
 //AbstractSoupFactory.java - An Abstract Factory
 
-abstract class AbstractSoupFactory {
+
+package Creational.Abstract_Factory;
+
+import common.*;
+
+public abstract class AbstractSoupFactory {
     String factoryLocation;
     public String getFactoryLocation() {
         return factoryLocation;

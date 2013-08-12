@@ -10,13 +10,13 @@ public class DvdStateNameStars implements DvdStateName {
         starCount = 0;
     }
     
-    public void showName(DvdStateContext dvdStateContext, 
+    public String showName(DvdStateContext dvdStateContext, 
                          String nameIn) {
-         System.out.println(nameIn.replace(' ','*'));
+         String retval = nameIn.replace(' ','*');
          // show stars twice, switch to exclamation point
          if (++starCount > 1) {
-             dvdStateContext.setDvdStateName(
-               new DvdStateNameExclaim());
+             dvdStateContext.setDvdStateName( new DvdStateNameExclaim());
          }       
+			return retval;
     }  
 }

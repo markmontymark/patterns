@@ -6,10 +6,11 @@ package Behavioral.State;
 public class DvdStateNameExclaim implements DvdStateName {  
     public DvdStateNameExclaim() {}
     
-    public void showName(DvdStateContext dvdStateContext, 
+    public String showName(DvdStateContext dvdStateContext, 
                          String nameIn) {
-         System.out.println(nameIn.replace(' ','!'));
+         String retval = nameIn.replace(' ','!');
          //show exclaim only once, switch back to stars
          dvdStateContext.setDvdStateName(new DvdStateNameStars());
+			return retval;
     }  
 }

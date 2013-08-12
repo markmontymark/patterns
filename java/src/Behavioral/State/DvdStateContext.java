@@ -18,7 +18,7 @@ public class DvdStateContext {
        this.dvdStateName = dvdStateNameIn;
    }
    
-   public void showName(String nameIn) {
-       this.dvdStateName.showName(this, nameIn);
+   public String showName(String nameIn) {
+       return this.dvdStateName.showName(this, nameIn);
    }
 }

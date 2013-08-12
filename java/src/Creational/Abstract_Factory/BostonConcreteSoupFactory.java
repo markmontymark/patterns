@@ -1,10 +1,11 @@
+//BostonConcreteSoupFactory.java - One of Two concrete factories extending the abstract factory
+
 package Creational.Abstract_Factory;
 
 
+import common.*;
 
-//BostonConcreteSoupFactory.java - One of Two concrete factories extending the abstract factory
-
-class BostonConcreteSoupFactory extends AbstractSoupFactory {
+public class BostonConcreteSoupFactory extends AbstractSoupFactory {
     public BostonConcreteSoupFactory() {
         factoryLocation = "Boston";
     }

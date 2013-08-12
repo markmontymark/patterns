@@ -8,7 +8,7 @@ public class PotOfTea implements PotOfTeaInterface {
        System.out.println("Making a pot of tea");
    }
    
-   public void pourTea() {
-       System.out.println("Pouring tea");
+   public String pourTea() {
+       return "Pouring tea";
    }   
 }

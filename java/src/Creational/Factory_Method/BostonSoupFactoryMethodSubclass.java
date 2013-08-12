@@ -1,9 +1,10 @@
-package Creational.Factory_Method;
-
-
 //BostonSoupFactoryMethodSubclass.java - One of Two Subclass Factory Methods
 
-class BostonSoupFactoryMethodSubclass extends SoupFactoryMethod {
+package Creational.Factory_Method;
+
+import common.*;
+
+public class BostonSoupFactoryMethodSubclass extends SoupFactoryMethod {
     public String makeBuffetName() {
         return "Boston Soup Buffet";
     }
