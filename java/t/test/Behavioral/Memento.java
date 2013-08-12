@@ -11,6 +11,7 @@ import java.util.ArrayList;
 
 public class Memento {
    public static void main(String[] args) {
+	    Tapper tap = new Tapper();
        DvdDetails.DvdMemento dvdMementoCaretaker;  
        //the Caretaker
        
@@ -37,5 +38,6 @@ public class Memento {
        tap.test("", new TestCase(){public void test(){
 			assert dvdDetails.formatDvdDetails().equals("bork");
 		}});
+		tap.done();
    }
 }      

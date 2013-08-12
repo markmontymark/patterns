@@ -10,6 +10,7 @@ import Structural.Adapter.*;
 class TestTeaBagAdaptation {
 
    public static void main(String[] args) {
+		Tapper tap = new Tapper();
        TeaCup teaCup = new TeaCup();
 
        tap.test("Steeping tea bag");
@@ -20,5 +21,6 @@ class TestTeaBagAdaptation {
        LooseLeafTea looseLeafTea = new LooseLeafTea();
        TeaBall teaBall = new TeaBall(looseLeafTea);
        teaCup.steepTeaBag(teaBall);
+		tap.done();
    }
 }      

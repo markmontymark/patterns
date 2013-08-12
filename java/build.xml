@@ -4,7 +4,9 @@
     </description>
   <!-- set global properties for this build -->
   <property name="src" location="src"/>
+  <property name="test" location="t"/>
   <property name="build" location="build"/>
+  <property name="testbuild" location="testbuild"/>
   <property name="dist"  location="dist"/>
 
   <target name="init">
@@ -16,23 +18,39 @@
 
   <target name="compile" depends="init"
         description="compile the source " >
+    <mkdir dir="${testbuild}"/>
     <!-- Compile the java code from ${src} into ${build} -->
     <javac srcdir="${src}" destdir="${build}" includeantruntime="false"/>
   </target>
 
-  <target name="dist" depends="compile"
+  <target name="test" depends="compile"
+        description="test the source " >
+    <!-- Compile the java code from ${src} into ${build} -->
+    <javac srcdir="${test}" destdir="${testbuild}" classpath="${build}" includeantruntime="false"/>
+  </target>
+
+  <target name="dist" depends="test"
         description="generate the distribution" >
     <!-- Create the distribution directory -->
-    <mkdir dir="${dist}/lib"/>
+    <mkdir dir="${dist}"/>
 
     <!-- Put everything in ${build} into the MyProject-${DSTAMP}.jar file -->
-    <jar jarfile="${dist}/lib/${ant.project.name}-${DSTAMP}.jar" basedir="${build}"/>
+    <jar jarfile="${dist}/${ant.project.name}-${DSTAMP}.jar" basedir="${build}"/>
   </target>
 
   <target name="clean"
         description="clean up" >
     <!-- Delete the ${build} and ${dist} directory trees -->
     <delete dir="${build}"/>
+    <delete dir="${testbuild}"/>
     <delete dir="${dist}"/>
   </target>
+
+	<target name="testrun">
+		<!-- <exec command="prove -exec 'java -ea -cp dist/java-gof-patterns-fluffycat-20130809.jar t.Behavioral.Command'"/>	 
+		prove -exec 'java -ea -cp ${dist}/java-gof-patterns-fluffycat-20130809.jar t.Behavioral.Command'
+		-exec needs an extra dash at front
+-->
+		<exec command="prove -p -e 'sh'"/>	
+	</target>
 </project>

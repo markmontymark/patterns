@@ -3,12 +3,13 @@
 use strict;
 use warnings;
 
+use v5.016;
 use Cwd;
 use File::Find;
 
 my $test_classes = {};
-my $dist_dir = 'java/dist';
-my $build_dir = 'java/build';
+my $dist_dir = './dist';
+my $build_dir = './build';
 
 die "Maybe you didn't build java files yet? Try: cd java; ant\n" unless -d $dist_dir;
 
@@ -38,5 +39,6 @@ sub run_tests
 	$test_klass =~ s/\.class$//;
 	$test_klass =~ s/[\/]/./g;
 	print "$test_klass\n";
-	system("java -cp $jar $test_klass"),"\n";
+	say "java -cp $jar $test_klass";
+	#system("java -cp $jar $test_klass"),"\n";
 }
