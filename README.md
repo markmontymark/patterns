@@ -9,23 +9,23 @@ Much thanks to Larry for allowing to me to start off this project with his Java 
 
 # Languages / Status
 
-	Perl - complete
-	CoffeeScript - complete
-	JavaScript - complete
-	C - complete
-	PHP - complete
-	Python - complete
-	Perl6 - complete
-	Ruby - complete
-	Java - rewriting test code to output in 
-[TAP](http://en.wikipedia.org/wiki/Test_Anything_Protocol)
-	C# - started
+- Perl - complete
+- CoffeeScript - complete
+- JavaScript - complete
+- C - complete
+- PHP - complete
+- Python - complete
+- Perl6 - complete
+- Ruby - complete
+- Java - rewriting test code to output in [TAP](http://en.wikipedia.org/wiki/Test_Anything_Protocol)
+- C# - started
 
-	TODO
-	C++ 
-	Go
-	Erlang
-	Java 1.7
+TODO
+
+- C++ 
+- Go
+- Erlang
+- Java 1.7
 		
 
 # Quick start
