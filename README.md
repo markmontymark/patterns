@@ -17,7 +17,8 @@ Much thanks to Larry for allowing to me to start off this project with his Java 
 	Python - complete
 	Perl6 - complete
 	Ruby - complete
-	Java - rewriting test code to output [TAP](http://en.wikipedia.org/wiki/Test_Anything_Protocol)
+	Java - rewriting test code to output in 
+[TAP](http://en.wikipedia.org/wiki/Test_Anything_Protocol)
 	C# - started
 
 	TODO
