@@ -9,7 +9,6 @@ Much thanks to Larry for allowing to me to start off this project with his Java 
 
 # Languages / Status
 
-	Java - complete (copied, see Attribution)
 	Perl - complete
 	CoffeeScript - complete
 	JavaScript - complete
@@ -18,6 +17,8 @@ Much thanks to Larry for allowing to me to start off this project with his Java 
 	Python - complete
 	Perl6 - complete
 	Ruby - complete
+	Java - rewriting test code to output [TAP](http://en.wikipedia.org/wiki/Test_Anything_Protocol)
+	C# - started
 
 	TODO
 	C++ 
@@ -150,6 +151,14 @@ Install Ruby, RubyGems, a custom Tapper test module
    make timetest
 
 	
+## C#
+
+Install Mono dev tools and use a Makefile (for now) for building and running tests
+
+	sudo apt-get install mono-complete
+	cd patterns/csharp
+	make
+	make test
 
 
 
