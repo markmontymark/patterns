@@ -11,7 +11,7 @@ class TestProxy {
 		PotOfTeaInterface potOfTea = new PotOfTeaProxy();
 
 		 Tapper tap = new Tapper();
-       tap.test("TestProxy: pouring tea", potOfTea.pourTea().Equals("Pouring Tea"));
+       tap.test("TestProxy: pouring tea", potOfTea.pourTea() , ("Pouring Tea"));
 		tap.done();
    }
 }

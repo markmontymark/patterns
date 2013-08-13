@@ -50,8 +50,6 @@ public class DvdSubCategory : TopTitle {
        if (null != getTopSubCategoryTitle()) {
            return this.getTopSubCategoryTitle();
        } else {
-           Console.WriteLine("no top title in Category/SubCategory " + 
-                               getAllCategories());
            return parent.getTopTitle();
        }
    }

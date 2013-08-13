@@ -26,11 +26,26 @@ public class  Tapper
 	}
 
 
-	public void test(String testName, bool testPassed )
+	public void test(String testName, object got, object expected)
 	{
 		CTX.current++;
 		int id = CTX.current;
-		//TODO call block?
+		if(expected.Equals(got))
+		{
+			Console.WriteLine( "ok " + id + " - " + testName);
+			return;
+		}
+		CTX.ok = false;
+		Console.WriteLine( "not ok " + id + " - " + testName);
+		Console.WriteLine( "got " + got );
+		Console.WriteLine( "expected " + expected );
+		Console.WriteLine(Environment.StackTrace);
+		//throw new Exception("Failed test - "  + testName );
+	}
+	/* public void test(String testName)//, bool testPassed )
+	{
+		CTX.current++;
+		int id = CTX.current;
 		if(testPassed)
 		{
 			Console.WriteLine( "ok " + id + " - " + testName);
@@ -38,14 +53,10 @@ public class  Tapper
 		}
 		CTX.ok = false;
 		Console.WriteLine( "not ok " + id + " - " + testName);
-		try {
-			throw new Exception("Failed test - "  + testName );
-		}
-		catch(Exception e)
-		{
-			Console.WriteLine( e.ToString() );
-		}
+		Console.WriteLine(Environment.StackTrace);
+		//throw new Exception("Failed test - "  + testName );
 	}
+	*/
 
 	public void done()
 	{

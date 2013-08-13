@@ -12,15 +12,14 @@ class TestAdapter {
 		Tapper tap = new Tapper();
        TeaCup teaCup = new TeaCup();
 
-       tap.test("Steeping tea bag", teaCup != null);
        TeaBag teaBag = new TeaBag();       
        teaCup.steepTeaBag(teaBag);
-       tap.test("Steeping tea bag ", teaBag.teaBagIsSteeped);
+       tap.test("Steeping tea bag ", teaBag.teaBagIsSteeped, true );
 
        LooseLeafTea looseLeafTea = new LooseLeafTea();
        TeaBall teaBall = new TeaBall(looseLeafTea);
        teaCup.steepTeaBag(teaBall);
-       tap.test("Steeping loose leaf tea", looseLeafTea.teaIsSteeped);
+       tap.test("Steeping loose leaf tea", looseLeafTea.teaIsSteeped, true);
 
 		tap.done();
    }

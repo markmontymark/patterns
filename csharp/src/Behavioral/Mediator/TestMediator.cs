@@ -15,17 +15,17 @@ class TestMediator {
        DvdUpcaseTitle dvdUp = new DvdUpcaseTitle(dvdLower, dvdMediator);
       
 		Tapper tap = new Tapper(); 
-       tap.test("Lowercase LC title :" , dvdLower.getLowercaseTitle().Equals("bork"));
-       tap.test("Lowercase super title :" , dvdLower.getTitle().Equals("bork"));
-       tap.test("Upcase UC title :" , dvdUp.getUpcaseTitle().Equals("bork"));
-       tap.test("Upcase super title :" , dvdUp.getTitle().Equals("bork"));
+       tap.test("Lowercase LC title :" , dvdLower.getLowercaseTitle(),("bork"));
+       tap.test("Lowercase super title :" , dvdLower.getTitle(),("bork"));
+       tap.test("Upcase UC title :" , dvdUp.getUpcaseTitle(),("bork"));
+       tap.test("Upcase super title :" , dvdUp.getTitle(),("bork"));
        
        dvdLower.setSuperTitleLowercase();
        
-       tap.test("Lowercase LC title :" , dvdLower.getLowercaseTitle().Equals("bork"));
-       tap.test("Lowercase super title :" , dvdLower.getTitle().Equals("bork"));
-       tap.test("Upcase UC title :" , dvdUp.getUpcaseTitle().Equals("bork"));
-       tap.test("Upcase super title :" , dvdUp.getTitle().Equals("bork"));
+       tap.test("Lowercase LC title :" , dvdLower.getLowercaseTitle(),("bork"));
+       tap.test("Lowercase super title :" , dvdLower.getTitle(),("bork"));
+       tap.test("Upcase UC title :" , dvdUp.getUpcaseTitle(),("bork"));
+       tap.test("Upcase super title :" , dvdUp.getTitle(),("bork"));
    }
 }      
 

@@ -12,7 +12,7 @@ class TestDecorator {
        Tea teaLeaves = new TeaLeaves();
        Tea chaiDecorator = new ChaiDecorator(teaLeaves);
 		 Tapper tap = new Tapper();
-			tap.test("steep chai test", chaiDecorator.steepTea().Equals("asdf"));
+			tap.test("steep chai test", chaiDecorator.steepTea() , ("asdf"));
 		tap.done();
 		
    }

@@ -15,7 +15,7 @@ class TestPrototype
        AbstractSpoon spoon = prototypeFactory.makeSpoon();
        AbstractFork fork = prototypeFactory.makeFork();
        tap.test("Getting the Spoon and Fork name:", 
-			 ("Spoon: " + spoon.getSpoonName() + ", Fork: " + fork.getForkName()).Equals("bork")
+			 ("Spoon: " + spoon.getSpoonName() + ", Fork: " + fork.getForkName()) , ("bork")
 		);
 
 
@@ -24,7 +24,7 @@ class TestPrototype
        fork = prototypeFactory.makeFork();
 
        tap.test("Creating a Prototype Factory with a SaladSpoon and a SaladFork", 
-       	("Spoon: " + spoon.getSpoonName() + ", Fork: " + fork.getForkName()).Equals("bork")
+       	("Spoon: " + spoon.getSpoonName() + ", Fork: " + fork.getForkName()) , ("bork")
 		);
 
 		tap.done();

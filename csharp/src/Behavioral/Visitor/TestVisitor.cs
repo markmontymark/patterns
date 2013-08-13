@@ -16,32 +16,32 @@ class TestVisitor {
 
 		bladeRunner.accept(titleLongBlurbVisitor);
 		tap.test( 	"Testing bladeRunner long  " , 
-			 titleLongBlurbVisitor.getTitleBlurb().Equals("bork"));
+			 titleLongBlurbVisitor.getTitleBlurb() , ("bork"));
 
 
 		electricSheep.accept(titleLongBlurbVisitor);
 		tap.test( 	"Testing electricSheep long " ,
-			 titleLongBlurbVisitor.getTitleBlurb().Equals("bork"));
+			 titleLongBlurbVisitor.getTitleBlurb() , ("bork"));
 
 		sheepRaider.accept(titleLongBlurbVisitor);
 		tap.test( 	"Testing sheepRaider long " , 
-			 titleLongBlurbVisitor.getTitleBlurb().Equals("bork"));
+			 titleLongBlurbVisitor.getTitleBlurb() , ("bork"));
 
 		TitleBlurbVisitor titleShortBlurbVisitor = new TitleShortBlurbVisitor();
 
 		bladeRunner.accept(titleShortBlurbVisitor);
 		tap.test( 	"Testing bladerunner short " ,
-			 titleShortBlurbVisitor.getTitleBlurb().Equals("bork"));
+			 titleShortBlurbVisitor.getTitleBlurb() , ("bork"));
 
 
 		electricSheep.accept(titleShortBlurbVisitor);
 		tap.test( 	"Testing electricSheep short " ,
-			 	titleShortBlurbVisitor.getTitleBlurb().Equals("bork"));
+			 	titleShortBlurbVisitor.getTitleBlurb() , ("bork"));
 
 
 		sheepRaider.accept(titleShortBlurbVisitor);
 		tap.test( 	"Testing sheepRaider short  " ,
-			 titleShortBlurbVisitor.getTitleBlurb().Equals("bork"));
+			 titleShortBlurbVisitor.getTitleBlurb() , ("bork"));
 	}
 }      
 

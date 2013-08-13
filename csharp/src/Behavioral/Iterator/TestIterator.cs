@@ -24,7 +24,7 @@ class TestIterator {
 			a_num_iterations++;
            fiveShakespeareIterator.next();  
       }
-		tap.test("First iteration", a_num_iterations == 6 );
+		tap.test("First iteration", a_num_iterations , 6 );
        
       fiveShakespeareMovies.delete("American Pie 2");
        
@@ -34,7 +34,7 @@ class TestIterator {
 			b_num_iterations++;
            fiveShakespeareIterator.next();  
       }       
-		tap.test("Second iteration", b_num_iterations == (a_num_iterations-1) );
+		tap.test("Second iteration", b_num_iterations , (a_num_iterations-1) );
 		tap.done();
    }
 }      

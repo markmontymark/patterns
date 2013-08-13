@@ -24,13 +24,13 @@ class TestStrategy {
 
 		Tapper tap = new Tapper();
 		tap.test("Testing formatting with all caps", 
-			string.Join(", ", allCapContext.formatDvdNames(dvdNames).ToArray()).Equals("Jay and Silent Bob Strike Back, The Fast and the Furious, The Others") );
+			string.Join(", ", allCapContext.formatDvdNames(dvdNames).ToArray()) , ("Jay and Silent Bob Strike Back, The Fast and the Furious, The Others") );
 
 		tap.test( "Testing formatting with beginning the at end", 
-			string.Join(", ",theEndContext.formatDvdNames(dvdNames).ToArray()).Equals("Jay and Silent Bob Strike Back, Fast and the Furious, The, Others, The") );
+			string.Join(", ",theEndContext.formatDvdNames(dvdNames).ToArray()) , ("Jay and Silent Bob Strike Back, Fast and the Furious, The, Others, The") );
 
 		tap.test(" Testing formatting with all spaces replaced with " + replaceChar, 
-			string.Join(", ",spacesContext.formatDvdNames(dvdNames, replaceChar).ToArray()).Equals("Jay*and*Silent*Bob*Strike*Back,*The*Fast*and*the*Furious,*The*Others") );
+			string.Join(", ",spacesContext.formatDvdNames(dvdNames, replaceChar).ToArray()) , ("Jay*and*Silent*Bob*Strike*Back,*The*Fast*and*the*Furious,*The*Others") );
 		tap.done();
 	}
 }      

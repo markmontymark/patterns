@@ -31,12 +31,12 @@ class TestBuilder {
 		 Tapper tap = new Tapper();
        tap.test("Boston builder test ", ("At the " + 
                            bostonSoupBuffet.getSoupBuffetName() + 
-                           bostonSoupBuffet.getTodaysSoups()).Equals("czxcvzxcv"));
+                           bostonSoupBuffet.getTodaysSoups()) , ("czxcvzxcv"));
 
        SoupBuffet honoluluSoupBuffet = createSoupBuffet(new HonoluluSoupBuffetBuilder());
        tap.test("Honolulu builder test ", ("At the " + 
                            honoluluSoupBuffet.getSoupBuffetName() + 
-                           honoluluSoupBuffet.getTodaysSoups()).Equals("czxcvzxcv"));
+                           honoluluSoupBuffet.getTodaysSoups()) , ("czxcvzxcv"));
 		tap.done();
    }
 }

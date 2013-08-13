@@ -21,7 +21,7 @@ class TestFactoryMethod {
        soupBuffet.setTofuSoup( sfm.makeTofuSoup());
        soupBuffet.setVegetableSoup( sfm.makeVegetableSoup()); 
        tap.test("Base Soup Factory Method", 
-			 ("At the  " + soupBuffet.getSoupBuffetName() + soupBuffet.getTodaysSoups()).Equals("basdf")
+			 ("At the  " + soupBuffet.getSoupBuffetName() + soupBuffet.getTodaysSoups()) , ("basdf")
 		);
        
        
@@ -36,7 +36,7 @@ class TestFactoryMethod {
        bsb.setTofuSoup( bsfm.makeTofuSoup());
        bsb.setVegetableSoup( bsfm.makeVegetableSoup()); 
        tap.test("Boston Soup Factory Method",
-			("At the  " + bsb.getSoupBuffetName() + bsb.getTodaysSoups()).Equals("bork")
+			("At the  " + bsb.getSoupBuffetName() + bsb.getTodaysSoups()) , ("bork")
 		);
        
        SoupFactoryMethod hsfm = new HonoluluSoupFactoryMethodSubclass();
@@ -50,7 +50,7 @@ class TestFactoryMethod {
        hsb.setTofuSoup( hsfm.makeTofuSoup());
        hsb.setVegetableSoup( hsfm.makeVegetableSoup()); 
        tap.test( "Honolulu Factory Method test ",
-				("At the  " + hsb.getSoupBuffetName() + hsb.getTodaysSoups()).Equals("bork")
+				("At the  " + hsb.getSoupBuffetName() + hsb.getTodaysSoups()) , ("bork")
 		);
 
 

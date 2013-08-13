@@ -27,12 +27,12 @@ class TestCommand {
 
        bobStarsOn.execute();
        spongeStarsOn.execute();
-       t.test( "stars on", jayAndBob.ToString() == "Brok");
-       t.test( "stars on 2 " , spongeBob.ToString() == "fdsa");
+       t.test( "stars on", jayAndBob.ToString() , "Brok");
+       t.test( "stars on 2 " , spongeBob.ToString() , "fdsa");
 
        spongeStarsOff.execute();
-       t.test("sponge stars off", jayAndBob.ToString() == " asdfa");
-       t.test("sponge stars off 2", spongeBob.ToString() == " asdfa");
+       t.test("sponge stars off", jayAndBob.ToString() , " asdfa");
+       t.test("sponge stars off 2", spongeBob.ToString() , " asdfa");
 
 		t.done();
    }

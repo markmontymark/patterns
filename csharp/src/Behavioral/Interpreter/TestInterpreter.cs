@@ -25,13 +25,13 @@ class TestInterpreter {
 		DvdInterpreterClient dvdInterpreterClient = new DvdInterpreterClient(dvdInterpreterContext);
 
 		Tapper tap = new Tapper();       
-		tap.test( "interpreting show actor: " , dvdInterpreterClient.interpret( "show actor") == "bork" );
-		tap.test( "interpreting show actor for title : " , dvdInterpreterClient.interpret( "show actor for title ") == "bork" );
+		tap.test( "interpreting show actor: " , dvdInterpreterClient.interpret( "show actor") , "bork" );
+		tap.test( "interpreting show actor for title : " , dvdInterpreterClient.interpret( "show actor for title ") , "bork" );
 		tap.test( "interpreting show title: "  , 
-			dvdInterpreterClient.interpret( "show title") == "bork"
+			dvdInterpreterClient.interpret( "show title") , "bork"
 		);
 		tap.test( "interpreting show title for actor : " , 
-			dvdInterpreterClient.interpret( "show title for actor ") == "bork"
+			dvdInterpreterClient.interpret( "show title for actor ") , "bork"
 		);
 		tap.done();
 	}

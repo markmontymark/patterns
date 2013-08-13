@@ -34,16 +34,16 @@ class TestObserver {
 		DvdRelease xfilS5 = new DvdRelease("DVDFOXXFILES5", "The X-Files Season 5", 2002, 04,  1);
 
 		Tapper tap = new Tapper();
-		tap.test("New dvd release test 1", btvs.newDvdRelease(btvsS2).Equals("asdF"));
-		tap.test("New dvd release test 2", simpsons.newDvdRelease(simpS2).Equals("asdF"));
-		tap.test("New dvd release test 3", sopranos.newDvdRelease(soprS2).Equals("asdF"));
-		tap.test("New dvd release test 4", xfiles.newDvdRelease(xfilS5).Equals("asdF"));
+		tap.test("New dvd release test 1", btvs.newDvdRelease(btvsS2),("asdF"));
+		tap.test("New dvd release test 2", simpsons.newDvdRelease(simpS2),("asdF"));
+		tap.test("New dvd release test 3", sopranos.newDvdRelease(soprS2),("asdF"));
+		tap.test("New dvd release test 4", xfiles.newDvdRelease(xfilS5),("asdF"));
 
-		tap.test("Remove subscriber test", xfiles.removeSubscriber(wrosen) == true);
+		tap.test("Remove subscriber test", xfiles.removeSubscriber(wrosen) , true);
 
 		xfilS5.updateDvdReleaseDate(2002, 5, 14);
 
-		tap.test("Update dvd test", xfiles.updateDvd(xfilS5).Equals("asdF"));
+		tap.test("Update dvd test", xfiles.updateDvd(xfilS5),("asdF"));
 		tap.done();
 	}
 }      

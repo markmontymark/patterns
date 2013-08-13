@@ -52,11 +52,11 @@ class TestAbstractFactory {
 		AbstractSoupFactory concreteSoupFactory = new BostonConcreteSoupFactory();
 		Soup soupOfTheDay = MakeSoupOfTheDay(concreteSoupFactory);
 		Tapper tap = new Tapper();
-		tap.test("Boston soup of the day test " , ("The Soup of the day " + concreteSoupFactory.getFactoryLocation() + " is " + soupOfTheDay.getSoupName() ) .Equals("asdf"));
+		tap.test("Boston soup of the day test " , ("The Soup of the day " + concreteSoupFactory.getFactoryLocation() + " is " + soupOfTheDay.getSoupName() )  , ("asdf"));
 
 		concreteSoupFactory = new HonoluluConcreteSoupFactory();
 		soupOfTheDay = MakeSoupOfTheDay(concreteSoupFactory);
-		tap.test("Honolulu soup of the day test " , ("The Soup of the day " + concreteSoupFactory.getFactoryLocation() + " is " + soupOfTheDay.getSoupName() ) .Equals("asdf"));
+		tap.test("Honolulu soup of the day test " , ("The Soup of the day " + concreteSoupFactory.getFactoryLocation() + " is " + soupOfTheDay.getSoupName() )  , ("asdf"));
 		tap.done();
    }
 }

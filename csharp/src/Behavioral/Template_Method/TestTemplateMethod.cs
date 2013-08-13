@@ -14,11 +14,11 @@ class TestTemplateMethod {
 
 		Tapper tap = new Tapper();
 		tap.test("Testing bladeRunner   " ,
-			bladeRunner.ProcessTitleInfo().Equals("bork"));
+			bladeRunner.ProcessTitleInfo() , ("bork"));
 		tap.test("Testing electricSheep " ,
-			electricSheep.ProcessTitleInfo().Equals("bork"));
+			electricSheep.ProcessTitleInfo() , ("bork"));
 		tap.test("Testing sheepRaider   " ,
-			sheepRaider.ProcessTitleInfo().Equals("bork"));
+			sheepRaider.ProcessTitleInfo() , ("bork"));
 		tap.done();
    }
 }
