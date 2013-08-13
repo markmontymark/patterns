@@ -25,14 +25,34 @@ class TestInterpreter {
 		DvdInterpreterClient dvdInterpreterClient = new DvdInterpreterClient(dvdInterpreterContext);
 
 		Tapper tap = new Tapper();       
-		tap.test( "interpreting show actor: " , dvdInterpreterClient.interpret( "show actor") , "bork" );
-		tap.test( "interpreting show actor for title : " , dvdInterpreterClient.interpret( "show actor for title ") , "bork" );
+		tap.test( "interpreting show actor: " , 
+			dvdInterpreterClient.interpret( "show actor") , 
+			"Query Result: Ethan Hawke, Denzel Washington" );
+
+		tap.test( "interpreting show actor for title : " , 
+			dvdInterpreterClient.interpret( "show actor for title ") , 
+			"Query Result: " );
+
+		tap.test( "interpreting show actor for title <Training Day>: " , 
+			dvdInterpreterClient.interpret( "show actor for title <Training Day>") , 
+			"Query Result: Ethan Hawke, Denzel Washington" );
+
+
 		tap.test( "interpreting show title: "  , 
-			dvdInterpreterClient.interpret( "show title") , "bork"
+			dvdInterpreterClient.interpret( "show title") , 
+			"Query Result: Caddy Shack, Training Day, Hamlet"
 		);
+
 		tap.test( "interpreting show title for actor : " , 
-			dvdInterpreterClient.interpret( "show title for actor ") , "bork"
+			dvdInterpreterClient.interpret( "show title for actor ") , 
+			"Query Result: "
 		);
+
+		tap.test( "interpreting show title for actor <Ethan Hawke>: " , 
+			dvdInterpreterClient.interpret( "show title for actor <Ethan Hawke>") , 
+			"Query Result: Hamlet, Training Day, Caddy Shack"
+		);
+
 		tap.done();
 	}
 

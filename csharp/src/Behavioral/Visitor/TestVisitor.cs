@@ -16,32 +16,32 @@ class TestVisitor {
 
 		bladeRunner.accept(titleLongBlurbVisitor);
 		tap.test( 	"Testing bladeRunner long  " , 
-			 titleLongBlurbVisitor.getTitleBlurb() , ("bork"));
+			 titleLongBlurbVisitor.getTitleBlurb() , ("LB-DVD: Blade Runner, starring Harrison Ford, encoding region: 1"));
 
 
 		electricSheep.accept(titleLongBlurbVisitor);
 		tap.test( 	"Testing electricSheep long " ,
-			 titleLongBlurbVisitor.getTitleBlurb() , ("bork"));
+			 titleLongBlurbVisitor.getTitleBlurb() , "LB-Book: Do Androids Dream of Electric Sheep?, Author: Phillip K. Dick");
 
 		sheepRaider.accept(titleLongBlurbVisitor);
 		tap.test( 	"Testing sheepRaider long " , 
-			 titleLongBlurbVisitor.getTitleBlurb() , ("bork"));
+			 titleLongBlurbVisitor.getTitleBlurb() , "LB-Game: Sheep Raider");
 
 		TitleBlurbVisitor titleShortBlurbVisitor = new TitleShortBlurbVisitor();
 
 		bladeRunner.accept(titleShortBlurbVisitor);
 		tap.test( 	"Testing bladerunner short " ,
-			 titleShortBlurbVisitor.getTitleBlurb() , ("bork"));
+			 titleShortBlurbVisitor.getTitleBlurb() , "SB-DVD: Blade Runner");
 
 
 		electricSheep.accept(titleShortBlurbVisitor);
 		tap.test( 	"Testing electricSheep short " ,
-			 	titleShortBlurbVisitor.getTitleBlurb() , ("bork"));
+			 	titleShortBlurbVisitor.getTitleBlurb() , "SB-Book: Do Androids Dream of Electric Sheep?");
 
 
 		sheepRaider.accept(titleShortBlurbVisitor);
 		tap.test( 	"Testing sheepRaider short  " ,
-			 titleShortBlurbVisitor.getTitleBlurb() , ("bork"));
+			 titleShortBlurbVisitor.getTitleBlurb() , "SB-Game: Sheep Raider");
 	}
 }      
 

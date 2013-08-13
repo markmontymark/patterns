@@ -19,17 +19,17 @@ public class TestMemento {
        stars.Add("Guy Pearce");
        DvdDetails dvdDetails = new DvdDetails("Memento", stars, '1'); 
        dvdMementoCaretaker = dvdDetails.createDvdMemento();
-       tap.test("Showing initial state of DvdDetails ", dvdDetails.formatDvdDetails(),("bork") );
+       tap.test("Showing initial state of DvdDetails ", dvdDetails.formatDvdDetails(),"DVD: Memento, starring: Guy Pearce, encoding region: 1" );
        
        dvdDetails.addStar("edskdzkvdfb");  
-       tap.test("Cappuccion on the keyboard!", dvdDetails.formatDvdDetails(),("bork"));
+       tap.test("Cappuccion on the keyboard!", dvdDetails.formatDvdDetails(),"DVD: Memento, starring: Guy Pearce, edskdzkvdfb, encoding region: 1");
        
-       tap.test("show memento state", dvdMementoCaretaker.showMemento(),("bork"));
+       tap.test("show memento state", dvdMementoCaretaker.showMemento(),"DVD: Memento, starring: Guy Pearce, encoding region: 1");
        //show the memento
        
        dvdDetails.setDvdMemento(dvdMementoCaretaker);
        //back off changes
-       tap.test("show backed off state", dvdDetails.formatDvdDetails(),("bork"));
+       tap.test("show backed off state", dvdDetails.formatDvdDetails(),"DVD: Memento, starring: Guy Pearce, encoding region: 1");
 		tap.done();
    }
 }      

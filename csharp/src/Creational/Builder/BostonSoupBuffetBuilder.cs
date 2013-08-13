@@ -5,10 +5,10 @@ namespace Creational.Builder {
 using common;
 
 class BostonSoupBuffetBuilder : SoupBuffetBuilder {
-    public new void buildClamChowder() {
+    override public void buildClamChowder() {
        soupBuffet.clamChowder = new BostonClamChowder();
     }
-    public new void buildFishChowder() {
+    override public void buildFishChowder() {
        soupBuffet.fishChowder = new BostonFishChowder();
     }    
     

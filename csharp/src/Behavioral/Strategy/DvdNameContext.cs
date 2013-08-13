@@ -27,16 +27,16 @@ public class DvdNameContext {
        }     
    }  
    
-   public List<string> formatDvdNames(List<string> namesIn) {
+   public string formatDvdNames(List<string> namesIn) {
        return this.formatDvdNames(namesIn, ' ');
    }    
    
-   public List<string> formatDvdNames(List<string> namesIn, char replacementIn) {
+   public string formatDvdNames(List<string> namesIn, char replacementIn) {
        List<string> namesOut = new List<string>();
        foreach (string name in namesIn) {
            namesOut.Add( dvdNameStrategy.formatDvdName(name, replacementIn) );
        }
-       return namesOut;
+       return string.Join(", ",namesOut.ToArray());
    }
 }
 

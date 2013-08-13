@@ -21,7 +21,7 @@ class TestFactoryMethod {
        soupBuffet.setTofuSoup( sfm.makeTofuSoup());
        soupBuffet.setVegetableSoup( sfm.makeVegetableSoup()); 
        tap.test("Base Soup Factory Method", 
-			 ("At the  " + soupBuffet.getSoupBuffetName() + soupBuffet.getTodaysSoups()) , ("basdf")
+			 ("At the  " + soupBuffet.getSoupBuffetName() + soupBuffet.getTodaysSoups()) , ("At the  Soup Buffet Today's Soups!  ,  Chicken Soup: , ChickenSoup,  Clam Chowder: , ClamChowder,  Fish Chowder: , FishChowder,  Minnestrone: , Minestrone,  Pasta Fazul: , Pasta Fazul,  Tofu Soup: , Tofu Soup,  Vegetable Soup: , Vegetable Soup")
 		);
        
        
@@ -36,7 +36,7 @@ class TestFactoryMethod {
        bsb.setTofuSoup( bsfm.makeTofuSoup());
        bsb.setVegetableSoup( bsfm.makeVegetableSoup()); 
        tap.test("Boston Soup Factory Method",
-			("At the  " + bsb.getSoupBuffetName() + bsb.getTodaysSoups()) , ("bork")
+			("At the  " + bsb.getSoupBuffetName() + bsb.getTodaysSoups()) , ("At the  Boston Soup Buffet Today's Soups!  ,  Chicken Soup: , ChickenSoup,  Clam Chowder: , QuahogChowder,  Fish Chowder: , ScrodFishChowder,  Minnestrone: , Minestrone,  Pasta Fazul: , Pasta Fazul,  Tofu Soup: , Tofu Soup,  Vegetable Soup: , Vegetable Soup")
 		);
        
        SoupFactoryMethod hsfm = new HonoluluSoupFactoryMethodSubclass();
@@ -50,7 +50,7 @@ class TestFactoryMethod {
        hsb.setTofuSoup( hsfm.makeTofuSoup());
        hsb.setVegetableSoup( hsfm.makeVegetableSoup()); 
        tap.test( "Honolulu Factory Method test ",
-				("At the  " + hsb.getSoupBuffetName() + hsb.getTodaysSoups()) , ("bork")
+				("At the  " + hsb.getSoupBuffetName() + hsb.getTodaysSoups()) , ("At the  Honolulu Soup Buffet Today's Soups!  ,  Chicken Soup: , ChickenSoup,  Clam Chowder: , PacificClamChowder,  Fish Chowder: , OpakapakaFishChowder,  Minnestrone: , Minestrone,  Pasta Fazul: , Pasta Fazul,  Tofu Soup: , Tofu Soup,  Vegetable Soup: , Vegetable Soup")
 		);
 
 

@@ -3,9 +3,17 @@ namespace Creational.Prototype {
 
 //AbstractSpoon.java - One of Two Prototypes
 
-public abstract class AbstractSpoon {
+public class Spoon {
+
    protected string spoonName; 
-    
+
+	protected Spoon() {}
+
+	public Spoon(Spoon from)
+	{
+		spoonName = from.getSpoonName();
+	}    
+
    public void setSpoonName(string spoonName) {
        this.spoonName = spoonName;
    }
@@ -13,11 +21,6 @@ public abstract class AbstractSpoon {
        return this.spoonName;
    }
    
-   public object clone() {
-       object obj = null;
-       obj = this.clone();
-       return obj;
-   }
 }
 
 }

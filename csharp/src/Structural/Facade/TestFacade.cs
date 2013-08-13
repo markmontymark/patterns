@@ -12,7 +12,7 @@ class TestFacade {
        FacadeTeaCup teaCup = cuppaMaker.makeACuppa();
 		Tapper tap = new Tapper();
        tap.test("Facade test", 
-			teaCup.ToString() , ("BAsdfasdf"));
+			teaCup.ToString() , ("A nice cuppa tea!"));
 		tap.done();
    }
 }

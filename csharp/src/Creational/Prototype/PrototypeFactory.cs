@@ -10,20 +10,22 @@ namespace Creational.Prototype {
 //Video tutorial on design patterns
 //PrototypeFactory.java - a Factory for Prototypes
 
+using System;
+
 public class PrototypeFactory {  
-    AbstractSpoon prototypeSpoon;
-    AbstractFork prototypeFork;
+    Spoon prototypeSpoon;
+    Fork prototypeFork;
     
-    public PrototypeFactory(AbstractSpoon spoon, AbstractFork fork) {
+    public PrototypeFactory(Spoon spoon, Fork fork) {
        prototypeSpoon = spoon;
        prototypeFork = fork;
    }
     
-   public AbstractSpoon makeSpoon() {
-       return (AbstractSpoon)prototypeSpoon.clone();
+   public Spoon makeSpoon() {
+       return new Spoon(prototypeSpoon);
    }
-   public AbstractFork makeFork() {
-       return (AbstractFork)prototypeFork.clone();
+   public Fork makeFork() {
+       return new Fork(prototypeFork);
    }
 }
 

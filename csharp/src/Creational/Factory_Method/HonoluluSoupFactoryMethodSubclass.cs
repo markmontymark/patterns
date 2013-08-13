@@ -6,13 +6,13 @@ namespace Creational.Factory_Method {
 using common;
 
 public class HonoluluSoupFactoryMethodSubclass : SoupFactoryMethod {
-    public new string makeBuffetName() {
+    override public string makeBuffetName() {
         return "Honolulu Soup Buffet";
     }
-    public new ClamChowder makeClamChowder() {
+    override public ClamChowder makeClamChowder() {
         return new HonoluluClamChowder();
     }
-    public new FishChowder makeFishChowder() {
+    override public FishChowder makeFishChowder() {
         return new HonoluluFishChowder();
     }
 }

@@ -18,41 +18,10 @@ namespace Creational.Builder {
 
 using common;
 
-public class SoupBuffetBuilder : AbstractBuilder {
+public abstract class AbstractBuilder {
 
-    public SoupBuffet soupBuffet;
+    public abstract void setSoupBuffetName() ;
         
-    public SoupBuffet getSoupBuffet() {
-        return soupBuffet;
-    }
-    
-    public void buildSoupBuffet() {
-        soupBuffet = new SoupBuffet();
-    }
-    
-    public override void setSoupBuffetName() {}
-        
-    public void buildChickenSoup() {
-        soupBuffet.chickenSoup = new ChickenSoup();
-    }
-    public virtual void buildClamChowder() {
-        soupBuffet.clamChowder = new ClamChowder();
-    }
-    public virtual void buildFishChowder() {
-        soupBuffet.fishChowder = new FishChowder();
-    }
-    public virtual void buildMinnestrone() {
-        soupBuffet.minnestrone = new Minnestrone();
-    }
-    public virtual void buildPastaFazul() {
-        soupBuffet.pastaFazul = new PastaFazul();
-    }
-    public virtual void buildTofuSoup() {
-        soupBuffet.tofuSoup = new TofuSoup();
-    }
-    public virtual void buildVegetableSoup() {
-        soupBuffet.vegetableSoup = new VegetableSoup();
-    }
 }
 
 }

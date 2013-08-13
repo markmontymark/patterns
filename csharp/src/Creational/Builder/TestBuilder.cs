@@ -31,12 +31,12 @@ class TestBuilder {
 		 Tapper tap = new Tapper();
        tap.test("Boston builder test ", ("At the " + 
                            bostonSoupBuffet.getSoupBuffetName() + 
-                           bostonSoupBuffet.getTodaysSoups()) , ("czxcvzxcv"));
+                           bostonSoupBuffet.getTodaysSoups()) , ("At the Boston Soup Buffet Today's Soups!  ,  Chicken Soup: , ChickenSoup,  Clam Chowder: , QuahogChowder,  Fish Chowder: , ScrodFishChowder,  Minnestrone: , Minestrone,  Pasta Fazul: , Pasta Fazul,  Tofu Soup: , Tofu Soup,  Vegetable Soup: , Vegetable Soup"));
 
        SoupBuffet honoluluSoupBuffet = createSoupBuffet(new HonoluluSoupBuffetBuilder());
        tap.test("Honolulu builder test ", ("At the " + 
                            honoluluSoupBuffet.getSoupBuffetName() + 
-                           honoluluSoupBuffet.getTodaysSoups()) , ("czxcvzxcv"));
+                           honoluluSoupBuffet.getTodaysSoups()) , ("At the Honolulu Soup Buffet Today's Soups!  ,  Chicken Soup: , ChickenSoup,  Clam Chowder: , PacificClamChowder,  Fish Chowder: , OpakapakaFishChowder,  Minnestrone: , Minestrone,  Pasta Fazul: , Pasta Fazul,  Tofu Soup: , Tofu Soup,  Vegetable Soup: , Vegetable Soup"));
 		tap.done();
    }
 }

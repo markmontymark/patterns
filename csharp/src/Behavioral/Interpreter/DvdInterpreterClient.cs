@@ -76,7 +76,7 @@ public class DvdInterpreterClient {
        }
 
        if (searchString != null) {
-           searchString = searchString.Remove('<').Remove('>');
+           searchString = searchString.Replace("<",null).Replace(">",null);
              //remove <>
        }
        
@@ -120,7 +120,7 @@ public class DvdInterpreterClient {
        result.Add(
          abstractExpression.interpret(dvdInterpreterContext));
        
-       return result.ToString();
+       return string.Join("",result.ToArray());
    }
 }
 

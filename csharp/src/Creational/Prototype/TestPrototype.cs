@@ -12,19 +12,19 @@ class TestPrototype
 
 		Tapper tap = new Tapper();
        PrototypeFactory prototypeFactory = new PrototypeFactory(new SoupSpoon(), new SaladFork());
-       AbstractSpoon spoon = prototypeFactory.makeSpoon();
-       AbstractFork fork = prototypeFactory.makeFork();
+       Spoon spoon = prototypeFactory.makeSpoon();
+       Fork forky = prototypeFactory.makeFork();
        tap.test("Getting the Spoon and Fork name:", 
-			 ("Spoon: " + spoon.getSpoonName() + ", Fork: " + fork.getForkName()) , ("bork")
+			 ("Spoon: " + spoon.getSpoonName() + ", Fork: " + forky.getForkName()) , ("Spoon: Soup Spoon, Fork: Salad Fork")
 		);
 
 
        prototypeFactory = new PrototypeFactory(new SaladSpoon(), new SaladFork());
        spoon = prototypeFactory.makeSpoon();
-       fork = prototypeFactory.makeFork();
+       forky = prototypeFactory.makeFork();
 
        tap.test("Creating a Prototype Factory with a SaladSpoon and a SaladFork", 
-       	("Spoon: " + spoon.getSpoonName() + ", Fork: " + fork.getForkName()) , ("bork")
+       	("Spoon: " + spoon.getSpoonName() + ", Fork: " + forky.getForkName()) , ("Spoon: Salad Spoon, Fork: Salad Fork")
 		);
 
 		tap.done();

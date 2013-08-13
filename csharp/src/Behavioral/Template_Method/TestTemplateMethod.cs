@@ -14,11 +14,14 @@ class TestTemplateMethod {
 
 		Tapper tap = new Tapper();
 		tap.test("Testing bladeRunner   " ,
-			bladeRunner.ProcessTitleInfo() , ("bork"));
+			bladeRunner.ProcessTitleInfo().ToString() , 
+			"DVD: Blade Runner, starring Harrison Ford ");
 		tap.test("Testing electricSheep " ,
-			electricSheep.ProcessTitleInfo() , ("bork"));
+			electricSheep.ProcessTitleInfo().ToString() , 
+			"Book: Do Androids Dream of Electric Sheep?, Author: Phillip K. Dick ");
 		tap.test("Testing sheepRaider   " ,
-			sheepRaider.ProcessTitleInfo() , ("bork"));
+			sheepRaider.ProcessTitleInfo().ToString() , 
+			"Game: Sheep Raider ");
 		tap.done();
    }
 }

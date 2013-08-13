@@ -44,7 +44,7 @@ class TestFlyweight {
 
 		Tapper tap = new Tapper();
 		tap.test("Flyweight test", 
-			("total teaFlavor objects made: " + teaFlavorFactory.getTotalTeaFlavorsMade()) , ("bloasdfk")
+			("total teaFlavor objects made: " + teaFlavorFactory.getTotalTeaFlavorsMade()) , ("total teaFlavor objects made: 3")
 		);
 		tap.done();
    }

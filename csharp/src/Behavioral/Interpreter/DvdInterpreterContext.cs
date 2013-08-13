@@ -9,9 +9,16 @@ using System.Collections.Generic;
 
 public class DvdInterpreterContext {
 
-   private List<string> titles = new List<string>(); 
-   private List<string> actors = new List<string>();
-   private List<TitleAndActor> titlesAndActors = new List<TitleAndActor>();
+   private List<string> titles;
+   private List<string> actors;
+   private List<TitleAndActor> titlesAndActors;
+
+	public DvdInterpreterContext()
+	{
+		actors = new List<string>();
+		titles = new List<string>();
+		titlesAndActors = new List<TitleAndActor>();
+	}
    
    public void addTitle(String title) {
        titles.Add(title);

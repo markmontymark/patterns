@@ -15,22 +15,22 @@ class TestStrategy {
 		DvdNameContext theEndContext = new DvdNameContext('E');
 		DvdNameContext spacesContext = new DvdNameContext('S');
 
-		List<string> dvdNames = new List<string>(3);
-		dvdNames[0] = "Jay and Silent Bob Strike Back";
-		dvdNames[1] = "The Fast and the Furious";
-		dvdNames[2] = "The Others";
+		List<string> dvdNames = new List<string>();
+		dvdNames.Add("Jay and Silent Bob Strike Back");
+		dvdNames.Add("The Fast and the Furious");
+		dvdNames.Add( "The Others");
 
 		char replaceChar = '*';       
 
 		Tapper tap = new Tapper();
 		tap.test("Testing formatting with all caps", 
-			string.Join(", ", allCapContext.formatDvdNames(dvdNames).ToArray()) , ("Jay and Silent Bob Strike Back, The Fast and the Furious, The Others") );
+			allCapContext.formatDvdNames(dvdNames) , ("JAY AND SILENT BOB STRIKE BACK, THE FAST AND THE FURIOUS, THE OTHERS") );
 
 		tap.test( "Testing formatting with beginning the at end", 
-			string.Join(", ",theEndContext.formatDvdNames(dvdNames).ToArray()) , ("Jay and Silent Bob Strike Back, Fast and the Furious, The, Others, The") );
+			theEndContext.formatDvdNames(dvdNames) , ("Jay and Silent Bob Strike Back, Fast and the Furious, The, Others, The") );
 
-		tap.test(" Testing formatting with all spaces replaced with " + replaceChar, 
-			string.Join(", ",spacesContext.formatDvdNames(dvdNames, replaceChar).ToArray()) , ("Jay*and*Silent*Bob*Strike*Back,*The*Fast*and*the*Furious,*The*Others") );
+		tap.test("Testing formatting with all spaces replaced with " + replaceChar, 
+			spacesContext.formatDvdNames(dvdNames, replaceChar) , ("Jay*and*Silent*Bob*Strike*Back, The*Fast*and*the*Furious, The*Others") );
 		tap.done();
 	}
 }      

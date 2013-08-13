@@ -25,29 +25,29 @@ public class SoupFactoryMethod {
         return new SoupBuffet();
     }
 
-    public ChickenSoup makeChickenSoup() {
+    public virtual ChickenSoup makeChickenSoup() {
         return new ChickenSoup();
     }
-    public ClamChowder makeClamChowder() {
+    public virtual ClamChowder makeClamChowder() {
         return new ClamChowder();
     }
-    public FishChowder makeFishChowder() {
+    public virtual FishChowder makeFishChowder() {
         return new FishChowder();
     }
-    public Minnestrone makeMinnestrone() {
+    public virtual Minnestrone makeMinnestrone() {
         return new Minnestrone();
     }
-    public PastaFazul makePastaFazul() {
+    public virtual PastaFazul makePastaFazul() {
         return new PastaFazul();
     }
-    public TofuSoup makeTofuSoup() {
+    public virtual TofuSoup makeTofuSoup() {
         return new TofuSoup();
     }
-    public VegetableSoup makeVegetableSoup() {
+    public virtual VegetableSoup makeVegetableSoup() {
         return new VegetableSoup();
     }
 
-    public string makeBuffetName() {
+    public virtual string makeBuffetName() {
         return "Soup Buffet";
     }
 }

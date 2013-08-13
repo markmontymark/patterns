@@ -12,7 +12,7 @@ public class DvdStateNameStars : DvdStateName {
     
     public string showName(DvdStateContext dvdStateContext, 
                          string nameIn) {
-         string retval = nameIn.Replace(' ','*');
+         string retval = nameIn.Replace(" ","*");
          // show stars twice, switch to exclamation point
          if (++starCount > 1) {
              dvdStateContext.setDvdStateName( new DvdStateNameExclaim());

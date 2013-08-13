@@ -37,12 +37,10 @@ public class  Tapper
 		}
 		CTX.ok = false;
 		Console.WriteLine( "not ok " + id + " - " + testName);
-		Console.WriteLine( "got " + got );
-		Console.WriteLine( "expected " + expected );
-		Console.WriteLine(Environment.StackTrace);
-		//throw new Exception("Failed test - "  + testName );
+		Console.WriteLine( "\tgot\n\t-" + got +"-" );
+		Console.WriteLine( "\texpected\n\t-" + expected  +"-");
 	}
-	/* public void test(String testName)//, bool testPassed )
+	public void test(String testName, bool testPassed )
 	{
 		CTX.current++;
 		int id = CTX.current;
@@ -53,10 +51,7 @@ public class  Tapper
 		}
 		CTX.ok = false;
 		Console.WriteLine( "not ok " + id + " - " + testName);
-		Console.WriteLine(Environment.StackTrace);
-		//throw new Exception("Failed test - "  + testName );
 	}
-	*/
 
 	public void done()
 	{

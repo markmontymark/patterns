@@ -24,7 +24,7 @@ class TestComposite
 		tap.test( "TinOfTeaBags add teabag2 ", tinOfTeaBags.add(teaBag2), true );
 
 		tap.test("TinOfTeaBags count after teabag1 and teabag2 adds", 
-			("The tinOfTeaBags now has " + tinOfTeaBags.countTeaBags() + " tea bags in it.") , ("asdfadsf"));
+			("The tinOfTeaBags now has " + tinOfTeaBags.countTeaBags() + " tea bags in it.") , ("The tinOfTeaBags now has 2 tea bags in it."));
 
 
 		TeaBags smallTinOfTeaBags = new TinOfTeaBags("small tin of tea bags");
@@ -38,13 +38,14 @@ class TestComposite
 		tap.test( "Putting smallTinOfTeaBags in tinOfTeaBags", tinOfTeaBags.add(smallTinOfTeaBags), true );
 
 		tap.test( "TinOfTeaBags count before removal ",
-			("The tinOfTeaBags now has " + tinOfTeaBags.countTeaBags() + " tea bags in it.") , ("adsfds"));
+			("The tinOfTeaBags now has " + tinOfTeaBags.countTeaBags() + " tea bags in it.") , ("The tinOfTeaBags now has 3 tea bags in it."));
 
 		tap.test("Removing teaBag2 from tinOfTeaBags",
 			tinOfTeaBags.remove(teaBag2), true );
 
 		tap.test("TinOfTeaBags count after removal.", 
-			("The tinOfTeaBags now has " + tinOfTeaBags.countTeaBags() + " tea bags in it.") , ("asdf"));
+			("The tinOfTeaBags now has " + tinOfTeaBags.countTeaBags() + " tea bags in it.") , ("The tinOfTeaBags now has 2 tea bags in it."));
+		tap.done();
    }
 }
 

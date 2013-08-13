@@ -19,7 +19,7 @@ class TestAdapter {
        LooseLeafTea looseLeafTea = new LooseLeafTea();
        TeaBall teaBall = new TeaBall(looseLeafTea);
        teaCup.steepTeaBag(teaBall);
-       tap.test("Steeping loose leaf tea", looseLeafTea.teaIsSteeped, true);
+       tap.test("Steeping loose leaf tea", teaBag.teaBagIsSteeped, true);
 
 		tap.done();
    }
