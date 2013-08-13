@@ -5,8 +5,8 @@ namespace Behavioral.Chain_Of_Responsibility {
 using System;
 
 public class DvdCategory : TopTitle {  
-   private String category; 
-   private String topCategoryTitle;
+   private string category; 
+   private string topCategoryTitle;
     
    public DvdCategory(String category) {
         this.setCategory(category);
@@ -15,21 +15,21 @@ public class DvdCategory : TopTitle {
    public void setCategory(String categoryIn) {
        this.category = categoryIn;
    }
-   public String getCategory() {
+   public string getCategory() {
        return this.category;
    } 
-   public String getAllCategories() {
+   public string getAllCategories() {
        return getCategory();
    }
    
    public void setTopCategoryTitle(String topCategoryTitleIn) {
        this.topCategoryTitle = topCategoryTitleIn;
    }
-   public String getTopCategoryTitle() {
+   public string getTopCategoryTitle() {
        return this.topCategoryTitle;
    }
    
-   public String getTopTitle() {
+   public string getTopTitle() {
        return this.topCategoryTitle;
    }
 }

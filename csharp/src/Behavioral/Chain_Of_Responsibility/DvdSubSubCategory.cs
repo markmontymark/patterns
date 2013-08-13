@@ -6,12 +6,12 @@ using System;
 //DvdSubSubCategory.java - the Lowest Class in the Chain
 
 public class DvdSubSubCategory : TopTitle {  
-   private String subSubCategory; 
-   private String topSubSubCategoryTitle;
+   private string subSubCategory; 
+   private string topSubSubCategoryTitle;
    private DvdSubCategory parent;
    
    public DvdSubSubCategory(DvdSubCategory dvdSubCategory, 
-                            String subCategory) {
+                            string subCategory) {
         this.setSubSubCategory(subCategory); 
         this.parent = dvdSubCategory;
    }    
@@ -19,48 +19,48 @@ public class DvdSubSubCategory : TopTitle {
    void setSubSubCategory(String subSubCategoryIn) {
        this.subSubCategory = subSubCategoryIn;
    }
-   String getSubSubCategory() {
+   string getSubSubCategory() {
        return this.subSubCategory;
    } 
    void setSubCategory(String subCategoryIn) {
        parent.setSubCategory(subCategoryIn);
    }
-   String getSubCategory() {
+   string getSubCategory() {
        return parent.getSubCategory();
    }
    void setCategory(String categoryIn) {
        parent.setCategory(categoryIn);
    }
-   String getCategory() {
+   string getCategory() {
        return parent.getCategory();
    }
-   public String getAllCategories() {
+   public string getAllCategories() {
        return (getCategory() + "/" + 
                getSubCategory() + "/" + 
                getSubSubCategory());}   
    
    public void setTopSubSubCategoryTitle(
-     String topSubSubCategoryTitleIn) {
+     string topSubSubCategoryTitleIn) {
       this.topSubSubCategoryTitle = topSubSubCategoryTitleIn;
    }
-   String getTopSubSubCategoryTitle() {
+   string getTopSubSubCategoryTitle() {
        return this.topSubSubCategoryTitle;
    }
    void setTopSubCategoryTitle(
-     String topSubCategoryTitleIn) {
+     string topSubCategoryTitleIn) {
        parent.setTopSubCategoryTitle(topSubCategoryTitleIn);
    }
-   String getTopSubCategoryTitle() {
+   string getTopSubCategoryTitle() {
        return parent.getTopSubCategoryTitle();
    }
    void setTopCategoryTitle(String topCategoryTitleIn) {
        parent.setTopCategoryTitle(topCategoryTitleIn);
    }
-   String getTopCategoryTitle() {
+   string getTopCategoryTitle() {
        return parent.getTopCategoryTitle();
    }
 
-   public String getTopTitle() {
+   public string getTopTitle() {
        if (null != getTopSubSubCategoryTitle()) {
            return this.getTopSubSubCategoryTitle();
        } else {
