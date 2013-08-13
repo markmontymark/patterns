@@ -17,7 +17,7 @@ Much thanks to Larry for allowing to me to start off this project with his Java 
 - Python - complete
 - Perl6 - complete
 - Ruby - complete
-- C\# - complete
+- C sharp - complete
 - Java - rewriting test code to output in [TAP](http://en.wikipedia.org/wiki/Test_Anything_Protocol)
 
 TODO
@@ -152,7 +152,7 @@ Install Ruby, RubyGems, a custom Tapper test module
    make timetest
 
 	
-## C\#
+## C sharp
 
 Install Mono dev tools and use a Makefile (for now) for building and running tests
 
@@ -160,6 +160,8 @@ Install Mono dev tools and use a Makefile (for now) for building and running tes
 	cd patterns/csharp
 	make
 	make test
+
+*Note* I wrote this for Linux/Mono so YMMV for Windows/Mac
 
 
 
