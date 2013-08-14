@@ -2,29 +2,36 @@
 
 package test.Behavioral;
 
+import static org.junit.Assert.assertEquals;
 
-import tap.*;
+import org.junit.Test;
+import org.junit.Ignore;
+import org.junit.runner.RunWith;
+import org.junit.runners.JUnit4;
+
 import Behavioral.Template_Method.*;
 
 
 
 class TemplateMethod {
-    
-   public static void main(String[] args) {
+   
+	@Test 
+   public void templatemethod() {
 		TitleInfo bladeRunner = new DvdTitleInfo("Blade Runner", "Harrison Ford", '1'); 
 		TitleInfo electricSheep = new BookTitleInfo("Do Androids Dream of Electric Sheep?", "Phillip K. Dick");        
 		TitleInfo sheepRaider = new GameTitleInfo("Sheep Raider");
 
-		Tapper tap = new Tapper();
-		tap.test("Testing bladeRunner   " ,   new TestCase(){public void test(){
-			assert bladeRunner.ProcessTitleInfo().equals("bork");
-		}});
-		tap.test("Testing electricSheep " , new TestCase(){public void test(){
-			assert electricSheep.ProcessTitleInfo().equals("bork");
-		}});
-		tap.test("Testing sheepRaider   " ,   new TestCase(){public void test(){
-			assert sheepRaider.ProcessTitleInfo().equals("bork");
-		}});
-		tap.done();
+		org.junit.Assert.assertEquals("Testing bladeRunner" ,   
+			bladeRunner.ProcessTitleInfo(),
+			""
+		);
+		org.junit.Assert.assertEquals("Testing electricSheep" , 
+			electricSheep.ProcessTitleInfo(),
+			""
+		);
+		org.junit.Assert.assertEquals("Testing sheepRaider" ,
+			sheepRaider.ProcessTitleInfo(),
+			""
+		);
    }
 }

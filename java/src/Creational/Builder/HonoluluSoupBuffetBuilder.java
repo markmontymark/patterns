@@ -4,7 +4,7 @@ package Creational.Builder;
 
 import common.*;
 
-class HonoluluSoupBuffetBuilder extends SoupBuffetBuilder {
+public class HonoluluSoupBuffetBuilder extends SoupBuffetBuilder {
     public void buildClamChowder() {
         soupBuffet.clamChowder = new HonoluluClamChowder();
     }

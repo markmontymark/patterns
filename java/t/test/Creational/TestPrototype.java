@@ -3,32 +3,39 @@
 package test.Creational;
 
 
-import tap.*;
+import static org.junit.Assert.assertEquals;
+
+import org.junit.Test;
+import org.junit.Ignore;
+import org.junit.runner.RunWith;
+import org.junit.runners.JUnit4;
+
 import Creational.Prototype.*;
 
 
 class TestPrototype 
 { 
-   public static void main(String[] args) 
-	{
 
-		Tapper tap = new Tapper();
+	@Test
+   public void prototype() 
+	{
        PrototypeFactory prototypeFactory = new PrototypeFactory(new SoupSpoon(), new SaladFork());
-       final AbstractSpoon spoon = prototypeFactory.makeSpoon();
-       final AbstractFork fork = prototypeFactory.makeFork();
-       tap.test("Getting the Spoon and Fork name:", new TestCase(){public void test(){
-			 assert ("Spoon: " + spoon.getSpoonName() + ", Fork: " + fork.getForkName()).equals("bork");
-		}});
+       AbstractSpoon spoon = prototypeFactory.makeSpoon();
+       AbstractFork fork = prototypeFactory.makeFork();
+       org.junit.Assert.assertEquals("Getting the Spoon and Fork name:", 
+			  "Spoon: SoupSpoon, Fork: SaladFork", 
+			 ("Spoon: " + spoon.getSpoonName() + ", Fork: " + fork.getForkName())
+		);
 
 
        prototypeFactory = new PrototypeFactory(new SaladSpoon(), new SaladFork());
        spoon = prototypeFactory.makeSpoon();
        fork = prototypeFactory.makeFork();
 
-       tap.test("Creating a Prototype Factory with a SaladSpoon and a SaladFork", new TestCase(){public void test(){
-       	assert ("Spoon: " + spoon.getSpoonName() + ", Fork: " + fork.getForkName()).equals("bork");
-		}});
+       org.junit.Assert.assertEquals("Creating a Prototype Factory with a SaladSpoon and a SaladFork", 
+       	 "Spoon: SaladSpoon, Fork: SaladFork",
+       	("Spoon: " + spoon.getSpoonName() + ", Fork: " + fork.getForkName())
+		);
 
-		tap.done();
     }
 }      

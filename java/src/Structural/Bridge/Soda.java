@@ -18,5 +18,5 @@ public abstract class Soda {
        return this.sodaImp;
    }
    
-   public abstract void pourSoda();
+   public abstract String pourSoda();
 }

@@ -1,6 +1,12 @@
 package test.Structural;
 
-import tap.*;
+import static org.junit.Assert.assertEquals;
+
+import org.junit.Test;
+import org.junit.Ignore;
+import org.junit.runner.RunWith;
+import org.junit.runners.JUnit4;
+
 import Structural.Adapter.*;
 
 
@@ -10,17 +16,21 @@ import Structural.Adapter.*;
 class TestTeaBagAdaptation {
 
    public static void main(String[] args) {
-		Tapper tap = new Tapper();
-       TeaCup teaCup = new TeaCup();
+		
 
-       tap.test("Steeping tea bag");
+       TeaCup teaCup = new TeaCup();       
        TeaBag teaBag = new TeaBag();       
        teaCup.steepTeaBag(teaBag);
+       org.junit.Assert.assertEquals("Steeping tea bag",
+			"",
+			teaCup.toString());
 
-       tap.test("Steeping loose leaf tea");
        LooseLeafTea looseLeafTea = new LooseLeafTea();
        TeaBall teaBall = new TeaBall(looseLeafTea);
        teaCup.steepTeaBag(teaBall);
-		tap.done();
+       org.junit.Assert.assertEquals("Steeping loose leaf tea",
+				"",
+				teaCup.toString()
+		);
    }
 }      

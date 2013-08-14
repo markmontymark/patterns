@@ -2,29 +2,40 @@
 
 package test.Behavioral;
 
+import static org.junit.Assert.assertEquals;
+
+import org.junit.Test;
+import org.junit.Ignore;
+import org.junit.runner.RunWith;
+import org.junit.runners.JUnit4;
+
 import Behavioral.State.*;
 import tap.*;
 
 
 
 class TestState {
-   public static void main(String[] args) 
+	@Test
+   public void statetest() 
    {
-		final DvdStateContext stateContext = new DvdStateContext();
+		DvdStateContext stateContext = new DvdStateContext();
 
-		Tapper tap = new Tapper();
-		tap.test( "State 1 test", new TestCase(){public void test(){
-			assert stateContext.showName( "Sponge Bob Squarepants - Nautical Nonsense and Sponge Buddies").equals("bork");
-		}});
-		tap.test( "State 2 test", new TestCase(){public void test(){
-			assert stateContext.showName( "Jay and Silent Bob Strike Back").equals("bork");  
-		}});
-		tap.test( "State 3 test", new TestCase(){public void test(){
-			assert stateContext.showName( "Buffy The Vampire Slayer Season 2").equals("bork");
-		}});
-		tap.test( "State 4 test", new TestCase(){public void test(){
-			assert stateContext.showName( "The Sopranos Season 2").equals("bork");
-		}});
-		tap.done();
+		org.junit.Assert.assertEquals( "State 1 test", 
+			"DVD: Sponge*Bob*Squarepants*-*Nautical*Nonsense*and*Sponge*Buddies",
+			stateContext.showName( "Sponge Bob Squarepants - Nautical Nonsense and Sponge Buddies")
+		);
+		org.junit.Assert.assertEquals( "State 2 test", 
+			 "DVD: Jay and Silent Bob Strike Back",
+			stateContext.showName( "Jay and Silent Bob Strike Back")
+		);
+		org.junit.Assert.assertEquals( "State 3 test", 
+			 "DVD: Buffy!The Vampire Slayer Season 2",
+			stateContext.showName( "Buffy The Vampire Slayer Season 2")
+		);
+		org.junit.Assert.assertEquals( "State 4 test", 
+			 "DVD: The*Sopranos*Season*2",
+			stateContext.showName( "The Sopranos Season 2")
+		);
+		
 	}
 }      

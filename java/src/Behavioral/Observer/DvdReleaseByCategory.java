@@ -8,13 +8,13 @@ package Behavioral.Observer;
 //DvdReleaseByCategory.java - the subject
 //(the class which is observed)
 
-import java.util.ArrayList;
-import java.util.ListIterator;
+import java.util.*;
+import org.apache.commons.lang3.StringUtils;
 
 public class DvdReleaseByCategory {  
    String categoryName; 
-   ArrayList subscriberList = new ArrayList();
-   ArrayList dvdReleaseList = new ArrayList();   
+   List<DvdSubscriber> subscriberList = new ArrayList<DvdSubscriber>();
+   List<DvdRelease> dvdReleaseList = new ArrayList<DvdRelease>();   
    
    public DvdReleaseByCategory(String categoryNameIn) {
        categoryName = categoryNameIn;
@@ -39,12 +39,12 @@ public class DvdReleaseByCategory {
        return false;
    }
    
-   public void newDvdRelease(DvdRelease dvdRelease) {
+   public String newDvdRelease(DvdRelease dvdRelease) {
        dvdReleaseList.add(dvdRelease);
-       notifySubscribersOfNewDvd(dvdRelease);
+       return notifySubscribersOfNewDvd(dvdRelease);
    }
    
-   public void updateDvd(DvdRelease dvdRelease) {
+   public String updateDvd(DvdRelease dvdRelease) {
        boolean dvdUpdated = false;
        DvdRelease tempDvdRelease;
        ListIterator listIterator = dvdReleaseList.listIterator();
@@ -59,25 +59,31 @@ public class DvdReleaseByCategory {
            }
        }
        if (dvdUpdated == true) {
-           notifySubscribersOfUpdate(dvdRelease);
+           return notifySubscribersOfUpdate(dvdRelease);
        } else { 
-           this.newDvdRelease(dvdRelease);
+           return this.newDvdRelease(dvdRelease);
        }
    }
    
-   private void notifySubscribersOfNewDvd(DvdRelease dvdRelease) {
+   private String notifySubscribersOfNewDvd(DvdRelease dvdRelease) 
+	{
        ListIterator listIterator = subscriberList.listIterator();
+		 List<String> retval = new ArrayList<String>();
        while (listIterator.hasNext()) {
-           ((DvdSubscriber)(listIterator.next())).
-               newDvdRelease(dvdRelease, this.getCategoryName());
+           retval.add( ((DvdSubscriber)(listIterator.next())).
+               newDvdRelease(dvdRelease, this.getCategoryName()));
        }
+		return StringUtils.join(retval,"\n");
    }
 
-   private void notifySubscribersOfUpdate(DvdRelease dvdRelease) {
+   private String notifySubscribersOfUpdate(DvdRelease dvdRelease) 
+	{
        ListIterator listIterator = subscriberList.listIterator();
+		 List<String> retval = new ArrayList<String>();
        while (listIterator.hasNext()) {
-           ((DvdSubscriber)(listIterator.next())).
-               updateDvdRelease(dvdRelease, this.getCategoryName() );
+           retval.add( ((DvdSubscriber)(listIterator.next())).
+               updateDvdRelease(dvdRelease, this.getCategoryName()) );
        }       
+		return StringUtils.join(retval,"\n");
    }
 }

@@ -1,45 +1,32 @@
 package test.Creational;
 
-import tap.*;
+import static org.junit.Assert.assertEquals;
+
+import org.junit.Test;
+import org.junit.Ignore;
+import org.junit.runner.RunWith;
+import org.junit.runners.JUnit4;
+
 import Creational.Singleton.*;
 
 
 //TestSingleSpoon.java - testing the singleton
 
 class TestSingleSpoon {
-    
-   public static void main(String[] args) {
-       tap.test("First person getting the spoon");
-       SingleSpoon spoonForFirstPerson = 
-         SingleSpoon.getTheSpoon();
-       if (spoonForFirstPerson != null)
-           tap.test(spoonForFirstPerson);
-       else
-           tap.test("No spoon was available");
+
+	@Test    
+   public void thetester() {
        
-       tap.test("");
+       SingleSpoon spoonForFirstPerson = SingleSpoon.getTheSpoon();
+       org.junit.Assert.assertNotNull("First spoon instance ", spoonForFirstPerson);
        
-       tap.test("Second person getting a spoon");
        SingleSpoon spoonForSecondPerson = SingleSpoon.getTheSpoon();
-       if (spoonForSecondPerson != null)
-           tap.test(spoonForSecondPerson);
-       else
-           tap.test("No spoon was available");
+       org.junit.Assert.assertNull("Second person getting a spoon",spoonForSecondPerson);
        
-       tap.test("");
-       
-       tap.test("First person returning the spoon");
        spoonForFirstPerson.returnTheSpoon();       
-       spoonForFirstPerson = null;
-       tap.test("The spoon was returned");
+       //spoonForFirstPerson = null;
        
-       tap.test("");
-       
-       tap.test("Second person getting a spoon");
        spoonForSecondPerson = SingleSpoon.getTheSpoon();
-       if (spoonForSecondPerson != null)
-           tap.test(spoonForSecondPerson);
-       else
-           tap.test("No spoon was available");
+       org.junit.Assert.assertNotNull( "Second person getting a spoon again ", spoonForSecondPerson);
    }
 }      

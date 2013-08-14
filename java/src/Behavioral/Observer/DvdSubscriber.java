@@ -3,6 +3,9 @@ package Behavioral.Observer;
 
 //DvdSubscriber.java - the observer
 
+import java.util.*;
+import org.apache.commons.lang3.StringUtils;
+
 public class DvdSubscriber {  
    private String subscriberName; 
    
@@ -14,33 +17,36 @@ public class DvdSubscriber {
        return this.subscriberName;
    }
    
-   public void newDvdRelease(DvdRelease newDvdRelease, 
-                             String subscriptionListName) {
-       System.out.println("");
-       System.out.println("Hello " + this.getSubscriberName() + 
+   public String newDvdRelease(DvdRelease newDvdRelease, 
+                             String subscriptionListName) 
+	{
+			List<String> retval = new ArrayList<String>();
+       retval.add("Hello " + this.getSubscriberName() + 
                           ", subscriber to the " + 
                              subscriptionListName + 
                           " DVD release list.");
-       System.out.println("The new Dvd " + 
+       retval.add("The new Dvd " + 
                             newDvdRelease.getDvdName() + 
                           " will be released on " + 
                             newDvdRelease.getDvdReleaseMonth() + "/" + 
                             newDvdRelease.getDvdReleaseDay() + "/" + 
                             newDvdRelease.getDvdReleaseYear() + ".");
+		 return StringUtils.join(retval,"\n");
    }
    
-   public void updateDvdRelease(DvdRelease newDvdRelease, 
-                                String subscriptionListName) {
-       System.out.println("");
-       System.out.println("Hello " + this.getSubscriberName() + 
+   public String updateDvdRelease(DvdRelease newDvdRelease, String subscriptionListName) 
+	{
+			List<String> retval = new ArrayList<String>();
+       retval.add("Hello " + this.getSubscriberName() + 
                           ", subscriber to the " + 
                             subscriptionListName +
                           " DVD release list.");
-       System.out.println(
+       retval.add(
          "The following DVDs release has been revised: " + 
          newDvdRelease.getDvdName() + " will be released on " + 
          newDvdRelease.getDvdReleaseMonth() + "/" + 
          newDvdRelease.getDvdReleaseDay() + "/" + 
          newDvdRelease.getDvdReleaseYear() + ".");
+		 return StringUtils.join(retval,"\n");
    }   
 }

@@ -4,18 +4,23 @@
 package test.Behavioral;
 
 
-import tap.*;
+import static org.junit.Assert.assertEquals;
+
+import org.junit.Test;
+import org.junit.Ignore;
+import org.junit.runner.RunWith;
+import org.junit.runners.JUnit4;
+
 import Behavioral.Command.*;
 
 
 class Command {            
-   public static void main(String[] args) {
-		Tapper tap = new Tapper();
-	
-       final DvdName jayAndBob = 
-         new DvdName("Jay and Silent Bob Strike Back");
-       final DvdName spongeBob = 
-         new DvdName("Sponge Bob Squarepants - Nautical Nonsense and Sponge Buddies");
+
+	@Test
+   public void comtest() {
+		
+       DvdName jayAndBob = new DvdName("Jay and Silent Bob Strike Back");
+       DvdName spongeBob = new DvdName("Sponge Bob Squarepants - Nautical Nonsense and Sponge Buddies");
 
        CommandAbstract bobStarsOn = new DvdCommandNameStarsOn(jayAndBob);
        CommandAbstract bobStarsOff = new DvdCommandNameStarsOff(jayAndBob);
@@ -25,21 +30,25 @@ class Command {
        bobStarsOn.execute();
        spongeStarsOn.execute();
 
-		tap.test( "stars on", new TestCase() { void test() {
-			assert jayAndBob.toString().equals( "DVD: Jay*and*Silent*Bob*Strike*Back");
-		}});
-		tap.test( "stars on", new TestCase() { void test() {
-			assert spongeBob.toString().equals( "DVD: Sponge*Bob*Squarepants*-*Nautical*Nonsense*and*Sponge*Buddies");
-		}});
+		org.junit.Assert.assertEquals( "stars on", 
+			"DVD: Jay*and*Silent*Bob*Strike*Back",
+			jayAndBob.toString()
+		);
+		org.junit.Assert.assertEquals( "stars on", 
+			"DVD: Sponge*Bob*Squarepants*-*Nautical*Nonsense*and*Sponge*Buddies",
+			spongeBob.toString()
+		);
 
 		spongeStarsOff.execute();
-		tap.test( "stars off on just spongebob, still on jay and bob ", new TestCase() { void test() {
-			assert jayAndBob.toString().equals( "DVD: Jay*and*Silent*Bob*Strike*Back");
-		}});
-		tap.test( "stars off on just spongebob", new TestCase() { void test() {
-			assert spongeBob.toString().equals( "DVD: Sponge Bob Squarepants - Nautical Nonsense and Sponge Buddies");
-		}});
+		org.junit.Assert.assertEquals( "stars off on just spongebob, still on jay and bob ",
+			"DVD: Jay*and*Silent*Bob*Strike*Back",
+			jayAndBob.toString()
+		);
+		org.junit.Assert.assertEquals( "stars off on just spongebob", 
+			"DVD: Sponge Bob Squarepants - Nautical Nonsense and Sponge Buddies",
+			spongeBob.toString()
+		);
 
-		tap.done();
+		
    }
 }      

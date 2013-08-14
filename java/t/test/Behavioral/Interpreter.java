@@ -3,14 +3,20 @@
 
 package test.Behavioral;
 
+import static org.junit.Assert.assertEquals;
+
+import org.junit.Test;
+import org.junit.Ignore;
+import org.junit.runner.RunWith;
+import org.junit.runners.JUnit4;
 
 import Behavioral.Interpreter.*;
-import tap.*;
 
 
 class Interpreter {
-    
-   public static void main(String[] args) {
+
+	@Test    
+   public void inter() {
 		DvdInterpreterContext dvdInterpreterContext = new DvdInterpreterContext();
 		dvdInterpreterContext.addTitle("Caddy Shack");
 		dvdInterpreterContext.addTitle("Training Day");
@@ -27,19 +33,36 @@ class Interpreter {
 		DvdInterpreterClient dvdInterpreterClient = 
 		new DvdInterpreterClient(dvdInterpreterContext);
 
-		Tapper tap = new Tapper();       
-		tap.test( "interpreting show actor: " , new TestCase(){public void test(){
-			assert dvdInterpreterClient.interpret( "show actor").equals("bork");
-		}});
-		tap.test( "interpreting show actor for title : " , new TestCase(){public void test(){
-			assert dvdInterpreterClient.interpret( "show actor for title ").equals("bork");
-		}});
-		tap.test( "interpreting show title: "  , new TestCase(){public void test(){
-			assert dvdInterpreterClient.interpret( "show title").equals("bork");
-		}});
-		tap.test( "interpreting show title for actor : " , new TestCase(){public void test(){
-			assert dvdInterpreterClient.interpret( "show title for actor ").equals("bork");
-		}});
-		tap.done();
+		       
+		org.junit.Assert.assertEquals( "interpreting show actor: " , 
+			"Query Result: Ethan Hawke, Denzel Washington",
+			dvdInterpreterClient.interpret( "show actor")
+		);
+		org.junit.Assert.assertEquals( "interpreting show title: "  , 
+			"Query Result: Caddy Shack, Training Day, Hamlet",
+			dvdInterpreterClient.interpret( "show title")
+		);
+
+
+		org.junit.Assert.assertEquals( "interpreting show actor for title : " , 
+			"Query Result: ",
+			dvdInterpreterClient.interpret( "show actor for title ")
+		);
+
+		org.junit.Assert.assertEquals( "interpreting show title for actor : " , 
+			"Query Result: ",
+			dvdInterpreterClient.interpret( "show title for actor ")
+		);
+
+		org.junit.Assert.assertEquals( "interpreting show actor for title <Training Day>: " , 
+			"Query Result: Ethan Hawke, Denzel Washington",
+			dvdInterpreterClient.interpret( "show actor for title <Training Day>")
+		);
+
+		org.junit.Assert.assertEquals( "interpreting show title for actor <Ethan Hawke>: " , 
+			"Query Result: Hamlet, Training Day, Caddy Shack",
+			dvdInterpreterClient.interpret( "show title for actor <Ethan Hawke>")
+		);
+		
 	}
 }      

@@ -1,42 +1,52 @@
 package test.Behavioral;
 
-import tap.*;
+import static org.junit.Assert.assertEquals;
+
+import org.junit.Test;
+import org.junit.Ignore;
+import org.junit.runner.RunWith;
+import org.junit.runners.JUnit4;
+
+
 import Behavioral.Chain_Of_Responsibility.*;
 
+/**
+ * Tests for {@link Foo}.
+ *
+ * @author user@example.com (John Doe)
+ */
+@RunWith(JUnit4.class)
+public class ChainOfResponsibility {
 
-class ChainOfResponsibility {
-	public static void main(String[] args) {
-		Tapper tap = new Tapper();
-        final String topTitle;
-        final DvdCategory comedy = new DvdCategory("Comedy");
-        comedy.setTopCategoryTitle("Ghost World");
-        
-        final DvdSubCategory comedyChildrens = 
-          new DvdSubCategory(comedy, "Childrens");
-        
-        final DvdSubSubCategory comedyChildrensAquatic = 
-          new DvdSubSubCategory(comedyChildrens, "Aquatic");
-        comedyChildrensAquatic.setTopSubSubCategoryTitle(
-          "Sponge Bob Squarepants");
+	@Test
+	public void testaway() 
+	{
+		String topTitle;
+		DvdCategory comedy = new DvdCategory("Comedy");
+		comedy.setTopCategoryTitle("Ghost World");
 
-        topTitle = comedy.getTopTitle();
-			tap.test( "DvdCategory Test", new TestCase(){ void test(){
-				  assert ("The top title for " + comedy.getAllCategories() + " is " + topTitle).equals(
-							 "The top title for Comedy is Ghost World");
-			} });
+		DvdSubCategory comedyChildrens = new DvdSubCategory(comedy, "Childrens");
 
-        final String topTitle2 = comedyChildrens.getTopTitle();
-			tap.test( "DvdSubCategory Test", new TestCase(){ void test(){
-			  assert ("The top title for " + comedyChildrens.getAllCategories() + " is " + topTitle2).equals(
-			  			 "The top title for Comedy/Childrens is GhostWorld");
-			}});
+		DvdSubSubCategory comedyChildrensAquatic = new DvdSubSubCategory(comedyChildrens, "Aquatic");
+		comedyChildrensAquatic.setTopSubSubCategoryTitle( "Sponge Bob Squarepants");
+
+		topTitle = comedy.getTopTitle();
+		org.junit.Assert.assertEquals("DvdCategory Test", 
+			"The top title for Comedy is Ghost World",
+			("The top title for " + comedy.getAllCategories() + " is " + topTitle)
+		);
+
+		String topTitle2 = comedyChildrens.getTopTitle();
+		org.junit.Assert.assertEquals( "DvdSubCategory Test", 
+			"The top title for Comedy/Childrens is GhostWorld",
+			("The top title for " + comedyChildrens.getAllCategories() + " is " + topTitle2)
+		);
 
 
-        final String topTitle3 = comedyChildrensAquatic.getTopTitle();
-			tap.test( "DvdSubSubCategory Test", new TestCase(){ void test(){
-        		assert ("The top title for " + comedyChildrensAquatic.getAllCategories() + " is " + topTitle3).equals(
-        			"The top title for Comedy/Childrens/Aquatic is Sponge Bob Squarepants");
-			}});
-		tap.done();
+		String topTitle3 = comedyChildrensAquatic.getTopTitle();
+		org.junit.Assert.assertEquals( "DvdSubSubCategory Test", 
+			"The top title for Comedy/Childrens/Aquatic is Sponge Bob Squarepants",
+			("The top title for " + comedyChildrensAquatic.getAllCategories() + " is " + topTitle3)
+		);
    }
 }

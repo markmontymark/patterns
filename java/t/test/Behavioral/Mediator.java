@@ -3,7 +3,13 @@
 
 package test.Behavioral;
 
-import tap.*;
+import static org.junit.Assert.assertEquals;
+
+import org.junit.Test;
+import org.junit.Ignore;
+import org.junit.runner.RunWith;
+import org.junit.runners.JUnit4;
+
 import Behavioral.Mediator.*;
 
 
@@ -15,32 +21,40 @@ class Mediator {
        DvdLowercaseTitle dvdLower = new DvdLowercaseTitle("Mulholland Dr.", dvdMediator);
        DvdUpcaseTitle dvdUp = new DvdUpcaseTitle(dvdLower, dvdMediator);
        
-       tap.test("Lowercase LC title :" , new TestCase(){public void test() {
-                           assert dvdLower.getLowercaseTitle().equals("bork");
-		}});
-       tap.test("Lowercase super title :" , new TestCase(){public void test(){
-                           assert dvdLower.getTitle().equals("bork");
-		}});
-       tap.test("Upcase UC title :" , new TestCase(){public void test(){
-                           assert dvdUp.getUpcaseTitle().equals("bork");
-		}});
-       tap.test("Upcase super title :" , new TestCase(){public void test(){
-                           assert dvdUp.getTitle().equals("bork");
-		}});
+       org.junit.Assert.assertEquals("Lowercase LC title :" , 
+			"Mulholland Dr.",
+                           dvdLower.getLowercaseTitle()
+		);
+       org.junit.Assert.assertEquals("Lowercase super title :" , 
+			"Mulholland Dr.",
+                           dvdLower.getTitle()
+		);
+       org.junit.Assert.assertEquals("Upcase UC title :" , 
+			"Mulholland Dr.",
+                           dvdUp.getUpcaseTitle()
+		);
+       org.junit.Assert.assertEquals("Upcase super title :" , 
+			"Mulholland Dr.",
+                           dvdUp.getTitle()
+		);
        
        dvdLower.setSuperTitleLowercase();
        
-       tap.test("Lowercase LC title :" , new TestCase(){public void test(){
-                           assert dvdLower.getLowercaseTitle().equals("bork");
-		}});
-       tap.test("Lowercase super title :" , new TestCase(){public void test(){
-                           assert dvdLower.getTitle().equals("bork");
-		}});
-       tap.test("Upcase UC title :" , new TestCase(){public void test(){
-                           assert dvdUp.getUpcaseTitle().equals("bork");
-		}});
-       tap.test("Upcase super title :" , new TestCase(){public void test(){
-                           assert dvdUp.getTitle().equals("bork");
-		}});
+       org.junit.Assert.assertEquals("Lowercase LC title :" , 
+			"Mulholland Dr.",
+                           dvdLower.getLowercaseTitle()
+		);
+       org.junit.Assert.assertEquals("Lowercase super title :" , 
+			"Mulholland Dr.",
+			dvdLower.getTitle()
+		);
+       org.junit.Assert.assertEquals("Upcase UC title :" , 
+			"Mulholland Dr.",
+			dvdUp.getUpcaseTitle()
+		);
+       org.junit.Assert.assertEquals("Upcase super title :" , 
+			"Mulholland Dr.",
+			dvdUp.getTitle()
+		);
    }
 }      

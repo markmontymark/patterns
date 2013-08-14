@@ -3,13 +3,19 @@
 
 package test.Creational;
 
-import tap.*;
+import static org.junit.Assert.assertEquals;
+
+import org.junit.Test;
+import org.junit.Ignore;
+import org.junit.runner.RunWith;
+import org.junit.runners.JUnit4;
+
 import common.*;
 import Creational.Abstract_Factory.*;
 import java.util.Calendar;
 
 class TestAbstractSoupFactory { 
-   public static Soup MakeSoupOfTheDay(AbstractSoupFactory 
+   public Soup MakeSoupOfTheDay(AbstractSoupFactory 
                                        concreteSoupFactory)
    { 
        Calendar todayCalendar = Calendar.getInstance();
@@ -39,22 +45,27 @@ class TestAbstractSoupFactory {
 				s = concreteSoupFactory.makeTofuSoup();
 				break;
 			case Calendar.SUNDAY :
+			default:
 				s = concreteSoupFactory.makeVegetableSoup();
 				break;
        }
 		return s;
    }        
 
-   public static void main(String[] args) 
+	@Test
+   public void thetester() 
    {
 		AbstractSoupFactory concreteSoupFactory = new BostonConcreteSoupFactory();
 		Soup soupOfTheDay = MakeSoupOfTheDay(concreteSoupFactory);
-		Tapper tap = new Tapper();
-		tap.test("The Soup of the day " + concreteSoupFactory.getFactoryLocation() + " is " + soupOfTheDay.getSoupName());
+		
+		org.junit.Assert.assertEquals("Boston Abstract Factory test",
+			"The Soup of the day Bostn is ",
+			"The Soup of the day " + concreteSoupFactory.getFactoryLocation() + " is " + soupOfTheDay.getSoupName());
 
 		concreteSoupFactory = new HonoluluConcreteSoupFactory();
 		soupOfTheDay = MakeSoupOfTheDay(concreteSoupFactory);
-		tap.test("The Soup of the day " + concreteSoupFactory.getFactoryLocation() + " is " + soupOfTheDay.getSoupName());
-		tap.done();
+		org.junit.Assert.assertEquals("Honolulu Abstract Factory test",
+			"The Soup of the day ",
+			"The Soup of the day " + concreteSoupFactory.getFactoryLocation() + " is " + soupOfTheDay.getSoupName());
    }
 }  

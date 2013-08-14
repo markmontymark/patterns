@@ -79,7 +79,7 @@ public class DvdDetails {
    }
    
    //an inner class for the memento
-   class DvdMemento {
+   public class DvdMemento {
        private String mementoTitleName;  
        private ArrayList mementoStars;
        private char mementoEncodingRegion;       

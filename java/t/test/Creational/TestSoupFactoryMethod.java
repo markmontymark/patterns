@@ -2,18 +2,23 @@
 
 package test.Creational;
 
-import tap.*;
+import static org.junit.Assert.assertEquals;
+
+import org.junit.Test;
+import org.junit.Ignore;
+import org.junit.runner.RunWith;
+import org.junit.runners.JUnit4;
+
 import Creational.Factory_Method.*;
+import common.*;
 
 
 
 class TestSoupFactoryMethod {         
 
-   public static void main(String[] args) {
-		Tapper tap = new Tapper();
-       
-       SoupFactoryMethod sfm = new SoupFactoryMethod();
-       final SoupBuffet soupBuffet = sfm.makeSoupBuffet();
+	public void thetester( SoupFactoryMethod sfm, String msg)
+	{
+       SoupBuffet soupBuffet = sfm.makeSoupBuffet();
        soupBuffet.setSoupBuffetName( sfm.makeBuffetName());
        soupBuffet.setChickenSoup( sfm.makeChickenSoup());
        soupBuffet.setClamChowder( sfm.makeClamChowder()); 
@@ -22,40 +27,25 @@ class TestSoupFactoryMethod {
        soupBuffet.setPastaFazul( sfm.makePastaFazul()); 
        soupBuffet.setTofuSoup( sfm.makeTofuSoup());
        soupBuffet.setVegetableSoup( sfm.makeVegetableSoup()); 
-       tap.test("Base Soup Factory Method", new TestCase(){public void test(){
-			 assert ("At the  " + soupBuffet.getSoupBuffetName() + soupBuffet.getTodaysSoups()).equals("basdf");
-		}});
+       org.junit.Assert.assertEquals(msg,
+			"",
+			 ("At the  " + soupBuffet.getSoupBuffetName() + soupBuffet.getTodaysSoups())
+		);
+	}
        
-       
-       SoupFactoryMethod bsfm = new BostonSoupFactoryMethodSubclass();
-       final SoupBuffet bsb = bsfm.makeSoupBuffet();
-       bsb.setSoupBuffetName( bsfm.makeBuffetName());
-       bsb.setChickenSoup( bsfm.makeChickenSoup());
-       bsb.setClamChowder( bsfm.makeClamChowder());
-       bsb.setFishChowder( bsfm.makeFishChowder());
-       bsb.setMinnestrone( bsfm.makeMinnestrone());
-       bsb.setPastaFazul( bsfm.makePastaFazul());
-       bsb.setTofuSoup( bsfm.makeTofuSoup());
-       bsb.setVegetableSoup( bsfm.makeVegetableSoup()); 
-       tap.test("Boston Soup Factory Method", new TestCase(){public void test(){
-			assert ("At the  " + bsb.getSoupBuffetName() + bsb.getTodaysSoups()).equals("bork");
-		}});
-       
-       SoupFactoryMethod hsfm = new HonoluluSoupFactoryMethodSubclass();
-       final SoupBuffet hsb = hsfm.makeSoupBuffet();
-       hsb.setSoupBuffetName( hsfm.makeBuffetName());
-       hsb.setChickenSoup( hsfm.makeChickenSoup());
-       hsb.setClamChowder( hsfm.makeClamChowder()); 
-       hsb.setFishChowder( hsfm.makeFishChowder());
-       hsb.setMinnestrone( hsfm.makeMinnestrone());
-       hsb.setPastaFazul( hsfm.makePastaFazul()); 
-       hsb.setTofuSoup( hsfm.makeTofuSoup());
-       hsb.setVegetableSoup( hsfm.makeVegetableSoup()); 
-       tap.test( "Honolulu Factory Method test ", new TestCase(){public void test(){
-				assert ("At the  " + hsb.getSoupBuffetName() + hsb.getTodaysSoups()).equals("bork");
-		}});
 
-
-		tap.done();
-     }
+	@Test
+   public void base_sfm() {
+		thetester( new SoupFactoryMethod(), "Base Soup Factory Method");
+	}
+       
+	@Test
+   public void boston_sfm() {
+		thetester( new BostonSoupFactoryMethodSubclass(), "Boston Soup Factory Method");
+	}
+       
+	@Test
+   public void hono_sfm() {
+		thetester( new HonoluluSoupFactoryMethodSubclass(), "Honolulu Soup Factory Method");
+	}
 }      

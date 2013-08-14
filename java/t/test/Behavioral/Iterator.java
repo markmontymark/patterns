@@ -2,15 +2,22 @@
 
 package test.Behavioral;
 
-import tap.*;
+import static org.junit.Assert.assertEquals;
+
+import org.junit.Test;
+import org.junit.Ignore;
+import org.junit.runner.RunWith;
+import org.junit.runners.JUnit4;
+
 import Behavioral.Iterator.*;
 
 
 class Iterator {            
-    
-   public static void main(String[] args) {
 
-		Tapper tap = new Tapper();
+	@Test    
+   public void ite() {
+
+		
       DvdList fiveShakespeareMovies = new DvdList();
       fiveShakespeareMovies.append("10 Things I Hate About You");
       fiveShakespeareMovies.append("Shakespeare In Love");
@@ -25,9 +32,10 @@ class Iterator {
 			a_num_iterations++;
            fiveShakespeareIterator.next();  
       }
-		tap.test("First iteration", new TestCase(){public void test(){
-			assert a_num_iterations == 6;
-		}});
+		org.junit.Assert.assertEquals("First iteration", 
+			6,
+			a_num_iterations
+		);
        
       fiveShakespeareMovies.delete("American Pie 2");
        
@@ -37,9 +45,10 @@ class Iterator {
 			b_num_iterations++;
            fiveShakespeareIterator.next();  
       }       
-		tap.test("Second iteration", new TestCase(){public void test(){
-			assert b_num_iterations == (a_num_iterations-1);
-		}});
-		tap.done();
+		org.junit.Assert.assertEquals("Second iteration", 
+			(a_num_iterations-1),
+			b_num_iterations
+		);
+		
    }
 }      

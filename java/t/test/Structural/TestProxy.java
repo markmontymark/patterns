@@ -3,19 +3,25 @@
 
 package test.Structural;
 
-import tap.*;
+import static org.junit.Assert.assertEquals;
+
+import org.junit.Test;
+import org.junit.Ignore;
+import org.junit.runner.RunWith;
+import org.junit.runners.JUnit4;
+
 import Structural.Proxy.*;
 
 
-
-
 class TestProxy {
-   public static void main(String[] args) {
-		 Tapper tap = new Tapper();
-       tap.test("TestProxy: pouring tea", new TestCase(){public void test(){
-			 PotOfTeaInterface potOfTea = new PotOfTeaProxy();
-			 assert potOfTea.pourTea().equals("Pouring Tea");
-		}});
-		tap.done();
+
+	@Test
+   public void proxy() {
+		 
+		 PotOfTeaInterface potOfTea = new PotOfTeaProxy();
+       org.junit.Assert.assertEquals("TestProxy: pouring tea", 
+			 "Pouring tea",
+			 potOfTea.pourTea()
+		);
    }
 }

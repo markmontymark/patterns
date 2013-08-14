@@ -1,19 +1,23 @@
+//SuperSizeSoda.java - two of two classes extending the Abstract
+
+
 package Structural.Bridge;
 
-
-//SuperSizeSoda.java - two of two classes extending the Abstract
+import java.util.*;
+import org.apache.commons.lang3.StringUtils;
 
 public class SuperSizeSoda extends Soda {  
    public SuperSizeSoda() {
        setSodaImp();
    }
    
-   public void pourSoda() {
+   public String pourSoda() {
        SodaImp sodaImp = this.getSodaImp();
+		List retval = new ArrayList();
        for (int i = 0; i < 5; i++) {
-           System.out.print("...glug...");
-           sodaImp.pourSodaImp();
+           retval.add("...glug...");
+           retval.add(sodaImp.pourSodaImp());
        }
-       System.out.println(" ");       
+       return StringUtils.join(retval, " ");
    }
 }

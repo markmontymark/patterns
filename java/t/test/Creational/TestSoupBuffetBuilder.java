@@ -1,6 +1,13 @@
 package test.Creational;
 
-import tap.*;
+import static org.junit.Assert.assertEquals;
+
+import org.junit.Test;
+import org.junit.Ignore;
+import org.junit.runner.RunWith;
+import org.junit.runners.JUnit4;
+
+import common.*;
 import Creational.Builder.*;
 
 
@@ -8,7 +15,7 @@ import Creational.Builder.*;
 
 class TestSoupBuffetBuilder {
 
-   public static SoupBuffet CreateSoupBuffet(
+   public SoupBuffet CreateSoupBuffet(
      SoupBuffetBuilder soupBuffetBuilder) { 
         soupBuffetBuilder.buildSoupBuffet();
         
@@ -25,18 +32,19 @@ class TestSoupBuffetBuilder {
         return soupBuffetBuilder.getSoupBuffet();
    }     
     
-   public static void main(String[] args) {
+   public void thetester() {
        
-       SoupBuffet bostonSoupBuffet = 
-         CreateSoupBuffet(new BostonSoupBuffetBuilder());
-       tap.test("At the " + 
-                           bostonSoupBuffet.getSoupBuffetName() + 
-                           bostonSoupBuffet.getTodaysSoups());
+       SoupBuffet bostonSoupBuffet = CreateSoupBuffet(new BostonSoupBuffetBuilder());
+       org.junit.Assert.assertEquals("Boston soup buffet builder test",
+			"At the Boston Soup Buffet ",
+			"At the " + bostonSoupBuffet.getSoupBuffetName() + bostonSoupBuffet.getTodaysSoups()
+			);
 
        SoupBuffet honoluluSoupBuffet = 
          CreateSoupBuffet(new HonoluluSoupBuffetBuilder());
-       tap.test("At the " + 
-                           honoluluSoupBuffet.getSoupBuffetName() + 
-                           honoluluSoupBuffet.getTodaysSoups());
+       org.junit.Assert.assertEquals("Honolulu soup buffet builder test",
+			"At the Honolulu Soup Buffet ",
+			"At the " + honoluluSoupBuffet.getSoupBuffetName() + honoluluSoupBuffet.getTodaysSoups()
+		);
    }
 }      

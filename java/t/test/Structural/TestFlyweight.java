@@ -3,19 +3,23 @@
 
 package test.Structural;
 
-import tap.*;
+import static org.junit.Assert.assertEquals;
+
+import org.junit.Test;
+import org.junit.Ignore;
+import org.junit.runner.RunWith;
+import org.junit.runners.JUnit4;
+
 import Structural.Flyweight.*;
 
 
 
-
 class TestFlyweight {  
-   static TeaFlavor[] flavors = 
-     new TeaFlavor[100];
-     //the flavors ordered
-   static TeaOrderContext[] tables = 
-     new TeaOrderContext[100];
-     //the tables for the orders
+	//the flavors ordered
+   static TeaFlavor[] flavors = new TeaFlavor[100];
+
+	//the tables for the orders
+   static TeaOrderContext[] tables = new TeaOrderContext[100];
    static int ordersMade = 0;    
    static TeaFlavorFactory teaFlavorFactory;
     
@@ -25,8 +29,9 @@ class TestFlyweight {
        tables[ordersMade++] = 
          new TeaOrderContext(table);
    }
-    
-   public static void main(String[] args) {
+   
+	@Test 
+   public void flyweight() {
        teaFlavorFactory = new TeaFlavorFactory();
        
        takeOrders("chai", 2);    
@@ -49,10 +54,10 @@ class TestFlyweight {
            flavors[i].serveTea(tables[i]);
        }  
 
-		Tapper tap = new Tapper();
-		tap.test("Flyweight test", new TestCase(){public void test(){
-			assert ("total teaFlavor objects made: " + teaFlavorFactory.getTotalTeaFlavorsMade()).equals("bloasdfk");
-		}});
-		tap.done();
+		
+		org.junit.Assert.assertEquals("Flyweight test", 
+			("total teaFlavor objects made: 3"),
+			("total teaFlavor objects made: " + teaFlavorFactory.getTotalTeaFlavorsMade())
+		);
    }
 }    

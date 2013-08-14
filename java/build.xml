@@ -16,17 +16,34 @@
     <mkdir dir="${build}"/>
   </target>
 
+	<path id="build-classpath">
+		<fileset dir="lib"> <include name="*.jar"/> </fileset>
+	</path>
+
   <target name="compile" depends="init"
         description="compile the source " >
     <mkdir dir="${testbuild}"/>
     <!-- Compile the java code from ${src} into ${build} -->
-    <javac srcdir="${src}" destdir="${build}" includeantruntime="false"/>
+    <javac srcdir="${src}" destdir="${build}" includeantruntime="false">
+			<classpath refid="build-classpath"/>
+		</javac>
   </target>
+
+	<path id="test-classpath">
+		<fileset dir="lib"> <include name="*.jar"/> </fileset>
+		<pathelement path="${build}"/>
+	</path>
+
 
   <target name="test" depends="compile"
         description="test the source " >
     <!-- Compile the java code from ${src} into ${build} -->
-    <javac srcdir="${test}" destdir="${testbuild}" classpath="${build}" includeantruntime="false"/>
+    <!-- <javac srcdir="${test}" destdir="${testbuild}" classpath="${test-classpath}" includeantruntime="false"/> -->
+
+		<javac destdir="${testbuild}" includeantruntime="false">
+			<src path="${test}"/>
+			<classpath refid="test-classpath"/>
+		</javac>
   </target>
 
   <target name="dist" depends="test"

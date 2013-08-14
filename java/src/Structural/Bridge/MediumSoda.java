@@ -3,17 +3,22 @@ package Structural.Bridge;
 
 //MediumSoda.java - one of two classes extending the Abstract
 
+import java.util.*;
+import org.apache.commons.lang3.StringUtils;
+
 public class MediumSoda extends Soda {  
    public MediumSoda() {
        setSodaImp();
    }
    
-   public void pourSoda() {
+   public String pourSoda() {
        SodaImp sodaImp = this.getSodaImp();
+		 List retval = new ArrayList();
        for (int i = 0; i < 2; i++) {
-           System.out.print("...glug...");
-           sodaImp.pourSodaImp();
+           retval.add("...glug...");
+           retval.add(sodaImp.pourSodaImp());
        }
-       System.out.println(" ");
+			
+		 return StringUtils.join(retval, " ");
    }
 }

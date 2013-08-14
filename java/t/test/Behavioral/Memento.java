@@ -3,15 +3,23 @@
 
 package test.Behavioral;
 
-import tap.*;
+import static org.junit.Assert.assertEquals;
+
+import org.junit.Test;
+import org.junit.Ignore;
+import org.junit.runner.RunWith;
+import org.junit.runners.JUnit4;
+
 import Behavioral.Memento.*;
 
 
 import java.util.ArrayList;
 
 public class Memento {
-   public static void main(String[] args) {
-	    Tapper tap = new Tapper();
+
+	@Test
+   public void mementotest() {
+	    
        DvdDetails.DvdMemento dvdMementoCaretaker;  
        //the Caretaker
        
@@ -19,25 +27,29 @@ public class Memento {
        stars.add(new String("Guy Pearce"));
        DvdDetails dvdDetails = new DvdDetails("Memento", stars, '1'); 
        dvdMementoCaretaker = dvdDetails.createDvdMemento();
-       tap.test("", new TestCase(){public void test(){
-			assert dvdDetails.formatDvdDetails().equals("bork");
-		}});
+       org.junit.Assert.assertEquals("Testing original state", 
+			"",
+			dvdDetails.formatDvdDetails()
+		);
        
        dvdDetails.addStar("edskdzkvdfb");  
-       tap.test("Cappuccion on the keyboard!", new TestCase(){public void test(){
-			assert  dvdDetails.formatDvdDetails().eequals("bork");
-		}});
+       org.junit.Assert.assertEquals("Testing after adding star",
+			"",
+			 dvdDetails.formatDvdDetails()
+		);
        
-       tap.test("", new TestCase(){public void test(){
-			assert dvdMementoCaretaker.showMemento().equals("bork");
-		}});
+       org.junit.Assert.assertEquals("Memento state", 
+			"",
+			dvdMementoCaretaker.showMemento()
+		);
        //show the memento
        
        dvdDetails.setDvdMemento(dvdMementoCaretaker);
        //back off changes
-       tap.test("", new TestCase(){public void test(){
-			assert dvdDetails.formatDvdDetails().equals("bork");
-		}});
-		tap.done();
+       org.junit.Assert.assertEquals("Showing state revised to reflect memento state", 
+			"",
+			dvdDetails.formatDvdDetails()
+		);
+		
    }
 }      

@@ -2,61 +2,45 @@
 
 package test.Structural;
 
-import tap.*;
+import static org.junit.Assert.assertEquals;
+
+import org.junit.Test;
+import org.junit.Ignore;
+import org.junit.runner.RunWith;
+import org.junit.runners.JUnit4;
+
 import Structural.Bridge.*;
 
 
-
-
-class TestBridge {
-
-
-	public static Tapper tap = new Tapper();
-
-
-   public static void testCherryPlatform() {
-       SodaImpSingleton sodaImpSingleton = 
-         new SodaImpSingleton(new CherrySodaImp());
-       tap.test(
-         "testing medium soda on the cherry platform");
+class TestBridge 
+{
+	public void thetester( SodaImp si ,String siName )
+	{
+       SodaImpSingleton sodaImpSingleton = new SodaImpSingleton(si);
        MediumSoda mediumSoda = new MediumSoda();
-       mediumSoda.pourSoda();
-       tap.test(
-         "testing super size soda on the cherry platform");
        SuperSizeSoda superSizeSoda = new SuperSizeSoda();
-       superSizeSoda.pourSoda();       
+       org.junit.Assert.assertEquals(
+         "testing medium soda on the " + siName + " platform",
+			 mediumSoda.pourSoda());	
+			
+       org.junit.Assert.assertEquals(
+         "testing super size soda on the " + siName + " platform",
+			 superSizeSoda.pourSoda() );
+	}
+
+	@Test	
+   public void testCherryPlatform() {
+       thetester(new CherrySodaImp(),"cherry");
    }
    
-   public static void testGrapePlatform() {
-       SodaImpSingleton sodaImpSingleton = 
-         new SodaImpSingleton(new GrapeSodaImp());
-       tap.test(
-         "testing medium soda on the grape platform");
-       MediumSoda mediumSoda = new MediumSoda();
-       mediumSoda.pourSoda();
-       tap.test(
-         "testing super size soda on the grape platform");
-       SuperSizeSoda superSizeSoda = new SuperSizeSoda();
-       superSizeSoda.pourSoda();       
+	@Test	
+   public void testGrapePlatform() {
+       thetester(new GrapeSodaImp(),"grape");
    }   
+  
+	@Test 
+   public void testOrangePlatform() {
+       thetester(new OrangeSodaImp(),"orange");
+   }
    
-   public static void testOrangePlatform() {
-       SodaImpSingleton sodaImpSingleton = 
-         new SodaImpSingleton(new OrangeSodaImp());
-       tap.test(
-         "testing medium soda on the orange platform");
-       MediumSoda mediumSoda = new MediumSoda();
-       mediumSoda.pourSoda();
-       tap.test(
-         "testing super size soda on the orange platform");
-       SuperSizeSoda superSizeSoda = new SuperSizeSoda();
-       superSizeSoda.pourSoda();       
-   }
-    
-   public static void main(String[] args) {
-        testCherryPlatform();
-        testGrapePlatform();
-        testOrangePlatform();
-			tap.done();
-   }
 }      

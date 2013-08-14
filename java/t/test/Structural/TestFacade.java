@@ -3,20 +3,28 @@
 
 package test.Structural;
 
-import tap.*;
+import static org.junit.Assert.assertEquals;
+
+import org.junit.Test;
+import org.junit.Ignore;
+import org.junit.runner.RunWith;
+import org.junit.runners.JUnit4;
+
 import Structural.Facade.*;
 
 
 
 
 class TestFacade {
-   public static void main(String[] args) {
+
+	@Test
+   public void facade () {
        FacadeCuppaMaker cuppaMaker = new FacadeCuppaMaker();
-       final FacadeTeaCup teaCup = cuppaMaker.makeACuppa();
-		Tapper tap = new Tapper();
-       tap.test("Facade test", new TestCase(){public void test(){
-			assert teaCup.toString().equals("BAsdfasdf");
-		}});
-		tap.done();
+       FacadeTeaCup teaCup = cuppaMaker.makeACuppa();
+		
+       org.junit.Assert.assertEquals("Facade test", 
+			"A nice cuppa!",
+			teaCup.toString()
+		);
    }
 }
