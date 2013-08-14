@@ -38,7 +38,7 @@ public class ChainOfResponsibility {
 
 		String topTitle2 = comedyChildrens.getTopTitle();
 		org.junit.Assert.assertEquals( "DvdSubCategory Test", 
-			"The top title for Comedy/Childrens is GhostWorld",
+			"The top title for Comedy/Childrens is Ghost World",
 			("The top title for " + comedyChildrens.getAllCategories() + " is " + topTitle2)
 		);
 

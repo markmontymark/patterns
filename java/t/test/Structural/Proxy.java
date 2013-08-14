@@ -13,7 +13,7 @@ import org.junit.runners.JUnit4;
 import Structural.Proxy.*;
 
 
-class TestProxy {
+public class Proxy {
 
 	@Test
    public void proxy() {

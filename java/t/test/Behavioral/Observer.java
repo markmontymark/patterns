@@ -13,7 +13,7 @@ import org.junit.runners.JUnit4;
 
 import Behavioral.Observer.*;
 
-class Observer {
+public class Observer {
 
 	@Test    
    public void obs() {
@@ -42,19 +42,19 @@ class Observer {
 
 		
 		org.junit.Assert.assertEquals("New dvd release test 1", 	
-			"",
+			"Hello Rupert Giles, subscriber to the Buffy the Vampire Slayer DVD release list.\nThe new Dvd Buffy The Vampire Slayer Season 2 will be released on 6/11/2002.\nHello Willow Rosenberg, subscriber to the Buffy the Vampire Slayer DVD release list.\nThe new Dvd Buffy The Vampire Slayer Season 2 will be released on 6/11/2002.",
 			btvs.newDvdRelease(btvsS2)
 		);
 		org.junit.Assert.assertEquals("New dvd release test 2", 	
-			"",
+			"Hello Maggie Simpson, subscriber to the The Simpsons DVD release list.\nThe new Dvd The Simpsons Season 2 will be released on 7/9/2002.",
 			simpsons.newDvdRelease(simpS2)
 		);
 		org.junit.Assert.assertEquals("New dvd release test 3", 	
-			"",
+			"Hello Junior Soprano, subscriber to the The Sopranos DVD release list.\nThe new Dvd The Sopranos Season 2 will be released on 11/6/2001.",
 			sopranos.newDvdRelease(soprS2)
 		);
 		org.junit.Assert.assertEquals("New dvd release test 4", 	
-			"",
+			"Hello Samantha Mulder, subscriber to the The X-Files DVD release list.\nThe new Dvd The X-Files Season 5 will be released on 4/1/2002.\nHello Willow Rosenberg, subscriber to the The X-Files DVD release list.\nThe new Dvd The X-Files Season 5 will be released on 4/1/2002.",
 			xfiles.newDvdRelease(xfilS5)
 		);
 
@@ -66,7 +66,7 @@ class Observer {
 		xfilS5.updateDvdReleaseDate(2002, 5, 14);
 
 		org.junit.Assert.assertEquals("Update dvd test", 	
-			"",
+			"Hello Samantha Mulder, subscriber to the The X-Files DVD release list.\nThe following DVDs release has been revised: The X-Files Season 5 will be released on 5/14/2002.",
 			xfiles.updateDvd(xfilS5)
 		);
 

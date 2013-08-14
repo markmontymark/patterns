@@ -14,7 +14,9 @@ import Structural.Flyweight.*;
 
 
 
-class TestFlyweight {  
+public class Flyweight {  
+
+
 	//the flavors ordered
    static TeaFlavor[] flavors = new TeaFlavor[100];
 

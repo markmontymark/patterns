@@ -10,8 +10,9 @@ import org.junit.runners.JUnit4;
 
 import Behavioral.Visitor.*;
 
-class Visitor {
-   public static void main(String[] args) 
+public class Visitor {
+	@Test
+   public void thetester() 
 	{
 		AbstractTitleInfo bladeRunner = new DvdInfo("Blade Runner", "Harrison Ford", '1');
 		AbstractTitleInfo electricSheep = new BookInfo("Do Androids Dream of Electric Sheep?", "Phillip K. Dick");
@@ -22,7 +23,7 @@ class Visitor {
 
 		bladeRunner.accept(titleLongBlurbVisitor);
 		org.junit.Assert.assertEquals( 	"Testing bladeRunner long  " , 
-			"LB-DVD: Blade Runner, starring Harrison Ford, encoding region 1",
+			"LB-DVD: Blade Runner, starring Harrison Ford, encoding region: 1",
 			titleLongBlurbVisitor.getTitleBlurb()
 		);
 

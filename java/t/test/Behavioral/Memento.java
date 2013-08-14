@@ -28,18 +28,18 @@ public class Memento {
        DvdDetails dvdDetails = new DvdDetails("Memento", stars, '1'); 
        dvdMementoCaretaker = dvdDetails.createDvdMemento();
        org.junit.Assert.assertEquals("Testing original state", 
-			"",
+			"DVD: Memento, starring: Guy Pearce, encoding region: 1",
 			dvdDetails.formatDvdDetails()
 		);
        
        dvdDetails.addStar("edskdzkvdfb");  
        org.junit.Assert.assertEquals("Testing after adding star",
-			"",
+			"DVD: Memento, starring: Guy Pearce, edskdzkvdfb, encoding region: 1",
 			 dvdDetails.formatDvdDetails()
 		);
        
        org.junit.Assert.assertEquals("Memento state", 
-			"",
+			"DVD: Memento, starring: Guy Pearce, encoding region: 1",
 			dvdMementoCaretaker.showMemento()
 		);
        //show the memento
@@ -47,7 +47,7 @@ public class Memento {
        dvdDetails.setDvdMemento(dvdMementoCaretaker);
        //back off changes
        org.junit.Assert.assertEquals("Showing state revised to reflect memento state", 
-			"",
+			"DVD: Memento, starring: Guy Pearce, encoding region: 1",
 			dvdDetails.formatDvdDetails()
 		);
 		

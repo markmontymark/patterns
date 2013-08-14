@@ -32,11 +32,6 @@ public class DvdNameContext {
        for (int i = 0; i < namesIn.length; i++) {
            namesOut[i] = 
              dvdNameStrategy.formatDvdName(namesIn[i], replacementIn);
-           System.out.println(
-             "Dvd name before formatting: " + namesIn[i]);
-           System.out.println(
-             "Dvd name after formatting:  " + namesOut[i]);
-           System.out.println("==========================");
        }
        return namesOut;
    }

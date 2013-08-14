@@ -13,7 +13,7 @@ import Structural.Composite.*;
 
 
 
-class TestTeaBagsComposite 
+public class Composite 
 {
 	@Test
    public void main() 
@@ -55,7 +55,7 @@ class TestTeaBagsComposite
 			smallTinOfTeaBags.add(teaBag3)
 		);
 		org.junit.Assert.assertEquals("Small tin count",
-			"The smallTinOfTeaBags now has 2 tea bags in it.",
+			"The smallTinOfTeaBags now has 1 tea bags in it.",
 			"The smallTinOfTeaBags now has " + smallTinOfTeaBags.countTeaBags() + " tea bags in it.");
 
 		org.junit.Assert.assertEquals(

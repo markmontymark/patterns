@@ -12,7 +12,7 @@ import org.junit.runners.JUnit4;
 import Behavioral.Iterator.*;
 
 
-class Iterator {            
+public class Iterator {            
 
 	@Test    
    public void ite() {

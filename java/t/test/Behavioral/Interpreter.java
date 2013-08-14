@@ -13,7 +13,7 @@ import org.junit.runners.JUnit4;
 import Behavioral.Interpreter.*;
 
 
-class Interpreter {
+public class Interpreter {
 
 	@Test    
    public void inter() {
@@ -42,7 +42,6 @@ class Interpreter {
 			"Query Result: Caddy Shack, Training Day, Hamlet",
 			dvdInterpreterClient.interpret( "show title")
 		);
-
 
 		org.junit.Assert.assertEquals( "interpreting show actor for title : " , 
 			"Query Result: ",

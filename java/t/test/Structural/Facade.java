@@ -15,7 +15,7 @@ import Structural.Facade.*;
 
 
 
-class TestFacade {
+public class Facade {
 
 	@Test
    public void facade () {
@@ -23,7 +23,7 @@ class TestFacade {
        FacadeTeaCup teaCup = cuppaMaker.makeACuppa();
 		
        org.junit.Assert.assertEquals("Facade test", 
-			"A nice cuppa!",
+			"A nice cuppa tea!",
 			teaCup.toString()
 		);
    }

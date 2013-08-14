@@ -11,9 +11,11 @@ import org.junit.runners.JUnit4;
 
 import Behavioral.Strategy.*;
 
+import org.apache.commons.lang3.StringUtils;
 
 
-class Strategy {            
+
+public class Strategy {            
 
 	@Test    
    public void strategytest() {
@@ -29,18 +31,18 @@ class Strategy {
 		char replaceChar = '*';       
 
 		org.junit.Assert.assertEquals("Testing formatting with all caps", 
-			"Jay and Silent Bob Strike Back, The Fast and the Furious, The Others",
-			allCapContext.formatDvdNames(dvdNames)
+			"JAY AND SILENT BOB STRIKE BACK, THE FAST AND THE FURIOUS, THE OTHERS",
+			StringUtils.join(allCapContext.formatDvdNames(dvdNames), ", ")
 		);
 
 		org.junit.Assert.assertEquals( "Testing formatting with beginning the at end", 
 			"Jay and Silent Bob Strike Back, Fast and the Furious, The, Others, The",
-			theEndContext.formatDvdNames(dvdNames)
+			StringUtils.join(theEndContext.formatDvdNames(dvdNames), ", ")
 		);
 
 		org.junit.Assert.assertEquals(" Testing formatting with all spaces replaced with " + replaceChar, 
-			"Jay*and*Silent*Bob*Strike*Back,*The*Fast*and*the*Furious,*The*Others",
-			spacesContext.formatDvdNames(dvdNames, replaceChar)
+			"Jay*and*Silent*Bob*Strike*Back, The*Fast*and*the*Furious, The*Others",
+			StringUtils.join(spacesContext.formatDvdNames(dvdNames, replaceChar), ", ")
 		);
 		
 	}

@@ -12,5 +12,5 @@ package Structural.Decorator;
 public abstract class Tea {  
    boolean teaIsSteeped; 
    
-   public abstract void steepTea();
+   public abstract String steepTea();
 }

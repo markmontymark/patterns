@@ -13,24 +13,23 @@ import Structural.Adapter.*;
 
 //TestTeaBagAdaptation.java - testing the adapter
 
-class TestTeaBagAdaptation {
+public class Adapter {
 
-   public static void main(String[] args) {
+	@Test
+   public void thetester() {
 		
 
        TeaCup teaCup = new TeaCup();       
        TeaBag teaBag = new TeaBag();       
        teaCup.steepTeaBag(teaBag);
-       org.junit.Assert.assertEquals("Steeping tea bag",
-			"",
-			teaCup.toString());
+       org.junit.Assert.assertTrue("Steeping tea bag",
+			teaBag.teaBagIsSteeped );
 
        LooseLeafTea looseLeafTea = new LooseLeafTea();
        TeaBall teaBall = new TeaBall(looseLeafTea);
        teaCup.steepTeaBag(teaBall);
-       org.junit.Assert.assertEquals("Steeping loose leaf tea",
-				"",
-				teaCup.toString()
+       org.junit.Assert.assertTrue("Steeping loose leaf tea",
+				looseLeafTea.teaIsSteeped
 		);
    }
 }      

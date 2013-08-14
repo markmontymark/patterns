@@ -12,7 +12,7 @@ import Creational.Singleton.*;
 
 //TestSingleSpoon.java - testing the singleton
 
-class TestSingleSpoon {
+public class Singleton {
 
 	@Test    
    public void thetester() {

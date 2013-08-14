@@ -14,6 +14,8 @@ public class DvdTitleActorExpression extends DvdAbstractExpression {
    }
     
    public String interpret(DvdInterpreterContext dvdInterpreterContext) {
+		if( this.title == null )
+			return "";
        ArrayList titlesAndActors = 
            dvdInterpreterContext.getTitlesForActor(title);
        ListIterator titlesAndActorsIterator = 

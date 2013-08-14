@@ -15,11 +15,14 @@ import Structural.Decorator.*;
 
 
 
-class TestChaiDecorator {            
-    
-   public static void main(String[] args) {
+public class Decorator {            
+   
+	@Test 
+   public void thetester() {
        Tea teaLeaves = new TeaLeaves();
        Tea chaiDecorator = new ChaiDecorator(teaLeaves);
-       chaiDecorator.steepTea();
+       org.junit.Assert.assertEquals("Decorator test",
+				"bay leaf is steeping, cinnamon stick is steeping, ginger is steeping, honey is steeping, soy milk is steeping, vanilla bean is steeping",
+				chaiDecorator.steepTea() );
    }
 }

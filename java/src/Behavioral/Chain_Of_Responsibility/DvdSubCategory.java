@@ -46,8 +46,7 @@ public class DvdSubCategory implements TopTitle {
        if (null != getTopSubCategoryTitle()) {
            return this.getTopSubCategoryTitle();
        } else {
-           System.out.println("no top title in Category/SubCategory " + 
-                               getAllCategories());
+           //System.out.println("no top title in Category/SubCategory " + getAllCategories());
            return parent.getTopTitle();
        }
    }

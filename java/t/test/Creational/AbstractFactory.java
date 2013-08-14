@@ -14,7 +14,7 @@ import common.*;
 import Creational.Abstract_Factory.*;
 import java.util.Calendar;
 
-class TestAbstractSoupFactory { 
+public class AbstractFactory { 
    public Soup MakeSoupOfTheDay(AbstractSoupFactory 
                                        concreteSoupFactory)
    { 
@@ -59,13 +59,13 @@ class TestAbstractSoupFactory {
 		Soup soupOfTheDay = MakeSoupOfTheDay(concreteSoupFactory);
 		
 		org.junit.Assert.assertEquals("Boston Abstract Factory test",
-			"The Soup of the day Bostn is ",
+			"The Soup of the day Boston is QuahogChowder",
 			"The Soup of the day " + concreteSoupFactory.getFactoryLocation() + " is " + soupOfTheDay.getSoupName());
 
 		concreteSoupFactory = new HonoluluConcreteSoupFactory();
 		soupOfTheDay = MakeSoupOfTheDay(concreteSoupFactory);
 		org.junit.Assert.assertEquals("Honolulu Abstract Factory test",
-			"The Soup of the day ",
+			"The Soup of the day Honolulu is PacificClamChowder",
 			"The Soup of the day " + concreteSoupFactory.getFactoryLocation() + " is " + soupOfTheDay.getSoupName());
    }
 }  

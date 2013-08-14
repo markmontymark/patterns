@@ -13,7 +13,7 @@ import Behavioral.Template_Method.*;
 
 
 
-class TemplateMethod {
+public class TemplateMethod {
    
 	@Test 
    public void templatemethod() {
@@ -22,16 +22,16 @@ class TemplateMethod {
 		TitleInfo sheepRaider = new GameTitleInfo("Sheep Raider");
 
 		org.junit.Assert.assertEquals("Testing bladeRunner" ,   
-			bladeRunner.ProcessTitleInfo(),
-			""
+			"DVD: Blade Runner, starring Harrison Ford, encoding region: 1",
+			bladeRunner.ProcessTitleInfo()
 		);
 		org.junit.Assert.assertEquals("Testing electricSheep" , 
-			electricSheep.ProcessTitleInfo(),
-			""
+			"Book: Do Androids Dream of Electric Sheep?, Author: Phillip K. Dick ",
+			electricSheep.ProcessTitleInfo()
 		);
 		org.junit.Assert.assertEquals("Testing sheepRaider" ,
-			sheepRaider.ProcessTitleInfo(),
-			""
+			"Game: Sheep Raider ",
+			sheepRaider.ProcessTitleInfo()
 		);
    }
 }

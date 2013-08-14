@@ -14,7 +14,7 @@ package Structural.Adapter;
 //TeaBag.java - the class which the adapter will make the adaptee adapt to
 
 public class TeaBag {  
-   boolean teaBagIsSteeped; 
+   public boolean teaBagIsSteeped; 
     
    public TeaBag() {
        teaBagIsSteeped = false;
@@ -22,6 +22,5 @@ public class TeaBag {
    
    public void steepTeaInCup() {
        teaBagIsSteeped = true;
-       System.out.println("tea bag is steeping in cup");
    }
 }

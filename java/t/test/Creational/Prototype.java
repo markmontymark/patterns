@@ -13,7 +13,7 @@ import org.junit.runners.JUnit4;
 import Creational.Prototype.*;
 
 
-class TestPrototype 
+public class Prototype 
 { 
 
 	@Test
@@ -23,7 +23,7 @@ class TestPrototype
        AbstractSpoon spoon = prototypeFactory.makeSpoon();
        AbstractFork fork = prototypeFactory.makeFork();
        org.junit.Assert.assertEquals("Getting the Spoon and Fork name:", 
-			  "Spoon: SoupSpoon, Fork: SaladFork", 
+			  "Spoon: Soup Spoon, Fork: Salad Fork", 
 			 ("Spoon: " + spoon.getSpoonName() + ", Fork: " + fork.getForkName())
 		);
 
@@ -33,7 +33,7 @@ class TestPrototype
        fork = prototypeFactory.makeFork();
 
        org.junit.Assert.assertEquals("Creating a Prototype Factory with a SaladSpoon and a SaladFork", 
-       	 "Spoon: SaladSpoon, Fork: SaladFork",
+       	 "Spoon: Salad Spoon, Fork: Salad Fork",
        	("Spoon: " + spoon.getSpoonName() + ", Fork: " + fork.getForkName())
 		);
 

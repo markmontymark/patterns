@@ -8,8 +8,8 @@ public class TeaLeaves extends Tea {
        teaIsSteeped = false;
    }
    
-   public void steepTea() {
+   public String steepTea() {
        teaIsSteeped = true;
-       System.out.println("tea leaves are steeping");
+       return ("tea leaves are steeping");
    }
 }

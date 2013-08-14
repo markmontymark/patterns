@@ -3,8 +3,8 @@ package Structural.Decorator;
 
 //ChaiDecorator.java - the decorator
 
-import java.util.ArrayList;
-import java.util.ListIterator;
+import java.util.*;
+import org.apache.commons.lang3.StringUtils;
 
 public class ChaiDecorator extends Tea {
     private Tea teaToMakeChai;
@@ -24,22 +24,21 @@ public class ChaiDecorator extends Tea {
         this.teaToMakeChai = teaToMakeChaiIn;
     }
     
-    public void steepTea() {
-        this.steepChai();
+    public String steepTea() {
+        return this.steepChai();
     }
 
-    public void steepChai() {
+    public String steepChai() {
         teaToMakeChai.steepTea();
-        this.steepChaiIngredients();
-        System.out.println("tea is steeping with chai");
+        return this.steepChaiIngredients();
     }    
     
-    public void steepChaiIngredients() {
+    public String steepChaiIngredients() {
         ListIterator listIterator = chaiIngredients.listIterator();
+		 List<String> retval = new ArrayList<String>();
         while (listIterator.hasNext()) {
-            System.out.println(((String)(listIterator.next())) + 
-                                         " is steeping");
+				retval.add(listIterator.next() + " is steeping");
         }
-        System.out.println("chai ingredients are steeping");
+        return StringUtils.join(retval,", ");
     }      
 }

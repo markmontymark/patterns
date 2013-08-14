@@ -3,6 +3,7 @@
         simple example build file
     </description>
   <!-- set global properties for this build -->
+  <property name="lib" location="lib"/>
   <property name="src" location="src"/>
   <property name="test" location="t"/>
   <property name="build" location="build"/>
@@ -35,18 +36,62 @@
 	</path>
 
 
-  <target name="test" depends="compile"
-        description="test the source " >
-    <!-- Compile the java code from ${src} into ${build} -->
-    <!-- <javac srcdir="${test}" destdir="${testbuild}" classpath="${test-classpath}" includeantruntime="false"/> -->
-
+  <target name="test" depends="compile" description="compile the test source " >
 		<javac destdir="${testbuild}" includeantruntime="false">
 			<src path="${test}"/>
 			<classpath refid="test-classpath"/>
 		</javac>
   </target>
 
-  <target name="dist" depends="test"
+  <target name="run-testb" depends="test" description="Run the tests" >
+ <junit>
+    <classpath>
+      <pathelement location="${lib}/hamcrest-core-1.3.jar"/>
+      <pathelement location="${lib}/junit-4.11.jar"/>
+      <pathelement location="${lib}/commons-lang3-3.1.jar"/>
+      <pathelement location="${build}" />    
+      <pathelement location="${testbuild}" />    
+    </classpath>    
+    <batchtest>
+       <fileset dir="${test}">
+            <include name="**/*.java" />
+       </fileset>
+    </batchtest>
+    <formatter type="brief" usefile="false"/>
+  </junit>
+    </target>
+
+  <target name="run-test" depends="test" description="Run the tests" >
+		<exec executable="java"> <arg line="-cp lib/commons-lang3-3.1.jar:lib/hamcrest-core-1.3.jar:lib/junit-4.11.jar:build:testbuild org.junit.runner.JUnitCore test.Behavioral.ChainOfResponsibility"/> </exec>
+		<exec executable="java"> <arg line="-cp lib/commons-lang3-3.1.jar:lib/hamcrest-core-1.3.jar:lib/junit-4.11.jar:build:testbuild org.junit.runner.JUnitCore test.Behavioral.Command"/> </exec>
+		<exec executable="java"> <arg line="-cp lib/commons-lang3-3.1.jar:lib/hamcrest-core-1.3.jar:lib/junit-4.11.jar:build:testbuild org.junit.runner.JUnitCore test.Behavioral.Interpreter"/> </exec>
+		<exec executable="java"> <arg line="-cp lib/commons-lang3-3.1.jar:lib/hamcrest-core-1.3.jar:lib/junit-4.11.jar:build:testbuild org.junit.runner.JUnitCore test.Behavioral.Iterator"/> </exec>
+		<exec executable="java"> <arg line="-cp lib/commons-lang3-3.1.jar:lib/hamcrest-core-1.3.jar:lib/junit-4.11.jar:build:testbuild org.junit.runner.JUnitCore test.Behavioral.Mediator"/> </exec>
+		<exec executable="java"> <arg line="-cp lib/commons-lang3-3.1.jar:lib/hamcrest-core-1.3.jar:lib/junit-4.11.jar:build:testbuild org.junit.runner.JUnitCore test.Behavioral.Memento"/> </exec>
+		<exec executable="java"> <arg line="-cp lib/commons-lang3-3.1.jar:lib/hamcrest-core-1.3.jar:lib/junit-4.11.jar:build:testbuild org.junit.runner.JUnitCore test.Behavioral.Observer"/> </exec>
+		<exec executable="java"> <arg line="-cp lib/commons-lang3-3.1.jar:lib/hamcrest-core-1.3.jar:lib/junit-4.11.jar:build:testbuild org.junit.runner.JUnitCore test.Behavioral.State"/> </exec>
+		<exec executable="java"> <arg line="-cp lib/commons-lang3-3.1.jar:lib/hamcrest-core-1.3.jar:lib/junit-4.11.jar:build:testbuild org.junit.runner.JUnitCore test.Behavioral.Strategy"/> </exec>
+		<exec executable="java"> <arg line="-cp lib/commons-lang3-3.1.jar:lib/hamcrest-core-1.3.jar:lib/junit-4.11.jar:build:testbuild org.junit.runner.JUnitCore test.Behavioral.TemplateMethod"/> </exec>
+		<exec executable="java"> <arg line="-cp lib/commons-lang3-3.1.jar:lib/hamcrest-core-1.3.jar:lib/junit-4.11.jar:build:testbuild org.junit.runner.JUnitCore test.Behavioral.Visitor"/> </exec>
+
+
+		<exec executable="java"> <arg line="-cp lib/commons-lang3-3.1.jar:lib/hamcrest-core-1.3.jar:lib/junit-4.11.jar:build:testbuild org.junit.runner.JUnitCore test.Structural.Adapter"/> </exec>
+		<exec executable="java"> <arg line="-cp lib/commons-lang3-3.1.jar:lib/hamcrest-core-1.3.jar:lib/junit-4.11.jar:build:testbuild org.junit.runner.JUnitCore test.Structural.Bridge"/> </exec>
+		<exec executable="java"> <arg line="-cp lib/commons-lang3-3.1.jar:lib/hamcrest-core-1.3.jar:lib/junit-4.11.jar:build:testbuild org.junit.runner.JUnitCore test.Structural.Composite"/> </exec>
+		<exec executable="java"> <arg line="-cp lib/commons-lang3-3.1.jar:lib/hamcrest-core-1.3.jar:lib/junit-4.11.jar:build:testbuild org.junit.runner.JUnitCore test.Structural.Decorator"/> </exec>
+		<exec executable="java"> <arg line="-cp lib/commons-lang3-3.1.jar:lib/hamcrest-core-1.3.jar:lib/junit-4.11.jar:build:testbuild org.junit.runner.JUnitCore test.Structural.Facade"/> </exec>
+		<exec executable="java"> <arg line="-cp lib/commons-lang3-3.1.jar:lib/hamcrest-core-1.3.jar:lib/junit-4.11.jar:build:testbuild org.junit.runner.JUnitCore test.Structural.Flyweight"/> </exec>
+		<exec executable="java"> <arg line="-cp lib/commons-lang3-3.1.jar:lib/hamcrest-core-1.3.jar:lib/junit-4.11.jar:build:testbuild org.junit.runner.JUnitCore test.Structural.Proxy"/> </exec>
+
+
+		<exec executable="java"> <arg line="-cp lib/commons-lang3-3.1.jar:lib/hamcrest-core-1.3.jar:lib/junit-4.11.jar:build:testbuild org.junit.runner.JUnitCore test.Creational.AbstractFactory"/> </exec>
+		<exec executable="java"> <arg line="-cp lib/commons-lang3-3.1.jar:lib/hamcrest-core-1.3.jar:lib/junit-4.11.jar:build:testbuild org.junit.runner.JUnitCore test.Creational.Builder"/> </exec>
+		<exec executable="java"> <arg line="-cp lib/commons-lang3-3.1.jar:lib/hamcrest-core-1.3.jar:lib/junit-4.11.jar:build:testbuild org.junit.runner.JUnitCore test.Creational.FactoryMethod"/> </exec>
+		<exec executable="java"> <arg line="-cp lib/commons-lang3-3.1.jar:lib/hamcrest-core-1.3.jar:lib/junit-4.11.jar:build:testbuild org.junit.runner.JUnitCore test.Creational.Prototype"/> </exec>
+		<exec executable="java"> <arg line="-cp lib/commons-lang3-3.1.jar:lib/hamcrest-core-1.3.jar:lib/junit-4.11.jar:build:testbuild org.junit.runner.JUnitCore test.Creational.Singleton"/> </exec>
+	</target>
+
+  <target name="dist" depends="run-test"
         description="generate the distribution" >
     <!-- Create the distribution directory -->
     <mkdir dir="${dist}"/>
@@ -63,11 +108,4 @@
     <delete dir="${dist}"/>
   </target>
 
-	<target name="testrun">
-		<!-- <exec command="prove -exec 'java -ea -cp dist/java-gof-patterns-fluffycat-20130809.jar t.Behavioral.Command'"/>	 
-		prove -exec 'java -ea -cp ${dist}/java-gof-patterns-fluffycat-20130809.jar t.Behavioral.Command'
-		-exec needs an extra dash at front
--->
-		<exec command="prove -p -e 'sh'"/>	
-	</target>
 </project>
