@@ -18,7 +18,7 @@ Much thanks to Larry for allowing to me to start off this project with his Java 
 - Perl6 - complete
 - Ruby - complete
 - C sharp - complete
-- Java - rewriting test code to output in [TAP](http://en.wikipedia.org/wiki/Test_Anything_Protocol)
+- Java - complete
 
 TODO
 
