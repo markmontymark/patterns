@@ -19,13 +19,16 @@ Much thanks to Larry for allowing to me to start off this project with his Java 
 - Ruby - complete
 - C sharp - complete
 - Java - complete
+- Go - started
 
 TODO
 
 - C++ 
-- Go
 - Erlang
-- Java 1.7
+- Java 1.7 
+
+	- partial 1.7 support in java/ already
+	- won't separate this out as a java7/ dir, like i did with perl/ and perl6/ because perl5 vs perl6 is a larger change than java 1.4 vs java 1.7, syntactically speaking
 		
 
 # Quick start
@@ -163,6 +166,19 @@ Install Mono dev tools and use a Makefile (for now) for building and running tes
 
 *Note* I wrote this for Linux/Mono so YMMV for Windows/Mac
 
+## Go
+
+	sudo apt-get install golang-go
+	cd patterns/go/behavioral/chainofresponsibility
+	go test 
+
+My Go work needs much more work.  
+
+TODO:
+
+	porting all the other patterns, for now just have Behavioral - Chain Of Responsibility
+	need a test runner
+	
 
 
 # Patterns
