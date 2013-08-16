@@ -2,7 +2,7 @@ package command
 
 import (
 	"testing"
-	"../../asserts"
+	"../../lib/asserts"
 )
 
 func TestCommand( t *testing.T) {            

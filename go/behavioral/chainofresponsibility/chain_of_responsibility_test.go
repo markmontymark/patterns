@@ -2,7 +2,7 @@ package chainofresponsibility
 
 import (
    "testing"
-   "../../asserts"
+   "../../lib/asserts"
 )
 
 var comedy *DvdCategory = NewDvdCategory("Comedy")

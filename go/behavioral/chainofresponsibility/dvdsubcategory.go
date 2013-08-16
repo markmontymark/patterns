@@ -3,7 +3,7 @@ package chainofresponsibility
 
 //DvdSubCategory - the Middle Class in the Chain
 
-//import "toptitle"
+
 //import "dvdcategory"
 
 type DvdSubCategory struct {
