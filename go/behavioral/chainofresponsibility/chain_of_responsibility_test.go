@@ -1,42 +1,28 @@
 package chainofresponsibility
 
 import (
-	"testing"
+   "testing"
+   "../../asserts"
 )
 
+var comedy *DvdCategory = NewDvdCategory("Comedy")
+var comedyChildrens = NewDvdSubCategory(comedy, "Childrens")
+var comedyChildrensAquatic = NewDvdSubSubCategory(comedyChildrens, "Aquatic")
 
-func TestChainOfResponsibility (t *testing.T) {
 
-		comedy := DvdCategory{"Comedy",""}
-		comedy.SetTopCategoryTitle("Ghost World")
+func TestDvdCategory( t *testing.T) {
+	comedy.SetTopCategoryTitle("Ghost World")
+	var topTitle1 = comedy.GetTopTitle()
+	asserts.Equals( t, "blah", "The top title for " + comedy.GetAllCategories() + " is " + topTitle1, "The top title for Comedy is Ghost World")
+}
 
-		comedyChildrens := DvdSubCategory{comedy, "Childrens", ""}
+func TestDvdSubCategory( t *testing.T) {
+	var topTitle2 = comedyChildrens.GetTopTitle()
+	asserts.Equals( t, "asdf", "The top title for " + comedyChildrens.GetAllCategories() + " is " + topTitle2, "The top title for Comedy/Childrens is Ghost World")
+}
 
-		comedyChildrensAquatic := DvdSubSubCategory{comedyChildrens, "Aquatic", ""}
-		comedyChildrensAquatic.SetTopSubSubCategoryTitle( "Sponge Bob Squarepants")
-
-		topTitle := comedy.GetTopTitle()
-		//t.assertEquals("DvdCategory Test", 
-			//"The top title for Comedy is Ghost World",
-			//("The top title for " + comedy.GetAllCategories() + " is " + topTitle))
-
-		expected := "The top title for Comedy is Ghost World"
-		got := "The top title for " + comedy.GetAllCategories() + " is " + topTitle
-		if got != expected {
-			t.Errorf("Failed DvdCategory Test\ngot\n%s\n\nexpected\n%s\n",got,expected)
-		}
-
-		topTitle = comedyChildrens.GetTopTitle()
-		expected = "The top title for Comedy/Childrens is Ghost World"
-		got = "The top title for " + comedyChildrens.GetAllCategories() + " is " + topTitle
-		if got != expected {
-			t.Errorf("Failed DvdSubCategory Test\ngot\n%s\n\nexpected\n%s\n",got,expected)
-		}
-
-		topTitle = comedyChildrensAquatic.GetTopTitle()
-		expected ="The top title for Comedy/Childrens/Aquatic is Sponge Bob Squarepants"
-		got = "The top title for " + comedyChildrensAquatic.GetAllCategories() + " is " + topTitle
-		if got != expected {
-			t.Errorf("Failed DvdSubSubCategory Test\ngot\n%s\n\nexpected\n%s\n",got,expected)
-		}
+func TestDvdSubSubCategory( t *testing.T) {
+	comedyChildrensAquatic.SetTopSubSubCategoryTitle( "Sponge Bob Squarepants")
+	var topTitle3 = comedyChildrensAquatic.GetTopTitle()
+	asserts.Equals( t, "fdsa", "The top title for " + comedyChildrensAquatic.GetAllCategories() + " is " + topTitle3, "The top title for Comedy/Childrens/Aquatic is Sponge Bob Squarepants" )
 }

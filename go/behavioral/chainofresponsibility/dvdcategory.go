@@ -6,6 +6,12 @@ type DvdCategory struct {
    Category , TopCategoryTitle string
 }
 
+func NewDvdCategory( cat string ) *DvdCategory {
+	_obj := new(DvdCategory)
+	_obj.Category = cat
+	return _obj
+}
+
 func (this *DvdCategory) GetCategory () string {
 	return this.Category
 }

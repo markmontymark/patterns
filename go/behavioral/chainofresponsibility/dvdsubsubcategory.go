@@ -5,8 +5,15 @@ package chainofresponsibility
 //import "dvdsubcategory"
 
 type DvdSubSubCategory struct {  
-   Parent DvdSubCategory
+   Parent *DvdSubCategory
    SubSubCategory, TopSubSubCategoryTitle string
+}
+
+func NewDvdSubSubCategory (parent *DvdSubCategory, subSubCategory string) *DvdSubSubCategory {
+	obj := new(DvdSubSubCategory)
+	obj.Parent = parent
+	obj.SubSubCategory = subSubCategory
+	return obj
 }
    
 func (this *DvdSubSubCategory) SetSubSubCategory(SubSubCategoryIn string ) {
