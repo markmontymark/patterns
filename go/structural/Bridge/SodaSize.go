@@ -8,15 +8,6 @@ package bridge
 //An abstraction and implementation are in different class hierarchies.
 //Soda - the Abstract Base Class
 
-public abstract class Soda {  
-   SodaImp sodaImp 
-   
-   public void setSodaImp() {
-       this.sodaImp = SodaImpSingleton.getTheSodaImp()
-   }
-   public SodaImp getSodaImp() {
-       return this.sodaImp
-   }
-   
-   public abstract string pourSoda()
+type SodaSize interface {  
+   PourSoda() string 
 }

@@ -8,43 +8,36 @@ import (
 	"../../lib/asserts"
 )
 
-func TestBridge {
-	func thetester( si SodaImp ,string siName, string expectedMedium, string expectedSupersize )
-	{
-       SodaImpSingleton sodaImpSingleton = new SodaImpSingleton(si)
-       MediumSoda mediumSoda = new MediumSoda()
-       SuperSizeSoda superSizeSoda = new SuperSizeSoda()
-       asserts.Equals( t, 
-         "testing medium soda on the " + siName + " platform",
-			 expectedMedium,
-			 mediumSoda.pourSoda()
-			)	
+func TestBridge (t *testing.T) {
+	thetester := func ( siName string, expectedMedium string, expectedSupersize string ) {
+		SodaSizeManagerSet( new(MediumSodaSize) )
+		sodaSize := SodaSizeManagerGet()
+		asserts.Equals( t, 
+			"testing medium soda on the " + siName + " platform",
+			expectedMedium,
+			sodaSize.PourSoda())	
 			
-       asserts.Equals( t, 
-         "testing super size soda on the " + siName + " platform",
+		SodaSizeManagerSet( new(LargeSodaSize) )
+		sodaSize = SodaSizeManagerGet()
+		asserts.Equals( t, 
+			"testing super size soda on the " + siName + " platform",
 			expectedSupersize,
-			 superSizeSoda.pourSoda() )
+			sodaSize.PourSoda() )
 	}
 
-   public void testCherryPlatform() {
-       thetester(new CherrySodaImp(),"cherry",
-			"...glug... Yummy Cherry Soda! ...glug... Yummy Cherry Soda!",
-			"...glug... Yummy Cherry Soda! ...glug... Yummy Cherry Soda! ...glug... Yummy Cherry Soda! ...glug... Yummy Cherry Soda! ...glug... Yummy Cherry Soda!"
-			)
-   }
-   
-   public void testGrapePlatform() {
-       thetester(new GrapeSodaImp(),"grape",
-			"...glug... Delicious Grape Soda! ...glug... Delicious Grape Soda!",
-			"...glug... Delicious Grape Soda! ...glug... Delicious Grape Soda! ...glug... Delicious Grape Soda! ...glug... Delicious Grape Soda! ...glug... Delicious Grape Soda!"
-		)
-   }   
-  
-   public void testOrangePlatform() {
-       thetester(new OrangeSodaImp(),"orange",
-			"...glug... Citrusy Orange Soda! ...glug... Citrusy Orange Soda!",
-			"...glug... Citrusy Orange Soda! ...glug... Citrusy Orange Soda! ...glug... Citrusy Orange Soda! ...glug... Citrusy Orange Soda! ...glug... Citrusy Orange Soda!"
-			)
-   }
-   
+	SodaFlavorManagerSet( new(CherrySodaFlavor))
+	thetester( "cherry",
+	"...glug...Yummy Cherry Soda!...glug...Yummy Cherry Soda!",
+	"...glug...Yummy Cherry Soda!...glug...Yummy Cherry Soda!...glug...Yummy Cherry Soda!...glug...Yummy Cherry Soda!...glug...Yummy Cherry Soda!")
+
+	SodaFlavorManagerSet( new(GrapeSodaFlavor))
+	thetester( "grape",
+	"...glug...Delicious Grape Soda!...glug...Delicious Grape Soda!",
+	"...glug...Delicious Grape Soda!...glug...Delicious Grape Soda!...glug...Delicious Grape Soda!...glug...Delicious Grape Soda!...glug...Delicious Grape Soda!")
+
+	SodaFlavorManagerSet( new(OrangeSodaFlavor))
+	thetester( "orange",
+	"...glug...Citrusy Orange Soda!...glug...Citrusy Orange Soda!",
+	"...glug...Citrusy Orange Soda!...glug...Citrusy Orange Soda!...glug...Citrusy Orange Soda!...glug...Citrusy Orange Soda!...glug...Citrusy Orange Soda!")
+
 }      
