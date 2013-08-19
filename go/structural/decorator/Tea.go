@@ -9,8 +9,6 @@ package decorator
 //Video tutorial on design patterns
 //Tea - the abstract base class
 
-public abstract class Tea {  
-   boolean teaIsSteeped 
-   
-   public abstract string steepTea()
+type Tea interface {  
+	SteepTea() string
 }
