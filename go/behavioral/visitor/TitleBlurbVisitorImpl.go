@@ -7,7 +7,7 @@ package visitor
 //One or more related classes have the same method, which calls a method specific for themselves in another class.
 //Still reading? Save your time, watch the video lessons!
 //Video tutorial on design patterns
-//TitleBlurbVisitor.java - the abstract Visitor
+//TitleBlurbVisitor - the abstract Visitor
 
 type TitleBlurbVisitorImpl struct {
    titleBlurb string

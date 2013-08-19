@@ -6,7 +6,7 @@ package mediator
 //Java Design Patterns Mediator
 //Mediator Overview
 //Passes communication between two or more objects.
-//DvdTitle.java - the Abstract Colleague or Mediatee
+//DvdTitle - the Abstract Colleague or Mediatee
 
 type DvdTitle interface {  
    SetTitle(titleIn string)

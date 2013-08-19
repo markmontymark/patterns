@@ -4,7 +4,7 @@
 //// Privacy Policy at http://www.fluffycat.com/Privacy-Policy/
 //Observer (aka Dependents & Publish-Subscribe) Overview
 //An object notifies other object(s) if it changes.
-//DvdReleaseByCategory.java - the subject
+//DvdReleaseByCategory - the subject
 //(the class which is observed)
 
 

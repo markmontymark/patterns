@@ -1,4 +1,4 @@
-//TestTitleInfoTemplate.java - testing the Template
+//TestTitleInfoTemplate - testing the Template
 
 package templatemethod
 

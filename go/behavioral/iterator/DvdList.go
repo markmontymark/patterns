@@ -1,7 +1,7 @@
 package iterator
 
 
-//DvdList.java - the Concrete Aggregate (with a Concrete Iterator inner class)
+//DvdList - the Concrete Aggregate (with a Concrete Iterator inner class)
 
 type DvdList struct {  
    titles []string

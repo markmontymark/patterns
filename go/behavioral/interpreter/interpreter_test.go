@@ -1,4 +1,4 @@
-//Interpreter.java - testing the Interpreter
+//Interpreter - testing the Interpreter
 
 
 package interpreter

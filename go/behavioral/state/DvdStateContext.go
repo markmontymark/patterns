@@ -3,7 +3,7 @@
 //// Original Author: Larry Truett
 //// Privacy Policy at http://www.fluffycat.com/Privacy-Policy/
 //An object appears to change its' class when the class it passes calls through to switches itself for a related class.
-//DvdStateContext.java - the Context
+//DvdStateContext - the Context
 
 package state
 

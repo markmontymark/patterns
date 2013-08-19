@@ -1,6 +1,6 @@
 
 
-//DvdStateNameExclaim.java - one of two Concrete States
+//DvdStateNameExclaim - one of two Concrete States
 
 package state
 

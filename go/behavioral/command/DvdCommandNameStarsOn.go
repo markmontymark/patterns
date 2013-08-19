@@ -1,7 +1,7 @@
 package command
 
 
-//DvdCommandNameStarsOn.java - one of two Concrete Commands
+//DvdCommandNameStarsOn - one of two Concrete Commands
 
 type DvdCommandNameStarsOn struct {
    dvdName *DvdName

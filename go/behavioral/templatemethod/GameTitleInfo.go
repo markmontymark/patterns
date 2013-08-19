@@ -1,7 +1,7 @@
 package templatemethod
 
 
-//GameTitleInfo.java - three of three concrete templates
+//GameTitleInfo - three of three concrete templates
 
 type GameTitleInfo struct {
 	titleInfo *TitleInfoImpl

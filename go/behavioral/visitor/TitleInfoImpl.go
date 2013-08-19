@@ -1,7 +1,7 @@
 package visitor
 
 
-//AbstractTitleInfo.java - the abstract Visitee
+//AbstractTitleInfo - the abstract Visitee
 
 type TitleInfoImpl struct {  
    titleName string

@@ -1,7 +1,7 @@
 package templatemethod
 
 
-//BookTitleInfo.java - two of three concrete templates
+//BookTitleInfo - two of three concrete templates
 
 type BookTitleInfo struct {
 	titleInfo *TitleInfoImpl

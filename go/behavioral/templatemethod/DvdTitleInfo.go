@@ -1,7 +1,7 @@
 package templatemethod
 
 
-//DvdTitleInfo.java - one of three concrete templates
+//DvdTitleInfo - one of three concrete templates
 
 type DvdTitleInfo struct { // implements TitleInfoInterface, has TitleInfoImpl
 	titleInfo *TitleInfoImpl

@@ -1,6 +1,6 @@
 package chainofresponsibility
 
-//DvdSubSubCategory.java - the Lowest Class in the Chain
+//DvdSubSubCategory - the Lowest Class in the Chain
 
 //import "dvdsubcategory"
 
