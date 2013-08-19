@@ -7,6 +7,6 @@ package flyweight
 //The reusable and variable parts of a class are broken into two classes to save resources.
 //TeaOrder - the Flyweight
 
-public abstract class TeaOrder {  
-    public abstract void serveTea(TeaOrderContext teaOrderContext)
+type TeaOrder interface {  
+    ServeTea(ctx *TeaOrderContext)
 }
