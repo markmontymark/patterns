@@ -27,3 +27,14 @@ func False (t *testing.T, name string , got bool ) {
    }
 }
 
+func Nil (t *testing.T, name string , got ...interface{}) {
+   if got == nil {
+      t.Errorf("Failed %s\ngot\n%s\n\nexpected\n%s\n\n", name, got, nil)
+   }
+}
+
+func NotNil (t *testing.T, name string , got ...interface{}) {
+   if got != nil {
+      t.Errorf("Failed %s\ngot\n%s\n\nexpected\n(not nil)\n\n", name, got)
+   }
+}
