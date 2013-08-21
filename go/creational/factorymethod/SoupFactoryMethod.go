@@ -16,38 +16,18 @@
 
 package factorymethod
 
+import (
+	"../common"
+)
 
-
-public class SoupFactoryMethod {
-    public SoupFactoryMethod() {}
-        
-    public SoupBuffet makeSoupBuffet() {
-        return new SoupBuffet()
-    }
-
-    public ChickenSoup makeChickenSoup() {
-        return new ChickenSoup()
-    }
-    public ClamChowder makeClamChowder() {
-        return new ClamChowder()
-    }
-    public FishChowder makeFishChowder() {
-        return new FishChowder()
-    }
-    public Minnestrone makeMinnestrone() {
-        return new Minnestrone()
-    }
-    public PastaFazul makePastaFazul() {
-        return new PastaFazul()
-    }
-    public TofuSoup makeTofuSoup() {
-        return new TofuSoup()
-    }
-    public VegetableSoup makeVegetableSoup() {
-        return new VegetableSoup()
-    }
-
-    public string makeBuffetName() {
-        return "Soup Buffet"
-    }
+type SoupFactoryMethod interface {
+    MakeSoupBuffet() *common.SoupBuffet 
+    MakeBuffetName() string
+    MakeChickenSoup() *common.SoupImpl
+    MakeClamChowder() *common.SoupImpl
+    MakeFishChowder() *common.SoupImpl
+    MakeMinnestrone()*common.SoupImpl
+    MakePastaFazul() *common.SoupImpl
+    MakeTofuSoup() *common.SoupImpl
+    MakeVegetableSoup()*common.SoupImpl
 }
