@@ -51,17 +51,11 @@ func (this *Spoon) UseTheSpoon() bool {
 	return false	
 }
     
-func (this *Spoon) CleanTheSpoon() bool {
-	if this.InUse {
-		this.InUse = false
-		return true
-	}
-	return false
-}
-
 func (this *Spoon) ReturnTheSpoon() bool {
 	if this == instance {
-		instance = nil
+		if ! this.IsAvailable {
+			this.IsAvailable = true
+		}
 		return true
 	}
 	return false
