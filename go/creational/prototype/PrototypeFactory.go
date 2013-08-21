@@ -10,19 +10,17 @@ package prototype
 //Video tutorial on design patterns
 //PrototypeFactory - a Factory for Prototypes
 
-public class PrototypeFactory {  
-    AbstractSpoon prototypeSpoon
-    AbstractFork prototypeFork
+type PrototypeFactory struct {  
+    prototypeSpoon Utensil
+    prototypeFork Utensil
+}
     
-    public PrototypeFactory(AbstractSpoon spoon, AbstractFork fork) {
-       prototypeSpoon = spoon
-       prototypeFork = fork
-   }
-    
-   public AbstractSpoon makeSpoon() {
-       return (AbstractSpoon)prototypeSpoon.clone()
-   }
-   public AbstractFork makeFork() {
-       return (AbstractFork)prototypeFork.clone()
-   }
+func (this *PrototypeFactory) MakeSpoon() Utensil {
+	obj := this.prototypeSpoon
+	return obj
+}
+
+func (this *PrototypeFactory) MakeFork() Utensil {
+	obj := this.prototypeFork
+	return obj
 }
