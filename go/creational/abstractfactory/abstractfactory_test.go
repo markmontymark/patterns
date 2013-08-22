@@ -3,7 +3,6 @@
 package abstractfactory
 
 import (
-	"fmt"
 	"testing"
 	"time"
 	"../../lib/asserts"
