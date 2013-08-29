@@ -23,12 +23,17 @@ Much thanks to Larry for allowing to me to start off this project with his Java 
 
 TODO
 
-- C++ 
+- Add Cake Pattern and/or a dependency injection example foreach lang, starting point http://jonasboner.com/2008/10/06/real-world-scala-dependency-injection-di/
+
+
+
 - Erlang
+- Scala 
+- C++ 
 - Java 1.7 
 
 	- partial 1.7 support in java/ already
-	- won't separate this out as a java7/ dir, like i did with perl/ and perl6/ because perl5 vs perl6 is a larger change than java 1.4 vs java 1.7, syntactically speaking
+	- won't separate this out as a java7/ dir, like i did with perl/ and perl6/ because perl5 vs perl6 feels like a larger change than java 1.4 vs java 1.7
 		
 
 # Quick start
