@@ -9,14 +9,7 @@ package visitor
 //Video tutorial on design patterns
 //TitleBlurbVisitor - the abstract Visitor
 
-type TitleBlurbVisitorImpl struct {
-   titleBlurb string
-}
-
-func (this *TitleBlurbVisitorImpl) SetTitleBlurb(blurbIn string) {
-	this.titleBlurb = blurbIn
-}
-
-func (this *TitleBlurbVisitorImpl) GetTitleBlurb() string {
-	return this.titleBlurb
+type Blurber interface {
+	GetLongBlurb() string 
+	GetShortBlurb() string 
 }

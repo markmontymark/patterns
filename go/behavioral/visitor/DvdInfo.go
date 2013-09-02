@@ -1,35 +1,32 @@
 package visitor
 
+import (
+	"fmt"
+)
 
 type DvdInfo struct {  
-	titleInfo *TitleInfoImpl
-   star string
-   encodingRegion string
+	Title
+   star , encodingRegion string
 }
     
-func NewDvdInfo(titleName string , star string, encodingRegion string) *DvdInfo {
-	obj := new(DvdInfo)
-	obj.titleInfo = new(TitleInfoImpl)
-	obj.titleInfo.SetTitleName(titleName)
-	obj.star = star
-	obj.encodingRegion = encodingRegion
-	return obj
+func NewDvdInfo(title string , star string, encodingRegion string) *DvdInfo {
+	return &DvdInfo{ &TitleInfo{title}, star, encodingRegion}
 }    
    
-func (this *DvdInfo ) GetStar() string {
-	return this.star
+func (this *DvdInfo) Accept( tbv Visitor) {
+	tbv.Visit(this)
 }
 
-func (this *DvdInfo) GetEncodingRegion() string {
-	return this.encodingRegion
+func (this *DvdInfo) GetLongBlurb() string { 
+	return fmt.Sprintf("LB-DVD: %s, starring %s, encoding region %s",
+		this.GetTitle() , 
+		this.star  , 
+		this.encodingRegion)
 }
 
-func (this *DvdInfo) GetTitleName() string {
-	return this.titleInfo.GetTitleName()
-}
-   
-func (this *DvdInfo) Accept( tbv TitleBlurbVisitorInterface ) {
-	tbv.VisitDvd(this)
-}
 
+func (this *DvdInfo) GetShortBlurb() string { 
+	return fmt.Sprintf("SB-DVD: %s",
+		this.GetTitle() )
+}
 

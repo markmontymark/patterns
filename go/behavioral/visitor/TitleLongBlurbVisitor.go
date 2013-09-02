@@ -1,20 +1,20 @@
 package visitor
 
-type TitleLongBlurbVisitor struct { // implements TitleBlurbVisitorInterface , has TitleBlurbVisitorImpl
-	tbv *TitleBlurbVisitorImpl
+type TitleLongBlurbVisitor struct { // implements Visitor, has Title
+	Title
 }
-
-
 
 func NewTitleLongBlurbVisitor () * TitleLongBlurbVisitor {
-	obj :=  new(TitleLongBlurbVisitor)
-	obj.tbv = new(TitleBlurbVisitorImpl)
-	return obj
+	return &TitleLongBlurbVisitor{&TitleInfo{}}
 }
 
 
-func (this *TitleLongBlurbVisitor) VisitBook( info *BookInfo ) {
-	this.tbv.SetTitleBlurb(
+func (this *TitleLongBlurbVisitor) Visit( info BlurberAcceptor) {
+	this.SetTitle( info.GetLongBlurb() )
+}
+
+/*
+	this.tbv.SetTitleBlurb( info.Blurb() )
 		"LB-Book: " + info.GetTitleName() + 
 		", Author: " + info.GetAuthor())
 }
@@ -34,3 +34,6 @@ func (this *TitleLongBlurbVisitor) VisitGame( info *GameInfo ) {
 func (this *TitleLongBlurbVisitor) GetTitleBlurb () string {
 	return this.tbv.GetTitleBlurb()
 }
+
+
+*/

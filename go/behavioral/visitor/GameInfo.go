@@ -1,21 +1,26 @@
 package visitor
 
+import (
+	"fmt"
+)
 
-type GameInfo struct { // implements TitleInfoInterface, has TitleInfoImpl 
-	titleInfo *TitleInfoImpl
+
+type GameInfo struct { // implements Acceptor
+	Title
 }
 
 func NewGameInfo(titleName string ) *GameInfo {
-	obj := new(GameInfo)
-	obj.titleInfo  = new(TitleInfoImpl)
-	obj.titleInfo.SetTitleName( titleName )
-	return obj
+	return &GameInfo{&TitleInfo{titleName}}
 }    
 
-func (this *GameInfo ) GetTitleName() string {
-	return this.titleInfo.GetTitleName()
+func (this *GameInfo) Accept( tbv Visitor ) {
+	tbv.Visit( this )
 }
-   
-func (this *GameInfo) Accept( tbv TitleBlurbVisitorInterface ) {
-	tbv.VisitGame( this )
+
+func (this *GameInfo) GetLongBlurb() string {
+	return fmt.Sprintf("LB-Game: %s" ,this.GetTitle() )
+}
+
+func (this *GameInfo) GetShortBlurb() string {
+	return fmt.Sprintf("SB-Game: %s" , this.GetTitle() )
 }

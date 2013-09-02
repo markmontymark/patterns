@@ -1,27 +1,28 @@
 package visitor
 
+import (
+	"fmt"
+)
 
-type BookInfo struct {
-	titleInfo *TitleInfoImpl
+type BookInfo struct { // implements Acceptor 
+	Title
 	author string
 }
 
 
 func NewBookInfo(titleName, author string) *BookInfo {
-	obj := new(BookInfo)
-	obj.titleInfo = new(TitleInfoImpl)
-	obj.titleInfo.SetTitleName( titleName )
-	obj.author = author
-	return obj
+	return &BookInfo{ &TitleInfo{titleName}, author}
 }    
    
-func (this *BookInfo) GetAuthor() string {
-	return this.author
+func (this *BookInfo) Accept( tbv Visitor ) {
+	tbv.Visit( this )
 }
-func (this *BookInfo) GetTitleName() string {
-	return this.titleInfo.GetTitleName()
+
+func (this *BookInfo) GetLongBlurb( ) string {
+	return fmt.Sprintf("LB-Book: %s, Author: %s", this.GetTitle() , this.author )
 }
-   
-func (this *BookInfo) Accept( tbv TitleBlurbVisitorInterface) {
-	tbv.VisitBook( this )
+
+func (this *BookInfo) GetShortBlurb( ) string {
+	return fmt.Sprintf("SB-Book: %s", this.GetTitle() )
 }
+
