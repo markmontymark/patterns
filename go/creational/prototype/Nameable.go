@@ -1,7 +1,7 @@
 package prototype
 
 
-type Utensil interface {
+type Nameable interface {
    SetName( name string )
    GetName()  string 
 }

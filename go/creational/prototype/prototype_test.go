@@ -3,6 +3,7 @@
 package prototype
 
 import (
+	"fmt"
 	"testing"
 	"../../lib/asserts"
 )
@@ -14,7 +15,7 @@ func TestPrototype (t *testing.T ) {
 	fork := prototypeFactory.MakeFork()
 	asserts.Equals( t, "Getting the Spoon and Fork name:", 
 		"Spoon: Soup Spoon, Fork: Salad Fork", 
-		"Spoon: " + spoon.GetName() + ", Fork: " + fork.GetName())
+		fmt.Sprintf("Spoon: %s, Fork: %s" , spoon.GetName() , fork.GetName()) )
 
 
 	prototypeFactory = PrototypeFactory{NewSaladSpoon(), NewSaladFork()}
@@ -22,6 +23,6 @@ func TestPrototype (t *testing.T ) {
 	fork = prototypeFactory.MakeFork()
 	asserts.Equals( t, "Creating a Prototype Factory with a SaladSpoon and a SaladFork", 
 		"Spoon: Salad Spoon, Fork: Salad Fork",
-		"Spoon: " + spoon.GetName() + ", Fork: " + fork.GetName() )
+		fmt.Sprintf("Spoon: %s, Fork: %s" , spoon.GetName() , fork.GetName() ) )
 
 }      

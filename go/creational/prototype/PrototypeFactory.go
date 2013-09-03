@@ -11,16 +11,16 @@ package prototype
 //PrototypeFactory - a Factory for Prototypes
 
 type PrototypeFactory struct {  
-    prototypeSpoon Utensil
-    prototypeFork Utensil
+    prototypeSpoon Nameable
+    prototypeFork Nameable
 }
     
-func (this *PrototypeFactory) MakeSpoon() Utensil {
+func (this *PrototypeFactory) MakeSpoon() Nameable { 
 	obj := this.prototypeSpoon
 	return obj
 }
 
-func (this *PrototypeFactory) MakeFork() Utensil {
+func (this *PrototypeFactory) MakeFork() Nameable {
 	obj := this.prototypeFork
 	return obj
 }
