@@ -3,6 +3,7 @@
 package abstractfactory
 
 import (
+	"fmt"
 	"testing"
 	"time"
 	"../../lib/asserts"
@@ -39,11 +40,15 @@ func TestAbstractFactory (t *testing.T) {
 	
 	asserts.Equals( t, "Boston Abstract Factory test",
 		"The Soup of the day Boston is QuahogChowder",
-		"The Soup of the day " + boston.GetFactoryLocation() + " is " + soupOfTheDay.GetSoupName())
+		fmt.Sprintf("The Soup of the day %s is %s" , 
+			boston.GetFactoryLocation() , 
+			soupOfTheDay.GetSoupName()) )
 
 	hono := NewHonoluluConcreteSoupFactory()
 	soupOfTheDay = makeSoupOfTheDay(hono)
 	asserts.Equals( t, "Honolulu Abstract Factory test",
 		"The Soup of the day Honolulu is PacificClamChowder",
-		"The Soup of the day " + hono.GetFactoryLocation() + " is " + soupOfTheDay.GetSoupName())
+		fmt.Sprintf("The Soup of the day %s is %s" , 
+			hono.GetFactoryLocation() , 
+			soupOfTheDay.GetSoupName()) )
 } 

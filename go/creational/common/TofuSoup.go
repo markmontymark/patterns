@@ -1,12 +1,16 @@
 package common
 
-func NewTofuSoup() *SoupImpl {
-   obj := new(SoupImpl)
-   obj.soupName = "Tofu Soup"
-   obj.soupIngredients = make([]string,0)
-	obj.soupIngredients = append( obj.soupIngredients, "1 Pound tofu")
-	obj.soupIngredients = append( obj.soupIngredients, "1 cup carrot juice")    
-	obj.soupIngredients = append( obj.soupIngredients, "1/4 cup spirolena")         
-	return obj
+type TofuSoup struct {
+	SoupImpl
+}
+
+func NewTofuSoup() *TofuSoup {
+	return &TofuSoup{ SoupImpl {
+   "Tofu Soup",
+   []string{
+	"1 Pound tofu",
+	"1 cup carrot juice",
+	"1/4 cup spirolena",
+	}}}
 }
 

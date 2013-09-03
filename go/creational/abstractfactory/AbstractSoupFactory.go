@@ -21,11 +21,11 @@ import "../common"
 
 type AbstractSoupFactory interface {
 	GetFactoryLocation() string
-   MakeChickenSoup() *common.SoupImpl 
-   MakeClamChowder() *common.SoupImpl
-   MakeFishChowder() *common.SoupImpl
-   MakeMinnestrone() *common.SoupImpl
-   MakePastaFazul() *common.SoupImpl
-   MakeTofuSoup() *common.SoupImpl
-   MakeVegetableSoup() *common.SoupImpl
+   MakeChickenSoup() common.Soup
+   MakeClamChowder() common.Soup
+   MakeFishChowder() common.Soup
+   MakeMinnestrone() common.Soup
+   MakePastaFazul() common.Soup
+   MakeTofuSoup() common.Soup
+   MakeVegetableSoup() common.Soup
 }

@@ -11,12 +11,11 @@ import (
 
 
 type HonoluluSoupBuffetBuilder struct { // implements SoupBuffetBuilder
-	soupBuffet *common.SoupBuffet
+	BaseSoupBuffetBuilder
 }
 
 func NewHonoluluSoupBuffetBuilder () *HonoluluSoupBuffetBuilder {
-	obj := new(HonoluluSoupBuffetBuilder)
-	return obj
+	return &HonoluluSoupBuffetBuilder{ BaseSoupBuffetBuilder{} }
 }
 
 func (this *HonoluluSoupBuffetBuilder) BuildSoupBuffet () {
@@ -31,33 +30,9 @@ func (this *HonoluluSoupBuffetBuilder) BuildSoupBuffet () {
 	this.BuildVegetableSoup()
 }
 
-func (this *HonoluluSoupBuffetBuilder) GetSoupBuffet () *common.SoupBuffet {
-	return this.soupBuffet
-}
-
-func (this *HonoluluSoupBuffetBuilder) GetSoupBuffetName () string {
-	return this.soupBuffet.GetSoupBuffetName()
-}
-
-func (this *HonoluluSoupBuffetBuilder) BuildChickenSoup() {
-   this.soupBuffet.SetChickenSoup( common.NewChickenSoup() )
-}
 func (this *HonoluluSoupBuffetBuilder) BuildClamChowder() {
    this.soupBuffet.SetClamChowder( common.NewHonoluluClamChowder() )
 }
 func (this *HonoluluSoupBuffetBuilder) BuildFishChowder() {
    this.soupBuffet.SetFishChowder( common.NewHonoluluFishChowder() )
 }
-func (this *HonoluluSoupBuffetBuilder) BuildMinnestrone() {
-   this.soupBuffet.SetMinnestrone( common.NewMinnestrone() )
-}
-func (this *HonoluluSoupBuffetBuilder) BuildPastaFazul() {
-   this.soupBuffet.SetPastaFazul( common.NewPastaFazul() )
-}
-func (this *HonoluluSoupBuffetBuilder) BuildTofuSoup() {
-   this.soupBuffet.SetTofuSoup( common.NewTofuSoup() )
-}
-func (this *HonoluluSoupBuffetBuilder) BuildVegetableSoup() {
-   this.soupBuffet.SetVegetableSoup(common.NewVegetableSoup() )
-}
-

@@ -3,20 +3,23 @@ package common
 
 // used by creational builder, and creational factorymethod
 
+import (
+	"fmt"
+)
+
 type SoupBuffet struct {
    soupBuffetName string
-   ChickenSoup *SoupImpl
-   ClamChowder *SoupImpl
-   FishChowder *SoupImpl
-   Minnestrone *SoupImpl
-   PastaFazul *SoupImpl
-   TofuSoup *SoupImpl
-   VegetableSoup *SoupImpl
+   ChickenSoup Soup
+   ClamChowder Soup
+   FishChowder Soup
+   Minnestrone Soup
+   PastaFazul Soup
+   TofuSoup Soup
+   VegetableSoup Soup
 }
 
 func NewSoupBuffet() *SoupBuffet {
-	obj := new(SoupBuffet)
-	return obj
+	return &SoupBuffet{}
 }
 
 func (this *SoupBuffet) GetSoupBuffetName() string {
@@ -27,41 +30,41 @@ func (this *SoupBuffet) SetSoupBuffetName(soupBuffetNameIn string) {
 	this.soupBuffetName = soupBuffetNameIn
 }
    
-func (this *SoupBuffet) SetChickenSoup(chickenSoupIn *SoupImpl) {
+func (this *SoupBuffet) SetChickenSoup(chickenSoupIn Soup) {
 	 this.ChickenSoup = chickenSoupIn
 }
 
-func (this *SoupBuffet) SetClamChowder(clamChowderIn *SoupImpl) {
+func (this *SoupBuffet) SetClamChowder(clamChowderIn Soup) {
 	 this.ClamChowder = clamChowderIn
 }
 
-func (this *SoupBuffet) SetFishChowder(fishChowderIn *SoupImpl) {
+func (this *SoupBuffet) SetFishChowder(fishChowderIn Soup) {
 	this.FishChowder = fishChowderIn
 }
 
-func (this *SoupBuffet) SetMinnestrone(minnestroneIn *SoupImpl) {
+func (this *SoupBuffet) SetMinnestrone(minnestroneIn Soup) {
 	this.Minnestrone = minnestroneIn
 }
 
-func (this *SoupBuffet) SetPastaFazul(pastaFazulIn *SoupImpl) {
+func (this *SoupBuffet) SetPastaFazul(pastaFazulIn Soup) {
 	 this.PastaFazul = pastaFazulIn
 }
 
-func (this *SoupBuffet) SetTofuSoup(tofuSoupIn *SoupImpl) {
+func (this *SoupBuffet) SetTofuSoup(tofuSoupIn Soup) {
 	 this.TofuSoup = tofuSoupIn
 }
 
-func (this *SoupBuffet) SetVegetableSoup(vegetableSoupIn *SoupImpl) {
+func (this *SoupBuffet) SetVegetableSoup(vegetableSoupIn Soup) {
 	 this.VegetableSoup = vegetableSoupIn
 }
    
 func (this *SoupBuffet) GetTodaysSoups() string {
-	return " Today's Soups!  "+
-		  " Chicken Soup: " +   this.ChickenSoup.GetSoupName() +
-        " Clam Chowder: " + 	this.ClamChowder.GetSoupName() +
-        " Fish Chowder: " + 	this.FishChowder.GetSoupName() +
-        " Minnestrone: " + 	this.Minnestrone.GetSoupName()+
-        " Pasta Fazul: " + 	this.PastaFazul.GetSoupName()+
-        " Tofu Soup: " + 		this.TofuSoup.GetSoupName()+
-        " Vegetable Soup: " + this.VegetableSoup.GetSoupName()
+	return fmt.Sprintf(" Today's Soups!   Chicken Soup: %s Clam Chowder: %s Fish Chowder: %s Minnestrone: %s Pasta Fazul: %s Tofu Soup: %s Vegetable Soup: %s" ,
+		  this.ChickenSoup.GetSoupName() ,
+        this.ClamChowder.GetSoupName() ,
+        this.FishChowder.GetSoupName() ,
+        this.Minnestrone.GetSoupName(),
+        this.PastaFazul.GetSoupName(),
+        this.TofuSoup.GetSoupName() ,
+        this.VegetableSoup.GetSoupName() )
 }        

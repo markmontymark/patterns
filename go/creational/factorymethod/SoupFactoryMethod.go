@@ -23,11 +23,11 @@ import (
 type SoupFactoryMethod interface {
     MakeSoupBuffet() *common.SoupBuffet 
     MakeBuffetName() string
-    MakeChickenSoup() *common.SoupImpl
-    MakeClamChowder() *common.SoupImpl
-    MakeFishChowder() *common.SoupImpl
-    MakeMinnestrone()*common.SoupImpl
-    MakePastaFazul() *common.SoupImpl
-    MakeTofuSoup() *common.SoupImpl
-    MakeVegetableSoup()*common.SoupImpl
+    MakeChickenSoup() common.Soup
+    MakeClamChowder() common.Soup
+    MakeFishChowder() common.Soup
+    MakeMinnestrone() common.Soup
+    MakePastaFazul()  common.Soup
+    MakeTofuSoup()     common.Soup
+    MakeVegetableSoup() common.Soup
 }
