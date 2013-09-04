@@ -9,9 +9,7 @@ type DvdCommandNameStarsOff struct {
 }
     
 func NewDvdCommandNameStarsOff(dvdNameIn *DvdName) *DvdCommandNameStarsOff {
-	_obj := new(DvdCommandNameStarsOff)
-	_obj.dvdName = dvdNameIn
-	return _obj
+	return &DvdCommandNameStarsOff{ dvdNameIn }
 }    
 
 func (this *DvdCommandNameStarsOff) execute () {

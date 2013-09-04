@@ -1,5 +1,5 @@
 package command
 
-type CommandAbstract interface {
+type Executable interface {
    execute() 
 }

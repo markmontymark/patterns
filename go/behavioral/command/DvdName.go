@@ -17,9 +17,7 @@ type DvdName struct {
 }
 
 func NewDvdName( titleName string ) *DvdName {
-	_obj := new(DvdName)
-	_obj.titleName = titleName
-	return _obj
+	return &DvdName{ titleName }
 }
     
 func (this *DvdName ) SetTitleName(titleNameIn string) {
