@@ -4,20 +4,17 @@ import (
 	"strings"
 )
 
-type DvdTitleActorExpression struct {
+type DvdTitleActorExpression struct { // implements Interpretable
    title string
 }
 
 func NewDvdTitleActorExpression(title string) *DvdTitleActorExpression {
-	obj := new(DvdTitleActorExpression)
-	obj.title = title
-	return obj
+	return &DvdTitleActorExpression{ title }
 }
     
 func (this *DvdTitleActorExpression) Interpret (ctx *DvdInterpreterContext) string {
 	if this.title == "" {
 		return ""
 	}
-   titlesAndActors := ctx.GetTitlesForActor( this.title )
-	return strings.Join(titlesAndActors,", ")
+	return strings.Join(ctx.GetTitlesForActor( this.title ),", ")
 }

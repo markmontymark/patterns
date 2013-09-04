@@ -6,11 +6,6 @@ import (
 	"../../lib/stringslice"
 )
 
-//type StringSlice []string
-//func (p StringSlice) Len() int { return len(p) }
-//func (p StringSlice) Less(i, j int) bool { return p[i] < p[j] }
-//func (p StringSlice) Swap(i, j int)      { p[i], p[j] = p[j], p[i] }
-
 type DvdInterpreterContext struct {
    titles map[string]string
    actors map[string]string
@@ -18,17 +13,17 @@ type DvdInterpreterContext struct {
 }
 
 func NewDvdInterpreterContext () *DvdInterpreterContext {
-	obj := new(DvdInterpreterContext)
-	obj.titles = make(map[string]string)
-	obj.actors = make(map[string]string)
-	obj.titlesAndActors = make([]*TitleAndActor,0)
-	return obj
+	return &DvdInterpreterContext{
+		make(map[string]string),
+		make(map[string]string),
+		make([]*TitleAndActor,0),
+	}
 }
 
 func (this *DvdInterpreterContext) AddTitleAndActor(ta *TitleAndActor) {
 	this.titlesAndActors = append(this.titlesAndActors,ta)
-	this.titles[ strings.ToLower(ta.GetTitle())] = ta.GetTitle()
-	this.actors[ strings.ToLower(ta.GetActor())] = ta.GetActor()
+	this.titles[ strings.ToLower(ta.Title)] = ta.Title
+	this.actors[ strings.ToLower(ta.Actor)] = ta.Actor
 }
    
 func (this *DvdInterpreterContext) GetAllTitles() []string {
@@ -59,8 +54,8 @@ func (this *DvdInterpreterContext) GetActorsForTitle(titleIn string) []string {
 		return retval
 	}
    for _,ta := range this.titlesAndActors {
-		if titleIn == ta.GetTitle() {
-			retval = append(retval, ta.GetActor())
+		if titleIn == ta.Title {
+			retval = append(retval, ta.Actor)
 		}
 	}
 	sort.Sort(stringslice.StringSlice(retval))
@@ -74,13 +69,11 @@ func (this *DvdInterpreterContext) GetTitlesForActor(actorIn string) []string {
 		return retval
 	}
    for _,ta := range this.titlesAndActors {
-		if actorIn == ta.GetActor() {
-			retval = append(retval,ta.GetTitle())
+		if actorIn == ta.Actor {
+			retval = append(retval,ta.Title)
 		}
 	}
 	sort.Sort(stringslice.StringSlice(retval))
 	return retval;
 }
-
-
 

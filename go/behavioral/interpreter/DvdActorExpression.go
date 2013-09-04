@@ -3,17 +3,12 @@ package interpreter
 import "strings"
 
 
-type DvdActorExpression struct {
-
-}
+type DvdActorExpression struct { } // implements Interpretable
 
 func NewDvdActorExpression () *DvdActorExpression {
-	obj := new(DvdActorExpression)
-	return obj
+	return &DvdActorExpression{}
 }
 
-
 func (this *DvdActorExpression) Interpret (ctx *DvdInterpreterContext) string {
-	actors := ctx.GetAllActors()
-	return strings.Join( actors, ", ")
+	return strings.Join( ctx.GetAllActors(), ", ")
 }

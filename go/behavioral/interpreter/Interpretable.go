@@ -3,6 +3,6 @@ package interpreter
 
 //DvdAbstractExpression - The Abstract Expression
 
-type DvdAbstractExpression interface {
+type Interpretable interface {
    Interpret( ctx *DvdInterpreterContext) string
 }

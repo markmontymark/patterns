@@ -3,18 +3,12 @@ package interpreter
 
 import "strings"
 
-
-type DvdTitleExpression struct {
-
-}
+type DvdTitleExpression struct {} // implements Interpretable
 
 func NewDvdTitleExpression () *DvdTitleExpression {
-	obj := new(DvdTitleExpression)
-	return obj
+	return &DvdTitleExpression{}
 }
 
-
 func (this *DvdTitleExpression) Interpret (ctx *DvdInterpreterContext) string {
-	titles := ctx.GetAllTitles()
-	return strings.Join( titles, ", ")
+	return strings.Join( ctx.GetAllTitles() , ", ")
 }

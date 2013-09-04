@@ -4,21 +4,11 @@ package interpreter
 //TitleAndActor - A Helper Class
 
 type TitleAndActor struct {
-    title string
-    actor string
+    Title string
+    Actor string
 }
 
 func NewTitleAndActor(title string , actor string) *TitleAndActor {
-	obj := new(TitleAndActor)
-	obj.actor = actor
-	obj.title = title
-	return obj
+	return &TitleAndActor{title,actor}
 }
 
-func (this *TitleAndActor) GetTitle () string {
-	return this.title
-}
-
-func (this *TitleAndActor) GetActor () string {
-	return this.actor
-}

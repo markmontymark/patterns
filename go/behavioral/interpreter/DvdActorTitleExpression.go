@@ -5,20 +5,17 @@ import (
 	"strings"
 )
 
-type DvdActorTitleExpression struct {
+type DvdActorTitleExpression struct { // implements Interpretable.go
    actor string
 }
 
 func NewDvdActorTitleExpression(actor string) *DvdActorTitleExpression {
-	obj := new(DvdActorTitleExpression)
-	obj.actor = actor
-	return obj
+	return &DvdActorTitleExpression{ actor }
 }
     
 func (this *DvdActorTitleExpression) Interpret (ctx *DvdInterpreterContext) string {
 	if this.actor == "" {
 		return ""
 	}
-   actors := ctx.GetActorsForTitle( this.actor )
-	return strings.Join(actors,", ")
+	return strings.Join(ctx.GetActorsForTitle( this.actor ),", ")
 }

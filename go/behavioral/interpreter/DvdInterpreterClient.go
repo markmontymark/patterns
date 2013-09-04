@@ -81,7 +81,7 @@ func parseExpr (exprStr string ) (string,string,string)  {
 	return mainQuery, subQuery, searchString
 }
 
-func makeExpr ( mainQuery string, subQuery string, searchString string) DvdAbstractExpression  {
+func makeExpr ( mainQuery string, subQuery string, searchString string) Interpretable {
 	switch mainQuery {
 	case "A" : 
 		switch subQuery {
@@ -101,6 +101,6 @@ func makeExpr ( mainQuery string, subQuery string, searchString string) DvdAbstr
 // show title | actor [for actor | title ]
 func (this *DvdInterpreterClient) Interpret (exprStr string) string {
 	mainQuery , subQuery , searchString := parseExpr(exprStr)
-	var expr DvdAbstractExpression = makeExpr( mainQuery, subQuery, searchString)
+	expr := makeExpr( mainQuery, subQuery, searchString)
 	return "Query Result: " +  expr.Interpret( this.ctx )
 }
