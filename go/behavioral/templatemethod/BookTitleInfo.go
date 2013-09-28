@@ -4,6 +4,7 @@ package templatemethod
 //BookTitleInfo - two of three concrete templates
 
 type BookTitleInfo struct {
+	TitleAndRegion
 	titleInfo *TitleInfoImpl
    author string
 }
