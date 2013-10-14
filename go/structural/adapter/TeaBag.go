@@ -18,9 +18,7 @@ type TeaBag struct {
 }
 
 func NewTeaBag() *TeaBag {
-	obj := new(TeaBag)
-	obj.TeaBagIsSteeped = false
-	return obj
+	return &TeaBag{ false }
 }
 
 func (this *TeaBag) SteepTeaInCup() {

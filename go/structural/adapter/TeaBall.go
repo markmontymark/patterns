@@ -9,10 +9,7 @@ type TeaBall struct {
 }
 
 func NewTeaBall( llf *LooseLeafTea ) *TeaBall {
-	obj := new(TeaBall)
-	obj.llf = llf
-	obj.TeaBagIsSteeped = llf.TeaIsSteeped
-	return obj
+	return &TeaBall{ llf, llf.TeaIsSteeped }
 }
 	
 func (this *TeaBall) SteepTeaInCup() {
