@@ -19,14 +19,23 @@ I didn't have vim syntax highlighting support for Scala, so did this to get it:
 
 ## Dev - resources
 
+### scala
+
 	http://docs.scala-lang.org/tutorials/tour/tour-of-scala.html
 
-## Patterns
+### sbt
 
-	So far, just copied from java/src and java/test and renamed file extension, nothing implemented yet
+	http://www.scala-sbt.org/release/docs/Getting-Started/index.html
 
-## Testing
+####	continuous compile
 
-	TODO
+	cd src/main/scala
+	$ sbt
+	>  ~ compile
+
+	## keep this term open and visible, then
+	## in another term, edit files in src/main/scala/
+	## on file save, watch sbt compile term re-compile sources
+
 
 
