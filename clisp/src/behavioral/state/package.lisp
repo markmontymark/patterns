@@ -1,7 +1,13 @@
-(defpackage :behavioral-state
-	(:use :common-lisp)
-	(load (compile-file "src/behavioral/state/dvdstatename.lisp"))
-	(load (compile-file "src/behavioral/state/dvdstatenameexclaim.lisp"))
-	(load (compile-file "src/behavioral/state/dvdstatenamestars.lisp"))
-	(load (compile-file "src/behavioral/state/dvdstatecontext.lisp"))
-)
+(defpackage :behavioral-state)
+
+(in-package :behavioral-state)
+
+(defclass DvdStateName () ())
+(defclass DvdStateNameExclaim () ())
+(defclass DvdStateNameStars () ())
+(defclass DvdStateContext () ())
+
+(load "src/behavioral/state/dvdstatename.lisp")
+(load "src/behavioral/state/dvdstatecontext.lisp")
+(load "src/behavioral/state/dvdstatenameexclaim.lisp")
+(load "src/behavioral/state/dvdstatenamestars.lisp")

@@ -1,4 +1,3 @@
-
 (defclass DvdStateNameStars (DvdStateName)
 	((starCount 
 		:initform 0
@@ -9,5 +8,5 @@
 	(incf (:starCount (:name c)))
 	(when (> (:starCount (:name c) ) 1)
 		(setf (:name c) (make-instance 'DvdStateNameExclaim)))
-	(substitute #\*  #\  (copy-seq s))
+	(substitute #\*  #\  (copy-seq s) :count (:starCount d))
 )
