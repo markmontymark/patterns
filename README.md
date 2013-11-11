@@ -177,12 +177,14 @@ Install Mono dev tools and use a Makefile (for now) for building and running tes
 	cd patterns/go/behavioral/chainofresponsibility
 	go test 
 
-My Go work needs much more work.  
 
 TODO:
 
-	porting all the other patterns, for now just have Behavioral - Chain Of Responsibility
-	need a test runner
+ - Lisp via clisp, in the works, need a test runner script, or use lisp-unit's TAP w/ prove
+ - Scala and Clojure patterns
+ - Fix Builder pattern to offer only getters (remove setters)
+ - Add Immutable object pattern (w/ better Builder implementation)
+	
 	
 
 
