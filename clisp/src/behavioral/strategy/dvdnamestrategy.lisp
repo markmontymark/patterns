@@ -1,4 +1,4 @@
 (defclass dvdname-strategy
 	()
 	())
-(defgeneric format-dvdname (dvdname-strategy string char))
+(defgeneric format-dvdname (dvdname-strategy name))

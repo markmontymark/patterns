@@ -4,7 +4,6 @@
 
 (defmethod format-dvdname 
    ((this dvdname-strategy-allcaps)
-	 (dvdname string)
-    (charIn char))
+	 (dvdname string))
 	(string-upcase dvdname))
 	

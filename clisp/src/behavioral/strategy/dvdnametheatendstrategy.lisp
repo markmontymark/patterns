@@ -7,15 +7,14 @@
 
 (defmethod format-dvdname
    ((this dvdname-strategy-the-at-end)
-    (dvdname string)
-    (charIn char)
+    (dvdname string) 
 	)
 	(cond 
-		((= 0 (search "The " dvdname))
-			(concatenate 'string (subseq dvdname 4) "The "))
-		((= 0 (search "THE " dvdname))
-			(concatenate 'string (subseq dvdname 4) "THE "))
-		((= 0 (search "the " dvdname))
-			(concatenate 'string (subseq dvdname 4) "the "))
+		((search "The " dvdname)
+			(concatenate 'string (subseq dvdname 4) ", The"))
+		((search "THE " dvdname)
+			(concatenate 'string (subseq dvdname 4) ", THE"))
+		((search "the " dvdname)
+			(concatenate 'string (subseq dvdname 4) ", the"))
       (t dvdname))
    )
