@@ -1,33 +1,25 @@
 (load "~/quicklisp/setup.lisp")
 (ql:quickload :lisp-unit)
-(load "src/behavioral/memento/package.lisp")
-(in-package :behavioral-memento)
+(load "src/behavioral/template_method/package.lisp")
+(in-package :behavioral-template-method)
 
-(lisp-unit:define-test behavioral-memento-test
+(lisp-unit:define-test behavioral-template_method-test
+	(let
+   ((bladeRunner (make-instance 'dvd-info :title "Blade Runner" :star "Harrison Ford" :region "1"))
+	 (electricSheep (make-instance 'book-info :title "Do Androids Dream of Electric Sheep?" :author "Phillip K. Dick"))
+	 (sheepRaider (make-instance 'game-info :title "Sheep Raider")))
 
+	(lisp-unit:assert-equal 
+		"Book: Do Androids Dream of Electric Sheep?, Author: Phillip K. Dick "
+		(process-title-info electricSheep))
 
- (let
-   (
+	(lisp-unit:assert-equal 
+		"Game: Sheep Raider "
+		(process-title-info sheepRaider))
 
-		TitleInfo bladeRunner = new DvdTitleInfo("Blade Runner", "Harrison Ford", '1'); 
-		TitleInfo electricSheep = new BookTitleInfo("Do Androids Dream of Electric Sheep?", "Phillip K. Dick");        
-		TitleInfo sheepRaider = new GameTitleInfo("Sheep Raider");
-
-		(lisp-unit:assert-equal "Testing bladeRunner" ,   
-			"DVD: Blade Runner, starring Harrison Ford, encoding region: 1",
-			bladeRunner.ProcessTitleInfo()
-		);
-		(lisp-unit:assert-equal "Testing electricSheep" , 
-			"Book: Do Androids Dream of Electric Sheep?, Author: Phillip K. Dick ",
-			electricSheep.ProcessTitleInfo()
-		);
-		(lisp-unit:assert-equal "Testing sheepRaider" ,
-			"Game: Sheep Raider ",
-			sheepRaider.ProcessTitleInfo()
-		);
-   (lisp-unit:assert-equal
-      ""
-      ())
+	(lisp-unit:assert-equal 
+		"DVD: Blade Runner, starring Harrison Ford, encoding region: 1"
+		(process-title-info bladeRunner))
    )
 )
 
