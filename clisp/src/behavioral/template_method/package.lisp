@@ -1,4 +1,8 @@
-(defpackage :behavioral-template-method)
+
+(defpackage :behavioral-template-method
+	;(:use :common-lisp)
+	(:export :dvd-info :book-info :game-info :process-title-info)
+)
 
 (in-package :behavioral-template-method)
 

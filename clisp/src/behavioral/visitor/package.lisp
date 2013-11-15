@@ -1,4 +1,7 @@
-(defpackage :behavioral-visitor)
+(defpackage :behavioral-visitor
+	(:use :common-lisp)
+	(:export :dvd-info :book-info :game-info :title-blurb-visitor-long :title-blurb-visitor-short :accept))
+
 
 (in-package :behavioral-visitor)
 

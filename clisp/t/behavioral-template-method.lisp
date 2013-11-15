@@ -1,13 +1,12 @@
-(load "~/quicklisp/setup.lisp")
-(ql:quickload :lisp-unit)
+
 (load "src/behavioral/template_method/package.lisp")
 (in-package :behavioral-template-method)
 
 (lisp-unit:define-test behavioral-template_method-test
 	(let
-   ((bladeRunner (make-instance 'dvd-info :title "Blade Runner" :star "Harrison Ford" :region "1"))
+   ((bladeRunner   (make-instance 'dvd-info  :title "Blade Runner" :star "Harrison Ford" :region "1"))
 	 (electricSheep (make-instance 'book-info :title "Do Androids Dream of Electric Sheep?" :author "Phillip K. Dick"))
-	 (sheepRaider (make-instance 'game-info :title "Sheep Raider")))
+	 (sheepRaider   (make-instance 'game-info :title "Sheep Raider")))
 
 	(lisp-unit:assert-equal 
 		"Book: Do Androids Dream of Electric Sheep?, Author: Phillip K. Dick "
@@ -23,7 +22,5 @@
    )
 )
 
-(setq lisp-unit:*print-failures* t)
-(setq lisp-unit:*print-errors* t)
-(lisp-unit:run-tests)
 
+(lisp-unit:write-tap (lisp-unit:run-tests :all))

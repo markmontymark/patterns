@@ -1,5 +1,3 @@
-(load "~/quicklisp/setup.lisp")
-(ql:quickload :lisp-unit)
 (load "src/behavioral/chain_of_responsibility/package.lisp")
 (in-package :behavioral-chain-of-responsibility)
 
@@ -28,6 +26,5 @@
    )
 )
 
-(setq lisp-unit:*print-failures* t)
-(setq lisp-unit:*print-errors* t)
-(lisp-unit:run-tests)
+(lisp-unit:write-tap (lisp-unit:run-tests :all))
+

@@ -1,5 +1,3 @@
-(load "~/quicklisp/setup.lisp")
-(ql:quickload :lisp-unit)
 (load "src/behavioral/command/package.lisp")
 (in-package :behavioral-command)
 
@@ -29,7 +27,4 @@
    )
 )
 
-(setq lisp-unit:*print-failures* t)
-(setq lisp-unit:*print-errors* t)
-(lisp-unit:run-tests)
-
+(lisp-unit:write-tap (lisp-unit:run-tests :all))
