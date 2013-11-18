@@ -1,15 +1,7 @@
-package Structural.Proxy;
+(defclass pot-of-tea-proxy 
+	() 
+	())
 
-
-//PotOfTeaProxy.java - the Proxy
-
-public class PotOfTeaProxy implements PotOfTeaInterface {  
-   PotOfTea potOfTea;
-    
-   public PotOfTeaProxy() {}
-   
-   public String pourTea() {
-       potOfTea = new PotOfTea();
-       return potOfTea.pourTea();
-   }
-}
+(defmethod pour-tea
+	((this pot-of-tea-proxy))
+	(pour-tea (make-instance 'pot-of-tea)))
