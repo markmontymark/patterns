@@ -3,17 +3,17 @@
 
 (lisp-unit:define-test structural-adapter-test
    (let
-	((teacup (make-instance 'teacup))
-	 (teabag (make-instance 'teabag))
-	 (looseleaftea (make-instance 'looseleaftea))
-	 (teaball))
-	(steep-tea-bag teacup teabag)
-	(lisp-unit:assert-equal t (:teabag-is-steeped teaBag))
+	((tc (make-instance 'teacup))
+	 (tb (make-instance 'teabag))
+	 (llt (make-instance 'looseleaftea))
+	 (tball))
+	(steep-tea-bag tc tb)
+	(lisp-unit:assert-equal t (:teabag-is-steeped tb))
 
-	(setf teaball (make-instance 'teaball :looseleaftea looseLeafTea))
-	(steep-tea-bag teacup teaball)
+	(setf tball (make-instance 'teaball :looseleaftea llt))
+	(steep-tea-bag tc tball)
 
-	(lisp-unit:assert-equal t (:teabag-is-steeped teaball))
+	(lisp-unit:assert-equal t (:teabag-is-steeped tball))
 ))
 (lisp-unit:write-tap (lisp-unit:run-tests :all))
 

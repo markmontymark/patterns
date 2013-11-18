@@ -1,10 +1,8 @@
-package Structural.Adapter;
+(defclass teacup 
+	()
+	())
 
-
-//TeaCup.java - the class that accepts class TeaBag in it's steepTeaBag() method, and so is being adapted for.
-
-public class TeaCup {  
-   public void steepTeaBag(TeaBag teaBag) {
-       teaBag.steepTeaInCup();
-   }
-}
+(defmethod steep-tea-bag 
+	((this teacup)
+	 (tb teabag))
+	(steep-tea-in-cup tb))

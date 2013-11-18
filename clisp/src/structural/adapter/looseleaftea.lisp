@@ -1,17 +1,7 @@
-package Structural.Adapter;
-
-
-//LooseLeafTea.java - the adaptee
-
-public class LooseLeafTea {  
-   public boolean teaIsSteeped; 
+(defclass looseleaftea
+	()
+	((tea-is-steeped :accessor :tea-is-steeped :initarg :tea-is-steeped :initform nil)))
     
-   public LooseLeafTea() {
-       teaIsSteeped = false;
-   }
-   
-   public void steepTea() {
-       teaIsSteeped = true;
-       System.out.println("tea is steeping");
-   }
-}
+(defmethod steep-tea
+	((this looseleaftea))
+	(setf (:tea-is-steeped this) t))

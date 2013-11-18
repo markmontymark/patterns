@@ -1,18 +1,13 @@
-package Structural.Adapter;
+(defclass teaball
+	(teabag)
+	((looseleaftea :accessor :looseleaftea :initarg :looseleaftea)))
+
+(defmethod initialize-instance :after ((this teaball) &key )
+	(setf (slot-value this 'teabag-is-steeped) (:tea-is-steeped (:looseleaftea this))))
 
 
-//TeaBall.java - the adapter
-
-public class TeaBall extends TeaBag {  
-   public LooseLeafTea looseLeafTea;
+(defmethod steep-tea-in-cup
+	((this teaball))
+	(steep-tea (:looseleaftea this))
+	(setf (:teabag-is-steeped this) t))
    
-   public TeaBall(LooseLeafTea looseLeafTeaIn) {
-       looseLeafTea = looseLeafTeaIn;
-       teaBagIsSteeped = looseLeafTea.teaIsSteeped;
-   }
-    
-   public void steepTeaInCup() {
-       looseLeafTea.steepTea();
-       teaBagIsSteeped = true;
-   }
-}
