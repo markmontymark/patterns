@@ -1,16 +1,6 @@
-package Structural.Flyweight;
 
 
-//TeaOrderContext.java - the Context
+(defclass teaordercontext
+	()
+	((table :accessor :table :initarg :table)))
 
-public class TeaOrderContext {  
-   int tableNumber; 
-   
-   public TeaOrderContext(int tableNumber) {
-       this.tableNumber = tableNumber;
-   }
-   
-   public int getTable() {
-       return this.tableNumber;
-   }
-}

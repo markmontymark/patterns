@@ -1,23 +1,36 @@
 (load "src/structural/flyweight/package.lisp")
 (in-package :structural-flyweight)
 
-(defun take-orders
-	((factory tea-flavor-factory)
-	 (flavor string) 
-	 (table-no number))
-	(incf orders-made)
-   (setf (cdr (last flavors)) (cons (get-teaflavor factory flavor) nil))
-   (setf (cdr (last tables))  (cons (make-instance 'tea-order-context :table table-no) nil)))
 
 
 (lisp-unit:define-test structural-flyweight-test
    (let
    ((orders-made 0)
-	 (flavors (list))
-	 (tables  (list))
-	 (factory (make-instance 'tea-flavor-factory)))
+	 (flavors )
+	 (tables  )
+	 (factory (make-instance 'teaflavorfactory)))
 
-	((take-orders "chai"  2)    
+	(defun take-orders (flavor table-no)
+		(let
+			((latest-flavor (get-tea-flavor factory flavor))
+			 (latest-ctx (make-instance 'teaordercontext :table table-no))
+			)
+			(incf orders-made)
+			(if flavors
+				(push (car latest-flavor) (cdr (last flavors)))
+				(setf flavors latest-flavor))
+			(if tables
+				(push latest-ctx (cdr (last tables)))
+				(setf tables (list latest-ctx)))
+	))
+
+	(defun serve-em (flavors tables)
+		(when (and flavors tables) 
+			(serve-tea (car flavors) (car tables))
+			(serve-em (cdr flavors) (cdr tables))
+		))
+
+	(take-orders "chai"  2)
 	(take-orders "chai"  2)
 	(take-orders "camomile"  1)
 	(take-orders "camomile"  1)
@@ -32,12 +45,11 @@
 	(take-orders "camomile"  552)
 	(take-orders "chai"  121)
 	(take-orders "earl grey"  121)
-	
-	(loop for i in 0 to orders-made do
-		(serve-tea (subseq flavors i (+ i 1)) (subseq tables i (+ i 1))))
 
-	(lisp-unit:assert-equal 3 (teas-made factory))
+	(serve-em flavors tables)	
 
-)))
+	(lisp-unit:assert-equal 3 (:teas-made factory))
+
+))
 (lisp-unit:write-tap (lisp-unit:run-tests :all))
 

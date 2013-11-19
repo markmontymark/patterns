@@ -1,24 +1,21 @@
-package Structural.Flyweight;
+(defclass teaflavorfactory 
+	()
+	((teas-made :accessor :teas-made :initform 0)
+	 (flavors :accessor :flavors :initform ())))
 
+(defmethod get-tea-flavor
+	((this teaflavorfactory)
+	 (flavor-to-get string))
 
-//TeaFlavorFactory.java - the Factory
-
-public class TeaFlavorFactory {  
-   TeaFlavor[] flavors = new TeaFlavor[10];
-     //no more than 10 flavors can be made
-   int teasMade = 0;
-   
-   public TeaFlavor getTeaFlavor(String flavorToGet) {
-       if (teasMade > 0) {
-           for (int i = 0; i < teasMade; i++) {
-               if (flavorToGet.equals((flavors[i]).getFlavor())) {
-                   return flavors[i];
-               }
-           }
-       }
-       flavors[teasMade] = new TeaFlavor(flavorToGet);
-       return flavors[teasMade++];
-   }
-   
-   public int getTotalTeaFlavorsMade() {return teasMade;}
-}
+	(let 
+		((found-flavor (find-if #'(lambda(x)(and x (string-equal (:flavor x) flavor-to-get))) (:flavors this))))
+		(cond 
+			(found-flavor (list found-flavor))
+			(t 
+				;(setf (cdr (last (:flavors this))) (cons (make-instance 'teaflavor :flavor flavor-to-get) nil))
+				(setf found-flavor (make-instance 'teaflavor :flavor flavor-to-get))
+				(if (:flavors this)
+					(push found-flavor (cdr (last (:flavors this))))
+					(setf (:flavors this) (list found-flavor)))
+				(incf (:teas-made this))
+				(last (:flavors this))))))
