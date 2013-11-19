@@ -1,15 +1,7 @@
-package Structural.Decorator;
+(defclass tealeaves 
+	(tea) ())
 
-
-//TeaLeaves.java - the decoratee
-
-public class TeaLeaves extends Tea {  
-   public TeaLeaves() {
-       teaIsSteeped = false;
-   }
-   
-   public String steepTea() {
-       teaIsSteeped = true;
-       return ("tea leaves are steeping");
-   }
-}
+(defmethod steep-tea 
+	((this tealeaves))
+	(setf (:tea-is-steeped this) t)
+	"tea leaves are steeping")
