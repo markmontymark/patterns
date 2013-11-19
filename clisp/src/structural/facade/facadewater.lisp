@@ -1,25 +1,8 @@
-package Structural.Facade;
-
-
-//FacadeWater.java - two of three classes the facade calls
-
-public class FacadeWater {  
-   boolean waterIsBoiling; 
-    
-   public FacadeWater() {
-       setWaterIsBoiling(false);
-       System.out.println("behold the wonderous water");       
-   }
+(defclass facade-water
+	()
+	((water-is-boiling :accessor :water-is-boiling)))
    
-   public void boilFacadeWater() {
-       setWaterIsBoiling(true);
-       System.out.println("water is boiling");
-   }
+(defmethod boil-water
+	((this facade-water))
+	(setf (:water-is-boiling this) t)) 
    
-   public void setWaterIsBoiling(boolean isWaterBoiling) {
-       waterIsBoiling = isWaterBoiling;
-   }
-   public boolean getWaterIsBoiling() {
-       return waterIsBoiling;
-   }
-}

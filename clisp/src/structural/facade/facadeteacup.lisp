@@ -1,70 +1,38 @@
-package Structural.Facade;
+(defclass facade-tea-cup 
+	()
+	((tea-bag-is-steeped :accessor :tea-bag-is-steeped :initarg :tea-bag-is-steeped :initform nil)
+	 (wah-wah :accessor :wah-wah :initarg :wah-wah)
+	 (tb :accessor :tea-bag :initarg :tea-bag)))
 
+(defmethod steep-tea-bag
+	((this facade-tea-cup))
+	(cond
+		((and (:tea-bag this)
+		 (and (:wah-wah this)
+		 (and (:water-is-boiling (:wah-wah this)))))
+		 (setf (:tea-bag-is-steeped this) t))
+		(t 
+         (setf (:tea-bag-is-steeped) nil))))
 
-//FacadeTeaCup.java - one of three classes the facade calls
+(defmethod add-tea-bag 
+	((this facade-tea-cup)
+	 (tb facade-tea-bag))
+	(setf (:tea-bag this) tb))
 
-public class FacadeTeaCup {  
-   boolean teaBagIsSteeped; 
-   FacadeWater facadeWater;
-   FacadeTeaBag facadeTeaBag;
-    
-   public FacadeTeaCup() {
-       setTeaBagIsSteeped(false);
-       System.out.println("behold the beautiful new tea cup");
-   }    
+(defmethod add-water
+	((this facade-tea-cup)
+	 (w facade-water))
+	(setf (:wah-wah this) w))
    
-   public void setTeaBagIsSteeped(boolean isTeaBagSteeped) {
-       teaBagIsSteeped = isTeaBagSteeped;
-   }
-   public boolean getTeaBagIsSteeped() {
-       return teaBagIsSteeped;
-   }
-    
-   public void addFacadeTeaBag(FacadeTeaBag facadeTeaBagIn) {
-       facadeTeaBag = facadeTeaBagIn;
-       System.out.println("the tea bag is in the tea cup");
-   }
-   
-   public void addFacadeWater(FacadeWater facadeWaterIn) {
-       facadeWater = facadeWaterIn;
-       System.out.println("the water is in the tea cup");  
-   }   
-   
-   public void steepTeaBag() {
-       if ( (facadeTeaBag != null) && 
-             ( (facadeWater != null) && 
-               (facadeWater.getWaterIsBoiling()) )
-          ) {
-          System.out.println("the tea is steeping in the cup");
-          setTeaBagIsSteeped(true);
-       } else {
-          System.out.println("the tea is not steeping in the cup");
-          setTeaBagIsSteeped(false);
-       }           
-   }
-   
-   public String toString() {
-       if (this.getTeaBagIsSteeped()) {
-           return ("A nice cuppa tea!");
-       } else {
-           String tempString = new String("A cup with ");
-           if (facadeWater != null) {
-                if (facadeWater.getWaterIsBoiling()) {
-                    tempString = (tempString + "boiling water ");
-                } else {
-                    tempString = (tempString + "cold water ");
-                }
-           } else {
-                tempString = (tempString + "no water ");
-           }
- 
-           if (facadeTeaBag != null) {
-                tempString = (tempString + "and a tea bag");
-           } else {
-                tempString = (tempString + "and no tea bag");
-           } 
-           return tempString;
-       }
-                        
-   }
-}
+(defmethod to-string
+	((this facade-tea-cup))
+	(cond
+		((:tea-bag-is-steeped this)
+			"A nice cuppa tea!")
+		(t (concatenate 'string
+           "A cup with "
+				(cond
+					((:wah-wah this)
+						(if (water-is-boiling (:wah-wah this)) "boiling water " "cold water "))
+					(t "no water "))
+				(if (:tea-bag this) "and a tea bag" "and no tea bag")))))
