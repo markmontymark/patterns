@@ -1,49 +1,25 @@
-package Structural.Composite;
+(defclass tin-of-tea-bags 
+	(teabags) ())
 
+(defmethod initialize-instance :after ((this tin-of-tea-bags) &key)
+	(setf (slot-value this 'teabaglist) ()))
 
-//TinOfTeaBags.java - one composite extension - the "node"
+(defmethod count-teabags
+	((this tin-of-tea-bags))
+	(let
+		((n 0))
+		(dolist (tb (:teabaglist this))
+         (setf n (+ n (count-teabags tb))))
+		n))
+   
+(defmethod add 
+	((this tin-of-tea-bags)
+	 (tb teabags))
+	(setf (:parent this) tb)
+	(push tb (:teabaglist this)))
+	
+(defmethod drop
+	((this tin-of-tea-bags)
+	 (tb teabags))
+	(setf (:teabaglist this) (remove tb (:teabaglist this))))
 
-import java.util.LinkedList;
-import java.util.ListIterator;
-
-public class TinOfTeaBags extends TeaBags {  
-   public TinOfTeaBags(String nameIn) {
-       teaBagList = new LinkedList();
-       this.setName(nameIn);
-   }
-   
-   public int countTeaBags() {
-       int totalTeaBags = 0;
-       ListIterator listIterator = this.createListIterator();
-       TeaBags tempTeaBags;
-       while (listIterator.hasNext()) {
-           tempTeaBags = (TeaBags)listIterator.next();
-           totalTeaBags += tempTeaBags.countTeaBags();
-       }
-       return totalTeaBags;
-   }
-   
-   public boolean add(TeaBags teaBagsToAdd) {
-       teaBagsToAdd.setParent(this);
-       return teaBagList.add(teaBagsToAdd);
-   }
-   
-   public boolean remove(TeaBags teaBagsToRemove) {
-       ListIterator listIterator = 
-           this.createListIterator();
-       TeaBags tempTeaBags;
-       while (listIterator.hasNext()) {
-           tempTeaBags = (TeaBags)listIterator.next();
-           if (tempTeaBags == teaBagsToRemove) {
-               listIterator.remove();
-               return true;
-           }
-       }
-       return false;
-   }
-   
-   public ListIterator createListIterator() {
-       ListIterator listIterator = teaBagList.listIterator();
-       return listIterator;
-   }
-}
