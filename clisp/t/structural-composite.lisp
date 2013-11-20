@@ -16,13 +16,13 @@
 
 	(lisp-unit:assert-equal 1 (count-teabags small-tin-of-tea-bags))
 
-   (add a-tin-of-tea-bags small-tin-of-teabags)
+   (add a-tin-of-tea-bags small-tin-of-tea-bags)
 
 	(lisp-unit:assert-equal 3 (count-teabags a-tin-of-tea-bags))
 
 	(drop a-tin-of-tea-bags teabag-2)
 
-	(lisp-unit:assert-equal 3 (count-teabags a-tin-of-tea-bags))
+	(lisp-unit:assert-equal 2 (count-teabags a-tin-of-tea-bags))
 	))
 
 (lisp-unit:write-tap (lisp-unit:run-tests :all))
