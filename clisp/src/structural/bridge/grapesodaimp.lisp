@@ -1,10 +1,6 @@
-package Structural.Bridge;
+(defclass grapesodaimp
+	(sodaflavor) ())
 
-
-//GrapeSodaImp.java - two of three classes extending the Implementation Base Class
-
-public class GrapeSodaImp extends SodaImp {
-   public String pourSodaImp() {
-       return "Delicious Grape Soda!";
-   }
-}
+(defmethod pour
+	((this grapesodaimp))
+	"Delicious Grape Soda!")

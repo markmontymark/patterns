@@ -1,22 +1,24 @@
-package Structural.Bridge;
 
-//// Original copy of this content taken from http://www.fluffycat.com/Java-Design-Patterns/ in 2010
-//// Original Author: Larry Truett
-//// Privacy Policy at http://www.fluffycat.com/Privacy-Policy/
-//Java Design Patterns Bridge
-//Bridge Overview
-//An abstraction and implementation are in different class hierarchies.
-//Soda.java - the Abstract Base Class
+(defun range (start end)
+	(loop for i from start below end collect i))
 
-public abstract class Soda {  
-   SodaImp sodaImp; 
+(defclass sodasize
+	()
+	((imp :accessor :imp :initarg :imp)
+	 (n :accessor :n)))
+
+(defgeneric pour-soda (sodasize sodaflavor))
+
+(defmethod set-soda-imp 
+	((this sodasize))
+	(setf (:imp this) (get-the-soda-imp soda-imp-singleton)))
+
+(defmethod get-soda-imp
+	((this sodasize))
+	(:imp this))
+
+(defmethod pour-soda
+   ((this sodasize)
+    (flavor sodaflavor))
+   (format nil "~{~A~^~}" (map 'list #'(lambda (x)(concatenate 'string "...glug..." (pour flavor))) (range 0 (:n this)))))
    
-   public void setSodaImp() {
-       this.sodaImp = SodaImpSingleton.getTheSodaImp();
-   }
-   public SodaImp getSodaImp() {
-       return this.sodaImp;
-   }
-   
-   public abstract String pourSoda();
-}

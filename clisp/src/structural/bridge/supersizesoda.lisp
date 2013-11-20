@@ -1,23 +1,13 @@
-//SuperSizeSoda.java - two of two classes extending the Abstract
+
+(defclass supersizesoda 
+	(sodasize)
+	())
+
+(defmethod initialize-instance :after ((this supersizesoda) &key)
+   (setf (slot-value this 'n) 5))
 
 
-package Structural.Bridge;
-
-import java.util.*;
-import org.apache.commons.lang3.StringUtils;
-
-public class SuperSizeSoda extends Soda {  
-   public SuperSizeSoda() {
-       setSodaImp();
-   }
-   
-   public String pourSoda() {
-       SodaImp sodaImp = this.getSodaImp();
-		List retval = new ArrayList();
-       for (int i = 0; i < 5; i++) {
-           retval.add("...glug...");
-           retval.add(sodaImp.pourSodaImp());
-       }
-       return StringUtils.join(retval, " ");
-   }
-}
+;(defmethod pour-soda
+	;((this supersizesoda)
+	 ;(flavor sodaflavor))
+	;(format nil "~A~^ ~}~" map 'list #'(lambda ()(list "...glug..." (pour-soda flavor)))/)

@@ -1,10 +1,7 @@
-package Structural.Bridge;
+       
+(defclass orangesodaimp
+	(sodaflavor) ())
 
-
-//OrangeSodaImp.java - three of three classes extending the Implementation Base Class
-
-public class OrangeSodaImp extends SodaImp {  
-   public String pourSodaImp() {
-       return "Citrusy Orange Soda!";
-   }
-}
+(defmethod pour
+	((this orangesodaimp))
+	"Citrusy Orange Soda!")

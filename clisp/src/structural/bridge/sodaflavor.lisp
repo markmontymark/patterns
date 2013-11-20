@@ -1,8 +1,5 @@
-package Structural.Bridge;
+(defclass sodaflavor
+	()
+	())
 
-
-//SodaImp.java - the Implementation Base Class
-
-public abstract class SodaImp {  
-   public abstract String pourSodaImp();
-}
+(defgeneric pour (sodaflavor))
