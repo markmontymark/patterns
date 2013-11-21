@@ -1,5 +1,11 @@
-defpackage :creational-)
+(defpackage :creational-prototype)
 
-(in-package :creational-)
+(in-package :creational-prototype)
 
-(load "src/
+(load "src/creational/prototype/utensil.lisp")
+(load "src/creational/prototype/saladfork.lisp")
+(load "src/creational/prototype/saladspoon.lisp")
+(load "src/creational/prototype/soupspoon.lisp")
+(load "src/creational/prototype/prototypefactory.lisp")
+
+

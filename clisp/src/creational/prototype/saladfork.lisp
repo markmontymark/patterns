@@ -1,10 +1,5 @@
-package Creational.Prototype;
+(defclass saladfork 
+	(utensil) ())
 
-
-//SaladFork.java - The Concrete Prototype extending the AbstractFork Prototype
-
-public class SaladFork extends AbstractFork {  
-   public SaladFork() {
-       setForkName("Salad Fork");
-   }
-}
+(defmethod initialize-instance :after ((this saladfork) &key)
+	(setf (slot-value this 'name) "Salad Fork"))

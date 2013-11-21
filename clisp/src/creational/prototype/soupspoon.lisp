@@ -1,10 +1,5 @@
-package Creational.Prototype;
+(defclass soupspoon 
+	(utensil) ())
 
-
-//SoupSpoon.java - One of Two Concrete Prototypes extending the AbstractSpoon Prototype
-
-public class SoupSpoon extends AbstractSpoon {  
-   public SoupSpoon() {
-       setSpoonName("Soup Spoon");
-   }
-}
+(defmethod initialize-instance :after ((this soupspoon) &key)
+	(setf (slot-value this 'name) "Soup Spoon"))
