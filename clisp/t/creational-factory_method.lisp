@@ -1,3 +1,4 @@
+(load "src/common/package.lisp")
 (load "src/creational/factory_method/package.lisp")
 (in-package :creational-factory-method)
 
@@ -16,25 +17,21 @@
 
 (lisp-unit:define-test creational-factory-method-test
    (let
-		((plain-soup-factory (make-instance 'soupfactorymethod))
-		 (boston-soup-factory (make-instance 'bostonsoupfactorymethod))
-		 (honolu-soup-factory (make-instance 'honolulusoupfactorymethod))
-		 (sb))
+		((plain-soupbuffet  (init-soupbuffet (make-instance 'soupfactorymethod)))
+		 (boston-soupbuffet (init-soupbuffet (make-instance 'bostonsoupfactorymethod)))
+		 (honolu-soupbuffet (init-soupbuffet (make-instance 'honolulusoupfactorymethod))))
 
-		(setf sb (make-soupbuffet plain-soup-factory))
 		(lisp-unit:assert-equal 
-			"At the  Soup Buffet Today's Soups!   Chicken Soup: ChickenSoup Clam Chowder: ClanChowder Fish Chowder: FishChowder Minnestrone: Minnestrone Pasta Fazul: Pasta Fazul Tofu Soup: Tofu Soup Vegetable Soup: Vegetable Soup"
-			(concatenate 'string "At the  " (:name sb) (todays-soups sb)))
+			"At the  Soup Buffet Today's Soups!   Chicken Soup: ChickenSoup Clam Chowder: ClamChowder Fish Chowder: FishChowder Minnestrone: Minnestrone Pasta Fazul: Pasta Fazul Tofu Soup: Tofu Soup Vegetable Soup: Vegetable Soup"
+			(concatenate 'string "At the  " (:name plain-soupbuffet) (patterns-common:todays-soups plain-soupbuffet)))
 
-		(setf sb (make-soupbuffet boston-soup-factory))
 		(lisp-unit:assert-equal 
 			"At the  Boston Soup Buffet Today's Soups!   Chicken Soup: ChickenSoup Clam Chowder: QuahogChowder Fish Chowder: ScrodFishChowder Minnestrone: Minnestrone Pasta Fazul: Pasta Fazul Tofu Soup: Tofu Soup Vegetable Soup: Vegetable Soup"
-			(concatenate 'string "At the  " (:name sb) (todays-soups sb)))
+			(concatenate 'string "At the  " (:name boston-soupbuffet) (patterns-common:todays-soups boston-soupbuffet)))
 
-		(setf sb (make-soupbuffet honolu-soup-factory))
 		(lisp-unit:assert-equal 
 			"At the  Honolulu Soup Buffet Today's Soups!   Chicken Soup: ChickenSoup Clam Chowder: PacificClamChowder Fish Chowder: OpakapakaFishChowder Minnestrone: Minnestrone Pasta Fazul: Pasta Fazul Tofu Soup: Tofu Soup Vegetable Soup: Vegetable Soup"
-			(concatenate 'string "At the  " (:name sb) (todays-soups sb)))
+			(concatenate 'string "At the  " (:name honolu-soupbuffet) (patterns-common:todays-soups honolu-soupbuffet)))
 	))
 
 (lisp-unit:write-tap (lisp-unit:run-tests :all))

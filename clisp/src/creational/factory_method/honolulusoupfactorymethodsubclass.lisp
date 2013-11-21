@@ -1,18 +1,17 @@
-//HonoluluSoupFactoryMethodSubclass.java - Two of Two Subclass Factory Methods
+
+(defclass honolulusoupfactorymethod 
+	(soupfactorymethod) ())
 
 
-package Creational.Factory_Method;
+(defmethod make-buffetname
+	((this honolulusoupfactorymethod))
+	"Honolulu Soup Buffet")
 
-import common.*;
-
-public class HonoluluSoupFactoryMethodSubclass extends SoupFactoryMethod {
-    public String makeBuffetName() {
-        return "Honolulu Soup Buffet";
-    }
-    public ClamChowder makeClamChowder() {
-        return new HonoluluClamChowder();
-    }
-    public FishChowder makeFishChowder() {
-        return new HonoluluFishChowder();
-    }
-}
+(defmethod make-clamchowder
+	((this honolulusoupfactorymethod))
+	(make-instance 'patterns-common:honoluluclamchowder))
+	
+(defmethod make-fishchowder
+	((this honolulusoupfactorymethod))
+	(make-instance 'patterns-common:honolulufishchowder))
+	

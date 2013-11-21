@@ -1,17 +1,16 @@
-//BostonSoupFactoryMethodSubclass.java - One of Two Subclass Factory Methods
+(defclass bostonsoupfactorymethod 
+	(soupfactorymethod) ())
 
-package Creational.Factory_Method;
 
-import common.*;
+(defmethod make-buffetname
+	((this bostonsoupfactorymethod))
+	"Boston Soup Buffet")
 
-public class BostonSoupFactoryMethodSubclass extends SoupFactoryMethod {
-    public String makeBuffetName() {
-        return "Boston Soup Buffet";
-    }
-    public ClamChowder makeClamChowder() {
-        return new BostonClamChowder();
-    }
-    public FishChowder makeFishChowder() {
-        return new BostonFishChowder();
-    }
-}
+(defmethod make-clamchowder
+	((this bostonsoupfactorymethod))
+	(make-instance 'patterns-common:bostonclamchowder))
+	
+(defmethod make-fishchowder
+	((this bostonsoupfactorymethod))
+	(make-instance 'patterns-common:bostonfishchowder))
+	
