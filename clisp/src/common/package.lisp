@@ -1,4 +1,18 @@
-(defpackage :patterns-common)
+(defpackage :patterns-common
+	(:export 
+		:bostonclamchowder
+		:bostonfishchowder
+		:chickensoup
+		:clamchowder
+		:fishchowder
+		:honoluluclamchowder
+		:honolulufishchowder
+		:minnestrone
+		:pastafazul
+		:tofusoup
+		:vegetablesoup
+	)
+)
 
 (in-package :patterns-common)
 
