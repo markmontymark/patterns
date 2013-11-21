@@ -11,6 +11,8 @@
 		:pastafazul
 		:tofusoup
 		:vegetablesoup
+		:soupbuffet
+		:todays-soups
 	)
 )
 
@@ -28,5 +30,6 @@
 (load "src/common/soup.lisp")
 (load "src/common/tofusoup.lisp")
 (load "src/common/vegetablesoup.lisp")
+(load "src/common/soupbuffet.lisp")
 
 

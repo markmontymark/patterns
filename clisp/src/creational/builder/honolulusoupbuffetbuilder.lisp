@@ -1,18 +1,16 @@
-//HonoluluSoupBuffetBuilder.java - Two of Two Builder Subclasses
 
-package Creational.Builder;
+(defclass honolulusoupbuffetbuilder
+	(soupbuffetbuilder)
+	())
 
-import common.*;
+(defmethod build-clamchowder 
+	((this honolulusoupbuffetbuilder))
+	(setf (:clamchowder (:soupbuffet this)) (make-instance 'patterns-common:honoluluclamchowder)))
 
-public class HonoluluSoupBuffetBuilder extends SoupBuffetBuilder {
-    public void buildClamChowder() {
-        soupBuffet.clamChowder = new HonoluluClamChowder();
-    }
-    public void buildFishChowder() {
-        soupBuffet.fishChowder = new HonoluluFishChowder();
-    }
-    
-    public void setSoupBuffetName() {
-        soupBuffet.soupBuffetName = "Honolulu Soup Buffet";
-    }
-}
+(defmethod build-fishchowder 
+	((this honolulusoupbuffetbuilder))
+	(setf (:fishchowder (:soupbuffet this)) (make-instance 'patterns-common:honolulufishchowder)))
+
+(defmethod set-soupbuffet-name
+	((this honolulusoupbuffetbuilder))
+	(setf (:name (:soupbuffet this)) "Honolulu Soup Buffet"))

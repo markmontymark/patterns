@@ -1,18 +1,15 @@
-//BostonSoupBuffetBuilder.java - One of Two Builder Subclasses
+(defclass bostonsoupbuffetbuilder
+	(soupbuffetbuilder)
+	())
 
-package Creational.Builder;
+(defmethod build-clamchowder 
+	((this bostonsoupbuffetbuilder))
+	(setf (:clamchowder (:soupbuffet this)) (make-instance 'patterns-common:bostonclamchowder)))
 
-import common.*;
+(defmethod build-fishchowder 
+	((this bostonsoupbuffetbuilder))
+	(setf (:fishchowder (:soupbuffet this)) (make-instance 'patterns-common:bostonfishchowder)))
 
-public class BostonSoupBuffetBuilder extends SoupBuffetBuilder {
-    public void buildClamChowder() {
-       soupBuffet.clamChowder = new BostonClamChowder();
-    }
-    public void buildFishChowder() {
-       soupBuffet.fishChowder = new BostonFishChowder();
-    }    
-    
-    public void setSoupBuffetName() {
-       soupBuffet.soupBuffetName = "Boston Soup Buffet";
-    }
-}
+(defmethod set-soupbuffet-name
+	((this bostonsoupbuffetbuilder))
+	(setf (:name (:soupbuffet this)) "Boston Soup Buffet"))
