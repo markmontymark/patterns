@@ -178,12 +178,19 @@ Install Mono dev tools and use a Makefile (for now) for building and running tes
 	go test 
 
 
+## clisp
+
+	sudo apt-get install clisp
+	sudo apt-get install cl-quicklisp
+	cd clisp
+	make
+	
 TODO:
 
- - Lisp via clisp, in the works, need a test runner script, or use lisp-unit's TAP w/ prove
  - Scala and Clojure patterns
  - Fix Builder pattern to offer only getters (remove setters)
  - Add Immutable object pattern (w/ better Builder implementation)
+	-- only added to Java in Creational/, so far
 	
 	
 
