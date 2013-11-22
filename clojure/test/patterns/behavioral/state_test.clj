@@ -5,19 +5,21 @@
 	))
 
 (deftest tst
-	(let [ctx (dvdcontext)]
+	(let [munger (name-munger)]
 		(testing "First show name"
-			(is	(= "Sponge*Bob Squarepants - Nautical Nonsense and Sponge Buddies" 
-					(show-name ctx "Sponge Bob Squarepants - Nautical Nonsense and Sponge Buddies"))))
-
-(comment
+			(is	(= "Sponge*Bob*Squarepants*-*Nautical*Nonsense*and*Sponge*Buddies" 
+					(munge-name munger "Sponge Bob Squarepants - Nautical Nonsense and Sponge Buddies"))))
 		(testing "Second show name"
-			(is (= "Jay*and*Silent Bob Strike Back" (show-name ctx "Jay and Silent Bob Strike Back"))))
+			(is (= "Jay*and*Silent*Bob*Strike*Back" 
+				 (munge-name munger "Jay and Silent Bob Strike Back"))))
 
 		(testing "Third show name"
-			(is (= "Buffy!The Vampire Slayer Season 2" (show-name ctx "Buffy The Vampire Slayer Season 2"))))
+			(is (= "Buffy!The!Vampire!Slayer!Season!2" 
+				 (munge-name munger "Buffy The Vampire Slayer Season 2"))))
 
+(comment
 		(testing "Fourth show name"
-			(is (= "The*Sopranos Season 2" (show-name ctx "The Sopranos Season 2"))))
+			(is (= "The*Sopranos*Season*2" 
+				 (munge-name name-munger "The Sopranos Season 2"))))
 )
 ))
