@@ -1,5 +1,5 @@
 
-(defproject my-stuff "0.0.1-SNAPSHOT"
+(defproject mrk-patterns "0.0.1-SNAPSHOT"
   :description "Porting Java GoF patterns to Clojure"
   :url "https://github.com/markmontymark/patterns/clojure/"
   :license {:name "Eclipse Public License"
