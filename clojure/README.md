@@ -23,10 +23,3 @@ Then invoke lein for this project
 	lein new app patterns
 
 
-	
-
-
-
-
-
-
