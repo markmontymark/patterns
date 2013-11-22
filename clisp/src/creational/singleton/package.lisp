@@ -1,5 +1,5 @@
-defpackage :creational-)
+(defpackage :creational-singleton)
 
-(in-package :creational-)
+(in-package :creational-singleton)
 
-(load "src/
+(load "src/creational/singleton/singlespoon.lisp")
