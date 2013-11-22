@@ -12,5 +12,6 @@
 		:default (complement :integration)
       :integration :integration
       :all (fn [_] true)}
-  :main patterns.core
-  :aot [patterns.core patterns.behavioral.state])
+  :aot [
+		patterns.behavioral.state
+	])
