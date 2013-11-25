@@ -12,6 +12,9 @@
 		:default (complement :integration)
       :integration :integration
       :all (fn [_] true)}
-  :aot [
-		patterns.behavioral.state
-	])
+  ;:aot [
+		;patterns.behavioral.chain_of_responsibility
+		;patterns.behavioral.command
+		;patterns.behavioral.state
+	;]
+)
