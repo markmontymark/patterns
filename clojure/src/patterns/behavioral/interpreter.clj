@@ -7,9 +7,8 @@
 (defn get-all-titles [ctx] (str/join ", " (sort (keys ctx))))
 
 (defn get-all-actors [ctx]
-		;(str/join ", " (sett/union (into (sorted-set) (vals ctx)))))
-		(str/join ", " 
-			(sett/union (into #{} (reduce (fn [x y] (sett/union x y)) #{}  (map (fn [z] z) (vals ctx)))))))
+	(str/join ", " 
+		(sett/union (into #{} (reduce (fn [x y] (sett/union x y)) #{}  (map (fn [z] z) (vals ctx)))))))
 
 (defn get-actors-by-title [ctx title]
 	(title (:titles-and-actors ctx)))
