@@ -1,46 +1,30 @@
 (ns patterns.structural.decorator
    (:require [clojure.string :as str]))
 
-(defclass chaidecorator 
-	(tea)
-	((ttmc :accessor :ttmc :initarg :ttmc :initform nil)
-	 (chai-ingredients :accessor :chai-ingredients)))
+(declare steep-chai)
 
-(defmethod initialize-instance ((this chaidecorator) &key)
-	(setf (slot-value this 'chai-ingredients) (list
-        "bay leaf"
-        "cinnamon stick"
-        "ginger"
-        "honey"
-        "soy milk"
-        "vanilla bean")))
+(defprotocol TeaSteeper (steep-tea [tea]))
 
-(defmethod steep-tea
-	((this chaidecorator))
-	(steep-chai this))
+(defrecord chai-tea [tea ingredients]
+	TeaSteeper (steep-tea [some-chai]
+		(steep-chai some-chai)))
 
-(defmethod steep-chai
-	((this chaidecorator))
-	(concatenate 'string 
-		(steep-tea (:ttmc this)) ", "
-		(steep-chai-ingredients this)))
+(defn make-chai-tea [tea & optional-ingredients]
+	(let [ingreds (or optional-ingredients [
+        "bay leaf" "cinnamon stick" "ginger"
+        "honey" "soy milk" "vanilla bean"])]
+	(->chai-tea tea ingreds)))
 
+(defn steep-chai-ingredients [some-chai]
+	(str/join ", " (map #(str % " is steeping") (:ingredients some-chai))))
 
-(defmethod steep-chai-ingredients 
-	((this chaidecorator))
-	(let
-		((x (map 'list #'(lambda(x)(concatenate 'string x " is steeping")) (:chai-ingredients this))))
-		(format nil "~{~A~^, ~}" x)))
+(defn steep-chai [some-chai]
+	(str (steep-tea (:tea some-chai)) ", "
+		(steep-chai-ingredients some-chai)))
 
-(defclass tealeaves 
-	(tea) ())
-
-(defmethod steep-tea 
-	((this tealeaves))
-	(setf (:tea-is-steeped this) t)
-	"tea leaves are steeping")
-(defclass tea   
-	()
-	((tea-is-steeped :accessor :tea-is-steeped :initform nil)))
-
-(defgeneric steep-tea (tea))
+(defrecord tea-leaves [tea-is-steeped]
+	TeaSteeper (steep-tea [tea]
+		;(swap! (:tea-is-steeped tea) (fn [_] true))
+		(swap! (:tea-is-steeped tea) (constantly true))
+		"tea leaves are steeping"))
+(defn make-tea-leaves [] (->tea-leaves (atom nil)))
