@@ -1,67 +1,64 @@
 (ns patterns.structural.facade
    (:require [clojure.string :as str]))
 
-(defclass facade-cuppa-maker 
-	()
-	((tea-bag-is-steeped :accessor :tea-bag-is-steeped)))
-    
-(defmethod make-a-cuppa
-	( (this facade-cuppa-maker))
-	(let
-		((cup (make-instance 'facade-tea-cup))
-		(bag (make-instance 'facade-tea-bag))
-		(water (make-instance 'facade-water)))
+;tea bag
+(defn make-facade-tea-bag [] {})
+
+;water
+(defn make-facade-water [] 
+	{:water-is-boiling (atom nil)})
+
+(defn boil-water [water] 
+	(swap! (:water-is-boiling water) (constantly true)))
+
+
+;tea cup
+(defn make-facade-tea-cup [] 
+	{:tea-bag-is-steeped (atom nil)
+	 :wah-wah (atom nil)
+	 :tea-bag (atom nil)})
+
+(defn steep-tea-bag [teacup]
+	(cond
+		(and @(:tea-bag teacup) 
+			(and @(:wah-wah teacup)
+				(and @(:water-is-boiling @(:wah-wah teacup)))))
+				(swap! (:tea-bag-is-steeped teacup) (constantly true))
+		true 
+				(swap! (:tea-bag-is-steeped teacup) (constantly nil))))
+
+(defn add-tea-bag [teacup teabag]
+	(swap! (:tea-bag teacup) (constantly teabag)))
+
+(defn add-water [teacup water]
+	(swap! (:wah-wah teacup) (constantly water)))
+   
+(defn to-string [teacup]
+	(cond
+		@(:tea-bag-is-steeped teacup)
+			"A nice cuppa tea!"
+		true 
+			(str "A cup with "
+				(cond
+					@(:wah-wah teacup)
+						(if @(:water-is-boiling @(:wah-wah teacup)) 
+							"boiling " 
+							"cold ")
+					true 
+						"no ")
+				"water and "
+				(if @(:tea-bag teacup) "a " "no ")
+				"teabag")))
+
+;facade that wraps details of how to make a cup of tea
+(defn make-a-cuppa []
+	(let[
+		cup (make-facade-tea-cup)
+		bag (make-facade-tea-bag)
+		water (make-facade-water)]
+
 		(add-tea-bag cup bag)
 		(boil-water water)
 		(add-water cup water)
-      (steep-tea-bag cup)
-       cup))
-
-(defclass facade-tea-bag
-	() ())
-
-(defclass facade-tea-cup 
-	()
-	((tea-bag-is-steeped :accessor :tea-bag-is-steeped :initarg :tea-bag-is-steeped :initform nil)
-	 (wah-wah :accessor :wah-wah :initarg :wah-wah)
-	 (tb :accessor :tea-bag :initarg :tea-bag)))
-
-(defmethod steep-tea-bag
-	((this facade-tea-cup))
-	(cond
-		((and (:tea-bag this)
-		 (and (:wah-wah this)
-		 (and (:water-is-boiling (:wah-wah this)))))
-		 (setf (:tea-bag-is-steeped this) t))
-		(t 
-         (setf (:tea-bag-is-steeped) nil))))
-
-(defmethod add-tea-bag 
-	((this facade-tea-cup)
-	 (tb facade-tea-bag))
-	(setf (:tea-bag this) tb))
-
-(defmethod add-water
-	((this facade-tea-cup)
-	 (w facade-water))
-	(setf (:wah-wah this) w))
-   
-(defmethod to-string
-	((this facade-tea-cup))
-	(cond
-		((:tea-bag-is-steeped this)
-			"A nice cuppa tea!")
-		(t (concatenate 'string
-           "A cup with "
-				(cond
-					((:wah-wah this)
-						(if (water-is-boiling (:wah-wah this)) "boiling water " "cold water "))
-					(t "no water "))
-				(if (:tea-bag this) "and a tea bag" "and no tea bag")))))
-(defclass facade-water
-	()
-	((water-is-boiling :accessor :water-is-boiling)))
-   
-(defmethod boil-water
-	((this facade-water))
-	(setf (:water-is-boiling this) t)) 
+		(steep-tea-bag cup)
+		cup))

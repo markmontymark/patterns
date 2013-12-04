@@ -6,9 +6,8 @@
 
 
 (deftest structural-facade-test
-   (let
-   [cuppa-maker (make-facade-cuppa-maker)
-    tea-cup (make-a-cuppa cuppa-maker)]
-	(testing "" (is (= "A nice cuppa tea!" (to-string tea-cup))))
+   (let [tea-cup (make-a-cuppa)]
+		(testing "Can make a cuppa tea with facade/fn" 
+			(is (= "A nice cuppa tea!" (to-string tea-cup))))
 ))
 
