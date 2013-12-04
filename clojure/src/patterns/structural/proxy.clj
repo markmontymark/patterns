@@ -1,14 +1,13 @@
 (ns patterns.structural.proxy
    (:require [clojure.string :as str]))
 
-(defgeneric pour-tea (pot-of-tea))
-(defclass pot-of-tea () ())
-(defmethod pour-tea ((this pot-of-tea))
-	"Pouring tea")
-(defclass pot-of-tea-proxy 
-	() 
-	())
+(defprotocol tea-pourer (pour-tea [pot-of-tea]))
+(defrecord pot-of-tea [] 
+	tea-pourer (pour-tea [pot-of-tea ] "Pouring tea"))
 
-(defmethod pour-tea
-	((this pot-of-tea-proxy))
-	(pour-tea (make-instance 'pot-of-tea)))
+(defrecord pot-of-tea-proxy [] 
+	tea-pourer (pour-tea [pot-of-tea-proxy ] 
+		(pour-tea (->pot-of-tea))))
+
+(defn make-pot-of-tea-proxy []
+	(->pot-of-tea))
