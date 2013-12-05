@@ -1,35 +1,36 @@
-(load "src/common/package.lisp")
-(load "src/creational/abstract_factory/package.lisp")
-(in-package :creational-abstract-factory)
+(ns patterns.creational.abstract_factory-test
+	(:require
+		[clojure.test :refer :all]
+		[clojure.string :as str]
+      [patterns.creational.abstract_factory :refer :all]))
 
-(defun MakeSoupOfTheDay (sf)
+(defn MakeSoupOfTheDay [sf]
 	(let
-		((soups (list 
-			(make-chickensoup sf)
-			(make-clamchowder sf)
-			(make-fishchowder sf)
-			(make-minnestrone sf)
-			(make-pastafazul sf)
-			(make-tofusoup sf)
-			(make-vegetablesoup sf))))
-		(pop (subseq soups 1 2))))
+		[soups [
+			((:make-chickensoup sf))
+			((:make-clamchowder sf))
+			((:make-fishchowder sf))
+			((:make-minnestrone sf))
+			((:make-pastafazul sf))
+			((:make-tofusoup sf))
+			((:make-vegetablesoup sf))]]
+		(get soups 1)))
 
-(lisp-unit:define-test creational-abstract-factory-test
+(deftest patterns.creational.abstract_factory-test
+
    (let
-		((bsf (make-instance 'bostonsoupfactory))
-		 (hsf (make-instance 'honolulusoupfactory))
-		 (soup-du-jour))
-
-		(setf soup-du-jour (MakeSoupOfTheDay bsf))
-		(lisp-unit:assert-equal 
-			"The Soup of the day in Boston is QuahogChowder"
-			(concatenate 'string "The Soup of the day in " (:location bsf) " is " (:name soup-du-jour)))
+		[bsf (bostonsoupfactory)
+		 hsf (honolulusoupfactory)]
+		
+		(testing "Boston soup factory test"
+			(is (=
+				"The Soup of the day in Boston is QuahogChowder"
+				(str "The Soup of the day in " (:location bsf) " is " (:name (MakeSoupOfTheDay bsf))))))
 	
-		(setf soup-du-jour (MakeSoupOfTheDay hsf))
-		(lisp-unit:assert-equal 
-			"The Soup of the day in Honolulu is PacificClamChowder"
-			(concatenate 'string "The Soup of the day in " (:location hsf) " is " (:name soup-du-jour)))
+		(testing "Honolulu soup factory test"
+			(is (=
+				"The Soup of the day in Honolulu is PacificClamChowder"
+				(str "The Soup of the day in " (:location hsf) " is " (:name (MakeSoupOfTheDay hsf))))))
 	))
 
-(lisp-unit:write-tap (lisp-unit:run-tests :all))
 
