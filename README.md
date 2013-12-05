@@ -17,19 +17,26 @@ Much thanks to Larry for allowing to me to start off this project with his Java 
 - Python - complete
 - Perl6 - complete
 - Ruby - complete
-- C sharp - complete
+- C\# - complete
 - Java - complete
-- Go - started
+- Go - complete
+- Clisp - complete
+- Clojure - started, structural and behavioral done
 
 TODO
 
 - Add Cake Pattern and/or a dependency injection example foreach lang, starting point http://jonasboner.com/2008/10/06/real-world-scala-dependency-injection-di/
 
+- Add ImmutableObject pattern (only done for Java right now)
+
+- Add Null Object pattern
+
+- Add Tail Recursion pattern (maybe this is more an idiom, than an official pattern?)
 
 
 - Erlang
 - Scala 
-- C++ 
+- C++  -- maybe, i don't know, not feeling it :)
 - Java 1.7 
 
 	- partial 1.7 support in java/ already
