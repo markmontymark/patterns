@@ -1,73 +1,20 @@
 (ns patterns.structural.bridge
    (:require [clojure.string :as str]))
 
+(defprotocol pourer (pour [a] [a b]))
 
-(defclass cherrysodaimp
-	(sodaflavor) ())
+(defrecord cherrysodaimp [] pourer (pour [this] "Yummy Cherry Soda!"))
+(defrecord  grapesodaimp [] pourer (pour [this] "Delicious Grape Soda!"))
+(defrecord orangesodaimp [] pourer (pour [this] "Citrusy Orange Soda!"))
 
-(defmethod pour
-	((this cherrysodaimp))
-	"Yummy Cherry Soda!")
-(defclass grapesodaimp
-	(sodaflavor) ())
+(defn size-pourer [n flavor]
+   (str/join (map (fn [_] (str "...glug..." (pour flavor))) (range 0 n))))
 
-(defmethod pour
-	((this grapesodaimp))
-	"Delicious Grape Soda!")
-(defclass mediumsoda 
-	(sodasize)
-	())
+(defrecord mediumsoda []
+	pourer 
+		(pour [this flavor] (size-pourer 2 flavor)))
 
-(defmethod initialize-instance :after ((this mediumsoda) &key)
-   (setf (slot-value this 'n) 2))
-
-
-;(defmethod pour-soda
-;	((this mediumsoda)
-;	 (flavor sodaflavor))
-;	(format nil "~A~^ ~}~" map 'list #'(lambda ()(list "...glug..." (pour-soda flavor)))))
-       
-(defclass orangesodaimp
-	(sodaflavor) ())
-
-(defmethod pour
-	((this orangesodaimp))
-	"Citrusy Orange Soda!")
-
-(defclass sodaflavor
-	()
-	())
-
-(defgeneric pour (sodaflavor))
-
-(defun range (start end)
-	(loop for i from start below end collect i))
-
-(defclass sodasize
-	()
-	((imp :accessor :imp :initarg :imp)
-	 (n :accessor :n)))
-
-(defgeneric pour-soda (sodasize sodaflavor))
-
-(defmethod set-soda-imp 
-	((this sodasize))
-	(setf (:imp this) (get-the-soda-imp soda-imp-singleton)))
-
-(defmethod get-soda-imp
-	((this sodasize))
-	(:imp this))
-
-(defmethod pour-soda
-   ((this sodasize)
-    (flavor sodaflavor))
-   (format nil "~{~A~^~}" (map 'list #'(lambda (x)(concatenate 'string "...glug..." (pour flavor))) (range 0 (:n this)))))
-   
-
-(defclass supersizesoda 
-	(sodasize)
-	())
-
-(defmethod initialize-instance :after ((this supersizesoda) &key)
-   (setf (slot-value this 'n) 5))
+(defrecord supersizesoda []
+	pourer 
+		(pour [this flavor] (size-pourer 5 flavor)))
 
