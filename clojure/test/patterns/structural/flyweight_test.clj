@@ -6,30 +6,34 @@
 
 (deftest structural-flyweight-test
    (let
-   [ orders-made 0
-	 flavors []
-	 tables  []
-	 factory (make-teaflavorfactory)]
+   [orders-made (atom 0)
+	 flavors (ref [])
+	 tables  (ref [])
+	 factory (teaflavorfactory)]
 
 	(defn take-orders [flavor table-no]
-		(let
-			((latest-flavor (get-tea-flavor factory flavor))
-			 (latest-ctx (make-instance 'teaordercontext :table table-no))
+		(let [
+			latest-flavor (get-tea-flavor factory flavor)
+			latest-ctx    (teaordercontext table-no)
+			]
+			(swap! orders-made inc)
+			(dosync
+				(commute flavors conj latest-flavor)
+				(commute tables  conj latest-ctx)
 			)
-			(incf orders-made)
-			(if flavors
-				(push (car latest-flavor) (cdr (last flavors)))
-				(setf flavors latest-flavor))
-			(if tables
-				(push latest-ctx (cdr (last tables)))
-				(setf tables (list latest-ctx)))
 	))
 
+	;(defn serve-em [flavors tables]
+		;(when (and flavors tables) 
+			;(serve-tea (first flavors) (first tables))
+			;(serve-em  (rest flavors) (rest tables))
+		;))
+
 	(defn serve-em [flavors tables]
-		(when (and flavors tables) 
-			(serve-tea (car flavors) (car tables))
-			(serve-em (cdr flavors) (cdr tables))
-		))
+		(loop [f flavors t tables]
+			(when (and (not (empty? f)) (not (empty? t) ))
+				(serve-tea (first f) (first t))
+				(recur (rest f) (rest t)))))
 
 	(take-orders "chai"  2)
 	(take-orders "chai"  2)
@@ -47,8 +51,8 @@
 	(take-orders "chai"  121)
 	(take-orders "earl grey"  121)
 
-	(serve-em flavors tables)	
+	(serve-em @flavors @tables)
 
-	(testing "" (is (= 3 (:teas-made factory))))
+	(testing "How may teas did we make?" (is (= 3 @(:teas-made factory))))
 ))
 
