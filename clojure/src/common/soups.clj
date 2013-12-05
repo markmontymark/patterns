@@ -1,4 +1,4 @@
-(ns common)
+(ns common.soups)
 
 (defn bostonclamchowder []
 	{:name "QuahogChowder" :ingredients [
@@ -27,7 +27,7 @@
         "1/4 cup chips"
 	]})
 (defn honoluluclamchowder []
-	{:name " PacificClamChowder" :ingredients [
+	{:name "PacificClamChowder" :ingredients [
         "1 Pound Fresh Pacific Clams" "1 cup pineapple chunks" "1/2 cup coconut milk"
         "1/4 cup SPAM" "1/4 cup taro chips" ]})
 

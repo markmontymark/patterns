@@ -1,4 +1,4 @@
-(ns common)
+(ns common.soupbuffet)
 
 (defprotocol SoupOfTheDayBuffet (todays-soups [this]))
 (defrecord soupbuffet [
