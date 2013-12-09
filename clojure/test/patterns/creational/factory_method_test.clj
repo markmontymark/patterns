@@ -1,38 +1,42 @@
-(load "src/common/package.lisp")
-(load "src/creational/factory_method/package.lisp")
-(in-package :creational-factory-method)
+(ns patterns.creational.factory_method-test
+	(:require 
+		[clojure.test :refer :all]
+		[clojure.string :as str ]
+		[patterns.creational.factory_method :refer :all]
+		[common.soups :refer :all]
+		[common.soupbuffet :refer :all]
+	)
+	(:import
+		(patterns.creational.factory_method bostonsoupfactorymethod honolulusoupfactorymethod)
+		(common.soupbuffet soupbuffet))
+)
 
-(defun init-soupbuffet (fm)
-	(let
-		((sb (make-soupbuffet fm)))
-		(setf (:name sb) 				(make-buffetname fm))
-		(setf (:chickensoup sb) 	(make-chickensoup fm))
-		(setf (:clamchowder  sb) 	(make-clamchowder  fm))
-		(setf (:fishchowder  sb) 	(make-fishchowder  fm))
-		(setf (:minnestrone  sb) 	(make-minnestrone  fm))
-		(setf (:pastafazul  sb) 	(make-pastafazul  fm))
-		(setf (:tofusoup  sb) 		(make-tofusoup  fm))
-		(setf (:vegetablesoup sb) 	(make-vegetablesoup  fm))
-		sb))
+(defn init-soupbuffet [fm]
+	(soupbuffet. 
+		(make-buffetname fm)
+		 (make-chickensoup fm)
+		 (make-clamchowder  fm)
+		 (make-fishchowder  fm)
+		 (make-minnestrone  fm)
+		 (make-pastafazul  fm)
+		 (make-tofusoup  fm)
+		 (make-vegetablesoup  fm)))
+		
 
-(lisp-unit:define-test creational-factory-method-test
-   (let
-		((plain-soupbuffet  (init-soupbuffet (make-instance 'soupfactorymethod)))
-		 (boston-soupbuffet (init-soupbuffet (make-instance 'bostonsoupfactorymethod)))
-		 (honolu-soupbuffet (init-soupbuffet (make-instance 'honolulusoupfactorymethod))))
+(deftest creational-factory-method-test
+   (let [
+		 boston-soupbuffet (init-soupbuffet (bostonsoupfactorymethod.))
+		 honolu-soupbuffet (init-soupbuffet (honolulusoupfactorymethod.))]
 
-		(lisp-unit:assert-equal 
-			"At the  Soup Buffet Today's Soups!   Chicken Soup: ChickenSoup Clam Chowder: ClamChowder Fish Chowder: FishChowder Minnestrone: Minnestrone Pasta Fazul: Pasta Fazul Tofu Soup: Tofu Soup Vegetable Soup: Vegetable Soup"
-			(concatenate 'string "At the  " (:name plain-soupbuffet) (patterns-common:todays-soups plain-soupbuffet)))
+		(testing "Boston soup factory "
+			(is (=
+				"At the  Boston Soup Buffet Today's Soups!   Chicken Soup: ChickenSoup Clam Chowder: QuahogChowder Fish Chowder: ScrodFishChowder Minnestrone: Minnestrone Pasta Fazul: Pasta Fazul Tofu Soup: Tofu Soup Vegetable Soup: Vegetable Soup"
+				(str "At the  " (:name boston-soupbuffet) (todays-soups boston-soupbuffet)))))
 
-		(lisp-unit:assert-equal 
-			"At the  Boston Soup Buffet Today's Soups!   Chicken Soup: ChickenSoup Clam Chowder: QuahogChowder Fish Chowder: ScrodFishChowder Minnestrone: Minnestrone Pasta Fazul: Pasta Fazul Tofu Soup: Tofu Soup Vegetable Soup: Vegetable Soup"
-			(concatenate 'string "At the  " (:name boston-soupbuffet) (patterns-common:todays-soups boston-soupbuffet)))
-
-		(lisp-unit:assert-equal 
-			"At the  Honolulu Soup Buffet Today's Soups!   Chicken Soup: ChickenSoup Clam Chowder: PacificClamChowder Fish Chowder: OpakapakaFishChowder Minnestrone: Minnestrone Pasta Fazul: Pasta Fazul Tofu Soup: Tofu Soup Vegetable Soup: Vegetable Soup"
-			(concatenate 'string "At the  " (:name honolu-soupbuffet) (patterns-common:todays-soups honolu-soupbuffet)))
+		(testing "Honolulu soup factory "
+			(is  (=
+				"At the  Honolulu Soup Buffet Today's Soups!   Chicken Soup: ChickenSoup Clam Chowder: PacificClamChowder Fish Chowder: OpakapakaFishChowder Minnestrone: Minnestrone Pasta Fazul: Pasta Fazul Tofu Soup: Tofu Soup Vegetable Soup: Vegetable Soup"
+				(str "At the  " (:name honolu-soupbuffet) (todays-soups honolu-soupbuffet)))))
 	))
 
-(lisp-unit:write-tap (lisp-unit:run-tests :all))
 
