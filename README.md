@@ -21,7 +21,7 @@ Much thanks to Larry for allowing to me to start off this project with his Java 
 - Java - complete
 - Go - complete
 - Clisp - complete
-- Clojure - started, structural and behavioral done
+- Clojure - complete
 
 TODO
 
@@ -33,10 +33,12 @@ TODO
 
 - Add Tail Recursion pattern (maybe this is more an idiom, than an official pattern?)
 
+- Fix Builder pattern to offer only getters (remove setters)
 
 - Erlang
+
 - Scala 
-- C++  -- maybe, i don't know, not feeling it :)
+
 - Java 1.7 
 
 	- partial 1.7 support in java/ already
@@ -192,12 +194,6 @@ Install Mono dev tools and use a Makefile (for now) for building and running tes
 	cd clisp
 	make
 	
-TODO:
-
- - Scala and Clojure patterns
- - Fix Builder pattern to offer only getters (remove setters)
- - Add Immutable object pattern (w/ better Builder implementation)
-	-- only added to Java in Creational/, so far
 	
 	
 
