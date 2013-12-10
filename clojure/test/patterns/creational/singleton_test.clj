@@ -1,31 +1,35 @@
-(load "src/creational/singleton/package.lisp")
-(in-package :creational-singleton)
+(ns patterns.creational.singleton-test
+	(:require 
+		[clojure.test :refer :all]
+		[patterns.creational.singleton :refer :all]
+		[common.soups :refer :all])
+)
 
-(lisp-unit:define-test creational-singleton-test
-   (let
-		(
-			(firstSpoon (make-instance 'spoon))
-			(secondSpoon (make-instance 'spoon)))
+(deftest creational-singleton-test
+   (let [
+		firstSpoon (make-spoon)
+		secondSpoon (make-spoon) 
+		a-soup (chickensoup)
+		b-soup (pastafazul)
+		]
 
-		(lisp-unit:assert-true  (available firstSpoon))
-		(lisp-unit:assert-true  (available secondSpoon))
+		(testing "First has availability" (is (available firstSpoon)))
+		(testing "Second has availability" (is (available secondSpoon)))
 
-		(use-spoon firstSpoon)
-		;(lisp-unit:assert-equal 
-			;(get-spoon firstSpoon)
-			;(get-spoon secondSpoon))
+		(use-spoon firstSpoon a-soup)
 
-		(lisp-unit:assert-true  (available firstSpoon))
-		(lisp-unit:assert-false (available secondSpoon))
+		(testing "After First uses spoon, First has availability" (is (not (available firstSpoon))))
+		(testing "After First uses spoon, Second should not have availability" (is (not (available secondSpoon))))
 
 		(return-spoon firstSpoon)
-		(lisp-unit:assert-true (available firstSpoon))
-		(lisp-unit:assert-true (available secondSpoon))
 
-		(use-spoon secondSpoon)
-		(lisp-unit:assert-false (available firstSpoon))
-		(lisp-unit:assert-true  (available secondSpoon))
+		(testing "First has availability, again" (is (available firstSpoon)))
+		(testing "Second has availability, again" (is (available secondSpoon)))
+
+		(use-spoon secondSpoon  b-soup)
+		(testing "After Second uses spoon, First should not have availability" (is (not (available firstSpoon))))
+		(testing "After Second uses spoon, Second should not have availability" (is (not (available secondSpoon))))
+
 	))
 
-(lisp-unit:write-tap (lisp-unit:run-tests :all))
 

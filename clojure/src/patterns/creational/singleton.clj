@@ -1,40 +1,79 @@
+;;; singleton.clj: singleton functions
+
+;; by Stuart Sierra, http://stuartsierra.com/
+;; April 14, 2009
+
+;; Copyright (c) Stuart Sierra, 2009. All rights reserved.  The use
+;; and distribution terms for this software are covered by the Eclipse
+;; Public License 1.0 (http://opensource.org/licenses/eclipse-1.0.php)
+;; which can be found in the file epl-v10.html at the root of this
+;; distribution.  By using this software in any fashion, you are
+;; agreeing to be bound by the terms of this license.  You must not
+;; remove this notice, or any other, from this software.
+
+
+;; Change Log:
+;;
+;; April 14, 2009: added per-thread-singleton, renamed singleton to
+;; global-singleton
+;;
+;; April 9, 2009: initial version
+
+
+;(ns 
+  ;#^{:author "Stuart Sierra",
+     ;:doc "Singleton functions"}
+  ;clojure.contrib.singleton)
+
 (ns patterns.creational.singleton)
 
-(defclass spoon 
-	()
-	(
-	 (instance :allocation :class :accessor :instance :initform nil)
-	 (last-soup :accessor :last-soup)
-	 (is-available :accessor :is-available :initform nil)))
+(defn global-singleton
+  "Returns a global singleton function.  f is a function of no
+  arguments that creates and returns some object.  The singleton
+  function will call f just once, the first time it is needed, and
+  cache the value for all subsequent calls.
 
-(defmethod initialize-instance :after ((this spoon) &key)
-	(when (not (:instance this))
-		(setf (:instance this) this)
-		(setf (:is-available (:instance this)) t)
-	))
+  Warning: global singletons are often unsafe in multi-threaded code.
+  Consider per-thread-singleton instead."
+  [f]
+  (let [instance (atom nil)
+        make-instance (fn [_] (f))]
+    (fn [] (or @instance (swap! instance make-instance)))))
 
-(defmethod available
-	((this spoon))
-	(or 
-		(:is-available (:instance this))
-		(eql this (:instance this))))
+(defn per-thread-singleton
+  "Returns a per-thread singleton function.  f is a function of no
+  arguments that creates and returns some object.  The singleton
+  function will call f only once for each thread, and cache its value
+  for subsequent calls from the same thread.  This allows you to
+  safely and lazily initialize shared objects on a per-thread basis.
 
-(defmethod get-spoon
-	((this spoon))
-	(when (available this)
-		(setf (:instance this) this)));is-available (:instance this)) t)))
+  Warning: due to a bug in JDK 5, it may not be safe to use a
+  per-thread-singleton in the initialization function for another
+  per-thread-singleton.  See
+  http://bugs.sun.com/bugdatabase/view_bug.do?bug_id=5025230"
+  [f]
+  (let [thread-local (proxy [ThreadLocal] [] (initialValue [] (f)))]
+    (fn [] (.get thread-local))))
 
-(defmethod return-spoon
-	((this spoon))
-	(let ((that (:instance this)))
-	(when (eql this that)
-		(setf (:instance this) (make-instance 'spoon))
-		(setf (:is-available (:instance this)) t)
-		)))
 
-(defmethod use-spoon
-	((this spoon))
-	(let ((that (:instance this)))
-		(when (and that (:is-available that))
-			(setf (:is-available that) (not t))
-			(setf (:instance this) this))))
+(defn spoon [] (ref {:soup-last-used-with nil :is-available true}))
+(def the-spoon (per-thread-singleton spoon))
+
+(defn make-spoon [] the-spoon)
+
+(defn available [spn]
+	(:is-available @(spn)))
+
+(defn return-spoon [spn]
+	(dosync
+		(alter (spn) assoc :is-available true)
+		(alter (spn) assoc :soup-last-used-with nil)))
+
+(defn use-spoon [spn soup]
+	(when (or (available spn)
+		(and 
+			(not (nil? (:soup-last-used-with @(spn)) ))
+			(= soup (:soup-last-used-with @(spn)))))
+		(dosync 
+			(alter (spn) assoc :is-available false)
+			(alter (spn) assoc :soup-last-used-with soup))))
