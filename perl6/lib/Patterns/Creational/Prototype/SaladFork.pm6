@@ -7,7 +7,7 @@ class SaladFork is AbstractFork {
 
 	method new
 	{
-		return self.bless( * , :forkName('Salad Fork'));
+		return self.bless( :forkName('Salad Fork'));
 	}
 }
 

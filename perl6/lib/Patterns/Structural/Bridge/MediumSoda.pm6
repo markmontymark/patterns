@@ -6,7 +6,7 @@ class MediumSoda does Soda {
 
 	method new
 	{
-		self.bless( * )
+		self.bless( )
 	}
 
 	method pourSoda 

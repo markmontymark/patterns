@@ -8,7 +8,7 @@ class PrototypeFactory {
 
 	method new( AbstractSpoon :$spoon, AbstractFork:$fork )
 	{
-		return self.bless( * , :prototypeSpoon($spoon), :prototypeFork($fork) );
+		return self.bless( :prototypeSpoon($spoon), :prototypeFork($fork) );
 	}
 
 	method makeSpoon

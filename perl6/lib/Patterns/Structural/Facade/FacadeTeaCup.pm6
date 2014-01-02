@@ -11,7 +11,7 @@ class FacadeTeaCup {
     
 	method new
 	{
-		return self.bless( * , :teaBagIsSteeped(False) );	
+		return self.bless( :teaBagIsSteeped(False) );	
 	}    
    
 	method steepTeaBag 

@@ -9,7 +9,7 @@ class TeaFlavor is TeaOrder {
 
 	method new( Str $teaFlavor )
 	{
-		return self.bless( * , :$teaFlavor );
+		return self.bless( :$teaFlavor );
 	}
 		
 	method serveTea (TeaOrderContext $ctx )

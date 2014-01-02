@@ -8,7 +8,7 @@ class BostonConcreteSoupFactory does AbstractSoupFactory {
 
 	method new
 	{
-		return self.bless( * , :factoryLocation('Boston') );
+		return self.bless( :factoryLocation('Boston') );
 	}
 
 	method makeClamChowder { BostonClamChowder.new() }

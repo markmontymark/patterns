@@ -6,7 +6,7 @@ role TeaBags {
 
 	method new (Str $name )
 	{
-		return self.bless( * , :$name );
+		return self.bless( :$name );
 	}
 
 	method countTeaBags returns Int { ... }

@@ -10,7 +10,7 @@ class DvdTitleInfo does TitleInfo {
 
 	method new(Str $titleName,Str $star, Int $region)
 	{
-		return self.bless( * , 
+		return self.bless( 
 			:$titleName,
 			:$star,
 			:$region );

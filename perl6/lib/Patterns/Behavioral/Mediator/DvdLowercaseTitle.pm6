@@ -10,13 +10,13 @@ class DvdLowercaseTitle does DvdTitle {
 
 	multi method new( Str $title )
 	{	
-		return self.init( self.bless( *, :$title ) );
+		return self.init( self.bless( :$title ) );
 	}
 
 	multi method new( DvdTitle $titleObj )
 	{	
 		my Str $title = $title.getTitle();
-		return self.init( self.bless( *, :$title ) );
+		return self.init( self.bless( :$title ) );
 	}
 
 

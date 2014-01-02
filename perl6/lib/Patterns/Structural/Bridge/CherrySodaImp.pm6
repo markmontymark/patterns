@@ -6,7 +6,7 @@ class CherrySodaImp does SodaImp {
 
 	method new ( Str $msg = 'Yummy Cherry Soda!')
 	{
-		return self.bless( * , :$msg );
+		return self.bless( :$msg );
 	}
     
 }

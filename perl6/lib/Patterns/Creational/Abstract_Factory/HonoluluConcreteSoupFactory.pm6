@@ -10,7 +10,7 @@ class HonoluluConcreteSoupFactory does AbstractSoupFactory {
 
 	method new
 	{
-		return self.bless( * , :factoryLocation('Honolulu') );
+		return self.bless( :factoryLocation('Honolulu') );
 	}
 
 	method makeClamChowder { HonoluluClamChowder.new() }

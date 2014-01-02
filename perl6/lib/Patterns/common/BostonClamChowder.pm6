@@ -4,7 +4,7 @@ class BostonClamChowder is ClamChowder {
 
 	method new
 	{
-		return self.bless( * , :soupName('QuahogChowder'), :soupIngredients( [
+		return self.bless( :soupName('QuahogChowder'), :soupIngredients( [
         "1 Pound Fresh Quahogs",
         "1 cup corn",
         "1/2 cup heavy cream",

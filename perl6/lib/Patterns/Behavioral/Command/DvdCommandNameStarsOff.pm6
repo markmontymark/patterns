@@ -10,7 +10,7 @@ class DvdCommandNameStarsOff is CommandAbstract {
 
 	method new (DvdName $dvdName)
 	{
-		return self.bless( * , :$dvdName );
+		return self.bless( :$dvdName );
 	}
 
 	method execute

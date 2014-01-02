@@ -11,7 +11,7 @@ class DvdRelease {
 
 	method new (Str $serialNumber, $name, Int $releaseYear, Int $releaseMonth, Int $releaseDay ) 
 	{
-		return self.bless( * , :$serialNumber,
+		return self.bless( :$serialNumber,
 			:$name,
 			:$releaseYear ,
 			:$releaseMonth ,

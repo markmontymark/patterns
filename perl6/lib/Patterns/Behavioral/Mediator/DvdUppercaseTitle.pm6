@@ -9,11 +9,11 @@ class DvdUppercaseTitle does DvdTitle {
 	multi method new( DvdTitle $titleObj )
 	{
 		my $title = $titleObj.getTitle();
-		return self.init( self.bless( * , :$title) );
+		return self.init( self.bless( :$title) );
 	}
 	multi method new( Str $title )
 	{
-		return self.init( self.bless( * , :$title ) );
+		return self.init( self.bless( :$title ) );
 	}
 
 	method init( DvdUppercaseTitle $self )

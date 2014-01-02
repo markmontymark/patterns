@@ -8,7 +8,7 @@ class BookTitleInfo does TitleInfo {
     
 	method new(Str $titleName, Str$author)
 	{
-		return self.bless( * , :$titleName, :$author );
+		return self.bless( :$titleName, :$author );
 	}
 
 	method getAuthor

@@ -16,7 +16,7 @@ class SingleSpoon {
 	method new 
 	{
 		unless $.theSpoon.defined {
-			$.theSpoon = self.bless( * );
+			$.theSpoon = self.bless();
 		}
 		return $.theSpoon;
 	}

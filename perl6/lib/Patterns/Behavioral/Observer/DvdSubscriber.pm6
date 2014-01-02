@@ -8,7 +8,7 @@ class DvdSubscriber {
 
 	method new($name)
 	{
-		return self.bless( *, :$name );
+		return self.bless( :$name );
 	} 
    
 	method newDvdRelease( DvdRelease $release, Str $subscriberName )

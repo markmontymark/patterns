@@ -10,7 +10,7 @@ class DvdMediator {
 
 	method new( DvdLowercaseTitle $lowercasetitle, DvdUppercaseTitle $uppercasetitle )
 	{
-		return self.bless( * , :$lowercasetitle, :$uppercasetitle );
+		return self.bless( :$lowercasetitle, :$uppercasetitle );
 	}
 
 	multi method changeTitle (DvdLowercaseTitle $title )

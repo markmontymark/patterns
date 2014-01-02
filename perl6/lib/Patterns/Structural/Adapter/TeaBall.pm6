@@ -9,7 +9,7 @@ class TeaBall is TeaBag {
 
 	method new( LooseLeafTea $looseLeafTea)
 	{
-		return self.bless( * , :$looseLeafTea, :teaBagIsSteeped( $looseLeafTea.teaIsSteeped ) );
+		return self.bless( :$looseLeafTea, :teaBagIsSteeped( $looseLeafTea.teaIsSteeped ) );
 	}
    
 	method steepTeaInCup 

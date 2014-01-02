@@ -9,7 +9,7 @@ class ChaiDecorator does Tea {
 
 	method new( Tea $teaToMakeChai)
 	{ 
-		return self.bless( * , :$teaToMakeChai, :ingredients( (
+		return self.bless( :$teaToMakeChai, :ingredients( (
 			'bay leaf',
 			'cinnamon stick',
 			'ginger',

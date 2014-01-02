@@ -6,7 +6,7 @@ class TeaOrderContext {
 
 	method new( Int $tableNumber)
 	{
-		return self.bless( * , :$tableNumber );
+		return self.bless( :$tableNumber );
 	}
 
 }

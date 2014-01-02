@@ -20,7 +20,7 @@ class DvdDetails
 
 	method new($titleName, @stars, $region )
 	{
-		self.bless( *,
+		self.bless(
 			:$titleName,
 			:@stars,
 			:$region )

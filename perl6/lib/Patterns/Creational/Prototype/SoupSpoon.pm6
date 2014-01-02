@@ -7,7 +7,7 @@ class SoupSpoon is AbstractSpoon {
 
 	method new
 	{
-		return self.bless( * , :spoonName('Soup Spoon'));
+		return self.bless( :spoonName('Soup Spoon'));
 	}
 }
 

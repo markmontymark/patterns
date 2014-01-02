@@ -6,7 +6,7 @@ class SuperSizeSoda does Soda {
 
 	method new 
 	{
-		return self.bless( *  );
+		return self.bless( );
 	}
 
 	method pourSoda

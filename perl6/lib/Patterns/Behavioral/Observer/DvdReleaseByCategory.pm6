@@ -12,7 +12,7 @@ class DvdReleaseByCategory {
 
 	method new($categoryName )
 	{
-		return self.bless( * , :$categoryName );
+		return self.bless( :$categoryName );
 	}
 	
    

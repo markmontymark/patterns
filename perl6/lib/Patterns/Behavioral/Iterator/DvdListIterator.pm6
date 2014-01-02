@@ -12,7 +12,7 @@ class DvdListIterator is Iterator {
 
 	method new( DvdList $dvdList, $currentPosition? )
 	{
-		return self.bless(*,	
+		return self.bless(	
 			:currentPosition( defined $currentPosition ?? $currentPosition !! 0 ),
 			:$dvdList );
 	}

@@ -4,7 +4,7 @@ class ChickenSoup is Soup {
 
 	method new
    {
-      return self.bless( * , :soupName('ChickenSoup'), :soupIngredients( [
+      return self.bless( :soupName('ChickenSoup'), :soupIngredients( [
         "1 Pound diced chicken",
         "1/2 cup rice",
         "1 cup bullion",

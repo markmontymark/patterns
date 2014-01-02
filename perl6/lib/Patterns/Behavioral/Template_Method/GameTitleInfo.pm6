@@ -7,7 +7,7 @@ class GameTitleInfo does TitleInfo {
 
 	method new( Str $titleName )
 	{
-		return self.bless( * , :$titleName );
+		return self.bless( :$titleName );
 	}
 
 	method getTitleBlurb
