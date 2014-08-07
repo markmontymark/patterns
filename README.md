@@ -35,7 +35,7 @@ Much thanks to Larry for allowing to me to start off this project with his Java 
 - Python - complete
 - Perl6 - complete
 - Ruby - complete
-- C\# - complete
+- C&#x23; - complete
 - Java - complete
 - Go - complete
 - Clisp - complete
@@ -166,7 +166,7 @@ Install Ruby, RubyGems, a custom Tapper test module
     make timetest
 
 	
-## C sharp
+## C &#x23;
 
 Install Mono dev tools and use a Makefile (for now) for building and running tests
 
