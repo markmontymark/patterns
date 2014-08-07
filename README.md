@@ -186,13 +186,21 @@ Install Mono dev tools and use a Makefile (for now) for building and running tes
 
 ## clisp
 
-	sudo apt-get install clisp
-	sudo apt-get install cl-quicklisp
-	cd clisp
-	make
+    sudo apt-get install clisp
+    sudo apt-get install cl-quicklisp
+    cd clisp
+    make
 	
 	
-	
+## Clojure
+
+    # Install Clojure -- using 1.5.1 at the moment
+    wget http://repo1.maven.org/maven2/org/clojure/clojure/1.5.1/clojure-1.5.1.zip
+    unzip clojure-1.5.1.zip
+    #Install Leiningen    download the lein script and set in $PATH 
+    wget https://raw.github.com/technomancy/leiningen/stable/bin/lein -o /path/to/where/you/want/lein
+    chmod 755 /path/to/where/you/want/lein
+    lein test
 
 
 # Patterns
