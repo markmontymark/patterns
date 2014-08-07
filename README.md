@@ -150,30 +150,30 @@ Install Ruby, RubyGems, a custom Tapper test module
 
 ### Tapper Setup
 
-   git clone git@github.com:judofyr/tapper.git
-   cd tapper
-   gem build tapper.gemspec
-   sudo gem install --local tapper-0.0.1.gem
+    git clone git@github.com:judofyr/tapper.git
+    cd tapper
+    gem build tapper.gemspec
+    sudo gem install --local tapper-0.0.1.gem
 
 
 ## Running the ruby tests
 
-   git clone git@github.com:markmontymark/patterns.git
-   cd patterns/ruby
-   make
-   make test
-   make loudtest
-   make timetest
+    git clone git@github.com:markmontymark/patterns.git
+    cd patterns/ruby
+    make
+    make test
+    make loudtest
+    make timetest
 
 	
 ## C sharp
 
 Install Mono dev tools and use a Makefile (for now) for building and running tests
 
-	sudo apt-get install mono-complete
-	cd patterns/csharp
-	make
-	make test
+    sudo apt-get install mono-complete
+    cd patterns/csharp
+    make
+    make test
 
 *Note* I wrote this for Linux/Mono so YMMV for Windows/Mac
 
