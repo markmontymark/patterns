@@ -1,11 +1,29 @@
 # Purpose
 
-Multiple language ports of GoF patterns
+GoF patterns written with different languages
 
 # Attribution
 
 The base of all these (someday complete) ports of GoF patterns originally come from Larry Truett's Java Design Patterns at http://www.fluffycat.com/Java-Design-Patterns/
 Much thanks to Larry for allowing to me to start off this project with his Java code base.
+
+# TODO languages
+
+- ClojureScript
+- Rust http://rust-lang.org
+- Java 8
+- Ocaml
+- Scala 
+
+# TODO other patterns
+
+- Add Cake Pattern and/or a dependency injection example foreach lang, starting point http://jonasboner.com/2008/10/06/real-world-scala-dependency-injection-di/
+- Add ImmutableObject pattern (only done for Java right now)
+- Add Null Object pattern
+- Add Tail Recursion pattern (maybe this is more an idiom, than an official pattern?)
+- Fix Builder pattern to offer only getters (remove setters)
+- RAII (not really a pattern, but an interesting topic to handle with a user-level api in each language)
+ 
 
 # Languages / Status
 
@@ -23,27 +41,6 @@ Much thanks to Larry for allowing to me to start off this project with his Java 
 - Clisp - complete
 - Clojure - complete
 
-TODO
-
-- Add Cake Pattern and/or a dependency injection example foreach lang, starting point http://jonasboner.com/2008/10/06/real-world-scala-dependency-injection-di/
-
-- Add ImmutableObject pattern (only done for Java right now)
-
-- Add Null Object pattern
-
-- Add Tail Recursion pattern (maybe this is more an idiom, than an official pattern?)
-
-- Fix Builder pattern to offer only getters (remove setters)
-
-- Erlang
-
-- Scala 
-
-- Java 1.7 
-
-	- partial 1.7 support in java/ already
-	- won't separate this out as a java7/ dir, like i did with perl/ and perl6/ because perl5 vs perl6 feels like a larger change than java 1.4 vs java 1.7
-		
 
 # Quick start
 
