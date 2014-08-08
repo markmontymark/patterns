@@ -1,11 +1,29 @@
 # Purpose
 
-Multiple language ports of GoF patterns
+GoF patterns written with different languages
 
 # Attribution
 
 The base of all these (someday complete) ports of GoF patterns originally come from Larry Truett's Java Design Patterns at http://www.fluffycat.com/Java-Design-Patterns/
 Much thanks to Larry for allowing to me to start off this project with his Java code base.
+
+# TODO languages
+
+- ClojureScript
+- Rust http://rust-lang.org
+- Java 8
+- Ocaml
+- Scala 
+
+# TODO other patterns
+
+- Add Cake Pattern and/or a dependency injection example foreach lang, starting point http://jonasboner.com/2008/10/06/real-world-scala-dependency-injection-di/
+- Add ImmutableObject pattern (only done for Java right now)
+- Add Null Object pattern
+- Add Tail Recursion pattern (maybe this is more an idiom, than an official pattern?)
+- Fix Builder pattern to offer only getters (remove setters)
+- RAII (not really a pattern, but an interesting topic to handle with a user-level api in each language)
+ 
 
 # Languages / Status
 
@@ -17,33 +35,12 @@ Much thanks to Larry for allowing to me to start off this project with his Java 
 - Python - complete
 - Perl6 - complete
 - Ruby - complete
-- C\# - complete
+- C&#x23; - complete
 - Java - complete
 - Go - complete
 - Clisp - complete
 - Clojure - complete
 
-TODO
-
-- Add Cake Pattern and/or a dependency injection example foreach lang, starting point http://jonasboner.com/2008/10/06/real-world-scala-dependency-injection-di/
-
-- Add ImmutableObject pattern (only done for Java right now)
-
-- Add Null Object pattern
-
-- Add Tail Recursion pattern (maybe this is more an idiom, than an official pattern?)
-
-- Fix Builder pattern to offer only getters (remove setters)
-
-- Erlang
-
-- Scala 
-
-- Java 1.7 
-
-	- partial 1.7 support in java/ already
-	- won't separate this out as a java7/ dir, like i did with perl/ and perl6/ because perl5 vs perl6 feels like a larger change than java 1.4 vs java 1.7
-		
 
 # Quick start
 
@@ -153,30 +150,30 @@ Install Ruby, RubyGems, a custom Tapper test module
 
 ### Tapper Setup
 
-   git clone git@github.com:judofyr/tapper.git
-   cd tapper
-   gem build tapper.gemspec
-   sudo gem install --local tapper-0.0.1.gem
+    git clone git@github.com:judofyr/tapper.git
+    cd tapper
+    gem build tapper.gemspec
+    sudo gem install --local tapper-0.0.1.gem
 
 
 ## Running the ruby tests
 
-   git clone git@github.com:markmontymark/patterns.git
-   cd patterns/ruby
-   make
-   make test
-   make loudtest
-   make timetest
+    git clone git@github.com:markmontymark/patterns.git
+    cd patterns/ruby
+    make
+    make test
+    make loudtest
+    make timetest
 
 	
-## C sharp
+## C &#x23;
 
 Install Mono dev tools and use a Makefile (for now) for building and running tests
 
-	sudo apt-get install mono-complete
-	cd patterns/csharp
-	make
-	make test
+    sudo apt-get install mono-complete
+    cd patterns/csharp
+    make
+    make test
 
 *Note* I wrote this for Linux/Mono so YMMV for Windows/Mac
 
@@ -189,13 +186,21 @@ Install Mono dev tools and use a Makefile (for now) for building and running tes
 
 ## clisp
 
-	sudo apt-get install clisp
-	sudo apt-get install cl-quicklisp
-	cd clisp
-	make
+    sudo apt-get install clisp
+    sudo apt-get install cl-quicklisp
+    cd clisp
+    make
 	
 	
-	
+## Clojure
+
+    # Install Clojure -- using 1.5.1 at the moment
+    wget http://repo1.maven.org/maven2/org/clojure/clojure/1.5.1/clojure-1.5.1.zip
+    unzip clojure-1.5.1.zip
+    #Install Leiningen    download the lein script and set in $PATH 
+    wget https://raw.github.com/technomancy/leiningen/stable/bin/lein -o /path/to/where/you/want/lein
+    chmod 755 /path/to/where/you/want/lein
+    lein test
 
 
 # Patterns
