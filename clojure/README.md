@@ -8,8 +8,7 @@
 	unzip clojure-1.5.1.zip
 	
 
-## Dev Install Leiningen steps 
-
+## Project setup steps -- installing Leiningen
 
 From http://leiningen.org/#install, download the `lein` script and set in path
 
@@ -22,4 +21,6 @@ Then invoke lein for this project
 
 	lein new app patterns
 
+## Running the test
 
+Simple, just `lein test`
