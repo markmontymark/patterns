@@ -7,16 +7,13 @@ GoF patterns written with different languages
 The base of all these (someday complete) ports of GoF patterns originally come from Larry Truett's Java Design Patterns at http://www.fluffycat.com/Java-Design-Patterns/
 Much thanks to Larry for allowing to me to start off this project with his Java code base.
 
-# TODO languages
+# TODO 
 
 - ClojureScript
 - Rust http://rust-lang.org
 - Java 8
 - Ocaml
 - Scala 
-
-# TODO other patterns
-
 - Add Cake Pattern and/or a dependency injection example foreach lang, starting point http://jonasboner.com/2008/10/06/real-world-scala-dependency-injection-di/
 - Add ImmutableObject pattern (only done for Java right now)
 - Add Null Object pattern

@@ -6,10 +6,10 @@
 
 namespace tap {
 
-public interface TestCase
-{
-	void test();
-}
+  public interface TestCase
+  {
+    void test();
+  }
 
 }
 
