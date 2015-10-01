@@ -1,0 +1,179 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{B0B9AD68-BD24-4EB8-B05C-3FCB9D9495FA}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <NoStandardLibraries>false</NoStandardLibraries>
+    <AssemblyName>ClassLibrary</AssemblyName>
+    <TargetFrameworkVersion>v4.0</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup>
+    <RootNamespace>Patterns</RootNamespace>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="System.Xml" />
+    <Reference Include="System.Xml.Linq" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Behavioral\Chain_Of_Responsibility\DvdCategory.cs" />
+    <Compile Include="Behavioral\Chain_Of_Responsibility\DvdSubCategory.cs" />
+    <Compile Include="Behavioral\Chain_Of_Responsibility\DvdSubSubCategory.cs" />
+    <Compile Include="Behavioral\Chain_Of_Responsibility\TestChainOfResponsibility.cs" />
+    <Compile Include="Behavioral\Chain_Of_Responsibility\TopTitle.cs" />
+    <Compile Include="Behavioral\Command\CommandAbstract.cs" />
+    <Compile Include="Behavioral\Command\DvdCommandNameStarsOff.cs" />
+    <Compile Include="Behavioral\Command\DvdCommandNameStarsOn.cs" />
+    <Compile Include="Behavioral\Command\DvdName.cs" />
+    <Compile Include="Behavioral\Command\TestCommand.cs" />
+    <Compile Include="Behavioral\Interpreter\DvdAbstractExpression.cs" />
+    <Compile Include="Behavioral\Interpreter\DvdActorExpression.cs" />
+    <Compile Include="Behavioral\Interpreter\DvdActorTitleExpression.cs" />
+    <Compile Include="Behavioral\Interpreter\DvdInterpreterClient.cs" />
+    <Compile Include="Behavioral\Interpreter\DvdInterpreterContext.cs" />
+    <Compile Include="Behavioral\Interpreter\DvdTitleActorExpression.cs" />
+    <Compile Include="Behavioral\Interpreter\DvdTitleExpression.cs" />
+    <Compile Include="Behavioral\Interpreter\TestInterpreter.cs" />
+    <Compile Include="Behavioral\Interpreter\TitleAndActor.cs" />
+    <Compile Include="Behavioral\Iterator\DvdList.cs" />
+    <Compile Include="Behavioral\Iterator\DvdListIterator.cs" />
+    <Compile Include="Behavioral\Iterator\DvdListIteratorImpl.cs" />
+    <Compile Include="Behavioral\Iterator\TestIterator.cs" />
+    <Compile Include="Behavioral\Mediator\DvdLowercaseTitle.cs" />
+    <Compile Include="Behavioral\Mediator\DvdMediator.cs" />
+    <Compile Include="Behavioral\Mediator\DvdTitle.cs" />
+    <Compile Include="Behavioral\Mediator\DvdUpcaseTitle.cs" />
+    <Compile Include="Behavioral\Mediator\TestMediator.cs" />
+    <Compile Include="Behavioral\Memento\DvdDetails.cs" />
+    <Compile Include="Behavioral\Memento\TestMemento.cs" />
+    <Compile Include="Behavioral\Observer\DvdRelease.cs" />
+    <Compile Include="Behavioral\Observer\DvdReleaseByCategory.cs" />
+    <Compile Include="Behavioral\Observer\DvdSubscriber.cs" />
+    <Compile Include="Behavioral\Observer\TestObserver.cs" />
+    <Compile Include="Behavioral\State\DvdStateContext.cs" />
+    <Compile Include="Behavioral\State\DvdStateName.cs" />
+    <Compile Include="Behavioral\State\DvdStateNameExclaim.cs" />
+    <Compile Include="Behavioral\State\DvdStateNameStars.cs" />
+    <Compile Include="Behavioral\State\TestState.cs" />
+    <Compile Include="Behavioral\Strategy\DvdNameAllCapStrategy.cs" />
+    <Compile Include="Behavioral\Strategy\DvdNameContext.cs" />
+    <Compile Include="Behavioral\Strategy\DvdNameReplaceSpacesStrategy.cs" />
+    <Compile Include="Behavioral\Strategy\DvdNameStrategy.cs" />
+    <Compile Include="Behavioral\Strategy\DvdNameTheAtEndStrategy.cs" />
+    <Compile Include="Behavioral\Strategy\TestStrategy.cs" />
+    <Compile Include="Behavioral\Template_Method\BookTitleInfo.cs" />
+    <Compile Include="Behavioral\Template_Method\DvdTitleInfo.cs" />
+    <Compile Include="Behavioral\Template_Method\GameTitleInfo.cs" />
+    <Compile Include="Behavioral\Template_Method\TestTemplateMethod.cs" />
+    <Compile Include="Behavioral\Template_Method\TitleInfo.cs" />
+    <Compile Include="Behavioral\Visitor\AbstractTitleInfo.cs" />
+    <Compile Include="Behavioral\Visitor\BookInfo.cs" />
+    <Compile Include="Behavioral\Visitor\DvdInfo.cs" />
+    <Compile Include="Behavioral\Visitor\GameInfo.cs" />
+    <Compile Include="Behavioral\Visitor\TestVisitor.cs" />
+    <Compile Include="Behavioral\Visitor\TitleBlurbVisitor.cs" />
+    <Compile Include="Behavioral\Visitor\TitleLongBlurbVisitor.cs" />
+    <Compile Include="Behavioral\Visitor\TitleShortBlurbVisitor.cs" />
+    <Compile Include="common\BostonClamChowder.cs" />
+    <Compile Include="common\BostonFishChowder.cs" />
+    <Compile Include="common\ChickenSoup.cs" />
+    <Compile Include="common\ClamChowder.cs" />
+    <Compile Include="common\FishChowder.cs" />
+    <Compile Include="common\HonoluluClamChowder.cs" />
+    <Compile Include="common\HonoluluFishChowder.cs" />
+    <Compile Include="common\Minnestrone.cs" />
+    <Compile Include="common\PastaFazul.cs" />
+    <Compile Include="common\Soup.cs" />
+    <Compile Include="common\SoupBuffet.cs" />
+    <Compile Include="common\TofuSoup.cs" />
+    <Compile Include="common\VegetableSoup.cs" />
+    <Compile Include="Creational\Abstract_Factory\AbstractSoupFactory.cs" />
+    <Compile Include="Creational\Abstract_Factory\BostonConcreteSoupFactory.cs" />
+    <Compile Include="Creational\Abstract_Factory\HonoluluConcreteSoupFactory.cs" />
+    <Compile Include="Creational\Abstract_Factory\TestAbstractFactory.cs" />
+    <Compile Include="Creational\Builder\AbstractBuilder.cs" />
+    <Compile Include="Creational\Builder\BostonSoupBuffetBuilder.cs" />
+    <Compile Include="Creational\Builder\HonoluluSoupBuffetBuilder.cs" />
+    <Compile Include="Creational\Builder\SoupBuffetBuilder.cs" />
+    <Compile Include="Creational\Builder\TestBuilder.cs" />
+    <Compile Include="Creational\Factory_Method\BostonSoupFactoryMethodSubclass.cs" />
+    <Compile Include="Creational\Factory_Method\HonoluluSoupFactoryMethodSubclass.cs" />
+    <Compile Include="Creational\Factory_Method\SoupFactoryMethod.cs" />
+    <Compile Include="Creational\Factory_Method\TestFactory_Method.cs" />
+    <Compile Include="Creational\Prototype\Fork.cs" />
+    <Compile Include="Creational\Prototype\PrototypeFactory.cs" />
+    <Compile Include="Creational\Prototype\SaladFork.cs" />
+    <Compile Include="Creational\Prototype\SaladSpoon.cs" />
+    <Compile Include="Creational\Prototype\SoupSpoon.cs" />
+    <Compile Include="Creational\Prototype\Spoon.cs" />
+    <Compile Include="Creational\Prototype\TestPrototype.cs" />
+    <Compile Include="Creational\Singleton\SingleSpoon.cs" />
+    <Compile Include="Creational\Singleton\TestSingleton.cs" />
+    <Compile Include="Structural\Adapter\LooseLeafTea.cs" />
+    <Compile Include="Structural\Adapter\TeaBag.cs" />
+    <Compile Include="Structural\Adapter\TeaBall.cs" />
+    <Compile Include="Structural\Adapter\TeaCup.cs" />
+    <Compile Include="Structural\Adapter\TestAdapter.cs" />
+    <Compile Include="Structural\Bridge\CherrySodaImp.cs" />
+    <Compile Include="Structural\Bridge\GrapeSodaImp.cs" />
+    <Compile Include="Structural\Bridge\MediumSoda.cs" />
+    <Compile Include="Structural\Bridge\OrangeSodaImp.cs" />
+    <Compile Include="Structural\Bridge\Soda.cs" />
+    <Compile Include="Structural\Bridge\SodaImp.cs" />
+    <Compile Include="Structural\Bridge\SodaImpSingleton.cs" />
+    <Compile Include="Structural\Bridge\SuperSizeSoda.cs" />
+    <Compile Include="Structural\Bridge\TestBridge.cs" />
+    <Compile Include="Structural\Composite\OneTeaBag.cs" />
+    <Compile Include="Structural\Composite\TeaBags.cs" />
+    <Compile Include="Structural\Composite\TestComposite.cs" />
+    <Compile Include="Structural\Composite\TinOfTeaBags.cs" />
+    <Compile Include="Structural\Decorator\ChaiDecorator.cs" />
+    <Compile Include="Structural\Decorator\Tea.cs" />
+    <Compile Include="Structural\Decorator\TeaLeaves.cs" />
+    <Compile Include="Structural\Decorator\TestDecorator.cs" />
+    <Compile Include="Structural\Facade\FacadeCuppaMaker.cs" />
+    <Compile Include="Structural\Facade\FacadeTeaBag.cs" />
+    <Compile Include="Structural\Facade\FacadeTeaCup.cs" />
+    <Compile Include="Structural\Facade\FacadeWater.cs" />
+    <Compile Include="Structural\Facade\TestFacade.cs" />
+    <Compile Include="Structural\Flyweight\TeaFlavor.cs" />
+    <Compile Include="Structural\Flyweight\TeaFlavorFactory.cs" />
+    <Compile Include="Structural\Flyweight\TeaOrder.cs" />
+    <Compile Include="Structural\Flyweight\TeaOrderContext.cs" />
+    <Compile Include="Structural\Flyweight\TestFlyweight.cs" />
+    <Compile Include="Structural\Proxy\PotOfTea.cs" />
+    <Compile Include="Structural\Proxy\PotOfTeaInterface.cs" />
+    <Compile Include="Structural\Proxy\PotOfTeaProxy.cs" />
+    <Compile Include="Structural\Proxy\TestProxy.cs" />
+    <Compile Include="tap\Tapper.cs" />
+    <Compile Include="tap\TestCase.cs" />
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSHARP.Targets" />
+  <ProjectExtensions>
+    <VisualStudio AllowExistingFolder="true" />
+  </ProjectExtensions>
+</Project>
