@@ -87,7 +87,7 @@ Already had gcc and autotools installed, so ping me if you need help w/ setup on
 
 ## PHP
 
-Again, built on a Ubuntu box which makes this very quick and easy to setup.  I'm using PHP 5.4.26 and testing with PHPUni
+Again, built on a Ubuntu box which makes this very quick and easy to setup.  I'm using PHP 5.4.26 and testing with PHPUnit
 
 	$ php --version | head -1
 	PHP 5.4.6-1ubuntu1.2 (cli) (built: Mar 11 2013 14:57:54) 
@@ -123,13 +123,13 @@ Running the tests for Python 3
 
 TODO
 	
-This is by far the most Python I have ever wrote, so probaly has tons of bad habits or bad idioms, so should fix that eventually.
+This is by far the most Python I have ever wrote, so probably has tons of bad habits or bad idioms.  
 
 ## Perl6
 
 Install Perl6
 
-See notes in perl6/README.md as they're *not* just a couple of steps...
+See notes in perl6/README.md as they are *not* just a couple of steps...
 
 Once that's sorted:
 
@@ -142,8 +142,8 @@ Once that's sorted:
 
 Install Ruby, RubyGems, a custom Tapper test module
 
-	sudo apt-get install ruby1.9.1
-	sudo apt-get install rubygems
+    sudo apt-get install ruby1.9.1
+    sudo apt-get install rubygems
 
 ### Tapper Setup
 
@@ -176,9 +176,9 @@ Install Mono dev tools and use a Makefile (for now) for building and running tes
 
 ## Go
 
-	sudo apt-get install golang-go
-	cd patterns/go/behavioral/chainofresponsibility
-	go test 
+    sudo apt-get install golang-go
+    cd patterns/go/behavioral/chainofresponsibility
+    go test 
 
 
 ## clisp
