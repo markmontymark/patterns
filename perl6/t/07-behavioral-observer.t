@@ -3,9 +3,6 @@ use Test;
 
 use lib 'blib/lib';
 
-
-use lib 'blib/lib';
-
 use Patterns::Behavioral::Observer;
 
 my $btvs = DvdReleaseByCategory.new("Buffy the Vampire Slayer");
