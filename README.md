@@ -20,6 +20,7 @@ Much thanks to Larry for allowing to me to start off this project with his Java 
 - Add Tail Recursion pattern (maybe this is more an idiom, than an official pattern?)
 - Fix Builder pattern to offer only getters (remove setters)
 - RAII (not really a pattern, but an interesting topic to handle with a user-level api in each language)
+- Command and Query Responsibility Segregation (CQRS) Pattern, descriptions [https://msdn.microsoft.com/en-us/library/dn568103.aspx](here) and [https://www.martinfowler.com/bliki/CQRS.html](here)
  
 
 # Languages / Status
